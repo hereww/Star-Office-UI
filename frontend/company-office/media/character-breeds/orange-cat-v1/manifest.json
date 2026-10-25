@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 2,
+  "profileId": "orange-cat-v1",
+  "animationMode": "full-frame",
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "directions": {
+    "up": {
+      "id": "orange-cat-v1",
+      "direction": "up",
+      "base": "./up/base.png",
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        96,
+        168
+      ],
+      "headAnchor": [
+        96,
+        34
+      ],
+      "scale": 0.6,
+      "faceVisible": false,
+      "animationMode": "full-frame",
+      "actions": {
+        "working": {
+          "frames": "./up/frames-working.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 60
+        },
+        "idle": {
+          "frames": "./up/frames-idle.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 36
+        },
+        "syncing": {
+          "frames": "./up/frames-syncing.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 60
+        },
+        "error": {
+          "frames": "./up/frames-error.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 12
+        }
+      }
+    },
+    "down": {
+      "id": "orange-cat-v1",
+      "direction": "down",
+      "base": "./down/base.png",
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        98,
+        170
+      ],
+      "headAnchor": [
+        100,
+        30
+      ],
+      "scale": 0.6,
+      "faceVisible": true,
+      "animationMode": "full-frame",
+      "actions": {
+        "working": {
+          "frames": "./down/frames-working.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 60
+        },
+        "idle": {
+          "frames": "./down/frames-idle.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 36
+        },
+        "syncing": {
+          "frames": "./down/frames-syncing.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 60
+        },
+        "error": {
+          "frames": "./down/frames-error.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 12
+        }
+      }
+    },
+    "left": {
+      "id": "orange-cat-v1",
+      "direction": "left",
+      "base": "./left/base.png",
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        96,
+        174
+      ],
+      "headAnchor": [
+        96,
+        16
+      ],
+      "scale": 0.6,
+      "faceVisible": true,
+      "animationMode": "full-frame",
+      "actions": {
+        "working": {
+          "frames": "./left/frames-working.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 60
+        },
+        "idle": {
+          "frames": "./left/frames-idle.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 36
+        },
+        "syncing": {
+          "frames": "./left/frames-syncing.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 60
+        },
+        "error": {
+          "frames": "./left/frames-error.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 12
+        }
+      }
+    },
+    "right": {
+      "id": "orange-cat-v1",
+      "direction": "right",
+      "base": "./right/base.png",
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "headAnchor": [
+        110,
+        8
+      ],
+      "scale": 0.6,
+      "faceVisible": true,
+      "animationMode": "full-frame",
+      "actions": {
+        "working": {
+          "frames": "./right/frames-working.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 60
+        },
+        "idle": {
+          "frames": "./right/frames-idle.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 36
+        },
+        "syncing": {
+          "frames": "./right/frames-syncing.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 60
+        },
+        "error": {
+          "frames": "./right/frames-error.png",
+          "frameCount": 12,
+          "fps": 12,
+          "clockFrames": 12
+        }
+      }
+    }
+  },
+  "manifestContractVersion": 2
+}

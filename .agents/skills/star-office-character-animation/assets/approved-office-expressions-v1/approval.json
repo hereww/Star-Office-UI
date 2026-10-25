@@ -1,0 +1,28 @@
+{
+  "approvedOn": "2026-10-01",
+  "timezone": "Asia/Shanghai",
+  "approvedBy": "user",
+  "userMessage": "不过确定这一版",
+  "templateId": "approved-office-expressions-v1",
+  "scope": "Current fixed seated workstation and all four expressions, including upturned-face sleeping idle and spinning spiral-eye error.",
+  "sourceProposal": "assets/character-animation-proposals/2026-10-01-seated-office-states-v2",
+  "frozenTemplate": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1",
+  "visualApproved": true,
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "rules": [
+    "Body and workstation remain fixed.",
+    "No keyboard hands.",
+    "Each expression contains 12 frames at 12fps.",
+    "Working/syncing expression interval 5 seconds; sleep interval 3 seconds; dizzy eyes continuous.",
+    "Preserve this approved version; changes go into a new version."
+  ],
+  "businessStateToAction": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  }
+}

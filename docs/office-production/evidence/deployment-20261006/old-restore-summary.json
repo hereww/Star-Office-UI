@@ -1,0 +1,12 @@
+{
+  "backup_root": "/home/star-office-backups/20261006-v5-before",
+  "old_image_id": "sha256:28f1bc788fdcc80f30ff36ece47110e0b7a73b56cce84ed49a38927fb346ee53",
+  "rollback_tag": "local/star-office-ui:rollback-20261006-v5",
+  "source_files": 160,
+  "source_bytes": 41205910,
+  "image_archive_bytes": 122413512,
+  "source_consistent": true,
+  "byte_restore_verified": true,
+  "isolated_old_health": 200,
+  "old_container_unchanged": true
+}

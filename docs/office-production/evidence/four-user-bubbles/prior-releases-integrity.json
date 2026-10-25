@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "releases": [
+    {
+      "release_id": "office-20261004-v1-rc1",
+      "sha256": "bc671e1075eb3869e15f6e79e21c1c660766f5d914bf569105b7fc027c89129d"
+    },
+    {
+      "release_id": "office-20261004-v1-rc2",
+      "sha256": "5dc6514a0f7ddccd4fe505ce84d64c006cb7bf297447240786e26922a9d2cd84"
+    },
+    {
+      "release_id": "office-20261004-v1-rc3",
+      "sha256": "2a236a234a4be766f274379e525e0f97378d29a46c14ea948c8b84648d6a7901"
+    }
+  ]
+}

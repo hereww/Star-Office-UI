@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sub2API User Telemetry Snapshot v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "window",
+    "users",
+    "next_cursor"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end",
+        "timezone"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timezone": {
+          "type": "string"
+        }
+      }
+    },
+    "users": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "user_id",
+          "email",
+          "username",
+          "api_keys",
+          "token_usage",
+          "concurrency",
+          "quality",
+          "observed_at"
+        ],
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "maxLength": 19
+          },
+          "email": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "api_keys": {
+            "type": "array",
+            "maxItems": 10000,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "name",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$",
+                  "maxLength": 19
+                },
+                "name": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "token_usage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "total"
+            ],
+            "properties": {
+              "total": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[0-9]+$"
+              }
+            }
+          },
+          "concurrency": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "current",
+              "limit"
+            ],
+            "properties": {
+              "current": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "limit": {
+                "type": "integer"
+              }
+            }
+          },
+          "quality": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "identity",
+              "api_keys",
+              "token_usage",
+              "concurrency"
+            ],
+            "properties": {
+              "identity": {
+                "type": "string",
+                "enum": [
+                  "fresh",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              },
+              "api_keys": {
+                "type": "string",
+                "enum": [
+                  "fresh",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              },
+              "token_usage": {
+                "type": "string",
+                "enum": [
+                  "fresh",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              },
+              "concurrency": {
+                "type": "string",
+                "enum": [
+                  "fresh",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              }
+            }
+          },
+          "observed_at": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "identity",
+              "api_keys",
+              "token_usage",
+              "concurrency"
+            ],
+            "properties": {
+              "identity": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "api_keys": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "token_usage": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "concurrency": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "next_cursor": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[1-9][0-9]*$",
+      "maxLength": 19
+    }
+  }
+}

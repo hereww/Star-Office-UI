@@ -1,0 +1,977 @@
+{
+  "schemaVersion": 1,
+  "candidateOnly": true,
+  "method": "actual PNG alpha, 12 row-major cells, visible RGBA hashes, exact offline manifest ellipse compositor",
+  "noImageRepairs": true,
+  "base": {
+    "size": [
+      192,
+      192
+    ],
+    "mode": "RGBA",
+    "min": 0,
+    "max": 255,
+    "transparentPixels": 26332,
+    "transparentFraction": 0.714301,
+    "effectiveOpaqueFraction128": 0.2771,
+    "binaryAlpha": false,
+    "genuineAlpha": true,
+    "contentBBoxAlpha128": [
+      48,
+      30,
+      159,
+      177
+    ]
+  },
+  "faceRect": [
+    42,
+    64,
+    90,
+    58
+  ],
+  "faceClipEllipse": [
+    78,
+    94,
+    28,
+    21
+  ],
+  "actions": {
+    "working": {
+      "alpha": {
+        "size": [
+          360,
+          174
+        ],
+        "mode": "RGBA",
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 10589,
+        "transparentFraction": 0.169045,
+        "effectiveOpaqueFraction128": 0.818439,
+        "binaryAlpha": false,
+        "genuineAlpha": true,
+        "contentBBoxAlpha128": [
+          9,
+          0,
+          360,
+          174
+        ]
+      },
+      "rawAlpha": {
+        "size": [
+          1802,
+          872
+        ],
+        "mode": "RGBA",
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 264381,
+        "transparentFraction": 0.168252,
+        "effectiveOpaqueFraction128": 0.815464,
+        "binaryAlpha": false,
+        "genuineAlpha": true,
+        "contentBBoxAlpha128": [
+          47,
+          0,
+          1802,
+          872
+        ]
+      },
+      "cellCount": 12,
+      "cellSize": [
+        90,
+        58
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "nonemptyCellCount": 12,
+      "visiblePixelUniqueFrameCount": 12,
+      "frameHashes": [
+        "99e886f9628c083b88d99f1ae0bdd513dccfaff12720b64a7f75e2400e7052e2",
+        "f3411e5ed7a0db6c2c2a93ce6c887b7ebfbdc60c3afbbef3b903351aaf9ae856",
+        "45b3eb02c0d2ec08296ce90254bd386c3656128eca6ca7ceb518c285df3705ab",
+        "6f924f58082ffa09d6b2df40c72f44466e46b3e3b0ef48972b3848fd50cd8db9",
+        "602b61cbfd0710d77a08cb944304f954c75ab63319ecb7b1af40e7940097f7aa",
+        "68df6d340fdaeedd14b2598c56a41be35ad22fce6c71fea0e22ced28f8cfdf71",
+        "a7d3e7923795d9211d8b03d22ec953199cde0f3d27c0024924789b2b8817f6f8",
+        "0de8ac4bd26b14ae9d5652a19475612c8ba3d2a8cc014833333331bde64e98e0",
+        "e57d9a31f0fdbbf64179278052fce3004e0ba13afcef0243f513498abc5d76ee",
+        "110014e833e6dda68200ff928aa4afcfe27fc039f8a968b83d99fc9993d9deec",
+        "c880a0e093d4ea2a3ad4ab3c4262a4718cce5e835894cce076d42799e8e96289",
+        "b6034071cbce49fae7ac39fc665c639b4aa564ce32ca15e16442319518bc4a7d"
+      ],
+      "clippedFaceUniqueFrameCount": 12,
+      "eyeRegionUniqueFrameCount": 12,
+      "identicalFramePairs": [],
+      "noseCentroids": [
+        [
+          14.103,
+          34.517
+        ],
+        [
+          14.261,
+          33.348
+        ],
+        [
+          14.28,
+          33.72
+        ],
+        [
+          14.76,
+          33.56
+        ],
+        [
+          14.172,
+          34.276
+        ],
+        [
+          14.364,
+          33.182
+        ],
+        [
+          14.217,
+          33.609
+        ],
+        [
+          14.231,
+          33.385
+        ],
+        [
+          14.0,
+          34.481
+        ],
+        [
+          14.25,
+          33.625
+        ],
+        [
+          14.172,
+          34.138
+        ],
+        [
+          14.769,
+          33.538
+        ]
+      ],
+      "noseCentroidRangePx": [
+        0.769,
+        1.335
+      ],
+      "darkEyePixelCounts": [
+        233,
+        217,
+        199,
+        183,
+        166,
+        128,
+        77,
+        112,
+        196,
+        202,
+        218,
+        217
+      ],
+      "featureChangedPixelsVsFrame0": [
+        1053,
+        1075,
+        1064,
+        1048,
+        1067,
+        1074,
+        1077,
+        1052,
+        1071,
+        1075,
+        1070
+      ],
+      "nonFeatureInnerChangedPixelsVsFrame0": [
+        671,
+        665,
+        669,
+        673,
+        667,
+        674,
+        673,
+        678,
+        674,
+        672,
+        677
+      ],
+      "fixedBodyOutsideFaceChangedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "headSilhouetteChangedPixelsVsBase": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "alphaSilhouetteChangedPixelsVsBase": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bodyFixedByStaticBaseAndClip": true,
+      "headOutlineInvariantAfterClip": true,
+      "exactNonFeaturePixelsInvariant": false,
+      "visibleNonFeatureChangedPixelsThreshold16": [
+        41,
+        11,
+        35,
+        73,
+        85,
+        72,
+        89,
+        114,
+        121,
+        119,
+        120
+      ],
+      "stableInnerMeasuredPixels": 746,
+      "rawGeneratedVisualReviewRequired": true
+    },
+    "idle": {
+      "alpha": {
+        "size": [
+          360,
+          174
+        ],
+        "mode": "RGBA",
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 12606,
+        "transparentFraction": 0.201245,
+        "effectiveOpaqueFraction128": 0.774266,
+        "binaryAlpha": false,
+        "genuineAlpha": true,
+        "contentBBoxAlpha128": [
+          11,
+          0,
+          360,
+          174
+        ]
+      },
+      "rawAlpha": {
+        "size": [
+          1802,
+          873
+        ],
+        "mode": "RGBA",
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 321123,
+        "transparentFraction": 0.204128,
+        "effectiveOpaqueFraction128": 0.774364,
+        "binaryAlpha": false,
+        "genuineAlpha": true,
+        "contentBBoxAlpha128": [
+          56,
+          0,
+          1802,
+          873
+        ]
+      },
+      "cellCount": 12,
+      "cellSize": [
+        90,
+        58
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "nonemptyCellCount": 12,
+      "visiblePixelUniqueFrameCount": 12,
+      "frameHashes": [
+        "1d518675e0d02acd44c1cafff4758d5cfa1536d612b5df7423dcb4fb2b6c126e",
+        "8089e7b539655b85006eeffe77d08e2850629e6b04a058f5cfd1e1ed311f9194",
+        "5f7b25fbd485bf8cf88649da0ff5f7e21dbd956ff5e1c7fc6d047f9a85edbacd",
+        "3bc5e940345e39ce95958973bc897f373cb19a4e708956d99716b1e3b234c5f4",
+        "9aaa50a53707c034f19a3450a4f742446a2a3cbf343609d0e0415b057c78025d",
+        "bc4d12062ae9d16bc8074eefd96d8c4d48eb3f1ea5095ab334f9134ac6d61f8d",
+        "9ec71e2308649c04a604b2eec89b73a9470258c22c03c4e77da1da46b34d3b8e",
+        "1050fbc41c6f51bc9b557541944aeefbdfbeb435dd96c31083d1f422059f9aac",
+        "235010d4fa5906f4eaee26f89f3d25d69425bd62abb1b43cc684400134294910",
+        "edcd683ba4aa96651281965b932f61be3472cd5c90cc2a791a120f00df7654b5",
+        "f85a3ade17874b47821732fd0278218a4672af8c97767637bc47c7e85ffc0474",
+        "6a48a61a8b77c174a49ef4a8f4a70e0b146e77030d7d9e3eacb65703d0f52d37"
+      ],
+      "clippedFaceUniqueFrameCount": 12,
+      "eyeRegionUniqueFrameCount": 12,
+      "identicalFramePairs": [],
+      "noseCentroids": [
+        [
+          15.182,
+          28.091
+        ],
+        [
+          14.692,
+          27.769
+        ],
+        [
+          14.524,
+          27.048
+        ],
+        [
+          14.7,
+          26.85
+        ],
+        [
+          14.667,
+          27.238
+        ],
+        [
+          15.167,
+          26.722
+        ],
+        [
+          14.957,
+          26.826
+        ],
+        [
+          14.864,
+          26.909
+        ],
+        [
+          15.238,
+          28.333
+        ],
+        [
+          16.0,
+          29.0
+        ],
+        [
+          15.0,
+          28.278
+        ],
+        [
+          14.944,
+          27.278
+        ]
+      ],
+      "noseCentroidRangePx": [
+        1.476,
+        2.278
+      ],
+      "darkEyePixelCounts": [
+        63,
+        66,
+        75,
+        82,
+        126,
+        155,
+        180,
+        145,
+        121,
+        107,
+        81,
+        70
+      ],
+      "featureChangedPixelsVsFrame0": [
+        1037,
+        1044,
+        1056,
+        1054,
+        1059,
+        1068,
+        1060,
+        1053,
+        1062,
+        1054,
+        1041
+      ],
+      "nonFeatureInnerChangedPixelsVsFrame0": [
+        674,
+        676,
+        677,
+        680,
+        696,
+        698,
+        686,
+        685,
+        685,
+        685,
+        673
+      ],
+      "fixedBodyOutsideFaceChangedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "headSilhouetteChangedPixelsVsBase": [
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      "alphaSilhouetteChangedPixelsVsBase": [
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      "bodyFixedByStaticBaseAndClip": true,
+      "headOutlineInvariantAfterClip": false,
+      "exactNonFeaturePixelsInvariant": false,
+      "visibleNonFeatureChangedPixelsThreshold16": [
+        41,
+        22,
+        41,
+        71,
+        107,
+        111,
+        100,
+        143,
+        139,
+        131,
+        137
+      ],
+      "stableInnerMeasuredPixels": 746,
+      "rawGeneratedVisualReviewRequired": true
+    },
+    "syncing": {
+      "alpha": {
+        "size": [
+          360,
+          174
+        ],
+        "mode": "RGBA",
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 13888,
+        "transparentFraction": 0.221711,
+        "effectiveOpaqueFraction128": 0.761207,
+        "binaryAlpha": false,
+        "genuineAlpha": true,
+        "contentBBoxAlpha128": [
+          11,
+          0,
+          360,
+          174
+        ]
+      },
+      "rawAlpha": {
+        "size": [
+          1804,
+          872
+        ],
+        "mode": "RGBA",
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 348936,
+        "transparentFraction": 0.221816,
+        "effectiveOpaqueFraction128": 0.761283,
+        "binaryAlpha": false,
+        "genuineAlpha": true,
+        "contentBBoxAlpha128": [
+          57,
+          0,
+          1804,
+          872
+        ]
+      },
+      "cellCount": 12,
+      "cellSize": [
+        90,
+        58
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "nonemptyCellCount": 12,
+      "visiblePixelUniqueFrameCount": 12,
+      "frameHashes": [
+        "6936434e7832bfb8cf445e60c5a3f33970acc806f90bb447b6fe861a3bb4d384",
+        "5ea7caa9edb622d5e9bb187d7241784bee130431be46d001d23f935c9c126c17",
+        "7beceefd5a38542723cbb73ad9bd69b2771acaca78fea6a885c62399656470f2",
+        "8ae67379304bfcdd31d25de739530967a332da475edcd50692b576970cec4485",
+        "17ed5647c173d4aea88112cd4ee01395acfba97526ae922d8791d1e61b4ac347",
+        "64f1b832967149a1d1b873cfd3e5e7a45977c16dee66729131d9ebca3bdfeef1",
+        "806a857fdc33e758be006005bd379c0d76681472b509997c8d387e2b9a7d0c09",
+        "16cd979e38d582aa2933eeab0b0f3b622f12f51d1eb1bf6969247a1296f88c87",
+        "7c48fdf1c0bb5f513b7f7bf55940afdc5013f87cf111ce154156a8200a3c9eb9",
+        "446fb0406e589df921e1036d6cddef75a40d914762610079535a6568cc45c50c",
+        "6126a9dbea38321818b0b0f3a5be89cf562520e5c9145399737e38dbdf8a60d0",
+        "b07b1ab98831e8712484edce05b82f49082df626efae23176a114f184053e1a6"
+      ],
+      "clippedFaceUniqueFrameCount": 12,
+      "eyeRegionUniqueFrameCount": 12,
+      "identicalFramePairs": [],
+      "noseCentroids": [
+        [
+          15.969,
+          35.469
+        ],
+        [
+          15.969,
+          35.625
+        ],
+        [
+          16.0,
+          35.548
+        ],
+        [
+          16.0,
+          35.656
+        ],
+        [
+          15.97,
+          35.727
+        ],
+        [
+          15.97,
+          35.727
+        ],
+        [
+          15.848,
+          35.818
+        ],
+        [
+          15.941,
+          35.647
+        ],
+        [
+          15.882,
+          35.912
+        ],
+        [
+          15.909,
+          35.848
+        ],
+        [
+          15.909,
+          36.0
+        ],
+        [
+          15.909,
+          35.848
+        ]
+      ],
+      "noseCentroidRangePx": [
+        0.152,
+        0.531
+      ],
+      "darkEyePixelCounts": [
+        243,
+        251,
+        216,
+        203,
+        173,
+        101,
+        79,
+        168,
+        196,
+        226,
+        229,
+        248
+      ],
+      "featureChangedPixelsVsFrame0": [
+        1062,
+        1058,
+        1060,
+        1066,
+        1071,
+        1069,
+        1070,
+        1073,
+        1066,
+        1066,
+        1074
+      ],
+      "nonFeatureInnerChangedPixelsVsFrame0": [
+        605,
+        600,
+        600,
+        588,
+        592,
+        605,
+        596,
+        589,
+        600,
+        607,
+        605
+      ],
+      "fixedBodyOutsideFaceChangedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "headSilhouetteChangedPixelsVsBase": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "alphaSilhouetteChangedPixelsVsBase": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bodyFixedByStaticBaseAndClip": true,
+      "headOutlineInvariantAfterClip": true,
+      "exactNonFeaturePixelsInvariant": false,
+      "visibleNonFeatureChangedPixelsThreshold16": [
+        32,
+        21,
+        29,
+        40,
+        51,
+        51,
+        48,
+        45,
+        57,
+        50,
+        59
+      ],
+      "stableInnerMeasuredPixels": 746,
+      "rawGeneratedVisualReviewRequired": true
+    },
+    "error": {
+      "alpha": {
+        "size": [
+          360,
+          174
+        ],
+        "mode": "RGBA",
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 10909,
+        "transparentFraction": 0.174154,
+        "effectiveOpaqueFraction128": 0.806833,
+        "binaryAlpha": false,
+        "genuineAlpha": true,
+        "contentBBoxAlpha128": [
+          11,
+          0,
+          360,
+          174
+        ]
+      },
+      "rawAlpha": {
+        "size": [
+          1802,
+          873
+        ],
+        "mode": "RGBA",
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 278547,
+        "transparentFraction": 0.177064,
+        "effectiveOpaqueFraction128": 0.807346,
+        "binaryAlpha": false,
+        "genuineAlpha": true,
+        "contentBBoxAlpha128": [
+          54,
+          0,
+          1802,
+          873
+        ]
+      },
+      "cellCount": 12,
+      "cellSize": [
+        90,
+        58
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "nonemptyCellCount": 12,
+      "visiblePixelUniqueFrameCount": 12,
+      "frameHashes": [
+        "066c9df8f12f8460b114e99051ab41cfcf12f45a1e8cc04ea3c0a35a2b77977a",
+        "96df8d2efd9c6d886d8eb5bc680911684c9234910ccaac95f51d3c6583a028ca",
+        "03a9d892ce3e58fafa352252cea5f360c410eed54b2832b3376eb898cdb0f7ad",
+        "ff9557c3163f016e32d46ff22e67f7721662696996c87a66e5208deb4e2c7fe3",
+        "4b21cb9cd21554a7f20b3b1ec680f16894f13029bc7bd10c0fdb663f11783401",
+        "9428adb94c0ff9db27c7f9a1395c84f4858c485247f5acb189e079cde15bb4fb",
+        "d98494beeeb0844437fe76031c5aa2d5761a7360f90de35a2dd70754ff727152",
+        "158c050f9d8e8beb1752c37ac2137a72f0387152e66447442c41d07326767b14",
+        "ee64c75acccd1cb3688cf04ffc28ae1f02f6015ede98ccecba6b64052d522927",
+        "73a6e578ffcd6976bfa1e0392550ad398336157cb164b8d81e5a03a46a12eadf",
+        "2928303f458920ac7bb32591a590669d242e5fe2b9cf88341e67038255c35130",
+        "87b593487efed2461a7a07ab6c8a04b91b446c7161213a9db300890b61cb27ed"
+      ],
+      "clippedFaceUniqueFrameCount": 12,
+      "eyeRegionUniqueFrameCount": 12,
+      "identicalFramePairs": [],
+      "noseCentroids": [
+        [
+          15.786,
+          34.679
+        ],
+        [
+          15.871,
+          34.387
+        ],
+        [
+          15.833,
+          34.567
+        ],
+        [
+          15.867,
+          34.567
+        ],
+        [
+          16.273,
+          34.091
+        ],
+        [
+          16.212,
+          34.091
+        ],
+        [
+          16.0,
+          34.394
+        ],
+        [
+          16.257,
+          34.057
+        ],
+        [
+          16.194,
+          34.226
+        ],
+        [
+          16.125,
+          34.188
+        ],
+        [
+          16.125,
+          34.281
+        ],
+        [
+          16.156,
+          34.156
+        ]
+      ],
+      "noseCentroidRangePx": [
+        0.487,
+        0.622
+      ],
+      "darkEyePixelCounts": [
+        187,
+        190,
+        188,
+        187,
+        200,
+        189,
+        201,
+        192,
+        190,
+        206,
+        207,
+        189
+      ],
+      "featureChangedPixelsVsFrame0": [
+        1060,
+        1049,
+        1074,
+        1070,
+        1060,
+        1065,
+        1072,
+        1064,
+        1075,
+        1064,
+        1073
+      ],
+      "nonFeatureInnerChangedPixelsVsFrame0": [
+        642,
+        629,
+        635,
+        643,
+        642,
+        642,
+        649,
+        642,
+        652,
+        641,
+        645
+      ],
+      "fixedBodyOutsideFaceChangedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "headSilhouetteChangedPixelsVsBase": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "alphaSilhouetteChangedPixelsVsBase": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bodyFixedByStaticBaseAndClip": true,
+      "headOutlineInvariantAfterClip": true,
+      "exactNonFeaturePixelsInvariant": false,
+      "visibleNonFeatureChangedPixelsThreshold16": [
+        35,
+        16,
+        39,
+        73,
+        77,
+        79,
+        79,
+        62,
+        78,
+        60,
+        75
+      ],
+      "stableInnerMeasuredPixels": 746,
+      "rawGeneratedVisualReviewRequired": true
+    }
+  },
+  "passed": false,
+  "limitations": [
+    "Distinct RGBA hashes do not prove 12 distinct semantic phases.",
+    "Ellipse QA is not browser/runtime integration or user visual approval.",
+    "Nose centroids are color measurements, not perfect anatomical landmarks."
+  ],
+  "protectedInputs": {
+    "count": 29,
+    "unchanged": true,
+    "changes": []
+  },
+  "runtimeAuditCopyMatch": [
+    {
+      "name": "character-base.png",
+      "sha256": "06b1c2ac8d682e1a0ae4bd33dd36a113999001c8840afe640d4b563ba01c4a4f",
+      "byteIdentical": true
+    },
+    {
+      "name": "face-working.png",
+      "sha256": "f00ba5b6f2308bf07d5a1ed7afc6b2013a3a07d886389a7d685605f460e0e3ae",
+      "byteIdentical": true
+    },
+    {
+      "name": "face-idle.png",
+      "sha256": "c1009597b72261d3604e403b551e8f4f7f36d6f8e3ce430fce3c6960b6065eb3",
+      "byteIdentical": true
+    },
+    {
+      "name": "face-syncing.png",
+      "sha256": "cf94e1135d84fde575f7999a17b5fd2d1ea19a4e0092d0dee9515849b8cf0c1d",
+      "byteIdentical": true
+    },
+    {
+      "name": "face-error.png",
+      "sha256": "f5ee7b55de6bff30342f00e4d77a613c15619ce29affaf6fe9b1cb1e12be2bd6",
+      "byteIdentical": true
+    }
+  ],
+  "structuralPassed": true,
+  "strictFixedFacePassed": false,
+  "findings": "Strict fixed-face alignment and invariant non-expression texture requirement not met; this is a rejected candidate, not an approved direction."
+}

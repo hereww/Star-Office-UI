@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>用户数据 · 插件配置</title>
+<style>
+:root{color-scheme:light dark;--bg:#f6f5f1;--surface:#fff;--ink:#222d2a;--muted:#606e67;--line:#d8ded8;--accent:#246851;--error:#a32c28}
+*{box-sizing:border-box}body{margin:0;padding:24px;background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.6}main{max-width:640px;margin:auto}header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px}.eyebrow{margin:0;color:var(--accent);font-size:11px;letter-spacing:.1em;font-weight:600}h1{font-size:23px;font-weight:600;margin:5px 0}p{margin:6px 0}.muted,.hint{color:var(--muted);font-size:12px}.notice{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);padding:12px 14px;margin-bottom:22px}label{display:block;font-weight:600;margin-bottom:6px}textarea,input{width:100%;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);padding:10px 12px;font:inherit}textarea{resize:vertical;min-height:116px;font-family:"SFMono-Regular",Consolas,monospace;line-height:1.5}textarea:focus,input:focus{outline:2px solid var(--accent);outline-offset:2px}.field{margin-bottom:20px}.row{display:grid;grid-template-columns:2fr 1fr;gap:18px}.actions{display:flex;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);padding-top:18px}button{border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);padding:9px 14px;font:inherit;cursor:pointer}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}button:disabled{opacity:.5;cursor:not-allowed}button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}#feedback{margin-top:14px;min-height:24px;font-size:13px}#feedback[data-level=error]{color:var(--error)}footer{margin-top:16px;font-size:11px;color:var(--muted)}@media(max-width:440px){body{padding:16px}.row{grid-template-columns:1fr;gap:0}.actions button{flex:1}}
+@media(prefers-color-scheme:dark){:root{--bg:#19211e;--surface:#222d28;--ink:#e7ede8;--muted:#adbbb1;--line:#405047;--accent:#409778;--error:#ffb1a8}}
+</style>
+</head>
+<body>
+<main>
+<header><p class="eyebrow">READ-ONLY TELEMETRY / 0.1.1</p><h1>用户数据输出</h1><p class="muted">仅配置授权范围，不修改模型请求、路由或计费。</p></header>
+<div class="notice">输出五类数据：<strong>邮箱、用户名、API Key 元数据、Token 用量、用户并发</strong>。<p class="hint">API 仅含 ID、名称和状态；不输出明文密钥、密码、OAuth 凭据或模型正文。消费端访问授权由宿主管理。</p></div>
+<section id="config-form" aria-label="插件配置">
+<div class="field"><label for="user-ids">授权用户 ID</label><textarea id="user-ids" aria-describedby="ids-hint" placeholder="42&#10;43" autocomplete="off" spellcheck="false" required></textarea><p class="hint" id="ids-hint">每行一个，或用逗号分隔；1–500 个不重复的正整数 ID，不接受邮箱。默认无授权范围，不能启用。</p></div>
+<div class="row"><div class="field"><label for="timezone">统计时区</label><input id="timezone" value="Asia/Shanghai" aria-describedby="tz-hint" autocomplete="off" spellcheck="false"><p class="hint" id="tz-hint">IANA 时区，例如 Asia/Shanghai 或 UTC。</p></div><div class="field"><label for="page-size">每页用户数（可选）</label><input id="page-size" type="number" min="1" max="500" step="1" inputmode="numeric" placeholder="100" aria-describedby="page-hint"><p class="hint" id="page-hint">1–500；留空使用默认值。</p></div></div>
+<div class="actions"><button id="save" class="primary" type="button" disabled>保存配置</button><button id="test" type="button" disabled>保存并测试</button><button id="load" type="button" disabled>重新加载</button></div>
+</section>
+<p id="feedback" role="status" aria-live="polite" aria-atomic="true">正在连接宿主…</p>
+<footer>com.lvdong.user-telemetry · sandbox bridge v1 · 不读取父页面、Cookie 或宿主存储</footer>
+</main>
+<script>
+(() => {
+ 'use strict';
+ const ids = document.getElementById('user-ids'), timezone = document.getElementById('timezone'), page = document.getElementById('page-size');
+ const buttons = ['save','test','load'].map(id => document.getElementById(id));
+ const feedback = document.getElementById('feedback');
+ const token = new URLSearchParams(window.location.hash.slice(1)).get('bridge_token');
+ const hostOrigin = new URL(window.location.href).origin;
+ const referrerOrigin = document.referrer ? new URL(document.referrer).origin : hostOrigin;
+ const pending = new Map(); let closed = false, sequence = 0, busy = false;
+ function message(text, level = 'info') { feedback.textContent = text; feedback.dataset.level = level; }
+ function setBusy(value) { busy = value; buttons.forEach(button => { button.disabled = value || closed; }); }
+ // Assets and their parent are hosted on the same origin. Pin that exact origin;
+ // never trust the first message or send sensitive config to a wildcard target.
+ if (!token || window.parent === window || !/^https?:$/.test(new URL(window.location.href).protocol) || hostOrigin !== referrerOrigin) {
+  message('未建立可信宿主会话，请从 Sub2API 插件配置页打开。', 'error'); return;
+ }
+ function send(type, extra = {}, requestID) {
+  if (closed) throw new Error('closed');
+  window.parent.postMessage({source:'sub2api-plugin-ui',bridge_token:token,type,...extra,...(requestID ? {request_id:requestID} : {})}, hostOrigin);
+ }
+ // randomUUID may be absent on HTTP LAN pages. Keep 128-bit secure entropy
+ // plus a monotonic sequence; never downgrade to Math.random or a counter alone.
+ function nextRequestID() {
+  if (!Number.isSafeInteger(sequence) || sequence >= Number.MAX_SAFE_INTEGER) throw new Error('secure_random_unavailable');
+  const secureCrypto = typeof crypto !== 'undefined' ? crypto : null;
+  let randomID;
+  if (secureCrypto && typeof secureCrypto.randomUUID === 'function') {
+   try { randomID = secureCrypto.randomUUID(); } catch (_) { /* Try secure getRandomValues below. */ }
+  }
+  if (typeof randomID !== 'string' || !randomID) {
+   if (!secureCrypto || typeof secureCrypto.getRandomValues !== 'function') throw new Error('secure_random_unavailable');
+   const bytes = new Uint8Array(16);
+   secureCrypto.getRandomValues(bytes);
+   randomID = Array.from(bytes, byte => byte.toString(16).padStart(2,'0')).join('');
+  }
+  return `${randomID}-${++sequence}`;
+ }
+ function request(type, extra = {}) {
+  return new Promise((resolve,reject) => {
+   if (closed) { reject(new Error('closed')); return; }
+   let id;
+   try { id = nextRequestID(); } catch (_) { cleanup();reject(new Error('secure_random_unavailable'));return; }
+   const timer = setTimeout(() => { pending.delete(id); reject(new Error('timeout')); }, 15000);
+   pending.set(id,{resolve,reject,timer,type});
+   try { send(type,extra,id); } catch (error) { clearTimeout(timer);pending.delete(id);reject(error); }
+  });
+ }
+ function onMessage(event) {
+  if (closed || event.source !== window.parent || event.origin !== hostOrigin) return;
+  const data = event.data;
+  if (!data || typeof data !== 'object' || Array.isArray(data) || data.source !== 'sub2api-plugin-host' || data.bridge_token !== token || typeof data.request_id !== 'string') return;
+  const wait = pending.get(data.request_id);
+  if (!wait || data.type !== `${wait.type}.result` || typeof data.ok !== 'boolean') return;
+  pending.delete(data.request_id); clearTimeout(wait.timer);
+  if (data.ok) wait.resolve(data); else wait.reject(new Error('host_rejected'));
+ }
+ function canonicalIDs(values) {
+  if (!Array.isArray(values) || values.length > 500 || new Set(values).size !== values.length || values.some(id => typeof id !== 'string' || !/^[1-9][0-9]{0,18}$/.test(id) || BigInt(id) > 9223372036854775807n)) throw new Error('用户 ID 必须是 1–500 个不重复的正整数，且不能超过 int64 范围。');
+  return values;
+ }
+ function showConfig(config) {
+  if (!config || typeof config !== 'object' || Array.isArray(config) || Object.keys(config).some(key => !['allowed_user_ids','timezone','page_size'].includes(key))) throw new Error('invalid_config');
+  const list = canonicalIDs(config.allowed_user_ids ?? []);
+  if (config.timezone !== undefined && typeof config.timezone !== 'string') throw new Error('invalid_config');
+  if (config.page_size !== undefined && (!Number.isInteger(config.page_size) || config.page_size < 1 || config.page_size > 500)) throw new Error('invalid_config');
+  ids.value = list.join('\n'); timezone.value = config.timezone || 'Asia/Shanghai'; page.value = config.page_size === undefined ? '' : String(config.page_size);
+ }
+ function readForm() {
+  const list = canonicalIDs(ids.value.trim().split(/[\s,，]+/).filter(Boolean));
+  if (!list.length) throw new Error('请填写至少一个授权用户 ID；默认无范围不能启用。');
+  const zone = timezone.value.trim() || 'Asia/Shanghai';
+  try { new Intl.DateTimeFormat('zh-CN',{timeZone:zone}); } catch (_) { throw new Error('请填写有效的 IANA 时区。'); }
+  const config = {allowed_user_ids:list,timezone:zone};
+  if (page.value !== '') { const size = Number(page.value); if (!Number.isInteger(size) || size < 1 || size > 500) throw new Error('每页用户数必须为 1–500。'); config.page_size = size; }
+  return config;
+ }
+ async function load() {
+  if (busy) return; setBusy(true);message('正在加载已保存配置…');
+  try { const data = await request('config.load');showConfig(data.config);message(ids.value ? '已加载配置。' : '已加载默认配置；请先设置授权用户范围。'); }
+  catch (error) { message(error.message === 'secure_random_unavailable' ? '当前环境缺少安全随机数能力，无法建立配置请求；请使用支持安全随机数的浏览器。' : '加载失败或宿主响应超时，请重试。','error'); }
+  finally { setBusy(false); resize(); }
+ }
+ async function save(test) {
+  if (busy) return;
+  let config; try { config = readForm(); } catch (error) { message(error.message,'error'); return; }
+  setBusy(true);message('正在保存配置，请完成宿主验证…');
+  let saved = false;
+  try {
+   const data = await request('config.save',{config});showConfig(data.config);saved = true;
+   if (test) { message('配置已保存，正在测试只读数据能力…'); const tested = await request('config.test'); if (!tested.result || tested.result.success !== true) throw new Error('test_failed'); message('配置已保存，测试通过。'); }
+   else message('配置已保存。');
+   send('ui.notify',{level:'success',message:test ? '用户数据配置已保存，测试通过。' : '用户数据配置已保存。'});
+  } catch (_) { message(saved ? '配置已保存，但测试未通过或响应超时；请确认插件已启用且宿主支持只读数据能力。' : '未确认保存成功（宿主拒绝或响应超时）；请重新加载核对后再重试。','error'); }
+  finally { setBusy(false);resize(); }
+ }
+ function resize() { if (!closed) send('ui.resize',{height:Math.min(1600,Math.ceil(document.documentElement.scrollHeight))}); }
+ function cleanup() {
+  closed = true; window.removeEventListener('message',onMessage);window.removeEventListener('resize',resize);
+  for (const wait of pending.values()) {clearTimeout(wait.timer);wait.reject(new Error('closed'));}pending.clear();setBusy(true);
+ }
+ window.addEventListener('message',onMessage);window.addEventListener('resize',resize);window.addEventListener('pagehide',cleanup,{once:true});
+ document.getElementById('save').addEventListener('click',() => {void save(false);});
+ document.getElementById('test').addEventListener('click',() => {void save(true);});document.getElementById('load').addEventListener('click',() => {void load();});
+ send('sub2api.plugin.ready');resize();void load();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "case": "complete_closure",
+      "passed": true,
+      "rejected": false,
+      "temporary_fixture": true
+    },
+    {
+      "case": "missing_dependency",
+      "passed": true,
+      "rejected": true,
+      "temporary_fixture": true
+    },
+    {
+      "case": "wrong_platform",
+      "passed": true,
+      "rejected": true,
+      "temporary_fixture": true
+    },
+    {
+      "case": "corrupt_wheel",
+      "passed": true,
+      "rejected": true,
+      "temporary_fixture": true
+    }
+  ],
+  "no_install": true,
+  "no_remote_access": true,
+  "protected_inputs_unchanged": true
+}

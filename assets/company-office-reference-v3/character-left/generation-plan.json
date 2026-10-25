@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "generationCountPlanned": 5,
+  "oneCallPerAction": true,
+  "automaticRetries": false,
+  "editInputs": [
+    {
+      "path": "sources/face-left-reference-8x.png",
+      "role": "exact face-crop geometry, edit target"
+    },
+    {
+      "path": "character-base.png",
+      "role": "new left-profile geometry, not animated"
+    },
+    {
+      "path": "sources/character-identity-master.png",
+      "role": "original identity, not direction"
+    }
+  ],
+  "actions": [
+    "working",
+    "idle",
+    "syncing",
+    "error"
+  ]
+}

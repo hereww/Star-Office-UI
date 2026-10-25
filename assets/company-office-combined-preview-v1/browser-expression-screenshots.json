@@ -1,0 +1,608 @@
+{
+  "checkedFrames": 48,
+  "states": [
+    {
+      "state": "writing",
+      "frames": [
+        {
+          "frame": 0,
+          "file": "qa-frames/writing-00.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 0,
+          "file": "qa-frames/writing-01.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 1,
+          "file": "qa-frames/writing-02.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 2,
+          "file": "qa-frames/writing-03.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 3,
+          "file": "qa-frames/writing-04.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 4,
+          "file": "qa-frames/writing-05.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 5,
+          "file": "qa-frames/writing-06.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 6,
+          "file": "qa-frames/writing-07.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 7,
+          "file": "qa-frames/writing-08.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 8,
+          "file": "qa-frames/writing-09.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 9,
+          "file": "qa-frames/writing-10.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 10,
+          "file": "qa-frames/writing-11.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        }
+      ]
+    },
+    {
+      "state": "idle",
+      "frames": [
+        {
+          "frame": 0,
+          "file": "qa-frames/idle-00.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 1,
+          "file": "qa-frames/idle-01.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 2,
+          "file": "qa-frames/idle-02.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 3,
+          "file": "qa-frames/idle-03.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 4,
+          "file": "qa-frames/idle-04.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 5,
+          "file": "qa-frames/idle-05.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 6,
+          "file": "qa-frames/idle-06.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 7,
+          "file": "qa-frames/idle-07.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 8,
+          "file": "qa-frames/idle-08.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 9,
+          "file": "qa-frames/idle-09.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 10,
+          "file": "qa-frames/idle-10.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 11,
+          "file": "qa-frames/idle-11.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        }
+      ]
+    },
+    {
+      "state": "syncing",
+      "frames": [
+        {
+          "frame": 0,
+          "file": "qa-frames/syncing-00.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 1,
+          "file": "qa-frames/syncing-01.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 2,
+          "file": "qa-frames/syncing-02.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 3,
+          "file": "qa-frames/syncing-03.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 4,
+          "file": "qa-frames/syncing-04.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 5,
+          "file": "qa-frames/syncing-05.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 6,
+          "file": "qa-frames/syncing-06.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 7,
+          "file": "qa-frames/syncing-07.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 8,
+          "file": "qa-frames/syncing-08.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 9,
+          "file": "qa-frames/syncing-09.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 10,
+          "file": "qa-frames/syncing-10.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 11,
+          "file": "qa-frames/syncing-11.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        }
+      ]
+    },
+    {
+      "state": "error",
+      "frames": [
+        {
+          "frame": 0,
+          "file": "qa-frames/error-00.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 1,
+          "file": "qa-frames/error-01.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 2,
+          "file": "qa-frames/error-02.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 3,
+          "file": "qa-frames/error-03.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 4,
+          "file": "qa-frames/error-04.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 5,
+          "file": "qa-frames/error-05.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 6,
+          "file": "qa-frames/error-06.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 7,
+          "file": "qa-frames/error-07.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 8,
+          "file": "qa-frames/error-08.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 9,
+          "file": "qa-frames/error-09.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 10,
+          "file": "qa-frames/error-10.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        },
+        {
+          "frame": 11,
+          "file": "qa-frames/error-11.jpg",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true
+        }
+      ]
+    }
+  ],
+  "detailBounds": {
+    "height": 200.1953125,
+    "viewportWidth": 1440,
+    "width": 286,
+    "x": 1121,
+    "y": 193.9375
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "checkedAt": "2026-10-01T09:20:40.410Z",
+  "passed": true,
+  "animationMode": "expression-only",
+  "assets": [
+    {
+      "name": "media/character-base.png",
+      "size": [
+        192,
+        192
+      ],
+      "transparentPixels": 19570,
+      "visiblePixels": 17294,
+      "boundary": "PNG alpha",
+      "sha256": "0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024"
+    },
+    {
+      "name": "media/workstation-back.png",
+      "size": [
+        192,
+        192
+      ],
+      "transparentPixels": 30179,
+      "visiblePixels": 6685,
+      "boundary": "PNG alpha",
+      "sha256": "4e57d15d38ec57dc0fcbeb984bde74d3eb2ef3bc9ccdbf3ab8ee2434432f1fc2"
+    },
+    {
+      "name": "media/workstation-front.png",
+      "size": [
+        192,
+        192
+      ],
+      "transparentPixels": 23304,
+      "visiblePixels": 13560,
+      "boundary": "PNG alpha",
+      "sha256": "1aef97ce63b757d88c5a0c3cf6be1d0d6e5fc95b11b0c7982247dd3225a88672"
+    },
+    {
+      "name": "media/face-working.png",
+      "size": [
+        360,
+        174
+      ],
+      "transparentPixels": 0,
+      "visiblePixels": 62640,
+      "sourceAlpha": {
+        "size": [
+          1448,
+          1086
+        ],
+        "transparentPixels": 523076,
+        "visiblePixels": 1049452
+      },
+      "boundary": "fixed runtime ellipse clip",
+      "sha256": "e81d4eb1f48a2d3ac603b98e222e783373a1867f3add88396d112d3114544e5e"
+    },
+    {
+      "name": "media/face-idle-sleep.png",
+      "size": [
+        360,
+        174
+      ],
+      "transparentPixels": 6822,
+      "visiblePixels": 55818,
+      "sourceAlpha": {
+        "size": [
+          1448,
+          1086
+        ],
+        "transparentPixels": 672531,
+        "visiblePixels": 899997
+      },
+      "boundary": "fixed runtime ellipse clip",
+      "sha256": "4c9cdf5553b9bd396353164ada7eed9119f09f272d5d738ca2ff9f869739eb3f"
+    },
+    {
+      "name": "media/face-syncing.png",
+      "size": [
+        360,
+        174
+      ],
+      "transparentPixels": 367,
+      "visiblePixels": 62273,
+      "sourceAlpha": {
+        "size": [
+          1447,
+          1087
+        ],
+        "transparentPixels": 455449,
+        "visiblePixels": 1117440
+      },
+      "boundary": "fixed runtime ellipse clip",
+      "sha256": "3cb52a82dcd558165a53fe44e96738c93828b4652535a8e4832557dac50e2412"
+    },
+    {
+      "name": "media/face-error-dizzy.png",
+      "size": [
+        360,
+        174
+      ],
+      "transparentPixels": 3977,
+      "visiblePixels": 58663,
+      "sourceAlpha": {
+        "size": [
+          1448,
+          1086
+        ],
+        "transparentPixels": 535413,
+        "visiblePixels": 1037115
+      },
+      "boundary": "fixed runtime ellipse clip",
+      "sha256": "91269efdcfa05b00007f59bf4ad89c8636bf34847b06060775dc5fc623eb5ff3"
+    }
+  ],
+  "checkedFrames": 72,
+  "fixedDraws": [
+    {
+      "name": "media/workstation-back.png",
+      "args": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "media/character-base.png",
+      "args": [
+        37.2,
+        -8,
+        115.19999999999999,
+        115.19999999999999
+      ]
+    },
+    {
+      "name": "media/workstation-front.png",
+      "args": [
+        0,
+        0
+      ]
+    }
+  ],
+  "staticBaseAndFurnitureByteIdenticalToV1": true,
+  "handsLoaded": false,
+  "handsDrawn": false,
+  "expressionDisabledDrawsIdentical": true,
+  "stateMap": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "productionReady": false,
+  "visualAcceptance": "approved_by_user",
+  "visualApproved": true,
+  "secondCharacterSwapTested": false,
+  "expressionClockFrames": {
+    "working": 60,
+    "idle": 36,
+    "syncing": 60,
+    "error": 12
+  }
+}

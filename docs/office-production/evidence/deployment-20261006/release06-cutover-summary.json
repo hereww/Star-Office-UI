@@ -1,0 +1,9 @@
+{
+  "release_id": "office-20261006-v5-production-06",
+  "image_id": "sha256:4b26b4d71939fdfd8176814ec5bb05af3d4fbef158b75084c0e1ebd2ba3e196e",
+  "admin_content_type": "text/html",
+  "admin_browser_download_defect_fixed": true,
+  "office_services_healthy": true,
+  "only_office_services_recreated": true,
+  "persistent_volumes_preserved": true
+}

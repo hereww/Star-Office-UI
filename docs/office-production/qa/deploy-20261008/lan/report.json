@@ -1,0 +1,353 @@
+{
+  "date": "2026-10-08T14:05:58.196Z",
+  "base": "http://192.168.100.221:19000/",
+  "scope": "Actual LAN release, real telemetry, GET/HEAD only",
+  "checks": [
+    {
+      "name": "desktop-dpr2: green bank moved rigidly; no pillar overlap",
+      "pass": true,
+      "evidence": {
+        "fit": [
+          712,
+          488,
+          420,
+          200
+        ],
+        "alpha": [
+          712,
+          522.2541436464088,
+          420,
+          131.49171270718233
+        ],
+        "worldGap": 26,
+        "canvas": [
+          4448,
+          2160
+        ],
+        "source": "ok"
+      }
+    },
+    {
+      "name": "desktop-dpr2: all real-seat short bubbles visible, including rear-facing desk-14",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "休息中",
+          "rect": [
+            763.4124886867036,
+            464.03278771243583,
+            20.728967377974,
+            8.763170879963774
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "休息中",
+          "rect": [
+            862.9336673239044,
+            463.8181523649061,
+            20.728967377974,
+            8.763170879963774
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "休息中",
+          "rect": [
+            962.1970190734439,
+            463.62045898530255,
+            20.728967377974,
+            8.763170879963774
+          ]
+        },
+        {
+          "id": "desk-14",
+          "text": "休息中",
+          "rect": [
+            862.2616673239044,
+            649.1771880183683,
+            20.728967377974,
+            8.763170879963774
+          ]
+        }
+      ]
+    },
+    {
+      "name": "desktop-dpr2: snapshots do not move camera/reset actors",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "desktop: actual fullscreen geometry stays clear",
+      "pass": true,
+      "evidence": {
+        "canvas": [
+          4448,
+          2160
+        ],
+        "css": {
+          "x": 37,
+          "y": 174.1875,
+          "width": 1510,
+          "height": 733.21875,
+          "top": 174.1875,
+          "right": 1547,
+          "bottom": 907.40625,
+          "left": 37
+        }
+      }
+    },
+    {
+      "name": "tablet: green bank moved rigidly; no pillar overlap",
+      "pass": true,
+      "evidence": {
+        "fit": [
+          712,
+          488,
+          420,
+          200
+        ],
+        "alpha": [
+          712,
+          522.2541436464088,
+          420,
+          131.49171270718233
+        ],
+        "worldGap": 26,
+        "canvas": [
+          1260,
+          936
+        ],
+        "source": "ok"
+      }
+    },
+    {
+      "name": "tablet: all real-seat short bubbles visible, including rear-facing desk-14",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "休息中",
+          "rect": [
+            755.9991945979127,
+            453.7552342575189,
+            35.55555555555556,
+            15.031110975477429
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "休息中",
+          "rect": [
+            855.5203732351135,
+            453.43821106557124,
+            35.55555555555556,
+            15.031110975477429
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "休息中",
+          "rect": [
+            954.7837249846531,
+            453.0613545089097,
+            35.55555555555556,
+            15.031110975477429
+          ]
+        },
+        {
+          "id": "desk-14",
+          "text": "休息中",
+          "rect": [
+            854.8483732351135,
+            653.2464765447736,
+            35.55555555555556,
+            15.031110975477429
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tablet: snapshots do not move camera/reset actors",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "phone-portrait: green bank moved rigidly; no pillar overlap",
+      "pass": true,
+      "evidence": {
+        "fit": [
+          712,
+          488,
+          420,
+          200
+        ],
+        "alpha": [
+          712,
+          522.2541436464088,
+          420,
+          131.49171270718233
+        ],
+        "worldGap": 26,
+        "canvas": [
+          712,
+          1064
+        ],
+        "source": "ok"
+      }
+    },
+    {
+      "name": "phone-portrait: all real-seat short bubbles visible, including rear-facing desk-14",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "休息中",
+          "rect": [
+            742.3162982183871,
+            434.24598984978627,
+            62.921348314606746,
+            26.599999759974104
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "休息中",
+          "rect": [
+            841.837476855588,
+            433.6936158123512,
+            62.921348314606746,
+            26.599999759974104
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "休息中",
+          "rect": [
+            941.1008286051275,
+            433.02215888322104,
+            62.921348314606746,
+            26.599999759974104
+          ]
+        },
+        {
+          "id": "desk-14",
+          "text": "休息中",
+          "rect": [
+            841.1654768555879,
+            660.8877787188,
+            62.921348314606746,
+            26.599999759974104
+          ]
+        }
+      ]
+    },
+    {
+      "name": "phone-portrait: snapshots do not move camera/reset actors",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "phone-landscape: green bank moved rigidly; no pillar overlap",
+      "pass": true,
+      "evidence": {
+        "fit": [
+          712,
+          488,
+          420,
+          200
+        ],
+        "alpha": [
+          712,
+          522.2541436464088,
+          420,
+          131.49171270718233
+        ],
+        "worldGap": 26,
+        "canvas": [
+          1636,
+          696
+        ],
+        "source": "ok"
+      }
+    },
+    {
+      "name": "phone-landscape: all real-seat short bubbles visible, including rear-facing desk-14",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "休息中",
+          "rect": [
+            747.7495751154165,
+            442.0948419292121,
+            52.05479452054795,
+            22.006164184988364
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "休息中",
+          "rect": [
+            847.2707537526173,
+            441.6377993250993,
+            52.05479452054795,
+            22.006164184988364
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "休息中",
+          "rect": [
+            946.5341055021569,
+            441.0823117345334,
+            52.05479452054795,
+            22.006164184988364
+          ]
+        },
+        {
+          "id": "desk-14",
+          "text": "休息中",
+          "rect": [
+            846.5987537526173,
+            657.8423868220847,
+            52.05479452054795,
+            22.006164184988364
+          ]
+        }
+      ]
+    },
+    {
+      "name": "phone-landscape: snapshots do not move camera/reset actors",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "clean read-only browser execution",
+      "pass": true,
+      "evidence": {
+        "runtimeErrors": 0,
+        "assetErrors": 0,
+        "writes": 0
+      }
+    }
+  ],
+  "errors": [],
+  "assets": [],
+  "writes": [],
+  "external": [],
+  "screenshots": [
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/desktop-dpr2-overview.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/desktop-dpr2-green.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/desktop-fullscreen-green.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/tablet-overview.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/tablet-green.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/phone-portrait-overview.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/phone-portrait-green.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/phone-landscape-overview.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/lan/phone-landscape-green.jpg"
+  ],
+  "passed": true,
+  "finished_at": "2026-10-08T14:06:24.279Z"
+}

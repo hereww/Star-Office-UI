@@ -1,0 +1,82 @@
+name: star-office-production
+x-office: &office
+  image: ${OFFICE_IMAGE:?Set an immutable local office image tag}
+  pull_policy: never
+  user: "10001:10001"
+  restart: unless-stopped
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777"]
+  init: true
+  stop_grace_period: 30s
+  logging:
+    driver: json-file
+    options: {max-size: "10m", max-file: "3"}
+services:
+  office-web:
+    <<: *office
+    command: [office-web]
+    environment:
+      STAR_OFFICE_ENV: production
+      STAR_OFFICE_DATA_DIR: /data/legacy
+      OFFICE_DATA_DIR: /data/office
+      OFFICE_ENABLED: "1"
+      OFFICE_USER_IDS: ${OFFICE_USER_IDS:?Set explicit verified user scope}
+      OFFICE_RELEASE_ID: ${OFFICE_RELEASE_ID:?Set packaged release ID}
+      OFFICE_RELEASE_PREFIX: /static/releases/${OFFICE_RELEASE_ID}
+      OFFICE_ADMIN_SECRET: ${OFFICE_ADMIN_SECRET:?Set independent OFFICE signing secret}
+      OFFICE_ADMIN_USERNAME: ${OFFICE_ADMIN_USERNAME:-admin}
+      OFFICE_ADMIN_PASSWORD_HASH_FILE: /run/secrets/office_admin_hash
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?Set a strong signing secret}
+      ASSET_DRAWER_PASS: ${ASSET_DRAWER_PASS:?Set a strong legacy drawer password}
+      OFFICE_COMPAT_ORIGIN: https://192.168.100.221:19443
+    ports: ["127.0.0.1:${OFFICE_APP_PORT:-19011}:19000"]
+    volumes:
+      - office-data:/data/office
+      - legacy-data:/data/legacy
+      - type: bind
+        source: ${OFFICE_ADMIN_HASH_FILE:?Set restricted admin hash file}
+        target: /run/secrets/office_admin_hash
+        read_only: true
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, python, /app/deploy/office/healthcheck.py, web]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+  office-collector:
+    <<: *office
+    command: [office-collector]
+    environment:
+      STAR_OFFICE_ENV: production
+      OFFICE_DATA_DIR: /data/office
+      OFFICE_SUB2API_BASE_URL: ${OFFICE_SUB2API_BASE_URL:?Set verified upstream origin}
+      OFFICE_ALLOW_HTTP: ${OFFICE_ALLOW_HTTP:-0}
+      OFFICE_CREDENTIAL_FILE: /run/secrets/office_consumer
+      OFFICE_INSTALLATION_ID: ${OFFICE_INSTALLATION_ID:-1}
+      OFFICE_USER_IDS: ${OFFICE_USER_IDS:?Set explicit verified user scope}
+      OFFICE_CREDENTIAL_EXPIRES_AT: ${OFFICE_CREDENTIAL_EXPIRES_AT:?Set credential expiry metadata}
+      SSL_CERT_FILE: /run/trust/upstream-ca.pem
+    volumes:
+      - office-data:/data/office
+      - type: bind
+        source: ${OFFICE_UPSTREAM_CA_FILE:?Set CA bundle path, never a private key}
+        target: /run/trust/upstream-ca.pem
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${OFFICE_CONSUMER_FILE:?Set restricted consumer file}
+        target: /run/secrets/office_consumer
+        read_only: true
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, python, /app/backend/office_collector.py, --data-dir, /data/office, --health]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+volumes:
+  office-data: {name: star-office-production-office-data}
+  legacy-data: {name: star-office-production-legacy-data}

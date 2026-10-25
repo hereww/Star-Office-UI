@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "release_id": "office-20261004-v1-rc4",
+  "source_files": 85,
+  "differences": [],
+  "payload_files": 155,
+  "private_material_findings": 0,
+  "offline_wheelhouse": true,
+  "remote_verified": false,
+  "archive_sha256": "137d253027b46253f5a001a45e9910d31c126471d1a5d1cb028fd2e059a29914"
+}

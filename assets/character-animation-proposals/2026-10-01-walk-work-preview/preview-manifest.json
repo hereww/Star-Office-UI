@@ -1,0 +1,352 @@
+{
+  "createdDate": "2026-10-01",
+  "timezone": "Asia/Shanghai",
+  "previewOnly": true,
+  "newArtworkGenerated": false,
+  "productionModified": false,
+  "directions": [
+    "up",
+    "down",
+    "left",
+    "right"
+  ],
+  "assets": {
+    "walk-up-pair": {
+      "kind": "frames",
+      "images": [
+        "media/walk-up/01.png",
+        "media/walk-up/02.png"
+      ],
+      "frameCount": 2,
+      "fps": 3,
+      "status": "朝向模板已确认 · A/B参考，不是完整12帧循环",
+      "productionReady": false,
+      "orientationApproved": true
+    },
+    "walk-down-pair": {
+      "kind": "frames",
+      "images": [
+        "media/walk-down/01.png",
+        "media/walk-down/02.png"
+      ],
+      "frameCount": 2,
+      "fps": 3,
+      "status": "朝向模板已确认 · A/B参考，不是完整12帧循环",
+      "productionReady": false,
+      "orientationApproved": true
+    },
+    "walk-left-pair": {
+      "kind": "frames",
+      "images": [
+        "media/walk-left/01.png",
+        "media/walk-left/02.png"
+      ],
+      "frameCount": 2,
+      "fps": 3,
+      "status": "朝向模板已确认 · A/B参考，不是完整12帧循环",
+      "productionReady": false,
+      "orientationApproved": true
+    },
+    "walk-right-pair": {
+      "kind": "frames",
+      "images": [
+        "media/walk-right/01.png",
+        "media/walk-right/02.png"
+      ],
+      "frameCount": 2,
+      "fps": 3,
+      "status": "朝向模板已确认 · A/B参考，不是完整12帧循环",
+      "productionReady": false,
+      "orientationApproved": true
+    },
+    "walk-down-12": {
+      "kind": "frames",
+      "images": [
+        "media/walk-down-12/01.png",
+        "media/walk-down-12/02.png",
+        "media/walk-down-12/03.png",
+        "media/walk-down-12/04.png",
+        "media/walk-down-12/05.png",
+        "media/walk-down-12/06.png",
+        "media/walk-down-12/07.png",
+        "media/walk-down-12/08.png",
+        "media/walk-down-12/09.png",
+        "media/walk-down-12/10.png",
+        "media/walk-down-12/11.png",
+        "media/walk-down-12/12.png"
+      ],
+      "frameCount": 12,
+      "fps": 12,
+      "status": "v7 完整12帧旧稿：未通过视觉验收，仅供回看",
+      "productionReady": false
+    },
+    "working-v2": {
+      "kind": "sheet",
+      "image": "media/working-down-v2.png",
+      "frameCount": 12,
+      "fps": 12,
+      "columns": 4,
+      "rows": 3,
+      "cellWidth": 362,
+      "cellHeight": 362,
+      "status": "用户未通过 · 办公问题稿，仅保留回看",
+      "productionReady": false,
+      "templateEligible": false
+    }
+  },
+  "sourceChecks": [
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/up-tail-clear-v4/candidate-A-v4-96.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-up/01.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "6371d9b53f138a4ab3b3abbde519b5362d6dc6b1a5cd0d3492f6f1c8b6ef51d2",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/up-tail-clear-v4/candidate-B-v4-96.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-up/02.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "503e879905bed344644933c61d1ba81ea0ebc66de17d3bdde00d44b0fd51037a",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/normalized/walk_down_contact-A.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down/01.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "a149feb1e20d47109a5276f2382fc73afe6024eef26112b670af72c68547e083",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/normalized/walk_down_contact-B.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down/02.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "c8db4bb9a5cb7a431b313dd7372db5442a53dfa5d353c817dee5e5c07f6d4a3e",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/normalized/walk_left_contact-A.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-left/01.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "1ccdfeceed7628a6faeee96bc23c2483ab80f500c563c503772e000e713e2223",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/normalized/walk_left_contact-B.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-left/02.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "8d1937872e06153d1a57ab3cfdaa7b260f6b06e3ec63c9087b4621eb09e523b8",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/right-arm-swap-prototype/source-redraw-v15-arm-swing/right-contact-A-v15-paired-v13-96.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-right/01.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "fc5e9fe6baf69f46e3aefb3f6bb40bcaccc7daa31058dedbf9b465d9606345f2",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/right-arm-swap-prototype/source-redraw-v15-arm-swing/right-contact-B-v15-imagegen-96.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-right/02.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "2a3c88e239686c7effcdba238472cd76a21b477e3db96fba31cd596d0d8a7f31",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-01.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/01.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "bd5fffeec0f10b05b4204d99010b243535deb50313ebc969c5363e40e4d9d0b3",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-02.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/02.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "97813ef9ecc1318565d89a40bc7872574bc012a7de62bba7237062aaf1ca28f9",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-03.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/03.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "0d51687f12e758785dc49494106a64272a79c456a0fab4421f2f01f20824c50b",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-04.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/04.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "3a9dcb4af024d14e838ce7df342baa0a569f023f5f9812313aecfaef338ba900",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-05.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/05.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "400e1041221f60b78519c8e36fa9c5837920281ba618b8f268410e391b4c4ca1",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-06.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/06.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "2040de1a49ecd4c1921681b95ff33d73eaeabd7354a89692050da0143816b64b",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-07.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/07.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "5c847923abce4ce463dbce6d7bba5eadb7653296726f0a7ce3eca32691ac503f",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-08.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/08.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "1dfaf54235b90a9ea5c108098c09bff995d02fb34619c56c97f33c886e40da24",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-09.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/09.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "8b9927128a7235fb0c083e6973bd30817aed8532416cdb626d0b8d000ddf4eda",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-10.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/10.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "b103dff17469e2ee6374cd574f7f36b14a460213344cc37d6f970e63872361b1",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-11.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/11.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "8cd718ed988f12d2b00251e3b1c660d926149db80d2f5a7a1484f718acd35e4c",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-q-orange-cat-12fps/walk-down-v7-motion-guide/full-strip-attempt01/frames/frame-12.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down-12/12.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "2bec1b83d50a382955bdc8ab20fbb8261cd1b2e4399125ccfdfe0738a828a2a8",
+      "unchanged_copy": true
+    },
+    {
+      "source": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-working-down-v2/working-down-concept.png",
+      "copy": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/working-down-v2.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "sha256": "f0e5a53f35b110faf51a7c861ae90a097e90e1e76f747c2f2d629a004d70dce5",
+      "unchanged_copy": true
+    }
+  ],
+  "limitations": [
+    "新方案的上/下/左/右各12帧尚未齐备。",
+    "不将2张姿势复制为12帧。",
+    "办公图使用整图等格绘制，无逐帧登记、补画或家具稳定化。",
+    "四向朝向模板已确认；完整12帧行走循环尚未齐备，办公图未通过，均未接入生产。"
+  ],
+  "stateMapping": {
+    "writing": "working-v2",
+    "researching": "working-v2",
+    "executing": "working-v2",
+    "idle": null,
+    "syncing": null,
+    "error": null
+  },
+  "previewUrl": "http://127.0.0.1:58085/",
+  "browserQa": "browser-qa.json",
+  "user_review": {
+    "date": "2026-10-01",
+    "feedback": "工位办公的动画肯定还是有问题的。行走方向可以了 作为模板记录保存",
+    "direction_templates": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.agents/skills/star-office-character-animation/assets/approved-walk-directions-v1/template-manifest.json",
+    "office_status": "user_rejected_visual"
+  }
+}

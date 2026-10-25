@@ -1,0 +1,545 @@
+{
+  "schemaVersion": 1,
+  "logicalCanvas": [
+    192,
+    192
+  ],
+  "sourceCrop": null,
+  "resampling": "nearest",
+  "alphaDustCutoff": 16,
+  "rotationDegrees": 0,
+  "mirrored": false,
+  "directions": {
+    "up": {
+      "source": "sources/up-source.png",
+      "seatAnchor": [
+        96,
+        145
+      ],
+      "screen": {
+        "visible": true,
+        "polygon": [
+          [
+            66,
+            47
+          ],
+          [
+            125,
+            47
+          ],
+          [
+            125,
+            72
+          ],
+          [
+            66,
+            72
+          ]
+        ],
+        "led": [
+          94,
+          76,
+          3,
+          1
+        ]
+      },
+      "order": [
+        "back",
+        "screen",
+        "actor",
+        "front"
+      ],
+      "frontPolygons": [
+        [
+          [
+            80,
+            110
+          ],
+          [
+            110,
+            110
+          ],
+          [
+            113,
+            111
+          ],
+          [
+            117,
+            114
+          ],
+          [
+            117,
+            119
+          ],
+          [
+            120,
+            116
+          ],
+          [
+            123,
+            116
+          ],
+          [
+            126,
+            120
+          ],
+          [
+            126,
+            128
+          ],
+          [
+            123,
+            131
+          ],
+          [
+            124,
+            134
+          ],
+          [
+            124,
+            138
+          ],
+          [
+            120,
+            142
+          ],
+          [
+            116,
+            143
+          ],
+          [
+            115,
+            149
+          ],
+          [
+            119,
+            151
+          ],
+          [
+            120,
+            155
+          ],
+          [
+            118,
+            159
+          ],
+          [
+            114,
+            159
+          ],
+          [
+            112,
+            154
+          ],
+          [
+            102,
+            153
+          ],
+          [
+            102,
+            165
+          ],
+          [
+            101,
+            168
+          ],
+          [
+            96,
+            170
+          ],
+          [
+            92,
+            168
+          ],
+          [
+            92,
+            164
+          ],
+          [
+            94,
+            161
+          ],
+          [
+            94,
+            153
+          ],
+          [
+            82,
+            155
+          ],
+          [
+            78,
+            161
+          ],
+          [
+            74,
+            160
+          ],
+          [
+            73,
+            154
+          ],
+          [
+            76,
+            151
+          ],
+          [
+            82,
+            149
+          ],
+          [
+            79,
+            146
+          ],
+          [
+            75,
+            145
+          ],
+          [
+            75,
+            142
+          ],
+          [
+            71,
+            141
+          ],
+          [
+            70,
+            136
+          ],
+          [
+            70,
+            132
+          ],
+          [
+            68,
+            129
+          ],
+          [
+            68,
+            120
+          ],
+          [
+            72,
+            117
+          ],
+          [
+            76,
+            117
+          ],
+          [
+            76,
+            114
+          ]
+        ],
+        [
+          [
+            67,
+            146
+          ],
+          [
+            128,
+            146
+          ],
+          [
+            128,
+            174
+          ],
+          [
+            67,
+            174
+          ]
+        ]
+      ],
+      "occlusion": "Desk, keyboard and monitor behind actor. Chair back, near arms and visible chair mechanism in front. Screen effects precede actor so they cannot paint over its back-facing head.",
+      "notes": "True rear-facing seat: visible front screen, chair rear toward viewer. User-provided independently generated UP source.",
+      "frontExcludeOak": true
+    },
+    "down": {
+      "source": "sources/down-source.png",
+      "seatAnchor": [
+        97,
+        94
+      ],
+      "screen": {
+        "visible": false,
+        "polygon": [
+          [
+            65,
+            99
+          ],
+          [
+            126,
+            99
+          ],
+          [
+            126,
+            120
+          ],
+          [
+            65,
+            120
+          ]
+        ],
+        "led": [
+          122,
+          116,
+          1,
+          2
+        ]
+      },
+      "order": [
+        "back",
+        "actor",
+        "front",
+        "screen"
+      ],
+      "frontPolygons": [
+        [
+          [
+            20,
+            86
+          ],
+          [
+            173,
+            86
+          ],
+          [
+            173,
+            192
+          ],
+          [
+            20,
+            192
+          ]
+        ]
+      ],
+      "occlusion": "Chair/front upholstery behind actor. Complete desk, monitor rear housing, connected support and keyboard on foreground layer. Only rear indicator LED rendered last.",
+      "notes": "Actor faces viewer; chair at top, desk at bottom. Rear casing has NO visible display. polygon records the non-renderable panel projection only, NOT a visible screen mask; visible:false forbids display rendering."
+    },
+    "left": {
+      "source": "sources/left-source.png",
+      "seatAnchor": [
+        131,
+        128
+      ],
+      "screen": {
+        "visible": true,
+        "polygon": [
+          [
+            55.5,
+            59
+          ],
+          [
+            59.5,
+            50
+          ],
+          [
+            59.5,
+            77
+          ],
+          [
+            55.5,
+            85
+          ]
+        ],
+        "led": [
+          55,
+          89,
+          1,
+          1
+        ]
+      },
+      "order": [
+        "back",
+        "screen",
+        "actor",
+        "front"
+      ],
+      "frontPolygons": [
+        [
+          [
+            36,
+            119
+          ],
+          [
+            101,
+            119
+          ],
+          [
+            101,
+            163
+          ],
+          [
+            36,
+            163
+          ]
+        ],
+        [
+          [
+            118,
+            116
+          ],
+          [
+            143,
+            116
+          ],
+          [
+            146,
+            120
+          ],
+          [
+            144,
+            124
+          ],
+          [
+            137,
+            125
+          ],
+          [
+            137,
+            137
+          ],
+          [
+            133,
+            139
+          ],
+          [
+            130,
+            136
+          ],
+          [
+            130,
+            126
+          ],
+          [
+            119,
+            126
+          ],
+          [
+            116,
+            123
+          ],
+          [
+            116,
+            118
+          ]
+        ]
+      ],
+      "occlusion": "Desk and monitor left, chair right. Chair back, far arm and seat behind actor; low near arm and near desk apron/legs in front. No furniture over upper-right head/face zone.",
+      "notes": "Independent LEFT generation; panel glass faces right toward empty seat. Keyboard between screen and seat. No rotation or reflection."
+    },
+    "right": {
+      "source": "sources/right-source.png",
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "screen": {
+        "visible": true,
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ]
+      },
+      "order": [
+        "back",
+        "screen",
+        "actor",
+        "front"
+      ],
+      "frontPolygons": [
+        [
+          [
+            94,
+            120
+          ],
+          [
+            175,
+            120
+          ],
+          [
+            175,
+            173
+          ],
+          [
+            94,
+            173
+          ]
+        ],
+        [
+          [
+            50,
+            117
+          ],
+          [
+            70,
+            117
+          ],
+          [
+            74,
+            119
+          ],
+          [
+            75,
+            122
+          ],
+          [
+            73,
+            125
+          ],
+          [
+            61,
+            125
+          ],
+          [
+            61,
+            138
+          ],
+          [
+            56,
+            139
+          ],
+          [
+            52,
+            137
+          ],
+          [
+            52,
+            126
+          ],
+          [
+            49,
+            126
+          ],
+          [
+            48,
+            121
+          ]
+        ]
+      ],
+      "occlusion": "Chair left, desk and monitor right. Chair back, far arm and seat behind actor; low near arm and near desk apron/legs in front. No furniture over upper-left head/face zone.",
+      "notes": "Independent RIGHT generation, different stand assembly/shading and mouse depth from LEFT. Glass faces left toward seat. No mirror."
+    }
+  }
+}

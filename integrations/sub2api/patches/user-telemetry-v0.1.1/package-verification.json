@@ -1,0 +1,69 @@
+{
+  "version": "0.1.1",
+  "package_sha256": "33af87e484d9cb490c575fcb2ffb710f890d3f63d4a1cd0e231533e65319c980",
+  "publisher_id": "lvdong-user-telemetry-v1-011",
+  "ui_sha256": "e57a46d7e30576ba3ed5d6a4d82c9ea8f5188437d90c26c32e5b44fc945de8e6",
+  "runtime_platforms": [
+    "darwin-arm64",
+    "linux-amd64",
+    "linux-arm64"
+  ],
+  "signature_and_all_payload_hashes_verified": true,
+  "signing_private_key_disposed": true,
+  "requires": {
+    "sub2api": ">=0.2.13 <0.3.0",
+    "plugin_protocol": 1,
+    "user_telemetry_api": 1,
+    "ui_bridge": 1
+  },
+  "production_ui_acceptance": "passed_13_of_13_authenticated_real_browser",
+  "production_api_acceptance": "passed_37_of_37",
+  "linux_amd64_native_acceptance": "passed_44_of_44_isolated",
+  "other_platform_native_runtime_acceptance": "not_run_for_0.1.1",
+  "final_signature_reverification_at_utc": "2026-10-04T06:22:07.302635+00:00",
+  "reverification_reports": [
+    "qa/package-verify-final-darwin-arm64.json",
+    "qa/package-verify-final-linux-amd64.json",
+    "qa/package-verify-final-linux-arm64.json"
+  ],
+  "signed_manifest": {
+    "capabilities": [
+      {
+        "account_type": "user",
+        "id": "sub2api.user_telemetry.read.v1",
+        "platform": "sub2api"
+      }
+    ],
+    "files": {
+      "runtimes/darwin-arm64/user-telemetry": "bee95612d1e8704b13cabe7bcda2d996ebb3c3d3d6292d4acf4d856c9b2c7498",
+      "runtimes/linux-amd64/user-telemetry": "4f569c097a2eeae7f9b5b43cc6d8374dacce4beead64fffdb6d093adbcf78fc0",
+      "runtimes/linux-arm64/user-telemetry": "bb9b0a4a62777c3e3189b6f85ee032b33bee3c3aa2db20e75d381b81d9f24fca",
+      "ui/index.html": "e57a46d7e30576ba3ed5d6a4d82c9ea8f5188437d90c26c32e5b44fc945de8e6"
+    },
+    "id": "com.lvdong.user-telemetry",
+    "name": "Lvdong User Telemetry",
+    "requires": {
+      "plugin_protocol": 1,
+      "sub2api": ">=0.2.13 <0.3.0",
+      "ui_bridge": 1,
+      "user_telemetry_api": 1
+    },
+    "runtimes": {
+      "darwin-arm64": {
+        "path": "runtimes/darwin-arm64/user-telemetry"
+      },
+      "linux-amd64": {
+        "path": "runtimes/linux-amd64/user-telemetry"
+      },
+      "linux-arm64": {
+        "path": "runtimes/linux-arm64/user-telemetry"
+      }
+    },
+    "schema_version": 1,
+    "ui": {
+      "entrypoint": "ui/index.html"
+    },
+    "version": "0.1.1"
+  },
+  "signed_package_bytes_changed_during_finalization": false
+}

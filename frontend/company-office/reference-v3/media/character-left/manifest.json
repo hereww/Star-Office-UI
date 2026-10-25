@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 3,
+  "createdOn": "2026-10-02",
+  "timezone": "Asia/Shanghai",
+  "status": "rejected_candidate",
+  "candidateOnly": true,
+  "passed": false,
+  "visualApproved": false,
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "integrationAllowed": false,
+  "urlResolution": "All character.base and actions.face URLs resolve from frontend/company-office/reference-v3/, NOT from the manifest directory.",
+  "animationMode": "expression-only",
+  "frameCount": 12,
+  "fps": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "faceClockFrames": 60,
+  "character": {
+    "id": "orange-tabby-seated-left-v3-candidate-20261002",
+    "direction": "left",
+    "base": "media/character-left/character-base.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      96,
+      174
+    ],
+    "headAnchor": [
+      78,
+      94
+    ],
+    "scale": 0.6,
+    "faceRect": [
+      42,
+      64,
+      90,
+      58
+    ],
+    "faceClipEllipse": [
+      78,
+      94,
+      28,
+      21
+    ],
+    "faceFrameSize": [
+      90,
+      58
+    ],
+    "faceVisible": true,
+    "actions": {
+      "working": {
+        "face": "media/character-left/face-working.png",
+        "label": "工作 · 专注眨眼",
+        "faceClockFrames": 60,
+        "status": "rejected_candidate"
+      },
+      "idle": {
+        "face": "media/character-left/face-idle.png",
+        "label": "待命 · 仰脸闭眼张嘴熟睡",
+        "faceClockFrames": 36,
+        "status": "rejected_candidate"
+      },
+      "syncing": {
+        "face": "media/character-left/face-syncing.png",
+        "label": "同步 · 耐心等待",
+        "faceClockFrames": 60,
+        "status": "rejected_candidate"
+      },
+      "error": {
+        "face": "media/character-left/face-error.png",
+        "label": "出错 · 连续旋涡眼",
+        "faceClockFrames": 12,
+        "status": "rejected_candidate"
+      }
+    }
+  },
+  "businessStateToAction": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "freeze": {
+    "wholeBody": true,
+    "headOutline": "required, but idle candidate fails 1-2 silhouette pixels",
+    "ears": true,
+    "tail": true,
+    "handsGenerated": "No typing/reaching hands, but lower-front paw-like foot is anatomically ambiguous; strict no-hands visual approval not established.",
+    "furnitureGenerated": false,
+    "rotation": false,
+    "mirroring": false,
+    "breathing": false
+  },
+  "qa": {
+    "structuralPassed": true,
+    "strictFixedFacePassed": false,
+    "passed": false,
+    "protectedInputFileCount": 29,
+    "protectedInputsUnchanged": true,
+    "measurementFile": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/validation-measurements.json",
+    "reviewFile": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/REVIEW.md",
+    "actions": {
+      "working": {
+        "status": "rejected_candidate",
+        "reasons": [
+          "非表情脸部纹理不保持固定，显著变化最多121个逻辑像素。",
+          "鼻部锚点跨帧范围约0.77×1.34逻辑像素；叠加母版时眉毛/鼻部可见接缝。"
+        ],
+        "visibleUniqueFrames": 12,
+        "clippedFaceUniqueFrames": 12,
+        "genuineAlpha": true,
+        "bodyFixedOutsideFace": true,
+        "headOutlineInvariant": true,
+        "noseCentroidRangePx": [
+          0.769,
+          1.335
+        ],
+        "maxNonFeatureChangedPixelsThreshold16": 121
+      },
+      "idle": {
+        "status": "rejected_candidate",
+        "reasons": [
+          "椭圆覆盖后有1–2个头部轮廓像素变化，不满足严格头轮廓不变。",
+          "鼻部锚点跨帧范围约1.48×2.28逻辑像素；非嘴部区域有纹理漂移。"
+        ],
+        "visibleUniqueFrames": 12,
+        "clippedFaceUniqueFrames": 12,
+        "genuineAlpha": true,
+        "bodyFixedOutsideFace": true,
+        "headOutlineInvariant": false,
+        "noseCentroidRangePx": [
+          1.476,
+          2.278
+        ],
+        "maxNonFeatureChangedPixelsThreshold16": 143
+      },
+      "syncing": {
+        "status": "rejected_candidate",
+        "reasons": [
+          "非表情脸部纹理不保持固定，显著变化最多59个逻辑像素。",
+          "等待与工作主要都是眨眼，表情区别偏弱；与底图局部叠加可见眉毛/鼻部接缝。"
+        ],
+        "visibleUniqueFrames": 12,
+        "clippedFaceUniqueFrames": 12,
+        "genuineAlpha": true,
+        "bodyFixedOutsideFace": true,
+        "headOutlineInvariant": true,
+        "noseCentroidRangePx": [
+          0.152,
+          0.531
+        ],
+        "maxNonFeatureChangedPixelsThreshold16": 59
+      },
+      "error": {
+        "status": "rejected_candidate",
+        "reasons": [
+          "非旋涡区域有纹理漂移，显著变化最多79个逻辑像素。",
+          "12帧像素不同，但未可靠证明12个均匀顺时针30度相位；不得把哈希不同当作连续旋转通过。"
+        ],
+        "visibleUniqueFrames": 12,
+        "clippedFaceUniqueFrames": 12,
+        "genuineAlpha": true,
+        "bodyFixedOutsideFace": true,
+        "headOutlineInvariant": true,
+        "noseCentroidRangePx": [
+          0.487,
+          0.622
+        ],
+        "maxNonFeatureChangedPixelsThreshold16": 79
+      }
+    },
+    "baseVisualReview": {
+      "status": "rejected_candidate",
+      "strictLeftProfile": true,
+      "singleVisibleEye": true,
+      "furnitureAbsent": true,
+      "typingHandsAbsent": true,
+      "strictNoForepawConfirmed": false,
+      "reason": "下前部趾块可能仍像前爪，不能把无打字手等同严格无手通过。"
+    }
+  },
+  "provenance": {
+    "tool": "built-in image_gen.imagegen",
+    "generationCalls": 5,
+    "callsPerAction": 1,
+    "automaticRetries": 0,
+    "originalIdentity": "../media/character-base.png",
+    "savedIdentityMaster": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/sources/character-identity-master.png",
+    "originalsDirectory": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/originals",
+    "promptsDirectory": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/prompts",
+    "generationLog": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/generation-log.json",
+    "preprocessScript": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/scripts/preprocess_left.py",
+    "qaScript": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/scripts/qa_left.py",
+    "preprocessing": "Whole-sheet/canvas nearest-neighbor resize and equal-grid slicing only. No painted pixels, frame duplication, mirroring, rotation, geometry repair or artificial transparency.",
+    "delegatedAgents": 0
+  },
+  "risks": [
+    "该目录中的PNG只作不合格候选归档，不可自动合并或发布。",
+    "faceRect/faceClipEllipse/poseAnchor/headAnchor为已测候选几何，并非验收通过的最终接口。",
+    "实际alpha保留模型原值，含半透明/接近不透明像素，没有阈值重画。",
+    "固定身体的离线椭圆合成检查不代表runtime或UI已接入。",
+    "禁止用哈希不同代替12个真实连续表情相位的视觉验收。",
+    "底图下前部脚趾块可能被读为前爪；严格无手要求没有获得视觉通过。"
+  ],
+  "files": [
+    {
+      "url": "media/character-left/character-base.png",
+      "bytes": 23609,
+      "sha256": "06b1c2ac8d682e1a0ae4bd33dd36a113999001c8840afe640d4b563ba01c4a4f",
+      "size": [
+        192,
+        192
+      ],
+      "status": "rejected_candidate"
+    },
+    {
+      "url": "media/character-left/face-working.png",
+      "bytes": 104127,
+      "sha256": "f00ba5b6f2308bf07d5a1ed7afc6b2013a3a07d886389a7d685605f460e0e3ae",
+      "size": [
+        360,
+        174
+      ],
+      "status": "rejected_candidate"
+    },
+    {
+      "url": "media/character-left/face-idle.png",
+      "bytes": 105632,
+      "sha256": "c1009597b72261d3604e403b551e8f4f7f36d6f8e3ce430fce3c6960b6065eb3",
+      "size": [
+        360,
+        174
+      ],
+      "status": "rejected_candidate"
+    },
+    {
+      "url": "media/character-left/face-syncing.png",
+      "bytes": 93830,
+      "sha256": "cf94e1135d84fde575f7999a17b5fd2d1ea19a4e0092d0dee9515849b8cf0c1d",
+      "size": [
+        360,
+        174
+      ],
+      "status": "rejected_candidate"
+    },
+    {
+      "url": "media/character-left/face-error.png",
+      "bytes": 107128,
+      "sha256": "f5ee7b55de6bff30342f00e4d77a613c15619ce29affaf6fe9b1cb1e12be2bd6",
+      "size": [
+        360,
+        174
+      ],
+      "status": "rejected_candidate"
+    }
+  ]
+}

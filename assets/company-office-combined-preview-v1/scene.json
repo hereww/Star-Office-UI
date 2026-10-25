@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "approved-map-office-walk-review-v1",
+  "date": "2026-10-02",
+  "previewOnly": true,
+  "mapArtworkChanged": false,
+  "productionModified": false,
+  "map": "/source/map-layout.json",
+  "office": "/source/office-assets.json",
+  "walking": {
+    "template": "approved-walk-directions-v1",
+    "directions": ["up", "down", "left", "right"],
+    "filesPerDirection": 2,
+    "full12FrameCycle": false,
+    "scale": 1.5,
+    "footAnchor": [48, 88],
+    "stridePixelsPerPose": 22,
+    "speed": 160,
+    "footRadius": 18,
+    "assetRoot": "/walking/"
+  },
+  "obstacles": [
+    {"id": "pantry-appliances", "bounds": [400, 1160, 400, 160]},
+    {"id": "changing-lockers", "bounds": [412, 1360, 368, 100]},
+    {"id": "small-meeting-table-and-chairs", "bounds": [472, 1640, 236, 384]},
+    {"id": "server-racks", "bounds": [424, 2448, 304, 192]},
+    {"id": "plant-north-west", "bounds": [224, 252, 80, 100]},
+    {"id": "plant-north-middle", "bounds": [1016, 252, 80, 100]},
+    {"id": "plant-north-east", "bounds": [1824, 252, 72, 100]},
+    {"id": "plant-manager", "bounds": [1824, 672, 72, 96]},
+    {"id": "plant-supervisor", "bounds": [1816, 1016, 80, 96]},
+    {"id": "plant-west-pantry", "bounds": [224, 1224, 96, 120]},
+    {"id": "plant-changing", "bounds": [400, 1480, 96, 88]},
+    {"id": "plant-small-meeting", "bounds": [400, 1992, 96, 104]},
+    {"id": "plant-foyer", "bounds": [400, 2256, 104, 112]},
+    {"id": "plant-main-hall", "bounds": [1744, 2160, 96, 112]},
+    {"id": "plant-large-meeting", "bounds": [1696, 2552, 96, 96]},
+    {"id": "plant-server", "bounds": [716, 2520, 88, 120]}
+  ],
+  "destinations": [
+    {"id": "pantry", "label": "去茶水区", "point": [928, 1248]},
+    {"id": "entrance", "label": "去门厅", "point": [928, 2288]},
+    {"id": "west", "label": "去西侧工位", "station": "desk-15"},
+    {"id": "meeting", "label": "去小会议室", "point": [768, 1840]},
+    {"id": "finance", "label": "去财务室", "station": "private-finance"},
+    {"id": "home", "label": "回主工位", "station": "desk-26"}
+  ]
+}

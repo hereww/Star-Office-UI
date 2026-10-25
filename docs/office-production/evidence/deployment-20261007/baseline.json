@@ -1,0 +1,336 @@
+{
+  "old_release": "office-20261006-v5-production-06",
+  "new_release": "office-v5-short-status-04",
+  "archive_sha256": "dc001a72b6de00ce71759163bdcd1373046d7f4364c0a5ca56bb85517028deda",
+  "before": {
+    "star-office-production-office-web-1": {
+      "name": "star-office-production-office-web-1",
+      "id": "6a33e1e33a9b19b8707608acd5cefc80d6d1401382d4eacb9552298b66803341",
+      "image": "sha256:4b26b4d71939fdfd8176814ec5bb05af3d4fbef158b75084c0e1ebd2ba3e196e",
+      "started": "2026-10-06T14:54:37.185230501Z",
+      "restarts": 0,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/star-office-production-office-data/_data",
+          "target": "/data/office",
+          "rw": true
+        },
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/star-office-production-legacy-data/_data",
+          "target": "/data/legacy",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/star-office-ui/private/admin-password.hash",
+          "target": "/run/secrets/office_admin_hash",
+          "rw": false
+        }
+      ]
+    },
+    "star-office-production-office-collector-1": {
+      "name": "star-office-production-office-collector-1",
+      "id": "bd16c41bb2d5e17823f8f0a49889c40bf53a970ebea300369da3b7d5ef950d6c",
+      "image": "sha256:4b26b4d71939fdfd8176814ec5bb05af3d4fbef158b75084c0e1ebd2ba3e196e",
+      "started": "2026-10-06T14:54:37.126795955Z",
+      "restarts": 0,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/star-office-production-office-data/_data",
+          "target": "/data/office",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/star-office-ui/private/upstream-ca-bundle.pem",
+          "target": "/run/trust/upstream-ca.pem",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "source": "/opt/star-office-ui/private/office-consumer.token",
+          "target": "/run/secrets/office_consumer",
+          "rw": false
+        }
+      ]
+    },
+    "sub2api": {
+      "name": "sub2api",
+      "id": "2302eac8b2d14c843f2b17bfcfbcfc3e85bf5bb0d90a886fca48695476e5a8db",
+      "image": "sha256:f8859f5c9a17c7e183e0b2dd36d357f1fb1cc6d5ac10836cddcbbace7fcc7dfb",
+      "started": "2026-10-06T02:54:44.663317183Z",
+      "restarts": 0,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/root/sub2api-deploy/data",
+          "target": "/app/data",
+          "rw": true
+        }
+      ]
+    },
+    "kaneo-kaneo-1": {
+      "name": "kaneo-kaneo-1",
+      "id": "fd90c191f442e712213fb535294947221fc89904b01eb274527888cea9615f75",
+      "image": "sha256:f2e650f6a47f1b8d83e8226732e372caea15cb144f199594a8a129aaab89ee1e",
+      "started": "2026-10-06T02:54:44.650813172Z",
+      "restarts": 0,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/opt/kaneo/api/releases/20261003T111107-work-log/index.js",
+          "target": "/app/apps/api/dist/index.js",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "source": "/home/kaneo-attachments",
+          "target": "/app/attachments",
+          "rw": true
+        }
+      ]
+    },
+    "kaneo-postgres-1": {
+      "name": "kaneo-postgres-1",
+      "id": "e329b5f1964395504fbf724bff88b771be78f95f6f8e699d608efabcd97c1cbc",
+      "image": "sha256:81bd698b4594e751a3269e4dcd3e03a4a0ec0daf7b72e7aa1abd43cce9887542",
+      "started": "2026-10-06T02:54:44.57339686Z",
+      "restarts": 0,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/kaneo_postgres_data/_data",
+          "target": "/var/lib/postgresql/data",
+          "rw": true
+        }
+      ]
+    },
+    "star-office-ui": {
+      "name": "star-office-ui",
+      "id": "8189a05469585945c4d3ae1e8a23a397aa70ab077c2a780f51d51af79ce8128a",
+      "image": "sha256:28f1bc788fdcc80f30ff36ece47110e0b7a73b56cce84ed49a38927fb346ee53",
+      "started": "2026-10-06T02:54:44.5854485Z",
+      "restarts": 0,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/opt/star-office-ui/src",
+          "target": "/app",
+          "rw": true
+        }
+      ]
+    },
+    "ai-goofish-monitor-app": {
+      "name": "ai-goofish-monitor-app",
+      "id": "14e30ac306539a360e2cce36245079c33a976d37e9510e4bb54068ceb4552fa9",
+      "image": "sha256:fb06307b24faf46c99de9988fda3d69f251ba41c1cf40e6ee943450856979874",
+      "started": "2026-10-06T02:54:44.679519543Z",
+      "restarts": 0,
+      "health": null,
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/.env",
+          "target": "/app/.env",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/config.json",
+          "target": "/app/config.json",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/state",
+          "target": "/app/state",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/prompts",
+          "target": "/app/prompts",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/data",
+          "target": "/app/data",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/images",
+          "target": "/app/images",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/jsonl",
+          "target": "/app/jsonl",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/logs",
+          "target": "/app/logs",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/opt/ai-goofish-monitor/price_history",
+          "target": "/app/price_history",
+          "rw": true
+        }
+      ]
+    },
+    "newapi_yymx-new-api-1": {
+      "name": "newapi_yymx-new-api-1",
+      "id": "d0b9824591d682a2ba9f24401f8e9d36246fea47353970df0a807d8ed6917eff",
+      "image": "sha256:611b4054dced5ead284323c613e2c60f1faf821ec9357b3c79b8d295401c5754",
+      "started": "2026-10-06T02:54:46.769987294Z",
+      "restarts": 3,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/www/dk_project/dk_app/newapi/newapi_YyMX/logs",
+          "target": "/app/logs",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/www/dk_project/dk_app/newapi/newapi_YyMX/data",
+          "target": "/data",
+          "rw": true
+        }
+      ]
+    },
+    "newapi_yymx-redis-1": {
+      "name": "newapi_yymx-redis-1",
+      "id": "12f1cf4747368f5ed302f925b83749c130fc6f8c84190234aea443ea54baa3fa",
+      "image": "sha256:128bbe5f7793f7e955a5eab7d492b1de001e182462c694f03362f4704cfb1a04",
+      "started": "2026-10-06T02:54:44.675928315Z",
+      "restarts": 0,
+      "health": null,
+      "mounts": []
+    },
+    "sub2api-postgres": {
+      "name": "sub2api-postgres",
+      "id": "1bdeabd1d361e70351d4db984b9f3e6197b5dedfefb91e113d85501ef3f6c7e0",
+      "image": "sha256:c0eb29927f0e8590eac49c9d5bf9c5ebf87f4e6e7273e0a9270218e6b73795ee",
+      "started": "2026-10-06T02:54:44.624810248Z",
+      "restarts": 0,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/01c3f3112ddc1962238cb18146c51cb19714d1dfc9e94d8de2b393f5d03d6bb9/_data",
+          "target": "/var/lib/postgresql",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "source": "/root/sub2api-deploy/postgres_data",
+          "target": "/var/lib/postgresql/data",
+          "rw": true
+        }
+      ]
+    },
+    "sub2api-redis": {
+      "name": "sub2api-redis",
+      "id": "ba9eb45c2523143a7322811280ea758dc19caebd434035bc8e5a5f673b61ee99",
+      "image": "sha256:3a02d38405dc12092032737fdadd513729a81efca8439d1d7eef883e6e67e26e",
+      "started": "2026-10-06T02:54:44.544534769Z",
+      "restarts": 0,
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/root/sub2api-deploy/redis_data",
+          "target": "/data",
+          "rw": true
+        }
+      ]
+    },
+    "east-asia-power-postgres": {
+      "name": "east-asia-power-postgres",
+      "id": "5d6b7cc52a54dc15a12dee8f797f2dadfe44076e593f71166f9aee8603296254",
+      "image": "sha256:667495ca2ac33180ad3690178da1bf274f481d0c43849d4c1941f0176983bd2e",
+      "started": "2026-10-06T02:54:44.415495699Z",
+      "restarts": 0,
+      "health": null,
+      "mounts": [
+        {
+          "type": "volume",
+          "source": "/var/lib/docker/volumes/east_asia_power_pgdata/_data",
+          "target": "/var/lib/postgresql/data",
+          "rw": true
+        }
+      ]
+    },
+    "newapi_yymx-mysql-1": {
+      "name": "newapi_yymx-mysql-1",
+      "id": "1507728d0ec5e596d5b0f9c95600ceddf15ff6c5a5cdd4d50647c1ee8aa56641",
+      "image": "sha256:bc861cf238f24a71398f27b6eb77051fe60b834e003f33e4a36e3e19c37df1d1",
+      "started": "2026-10-06T02:54:44.666850582Z",
+      "restarts": 0,
+      "health": null,
+      "mounts": [
+        {
+          "type": "bind",
+          "source": "/www/dk_project/dk_app/newapi/newapi_YyMX/mysql_data",
+          "target": "/var/lib/mysql",
+          "rw": true
+        }
+      ]
+    }
+  },
+  "config_before": {
+    "version": 3,
+    "payload_sha256": "22a8c18627022382daf860a9949391d66999ab1469c2743e151f328706433cc4",
+    "versions": 3,
+    "audit": 3,
+    "sqlite_integrity": "ok"
+  },
+  "env_before_sha256": "43a64f1abfd628744fbd954bd8dd5a612251984b680bde965cd0a289c7492113",
+  "ingress_before_sha256": "f32f7e39edcd24e900bd648fcb663f530b609a146bcae621f60d74d6d674b84a",
+  "secret_files_unchanged": true,
+  "firewall_unchanged": true,
+  "source_delta": [
+    "frontend/company-office/connected-v4/telemetry-adapter.mjs",
+    "frontend/office/bubble-status.mjs"
+  ],
+  "unchanged_image_assets": 28,
+  "backup": {
+    "directory": "/home/star-office-backups/20261007-before-short-status-04",
+    "restore_drills": [
+      {
+        "config_version": 3,
+        "sqlite_integrity": "ok",
+        "volume": "star-office-production-office-data",
+        "archive_sha256": "405c40fc91dc398dbbb4ae5d5abd66d8be6732bec9e9572ba2b50d4082964d83",
+        "archive_bytes": 2529,
+        "files": 3,
+        "restored_bytes_match": true
+      },
+      {
+        "volume": "star-office-production-legacy-data",
+        "archive_sha256": "d7d0ae982755a27850beb5ec09b8b4b127a6c27bed7bc47af51e1a3497f183a8",
+        "archive_bytes": 537,
+        "files": 3,
+        "restored_bytes_match": true
+      }
+    ],
+    "image_archive_sha256": "a7f1c9728a0a20d6b97a12df7e08f52a429dd36dac735f425aff36a4e5bc19b8"
+  }
+}

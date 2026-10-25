@@ -1,0 +1,139 @@
+{
+  "framesChecked": 48,
+  "actions": {
+    "working": {
+      "unique": 12,
+      "ellipseClippedFeaturePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mouthInkPixels": [
+        0,
+        0,
+        0,
+        0,
+        3,
+        3,
+        2,
+        3,
+        3,
+        3,
+        2,
+        3
+      ],
+      "workstationImages": 12
+    },
+    "idle": {
+      "unique": 12,
+      "ellipseClippedFeaturePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mouthInkPixels": [
+        98,
+        116,
+        102,
+        103,
+        106,
+        101,
+        123,
+        96,
+        119,
+        128,
+        117,
+        100
+      ],
+      "workstationImages": 12
+    },
+    "syncing": {
+      "unique": 12,
+      "ellipseClippedFeaturePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mouthInkPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "workstationImages": 12
+    },
+    "error": {
+      "unique": 12,
+      "ellipseClippedFeaturePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mouthInkPixels": [
+        24,
+        16,
+        11,
+        5,
+        31,
+        22,
+        13,
+        8,
+        29,
+        20,
+        14,
+        7
+      ],
+      "workstationImages": 12
+    }
+  },
+  "ellipseClippedFeaturePixels": 0,
+  "bodyOutsideFaceChangedPixels": 0,
+  "actualDirectionalPlayerUsed": true,
+  "native4K": false,
+  "silhouetteAlphaOccupancyChangedPixels": 0,
+  "interiorAlphaValueChangedPixels": 32845
+}

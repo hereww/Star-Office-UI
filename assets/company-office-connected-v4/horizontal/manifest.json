@@ -1,0 +1,586 @@
+{
+  "schemaVersion": 1,
+  "id": "connected-v4-horizontal-eight-seat-candidate",
+  "createdDate": "2026-10-03",
+  "image": "desk-bank-horizontal.png",
+  "runtimeImage": "media/horizontal/desk-bank-horizontal.png",
+  "actualPixelSize": [
+    1774,
+    887
+  ],
+  "requestedPixelSize": [
+    3072,
+    1536
+  ],
+  "native4k": false,
+  "upscaled": false,
+  "alphaBounds": [
+    66,
+    86,
+    1708,
+    843
+  ],
+  "alphaBoundsConvention": "[left,top,rightExclusive,bottomExclusive] on all alpha>0; do NOT use this as tight furniture crop",
+  "visibleAlphaBounds": [
+    73,
+    191,
+    1702,
+    701
+  ],
+  "visibleAlphaThreshold": 8,
+  "coordinateSpace": "original full PNG pixels, origin top-left, x east/right, y south/down",
+  "seatCount": 8,
+  "orientation": "horizontal",
+  "region": "green",
+  "seatContacts": [
+    {
+      "id": "desk-09",
+      "row": "north",
+      "column": 1,
+      "direction": "down",
+      "position": [
+        310,
+        191
+      ],
+      "x": 310,
+      "y": 191,
+      "suggestedOutsideSeatCenter": [
+        310,
+        151
+      ],
+      "keyboardCenter": [
+        294,
+        250
+      ],
+      "characterAssetPolicy": "reuse unchanged existing character and chair; anchor at desk contact, not image center"
+    },
+    {
+      "id": "desk-10",
+      "row": "north",
+      "column": 2,
+      "direction": "down",
+      "position": [
+        696,
+        191
+      ],
+      "x": 696,
+      "y": 191,
+      "suggestedOutsideSeatCenter": [
+        696,
+        151
+      ],
+      "keyboardCenter": [
+        677,
+        250
+      ],
+      "characterAssetPolicy": "reuse unchanged existing character and chair; anchor at desk contact, not image center"
+    },
+    {
+      "id": "desk-11",
+      "row": "north",
+      "column": 3,
+      "direction": "down",
+      "position": [
+        1081,
+        191
+      ],
+      "x": 1081,
+      "y": 191,
+      "suggestedOutsideSeatCenter": [
+        1081,
+        151
+      ],
+      "keyboardCenter": [
+        1072,
+        250
+      ],
+      "characterAssetPolicy": "reuse unchanged existing character and chair; anchor at desk contact, not image center"
+    },
+    {
+      "id": "desk-12",
+      "row": "north",
+      "column": 4,
+      "direction": "down",
+      "position": [
+        1474,
+        191
+      ],
+      "x": 1474,
+      "y": 191,
+      "suggestedOutsideSeatCenter": [
+        1474,
+        151
+      ],
+      "keyboardCenter": [
+        1459,
+        250
+      ],
+      "characterAssetPolicy": "reuse unchanged existing character and chair; anchor at desk contact, not image center"
+    },
+    {
+      "id": "desk-13",
+      "row": "south",
+      "column": 1,
+      "direction": "up",
+      "position": [
+        310,
+        659
+      ],
+      "x": 310,
+      "y": 659,
+      "suggestedOutsideSeatCenter": [
+        310,
+        739
+      ],
+      "keyboardCenter": [
+        294,
+        597
+      ],
+      "characterAssetPolicy": "reuse unchanged existing character and chair; anchor at desk contact, not image center"
+    },
+    {
+      "id": "desk-14",
+      "row": "south",
+      "column": 2,
+      "direction": "up",
+      "position": [
+        696,
+        659
+      ],
+      "x": 696,
+      "y": 659,
+      "suggestedOutsideSeatCenter": [
+        696,
+        739
+      ],
+      "keyboardCenter": [
+        674,
+        597
+      ],
+      "characterAssetPolicy": "reuse unchanged existing character and chair; anchor at desk contact, not image center"
+    },
+    {
+      "id": "desk-15",
+      "row": "south",
+      "column": 3,
+      "direction": "up",
+      "position": [
+        1081,
+        659
+      ],
+      "x": 1081,
+      "y": 659,
+      "suggestedOutsideSeatCenter": [
+        1081,
+        739
+      ],
+      "keyboardCenter": [
+        1070,
+        597
+      ],
+      "characterAssetPolicy": "reuse unchanged existing character and chair; anchor at desk contact, not image center"
+    },
+    {
+      "id": "desk-16",
+      "row": "south",
+      "column": 4,
+      "direction": "up",
+      "position": [
+        1474,
+        659
+      ],
+      "x": 1474,
+      "y": 659,
+      "suggestedOutsideSeatCenter": [
+        1474,
+        739
+      ],
+      "keyboardCenter": [
+        1453,
+        597
+      ],
+      "characterAssetPolicy": "reuse unchanged existing character and chair; anchor at desk contact, not image center"
+    }
+  ],
+  "screens": [
+    {
+      "id": "desk-09",
+      "seatId": "desk-09",
+      "visible": false,
+      "polygon": [
+        [
+          187,
+          295
+        ],
+        [
+          451,
+          295
+        ],
+        [
+          451,
+          367
+        ],
+        [
+          187,
+          367
+        ]
+      ],
+      "polygonPurpose": "rear casing boundary only; NEVER draw screen fill",
+      "effects": "led-only",
+      "led": {
+        "position": [
+          429,
+          351
+        ],
+        "radius": 3,
+        "sourceVisible": true,
+        "note": "existing cyan rear LED"
+      }
+    },
+    {
+      "id": "desk-10",
+      "seatId": "desk-10",
+      "visible": false,
+      "polygon": [
+        [
+          546,
+          295
+        ],
+        [
+          829,
+          295
+        ],
+        [
+          829,
+          367
+        ],
+        [
+          546,
+          367
+        ]
+      ],
+      "polygonPurpose": "rear casing boundary only; NEVER draw screen fill",
+      "effects": "led-only",
+      "led": {
+        "position": [
+          804,
+          351
+        ],
+        "radius": 3,
+        "sourceVisible": true,
+        "note": "existing cyan rear LED"
+      }
+    },
+    {
+      "id": "desk-11",
+      "seatId": "desk-11",
+      "visible": false,
+      "polygon": [
+        [
+          949,
+          295
+        ],
+        [
+          1228,
+          295
+        ],
+        [
+          1228,
+          367
+        ],
+        [
+          949,
+          367
+        ]
+      ],
+      "polygonPurpose": "rear casing boundary only; NEVER draw screen fill",
+      "effects": "led-only",
+      "led": {
+        "position": [
+          1201,
+          351
+        ],
+        "radius": 3,
+        "sourceVisible": true,
+        "note": "existing cyan rear LED"
+      }
+    },
+    {
+      "id": "desk-12",
+      "seatId": "desk-12",
+      "visible": false,
+      "polygon": [
+        [
+          1327,
+          295
+        ],
+        [
+          1601,
+          295
+        ],
+        [
+          1601,
+          367
+        ],
+        [
+          1327,
+          367
+        ]
+      ],
+      "polygonPurpose": "rear casing boundary only; NEVER draw screen fill",
+      "effects": "led-only",
+      "led": {
+        "position": [
+          1577,
+          351
+        ],
+        "radius": 3,
+        "sourceVisible": true,
+        "note": "existing cyan rear LED"
+      }
+    },
+    {
+      "id": "desk-13",
+      "seatId": "desk-13",
+      "visible": true,
+      "polygon": [
+        [
+          195,
+          457
+        ],
+        [
+          422,
+          457
+        ],
+        [
+          422,
+          516
+        ],
+        [
+          195,
+          516
+        ]
+      ],
+      "polygonPurpose": "inset front glass region; clip runtime effects inside",
+      "effects": "screen-and-led",
+      "led": {
+        "position": [
+          419,
+          526
+        ],
+        "radius": 3,
+        "sourceVisible": false,
+        "note": "reserved bezel overlay anchor; no distinct front LED rendered in source"
+      }
+    },
+    {
+      "id": "desk-14",
+      "seatId": "desk-14",
+      "visible": true,
+      "polygon": [
+        [
+          582,
+          457
+        ],
+        [
+          808,
+          457
+        ],
+        [
+          808,
+          516
+        ],
+        [
+          582,
+          516
+        ]
+      ],
+      "polygonPurpose": "inset front glass region; clip runtime effects inside",
+      "effects": "screen-and-led",
+      "led": {
+        "position": [
+          805,
+          526
+        ],
+        "radius": 3,
+        "sourceVisible": false,
+        "note": "reserved bezel overlay anchor; no distinct front LED rendered in source"
+      }
+    },
+    {
+      "id": "desk-15",
+      "seatId": "desk-15",
+      "visible": true,
+      "polygon": [
+        [
+          969,
+          457
+        ],
+        [
+          1195,
+          457
+        ],
+        [
+          1195,
+          516
+        ],
+        [
+          969,
+          516
+        ]
+      ],
+      "polygonPurpose": "inset front glass region; clip runtime effects inside",
+      "effects": "screen-and-led",
+      "led": {
+        "position": [
+          1192,
+          526
+        ],
+        "radius": 3,
+        "sourceVisible": false,
+        "note": "reserved bezel overlay anchor; no distinct front LED rendered in source"
+      }
+    },
+    {
+      "id": "desk-16",
+      "seatId": "desk-16",
+      "visible": true,
+      "polygon": [
+        [
+          1355,
+          457
+        ],
+        [
+          1582,
+          457
+        ],
+        [
+          1582,
+          516
+        ],
+        [
+          1355,
+          516
+        ]
+      ],
+      "polygonPurpose": "inset front glass region; clip runtime effects inside",
+      "effects": "screen-and-led",
+      "led": {
+        "position": [
+          1579,
+          526
+        ],
+        "radius": 3,
+        "sourceVisible": false,
+        "note": "reserved bezel overlay anchor; no distinct front LED rendered in source"
+      }
+    }
+  ],
+  "ledCoordinates": [
+    {
+      "id": "desk-09",
+      "position": [
+        429,
+        351
+      ],
+      "sourceVisible": true
+    },
+    {
+      "id": "desk-10",
+      "position": [
+        804,
+        351
+      ],
+      "sourceVisible": true
+    },
+    {
+      "id": "desk-11",
+      "position": [
+        1201,
+        351
+      ],
+      "sourceVisible": true
+    },
+    {
+      "id": "desk-12",
+      "position": [
+        1577,
+        351
+      ],
+      "sourceVisible": true
+    },
+    {
+      "id": "desk-13",
+      "position": [
+        419,
+        526
+      ],
+      "sourceVisible": false
+    },
+    {
+      "id": "desk-14",
+      "position": [
+        805,
+        526
+      ],
+      "sourceVisible": false
+    },
+    {
+      "id": "desk-15",
+      "position": [
+        1192,
+        526
+      ],
+      "sourceVisible": false
+    },
+    {
+      "id": "desk-16",
+      "position": [
+        1579,
+        526
+      ],
+      "sourceVisible": false
+    }
+  ],
+  "deskTopBounds": [
+    84,
+    193,
+    1693,
+    659
+  ],
+  "dividerBounds": [
+    82,
+    384,
+    1695,
+    450
+  ],
+  "columnBoundaries": [
+    84,
+    498,
+    888,
+    1277,
+    1693
+  ],
+  "sourceSha256": "09daa50a44801a5d7046c61d43a494f7761006a0a43f3a0d2e4cae9de2e155cc",
+  "sourceRaw": "raw-generation-02-corrected.png",
+  "generationMethod": "built-in image_gen; fresh horizontal composition + one targeted keyboard/screen-color edit",
+  "generationCalls": 2,
+  "technicalCompleted": true,
+  "integrationAllowed": true,
+  "humanApproved": false,
+  "visualApproved": false,
+  "runtimeIntegrated": false,
+  "charactersModified": false,
+  "mapModified": false,
+  "runtimeModified": false,
+  "visualRisks": [
+    "Actual image is 1774x887, not requested 3072x1536 and not native 4K. No interpolation or image repaint was used.",
+    "Low-alpha residual pixels outside visible furniture bounds; whole-alpha bbox is larger than visible bounds. Do not infer seat geometry from raw alphaBounds.",
+    "Front monitor projection is very wide/foreshortened; exact physical 16:9 cannot be proved from a generated high-angle sprite. Requires user visual approval.",
+    "Keyboard orientation was corrected once: top spacebars north, bottom spacebars south. No readable glyphs; keycap arrangement remains stylized.",
+    "Four rear LEDs exist in source. Four front LED points are proposed runtime overlay coordinates, not visible LEDs in source.",
+    "Seat contacts are manually annotated desk-rim contacts. Existing character/head/chair size and occlusion must be checked by runtime/QA owner; no character composite was made here.",
+    "Prop count is reduced to two plants, one mug, one pencil cup; no obstruction to keyboards.",
+    "Perspective and antialiasing are painterly pixel illustration, not a strict nearest-neighbor pixel-art grid."
+  ]
+}

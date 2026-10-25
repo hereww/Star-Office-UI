@@ -1,0 +1,86 @@
+{
+  "createdOn": "2026-10-01",
+  "tool": "builtin imagegen",
+  "calls": [
+    {
+      "asset": "face-working",
+      "original": "source/face-working-original.png",
+      "prompt": "source/face-working-prompt.txt",
+      "generatedSource": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_F8cAmezpUD6ktFrdT2GYzXwI.png",
+      "sha256": "9fdad748a722abcee84a0b92c4a83be11bf01d62cf6e4a3efb1eefc0e02240d8",
+      "usedByCurrentPreview": true
+    },
+    {
+      "asset": "face-idle",
+      "original": "source/face-idle-original.png",
+      "prompt": "source/face-idle-prompt.txt",
+      "generatedSource": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_OqOKBp11cEiBHBNe2gjYo8EO.png",
+      "sha256": "fcd1f38b69ae5c1c867eaf68e5bebf76dc10e2e590b9ee0ab654e6be0837330a",
+      "usedByCurrentPreview": false
+    },
+    {
+      "asset": "face-syncing",
+      "original": "source/face-syncing-original.png",
+      "prompt": "source/face-syncing-prompt.txt",
+      "generatedSource": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_mot9E6yqWmdQLjDOJxmh1NE1.png",
+      "sha256": "e72a7b570a794cde63e6056aa14803943d2955b00758621b31ccab3e0301216d",
+      "usedByCurrentPreview": true
+    },
+    {
+      "asset": "face-error",
+      "original": "source/face-error-original.png",
+      "prompt": "source/face-error-prompt.txt",
+      "generatedSource": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_sXdS6AO7l7uBWv7WDrN7XoAp.png",
+      "sha256": "dba6199ad383591570a3c82c408651c2b2e9d6ef8346f2dd85e35d2bf955db54",
+      "usedByCurrentPreview": false
+    },
+    {
+      "asset": "hands-working",
+      "original": "source/hands-working-original.png",
+      "prompt": "source/hands-working-prompt.txt",
+      "generatedSource": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_pudsMEQ2a9y7KCwuaAFLIe3Z.png",
+      "sha256": "b90a82bacdf16f138c48d19b25bc6154f9d7f135969269f47c53d315bfdc31b4",
+      "usedByCurrentPreview": false
+    },
+    {
+      "asset": "face-idle-sleep",
+      "original": "source/face-idle-sleep-original.png",
+      "prompt": "source/face-idle-sleep-prompt.txt",
+      "generatedSource": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_yt8hkmRSqj1i4CH8s7WDNIrR.png",
+      "sha256": "0a50f63fd5e1eea05bd693c4933078721a8b2e6b66c602a8169d5b17fae32165",
+      "referencedImagePaths": [
+        "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-seated-office-states-v2/source/face-reference.png",
+        "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.agents/skills/star-office-character-animation/assets/orange-cat-reference.png"
+      ],
+      "usedByCurrentPreview": true
+    },
+    {
+      "asset": "face-error-dizzy",
+      "original": "source/face-error-dizzy-original.png",
+      "prompt": "source/face-error-dizzy-prompt.txt",
+      "generatedSource": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_GsJvvXApsH8Ludv8cEuKiu6K.png",
+      "sha256": "1a13955bdc3f2ddb562773e26fbc59a6807137c4fe1f157bb4edeac885c2596d",
+      "referencedImagePaths": [
+        "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-seated-office-states-v2/source/face-reference.png",
+        "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.agents/skills/star-office-character-animation/assets/orange-cat-reference.png"
+      ],
+      "usedByCurrentPreview": true
+    }
+  ],
+  "callsCount": 7,
+  "actualPrompts": "source/prompts.json and source/*-prompt.txt",
+  "animationMode": "expression-only",
+  "latestUserDecision": "Idle: deep sleeping with face tipped upward/back, eyes closed, open snoring mouth. Error: dazed spinning spiral eyes. Keep the seated body, head outline, no-hand keyboard and workstation fixed.",
+  "latestChangeRequiredNewGeneration": true,
+  "processing": "Model sheets extracted in row-major 4x3 order. Automated dense-alpha-band crop and nearest scaling of local face patches only; no repainting, no manual per-frame registration. Fixed seated body and furniture copied byte-for-byte from v1.",
+  "alphaBoundary": "Generated originals have genuine transparent pixels. Tight local face crops may be opaque; renderer applies a fixed ellipse clip.",
+  "handAssets": "Previously generated hand originals/atlases retained for provenance only; no longer referenced, loaded or drawn.",
+  "status": "approved_visual_template",
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "latestGenerationCalls": 2,
+  "visualApproved": true,
+  "approvedOn": "2026-10-01",
+  "approvalRecord": "approval.json",
+  "frozenTemplate": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1"
+}

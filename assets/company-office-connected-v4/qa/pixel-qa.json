@@ -1,0 +1,941 @@
+{
+  "capturedAt": "2026-10-03T06:22:57.666Z",
+  "passed": 6,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "360 actual character samples change only the original facial region",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-01",
+          "direction": "right",
+          "samples": 90,
+          "outsideFaceChanges": 0,
+          "maxPerSample": 0,
+          "bodyPlacement": [
+            -5.200000000000003,
+            25.60000000000001,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "faceVisible": true
+        },
+        {
+          "id": "desk-02",
+          "direction": "left",
+          "samples": 90,
+          "outsideFaceChanges": 0,
+          "maxPerSample": 0,
+          "bodyPlacement": [
+            73.4,
+            23.60000000000001,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "faceVisible": true
+        },
+        {
+          "id": "desk-09",
+          "direction": "down",
+          "samples": 90,
+          "outsideFaceChanges": 0,
+          "maxPerSample": 0,
+          "bodyPlacement": [
+            38.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "faceVisible": true
+        },
+        {
+          "id": "desk-13",
+          "direction": "up",
+          "samples": 90,
+          "outsideFaceChanges": 0,
+          "maxPerSample": 0,
+          "bodyPlacement": [
+            38.400000000000006,
+            44.2,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "faceVisible": false
+        }
+      ]
+    },
+    {
+      "name": "16 screen mappings: four rear LED-only displays and twelve visible fronts",
+      "pass": true,
+      "evidence": [
+        {
+          "snapshot": {
+            "seatId": "desk-01",
+            "kind": "front",
+            "thinSideScreen": true,
+            "polygon": [
+              [
+                380,
+                180
+              ],
+              [
+                383,
+                180
+              ],
+              [
+                383,
+                310
+              ],
+              [
+                380,
+                310
+              ]
+            ],
+            "led": [
+              377,
+              375
+            ],
+            "key": "idle:true:false:0:0|idle:false:false:0:0.45",
+            "styles": [
+              "sleep-dark",
+              "sleep-dark"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                380,
+                180,
+                3,
+                130
+              ]
+            },
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                377,
+                375,
+                2,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-02",
+            "kind": "front",
+            "thinSideScreen": true,
+            "polygon": [
+              [
+                509,
+                180
+              ],
+              [
+                512,
+                180
+              ],
+              [
+                512,
+                310
+              ],
+              [
+                509,
+                310
+              ]
+            ],
+            "led": [
+              512,
+              376
+            ],
+            "key": "writing:true:false:1:0|writing:false:false:0:0.8",
+            "styles": [
+              "document-cursor",
+              "document-cursor"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                509,
+                180,
+                3,
+                130
+              ]
+            },
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                512,
+                376,
+                2,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-03",
+            "kind": "front",
+            "thinSideScreen": true,
+            "polygon": [
+              [
+                380,
+                546
+              ],
+              [
+                383,
+                546
+              ],
+              [
+                383,
+                676
+              ],
+              [
+                380,
+                676
+              ]
+            ],
+            "led": [
+              377,
+              744
+            ],
+            "key": "researching:true:false:3:0|researching:false:false:0:0.8",
+            "styles": [
+              "search-scan",
+              "search-scan"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                380,
+                546,
+                3,
+                130
+              ]
+            },
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                377,
+                744,
+                2,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-04",
+            "kind": "front",
+            "thinSideScreen": true,
+            "polygon": [
+              [
+                509,
+                546
+              ],
+              [
+                512,
+                546
+              ],
+              [
+                512,
+                676
+              ],
+              [
+                509,
+                676
+              ]
+            ],
+            "led": [
+              512,
+              744
+            ],
+            "key": "executing:true:false:1:1:0|executing:false:false:0:0.8",
+            "styles": [
+              "terminal-lines",
+              "terminal-lines"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                509,
+                546,
+                3,
+                130
+              ]
+            },
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                512,
+                744,
+                2,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-05",
+            "kind": "front",
+            "thinSideScreen": true,
+            "polygon": [
+              [
+                380,
+                914
+              ],
+              [
+                383,
+                914
+              ],
+              [
+                383,
+                1044
+              ],
+              [
+                380,
+                1044
+              ]
+            ],
+            "led": [
+              376,
+              1112
+            ],
+            "key": "syncing:true:false:1:0|syncing:false:false:0:0.8",
+            "styles": [
+              "sync-blocks",
+              "sync-blocks"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                380,
+                914,
+                3,
+                130
+              ]
+            },
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                376,
+                1112,
+                2,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-06",
+            "kind": "front",
+            "thinSideScreen": true,
+            "polygon": [
+              [
+                509,
+                914
+              ],
+              [
+                512,
+                914
+              ],
+              [
+                512,
+                1044
+              ],
+              [
+                509,
+                1044
+              ]
+            ],
+            "led": [
+              512,
+              1112
+            ],
+            "key": "error:true:false:0.22:0|error:false:false:0:0.77",
+            "styles": [
+              "soft-double-pulse",
+              "soft-double-pulse"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                509,
+                914,
+                3,
+                130
+              ]
+            },
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                512,
+                1112,
+                2,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-07",
+            "kind": "front",
+            "thinSideScreen": true,
+            "polygon": [
+              [
+                380,
+                1280
+              ],
+              [
+                383,
+                1280
+              ],
+              [
+                383,
+                1410
+              ],
+              [
+                380,
+                1410
+              ]
+            ],
+            "led": [
+              377,
+              1457
+            ],
+            "key": "idle:true:false:0:0|idle:false:false:0:0.45",
+            "styles": [
+              "sleep-dark",
+              "sleep-dark"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                380,
+                1280,
+                3,
+                130
+              ]
+            },
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                377,
+                1457,
+                2,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-08",
+            "kind": "front",
+            "thinSideScreen": true,
+            "polygon": [
+              [
+                509,
+                1280
+              ],
+              [
+                512,
+                1280
+              ],
+              [
+                512,
+                1410
+              ],
+              [
+                509,
+                1410
+              ]
+            ],
+            "led": [
+              512,
+              1472
+            ],
+            "key": "writing:true:false:1:0|writing:false:false:0:0.8",
+            "styles": [
+              "document-cursor",
+              "document-cursor"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                509,
+                1280,
+                3,
+                130
+              ]
+            },
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                512,
+                1472,
+                2,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-09",
+            "kind": "back",
+            "thinSideScreen": false,
+            "polygon": [],
+            "led": [
+              426,
+              348,
+              6,
+              6
+            ],
+            "key": "researching:false:false:0:0.8",
+            "styles": [
+              "search-scan"
+            ]
+          },
+          "components": [
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                426,
+                348,
+                6,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-10",
+            "kind": "back",
+            "thinSideScreen": false,
+            "polygon": [],
+            "led": [
+              801,
+              348,
+              6,
+              6
+            ],
+            "key": "executing:false:false:0:0.8",
+            "styles": [
+              "terminal-lines"
+            ]
+          },
+          "components": [
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                801,
+                348,
+                6,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-11",
+            "kind": "back",
+            "thinSideScreen": false,
+            "polygon": [],
+            "led": [
+              1198,
+              348,
+              6,
+              6
+            ],
+            "key": "syncing:false:false:0:0.8",
+            "styles": [
+              "sync-blocks"
+            ]
+          },
+          "components": [
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                1198,
+                348,
+                6,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-12",
+            "kind": "back",
+            "thinSideScreen": false,
+            "polygon": [],
+            "led": [
+              1574,
+              348,
+              6,
+              6
+            ],
+            "key": "error:false:false:0:0.77",
+            "styles": [
+              "soft-double-pulse"
+            ]
+          },
+          "components": [
+            {
+              "visible": false,
+              "led": true,
+              "bounds": [
+                1574,
+                348,
+                6,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-13",
+            "kind": "front",
+            "thinSideScreen": false,
+            "polygon": [
+              [
+                195,
+                457
+              ],
+              [
+                422,
+                457
+              ],
+              [
+                422,
+                516
+              ],
+              [
+                195,
+                516
+              ]
+            ],
+            "led": null,
+            "key": "idle:true:false:0:0",
+            "styles": [
+              "sleep-dark"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                195,
+                457,
+                227,
+                59
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-14",
+            "kind": "front",
+            "thinSideScreen": false,
+            "polygon": [
+              [
+                582,
+                457
+              ],
+              [
+                808,
+                457
+              ],
+              [
+                808,
+                516
+              ],
+              [
+                582,
+                516
+              ]
+            ],
+            "led": null,
+            "key": "writing:true:false:1:0",
+            "styles": [
+              "document-cursor"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                582,
+                457,
+                226,
+                59
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-15",
+            "kind": "front",
+            "thinSideScreen": false,
+            "polygon": [
+              [
+                969,
+                457
+              ],
+              [
+                1195,
+                457
+              ],
+              [
+                1195,
+                516
+              ],
+              [
+                969,
+                516
+              ]
+            ],
+            "led": null,
+            "key": "researching:true:false:3:0",
+            "styles": [
+              "search-scan"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                969,
+                457,
+                226,
+                59
+              ]
+            }
+          ]
+        },
+        {
+          "snapshot": {
+            "seatId": "desk-16",
+            "kind": "front",
+            "thinSideScreen": false,
+            "polygon": [
+              [
+                1355,
+                457
+              ],
+              [
+                1582,
+                457
+              ],
+              [
+                1582,
+                516
+              ],
+              [
+                1355,
+                516
+              ]
+            ],
+            "led": null,
+            "key": "executing:true:false:1:1:0",
+            "styles": [
+              "terminal-lines"
+            ]
+          },
+          "components": [
+            {
+              "visible": true,
+              "led": false,
+              "bounds": [
+                1355,
+                457,
+                227,
+                59
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Each screen displays six different business-state patterns, all clipped to glass/LED",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-01",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-02",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-03",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-04",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-05",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-06",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-07",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-08",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-09",
+          "kind": "back",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-10",
+          "kind": "back",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-11",
+          "kind": "back",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-12",
+          "kind": "back",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-13",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-14",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-15",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        },
+        {
+          "id": "desk-16",
+          "kind": "front",
+          "distinct": 6,
+          "escaped": 0
+        }
+      ]
+    },
+    {
+      "name": "Character replacement and screen configuration failure are atomic and keep chair-only composition",
+      "pass": true,
+      "evidence": {
+        "playerType": "ConnectedSeatedPlayer",
+        "rejectedInvalidScreen": true,
+        "bodyUnchanged": true
+      }
+    },
+    {
+      "name": "All 16 seats accept all four cardinal directions and six states without adding old desks",
+      "pass": true,
+      "evidence": {
+        "combinations": 384,
+        "allFourDirections": true,
+        "oldDesksAdded": false
+      }
+    },
+    {
+      "name": "Every original role, ID, room and server remains unchanged",
+      "pass": true,
+      "evidence": {
+        "seats": 16,
+        "rooms": 8,
+        "unchanged": true
+      }
+    }
+  ],
+  "scope": "Actual browser Canvas2D/WebGL candidate. All mutations page-local."
+}

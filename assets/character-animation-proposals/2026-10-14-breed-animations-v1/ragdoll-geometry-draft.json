@@ -1,0 +1,86 @@
+{
+  "up": {
+    "poseAnchor": [
+      96,
+      174
+    ],
+    "headAnchor": [
+      96,
+      15
+    ],
+    "scale": 0.6,
+    "faceVisible": false
+  },
+  "down": {
+    "poseAnchor": [
+      96,
+      174
+    ],
+    "headAnchor": [
+      96,
+      13
+    ],
+    "scale": 0.5,
+    "faceVisible": true,
+    "faceRect": [
+      45,
+      54,
+      102,
+      58
+    ],
+    "faceClipEllipse": [
+      96,
+      83,
+      51,
+      29
+    ]
+  },
+  "left": {
+    "poseAnchor": [
+      96,
+      174
+    ],
+    "headAnchor": [
+      81,
+      13
+    ],
+    "scale": 0.6,
+    "faceVisible": true,
+    "faceRect": [
+      25,
+      54,
+      86,
+      58
+    ],
+    "faceClipEllipse": [
+      66,
+      83,
+      43,
+      29
+    ]
+  },
+  "right": {
+    "poseAnchor": [
+      96,
+      174
+    ],
+    "headAnchor": [
+      112,
+      13
+    ],
+    "scale": 0.6,
+    "faceVisible": true,
+    "faceRect": [
+      81,
+      54,
+      86,
+      58
+    ],
+    "faceClipEllipse": [
+      124,
+      83,
+      43,
+      29
+    ]
+  }
+}

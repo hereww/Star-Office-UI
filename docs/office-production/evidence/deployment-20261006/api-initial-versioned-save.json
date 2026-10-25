@@ -1,0 +1,102 @@
+{
+  "captured_at_utc": "2026-10-06T14:09:08Z",
+  "time_zone": "Asia/Shanghai",
+  "scope": "Actual TLS/CSRF/config-persistence checks. One same-content config version created; no visual/binding change. No secret/user-detail output.",
+  "checks": [
+    {
+      "name": "unlogged admin config denied",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "unlogged legacy state denied",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "employee HTTP cannot mutate",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "employee legacy route not available",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "local fixture directory not public",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "HTTPS anonymous session + CSRF",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "cookie secure/http-only/Lax and compatibility root path",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "independent admin credential login",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "authenticated config read",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "missing CSRF rejected",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "cross-origin authenticated save rejected",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "same-content versioned save succeeds",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "saved config exact GET readback",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "save did not change visual settings or binding data",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "stale expected version returns409",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "actual four-user diagnostics scope",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "session logout/revocation",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "logged-out session cannot read config",
+      "pass": true,
+      "evidence": null
+    }
+  ],
+  "passed": 18,
+  "config_version_before": 1,
+  "config_version_after": 2,
+  "credential_expires_at": "2026-11-05T05:33:20.349268Z",
+  "ssl_trust": "explicit office public CA, certificate/IP verified; system trust unchanged"
+}

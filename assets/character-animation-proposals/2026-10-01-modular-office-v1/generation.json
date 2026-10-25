@@ -1,0 +1,52 @@
+{
+  "created": "2026-10-01",
+  "tool": "built-in imagegen",
+  "status": "candidate_with_known_hand_contact_issue",
+  "production_ready": false,
+  "runtime_integrated": false,
+  "direction": "down",
+  "cameraAngleDegreesTarget": 20,
+  "cameraAngleVerified": false,
+  "workstation": {
+    "generation_source": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_KXsT9czSaZGqux5grD9Z9nj4.png",
+    "saved_original": "source/workstation-layers-original.png",
+    "prompt": "source/workstation-prompt.txt",
+    "grid": [
+      2,
+      1
+    ],
+    "layers": [
+      "rear-chair",
+      "front-desk-keyboard-monitor"
+    ],
+    "animated": false,
+    "reference": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.agents/skills/star-office-character-animation/assets/orange-cat-reference.png"
+  },
+  "character": {
+    "generation_source": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_wbIGFI4Leq4rE3pGKALgIsCA.png",
+    "saved_original": "source/orange-cat-working-original.png",
+    "prompt": "source/character-prompt.txt",
+    "grid": [
+      4,
+      3
+    ],
+    "frame_count": 12,
+    "fps": 12,
+    "character_only": true,
+    "references": [
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.agents/skills/star-office-character-animation/assets/orange-cat-reference.png",
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-modular-office-v1/media/workstation-reference.png"
+    ],
+    "known_issues": [
+      "typing paw contact absent or concealed",
+      "small silhouette variation among frames"
+    ]
+  },
+  "edits": [
+    "equal-cell-extraction",
+    "whole-cell-nearest-resize",
+    "one-asset-level-pose-anchor-scale-config",
+    "shared-static-occlusion-zones"
+  ],
+  "no_individual_frame_repair": true
+}

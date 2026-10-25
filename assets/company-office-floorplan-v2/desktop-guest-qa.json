@@ -1,0 +1,41 @@
+{
+  "canvas": [
+    766,
+    760
+  ],
+  "guests": [
+    {
+      "depth": 1560,
+      "id": "floorplan_qa_work",
+      "position": [
+        1120,
+        1560
+      ],
+      "scale": 2.5
+    },
+    {
+      "depth": 2180,
+      "id": "floorplan_qa_rest",
+      "position": [
+        868,
+        2180
+      ],
+      "scale": 2.5
+    },
+    {
+      "depth": 2420,
+      "id": "floorplan_qa_error",
+      "position": [
+        868,
+        2420
+      ],
+      "scale": 2.5
+    }
+  ],
+  "horizontalOverflow": false,
+  "view": "workstation",
+  "viewport": [
+    1366,
+    900
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "capturedAt": "2026-10-02T22:11:12.555Z",
+  "viewport": [
+    3840,
+    2160
+  ],
+  "source": "Actual DirectionalSeatedPlayer Canvas2D; no bitmap editing or re-sampling after screenshot",
+  "errors": [],
+  "right": {
+    "id": "orange-tabby-right-repair-v4-aligned",
+    "direction": "right",
+    "base": "media/character-right/repair-v4-aligned/base.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      112,
+      174
+    ],
+    "headAnchor": [
+      110,
+      8
+    ],
+    "scale": 0.6,
+    "faceRect": [
+      84,
+      54,
+      90,
+      58
+    ],
+    "faceClipEllipse": [
+      139,
+      82,
+      47,
+      36
+    ],
+    "faceFrameSize": [
+      90,
+      58
+    ],
+    "faceVisible": true,
+    "actions": {
+      "working": {
+        "face": "media/character-right/repair-v4-aligned/face-working.png",
+        "faceClockFrames": 60,
+        "label": "工作 · 专注表情"
+      },
+      "idle": {
+        "face": "media/character-right/repair-v4-aligned/face-idle.png",
+        "faceClockFrames": 36,
+        "label": "待命 · 仰脸闭眼张嘴熟睡"
+      },
+      "syncing": {
+        "face": "media/character-right/repair-v4-aligned/face-syncing.png",
+        "faceClockFrames": 60,
+        "label": "同步 · 耐心等待"
+      },
+      "error": {
+        "face": "media/character-right/repair-v4-aligned/face-error.png",
+        "faceClockFrames": 12,
+        "label": "出错 · 迷糊旋涡眼"
+      }
+    }
+  },
+  "rows": [
+    {
+      "state": "writing",
+      "clock": 60,
+      "uniqueFrames": 12
+    },
+    {
+      "state": "idle",
+      "clock": 36,
+      "uniqueFrames": 12
+    },
+    {
+      "state": "syncing",
+      "clock": 60,
+      "uniqueFrames": 12
+    },
+    {
+      "state": "error",
+      "clock": 12,
+      "uniqueFrames": 12
+    }
+  ]
+}

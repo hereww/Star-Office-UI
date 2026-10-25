@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 3,
+  "assetPack": "company-office-reference-v3-character-right-repair-v3-idle-mouth",
+  "createdOn": "2026-10-02",
+  "status": "idle_mouth_mask_repaired_ready_for_review",
+  "targetedRepairCompleted": true,
+  "visualApproved": false,
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "humanApprovalRequired": true,
+  "integrationApprovalRequired": true,
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "faceClockFrames": 60,
+  "urlRoot": "frontend/company-office/reference-v3/",
+  "animationMode": "expression-only",
+  "character": {
+    "id": "orange-tabby-right-neutral-repair-v2",
+    "direction": "right",
+    "base": "media/character-right/repair-v2/base-neutral.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      112,
+      174
+    ],
+    "headAnchor": [
+      131,
+      89
+    ],
+    "scale": 0.6,
+    "faceRect": [
+      86,
+      60,
+      90,
+      58
+    ],
+    "faceClipEllipse": [
+      131,
+      89,
+      45,
+      29
+    ],
+    "faceFrameSize": [
+      90,
+      58
+    ],
+    "faceVisible": true,
+    "actions": {
+      "working": {
+        "face": "media/character-right/repair-v2/face-working.png",
+        "label": "工作 · 专注表情",
+        "faceClockFrames": 60
+      },
+      "idle": {
+        "face": "media/character-right/repair-v3-idle-mouth/face-idle.png",
+        "label": "待命 · 仰脸闭眼张嘴熟睡",
+        "faceClockFrames": 36
+      },
+      "syncing": {
+        "face": "media/character-right/repair-v2/face-syncing.png",
+        "label": "同步 · 耐心等待",
+        "faceClockFrames": 60
+      },
+      "error": {
+        "face": "media/character-right/repair-v2/face-error.png",
+        "label": "出错 · 迷糊旋涡眼",
+        "faceClockFrames": 12
+      }
+    }
+  },
+  "businessStateToAction": {
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "idle": "idle",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "repair": {
+    "scope": "idle mouth alpha mask only",
+    "newImageToolCalls": 0,
+    "source": "Existing face-idle-candidate.png at unchanged coordinates",
+    "previousTrim": "repair-v2/face-idle.png",
+    "previousManifest": "media/character-right/repair-v2/manifest.json",
+    "sharedMouthRoi": [
+      50,
+      12,
+      24,
+      42
+    ],
+    "alphaChange": "Union v2 mask with source dark mouth and pale muzzle pixels only, clipped by original shared safe interior/ellipse.",
+    "neutralBaseChanged": false,
+    "otherActionsChanged": false,
+    "outlineChanged": false,
+    "perFrameTranslation": false,
+    "codeDrawnFeatures": false
+  },
+  "qa": {
+    "idleUniqueFrames": 12,
+    "bodyOutsideFaceRectChangedPixelsMax": 0,
+    "outlineRgbaChangedPixelsMax": 0,
+    "frameChangesOutsideSharedMouthRoiMax": 0,
+    "alphaOccupancyChangedPixelsMax": 0,
+    "visibleOpenMouthInEveryFrameInspected": true,
+    "finalVisualApproval": false,
+    "protectedPreviousFilesUnchanged": true
+  },
+  "noHandsInterpretation": "No visible typing hands and no body animation in the final workstation composite. Static bare-sprite feet are allowed; table occlusion must be checked by integration.",
+  "handoff": {
+    "contactSheet": "qa/contact-idle-12-2x.png",
+    "mouthCloseup": "qa/mouth-idle-12-12x.png",
+    "sourceOldNewComparison": "qa/source-v2-v3-comparison-6x.png",
+    "report": "qa/report.json",
+    "rowOrder": [
+      "idle only"
+    ],
+    "columns": "4x3 row-major frames 0..11"
+  },
+  "scopeNotes": [
+    "Only repair-v3-idle-mouth directories in the two permitted character-right roots were written.",
+    "Only idle.face URL differs in character action configuration; neutral base, working/syncing/error and anchors are identical to repair-v2.",
+    "All v1/v2 candidates, manifests, scripts and frozen templates preserved; no UI/runtime integration.",
+    "No spiral QA or image regeneration performed in this repair."
+  ]
+}

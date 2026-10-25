@@ -1,0 +1,26 @@
+[Unit]
+Description=Star Office dedicated LAN-only ingress
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+Type=forking
+PIDFile=/run/star-office-ingress/nginx.pid
+RuntimeDirectory=star-office-ingress
+RuntimeDirectoryMode=0750
+ExecStartPre=/www/server/nginx/sbin/nginx -t -c /opt/star-office-ui/ingress/nginx.conf
+ExecStart=/www/server/nginx/sbin/nginx -c /opt/star-office-ui/ingress/nginx.conf
+ExecReload=/www/server/nginx/sbin/nginx -s reload -c /opt/star-office-ui/ingress/nginx.conf
+ExecStop=/bin/kill -s QUIT $MAINPID
+KillSignal=SIGQUIT
+TimeoutStopSec=30
+Restart=on-failure
+RestartSec=5s
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/log/star-office-ingress /var/cache/star-office-ingress /run/star-office-ingress
+
+[Install]
+WantedBy=multi-user.target

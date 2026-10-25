@@ -1,0 +1,494 @@
+{
+  "checkedAt": "2026-10-07T04:47:21.290Z",
+  "responses": [
+    {
+      "url": "http://192.168.100.221:19000/",
+      "status": 200,
+      "type": "Document"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/bootstrap.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/office.css",
+      "status": 200,
+      "type": "Stylesheet"
+    },
+    {
+      "url": "http://192.168.100.221:19000/favicon.ico",
+      "status": 404,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/app.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/codec.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/transport.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/model.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/employee.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/map-loader.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/dom.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/render-quality.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v5/runtime.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v5/screen-overlay.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v5/seated-player.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/directional-player.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/seated-compositor.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v5/bubble-layout.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v5/furniture-contract.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/runtime.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/screen-effects.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/vendor/phaser-3.80.1.min.js",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v5/assets.json",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v5/layout.json",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/assets.json",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/media/vertical/manifest.json",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/media/horizontal/manifest.json",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/media/vertical/connected-vertical-eight-seats.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/media/horizontal/desk-bank-horizontal.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/furniture/right-back.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/furniture/right-front.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-right/repair-v4-aligned/face-working.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-right/repair-v4-aligned/base.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-right/repair-v4-aligned/face-idle.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-right/repair-v4-aligned/face-syncing.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/furniture/left-back.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-right/repair-v4-aligned/face-error.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/furniture/left-front.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-left/repair-v2/character-base.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-left/repair-v2/face-working.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-left/repair-v2/face-idle.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-left/repair-v2/face-syncing.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-left/repair-v2/face-error.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/furniture/down-back.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/media/character-base.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/furniture/down-front.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/media/face-idle-sleep.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/media/face-working.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/media/face-syncing.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/media/face-error-dizzy.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/furniture/up-back.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/furniture/up-front.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/character-up/base.png",
+      "status": 200,
+      "type": "Image"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v5/telemetry-adapter.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/telemetry-adapter.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/office/bubble-status.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/furniture-contract.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/runtime.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/seated-player.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/bubble-layout.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/connected-v4/screen-overlay.mjs",
+      "status": 200,
+      "type": "Script"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/media/server-rack.png",
+      "status": 200,
+      "type": "XHR"
+    },
+    {
+      "url": "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/company-office/reference-v3/office-background-layered.png",
+      "status": 200,
+      "type": "XHR"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    },
+    {
+      "url": "http://192.168.100.221:19000/api/office/snapshot",
+      "status": 200,
+      "type": "Fetch"
+    }
+  ],
+  "failures": [],
+  "applicationWarningsOrErrors": [],
+  "hasMore": false,
+  "truncated": false
+}

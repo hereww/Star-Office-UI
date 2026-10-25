@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "method": "lossless-native-canvas-same-source-compositor",
+  "checkedOfficeFrames": 72,
+  "states": [
+    {
+      "state": "idle",
+      "action": "idle",
+      "frames": 12,
+      "distinctFaceImages": 12
+    },
+    {
+      "state": "writing",
+      "action": "working",
+      "frames": 12,
+      "distinctFaceImages": 12
+    },
+    {
+      "state": "researching",
+      "action": "working",
+      "frames": 12,
+      "distinctFaceImages": 12
+    },
+    {
+      "state": "executing",
+      "action": "working",
+      "frames": 12,
+      "distinctFaceImages": 12
+    },
+    {
+      "state": "syncing",
+      "action": "syncing",
+      "frames": 12,
+      "distinctFaceImages": 12
+    },
+    {
+      "state": "error",
+      "action": "error",
+      "frames": 12,
+      "distinctFaceImages": 12
+    }
+  ],
+  "bodyAndFurnitureFixedOutsideFace": true,
+  "handsRendered": false,
+  "walkDirections": [
+    {
+      "direction": "up",
+      "uniquePoses": 2,
+      "trueAlpha": true
+    },
+    {
+      "direction": "down",
+      "uniquePoses": 2,
+      "trueAlpha": true
+    },
+    {
+      "direction": "left",
+      "uniquePoses": 2,
+      "trueAlpha": true
+    },
+    {
+      "direction": "right",
+      "uniquePoses": 2,
+      "trueAlpha": true
+    }
+  ],
+  "walkingFramesPerDirection": 2,
+  "full12FrameWalkAvailable": false,
+  "browserScreenshotPixelsNotUsedForExactHash": true
+}

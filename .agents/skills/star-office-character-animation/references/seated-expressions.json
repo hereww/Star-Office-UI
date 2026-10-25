@@ -1,0 +1,31 @@
+{
+  "common_prompt": "Create one pixel-art facial-expression sprite sheet with EXACTLY 12 frames, 4 columns by 3 rows, ordered left to right then top to bottom. The first attached image is the actual face-region crop of a FIXED seated character; the second is its character identity master. Draw ONLY the face patch, including the existing cheek/face fur fill and facial features. Match the reference species, palette, facial identity and pixel style; apply the requested expression instead of retaining normal eyes. All frames of each action keep the same face-region bounds, nose position within that action, scale and facing: straight-on down/front, no diagonal or camera rotation. Only facial features may vary; the sleep action may depict a fixed tilted-up facial plane, with no physical head transform or body movement. No head contour, ears, neck, body, hands, paws, typing gesture, desk, keyboard, monitor, text or effects. Real alpha transparency outside the patch. In the app, one static seated body and a static workstation remain unchanged; this atlas is clipped into its fixed face area. First and last expressions must join gently. Keep the expression recognizable and calm; no shifting the face or large stretching.",
+  "actions": {
+    "working": {
+      "label": "工作 · 专注表情",
+      "prompt": "Attentive, focused expression. A gentle natural blink around frames 5-6 then return to focused open eyes. No typing hands, no head movement."
+    },
+    "idle": {
+      "label": "待命 · 仰脸张嘴熟睡",
+      "prompt": "Deep sleep with the facial plane tipped backward/upward: chin lifted and nose higher, closed curved eyelids in every frame, prominent dark oval snoring mouth, broad underside of the lower face/chin (or muzzle if present in the reference) visible. Not a smile or a normal blink. Keep this tilted-up attitude fixed across all 12 frames; only the open mouth gently grows and shrinks for a heavy snore. No head bobbing, body breathing deformation, paws, text or zzz symbols.",
+      "face_clock_frames": 36
+    },
+    "syncing": {
+      "label": "同步 · 耐心等待",
+      "prompt": "Patient waiting expression: alert but relaxed eyes and slightly thoughtful eyebrows, one gentle blink. No looking away by turning the head or rocking."
+    },
+    "error": {
+      "label": "出错 · 迷糊旋涡眼",
+      "prompt": "Dazed and confused: both eyes are clearly readable thick dark spirals on light sclera instead of normal pupils. Advance the internal spiral orientation clockwise across the 12 frames for a continuous spinning-eyes loop. Eye centers and outer bounds, nose, muzzle, small confused mouth and cheeks stay fixed. No whole head rotation, warning icons, body flinch or hands.",
+      "face_clock_frames": 12
+    }
+  },
+  "state_map": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  }
+}

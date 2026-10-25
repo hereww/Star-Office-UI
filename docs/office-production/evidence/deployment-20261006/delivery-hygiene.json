@@ -1,0 +1,8 @@
+{
+  "checked_artifact_and_document_files": 288,
+  "known_active_credential_findings": 0,
+  "private_key_header_findings": 0,
+  "secrets_read_only_in_memory_not_logged": true,
+  "source_sha_matches_current_workspace": 96,
+  "git_diff_check_passed": true
+}

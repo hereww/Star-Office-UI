@@ -1,0 +1,16 @@
+{
+  "changed_sources": [
+    "backend/office_contract.py",
+    "frontend/office/codec.mjs",
+    "frontend/office/employee.mjs",
+    "frontend/office/fullscreen-hud.mjs",
+    "frontend/office/model.mjs",
+    "frontend/office/office.css"
+  ],
+  "added_sources": [
+    "frontend/office/active-models.mjs"
+  ],
+  "removed_sources": [],
+  "source_file_count": 181,
+  "protected_images_unchanged": true
+}

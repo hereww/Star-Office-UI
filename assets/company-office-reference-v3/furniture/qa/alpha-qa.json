@@ -1,0 +1,772 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "generatedArtwork": true,
+  "codePaintedFurniture": false,
+  "directions": {
+    "up": {
+      "passed": true,
+      "source": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 1062948,
+        "opaque255Pixels": 1273,
+        "nearOpaque245Pixels": 489106,
+        "partialAlphaPixels": 508295,
+        "transparentFraction": 0.675954,
+        "alphaBBox": [
+          91,
+          53,
+          1194,
+          1200
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "normalized": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 25202,
+        "opaque255Pixels": 81,
+        "nearOpaque245Pixels": 11492,
+        "partialAlphaPixels": 11581,
+        "transparentFraction": 0.683648,
+        "alphaBBox": [
+          31,
+          40,
+          161,
+          169
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "removedAlphaDustPixels": 310,
+      "back": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 27474,
+        "opaque255Pixels": 76,
+        "nearOpaque245Pixels": 9271,
+        "partialAlphaPixels": 9314,
+        "transparentFraction": 0.74528,
+        "alphaBBox": [
+          31,
+          40,
+          161,
+          154
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "front": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 34592,
+        "opaque255Pixels": 5,
+        "nearOpaque245Pixels": 2221,
+        "partialAlphaPixels": 2267,
+        "transparentFraction": 0.938368,
+        "alphaBBox": [
+          68,
+          111,
+          126,
+          169
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "reassembly": {
+        "alphaIdentical": true,
+        "visibleRgbaIdentical": true,
+        "overlapNonzeroPixels": 0
+      },
+      "screen": {
+        "visible": true,
+        "samples": [
+          [
+            95.5,
+            47.0
+          ],
+          [
+            125.0,
+            59.5
+          ],
+          [
+            95.5,
+            72.0
+          ],
+          [
+            66.0,
+            59.5
+          ],
+          [
+            95.5,
+            59.5
+          ]
+        ],
+        "sampleRgba": [
+          [
+            20,
+            44,
+            79,
+            253
+          ],
+          [
+            18,
+            42,
+            78,
+            253
+          ],
+          [
+            16,
+            40,
+            78,
+            253
+          ],
+          [
+            39,
+            67,
+            111,
+            253
+          ],
+          [
+            21,
+            44,
+            81,
+            253
+          ]
+        ],
+        "interiorAndLayerCheckPassed": true,
+        "ledSampleRgba": [
+          [
+            92,
+            86,
+            85,
+            254
+          ],
+          [
+            90,
+            83,
+            82,
+            254
+          ],
+          [
+            90,
+            83,
+            82,
+            254
+          ]
+        ],
+        "ledInsideSolidHousing": true
+      },
+      "sha256": {
+        "source": "e02cf3f6ff8d47c1e48e43572fbc6dabf710aae2fef645d472caee4a8fcc3cc6",
+        "full": "1a96d9c7790324b6ef4ffe1e1a9062faa76cbdf8664890395eee12745fefc57d",
+        "back": "aa0bc73a1682a834bdda46bd338ffc10afe5b03a1fba20c01d9d2eaac5952836",
+        "front": "01c7bbf22a6baaa9ff59d6af065465a935d3d587f678a1f09b257cc16426b437"
+      }
+    },
+    "down": {
+      "passed": true,
+      "source": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 1100565,
+        "opaque255Pixels": 1541,
+        "nearOpaque245Pixels": 451335,
+        "partialAlphaPixels": 470410,
+        "transparentFraction": 0.699875,
+        "alphaBBox": [
+          95,
+          21,
+          1192,
+          1237
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "normalized": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 26159,
+        "opaque255Pixels": 24,
+        "nearOpaque245Pixels": 10580,
+        "partialAlphaPixels": 10681,
+        "transparentFraction": 0.709608,
+        "alphaBBox": [
+          34,
+          34,
+          159,
+          172
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "removedAlphaDustPixels": 395,
+      "back": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 34472,
+        "opaque255Pixels": 14,
+        "nearOpaque245Pixels": 2322,
+        "partialAlphaPixels": 2378,
+        "transparentFraction": 0.935113,
+        "alphaBBox": [
+          69,
+          34,
+          127,
+          86
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "front": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 28551,
+        "opaque255Pixels": 10,
+        "nearOpaque245Pixels": 8258,
+        "partialAlphaPixels": 8303,
+        "transparentFraction": 0.774495,
+        "alphaBBox": [
+          34,
+          86,
+          159,
+          172
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "reassembly": {
+        "alphaIdentical": true,
+        "visibleRgbaIdentical": true,
+        "overlapNonzeroPixels": 0
+      },
+      "screen": {
+        "visible": false,
+        "samples": [],
+        "sampleRgba": [],
+        "interiorAndLayerCheckPassed": true,
+        "ledSampleRgba": [
+          [
+            65,
+            205,
+            0,
+            253
+          ],
+          [
+            68,
+            197,
+            15,
+            253
+          ]
+        ],
+        "ledInsideSolidHousing": true
+      },
+      "sha256": {
+        "source": "c21415a877fd3a8587aa72dfdf6aff2252e0b96dd9ac70caf756d94d5cd95cb8",
+        "full": "622806bf6926962f7b8bdd5aacb9c1e4fdee5ba3949f9ad32c68d807db4650e9",
+        "back": "c33558d6fda8eb933c76da22f5d4f52d6e3e81e4f3c912bb48263cf0ade3ea2d",
+        "front": "5183223b81d5d433aed4b5fd6965fd94d37b0ead53cbb79fd614f7fd332261f2"
+      }
+    },
+    "left": {
+      "passed": true,
+      "source": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 1242648,
+        "opaque255Pixels": 1797,
+        "nearOpaque245Pixels": 303455,
+        "partialAlphaPixels": 328071,
+        "transparentFraction": 0.790229,
+        "alphaBBox": [
+          59,
+          53,
+          1210,
+          1212
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "normalized": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 29536,
+        "opaque255Pixels": 35,
+        "nearOpaque245Pixels": 7095,
+        "partialAlphaPixels": 7293,
+        "transparentFraction": 0.801215,
+        "alphaBBox": [
+          37,
+          39,
+          160,
+          162
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "removedAlphaDustPixels": 408,
+      "back": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 31595,
+        "opaque255Pixels": 20,
+        "nearOpaque245Pixels": 5086,
+        "partialAlphaPixels": 5249,
+        "transparentFraction": 0.857069,
+        "alphaBBox": [
+          37,
+          39,
+          160,
+          162
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "front": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 34805,
+        "opaque255Pixels": 15,
+        "nearOpaque245Pixels": 2009,
+        "partialAlphaPixels": 2044,
+        "transparentFraction": 0.944146,
+        "alphaBBox": [
+          37,
+          116,
+          147,
+          161
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "reassembly": {
+        "alphaIdentical": true,
+        "visibleRgbaIdentical": true,
+        "overlapNonzeroPixels": 0
+      },
+      "screen": {
+        "visible": true,
+        "samples": [
+          [
+            57.5,
+            54.5
+          ],
+          [
+            59.5,
+            63.5
+          ],
+          [
+            57.5,
+            81.0
+          ],
+          [
+            55.5,
+            72.0
+          ],
+          [
+            57.5,
+            67.75
+          ]
+        ],
+        "sampleRgba": [
+          [
+            39,
+            67,
+            106,
+            253
+          ],
+          [
+            15,
+            41,
+            75,
+            253
+          ],
+          [
+            16,
+            41,
+            77,
+            254
+          ],
+          [
+            19,
+            43,
+            82,
+            253
+          ],
+          [
+            18,
+            42,
+            77,
+            253
+          ]
+        ],
+        "interiorAndLayerCheckPassed": true,
+        "ledSampleRgba": [
+          [
+            87,
+            84,
+            87,
+            253
+          ]
+        ],
+        "ledInsideSolidHousing": true
+      },
+      "sha256": {
+        "source": "f3f0b3b261986bc3eeeb668dfa849a9cdb50bfbc1b9aaef7ec8163fe6a6eebde",
+        "full": "854532d65171c413eb4fc3ba7c5d3c578e43cc73713459c69181cb4d16981628",
+        "back": "9382971db49f470adbed881446f6d98719c9fbfe1f558baa7307ab6e61e95da6",
+        "front": "aa2cf4ad019e825fe03aacff0de8bb5eb295dd9614d9292c7e25eca78bd1137a"
+      }
+    },
+    "right": {
+      "passed": true,
+      "source": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 1160012,
+        "opaque255Pixels": 1334,
+        "nearOpaque245Pixels": 382685,
+        "partialAlphaPixels": 411170,
+        "transparentFraction": 0.737679,
+        "alphaBBox": [
+          19,
+          52,
+          1154,
+          1230
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "normalized": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 27631,
+        "opaque255Pixels": 26,
+        "nearOpaque245Pixels": 8985,
+        "partialAlphaPixels": 9207,
+        "transparentFraction": 0.749539,
+        "alphaBBox": [
+          30,
+          31,
+          174,
+          169
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "removedAlphaDustPixels": 409,
+      "back": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 30208,
+        "opaque255Pixels": 23,
+        "nearOpaque245Pixels": 6475,
+        "partialAlphaPixels": 6633,
+        "transparentFraction": 0.819444,
+        "alphaBBox": [
+          30,
+          31,
+          174,
+          169
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "front": {
+        "size": [
+          192,
+          192
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 34287,
+        "opaque255Pixels": 3,
+        "nearOpaque245Pixels": 2510,
+        "partialAlphaPixels": 2574,
+        "transparentFraction": 0.930094,
+        "alphaBBox": [
+          48,
+          117,
+          174,
+          166
+        ],
+        "cornersAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "borderMaxAlpha": 0
+      },
+      "reassembly": {
+        "alphaIdentical": true,
+        "visibleRgbaIdentical": true,
+        "overlapNonzeroPixels": 0
+      },
+      "screen": {
+        "visible": true,
+        "samples": [
+          [
+            145.0,
+            44.25
+          ],
+          [
+            147.5,
+            63.75
+          ],
+          [
+            145.0,
+            74.0
+          ],
+          [
+            142.5,
+            54.5
+          ],
+          [
+            145.0,
+            59.125
+          ]
+        ],
+        "sampleRgba": [
+          [
+            29,
+            73,
+            123,
+            253
+          ],
+          [
+            19,
+            59,
+            103,
+            253
+          ],
+          [
+            19,
+            57,
+            102,
+            253
+          ],
+          [
+            17,
+            36,
+            53,
+            253
+          ],
+          [
+            28,
+            68,
+            115,
+            253
+          ]
+        ],
+        "interiorAndLayerCheckPassed": true,
+        "ledSampleRgba": [
+          [
+            26,
+            24,
+            25,
+            253
+          ]
+        ],
+        "ledInsideSolidHousing": true
+      },
+      "sha256": {
+        "source": "3aa25b1811d9f28f96ce2df3b9fa1d31b2807f72139fa245009d5f329115307b",
+        "full": "58c66a1fdbca1ca27dc167fcc23d9ae7277be672ea10365f48096c219cef9e8b",
+        "back": "9ed58a0e72d1fbd1d572f29f6a94be0b2f63f2f7a23c3201f8b51a1a28b8cd60",
+        "front": "a2fa38ebf3258b805857c7447b4ceea5327d175a08b8a44c56c940b182ad44f0"
+      }
+    }
+  },
+  "independentSideImages": {
+    "differentSourceHashes": true,
+    "notExactHorizontalMirror": true,
+    "mirrorComparisonOnly": true,
+    "rgbNeverRepainted": true
+  }
+}

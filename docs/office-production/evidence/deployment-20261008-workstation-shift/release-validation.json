@@ -1,0 +1,10 @@
+{
+  "release_id": "office-v5-layout-shift-06",
+  "source_files": 97,
+  "changed_source_files": [
+    "frontend/company-office/connected-v5/layout.json"
+  ],
+  "unchanged_image_assets": 28,
+  "private_material_findings": 0,
+  "archive_sha256": "270d2d83e9f40749d18122214070724a603229ec24a4b5efc59d6ecc5085e341"
+}

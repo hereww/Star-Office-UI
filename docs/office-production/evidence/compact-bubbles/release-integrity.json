@@ -1,0 +1,15 @@
+{
+  "release_id": "office-20261004-v1-rc7",
+  "archive_sha256": "c58796b19bc13a7186c06cf5b08b5bda57155ffa5e0a4b78cfd94ef0644947d0",
+  "adapter_sha256": "8c72022c7fb13fbf937185b0f9661c39e3b5909f416f3a63b227948b43b834d0",
+  "source_files": 85,
+  "payload_files": 155,
+  "source_changes_since_rc6": [
+    "deploy/office/README.md"
+  ],
+  "rc6_archive_unchanged": true,
+  "local_package_verification": "passed",
+  "browser_checks": 24,
+  "real_sub2api_collector": "not connected; dedicated credential not issued",
+  "remote_deployment": false
+}

@@ -1,0 +1,27 @@
+{
+  "apiState": "idle",
+  "bodyFixed": true,
+  "fallbacks": [
+    "?scene=v1",
+    "?scene=legacy"
+  ],
+  "handsRendered": false,
+  "horizontalOverflow": false,
+  "mapSize": [
+    2048,
+    2816
+  ],
+  "openSeats": 33,
+  "privateSeats": 3,
+  "ready": true,
+  "roomCount": 8,
+  "scene": "company-office-floorplan-v2",
+  "state": "idle",
+  "touch": 0,
+  "view": "overview",
+  "viewport": [
+    738,
+    877
+  ],
+  "visitors": []
+}

@@ -1,0 +1,765 @@
+{
+  "actualBrowserScreenshots": true,
+  "checkedFrames": 48,
+  "faceMaskDerivedFromCompositor": true,
+  "stableOutsideFaceAcrossAllStates": false,
+  "states": [
+    {
+      "state": "writing",
+      "frames": [
+        {
+          "frame": 0,
+          "file": "qa-frames/writing-00.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "b69e8155d662b9c68b2fe29ccc9d0fa8fa745b12d744f4bdb9c00fe8fa01907f",
+          "inside": "6eab99e3aba755c728c3e33a5b5b3e66d47caebdaa157fd8282c3bafdd42318c"
+        },
+        {
+          "frame": 0,
+          "file": "qa-frames/writing-01.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "f207006d4ec4f56ba0d13e31589bf6556c7d4a3be8d1e67d88dcfa66ab268a5c",
+          "inside": "96f2c2c9729fb27f8fe4e1e62a17e1af00ed794bedb34bea1fccd2310824292b"
+        },
+        {
+          "frame": 1,
+          "file": "qa-frames/writing-02.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "d1463cf6fc315708f8da7c227137f20868c9ca1e553291ff9b91af1365229e25",
+          "inside": "f5aaac468727dc0c266e0f10b481acd0c3c63401918a339330645f3eda1ebd09"
+        },
+        {
+          "frame": 2,
+          "file": "qa-frames/writing-03.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "d68237128243fc3f05c8f3181b5f49f679cbc7a848b90b9ad75e6ff210da0a91",
+          "inside": "c977d7cd773c037f08e95b6a1806ee193a27410157c11af5c2032a6c7d7fb292"
+        },
+        {
+          "frame": 3,
+          "file": "qa-frames/writing-04.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "f175417c8929c897feab6b463b82a432df9b858a717b813c5394490eea6de78f",
+          "inside": "9d7ef13ec10b3a365886f78d316bf50ea3629c0724734e2dabf9eb9f0eb7fbf8"
+        },
+        {
+          "frame": 4,
+          "file": "qa-frames/writing-05.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "c3e5d1cd2b7d3dca18f553a2b2774ba355168592645f05206dbfc5f6646fded3",
+          "inside": "25843754e8eb9729bf4258833524c3c4f75f58e91dbb886940baa3949b459313"
+        },
+        {
+          "frame": 5,
+          "file": "qa-frames/writing-06.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "2f94323fe08f90fcca64ab5a5f984c6cc7992675e32fc5178ca14cf4a440b621",
+          "inside": "0396aec8f6380d5d63d3384057ec5a8c420b1968a25c06e982902a8ce9d0f3e4"
+        },
+        {
+          "frame": 6,
+          "file": "qa-frames/writing-07.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "f3ca41602706480e3922cbcb2801f2b11e2de705e12a1f05f2ea801415da85ee",
+          "inside": "bddc63924308346fdf3885cfb3a88bd9a9c702c11df975ba2e4549165c57c303"
+        },
+        {
+          "frame": 7,
+          "file": "qa-frames/writing-08.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "21f9bfac511132714f477fdb3d1fc6f1b843e37665a56558c9ff8a5884d9ae3a",
+          "inside": "aa59e0a9704077cefee7499a6a0cebf300b9d928e0aaf709cce0bd9a687118d5"
+        },
+        {
+          "frame": 8,
+          "file": "qa-frames/writing-09.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "2867c0e71f78c016b11ac656d2a3a0478451c8d80f2a2c4d613cb6ae0faad94c",
+          "inside": "762ed0058955214dba3eac132bb78c7f0d962aff2af282a03112a446127a3f12"
+        },
+        {
+          "frame": 9,
+          "file": "qa-frames/writing-10.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "951ef1d676fe937a9a4da954273882bd3bbb6d3d7bc4824523b46c22269d2adf",
+          "inside": "4e9b2b825367379447d9b7267a7bae0b24639bd86f6a04e94b8b701f89b68847"
+        },
+        {
+          "frame": 10,
+          "file": "qa-frames/writing-11.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "a6f78bc13af9d54d60f936c196d9892ddc42222e387335b97fe5b51b570aa86d",
+          "inside": "2c63d81ac4637bca701bb85c60dfbbc27442383873ab88df1bb8f9e2aaffc466"
+        }
+      ],
+      "stableOutside": false,
+      "distinctFace": 12,
+      "frameIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "state": "idle",
+      "frames": [
+        {
+          "frame": 0,
+          "file": "qa-frames/idle-00.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "abf38d45440834501cbe86843bfac62f51fface1bc497f364e06b77baea1d0d3",
+          "inside": "ef3c8b48b0fef00b4a821a2bd1c3c2ffbd7adafa8a7564a05bcc17f4d60dd761"
+        },
+        {
+          "frame": 1,
+          "file": "qa-frames/idle-01.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "2046191cdf6ad0c883f6522a47bfdcd263a9d05d63052a6e5a6c4f4ee6673e38",
+          "inside": "b1fae0817e7a755aa2f8d79fe52bd1c91683333f46ec9b3c8ca840144eb4b686"
+        },
+        {
+          "frame": 2,
+          "file": "qa-frames/idle-02.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "af178d941e465e5ab23fa78738a90cffdefae4c3b13a50325a32968ea9e6f291",
+          "inside": "0b0d9386bb74bb116e9a72886d665ed09f8883bd554b5d704cbc20f408b68726"
+        },
+        {
+          "frame": 3,
+          "file": "qa-frames/idle-03.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "b71f337c5be923b45930d04fda9f94f6dbff7da257410b3d8cdd6cee3da94de4",
+          "inside": "6cc233bc43c3085fce9f5c335b55e6e88353a49feaaedd42c21bff91e11f31db"
+        },
+        {
+          "frame": 4,
+          "file": "qa-frames/idle-04.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "0d411f1550b47cf9f56ac1844d4a80e48454ec93903a306013c4e39d8d2da2a9",
+          "inside": "c525b3aa02810244b153779561fdef2998c1d8908d12a046facee0cc5ef0f3b3"
+        },
+        {
+          "frame": 5,
+          "file": "qa-frames/idle-05.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "7044572eebea731f9be648d87981e5874c5aeab9c587339caaa80d5b2fbbc184",
+          "inside": "9ec58a3d58ff6c36baff31dcb62fffa17688eca1d00c339beb33647cf60af3ae"
+        },
+        {
+          "frame": 6,
+          "file": "qa-frames/idle-06.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "3c6c551cf25964e6fdab9e4266356076c92e32486d3d962ae9a2b5c945469aea",
+          "inside": "6292cc030dfd891fc0a586f79879cfc2598d39e4ee8d7e213f01cdb921c589fc"
+        },
+        {
+          "frame": 7,
+          "file": "qa-frames/idle-07.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "0f2da390c801d3fc7d4788f9ca373df3b8c9e3e41e583a7fe9e453666e5ccd3c",
+          "inside": "889fde3029f4391dfaad3b21555e94626ec94992c80544dc103f76edb723a610"
+        },
+        {
+          "frame": 8,
+          "file": "qa-frames/idle-08.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "0f43bacee089e48447d9d66a4e8441ab0036042d4ec7c39b6f0fe13db106c356",
+          "inside": "4367421247fdb3b78515eefe6954674992d7ca8d5b486b0355e03008f4935cbe"
+        },
+        {
+          "frame": 9,
+          "file": "qa-frames/idle-09.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "98b6c7baeea2fab6804555d30d9c4ae339c7ddc170ca2c82aff832b30f3492fd",
+          "inside": "7b0d468211232e0746ee594dcab72bfc0d59d18f781c29d5729236788c8f0d68"
+        },
+        {
+          "frame": 10,
+          "file": "qa-frames/idle-10.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "ff2cb129f185915e21757220a1f40d94ec218351bd50de897f2f6fb56223265a",
+          "inside": "c7beab00e552e3d36074c19e79e48b302ef4620bba04e652af5a41693ad6bf34"
+        },
+        {
+          "frame": 11,
+          "file": "qa-frames/idle-11.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "e356909da4968e198dfac1af4ebeec207d2c1902d29aa622215de3f9dcb0e6c9",
+          "inside": "f8d86be67b8757df03ce46ac8b5cb2764fb70ea8d4c0df8a1a47383b64caa34c"
+        }
+      ],
+      "stableOutside": false,
+      "distinctFace": 12,
+      "frameIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "state": "syncing",
+      "frames": [
+        {
+          "frame": 0,
+          "file": "qa-frames/syncing-00.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "f21a1c65163a96c8c298af12292ce24c6f8548633c35d5e2994445559ee11c1c",
+          "inside": "a4161bb3dbf2f26e474c142bdf61f1cc9a4421c5040caece88c2001ed5743298"
+        },
+        {
+          "frame": 1,
+          "file": "qa-frames/syncing-01.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "7530388b810cb0dde1b53177a357039ded9cabf669cc30ad561b4119ccd4279e",
+          "inside": "e9db6ca099f8971c7b80d168393a0cf255cf81da6fc94c73b58cd34522ac30fa"
+        },
+        {
+          "frame": 2,
+          "file": "qa-frames/syncing-02.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "e296cb61ab28a7859dc425b02646d69d9a5c904de803f7fbf6fbeb3c8e0c8c29",
+          "inside": "3654381464b6ecb4a6649ba53dcc9da8a3b5a493c7c8278380c8bd833258b96c"
+        },
+        {
+          "frame": 3,
+          "file": "qa-frames/syncing-03.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "0a27b2c76e6d9597bc42f795c19795e510f4041bc7b0f05c3d0841dcbed6feb3",
+          "inside": "b3c65428561231865b1c5a3bad1cbf52b1849f776fb6f7ce9c69096c86b22b60"
+        },
+        {
+          "frame": 4,
+          "file": "qa-frames/syncing-04.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "bdb2a6fcdc5fc9d38c85da941f034112b41450669a274394eba329f2f787e3b5",
+          "inside": "4a76cb97cd06994a7aa4b92b16b622da54428c4f96f7d6c860203019174e3eb5"
+        },
+        {
+          "frame": 5,
+          "file": "qa-frames/syncing-05.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "4f38ce22b3920ccc866c3df21a9884f7e5e75250b39cfeeaf1afd5d4dddf2e8d",
+          "inside": "2d957902db27efb3b94e7801a00911485009b37642467e04d202200c5521d036"
+        },
+        {
+          "frame": 6,
+          "file": "qa-frames/syncing-06.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "ced2cfd79445583a588fef2acf414ae0250bb551c2c62dacee324d49115ca936",
+          "inside": "f5801e77b9f9844eeb4ab698aca5de30634d8973965407b7a27ac8c4613e7209"
+        },
+        {
+          "frame": 7,
+          "file": "qa-frames/syncing-07.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "e363df18bd7a86bae33a7ec361623a82c096f4abb94a403ddca2753998b1cc06",
+          "inside": "ccb2c52cae4ee4c4df747c337d7e3a52364918efc94ea287ae78f41b4ad02459"
+        },
+        {
+          "frame": 8,
+          "file": "qa-frames/syncing-08.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "48fe52f3185a32366e538970d6409217ec05b39362112e3d6830c6a23ea0201c",
+          "inside": "92370ff1d8b3b533a6e9a7f7e3013cd3341402e2104b75475080da091044d6a2"
+        },
+        {
+          "frame": 9,
+          "file": "qa-frames/syncing-09.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "de5f82e47619a5895b6041699892d227c10d118ad2050b21273648b63d2581c2",
+          "inside": "5c659b3207cf33f31e2f773e95cc2874c258d9aa8ec6f66b3e356c381ada5651"
+        },
+        {
+          "frame": 10,
+          "file": "qa-frames/syncing-10.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "beede2a7402d75ec1d4ae04f6459d7f6d32457aa1d1a04a281e7405a43272b6d",
+          "inside": "6b7895335c6007baca83d1c88fb966492d54f3ced1c172263e5b6a5fdf66c658"
+        },
+        {
+          "frame": 11,
+          "file": "qa-frames/syncing-11.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "232836dcb8fa3e9d8a493a3442f60342f18834a0d0abd70744a611a4e993d88e",
+          "inside": "ab715c615d8c37192ba593b0e9afe36901c49e598c21d1a330fc86e69bdc54ca"
+        }
+      ],
+      "stableOutside": false,
+      "distinctFace": 12,
+      "frameIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "state": "error",
+      "frames": [
+        {
+          "frame": 0,
+          "file": "qa-frames/error-00.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "a40e12e8a465b4fd5a5bd7f76b6e81c111374d674749ffbec056d62cc6755efe",
+          "inside": "ef82de3cd0ffb0792d3d4d3dcec4ce5cf0bc2e629e354d7a8ac8efb1f5728a1b"
+        },
+        {
+          "frame": 1,
+          "file": "qa-frames/error-01.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "276cd9474a303f248b0df5075ead2eac7b08c6d14b5dc91beac6d01f018eeca0",
+          "inside": "795ceb7be0c3e519c0f8058b5f7ce0816630eb4cab6475adf96747bcf65d1ce4"
+        },
+        {
+          "frame": 2,
+          "file": "qa-frames/error-02.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "e7e0f872395fc44d2fdd4bda2cb1a0853e70ce336ef693dd16dce14ff02c6194",
+          "inside": "3e3d972d2d86e47961e9347105e3445a0995d76256d82cb5dfe6286e9be9a238"
+        },
+        {
+          "frame": 3,
+          "file": "qa-frames/error-03.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "8ae911cd800e5614251fae45e2afd479ba44a6afcf8aaceaab0057a86fb3daa3",
+          "inside": "ef9ce30e7b4dca92b80257f0128b9b4f9fc10d9883618daf3eb09c2cc3a896fe"
+        },
+        {
+          "frame": 4,
+          "file": "qa-frames/error-04.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "bc1145bbb47d695d1aa22d0f6a3ca8c27158bca245aa874f4a8e90ab59fe3a3b",
+          "inside": "b9e6d776db230a863bb1f7c77d30425df328d6d0fe735c4962b56411833cb4c6"
+        },
+        {
+          "frame": 5,
+          "file": "qa-frames/error-05.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "3deae744047957db60a36b4b848b42087952df97a777790f4e081c10aa72a012",
+          "inside": "66bfb910edb78dc6924a1f430465fa5c1a0c0b76f6892e50b993b4cc4691f2b0"
+        },
+        {
+          "frame": 6,
+          "file": "qa-frames/error-06.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "9b28dac91cbb71af7c7a39dca0043a6d9799fd941fbecdf4633858ae028209d2",
+          "inside": "8fff012ebf049924d18e348647c86d34cea58e741b0ad58499983580e8d3f361"
+        },
+        {
+          "frame": 7,
+          "file": "qa-frames/error-07.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "b5b187e3ca9c02affbb024899090b63666554c74bb96c913a98dee154e622894",
+          "inside": "c52adf5aafb0f95eba5a4a358b3a18146b23486931e706380f6d03629dff56f6"
+        },
+        {
+          "frame": 8,
+          "file": "qa-frames/error-08.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "0a7b64272d2dd97b1a8ca432c15ddacbd6924396bf3b868a776cfd7d4b7eae39",
+          "inside": "1001aa7915f958a521a1d7becd5512218c8c64791686c6e2b379db17eb7136b2"
+        },
+        {
+          "frame": 9,
+          "file": "qa-frames/error-09.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "dcaf126eaf8491d19d8548eb7a0764364da3e02b734ffc9fa22e838f8fa6c88e",
+          "inside": "a04b88cb65c3f154b3a8c6a2fc5af9625dbaadcef12c58e47bf25e5b6c6bbb55"
+        },
+        {
+          "frame": 10,
+          "file": "qa-frames/error-10.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "dcfac879db837b03fb4f8e8dcdbedb8cd943ded0c59ce85c0bc0c3ad7061558e",
+          "inside": "575609500b729b66d3d6d7b543545c807c69b3889aaf6de11565157db523f8e0"
+        },
+        {
+          "frame": 11,
+          "file": "qa-frames/error-11.png",
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "handsRendered": false,
+          "bodyFixed": true,
+          "outside": "1ae2e27abf21ba04f94a774969c627bdc1c711a699dc050838fd2864b7a465c8",
+          "inside": "bac4eeb83791bddeb06c84595120da8aaa0c9767b14119fd347aef7a73baca50"
+        }
+      ],
+      "stableOutside": false,
+      "distinctFace": 12,
+      "frameIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "exactBrowserPixelComparisonValid": false,
+  "note": "Browser screenshots are lossy JPEG with variable compression; exact hash differences do not prove movement. Exact stability is verified by pixel-qa.json with the same source compositor. Browser screenshots are visual QA evidence only."
+}

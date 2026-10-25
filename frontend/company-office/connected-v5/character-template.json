@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 5,
+  "templateId": "connected-v5-character-template-v1",
+  "scene": "company-office-connected-v5",
+  "animationMode": "full-frame-plus-screen-effects",
+  "sourceExpressionsTemplateId": "approved-office-expressions-v1",
+  "defaultProfileId": "orange-cat-v1",
+  "selectionScope": "global",
+  "referenceAssets": "../reference-v3/assets.json",
+  "playerModule": "./seated-player.mjs",
+  "runtimeModule": "./runtime.mjs",
+  "furnitureMode": "connected-benches",
+  "directions": [
+    "up",
+    "down",
+    "left",
+    "right"
+  ],
+  "businessStateToAction": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "faceClockFrames": {
+    "working": 60,
+    "idle": 36,
+    "syncing": 60,
+    "error": 12
+  },
+  "freeze": {
+    "body": true,
+    "headOutline": true,
+    "ears": true,
+    "tail": true,
+    "poseAnchor": true,
+    "furniture": true,
+    "walking": false,
+    "keyboardInteraction": false,
+    "handsAnimation": false
+  },
+  "screenAnimationContract": {
+    "mode": "screen-only",
+    "activeStates": [
+      "writing",
+      "researching",
+      "executing",
+      "syncing",
+      "error"
+    ],
+    "staticStates": [
+      "idle"
+    ],
+    "fps": 12,
+    "content": "code-editor-search-terminal",
+    "rearScreens": "led-only",
+    "keyboardInteraction": false
+  },
+  "sharedWorkstation": {
+    "benchCount": 2,
+    "seatCount": 16,
+    "replaceWithCharacter": false,
+    "layerOrder": [
+      "shared-bench",
+      "original-chair-back",
+      "full-frame-character",
+      "original-chair-front",
+      "independent-screen-overlay"
+    ],
+    "benches": [
+      {
+        "id": "west-connected",
+        "orientation": "vertical",
+        "manifest": "../connected-v4/media/vertical/manifest.json",
+        "stationIds": [
+          "desk-01",
+          "desk-02",
+          "desk-03",
+          "desk-04",
+          "desk-05",
+          "desk-06",
+          "desk-07",
+          "desk-08"
+        ]
+      },
+      {
+        "id": "east-connected",
+        "orientation": "horizontal",
+        "manifest": "../connected-v4/media/horizontal/manifest.json",
+        "stationIds": [
+          "desk-09",
+          "desk-10",
+          "desk-11",
+          "desk-12",
+          "desk-13",
+          "desk-14",
+          "desk-15",
+          "desk-16"
+        ]
+      }
+    ],
+    "occlusion": "Use ConnectedSeatedPlayer.setBenchContext with existing bench pixels and placement; do not generate or move furniture."
+  },
+  "baselineGeometry": {
+    "up": {
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        96,
+        168
+      ],
+      "headAnchor": [
+        96,
+        34
+      ],
+      "scale": 0.6,
+      "faceVisible": false,
+      "referenceBase": "../reference-v3/media/character-up/base.png",
+      "seatAnchor": [
+        96,
+        145
+      ],
+      "animationMode": "full-frame"
+    },
+    "down": {
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        98,
+        170
+      ],
+      "headAnchor": [
+        100,
+        30
+      ],
+      "scale": 0.6,
+      "faceVisible": true,
+      "referenceBase": "../reference-v3/../media/character-base.png",
+      "seatAnchor": [
+        97,
+        94
+      ],
+      "animationMode": "full-frame"
+    },
+    "left": {
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        96,
+        174
+      ],
+      "headAnchor": [
+        96,
+        16
+      ],
+      "scale": 0.6,
+      "faceVisible": true,
+      "referenceBase": "../reference-v3/media/character-left/repair-v2/character-base.png",
+      "seatAnchor": [
+        131,
+        128
+      ],
+      "animationMode": "full-frame"
+    },
+    "right": {
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "headAnchor": [
+        110,
+        8
+      ],
+      "scale": 0.6,
+      "faceVisible": true,
+      "referenceBase": "../reference-v3/media/character-right/repair-v4-aligned/base.png",
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "animationMode": "full-frame"
+    }
+  },
+  "generation": {
+    "identityReferenceRequired": true,
+    "sameIdentityForAllDirections": true,
+    "transparentBackground": true,
+    "baseAsset": "One character-only fixed seated base per direction; no furniture, keyboard hands, labels or effects.",
+    "rearFacing": "up is the fixed rear view with faceVisible=false; do not fabricate a face atlas or mirror a front view.",
+    "geometryPolicy": "Use baselineGeometry as the V5 placement reference; establish one profile geometry per direction and QA all sixteen seats without moving the shared benches.",
+    "prompts": {
+      "base": "以同一身份母版生成 {label} 朝 {direction} 的固定坐姿透明底图。只允许正上、正下、正左或正右；不画工位、桌面、键盘爪子、屏幕或气泡。V5 的长桌、椅子和屏幕均由程序共享合成，角色接触点与尺度应贴合该方向基准。"
+    },
+    "fullFrameAssets": "For every direction and action, one transparent 4x3 atlas of complete 192x192 character frames. Runtime draws one atlas cell; no face crop, clip, inpaint or pixel overlay."
+  },
+  "readiness": {
+    "productionProfileIds": [
+      "orange-cat-v1",
+      "ragdoll-v1",
+      "british-shorthair-v1",
+      "american-shorthair-v1",
+      "tabby-v1",
+      "tuxedo-cat-v1",
+      "white-lion-cat-v1",
+      "jianzhou-cat-v1"
+    ],
+    "candidateProfileIds": [],
+    "candidatePreview": "All eight profiles support four-direction full-frame seated animation; legacy face atlases remain rollback material only.",
+    "promotionRequires": [
+      "complete-four-direction-character-assets",
+      "validated-12-frame-full-frame-atlases",
+      "transparent-pixel-and-anchor-QA",
+      "V5-bench-occlusion-and-screen-independence",
+      "atomic-runtime-profile-preload-and-replace",
+      "backend-and-frontend-readiness-allowlists",
+      "desktop-mobile-fullscreen-and-rear-facing-visual-QA"
+    ]
+  },
+  "animationImplementations": {
+    "fullFrameAtlases": [
+      "orange-cat-v1",
+      "ragdoll-v1",
+      "british-shorthair-v1",
+      "american-shorthair-v1",
+      "tabby-v1",
+      "tuxedo-cat-v1",
+      "white-lion-cat-v1",
+      "jianzhou-cat-v1"
+    ],
+    "renderer": "DirectionalSeatedPlayer._drawActor",
+    "fixedBody": true,
+    "rearHasFace": false
+  },
+  "manifestContractVersion": 2,
+  "characterAnimationMode": "full-frame",
+  "fullFrameContract": {
+    "frameSize": [
+      192,
+      192
+    ],
+    "grid": [
+      4,
+      3
+    ],
+    "frameCount": 12,
+    "fps": 12,
+    "transparent": true,
+    "runtimeComposition": "one-complete-character-frame"
+  }
+}

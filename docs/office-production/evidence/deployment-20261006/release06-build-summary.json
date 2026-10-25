@@ -1,0 +1,11 @@
+{
+  "release_id": "office-20261006-v5-production-06",
+  "image_id": "sha256:4b26b4d71939fdfd8176814ec5bb05af3d4fbef158b75084c0e1ebd2ba3e196e",
+  "archive_sha256": "891ab04b7446f9567a0bf46a72bce4383d841d8b1dbc1ebf079173dfc76fe01c",
+  "original_code_diff": [
+    "deploy/office/nginx.conf.template"
+  ],
+  "backend_frontend_bytes_unchanged": true,
+  "build_verified": true,
+  "services_not_changed_during_build": true
+}

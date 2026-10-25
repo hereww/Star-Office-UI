@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "target": "frontend/company-office/reference-v3/media/server-rack.png",
+  "scopeWrites": [
+    "frontend/company-office/reference-v3/media/server-rack.png",
+    "assets/company-office-reference-v3/server/"
+  ],
+  "sourceCopyPristine": true,
+  "promptMatchesExactToolRequest": true,
+  "normalizedPixelIdenticalToMarginCropAndUniformResize": true,
+  "archiveAndRuntimeImageIdentical": true,
+  "alphaQaPassed": true,
+  "visualQaPassed": true,
+  "greenComponentsAt256x320": 3,
+  "greenComponentsAt65x83": 3,
+  "protectedFurnitureAndFrozenTemplateFiles": 106,
+  "protectedInputsUnchanged": true,
+  "protectedChanged": [],
+  "protectedMissing": [],
+  "noFurnitureCharacterLayoutRuntimeEdits": true,
+  "subagentsCreated": 0
+}

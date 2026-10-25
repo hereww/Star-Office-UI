@@ -1,0 +1,514 @@
+{
+  "scope": "Real local Chrome 3840x2160 captures; demo page only, not human visual approval",
+  "capturedAt": "2026-10-05T04:52:16.154Z",
+  "rows": [
+    {
+      "id": "desk-01",
+      "direction": "right",
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-connected-v5/qa/typing-detail-right.png",
+      "actualHandInk": 303,
+      "player": {
+        "ready": true,
+        "direction": "right",
+        "directionFallback": false,
+        "state": "writing",
+        "action": "working",
+        "frame": 4,
+        "faceFrame": 4,
+        "fps": 12,
+        "frameCount": 12,
+        "clock": 60,
+        "faceClockFrames": 60,
+        "clockTick": 4,
+        "tick": 4,
+        "sampleMs": 383.2999999999997,
+        "animationMode": "expression-plus-working-hands",
+        "bodyPlacement": [
+          -5.200000000000003,
+          25.60000000000001,
+          115.19999999999999,
+          115.19999999999999
+        ],
+        "bodyFixed": true,
+        "handsRendered": true,
+        "seatAnchor": [
+          62,
+          130
+        ],
+        "poseAnchor": [
+          112,
+          174
+        ],
+        "faceVisible": true,
+        "reducedMotion": false,
+        "screen": {
+          "key": "bench-external",
+          "visible": false,
+          "polygon": [],
+          "led": null,
+          "external": true,
+          "state": "writing"
+        },
+        "furnitureMode": "chair-only",
+        "actorVisible": true,
+        "neutral": false,
+        "originalChairClips": {
+          "back": [
+            26,
+            75,
+            72,
+            99
+          ],
+          "front": [
+            26,
+            112,
+            65,
+            62
+          ]
+        },
+        "benchOcclusion": true,
+        "handsAction": "typing",
+        "keyboardInteraction": true,
+        "handsFrame": 4,
+        "handsDirections": [
+          "up",
+          "down",
+          "left",
+          "right"
+        ],
+        "handsBounds": [
+          98,
+          75,
+          23,
+          51
+        ],
+        "handInkBounds": [
+          98,
+          76,
+          20,
+          48
+        ],
+        "keyboardBounds": [
+          96.82608695652175,
+          74.56521739130437,
+          24.26086956521739,
+          50.869565217391305
+        ],
+        "keyboardAnchored": true,
+        "handsOccludedByActor": true,
+        "headFixed": true,
+        "tailFixed": true,
+        "chairFixed": true
+      },
+      "screen": {
+        "seatId": "desk-01",
+        "kind": "front",
+        "thinSideScreen": true,
+        "polygon": [
+          [
+            380,
+            180
+          ],
+          [
+            383,
+            180
+          ],
+          [
+            383,
+            310
+          ],
+          [
+            380,
+            310
+          ]
+        ],
+        "led": [
+          377,
+          375
+        ],
+        "key": "writing:true:false:0:2:0.625:0.8375:0:[[[0,0],[192,0],[192,192],[0,192]],null]|writing:false:false:led:0.8720:0:0.8720:[[],[0,0,192,192]]",
+        "styles": [
+          "code-editor-typing",
+          "code-editor-typing"
+        ],
+        "screenAnimation": "code-editor-search-terminal",
+        "rearContent": false,
+        "clippedToPolygon": true
+      }
+    },
+    {
+      "id": "desk-02",
+      "direction": "left",
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-connected-v5/qa/typing-detail-left.png",
+      "actualHandInk": 350,
+      "player": {
+        "ready": true,
+        "direction": "left",
+        "directionFallback": false,
+        "state": "writing",
+        "action": "working",
+        "frame": 9,
+        "faceFrame": 9,
+        "fps": 12,
+        "frameCount": 12,
+        "clock": 60,
+        "faceClockFrames": 60,
+        "clockTick": 9,
+        "tick": 9,
+        "sampleMs": 816.5999999999999,
+        "animationMode": "expression-plus-working-hands",
+        "bodyPlacement": [
+          73.4,
+          23.60000000000001,
+          115.19999999999999,
+          115.19999999999999
+        ],
+        "bodyFixed": true,
+        "handsRendered": true,
+        "seatAnchor": [
+          131,
+          128
+        ],
+        "poseAnchor": [
+          96,
+          174
+        ],
+        "faceVisible": true,
+        "reducedMotion": false,
+        "screen": {
+          "key": "bench-external",
+          "visible": false,
+          "polygon": [],
+          "led": null,
+          "external": true,
+          "state": "writing"
+        },
+        "furnitureMode": "chair-only",
+        "actorVisible": true,
+        "neutral": false,
+        "originalChairClips": {
+          "back": [
+            103,
+            77,
+            63,
+            97
+          ],
+          "front": [
+            103,
+            112,
+            63,
+            62
+          ]
+        },
+        "benchOcclusion": true,
+        "handsAction": "typing",
+        "keyboardInteraction": true,
+        "handsFrame": 9,
+        "handsDirections": [
+          "up",
+          "down",
+          "left",
+          "right"
+        ],
+        "handsBounds": [
+          73,
+          73,
+          24,
+          51
+        ],
+        "handInkBounds": [
+          75,
+          74,
+          21,
+          49
+        ],
+        "keyboardBounds": [
+          72.695652173913,
+          72.56521739130437,
+          23.869565217391305,
+          50.869565217391305
+        ],
+        "keyboardAnchored": true,
+        "handsOccludedByActor": true,
+        "headFixed": true,
+        "tailFixed": true,
+        "chairFixed": true
+      },
+      "screen": {
+        "seatId": "desk-02",
+        "kind": "front",
+        "thinSideScreen": true,
+        "polygon": [
+          [
+            509,
+            180
+          ],
+          [
+            512,
+            180
+          ],
+          [
+            512,
+            310
+          ],
+          [
+            509,
+            310
+          ]
+        ],
+        "led": [
+          512,
+          376
+        ],
+        "key": "writing:true:false:1:3:0.25:0.8523:0:[[[0,0],[192,0],[192,192],[0,192]],null]|writing:false:false:led:0.8210:0:0.8210:[[],[0,0,192,192]]",
+        "styles": [
+          "code-editor-typing",
+          "code-editor-typing"
+        ],
+        "screenAnimation": "code-editor-search-terminal",
+        "rearContent": false,
+        "clippedToPolygon": true
+      }
+    },
+    {
+      "id": "desk-09",
+      "direction": "down",
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-connected-v5/qa/typing-detail-down.png",
+      "actualHandInk": 240,
+      "player": {
+        "ready": true,
+        "direction": "down",
+        "directionFallback": false,
+        "state": "writing",
+        "action": "working",
+        "frame": 11,
+        "faceFrame": 11,
+        "fps": 12,
+        "frameCount": 12,
+        "clock": 60,
+        "faceClockFrames": 60,
+        "clockTick": 11,
+        "tick": 11,
+        "sampleMs": 966.5999999999999,
+        "animationMode": "expression-plus-working-hands",
+        "bodyPlacement": [
+          38.2,
+          -8,
+          115.19999999999999,
+          115.19999999999999
+        ],
+        "bodyFixed": true,
+        "handsRendered": true,
+        "seatAnchor": [
+          97,
+          94
+        ],
+        "poseAnchor": [
+          98,
+          170
+        ],
+        "faceVisible": true,
+        "reducedMotion": false,
+        "screen": {
+          "key": "bench-external",
+          "visible": false,
+          "polygon": [],
+          "led": null,
+          "external": true,
+          "state": "writing"
+        },
+        "furnitureMode": "chair-only",
+        "actorVisible": true,
+        "neutral": false,
+        "originalChairClips": {
+          "back": [
+            67,
+            31,
+            61,
+            60
+          ],
+          "front": null
+        },
+        "benchOcclusion": true,
+        "handsAction": "typing",
+        "keyboardInteraction": true,
+        "handsFrame": 11,
+        "handsDirections": [
+          "up",
+          "down",
+          "left",
+          "right"
+        ],
+        "handsBounds": [
+          58,
+          104,
+          64,
+          20
+        ],
+        "handInkBounds": [
+          59,
+          104,
+          61,
+          17
+        ],
+        "keyboardBounds": [
+          58.325966850828664,
+          103.03499079189689,
+          62.61510128913444,
+          20.257826887661142
+        ],
+        "keyboardAnchored": true,
+        "handsOccludedByActor": true,
+        "headFixed": true,
+        "tailFixed": true,
+        "chairFixed": true
+      },
+      "screen": {
+        "seatId": "desk-09",
+        "kind": "back",
+        "thinSideScreen": false,
+        "polygon": [],
+        "led": [
+          426,
+          348,
+          6,
+          6
+        ],
+        "key": "writing:false:false:led:0.8150:0:0.8150:[[],[0,0,192,192]]",
+        "styles": [
+          "code-editor-typing"
+        ],
+        "screenAnimation": "code-editor-search-terminal",
+        "rearContent": false,
+        "clippedToPolygon": true
+      }
+    },
+    {
+      "id": "desk-13",
+      "direction": "up",
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-connected-v5/qa/typing-detail-up.png",
+      "actualHandInk": 89,
+      "player": {
+        "ready": true,
+        "direction": "up",
+        "directionFallback": false,
+        "state": "writing",
+        "action": "working",
+        "frame": 5,
+        "faceFrame": 0,
+        "fps": 12,
+        "frameCount": 12,
+        "clock": 60,
+        "faceClockFrames": 60,
+        "clockTick": 17,
+        "tick": 17,
+        "sampleMs": 1466.6,
+        "animationMode": "expression-plus-working-hands",
+        "bodyPlacement": [
+          38.400000000000006,
+          44.2,
+          115.19999999999999,
+          115.19999999999999
+        ],
+        "bodyFixed": true,
+        "handsRendered": true,
+        "seatAnchor": [
+          96,
+          145
+        ],
+        "poseAnchor": [
+          96,
+          168
+        ],
+        "faceVisible": false,
+        "reducedMotion": false,
+        "screen": {
+          "key": "bench-external",
+          "visible": false,
+          "polygon": [],
+          "led": null,
+          "external": true,
+          "state": "writing"
+        },
+        "furnitureMode": "chair-only",
+        "actorVisible": true,
+        "neutral": false,
+        "originalChairClips": {
+          "back": null,
+          "front": [
+            66,
+            110,
+            63,
+            66
+          ]
+        },
+        "benchOcclusion": true,
+        "handsAction": "typing",
+        "keyboardInteraction": true,
+        "handsFrame": 5,
+        "handsDirections": [
+          "up",
+          "down",
+          "left",
+          "right"
+        ],
+        "handsBounds": [
+          59,
+          81,
+          60,
+          18
+        ],
+        "handInkBounds": [
+          60,
+          81,
+          10,
+          13
+        ],
+        "keyboardBounds": [
+          57.325966850828756,
+          79.32596685082885,
+          62.61510128913444,
+          20.257826887661142
+        ],
+        "keyboardAnchored": true,
+        "handsOccludedByActor": true,
+        "headFixed": true,
+        "tailFixed": true,
+        "chairFixed": true
+      },
+      "screen": {
+        "seatId": "desk-13",
+        "kind": "front",
+        "thinSideScreen": false,
+        "polygon": [
+          [
+            195,
+            457
+          ],
+          [
+            422,
+            457
+          ],
+          [
+            422,
+            516
+          ],
+          [
+            195,
+            516
+          ]
+        ],
+        "led": null,
+        "key": "writing:true:false:1:4:0.25:0.8478:0:[[[0,0],[192,0],[192,192],[0,192]],null]",
+        "styles": [
+          "code-editor-typing"
+        ],
+        "screenAnimation": "code-editor-search-terminal",
+        "rearContent": false,
+        "clippedToPolygon": true
+      }
+    }
+  ],
+  "errors": [],
+  "writes": []
+}

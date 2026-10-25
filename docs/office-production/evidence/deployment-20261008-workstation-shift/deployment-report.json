@@ -1,0 +1,62 @@
+{
+  "release_id": "office-v5-layout-shift-06",
+  "image_id": "sha256:304b8992408130e27bfa64296136b4298d852592344410a80d263bea38cf9b8e",
+  "base_image_id": "sha256:c075c5bf786b194423971c72684c9a2e4663a283fcd5885a0f04d7dc92477563",
+  "archive_sha256": "270d2d83e9f40749d18122214070724a603229ec24a4b5efc59d6ecc5085e341",
+  "geometry_dx": -48,
+  "source_delta": [
+    "frontend/company-office/connected-v5/layout.json"
+  ],
+  "source_files": 97,
+  "unchanged_images": 28,
+  "backup": "/home/star-office-backups/20261008-before-workstation-shift-06",
+  "backup_restore_verified": true,
+  "web_healthy": true,
+  "collector_identity_preserved": true,
+  "collector_health": "healthy",
+  "source_status": "ok",
+  "config_preserved": true,
+  "config": {
+    "version": 3,
+    "payload_sha256": "22a8c18627022382daf860a9949391d66999ab1469c2743e151f328706433cc4",
+    "versions": 3,
+    "audit": 3,
+    "sqlite_integrity": "ok",
+    "bindings": [
+      {
+        "seat_id": "desk-09",
+        "user_id": "4",
+        "display_name": "工位 09",
+        "enabled": true
+      },
+      {
+        "seat_id": "desk-10",
+        "user_id": "7",
+        "display_name": "工位 10",
+        "enabled": true
+      },
+      {
+        "seat_id": "desk-11",
+        "user_id": "8",
+        "display_name": "工位 11",
+        "enabled": true
+      },
+      {
+        "seat_id": "desk-14",
+        "user_id": "1",
+        "display_name": "工位 14",
+        "enabled": true
+      }
+    ]
+  },
+  "all_other_containers_preserved": true,
+  "office_mounts_preserved": true,
+  "credentials_unchanged": true,
+  "access_and_firewall_unchanged": true,
+  "nginx_wrapper_unchanged": true,
+  "effective_ingress_path": "/opt/star-office-ui/ingress/office-public-employee.conf",
+  "nginx_reload_only": true,
+  "tls_verified": true,
+  "root_free_bytes": 2907619328,
+  "finished_utc": "2026-10-08T14:02:27.128378+00:00"
+}

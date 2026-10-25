@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 4,
+  "animationMode": "full-frame",
+  "referenceAssets": "../reference-v3/assets.json",
+  "reuseOriginalCharacters": true,
+  "furnitureMode": "connected-benches",
+  "manifestContractVersion": 2,
+  "faceClockFrames": {
+    "working": 60,
+    "idle": 36,
+    "syncing": 60,
+    "error": 12
+  }
+}

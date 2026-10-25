@@ -1,0 +1,4184 @@
+--- a/backend/pkg/usertelemetry/contract.go
++++ b/backend/pkg/usertelemetry/contract.go
+@@ -34,8 +34,33 @@
+ 	Name   string `json:"name"`
+ 	Status string `json:"status"`
+ }
++
++// DailyTokenUsage is an explicit local calendar window; a failed read remains
++// null/unavailable instead of being confused with a confirmed zero.
++type DailyTokenUsage struct {
++	Date       string  `json:"date"`
++	Start      string  `json:"start"`
++	End        string  `json:"end"`
++	Total      *string `json:"total"`
++	Quality    string  `json:"quality"`
++	ObservedAt *string `json:"observed_at"`
++}
+ type TokenUsage struct {
+-	Total *string `json:"total"`
++	Total     *string          `json:"total"`
++	Today     *DailyTokenUsage `json:"today,omitempty"`
++	Yesterday *DailyTokenUsage `json:"yesterday,omitempty"`
++}
++
++// ActiveModel describes a live forwarding attempt, never a completed usage row.
++type ActiveModel struct {
++	RequestedModel string  `json:"requested_model"`
++	UpstreamModel  *string `json:"upstream_model"`
++	Requests       int     `json:"requests"`
++}
++type ActiveModelSnapshot struct {
++	Models     []ActiveModel `json:"models"`
++	Quality    string        `json:"quality"`
++	ObservedAt *string       `json:"observed_at"`
+ }
+ type Concurrency struct {
+ 	Current *int `json:"current"`
+@@ -54,14 +79,15 @@
+ 	Concurrency *string `json:"concurrency"`
+ }
+ type User struct {
+-	UserID      string      `json:"user_id"`
+-	Email       string      `json:"email"`
+-	Username    string      `json:"username"`
+-	APIKeys     []APIKey    `json:"api_keys"`
+-	TokenUsage  TokenUsage  `json:"token_usage"`
+-	Concurrency Concurrency `json:"concurrency"`
+-	Quality     Quality     `json:"quality"`
+-	ObservedAt  ObservedAt  `json:"observed_at"`
++	UserID       string               `json:"user_id"`
++	Email        string               `json:"email"`
++	Username     string               `json:"username"`
++	APIKeys      []APIKey             `json:"api_keys"`
++	TokenUsage   TokenUsage           `json:"token_usage"`
++	ActiveModels *ActiveModelSnapshot `json:"active_models,omitempty"`
++	Concurrency  Concurrency          `json:"concurrency"`
++	Quality      Quality              `json:"quality"`
++	ObservedAt   ObservedAt           `json:"observed_at"`
+ }
+ type Snapshot struct {
+ 	SchemaVersion int     `json:"schema_version"`
+--- a/backend/internal/handler/openai_images.go
++++ b/backend/internal/handler/openai_images.go
+@@ -255,6 +255,8 @@
+ 		forwardStart := time.Now()
+ 		writerSizeBeforeForward := service.OpenAIImagesJSONKeepaliveAdjustedWrittenSize(c)
+ 		result, err := func() (*service.OpenAIForwardResult, error) {
++			telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, clientRequestModel)
++			defer telemetryRelease()
+ 			defer func() {
+ 				if accountReleaseFunc != nil {
+ 					accountReleaseFunc()
+--- a/backend/internal/handler/openai_alpha_search.go
++++ b/backend/internal/handler/openai_alpha_search.go
+@@ -191,6 +191,8 @@
+ 		forwardStart := time.Now()
+ 		var result *service.OpenAIForwardResult
+ 		result, err = func() (*service.OpenAIForwardResult, error) {
++			telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, requestedModel)
++			defer telemetryRelease()
+ 			if accountRelease != nil {
+ 				defer accountRelease()
+ 			}
+--- a/backend/internal/handler/gateway_handler.go
++++ b/backend/internal/handler/gateway_handler.go
+@@ -916,11 +916,16 @@
+ 			}
+ 			// 记录 Forward 前已写入字节数，Forward 后若增加则说明 SSE 内容已发，禁止 failover
+ 			writerSizeBeforeForward := c.Writer.Size()
+-			if account.Platform == service.PlatformAntigravity && account.Type != service.AccountTypeAPIKey {
+-				result, err = h.antigravityGatewayService.Forward(requestCtx, c, account, attemptBody, hasBoundSession)
+-			} else {
+-				result, err = h.gatewayService.Forward(requestCtx, c, account, attemptParsedReq)
+-			}
++			result, err = func() (*service.ForwardResult, error) {
++				telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, reqModel)
++				defer telemetryRelease()
++				// Derive from the context carrying the lease, not an earlier copy.
++				forwardCtx := service.WithTelemetryModelLease(requestCtx, service.TelemetryModelLeaseFromContext(c.Request.Context()))
++				if account.Platform == service.PlatformAntigravity && account.Type != service.AccountTypeAPIKey {
++					return h.antigravityGatewayService.Forward(forwardCtx, c, account, attemptBody, hasBoundSession)
++				}
++				return h.gatewayService.Forward(forwardCtx, c, account, attemptParsedReq)
++			}()
+ 
+ 			// 兜底释放串行锁（正常情况已通过回调提前释放）
+ 			if queueRelease != nil {
+--- /dev/null
++++ b/backend/internal/handler/user_telemetry_models.go
+@@ -0,0 +1,36 @@
++package handler
++
++import (
++	"sync"
++
++	"github.com/Wei-Shaw/sub2api/internal/service"
++	"github.com/gin-gonic/gin"
++)
++
++// beginTelemetryForward is called only after admission/slots, around a live
++// forwarding attempt. It never inspects prompts or any credential. The existing
++// effective-upstream-model hook updates the lease immediately before dispatch.
++func (h *ConcurrencyHelper) beginTelemetryForward(c *gin.Context, userID int64, model string) func() {
++	if h == nil || h.concurrencyService == nil || c == nil || c.Request == nil {
++		return func() {}
++	}
++	return h.beginTelemetryTurn(c, userID, clientRequestedModel(c, model))
++}
++
++// beginTelemetryTurn takes the explicit per-turn public model. A WebSocket may
++// change models while its original HTTP context still records the first model.
++func (h *ConcurrencyHelper) beginTelemetryTurn(c *gin.Context, userID int64, model string) func() {
++	if h == nil || h.concurrencyService == nil || c == nil || c.Request == nil {
++		return func() {}
++	}
++	lease := h.concurrencyService.BeginTelemetryModel(c.Request.Context(), userID, model)
++	c.Request = c.Request.WithContext(service.WithTelemetryModelLease(c.Request.Context(), lease))
++	var once sync.Once
++	return func() {
++		once.Do(func() {
++			if lease != nil {
++				lease.Release()
++			}
++		})
++	}
++}
+--- a/backend/internal/handler/openai_chat_completions.go
++++ b/backend/internal/handler/openai_chat_completions.go
+@@ -255,6 +255,8 @@
+ 		}
+ 		writerSizeBeforeForward := c.Writer.Size()
+ 		result, err := func() (*service.OpenAIForwardResult, error) {
++			telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, reqModel)
++			defer telemetryRelease()
+ 			defer func() {
+ 				if accountReleaseFunc != nil {
+ 					accountReleaseFunc()
+--- a/backend/internal/handler/grok_media.go
++++ b/backend/internal/handler/grok_media.go
+@@ -384,6 +384,8 @@
+ 		forwardStart := time.Now()
+ 		writerSizeBeforeForward := c.Writer.Size()
+ 		result, err := func() (*service.OpenAIForwardResult, error) {
++			telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, requestModel)
++			defer telemetryRelease()
+ 			defer releaseAccount()
+ 			if endpoint.IsSeedance() {
+ 				return h.gatewayService.ForwardSeedance(requestCtx, c, account, endpoint, requestID, body)
+--- /dev/null
++++ b/backend/internal/handler/user_telemetry_models_test.go
+@@ -0,0 +1,782 @@
++package handler
++
++import (
++	"context"
++	"fmt"
++	"go/ast"
++	"go/parser"
++	"go/token"
++	"io"
++	"net/http"
++	"net/http/httptest"
++	"os"
++	"path/filepath"
++	"runtime"
++	"strings"
++	"testing"
++	"time"
++
++	"github.com/Wei-Shaw/sub2api/internal/config"
++	"github.com/Wei-Shaw/sub2api/internal/repository"
++	"github.com/Wei-Shaw/sub2api/internal/server/middleware"
++	"github.com/Wei-Shaw/sub2api/internal/service"
++	"github.com/alicebob/miniredis/v2"
++	coderws "github.com/coder/websocket"
++	"github.com/gin-gonic/gin"
++	"github.com/redis/go-redis/v9"
++	"github.com/stretchr/testify/require"
++	"github.com/tidwall/gjson"
++)
++
++func newTelemetryModelHandlerFixture(t *testing.T) (*ConcurrencyHelper, *service.ConcurrencyService, context.Context) {
++	t.Helper()
++	server := miniredis.RunT(t)
++	client := redis.NewClient(&redis.Options{Addr: server.Addr()})
++	t.Cleanup(func() { require.NoError(t, client.Close()) })
++	cache := repository.NewConcurrencyCache(client, 15, 60)
++	concurrency := service.NewConcurrencyService(cache)
++	return NewConcurrencyHelper(concurrency, SSEPingFormatNone, time.Second), concurrency, context.Background()
++}
++
++func newTelemetryModelGinContext(t *testing.T, ctx context.Context) *gin.Context {
++	t.Helper()
++	gin.SetMode(gin.TestMode)
++	c, _ := gin.CreateTestContext(httptest.NewRecorder())
++	c.Request = httptest.NewRequest("POST", "/v1/responses", nil).WithContext(ctx)
++	return c
++}
++
++func readHandlerTelemetryModels(t *testing.T, concurrency *service.ConcurrencyService, userIDs ...int64) map[int64][]serviceActiveModelView {
++	t.Helper()
++	models, err := concurrency.ReadTelemetryActiveModels(context.Background(), userIDs)
++	require.NoError(t, err)
++	out := make(map[int64][]serviceActiveModelView, len(models))
++	for userID, entries := range models {
++		for _, entry := range entries {
++			view := serviceActiveModelView{requested: entry.RequestedModel, requests: entry.Requests}
++			if entry.UpstreamModel != nil {
++				view.upstream = *entry.UpstreamModel
++				view.hasUpstream = true
++			}
++			out[userID] = append(out[userID], view)
++		}
++	}
++	return out
++}
++
++type serviceActiveModelView struct {
++	requested   string
++	upstream    string
++	hasUpstream bool
++	requests    int
++}
++
++func TestTelemetryModelHooksHTTPBeginReadsPublicModelAndTracksActualFailover(t *testing.T) {
++	helper, concurrency, ctx := newTelemetryModelHandlerFixture(t)
++	ctx = service.WithCompositeRouteDecision(ctx, service.CompositeRouteDecision{
++		Matched:        true,
++		Source:         service.CompositeRouteSourceExplicit,
++		PublicModel:    "public-alias",
++		TargetPlatform: service.PlatformOpenAI,
++		UpstreamModel:  "mapped-before-forward",
++	})
++	c := newTelemetryModelGinContext(t, ctx)
++
++	release := helper.beginTelemetryForward(c, 41, "fallback-upstream-model")
++	models := readHandlerTelemetryModels(t, concurrency, 41)
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		41: {{requested: "public-alias", requests: 1}},
++	}, models)
++
++	service.SetOpsUpstreamModel(c, "actual-first-attempt")
++	models = readHandlerTelemetryModels(t, concurrency, 41)
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		41: {{requested: "public-alias", upstream: "actual-first-attempt", hasUpstream: true, requests: 1}},
++	}, models)
++
++	// A failover attempt must replace the live upstream model, not create a
++	// second stale model for the same lease.
++	service.SetOpsUpstreamModel(c, "actual-failover-attempt")
++	models = readHandlerTelemetryModels(t, concurrency, 41)
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		41: {{requested: "public-alias", upstream: "actual-failover-attempt", hasUpstream: true, requests: 1}},
++	}, models)
++
++	release()
++	require.Eventually(t, func() bool {
++		models := readHandlerTelemetryModels(t, concurrency, 41)
++		return len(models[41]) == 0
++	}, time.Second, 5*time.Millisecond)
++}
++
++func TestTelemetryModelHooksAggregateTwoRequestsWithDifferentModels(t *testing.T) {
++	helper, concurrency, ctx := newTelemetryModelHandlerFixture(t)
++	first := newTelemetryModelGinContext(t, ctx)
++	second := newTelemetryModelGinContext(t, ctx)
++
++	releaseFirst := helper.beginTelemetryForward(first, 42, "model-a")
++	releaseSecond := helper.beginTelemetryForward(second, 42, "model-b")
++	t.Cleanup(releaseFirst)
++	t.Cleanup(releaseSecond)
++
++	models := readHandlerTelemetryModels(t, concurrency, 42)
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		42: {
++			{requested: "model-a", requests: 1},
++			{requested: "model-b", requests: 1},
++		},
++	}, models)
++
++	service.SetOpsUpstreamModel(first, "upstream-a")
++	service.SetOpsUpstreamModel(second, "upstream-b")
++	models = readHandlerTelemetryModels(t, concurrency, 42)
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		42: {
++			{requested: "model-a", upstream: "upstream-a", hasUpstream: true, requests: 1},
++			{requested: "model-b", upstream: "upstream-b", hasUpstream: true, requests: 1},
++		},
++	}, models)
++}
++
++func TestTelemetryModelHooksWSSecondTurnUsesExplicitModelNotFirstFramePublicContext(t *testing.T) {
++	helper, concurrency, ctx := newTelemetryModelHandlerFixture(t)
++	ctx = service.WithCompositeRouteDecision(ctx, service.CompositeRouteDecision{
++		Matched:        true,
++		Source:         service.CompositeRouteSourceExplicit,
++		PublicModel:    "first-frame-public-model",
++		TargetPlatform: service.PlatformOpenAI,
++		UpstreamModel:  "first-frame-upstream-model",
++	})
++	c := newTelemetryModelGinContext(t, ctx)
++
++	firstRelease := helper.beginTelemetryTurn(c, 43, "first-turn-explicit-model")
++	firstRelease()
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, 43)[43]) == 0
++	}, time.Second, 5*time.Millisecond)
++
++	// The request context still carries the first-frame public mapping. The
++	// second turn supplies its own explicit model and must not re-read that
++	// stale context mapping.
++	secondRelease := helper.beginTelemetryTurn(c, 43, "second-turn-explicit-model")
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		43: {{requested: "second-turn-explicit-model", requests: 1}},
++	}, readHandlerTelemetryModels(t, concurrency, 43))
++
++	service.SetOpsUpstreamModel(c, "second-turn-upstream-model")
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		43: {{requested: "second-turn-explicit-model", upstream: "second-turn-upstream-model", hasUpstream: true, requests: 1}},
++	}, readHandlerTelemetryModels(t, concurrency, 43))
++	secondRelease()
++}
++
++func TestTelemetryModelHooksReleaseAndContextCancellationLeaveNoRecord(t *testing.T) {
++	helper, concurrency, parent := newTelemetryModelHandlerFixture(t)
++
++	c := newTelemetryModelGinContext(t, parent)
++	release := helper.beginTelemetryForward(c, 44, "released-model")
++	release()
++	release()
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, 44)[44]) == 0
++	}, time.Second, 5*time.Millisecond)
++
++	requestCtx, cancel := context.WithCancel(parent)
++	cancelled := newTelemetryModelGinContext(t, requestCtx)
++	cancelRelease := helper.beginTelemetryForward(cancelled, 45, "cancelled-model")
++	require.NotNil(t, service.TelemetryModelLeaseFromContext(cancelled.Request.Context()))
++	cancel()
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, 45)[45]) == 0
++	}, time.Second, 5*time.Millisecond)
++	cancelRelease()
++}
++
++func TestTelemetryModelHooksScopedCleanupSurvivesPanic(t *testing.T) {
++	helper, concurrency, ctx := newTelemetryModelHandlerFixture(t)
++	func() {
++		defer func() { require.NotNil(t, recover()) }()
++		c := newTelemetryModelGinContext(t, ctx)
++		release := helper.beginTelemetryForward(c, 46, "panic-scoped-model")
++		defer release()
++		panic("synthetic upstream panic")
++	}()
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, 46)[46]) == 0
++	}, time.Second, 5*time.Millisecond)
++}
++
++func TestTelemetryModelHooksNoTelemetryCacheIsBusinessNoop(t *testing.T) {
++	// The base ConcurrencyCache is intentionally not a telemetry cache. This
++	// proves the hook is optional without invoking any unrelated slot method.
++	unsupported := struct{ service.ConcurrencyCache }{}
++	concurrency := service.NewConcurrencyService(unsupported)
++	helper := NewConcurrencyHelper(concurrency, SSEPingFormatNone, time.Second)
++	c := newTelemetryModelGinContext(t, context.Background())
++
++	release := helper.beginTelemetryForward(c, 47, "business-model")
++	require.NotPanics(t, func() { service.SetOpsUpstreamModel(c, "business-upstream") })
++	require.Nil(t, service.TelemetryModelLeaseFromContext(c.Request.Context()))
++	release()
++}
++
++func TestTelemetryModelHooksWS429AttemptScopesReleaseBeforeNextAttempt(t *testing.T) {
++	helper, concurrency, parent := newTelemetryModelHandlerFixture(t)
++	const userID int64 = 48
++
++	// Each closure represents one ProxyResponsesWebSocketFromClient attempt.
++	// There is intentionally no AfterTurn callback in this harness: the only
++	// cleanup is the attempt-scoped defer, matching the handshake-429 path.
++	attempt := func(ctx *gin.Context, requested, upstream string) {
++		release := helper.beginTelemetryForward(ctx, userID, requested)
++		defer release()
++		service.SetOpsUpstreamModel(ctx, upstream)
++		// Simulated upstream handshake 429: return before AfterTurn.
++	}
++
++	attempt1 := newTelemetryModelGinContext(t, service.WithCompositeRouteDecision(parent, service.CompositeRouteDecision{
++		Matched: true, Source: service.CompositeRouteSourceExplicit,
++		PublicModel: "requested-old", TargetPlatform: service.PlatformOpenAI,
++	}))
++	attempt(attempt1, "ignored-fallback-old", "upstream-old")
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, userID)[userID]) == 0
++	}, time.Second, 5*time.Millisecond)
++
++	attempt2 := newTelemetryModelGinContext(t, service.WithCompositeRouteDecision(parent, service.CompositeRouteDecision{
++		Matched: true, Source: service.CompositeRouteSourceExplicit,
++		PublicModel: "requested-new", TargetPlatform: service.PlatformOpenAI,
++	}))
++	release2 := helper.beginTelemetryForward(attempt2, userID, "ignored-fallback-new")
++	service.SetOpsUpstreamModel(attempt2, "upstream-new")
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		userID: {{requested: "requested-new", upstream: "upstream-new", hasUpstream: true, requests: 1}},
++	}, readHandlerTelemetryModels(t, concurrency, userID))
++	release2()
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, userID)[userID]) == 0
++	}, time.Second, 5*time.Millisecond)
++
++	// The production heartbeat is 12 seconds. Wait beyond it to prove the
++	// attempt-scoped release did not merely hide a lease that later reappears.
++	time.Sleep(12500 * time.Millisecond)
++	require.Empty(t, readHandlerTelemetryModels(t, concurrency, userID))
++}
++
++func TestTelemetryModelHooksWSBeforeRequestBeforeTurnMapOrderUpdatesRequestedB(t *testing.T) {
++	helper, concurrency, parent := newTelemetryModelHandlerFixture(t)
++	const userID int64 = 49
++	c := newTelemetryModelGinContext(t, service.WithCompositeRouteDecision(parent, service.CompositeRouteDecision{
++		Matched: true, Source: service.CompositeRouteSourceExplicit,
++		PublicModel: "first-frame-public-A", TargetPlatform: service.PlatformOpenAI,
++	}))
++
++	// Establish the previous turn so the harness also verifies old-lease
++	// retirement before the new turn starts.
++	oldRelease := helper.beginTelemetryTurn(c, userID, "turn-A")
++	service.SetOpsUpstreamModel(c, "upstream-A")
++	oldRelease()
++
++	var sequence []string
++	var turnModel string
++	var currentRelease func()
++	beforeRequest := func(model string) {
++		sequence = append(sequence, "BeforeRequest")
++		// This is the production fix: freeze the current public model before
++		// BeforeTurn; MapRequestModel must not be the first writer.
++		turnModel = model
++	}
++	beforeTurn := func() {
++		sequence = append(sequence, "BeforeTurn")
++		if currentRelease != nil {
++			currentRelease()
++		}
++		currentRelease = helper.beginTelemetryTurn(c, userID, turnModel)
++	}
++	mapRequestModel := func() string {
++		sequence = append(sequence, "MapRequestModel")
++		service.SetOpsUpstreamModel(c, "upstream-B")
++		return "mapped-B"
++	}
++
++	beforeRequest("turn-B")
++	beforeTurn()
++	require.Equal(t, []string{"BeforeRequest", "BeforeTurn"}, sequence)
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		userID: {{requested: "turn-B", requests: 1}},
++	}, readHandlerTelemetryModels(t, concurrency, userID), "requested B must be registered before mapping")
++
++	require.Equal(t, "mapped-B", mapRequestModel())
++	require.Equal(t, []string{"BeforeRequest", "BeforeTurn", "MapRequestModel"}, sequence)
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		userID: {{requested: "turn-B", upstream: "upstream-B", hasUpstream: true, requests: 1}},
++	}, readHandlerTelemetryModels(t, concurrency, userID))
++	currentRelease()
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, userID)[userID]) == 0
++	}, time.Second, 5*time.Millisecond)
++}
++
++func TestTelemetryModelHooksMainHandlerOrderingContractParsesAndGuardsCallSites(t *testing.T) {
++	_, testFile, _, ok := runtime.Caller(0)
++	require.True(t, ok)
++	sourcePath := filepath.Join(filepath.Dir(testFile), "openai_gateway_handler.go")
++	source, err := os.ReadFile(sourcePath)
++	require.NoError(t, err)
++	_, err = parser.ParseFile(token.NewFileSet(), sourcePath, source, parser.SkipObjectResolution)
++	require.NoError(t, err, "main handler must remain syntactically parseable")
++	text := string(source)
++
++	beforeRequest := strings.Index(text, "BeforeRequest: func")
++	mapRequestModel := strings.Index(text, "MapRequestModel: func")
++	beforeTurn := strings.Index(text, "BeforeTurn: func")
++	require.GreaterOrEqual(t, beforeRequest, 0)
++	require.Greater(t, mapRequestModel, beforeRequest)
++	require.Greater(t, beforeTurn, mapRequestModel)
++
++	storeModel := strings.Index(text, "turnTelemetryRequested.Store(&model)")
++	require.Greater(t, storeModel, beforeRequest, "WS BeforeRequest must freeze the current public model")
++	require.Less(t, storeModel, mapRequestModel, "model B must be stored before mapping")
++
++	turnSection := text[beforeTurn:]
++	require.Contains(t, turnSection, "releaseTelemetryOnly()")
++	beginTurn := strings.Index(turnSection, "beginTelemetryTurn(c, apiKey.UserID, telemetryRequested)")
++	require.GreaterOrEqual(t, beginTurn, 0)
++	releaseBeforeBegin := strings.LastIndex(turnSection[:beginTurn], "releaseTelemetryOnly()")
++	require.GreaterOrEqual(t, releaseBeforeBegin, 0, "each turn must retire the prior telemetry lease before replacing it")
++	require.Contains(t, text, "defer releaseTelemetryOnly()", "each proxy attempt needs scoped telemetry cleanup on handshake early return")
++}
++
++// This exercises the production metadata parser, not a duplicate implementation
++// in a test closure. Invalid/missing metadata must never become an upstream slug.
++func TestTelemetryModelHooksWSAttemptRequestedModelFromCurrentPublicFrame(t *testing.T) {
++	for _, tc := range []struct {
++		name, message, fallback, want string
++	}{
++		{"first frame A", `{"type":"response.create","model":"public-A"}`, "ignored", "public-A"},
++		{"retry B overrides first frame A", `{"type":"response.create","model":"public-B","previous_response_id":"resp-A"}`, "public-A", "public-B"},
++		{"public whitespace trimmed", `{"type":"response.create","model":" public-B "}`, "public-A", "public-B"},
++		{"missing model keeps current turn fallback", `{"type":"response.create"}`, " public-B ", "public-B"},
++		{"blank model falls back", `{"model":"  "}`, " public-A ", "public-A"},
++		{"null model falls back", `{"model":null}`, "public-A", "public-A"},
++		{"numeric model falls back", `{"model":429}`, "public-A", "public-A"},
++		{"boolean model falls back", `{"model":true}`, "public-A", "public-A"},
++		{"array model falls back", `{"model":["upstream-B"]}`, "public-A", "public-A"},
++		{"object model falls back", `{"model":{"name":"upstream-B"}}`, "public-A", "public-A"},
++		{"nested upstream model is not public model", `{"response":{"model":"upstream-B"}}`, "public-B", "public-B"},
++		{"malformed JSON falls back", `{"model":"public-B"`, "public-A", "public-A"},
++		{"trailing JSON falls back", `{"model":"public-B"} {}`, "public-A", "public-A"},
++		{"empty message falls back", "", " public-A ", "public-A"},
++		{"no model or fallback remains unknown", `{}`, "  ", ""},
++	} {
++		t.Run(tc.name, func(t *testing.T) {
++			require.Equal(t, tc.want, openAIWSTelemetryAttemptRequestedModel([]byte(tc.message), tc.fallback))
++		})
++	}
++}
++
++// This is a metadata/lifecycle regression harness with real production helpers,
++// Redis scripts (miniredis), account model mappings and the upstream setter. The
++// 429 is synthetic: it does NOT claim to exercise a socket, the real scheduler,
++// billing, or the complete ResponsesWebSocket handler.
++func TestTelemetryModelHooksWSCurrentTurnCrossAccountRetryPreservesRequestedB(t *testing.T) {
++	helper, concurrency, parent := newTelemetryModelHandlerFixture(t)
++	const userID int64 = 50
++	const firstPublicModel = "public-A"
++	const currentPublicModel = "public-B"
++	c := newTelemetryModelGinContext(t, parent)
++	accountOne := &service.Account{ID: 501, Credentials: map[string]any{
++		"model_mapping": map[string]any{"public-A": "account-one-A", "public-B": "account-one-B"},
++	}}
++	accountTwo := &service.Account{ID: 502, Credentials: map[string]any{
++		"model_mapping": map[string]any{"public-A": "account-two-A", "public-B": "account-two-B"},
++	}}
++	require.NotEqual(t, accountOne.ID, accountTwo.ID)
++	wsAttemptMessage := []byte(`{"type":"response.create","model":"public-A"}`)
++
++	releaseA := helper.beginTelemetryTurn(c, userID, openAIWSTelemetryAttemptRequestedModel(wsAttemptMessage, firstPublicModel))
++	t.Cleanup(releaseA)
++	leaseA := service.TelemetryModelLeaseFromContext(c.Request.Context())
++	require.NotNil(t, leaseA)
++	service.SetOpsUpstreamModel(c, accountOne.GetMappedModel(firstPublicModel))
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		userID: {{requested: firstPublicModel, upstream: "account-one-A", hasUpstream: true, requests: 1}},
++	}, readHandlerTelemetryModels(t, concurrency, userID))
++	releaseA()
++	require.Empty(t, readHandlerTelemetryModels(t, concurrency, userID), "completed A must be cleared before B is admitted")
++
++	// The subsequent turn is B on account one, not a new upstream session yet.
++	currentTurnMessage := []byte(`{"type":"response.create","model":"public-B","previous_response_id":"resp-A"}`)
++	var failedBLease *service.TelemetryModelLease
++	upstream429 := &service.UpstreamFailoverError{StatusCode: http.StatusTooManyRequests}
++	attemptErr := func() error {
++		releaseB := helper.beginTelemetryTurn(c, userID, openAIWSTelemetryAttemptRequestedModel(currentTurnMessage, firstPublicModel))
++		defer releaseB()
++		failedBLease = service.TelemetryModelLeaseFromContext(c.Request.Context())
++		require.NotNil(t, failedBLease)
++		service.SetOpsUpstreamModel(c, accountOne.GetMappedModel(currentPublicModel))
++		// Old callback/context writers may run late; they must not touch B.
++		leaseA.UpdateUpstream("stale-A-after-release")
++		releaseA()
++		require.Equal(t, map[int64][]serviceActiveModelView{
++			userID: {{requested: currentPublicModel, upstream: "account-one-B", hasUpstream: true, requests: 1}},
++		}, readHandlerTelemetryModels(t, concurrency, userID))
++		return upstream429
++	}()
++	require.Same(t, upstream429, attemptErr)
++	require.Empty(t, readHandlerTelemetryModels(t, concurrency, userID), "429 attempt must release B before account switching")
++
++	// Current-turn retry payloads contain original/public B. Use the production
++	// next-attempt cloning helper, then run both initialization and attempt model
++	// resolution exactly as required by the fixed outer/inner call sites.
++	retryPayload := []byte(`{"type":"response.create","model":"public-B","input":[]}`)
++	var retrySafe bool
++	wsAttemptMessage, retrySafe = openAIWSNextAttemptMessage(wsAttemptMessage, retryPayload, true)
++	require.True(t, retrySafe)
++	retryPayload[0] = 'x'
++	require.Equal(t, byte('{'), wsAttemptMessage[0], "attempt payload must be an isolated copy")
++	initialTelemetryRequested := openAIWSTelemetryAttemptRequestedModel(wsAttemptMessage, firstPublicModel)
++	require.Equal(t, currentPublicModel, initialTelemetryRequested, "new account's turn 1 must not reset to A")
++	attemptTelemetryRequested := openAIWSTelemetryAttemptRequestedModel(wsAttemptMessage, initialTelemetryRequested)
++	releaseRetryB := helper.beginTelemetryTurn(c, userID, attemptTelemetryRequested)
++	t.Cleanup(releaseRetryB)
++	retryBLease := service.TelemetryModelLeaseFromContext(c.Request.Context())
++	require.NotNil(t, retryBLease)
++	require.NotSame(t, failedBLease, retryBLease, "retry must use a new lease, not reuse the retired attempt")
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		userID: {{requested: currentPublicModel, requests: 1}},
++	}, readHandlerTelemetryModels(t, concurrency, userID), "old account's upstream must not bleed into the new attempt")
++
++	service.SetOpsUpstreamModel(c, accountTwo.GetMappedModel(currentPublicModel))
++	failedBLease.UpdateUpstream("stale-account-one-B")
++	failedBLease.Release()
++	leaseA.UpdateUpstream("stale-account-one-A")
++	require.Equal(t, map[int64][]serviceActiveModelView{
++		userID: {{requested: currentPublicModel, upstream: "account-two-B", hasUpstream: true, requests: 1}},
++	}, readHandlerTelemetryModels(t, concurrency, userID), "only B on the replacement account may remain live")
++
++	releaseRetryB()
++	require.Empty(t, readHandlerTelemetryModels(t, concurrency, userID))
++	// Exercise late upstream setters after the final release as well as old
++	// leases, then wait through a real production heartbeat interval.
++	service.SetOpsUpstreamModel(c, "late-upstream-after-completion")
++	failedBLease.UpdateUpstream("late-failed-B")
++	leaseA.UpdateUpstream("late-completed-A")
++	releaseRetryB()
++	require.Empty(t, readHandlerTelemetryModels(t, concurrency, userID))
++	time.Sleep(12500 * time.Millisecond)
++	require.Empty(t, readHandlerTelemetryModels(t, concurrency, userID), "released A/B attempts must never reappear on heartbeat")
++}
++
++// Guard the production call sites, not merely the parser's behavior in a
++// standalone harness. The outer account loop and inner concrete attempt must
++// both use the current un-mapped wsAttemptMessage (not the first reqModel).
++func TestTelemetryModelHooksWSCurrentAttemptModelCallSites(t *testing.T) {
++	_, testFile, _, ok := runtime.Caller(0)
++	require.True(t, ok)
++	sourcePath := filepath.Join(filepath.Dir(testFile), "openai_gateway_handler.go")
++	parsed, err := parser.ParseFile(token.NewFileSet(), sourcePath, nil, parser.SkipObjectResolution)
++	require.NoError(t, err)
++	var body *ast.BlockStmt
++	for _, declaration := range parsed.Decls {
++		if function, ok := declaration.(*ast.FuncDecl); ok && function.Name.Name == "ResponsesWebSocket" {
++			body = function.Body
++			break
++		}
++	}
++	require.NotNil(t, body, "inspect the real ResponsesWebSocket handler only")
++	var initial, attempt *ast.AssignStmt
++	var beginAttempt *ast.CallExpr
++	var loops []*ast.ForStmt
++	ast.Inspect(body, func(node ast.Node) bool {
++		switch node := node.(type) {
++		case *ast.ForStmt:
++			loops = append(loops, node)
++		case *ast.AssignStmt:
++			if len(node.Lhs) != 1 || len(node.Rhs) != 1 {
++				return true
++			}
++			left, ok := node.Lhs[0].(*ast.Ident)
++			if !ok {
++				return true
++			}
++			if left.Name == "initialTelemetryRequested" {
++				require.Nil(t, initial, "outer initialization must have one source of truth")
++				initial = node
++			}
++			if left.Name == "attemptTelemetryModel" {
++				if call, ok := node.Rhs[0].(*ast.CallExpr); ok {
++					if name, ok := call.Fun.(*ast.Ident); ok && name.Name == "openAIWSTelemetryAttemptRequestedModel" {
++						require.Nil(t, attempt, "each concrete attempt must have one frame-derived model assignment")
++						attempt = node
++					}
++				}
++			}
++		case *ast.CallExpr:
++			if selector, ok := node.Fun.(*ast.SelectorExpr); ok && selector.Sel.Name == "beginTelemetryTurn" && len(node.Args) == 3 {
++				if model, ok := node.Args[2].(*ast.Ident); ok && model.Name == "attemptTelemetryModel" {
++					require.Nil(t, beginAttempt)
++					beginAttempt = node
++				}
++			}
++		}
++		return true
++	})
++	require.NotNil(t, initial, "outer account loop must initialize a requested model")
++	require.NotNil(t, attempt, "inner attempt loop must re-resolve from its current frame")
++	require.NotNil(t, beginAttempt, "the resolved attempt model must reach actual lease registration")
++	for name, assignment := range map[string]*ast.AssignStmt{"outer initialization": initial, "inner attempt": attempt} {
++		call, ok := assignment.Rhs[0].(*ast.CallExpr)
++		require.True(t, ok, name+" must call the production model helper, not assign reqModel")
++		function, ok := call.Fun.(*ast.Ident)
++		require.True(t, ok)
++		require.Equal(t, "openAIWSTelemetryAttemptRequestedModel", function.Name)
++		require.Len(t, call.Args, 2)
++		message, ok := call.Args[0].(*ast.Ident)
++		require.True(t, ok)
++		require.Equal(t, "wsAttemptMessage", message.Name, name+" must resolve the current public retry frame")
++	}
++	innermostLoop := func(position token.Pos) *ast.ForStmt {
++		var found *ast.ForStmt
++		for _, loop := range loops {
++			if loop.Pos() < position && position < loop.End() && (found == nil || loop.Pos() > found.Pos()) {
++				found = loop
++			}
++		}
++		return found
++	}
++	outerLoop := innermostLoop(initial.Pos())
++	innerLoop := innermostLoop(attempt.Pos())
++	require.NotNil(t, outerLoop)
++	require.NotNil(t, innerLoop)
++	require.NotSame(t, outerLoop, innerLoop, "the two guards must cover distinct outer-account and inner-attempt loops")
++	require.True(t, outerLoop.Pos() < innerLoop.Pos() && innerLoop.End() < outerLoop.End())
++	require.Same(t, innerLoop, innermostLoop(beginAttempt.Pos()))
++	require.True(t, attempt.End() < beginAttempt.Pos(), "resolve the current frame before registering its lease")
++	ast.Inspect(innerLoop.Body, func(node ast.Node) bool {
++		assignment, ok := node.(*ast.AssignStmt)
++		if !ok || assignment.Pos() <= attempt.Pos() || assignment.Pos() >= beginAttempt.Pos() {
++			return true
++		}
++		for _, target := range assignment.Lhs {
++			if identifier, ok := target.(*ast.Ident); ok {
++				require.NotEqual(t, "attemptTelemetryModel", identifier.Name, "no stale model overwrite is allowed between frame resolution and registration")
++			}
++		}
++		return true
++	})
++}
++
++// Controlled HTTP bridge upstream: no remote network/provider is contacted.
++// Blocking each actual Do call allows telemetry to be sampled while the real
++// ResponsesWebSocket handler, scheduler, parser and Redis lease are in flight.
++type telemetryModelWSRetryHTTPCall struct {
++	accountID int64
++	payload   []byte
++	response  chan *http.Response
++}
++
++type telemetryModelWSRetryHTTPUpstream struct {
++	service.HTTPUpstream
++	calls chan telemetryModelWSRetryHTTPCall
++	stop  <-chan struct{}
++}
++
++func (u *telemetryModelWSRetryHTTPUpstream) Do(req *http.Request, _ string, accountID int64, _ int) (*http.Response, error) {
++	payload, err := io.ReadAll(req.Body)
++	if err != nil {
++		return nil, err
++	}
++	_ = req.Body.Close()
++	call := telemetryModelWSRetryHTTPCall{accountID: accountID, payload: payload, response: make(chan *http.Response, 1)}
++	select {
++	case u.calls <- call:
++	case <-u.stop:
++		return nil, fmt.Errorf("telemetry websocket test stopped")
++	case <-req.Context().Done():
++		return nil, req.Context().Err()
++	}
++	select {
++	case response := <-call.response:
++		return response, nil
++	case <-u.stop:
++		return nil, fmt.Errorf("telemetry websocket test stopped")
++	case <-req.Context().Done():
++		return nil, req.Context().Err()
++	}
++}
++
++// Unlike the metadata harness above, this uses a real local client WebSocket and
++// the production ResponsesWebSocket -> HTTP bridge -> 429 -> different-account
++// retry chain. HTTPUpstream and the account repository remain controlled test
++// doubles; this is NOT a production/provider acceptance test or WS-upstream test.
++func TestTelemetryModelHooksWSHTTPBridgeCurrentTurn429CrossAccountRetry(t *testing.T) {
++	gin.SetMode(gin.TestMode)
++	helper, concurrency, _ := newTelemetryModelHandlerFixture(t)
++	const userID int64 = 51
++	const groupID int64 = 5101
++	const firstAccountID int64 = 5102
++	const secondAccountID int64 = 5103
++	const firstPublicModel = "public-A"
++	const currentPublicModel = "public-B"
++	stop := make(chan struct{})
++	defer close(stop)
++	upstream := &telemetryModelWSRetryHTTPUpstream{calls: make(chan telemetryModelWSRetryHTTPCall, 4), stop: stop}
++	cfg := &config.Config{}
++	cfg.RunMode = config.RunModeSimple
++	cfg.Default.RateMultiplier = 1
++	cfg.Security.URLAllowlist.Enabled = false
++	cfg.Security.URLAllowlist.AllowInsecureHTTP = true
++	cfg.Gateway.OpenAIWS.Enabled = true
++	cfg.Gateway.OpenAIWS.OAuthEnabled = true
++	cfg.Gateway.OpenAIWS.ResponsesWebsocketsV2 = true
++	cfg.Gateway.OpenAIWS.ModeRouterV2Enabled = true
++	cfg.Gateway.OpenAIWS.ReadTimeoutSeconds = 5
++	cfg.Gateway.OpenAIWS.WriteTimeoutSeconds = 5
++	cfg.Gateway.MaxAccountSwitches = 3
++	accountRepo := &openAIWSFailoverHandlerAccountRepoStub{accounts: []service.Account{
++		{
++			ID: firstAccountID, Name: "telemetry-account-one", Platform: service.PlatformOpenAI,
++			Type: service.AccountTypeOAuth, Status: service.StatusActive, Schedulable: true, Concurrency: 1, Priority: 1,
++			Credentials: map[string]any{"access_token": "test-only-account-one", "model_mapping": map[string]any{
++				firstPublicModel: "gpt-5.1", currentPublicModel: "gpt-5.2",
++			}},
++			Extra: map[string]any{"openai_oauth_responses_websockets_v2_mode": service.OpenAIWSIngressModeHTTPBridge},
++		},
++		{
++			ID: secondAccountID, Name: "telemetry-account-two", Platform: service.PlatformOpenAI,
++			Type: service.AccountTypeOAuth, Status: service.StatusActive, Schedulable: true, Concurrency: 1, Priority: 2,
++			Credentials: map[string]any{"access_token": "test-only-account-two", "model_mapping": map[string]any{
++				firstPublicModel: "gpt-5.1", currentPublicModel: "gpt-5.4",
++			}},
++			Extra: map[string]any{"openai_oauth_responses_websockets_v2_mode": service.OpenAIWSIngressModeHTTPBridge},
++		},
++	}}
++	usageRepo := &openAIWSUsageHandlerUsageLogRepoStub{created: make(chan *service.UsageLog, 4)}
++	billingCache := service.NewBillingCacheService(nil, nil, nil, nil, nil, nil, cfg, nil)
++	t.Cleanup(billingCache.Stop)
++	gateway := service.NewOpenAIGatewayService(
++		accountRepo, usageRepo, nil, nil, nil, nil, nil, cfg, nil, nil,
++		service.NewBillingService(cfg, nil), service.NewRateLimitService(accountRepo, nil, cfg, nil, nil),
++		billingCache, upstream, &service.DeferredService{}, nil, nil, nil, nil, nil, nil, nil,
++	)
++	h := &OpenAIGatewayHandler{
++		gatewayService: gateway, billingCacheService: billingCache, apiKeyService: &service.APIKeyService{},
++		concurrencyHelper: helper, maxAccountSwitches: 3, cfg: cfg,
++	}
++	apiKey := &service.APIKey{
++		ID: 5104, UserID: userID, GroupID: new(int64(groupID)),
++		User:  &service.User{ID: userID, Status: service.StatusActive},
++		Group: &service.Group{ID: groupID, Platform: service.PlatformOpenAI, Status: service.StatusActive},
++	}
++	handlerDone := make(chan struct{})
++	router := gin.New()
++	router.Use(func(c *gin.Context) {
++		c.Set(string(middleware.ContextKeyAPIKey), apiKey)
++		c.Set(string(middleware.ContextKeyUser), middleware.AuthSubject{UserID: userID, Concurrency: 1})
++		c.Next()
++	})
++	router.GET("/openai/v1/responses", func(c *gin.Context) {
++		defer close(handlerDone)
++		h.ResponsesWebSocket(c)
++	})
++	server := httptest.NewServer(router)
++	t.Cleanup(server.Close)
++	dialCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
++	client, _, err := coderws.Dial(dialCtx, "ws"+strings.TrimPrefix(server.URL, "http")+"/openai/v1/responses", nil)
++	cancel()
++	require.NoError(t, err)
++	t.Cleanup(func() { _ = client.CloseNow() })
++	write := func(payload string) {
++		t.Helper()
++		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
++		defer cancel()
++		require.NoError(t, client.Write(ctx, coderws.MessageText, []byte(payload)))
++	}
++	nextCall := func() telemetryModelWSRetryHTTPCall {
++		t.Helper()
++		select {
++		case call := <-upstream.calls:
++			return call
++		case <-handlerDone:
++			t.Fatal("real WebSocket handler exited before the expected HTTP bridge attempt")
++		case <-time.After(5 * time.Second):
++			t.Fatal("real WebSocket handler did not reach the expected HTTP bridge attempt")
++		}
++		return telemetryModelWSRetryHTTPCall{}
++	}
++	complete := func(call telemetryModelWSRetryHTTPCall, id string) {
++		model := gjson.GetBytes(call.payload, "model").String()
++		body := fmt.Sprintf("data: {\"type\":\"response.completed\",\"response\":{\"id\":%q,\"model\":%q,\"status\":\"completed\",\"output\":[],\"usage\":{\"input_tokens\":1,\"output_tokens\":1}}}\n\n", id, model)
++		call.response <- &http.Response{StatusCode: http.StatusOK, Header: http.Header{"Content-Type": {"text/event-stream"}}, Body: io.NopCloser(strings.NewReader(body))}
++	}
++	readCompleted := func(id string) {
++		t.Helper()
++		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
++		defer cancel()
++		for {
++			_, payload, err := client.Read(ctx)
++			require.NoError(t, err)
++			event := gjson.GetBytes(payload, "type").String()
++			require.NotEqual(t, "error", event, "429 should fail over without becoming a client-visible error")
++			if event == "response.completed" {
++				require.Equal(t, id, gjson.GetBytes(payload, "response.id").String())
++				return
++			}
++		}
++	}
++	expectLive := func(requested, mapped string) {
++		t.Helper()
++		require.Equal(t, map[int64][]serviceActiveModelView{
++			userID: {{requested: requested, upstream: mapped, hasUpstream: true, requests: 1}},
++		}, readHandlerTelemetryModels(t, concurrency, userID))
++	}
++
++	write(`{"type":"response.create","model":"public-A","input":[{"role":"user","content":"first"}]}`)
++	first := nextCall()
++	require.Equal(t, firstAccountID, first.accountID)
++	require.Equal(t, "gpt-5.1", gjson.GetBytes(first.payload, "model").String())
++	expectLive(firstPublicModel, "gpt-5.1")
++	complete(first, "resp-telemetry-A")
++	readCompleted("resp-telemetry-A")
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, userID)[userID]) == 0
++	}, time.Second, 5*time.Millisecond, "completed A's lease must be removed while the client connection remains open")
++
++	write(`{"type":"response.create","model":"public-B","previous_response_id":"resp-telemetry-A","input":[{"role":"user","content":"second"}]}`)
++	failedB := nextCall()
++	require.Equal(t, firstAccountID, failedB.accountID)
++	require.Equal(t, "gpt-5.2", gjson.GetBytes(failedB.payload, "model").String())
++	expectLive(currentPublicModel, "gpt-5.2")
++	failedB.response <- &http.Response{
++		StatusCode: http.StatusTooManyRequests,
++		Header:     http.Header{"Content-Type": {"application/json"}, "Retry-After": {"60"}},
++		Body:       io.NopCloser(strings.NewReader(`{"error":{"type":"usage_limit_reached","message":"The usage limit has been reached"}}`)),
++	}
++	retryB := nextCall()
++	require.Equal(t, secondAccountID, retryB.accountID, "429 must select a different account through the production scheduler")
++	require.Equal(t, "gpt-5.4", gjson.GetBytes(retryB.payload, "model").String())
++	require.Empty(t, gjson.GetBytes(retryB.payload, "previous_response_id").String(), "retry must not carry the previous account's response chain")
++	expectLive(currentPublicModel, "gpt-5.4") // Fails with requested=A on the old handler.
++	complete(retryB, "resp-telemetry-B")
++	readCompleted("resp-telemetry-B")
++	require.Eventually(t, func() bool {
++		return len(readHandlerTelemetryModels(t, concurrency, userID)[userID]) == 0
++	}, time.Second, 5*time.Millisecond, "successful B retry must clear the only remaining lease")
++	_ = client.CloseNow()
++	select {
++	case <-handlerDone:
++	case <-time.After(5 * time.Second):
++		t.Fatal("real WebSocket handler did not finish after the client disconnected")
++	}
++	require.Empty(t, readHandlerTelemetryModels(t, concurrency, userID))
++	// The above count=1 assertions rule out an orphaned account-one B entry.
++	// Wait beyond the real heartbeat so retirement is not just a transient read.
++	time.Sleep(12500 * time.Millisecond)
++	require.Empty(t, readHandlerTelemetryModels(t, concurrency, userID))
++	select {
++	case extra := <-upstream.calls:
++		t.Fatalf("unexpected extra bridge attempt on account %d", extra.accountID)
++	default:
++	}
++}
+--- a/backend/internal/handler/openai_embeddings.go
++++ b/backend/internal/handler/openai_embeddings.go
+@@ -205,6 +205,8 @@
+ 		}
+ 		writerSizeBeforeForward := c.Writer.Size()
+ 		result, err := func() (*service.OpenAIForwardResult, error) {
++			telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, reqModel)
++			defer telemetryRelease()
+ 			defer func() {
+ 				if accountReleaseFunc != nil {
+ 					accountReleaseFunc()
+--- a/backend/internal/handler/openai_gateway_handler.go
++++ b/backend/internal/handler/openai_gateway_handler.go
+@@ -789,6 +789,8 @@
+ 		// reasoning item（含耦合的 id/summary），避免非透传上游 400 拒绝 Kiro reasoning 形态。
+ 		attemptBody := h.deriveOpenAIForwardAttemptBody(reqLog, forwardBody, account, &passthroughFailoverState)
+ 		result, err := func() (*service.OpenAIForwardResult, error) {
++			telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, reqModel)
++			defer telemetryRelease()
+ 			defer func() {
+ 				if accountReleaseFunc != nil {
+ 					accountReleaseFunc()
+@@ -1382,6 +1384,8 @@
+ 		forwardBody := mappedBodyForMessages(channelMappingMsg.Mapped, channelMappingMsg.MappedModel)
+ 		writerSizeBeforeForward := c.Writer.Size()
+ 		result, err := func() (*service.OpenAIForwardResult, error) {
++			telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, reqModel)
++			defer telemetryRelease()
+ 			defer func() {
+ 				if accountReleaseFunc != nil {
+ 					accountReleaseFunc()
+@@ -2517,13 +2521,21 @@
+ 
+ 	var currentUserRelease func()
+ 	var currentAccountRelease func()
++	var currentTelemetryRelease func()
+ 	releaseAccountSlot := func() {
+ 		if currentAccountRelease != nil {
+ 			currentAccountRelease()
+ 			currentAccountRelease = nil
+ 		}
+ 	}
++	releaseTelemetryOnly := func() {
++		if currentTelemetryRelease != nil {
++			currentTelemetryRelease()
++			currentTelemetryRelease = nil
++		}
++	}
+ 	releaseTurnSlots := func() {
++		releaseTelemetryOnly()
+ 		releaseAccountSlot()
+ 		if currentUserRelease != nil {
+ 			currentUserRelease()
+@@ -2857,6 +2869,13 @@
+ 		// BeforeTurn 重新冻结 pricingAt 并按最新门复核当前账号。
+ 		var turnPricing openAIWSTurnPricing
+ 		// Passthrough ingress does not invoke BeforeTurn for the first frame.
++		// Keep the public model in an explicit atomic snapshot so each upstream
++		// attempt can register the correct attempt/turn, including retries.
++		var turnTelemetryRequested atomic.Pointer[string]
++		// A resumed logical turn can be turn 1 of a new upstream session.
++		// Its retry frame retains the client/public model, not the first frame.
++		initialTelemetryRequested := openAIWSTelemetryAttemptRequestedModel(wsAttemptMessage, reqModel)
++		turnTelemetryRequested.Store(&initialTelemetryRequested)
+ 		if err := checkSimpleModeTurnBilling(); err != nil {
+ 			closeOpenAIClientWS(wsConn, coderws.StatusPolicyViolation, "billing check failed")
+ 			return
+@@ -2892,6 +2911,9 @@
+ 				if model == "" {
+ 					model = reqModel
+ 				}
++				// Passthrough calls BeforeTurn before MapRequestModel; capture the
++				// current public model here so a follow-up never uses the last turn.
++				turnTelemetryRequested.Store(&model)
+ 				// 分组级模型白名单：后续 turn 同样校验客户端模型（省略 model 时
+ 				// 沿用会话实际生效模型，含 session.update 轮换后的模型），不通过
+ 				// 则关闭整条连接，与推理强度 deny 一致。实际生效模型始终参与校验；
+@@ -2933,6 +2955,7 @@
+ 					return "", newOpenAIWSUnsupportedModelSwitchError(mapping.MappedModel)
+ 				}
+ 				turnChannelMapping.Store(&openAIWSTurnChannelMappingSnapshot{turn: turn, mapping: mapping})
++				turnTelemetryRequested.Store(&model)
+ 				return mapping.MappedModel, nil
+ 			},
+ 			BeforeTurn: func(turn int) error {
+@@ -2980,7 +3003,25 @@
+ 				}
+ 				currentUserRelease = wrapReleaseOnDone(ctx, userReleaseFunc)
+ 				currentAccountRelease = wrapReleaseOnDone(ctx, accountReleaseFunc)
+-				return checkSimpleModeTurnBilling()
++				if err := checkSimpleModeTurnBilling(); err != nil {
++					return err
++				}
++				telemetryRequested := reqModel
++				if observed := turnTelemetryRequested.Load(); observed != nil {
++					telemetryRequested = *observed
++				}
++				releaseTelemetryOnly()
++				currentTelemetryRelease = h.concurrencyHelper.beginTelemetryTurn(c, apiKey.UserID, telemetryRequested)
++				// Native ingress can resolve its actual model BEFORE BeforeTurn.
++				// Replay only a current-turn prepared model, never previous ops data.
++				if prepared := turnChannelMapping.Load(); prepared != nil && prepared.turn == turn {
++					if upstream, ok := c.Get(service.OpsUpstreamModelKey); ok {
++						if model, ok := upstream.(string); ok {
++							service.UpdateTelemetryModelFromContext(c.Request.Context(), model)
++						}
++					}
++				}
++				return nil
+ 			},
+ 			AfterTurn: func(turn int, result *service.OpenAIForwardResult, turnErr error) {
+ 				turnStart := getTurnStart(turn)
+@@ -3110,7 +3151,22 @@
+ 		}
+ 
+ 		for {
+-			err := h.gatewayService.ProxyResponsesWebSocketFromClient(ctx, c, wsConn, account, token, wsFirstMessage, hooks)
++			// Register only for this concrete upstream attempt. A same-account
++			// retry may happen after the previous attempt has already released its
++			// lease; registering here avoids both an orphan and a missing retry.
++			attemptTelemetryModel := reqModel
++			if observed := turnTelemetryRequested.Load(); observed != nil && strings.TrimSpace(*observed) != "" {
++				attemptTelemetryModel = strings.TrimSpace(*observed)
++			}
++			attemptTelemetryModel = openAIWSTelemetryAttemptRequestedModel(wsAttemptMessage, attemptTelemetryModel)
++			releaseTelemetryOnly()
++			currentTelemetryRelease = h.concurrencyHelper.beginTelemetryTurn(c, apiKey.UserID, attemptTelemetryModel)
++			err := func() error {
++				// Handshake 429/connection failure may return before AfterTurn.
++				// Retire telemetry only; preserve existing slot/retry semantics.
++				defer releaseTelemetryOnly()
++				return h.gatewayService.ProxyResponsesWebSocketFromClient(ctx, c, wsConn, account, token, wsFirstMessage, hooks)
++			}()
+ 			if err == nil {
+ 				reqLog.Info("openai.websocket_ingress_closed", zap.Int64("account_id", account.ID))
+ 				return
+@@ -3872,6 +3928,21 @@
+ 	}
+ 	_ = conn.Close(status, reason)
+ 	_ = conn.CloseNow()
++}
++
++// openAIWSTelemetryAttemptRequestedModel reads only public model metadata from
++// the exact un-mapped frame that this attempt will forward. Current-turn retry
++// payloads restore originalModel; never infer it from an upstream-mapped frame.
++func openAIWSTelemetryAttemptRequestedModel(message []byte, fallback string) string {
++	if gjson.ValidBytes(message) {
++		model := gjson.GetBytes(message, "model")
++		if model.Type == gjson.String {
++			if requested := strings.TrimSpace(model.String()); requested != "" {
++				return requested
++			}
++		}
++	}
++	return strings.TrimSpace(fallback)
+ }
+ 
+ func openAIWSNextAttemptMessage(current, retryPayload []byte, retryCurrentTurn bool) ([]byte, bool) {
+--- a/backend/internal/handler/gemini_v1beta_handler.go
++++ b/backend/internal/handler/gemini_v1beta_handler.go
+@@ -658,21 +658,26 @@
+ 			requestCtx = service.WithAccountSwitchCount(requestCtx, fs.SwitchCount, h.metadataBridgeEnabled())
+ 		}
+ 		sessionGroupID := derefGroupID(apiKey.GroupID)
+-		if account.Platform == service.PlatformAntigravity && account.Type != service.AccountTypeAPIKey {
+-			result, err = h.antigravityGatewayService.ForwardGemini(
+-				requestCtx,
+-				c,
+-				account,
+-				modelName,
+-				action,
+-				stream,
+-				body,
+-				hasBoundSession,
+-				service.WithForwardGeminiSession(sessionGroupID, sessionKey),
+-			)
+-		} else {
+-			result, err = h.geminiCompatService.ForwardNative(requestCtx, c, account, modelName, action, stream, body)
+-		}
++		result, err = func() (*service.ForwardResult, error) {
++			telemetryRelease := h.concurrencyHelper.beginTelemetryForward(c, apiKey.UserID, reqModel)
++			defer telemetryRelease()
++			forwardCtx := service.WithTelemetryModelLease(requestCtx, service.TelemetryModelLeaseFromContext(c.Request.Context()))
++			if account.Platform == service.PlatformAntigravity && account.Type != service.AccountTypeAPIKey {
++				return h.antigravityGatewayService.ForwardGemini(
++					forwardCtx,
++					c,
++					account,
++					modelName,
++					action,
++					stream,
++					body,
++					hasBoundSession,
++					service.WithForwardGeminiSession(sessionGroupID, sessionKey),
++				)
++			} else {
++				return h.geminiCompatService.ForwardNative(forwardCtx, c, account, modelName, action, stream, body)
++			}
++		}()
+ 		if accountReleaseFunc != nil {
+ 			accountReleaseFunc()
+ 		}
+--- /dev/null
++++ b/backend/internal/repository/user_telemetry_active_models_test.go
+@@ -0,0 +1,295 @@
++package repository
++
++import (
++	"context"
++	"fmt"
++	"strings"
++	"testing"
++	"time"
++
++	"github.com/Wei-Shaw/sub2api/internal/service"
++	public "github.com/Wei-Shaw/sub2api/pkg/usertelemetry"
++	"github.com/alicebob/miniredis/v2"
++	"github.com/redis/go-redis/v9"
++	"github.com/stretchr/testify/require"
++)
++
++func telemetryModelRepoFixture(t *testing.T) (*concurrencyCache, *miniredis.Miniredis, context.Context) {
++	t.Helper()
++	mr := miniredis.RunT(t)
++	mr.SetTime(time.Date(2026, 10, 8, 12, 0, 0, 0, time.UTC))
++	client := redis.NewClient(&redis.Options{Addr: mr.Addr(), MaxRetries: -1})
++	t.Cleanup(func() { _ = client.Close() })
++	return NewConcurrencyCache(client, 15, 60).(*concurrencyCache), mr, context.Background()
++}
++func telemetryModelTestID(n int) string { return fmt.Sprintf("%032x", n) }
++
++func TestTelemetryModelRepoRegisterUpdateReleaseAndTTL(t *testing.T) {
++	c, mr, ctx := telemetryModelRepoFixture(t)
++	id := telemetryModelTestID(1)
++	require.NoError(t, c.RegisterTelemetryModel(ctx, 7, id, "requested"))
++	keys := telemetryActiveModelKeys(7)
++	require.Equal(t, "telemetry:active_models:{7}:expiry", keys[0])
++	require.Equal(t, "telemetry:active_models:{7}:models", keys[1])
++	require.Len(t, mr.Keys(), 2)
++	for _, key := range keys {
++		require.Equal(t, 45*time.Second, mr.TTL(key))
++	}
++	models, err := c.ReadTelemetryActiveModels(ctx, []int64{7})
++	require.NoError(t, err)
++	require.Equal(t, []public.ActiveModel{{RequestedModel: "requested", Requests: 1}}, models[7])
++	alive, err := c.UpdateTelemetryModel(ctx, 7, id, "upstream")
++	require.NoError(t, err)
++	require.True(t, alive)
++	models, err = c.ReadTelemetryActiveModels(ctx, []int64{7})
++	require.NoError(t, err)
++	require.Equal(t, "upstream", *models[7][0].UpstreamModel)
++	mr.FastForward(12 * time.Second)
++	mr.SetTime(time.Date(2026, 10, 8, 12, 0, 12, 0, time.UTC))
++	alive, err = c.RefreshTelemetryModel(ctx, 7, id)
++	require.NoError(t, err)
++	require.True(t, alive)
++	for _, key := range keys {
++		require.Equal(t, 45*time.Second, mr.TTL(key))
++	}
++	require.NoError(t, c.ReleaseTelemetryModel(ctx, 7, id))
++	require.NoError(t, c.ReleaseTelemetryModel(ctx, 7, id))
++	alive, err = c.RefreshTelemetryModel(ctx, 7, id)
++	require.NoError(t, err)
++	require.False(t, alive)
++	alive, err = c.UpdateTelemetryModel(ctx, 7, id, "late")
++	require.NoError(t, err)
++	require.False(t, alive)
++	require.Empty(t, mr.Keys(), "heartbeat/update must not recreate deleted keys")
++}
++
++func TestTelemetryModelRepoCrashExpiryAndExpiredMemberNotRevived(t *testing.T) {
++	for _, operation := range []string{"read", "refresh", "update"} {
++		t.Run(operation, func(t *testing.T) {
++			c, mr, ctx := telemetryModelRepoFixture(t)
++			old, live := telemetryModelTestID(1), telemetryModelTestID(2)
++			require.NoError(t, c.RegisterTelemetryModel(ctx, 1, old, "crashed"))
++			mr.FastForward(30 * time.Second)
++			mr.SetTime(time.Date(2026, 10, 8, 12, 0, 30, 0, time.UTC))
++			require.NoError(t, c.RegisterTelemetryModel(ctx, 1, live, "live-other-instance"))
++			mr.FastForward(16 * time.Second)
++			mr.SetTime(time.Date(2026, 10, 8, 12, 0, 46, 0, time.UTC))
++			switch operation {
++			case "read":
++				_, err := c.ReadTelemetryActiveModels(ctx, []int64{1})
++				require.NoError(t, err)
++			case "refresh":
++				alive, err := c.RefreshTelemetryModel(ctx, 1, old)
++				require.NoError(t, err)
++				require.False(t, alive)
++			case "update":
++				alive, err := c.UpdateTelemetryModel(ctx, 1, old, "late")
++				require.NoError(t, err)
++				require.False(t, alive)
++			}
++			keys := telemetryActiveModelKeys(1)
++			exists, err := c.rdb.HExists(ctx, keys[1], old).Result()
++			require.NoError(t, err)
++			require.False(t, exists)
++			models, err := c.ReadTelemetryActiveModels(ctx, []int64{1})
++			require.NoError(t, err)
++			require.Equal(t, []public.ActiveModel{{RequestedModel: "live-other-instance", Requests: 1}}, models[1])
++			mr.FastForward(46 * time.Second)
++			require.Empty(t, mr.Keys(), "a process crash expires both keys")
++			models, err = c.ReadTelemetryActiveModels(ctx, []int64{1})
++			require.NoError(t, err)
++			require.NotNil(t, models[1])
++			require.Empty(t, models[1])
++		})
++	}
++}
++
++func TestTelemetryModelRepoExactExpiryBoundary(t *testing.T) {
++	c, mr, ctx := telemetryModelRepoFixture(t)
++	id := telemetryModelTestID(1)
++	require.NoError(t, c.RegisterTelemetryModel(ctx, 1, id, "m"))
++	// SetTime advances Redis TIME without expiring the physical keys. The
++	// per-member score must reject ownership exactly at the boundary anyway.
++	mr.SetTime(time.Date(2026, 10, 8, 12, 0, 45, 0, time.UTC))
++	alive, err := c.RefreshTelemetryModel(ctx, 1, id)
++	require.NoError(t, err)
++	require.False(t, alive)
++	models, err := c.ReadTelemetryActiveModels(ctx, []int64{1})
++	require.NoError(t, err)
++	require.Empty(t, models[1])
++}
++
++func TestTelemetryModelRepoAggregationStableOrderingScopeAndMultiInstance(t *testing.T) {
++	c, mr, ctx := telemetryModelRepoFixture(t)
++	otherClient := redis.NewClient(&redis.Options{Addr: mr.Addr(), MaxRetries: -1})
++	defer otherClient.Close()
++	other := NewConcurrencyCache(otherClient, 15, 60).(*concurrencyCache)
++	for i, name := range []string{"z", "a", "a", "a", "a"} {
++		cache := c
++		if i%2 == 0 {
++			cache = other
++		}
++		id := telemetryModelTestID(i + 1)
++		require.NoError(t, cache.RegisterTelemetryModel(ctx, 1, id, name))
++		if i == 1 || i == 2 {
++			alive, err := cache.UpdateTelemetryModel(ctx, 1, id, "mapped-b")
++			require.NoError(t, err)
++			require.True(t, alive)
++		}
++		if i == 3 {
++			alive, err := cache.UpdateTelemetryModel(ctx, 1, id, "mapped-a")
++			require.NoError(t, err)
++			require.True(t, alive)
++		}
++	}
++	require.NoError(t, c.RegisterTelemetryModel(ctx, 9, telemetryModelTestID(99), "out-of-scope"))
++	// Corrupting an unrequested user must not even be observed by this read.
++	require.NoError(t, c.rdb.Set(ctx, telemetryActiveModelKeys(9)[0], "wrong-type", 0).Err())
++	expected := []public.ActiveModel{
++		{RequestedModel: "a", Requests: 1},
++		{RequestedModel: "a", UpstreamModel: telemetryModelString("mapped-a"), Requests: 1},
++		{RequestedModel: "a", UpstreamModel: telemetryModelString("mapped-b"), Requests: 2},
++		{RequestedModel: "z", Requests: 1},
++	}
++	for range 5 {
++		models, err := other.ReadTelemetryActiveModels(ctx, []int64{7, 1, 7})
++		require.NoError(t, err)
++		require.Len(t, models, 2)
++		require.Equal(t, expected, models[1])
++		require.NotNil(t, models[7])
++		require.Empty(t, models[7])
++	}
++	models, err := other.ReadTelemetryActiveModels(ctx, nil)
++	require.NoError(t, err)
++	require.Empty(t, models)
++}
++func telemetryModelString(value string) *string { return &value }
++
++func TestTelemetryModelRepoInvalidInputAndUnavailable(t *testing.T) {
++	c, _, ctx := telemetryModelRepoFixture(t)
++	for _, model := range []string{"", " ", "x\ny", "x\x00y", "x\u200by", strings.Repeat("x", 201), string([]byte{255})} {
++		require.Error(t, c.RegisterTelemetryModel(ctx, 1, telemetryModelTestID(1), model))
++		_, err := c.UpdateTelemetryModel(ctx, 1, telemetryModelTestID(1), model)
++		require.Error(t, err)
++	}
++	for _, id := range []string{"", "request-id", strings.Repeat("A", 32), strings.Repeat("a", 34)} {
++		require.Error(t, c.RegisterTelemetryModel(ctx, 1, id, "model"))
++		require.Error(t, c.ReleaseTelemetryModel(ctx, 1, id))
++	}
++	require.Error(t, c.RegisterTelemetryModel(ctx, 0, telemetryModelTestID(1), "model"))
++	for _, ids := range [][]int64{{-1}, {0}, make([]int64, public.MaxPageSize+1)} {
++		models, err := c.ReadTelemetryActiveModels(ctx, ids)
++		require.Error(t, err)
++		require.Nil(t, models)
++	}
++	for _, cache := range []*concurrencyCache{nil, {}} {
++		require.ErrorIs(t, cache.RegisterTelemetryModel(ctx, 1, telemetryModelTestID(1), "m"), service.ErrTelemetryActiveModelsUnavailable)
++		models, err := cache.ReadTelemetryActiveModels(ctx, []int64{1})
++		require.ErrorIs(t, err, service.ErrTelemetryActiveModelsUnavailable)
++		require.Nil(t, models)
++	}
++}
++
++func TestTelemetryModelRepoRedisErrorNotIdle(t *testing.T) {
++	c, mr, ctx := telemetryModelRepoFixture(t)
++	require.NoError(t, c.RegisterTelemetryModel(ctx, 1, telemetryModelTestID(1), "m"))
++	mr.SetError("ERR telemetry test failure")
++	models, err := c.ReadTelemetryActiveModels(ctx, []int64{1})
++	require.Error(t, err)
++	require.Nil(t, models)
++	require.Error(t, c.RegisterTelemetryModel(ctx, 1, telemetryModelTestID(2), "m"))
++	alive, err := c.RefreshTelemetryModel(ctx, 1, telemetryModelTestID(1))
++	require.Error(t, err)
++	require.False(t, alive)
++	alive, err = c.UpdateTelemetryModel(ctx, 1, telemetryModelTestID(1), "next")
++	require.Error(t, err)
++	require.False(t, alive)
++	require.Error(t, c.ReleaseTelemetryModel(ctx, 1, telemetryModelTestID(1)))
++	mr.SetError("")
++	cancelled, cancel := context.WithCancel(ctx)
++	cancel()
++	models, err = c.ReadTelemetryActiveModels(cancelled, []int64{1})
++	require.Error(t, err)
++	require.Nil(t, models)
++}
++
++func TestTelemetryModelRepoLimitAndCorruptionReturnError(t *testing.T) {
++	for _, kind := range []string{"over-limit-zset", "over-limit-hash", "missing-hash", "orphan-hash", "wrong-user", "bad-model", "unknown-field", "huge-json"} {
++		t.Run(kind, func(t *testing.T) {
++			c, _, ctx := telemetryModelRepoFixture(t)
++			id := telemetryModelTestID(1)
++			require.NoError(t, c.RegisterTelemetryModel(ctx, 1, id, "m"))
++			keys := telemetryActiveModelKeys(1)
++			switch kind {
++			case "over-limit-zset":
++				values := make([]redis.Z, 10001)
++				for i := range values {
++					values[i] = redis.Z{Score: 2e12, Member: telemetryModelTestID(i + 1)}
++				}
++				require.NoError(t, c.rdb.ZAdd(ctx, keys[0], values...).Err())
++			case "over-limit-hash":
++				values := make(map[string]any, 10001)
++				for i := range 10001 {
++					values[telemetryModelTestID(i+1)] = "{}"
++				}
++				require.NoError(t, c.rdb.HSet(ctx, keys[1], values).Err())
++			case "missing-hash":
++				require.NoError(t, c.rdb.HDel(ctx, keys[1], id).Err())
++			case "orphan-hash":
++				require.NoError(t, c.rdb.HSet(ctx, keys[1], telemetryModelTestID(2), "{}").Err())
++			case "wrong-user":
++				require.NoError(t, c.rdb.HSet(ctx, keys[1], id, `{"user_id":"2","requested_model":"m","upstream_model":null}`).Err())
++			case "bad-model":
++				require.NoError(t, c.rdb.HSet(ctx, keys[1], id, `{"user_id":"1","requested_model":"m\n","upstream_model":null}`).Err())
++			case "unknown-field":
++				require.NoError(t, c.rdb.HSet(ctx, keys[1], id, `{"user_id":"1","requested_model":"m","body":"forbidden"}`).Err())
++			case "huge-json":
++				require.NoError(t, c.rdb.HSet(ctx, keys[1], id, strings.Repeat("x", 2049)).Err())
++			}
++			models, err := c.ReadTelemetryActiveModels(ctx, []int64{1})
++			require.Error(t, err)
++			require.Nil(t, models)
++			require.NoError(t, c.ReleaseTelemetryModel(ctx, 1, id), "Release can still remove its lease when reads fail")
++		})
++	}
++}
++
++func TestTelemetryModelRepoMaximumAllowedAndNoDuplicateRegistration(t *testing.T) {
++	c, _, ctx := telemetryModelRepoFixture(t)
++	keys := telemetryActiveModelKeys(1)
++	zvalues := make([]redis.Z, 10000)
++	hvalues := make(map[string]any, 10000)
++	for i := range zvalues {
++		id := telemetryModelTestID(i + 1)
++		zvalues[i] = redis.Z{Score: 2e12, Member: id}
++		hvalues[id] = `{"user_id":"1","requested_model":"m","upstream_model":null}`
++	}
++	require.NoError(t, c.rdb.ZAdd(ctx, keys[0], zvalues...).Err())
++	require.NoError(t, c.rdb.HSet(ctx, keys[1], hvalues).Err())
++	models, err := c.ReadTelemetryActiveModels(ctx, []int64{1})
++	require.NoError(t, err)
++	require.Equal(t, []public.ActiveModel{{RequestedModel: "m", Requests: 10000}}, models[1])
++	require.Error(t, c.RegisterTelemetryModel(ctx, 1, telemetryModelTestID(10001), "m"))
++	require.Error(t, c.RegisterTelemetryModel(ctx, 1, telemetryModelTestID(1), "replacement"))
++}
++
++func TestTelemetryModelRepoServiceLifecycleAndLargeUserID(t *testing.T) {
++	c, _, ctx := telemetryModelRepoFixture(t)
++	s := service.NewConcurrencyService(c)
++	// cjson update must preserve a string identity beyond JavaScript's 2^53.
++	const userID int64 = 9007199254740993
++	reqCtx, cancel := context.WithCancel(ctx)
++	defer cancel()
++	lease := s.BeginTelemetryModel(reqCtx, userID, "requested")
++	require.NotNil(t, lease)
++	defer lease.Release()
++	lease.UpdateUpstream("upstream")
++	models, err := s.ReadTelemetryActiveModels(ctx, []int64{userID})
++	require.NoError(t, err)
++	require.Equal(t, "upstream", *models[userID][0].UpstreamModel)
++	cancel()
++	require.Eventually(t, func() bool {
++		models, err := s.ReadTelemetryActiveModels(ctx, []int64{userID})
++		return err == nil && len(models[userID]) == 0
++	}, time.Second, time.Millisecond)
++}
+--- /dev/null
++++ b/backend/internal/repository/user_telemetry_active_models.go
+@@ -0,0 +1,227 @@
++package repository
++
++import (
++	"context"
++	"encoding/hex"
++	"encoding/json"
++	"fmt"
++	"io"
++	"sort"
++	"strconv"
++	"strings"
++
++	"github.com/Wei-Shaw/sub2api/internal/service"
++	public "github.com/Wei-Shaw/sub2api/pkg/usertelemetry"
++	"github.com/redis/go-redis/v9"
++)
++
++var _ service.TelemetryActiveModelCache = (*concurrencyCache)(nil)
++
++// Only these two user-local keys are used. The hash tag co-locates them in Redis
++// Cluster; no global index/SCAN and no existing concurrency slot changes.
++func telemetryActiveModelKeys(userID int64) []string {
++	base := "telemetry:active_models:{" + strconv.FormatInt(userID, 10) + "}:"
++	return []string{base + "expiry", base + "models"}
++}
++
++type telemetryActiveModelRecord struct {
++	UserID         string  `json:"user_id"`
++	RequestedModel string  `json:"requested_model"`
++	UpstreamModel  *string `json:"upstream_model"`
++}
++
++// Every mutation and read is atomic within one user's hash slot. Redis TIME
++// avoids clock skew between hosts. Update/heartbeat first verify ownership AND
++// expiry; they cannot recreate entries deleted by Release or a previous read.
++// Cardinalities are checked before iteration to bound work on corrupt/oversized
++// keys. Release deliberately bypasses these checks so it can always clean up.
++var telemetryActiveModelScript = redis.NewScript(`
++redis.replicate_commands()
++local z, h = KEYS[1], KEYS[2]
++local op, id = ARGV[1], ARGV[2]
++if op == 'release' then
++ redis.call('ZREM', z, id)
++ redis.call('HDEL', h, id)
++ return 1
++end
++local max = tonumber(ARGV[4])
++if redis.call('ZCARD', z) > max or redis.call('HLEN', h) > max then
++ return redis.error_reply('telemetry active model limit exceeded')
++end
++local clock = redis.call('TIME')
++local now = tonumber(clock[1]) * 1000 + math.floor(tonumber(clock[2]) / 1000)
++local expired = redis.call('ZRANGEBYSCORE', z, '-inf', now)
++for _, member in ipairs(expired) do
++ redis.call('HDEL', h, member)
++ redis.call('ZREM', z, member)
++end
++if redis.call('ZCARD', z) ~= redis.call('HLEN', h) then
++ return redis.error_reply('telemetry active model index inconsistent')
++end
++if op == 'read' then
++ local members = redis.call('ZRANGE', z, 0, -1)
++ local result = {}
++ for _, member in ipairs(members) do
++  local value = redis.call('HGET', h, member)
++  if not value then return redis.error_reply('telemetry active model record missing') end
++  if string.len(value) > 2048 then return redis.error_reply('telemetry active model record too large') end
++  table.insert(result, value)
++ end
++ return result
++end
++local ttl = tonumber(ARGV[3])
++local score = redis.call('ZSCORE', z, id)
++local value = redis.call('HGET', h, id)
++if op == 'register' then
++ if score or value then return redis.error_reply('telemetry active model duplicate lease') end
++ if redis.call('ZCARD', z) >= max then return redis.error_reply('telemetry active model limit exceeded') end
++ redis.call('HSET', h, id, ARGV[5])
++elseif op == 'refresh' or op == 'update' then
++ if not score or not value or tonumber(score) <= now then return 0 end
++ if op == 'update' then
++  if string.len(value) > 2048 then return redis.error_reply('telemetry active model record too large') end
++  local valid, record = pcall(cjson.decode, value)
++  if not valid or type(record) ~= 'table' then return redis.error_reply('telemetry active model invalid JSON') end
++  record.upstream_model = ARGV[5]
++  redis.call('HSET', h, id, cjson.encode(record))
++ end
++else
++ return redis.error_reply('telemetry active model invalid operation')
++end
++redis.call('ZADD', z, now + ttl, id)
++redis.call('PEXPIRE', z, ttl)
++redis.call('PEXPIRE', h, ttl)
++return 1
++`)
++
++func (c *concurrencyCache) telemetryModelCommand(ctx context.Context, userID int64, leaseID, op, payload string) *redis.Cmd {
++	return telemetryActiveModelScript.Run(ctx, c.rdb, telemetryActiveModelKeys(userID), op, leaseID, service.TelemetryModelLeaseTTL.Milliseconds(), service.TelemetryActiveModelMaxRequests, payload)
++}
++
++func (c *concurrencyCache) validateTelemetryModelLease(userID int64, leaseID string) error {
++	if c == nil || c.rdb == nil {
++		return service.ErrTelemetryActiveModelsUnavailable
++	}
++	if userID <= 0 {
++		return fmt.Errorf("invalid telemetry model user ID")
++	}
++	raw, err := hex.DecodeString(leaseID)
++	if err != nil || len(raw) != 16 || hex.EncodeToString(raw) != leaseID {
++		return fmt.Errorf("invalid telemetry model lease ID")
++	}
++	return nil
++}
++
++func (c *concurrencyCache) RegisterTelemetryModel(ctx context.Context, userID int64, leaseID, requestedModel string) error {
++	if err := c.validateTelemetryModelLease(userID, leaseID); err != nil {
++		return err
++	}
++	if !service.ValidTelemetryModelName(requestedModel) {
++		return fmt.Errorf("invalid requested telemetry model")
++	}
++	payload, err := json.Marshal(telemetryActiveModelRecord{UserID: strconv.FormatInt(userID, 10), RequestedModel: requestedModel})
++	if err != nil {
++		return err
++	}
++	return c.telemetryModelCommand(ctx, userID, leaseID, "register", string(payload)).Err()
++}
++
++func (c *concurrencyCache) RefreshTelemetryModel(ctx context.Context, userID int64, leaseID string) (bool, error) {
++	if err := c.validateTelemetryModelLease(userID, leaseID); err != nil {
++		return false, err
++	}
++	n, err := c.telemetryModelCommand(ctx, userID, leaseID, "refresh", "").Int()
++	return n == 1 && err == nil, err
++}
++
++func (c *concurrencyCache) UpdateTelemetryModel(ctx context.Context, userID int64, leaseID, upstream string) (bool, error) {
++	if err := c.validateTelemetryModelLease(userID, leaseID); err != nil {
++		return false, err
++	}
++	if !service.ValidTelemetryModelName(upstream) {
++		return false, fmt.Errorf("invalid upstream telemetry model")
++	}
++	n, err := c.telemetryModelCommand(ctx, userID, leaseID, "update", upstream).Int()
++	return n == 1 && err == nil, err
++}
++
++func (c *concurrencyCache) ReleaseTelemetryModel(ctx context.Context, userID int64, leaseID string) error {
++	if err := c.validateTelemetryModelLease(userID, leaseID); err != nil {
++		return err
++	}
++	return c.telemetryModelCommand(ctx, userID, leaseID, "release", "").Err()
++}
++
++func (c *concurrencyCache) ReadTelemetryActiveModels(ctx context.Context, userIDs []int64) (map[int64][]public.ActiveModel, error) {
++	ids, err := service.TelemetryActiveModelUserScope(userIDs)
++	if err != nil {
++		return nil, err
++	}
++	result := make(map[int64][]public.ActiveModel, len(ids))
++	if len(ids) == 0 {
++		return result, nil
++	}
++	if c == nil || c.rdb == nil {
++		return nil, service.ErrTelemetryActiveModelsUnavailable
++	}
++	remaining := service.TelemetryActiveModelMaxRequests
++	for _, userID := range ids {
++		raw, err := c.telemetryModelCommand(ctx, userID, "", "read", "").StringSlice()
++		if err != nil {
++			return nil, fmt.Errorf("read telemetry active models: %w", err)
++		}
++		if len(raw) > remaining {
++			return nil, fmt.Errorf("telemetry active model snapshot exceeds total request limit")
++		}
++		remaining -= len(raw)
++		type modelKey struct {
++			requested, upstream string
++			known               bool
++		}
++		counts := make(map[modelKey]int)
++		for _, payload := range raw {
++			var record telemetryActiveModelRecord
++			decoder := json.NewDecoder(strings.NewReader(payload))
++			decoder.DisallowUnknownFields()
++			if err := decoder.Decode(&record); err != nil {
++				return nil, fmt.Errorf("invalid telemetry active model record")
++			}
++			var extra any
++			if err := decoder.Decode(&extra); err != io.EOF {
++				return nil, fmt.Errorf("invalid trailing telemetry active model JSON")
++			}
++			if record.UserID != strconv.FormatInt(userID, 10) || !service.ValidTelemetryModelName(record.RequestedModel) || (record.UpstreamModel != nil && !service.ValidTelemetryModelName(*record.UpstreamModel)) {
++				return nil, fmt.Errorf("invalid telemetry active model record scope or model")
++			}
++			key := modelKey{requested: record.RequestedModel, known: record.UpstreamModel != nil}
++			if key.known {
++				key.upstream = *record.UpstreamModel
++			}
++			counts[key]++
++		}
++		models := make([]public.ActiveModel, 0, len(counts))
++		for key, count := range counts {
++			model := public.ActiveModel{RequestedModel: key.requested, Requests: count}
++			if key.known {
++				upstream := key.upstream
++				model.UpstreamModel = &upstream
++			}
++			models = append(models, model)
++		}
++		sort.Slice(models, func(i, j int) bool {
++			a, b := models[i], models[j]
++			if a.RequestedModel != b.RequestedModel {
++				return a.RequestedModel < b.RequestedModel
++			}
++			if a.UpstreamModel == nil {
++				return b.UpstreamModel != nil
++			}
++			if b.UpstreamModel == nil {
++				return false
++			}
++			return *a.UpstreamModel < *b.UpstreamModel
++		})
++		result[userID] = models
++	}
++	return result, nil
++}
+--- a/backend/internal/repository/user_telemetry_postgres_test.go
++++ b/backend/internal/repository/user_telemetry_postgres_test.go
+@@ -4,6 +4,7 @@
+ 	"context"
+ 	"database/sql"
+ 	"encoding/json"
++	"math/big"
+ 	"net/url"
+ 	"os"
+ 	"strings"
+@@ -74,6 +75,40 @@
+ 		require.NoError(t, db.QueryRowContext(ctx, `SELECT to_regclass($1)::oid = to_regclass('pg_temp.' || $1)::oid`, table).Scan(&isolated))
+ 		require.True(t, isolated, "fixture must resolve to the private temporary schema: %s", table)
+ 	}
++	// Deliberately use a DB-session timezone unlike the request's timezone.
++	// Bound timestamptz instants, not session-local date_trunc, own the day cuts.
++	_, err = db.ExecContext(ctx, `SET TIME ZONE 'America/New_York'`)
++	require.NoError(t, err)
++	loc, err := time.LoadLocation("Asia/Shanghai")
++	require.NoError(t, err)
++	fixtureNow := time.Now().In(loc)
++	todayStart := time.Date(fixtureNow.Year(), fixtureNow.Month(), fixtureNow.Day(), 0, 0, 0, 0, loc)
++	yesterdayStart := todayStart.AddDate(0, 0, -1)
++	for _, row := range []struct {
++		userID, keyID                 int64
++		at                            time.Time
++		input, output, creation, read string
++	}{
++		// Exact inclusive yesterday bound and exclusive today bound; one
++		// microsecond is PostgreSQL's precision, not a nanosecond that rounds up.
++		{9007199254740993, 9007199254740101, yesterdayStart.Add(-time.Microsecond), "555", "0", "0", "0"},
++		{9007199254740993, 9007199254740101, yesterdayStart, "7", "0", "0", "0"},
++		{9007199254740993, 9007199254740101, todayStart.Add(-time.Microsecond), "9", "0", "0", "0"},
++		{9007199254740993, 9007199254740101, todayStart, "1", "2", "3", "4"},
++		// Historical deleted key and numeric row addition exceeding bigint.
++		{9007199254740993, 9007199254740103, todayStart, "9223372036854775807", "9223372036854775807", "0", "0"},
++		{9007199254740993, 9007199254740101, todayStart.AddDate(0, 0, 2), "777", "0", "0", "0"},
++		{9007199254740994, 9007199254740104, yesterdayStart, "3", "0", "0", "0"},
++		{9007199254740994, 9007199254740104, todayStart, "4", "0", "0", "0"},
++		// Deleted and outside-request users must never contaminate page totals.
++		{9007199254740995, 9007199254740101, todayStart, "888", "0", "0", "0"},
++		{9007199254740997, 9007199254740101, todayStart, "999", "0", "0", "0"},
++	} {
++		_, err = db.ExecContext(ctx, `INSERT INTO pg_temp.usage_logs
++		(user_id,api_key_id,created_at,input_tokens,output_tokens,cache_creation_tokens,cache_read_tokens,cache_creation_5m_tokens,cache_creation_1h_tokens,total_cost)
++		VALUES ($1,$2,$3,$4,$5,$6,$7,4000,5000,999)`, row.userID, row.keyID, row.at, row.input, row.output, row.creation, row.read)
++		require.NoError(t, err)
++	}
+ 	var concurrency *service.ConcurrencyService
+ 	if addr := os.Getenv("S2A_TELEMETRY_TEST_REDIS_ADDR"); addr != "" {
+ 		client := redis.NewClient(&redis.Options{Addr: addr})
+@@ -99,6 +134,17 @@
+ 	require.Equal(t, "18446744073709551644", *first.TokenUsage.Total)
+ 	require.Len(t, second.APIKeys, 1)
+ 	require.Equal(t, "7", *second.TokenUsage.Total)
++	assertTelemetryDailyPostgres(t, ctx, db, first)
++	assertTelemetryDailyPostgres(t, ctx, db, second)
++	// The reference below uses returned frozen bounds and arbitrary precision,
++	// so a rare test execution crossing midnight is still checked correctly.
++	if first.TokenUsage.Today.Date == fixtureNow.Format("2006-01-02") {
++		require.Equal(t, "18446744073709551624", *first.TokenUsage.Today.Total)
++		require.Equal(t, "16", *first.TokenUsage.Yesterday.Total)
++		require.Equal(t, "4", *second.TokenUsage.Today.Total)
++		require.Equal(t, "3", *second.TokenUsage.Yesterday.Total)
++	}
++
+ 	require.Equal(t, "untracked", second.Quality.Concurrency)
+ 	require.Nil(t, second.Concurrency.Current)
+ 	if concurrency == nil {
+@@ -119,6 +165,10 @@
+ 	require.Len(t, snapshot.Users, 1, "soft-deleted user must not appear on the next page")
+ 	require.Equal(t, "9007199254740996", snapshot.Users[0].UserID)
+ 	require.Equal(t, "0", *snapshot.Users[0].TokenUsage.Total)
++	assertTelemetryDailyPostgres(t, ctx, db, snapshot.Users[0])
++	require.Equal(t, "0", *snapshot.Users[0].TokenUsage.Today.Total)
++	require.Equal(t, "0", *snapshot.Users[0].TokenUsage.Yesterday.Total)
++
+ 	require.Empty(t, snapshot.Users[0].APIKeys)
+ 	require.Nil(t, snapshot.NextCursor)
+ 
+@@ -136,6 +186,13 @@
+ 		require.Nil(t, user.TokenUsage.Total)
+ 		require.Nil(t, user.ObservedAt.TokenUsage)
+ 		require.Equal(t, "unavailable", user.Quality.TokenUsage)
++		for _, day := range []*usertelemetry.DailyTokenUsage{user.TokenUsage.Today, user.TokenUsage.Yesterday} {
++			require.NotNil(t, day)
++			require.Nil(t, day.Total)
++			require.Nil(t, day.ObservedAt)
++			require.Equal(t, "unavailable", day.Quality)
++		}
++
+ 		require.Equal(t, "fresh", user.Quality.Identity)
+ 		require.Equal(t, "fresh", user.Quality.APIKeys)
+ 	}
+@@ -153,3 +210,41 @@
+ 	require.ErrorContains(t, err, "identity read failed")
+ 	require.Nil(t, raw)
+ }
++
++// Independent reference: sum individual fixture components in Go big.Int using
++// the returned [start,end) instants. It intentionally does not duplicate SUM
++// FILTER SQL, and so detects wrong FILTER columns/bounds and numeric overflow.
++func assertTelemetryDailyPostgres(t *testing.T, ctx context.Context, db *sql.DB, user usertelemetry.User) {
++	t.Helper()
++	for _, day := range []*usertelemetry.DailyTokenUsage{user.TokenUsage.Today, user.TokenUsage.Yesterday} {
++		require.NotNil(t, day)
++		require.NotNil(t, day.Total)
++		require.Equal(t, "fresh", day.Quality)
++		require.NotNil(t, day.ObservedAt)
++		start, err := time.Parse(time.RFC3339Nano, day.Start)
++		require.NoError(t, err)
++		end, err := time.Parse(time.RFC3339Nano, day.End)
++		require.NoError(t, err)
++		require.Equal(t, day.Date, start.Format("2006-01-02"))
++		rows, err := db.QueryContext(ctx, `SELECT created_at, input_tokens::text, output_tokens::text,
++		cache_creation_tokens::text, cache_read_tokens::text FROM pg_temp.usage_logs WHERE user_id=$1`, user.UserID)
++		require.NoError(t, err)
++		total := new(big.Int)
++		for rows.Next() {
++			var at time.Time
++			var components [4]string
++			require.NoError(t, rows.Scan(&at, &components[0], &components[1], &components[2], &components[3]))
++			if at.Before(start) || !at.Before(end) {
++				continue
++			}
++			for _, component := range components {
++				value, ok := new(big.Int).SetString(component, 10)
++				require.True(t, ok)
++				total.Add(total, value)
++			}
++		}
++		require.NoError(t, rows.Err())
++		require.NoError(t, rows.Close())
++		require.Equal(t, total.String(), *day.Total)
++	}
++}
+--- a/backend/internal/service/user_telemetry.go
++++ b/backend/internal/service/user_telemetry.go
+@@ -37,6 +37,40 @@
+ WHERE user_id = ANY($1::bigint[]) AND created_at >= $2 AND created_at < $3
+ GROUP BY user_id`
+ 
++// One independent scan of yesterday through the frozen now serves both calendar
++// windows. Each operand is numeric BEFORE addition; no key join or cache subitems.
++const userTelemetryDailyTokensSQL = `SELECT user_id,
++COALESCE(SUM((input_tokens::numeric) + (output_tokens::numeric) + (cache_creation_tokens::numeric) + (cache_read_tokens::numeric)) FILTER (WHERE created_at >= $3 AND created_at < $4), 0)::text,
++COALESCE(SUM((input_tokens::numeric) + (output_tokens::numeric) + (cache_creation_tokens::numeric) + (cache_read_tokens::numeric)) FILTER (WHERE created_at >= $2 AND created_at < $3), 0)::text
++FROM usage_logs
++WHERE user_id = ANY($1::bigint[]) AND created_at >= $2 AND created_at < $4
++GROUP BY user_id`
++
++type telemetryDailyBounds struct {
++	yesterdayStart time.Time
++	todayStart     time.Time
++	now            time.Time
++}
++
++func newTelemetryDailyBounds(now time.Time, loc *time.Location) telemetryDailyBounds {
++	now = now.In(loc)
++	today := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, loc)
++	// Calendar arithmetic is essential: yesterday can be 23 or 25 hours long.
++	return telemetryDailyBounds{yesterdayStart: today.AddDate(0, 0, -1), todayStart: today, now: now}
++}
++
++func telemetryDailyWindow(start, end time.Time) *usertelemetry.DailyTokenUsage {
++	return &usertelemetry.DailyTokenUsage{
++		Date: start.Format("2006-01-02"), Start: start.Format(time.RFC3339Nano),
++		End: end.Format(time.RFC3339Nano), Quality: "unavailable",
++	}
++}
++
++type telemetryDailyTotals struct {
++	today     string
++	yesterday string
++}
++
+ var ErrUserTelemetryAPIKeyLimit = errors.New("user telemetry API key resource limit exceeded (maximum 10000 keys per page; request a smaller user page)")
+ 
+ // UserTelemetryService performs uncached, request-scoped reads. It must only be
+@@ -60,10 +94,16 @@
+ 	if err != nil {
+ 		return nil, err
+ 	}
+-	q, start, end, err := q.Normalize(s.now())
+-	if err != nil {
+-		return nil, err
+-	}
++	now := s.now() // Freeze query normalization AND both daily windows once.
++	q, start, end, err := q.Normalize(now)
++	if err != nil {
++		return nil, err
++	}
++	loc, err := time.LoadLocation(q.Timezone)
++	if err != nil {
++		return nil, err
++	}
++	dailyBounds := newTelemetryDailyBounds(now, loc)
+ 	ids := make([]int64, 0, len(q.UserIDs))
+ 	for _, value := range q.UserIDs {
+ 		id, err := usertelemetry.ParseID(value)
+@@ -127,7 +167,31 @@
+ 			users[i].ObservedAt.TokenUsage = &tokensObserved
+ 		}
+ 	}
++	// Daily status is independent of the caller-selected window total. Initialize
++	// explicit metadata even on failure, but never publish partial/unknown zeros.
++	for i := range users {
++		users[i].TokenUsage.Today = telemetryDailyWindow(dailyBounds.todayStart, dailyBounds.now)
++		users[i].TokenUsage.Yesterday = telemetryDailyWindow(dailyBounds.yesterdayStart, dailyBounds.todayStart)
++	}
++	daily, dailyErr := s.readTelemetryDailyTokens(ctx, pageIDs, dailyBounds)
++	if dailyErr == nil {
++		observed := s.telemetrySampleTime()
++		for i, id := range pageIDs {
++			totals, found := daily[id]
++			if !found {
++				// A complete successful GROUP BY scan proves absence for both days.
++				totals = telemetryDailyTotals{today: "0", yesterday: "0"}
++			}
++			users[i].TokenUsage.Today.Total = &totals.today
++			users[i].TokenUsage.Yesterday.Total = &totals.yesterday
++			users[i].TokenUsage.Today.Quality = "fresh"
++			users[i].TokenUsage.Yesterday.Quality = "fresh"
++			users[i].TokenUsage.Today.ObservedAt = &observed
++			users[i].TokenUsage.Yesterday.ObservedAt = &observed
++		}
++	}
+ 	s.readTelemetryConcurrency(ctx, users, pageIDs)
++	s.readTelemetryActiveModels(ctx, users, pageIDs)
+ 	if err := ctx.Err(); err != nil {
+ 		return nil, err
+ 	}
+@@ -248,6 +312,38 @@
+ 	return tokens, nil
+ }
+ 
++func (s *UserTelemetryService) readTelemetryDailyTokens(ctx context.Context, ids []int64, bounds telemetryDailyBounds) (map[int64]telemetryDailyTotals, error) {
++	rows, err := s.db.QueryContext(ctx, userTelemetryDailyTokensSQL, pq.Array(ids), bounds.yesterdayStart, bounds.todayStart, bounds.now)
++	if err != nil {
++		return nil, err
++	}
++	defer rows.Close()
++	allowed := make(map[int64]bool, len(ids))
++	for _, id := range ids {
++		allowed[id] = true
++	}
++	tokens := make(map[int64]telemetryDailyTotals, len(ids))
++	for rows.Next() {
++		var id int64
++		var total telemetryDailyTotals
++		if err := rows.Scan(&id, &total.today, &total.yesterday); err != nil {
++			return nil, err
++		}
++		if _, duplicate := tokens[id]; duplicate || !allowed[id] ||
++			!telemetryDecimalInteger(total.today) || !telemetryDecimalInteger(total.yesterday) {
++			return nil, errors.New("invalid user telemetry daily token aggregate")
++		}
++		tokens[id] = total
++	}
++	if err := rows.Err(); err != nil {
++		return nil, err
++	}
++	if err := rows.Close(); err != nil {
++		return nil, err
++	}
++	return tokens, nil
++}
++
+ // PostgreSQL SUM(numeric)::text stays a decimal integer without any conversion
+ // through float64 or int64; reject corrupt/negative counters instead of a zero.
+ func telemetryDecimalInteger(value string) bool {
+@@ -260,6 +356,39 @@
+ 		}
+ 	}
+ 	return true
++}
++
++func (s *UserTelemetryService) readTelemetryActiveModels(ctx context.Context, users []usertelemetry.User, ids []int64) {
++	// Always publish an explicit unavailable state for the new field. An idle
++	// user is represented by a successful empty model list, never by a missing
++	// field or by the last model seen in usage_logs.
++	for i := range users {
++		users[i].ActiveModels = &usertelemetry.ActiveModelSnapshot{
++			Models: []usertelemetry.ActiveModel{}, Quality: "unavailable",
++		}
++	}
++	if s == nil || s.concurrency == nil || len(ids) == 0 {
++		return
++	}
++	models, err := s.concurrency.ReadTelemetryActiveModels(ctx, ids)
++	if err != nil {
++		return
++	}
++	observed := s.telemetrySampleTime()
++	for i, id := range ids {
++		entries, ok := models[id]
++		if !ok {
++			// The service-level reader guarantees a complete requested scope;
++			// fail closed if an alternate implementation violates that contract.
++			continue
++		}
++		if entries == nil {
++			entries = []usertelemetry.ActiveModel{}
++		}
++		users[i].ActiveModels = &usertelemetry.ActiveModelSnapshot{
++			Models: entries, Quality: "partial", ObservedAt: &observed,
++		}
++	}
+ }
+ 
+ func (s *UserTelemetryService) readTelemetryConcurrency(ctx context.Context, users []usertelemetry.User, ids []int64) {
+--- /dev/null
++++ b/backend/internal/service/user_telemetry_active_models_test.go
+@@ -0,0 +1,360 @@
++package service
++
++import (
++	"context"
++	"encoding/hex"
++	"errors"
++	"reflect"
++	"strings"
++	"sync"
++	"sync/atomic"
++	"testing"
++	"time"
++
++	public "github.com/Wei-Shaw/sub2api/pkg/usertelemetry"
++	"github.com/stretchr/testify/require"
++)
++
++type telemetryModelTestCache struct {
++	ConcurrencyCache                                        // No unrelated admission-control method is invoked.
++	mu                                                      sync.Mutex
++	records                                                 map[int64]map[string]public.ActiveModel
++	registerErr, refreshErr, updateErr, releaseErr, readErr error
++	missing                                                 bool
++	refreshCalls, updateCalls, releaseCalls                 int
++	registerIDs                                             []string
++	readIDs                                                 []int64
++	readOverride                                            map[int64][]public.ActiveModel
++	updateStarted, unblockUpdate                            chan struct{}
++	releaseCtxErr                                           error
++}
++
++func newTelemetryModelTestCache() *telemetryModelTestCache {
++	return &telemetryModelTestCache{records: make(map[int64]map[string]public.ActiveModel)}
++}
++func (c *telemetryModelTestCache) RegisterTelemetryModel(ctx context.Context, id int64, lease, model string) error {
++	c.mu.Lock()
++	defer c.mu.Unlock()
++	if c.records[id] == nil {
++		c.records[id] = make(map[string]public.ActiveModel)
++	}
++	c.records[id][lease] = public.ActiveModel{RequestedModel: model, Requests: 1}
++	c.registerIDs = append(c.registerIDs, lease)
++	return c.registerErr // Can model a write with lost acknowledgement.
++}
++func (c *telemetryModelTestCache) RefreshTelemetryModel(ctx context.Context, id int64, lease string) (bool, error) {
++	c.mu.Lock()
++	defer c.mu.Unlock()
++	c.refreshCalls++
++	_, ok := c.records[id][lease]
++	return ok && !c.missing, c.refreshErr
++}
++func (c *telemetryModelTestCache) UpdateTelemetryModel(ctx context.Context, id int64, lease, model string) (bool, error) {
++	if c.updateStarted != nil {
++		close(c.updateStarted)
++		select {
++		case <-c.unblockUpdate:
++		case <-ctx.Done():
++			return false, ctx.Err()
++		}
++	}
++	c.mu.Lock()
++	defer c.mu.Unlock()
++	c.updateCalls++
++	old, exists := c.records[id][lease]
++	if exists && c.updateErr == nil {
++		old.UpstreamModel = &model
++		c.records[id][lease] = old
++	}
++	return exists, c.updateErr
++}
++func (c *telemetryModelTestCache) ReleaseTelemetryModel(ctx context.Context, id int64, lease string) error {
++	c.mu.Lock()
++	defer c.mu.Unlock()
++	c.releaseCalls++
++	c.releaseCtxErr = ctx.Err()
++	if c.releaseErr == nil {
++		delete(c.records[id], lease)
++	}
++	return c.releaseErr
++}
++func (c *telemetryModelTestCache) ReadTelemetryActiveModels(ctx context.Context, ids []int64) (map[int64][]public.ActiveModel, error) {
++	c.mu.Lock()
++	defer c.mu.Unlock()
++	c.readIDs = append([]int64(nil), ids...)
++	if c.readErr != nil {
++		return nil, c.readErr
++	}
++	if c.readOverride != nil {
++		return c.readOverride, nil
++	}
++	out := make(map[int64][]public.ActiveModel)
++	for _, id := range ids {
++		out[id] = []public.ActiveModel{}
++		for _, model := range c.records[id] {
++			out[id] = append(out[id], model)
++		}
++	}
++	return out, nil
++}
++func (c *telemetryModelTestCache) recordCount() int {
++	c.mu.Lock()
++	defer c.mu.Unlock()
++	n := 0
++	for _, records := range c.records {
++		n += len(records)
++	}
++	return n
++}
++func waitTelemetryModelDone(t *testing.T, lease *TelemetryModelLease) {
++	t.Helper()
++	select {
++	case <-lease.done:
++	case <-time.After(time.Second):
++		t.Fatal("telemetry heartbeat did not stop")
++	}
++}
++
++func TestTelemetryModelBeginUpdateContextAndRelease(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	s := NewConcurrencyService(c)
++	lease := s.BeginTelemetryModel(context.Background(), 7, "client-model")
++	require.NotNil(t, lease)
++	t.Cleanup(lease.Release)
++	require.Len(t, lease.leaseID, 32)
++	_, err := hex.DecodeString(lease.leaseID)
++	require.NoError(t, err)
++	data, err := s.ReadTelemetryActiveModels(context.Background(), []int64{7, 8})
++	require.NoError(t, err)
++	require.Equal(t, []public.ActiveModel{{RequestedModel: "client-model", Requests: 1}}, data[7])
++	require.Empty(t, data[8])
++	UpdateTelemetryModelFromContext(WithTelemetryModelLease(context.Background(), lease), "mapped-model")
++	data, err = s.ReadTelemetryActiveModels(context.Background(), []int64{7})
++	require.NoError(t, err)
++	require.Equal(t, "mapped-model", *data[7][0].UpstreamModel)
++	lease.refresh()
++	lease.Release()
++	lease.Release()
++	lease.UpdateUpstream("other")
++	lease.refresh()
++	waitTelemetryModelDone(t, lease)
++	require.Zero(t, c.recordCount())
++	require.Equal(t, 1, c.updateCalls)
++	require.Equal(t, 1, c.refreshCalls)
++	require.Equal(t, 1, c.releaseCalls)
++	data, err = s.ReadTelemetryActiveModels(context.Background(), []int64{7})
++	require.NoError(t, err)
++	require.NotNil(t, data[7])
++	require.Empty(t, data[7])
++	// Lease internals cannot leak through the public DTO.
++	require.Equal(t, 3, reflect.TypeOf(public.ActiveModel{}).NumField())
++}
++
++func TestTelemetryModelCancellationDeletesWithDetachedContext(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	ctx, cancel := context.WithCancel(context.Background())
++	lease := NewConcurrencyService(c).BeginTelemetryModel(ctx, 4, "model")
++	require.NotNil(t, lease)
++	cancel()
++	waitTelemetryModelDone(t, lease)
++	require.Zero(t, c.recordCount())
++	require.NoError(t, c.releaseCtxErr)
++	lease.refresh()
++	lease.UpdateUpstream("other")
++	require.Zero(t, c.updateCalls)
++	require.Zero(t, c.refreshCalls)
++}
++
++func TestTelemetryModelOptionalNoopAndValidation(t *testing.T) {
++	var nilService *ConcurrencyService
++	require.Nil(t, nilService.BeginTelemetryModel(context.Background(), 1, "m"))
++	require.Nil(t, NewConcurrencyService(nil).BeginTelemetryModel(context.Background(), 1, "m"))
++	// Embedding only the existing interface deliberately does not implement the new one.
++	unsupported := struct{ ConcurrencyCache }{}
++	require.Nil(t, NewConcurrencyService(unsupported).BeginTelemetryModel(context.Background(), 1, "m"))
++	c := newTelemetryModelTestCache()
++	s := NewConcurrencyService(c)
++	for _, model := range []string{"", "   ", "a\nb", "a\x00b", "a\x7fb", "a\u0085b", "a\u200bb", strings.Repeat("a", 201), string([]byte{255})} {
++		require.Nil(t, s.BeginTelemetryModel(context.Background(), 1, model), "%q", model)
++	}
++	require.True(t, ValidTelemetryModelName(strings.Repeat("a", 200)))
++	require.False(t, ValidTelemetryModelName(strings.Repeat("猫", 67)))
++	require.Nil(t, s.BeginTelemetryModel(context.Background(), 0, "m"))
++	ctx, cancel := context.WithCancel(context.Background())
++	cancel()
++	require.Nil(t, s.BeginTelemetryModel(ctx, 1, "m"))
++	require.Empty(t, c.registerIDs)
++	var nilLease *TelemetryModelLease
++	zeroLease := &TelemetryModelLease{}
++	zeroLease.UpdateUpstream("m")
++	zeroLease.Release()
++	nilLease.Release()
++	nilLease.UpdateUpstream("model")
++	nilLease.refresh()
++	UpdateTelemetryModelFromContext(nil, "m")
++	UpdateTelemetryModelFromContext(context.Background(), "m")
++	UpdateTelemetryModelFromContext(WithTelemetryModelLease(nil, nil), "m")
++}
++
++func TestTelemetryModelRegisterErrorCleansLostAcknowledgement(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	c.registerErr = errors.New("lost acknowledgement")
++	require.Nil(t, NewConcurrencyService(c).BeginTelemetryModel(context.Background(), 1, "m"))
++	require.Zero(t, c.recordCount())
++	require.Equal(t, 1, c.releaseCalls)
++}
++
++func TestTelemetryModelUpdateFailureOrInvalidModelRetiresLease(t *testing.T) {
++	for _, scenario := range []string{"redis-error", "invalid-model", "missing"} {
++		t.Run(scenario, func(t *testing.T) {
++			c := newTelemetryModelTestCache()
++			lease := NewConcurrencyService(c).BeginTelemetryModel(context.Background(), 1, "m")
++			require.NotNil(t, lease)
++			t.Cleanup(lease.Release)
++			model := "upstream"
++			switch scenario {
++			case "redis-error":
++				c.updateErr = errors.New("redis failure")
++			case "invalid-model":
++				model = "a\nb"
++			case "missing":
++				c.mu.Lock()
++				delete(c.records[1], lease.leaseID)
++				c.mu.Unlock()
++			}
++			lease.UpdateUpstream(model)
++			waitTelemetryModelDone(t, lease)
++			lease.refresh()
++			require.Zero(t, c.recordCount())
++			require.Zero(t, c.refreshCalls)
++		})
++	}
++}
++
++func TestTelemetryModelHeartbeatFailureRecoveryAndLeaseLoss(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	lease := NewConcurrencyService(c).BeginTelemetryModel(context.Background(), 1, "m")
++	require.NotNil(t, lease)
++	t.Cleanup(lease.Release)
++	c.refreshErr = errors.New("temporary failure")
++	lease.refresh()
++	require.Equal(t, 1, c.recordCount())
++	c.refreshErr = nil
++	lease.refresh()
++	c.missing = true
++	lease.refresh()
++	waitTelemetryModelDone(t, lease)
++	require.Zero(t, c.recordCount())
++	require.Equal(t, 3, c.refreshCalls)
++}
++
++func TestTelemetryModelInternalHeartbeatStops(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	ctx, cancel := context.WithCancel(context.Background())
++	defer cancel()
++	lease := &TelemetryModelLease{cache: c, ctx: ctx, userID: 1, leaseID: strings.Repeat("a", 32), stop: make(chan struct{}), done: make(chan struct{})}
++	require.NoError(t, c.RegisterTelemetryModel(ctx, 1, lease.leaseID, "model"))
++	go lease.run(time.Millisecond)
++	t.Cleanup(lease.Release)
++	require.Eventually(t, func() bool { c.mu.Lock(); defer c.mu.Unlock(); return c.refreshCalls >= 2 }, time.Second, time.Millisecond)
++	cancel()
++	waitTelemetryModelDone(t, lease)
++	require.Zero(t, c.recordCount())
++}
++
++func TestTelemetryModelReleaseSerializesWithUpdateAndHeartbeat(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	c.updateStarted = make(chan struct{})
++	c.unblockUpdate = make(chan struct{})
++	lease := NewConcurrencyService(c).BeginTelemetryModel(context.Background(), 1, "m")
++	require.NotNil(t, lease)
++	t.Cleanup(lease.Release)
++	var wg sync.WaitGroup
++	wg.Add(1)
++	go func() { defer wg.Done(); lease.UpdateUpstream("upstream") }()
++	<-c.updateStarted
++	var releaseStarted atomic.Bool
++	wg.Add(1)
++	go func() { defer wg.Done(); releaseStarted.Store(true); lease.Release() }()
++	require.Eventually(t, releaseStarted.Load, time.Second, time.Millisecond)
++	for range 30 {
++		wg.Add(1)
++		go func() { defer wg.Done(); lease.refresh() }()
++	}
++	close(c.unblockUpdate)
++	wg.Wait()
++	waitTelemetryModelDone(t, lease)
++	require.Zero(t, c.recordCount())
++	before := c.refreshCalls
++	lease.refresh()
++	lease.UpdateUpstream("late")
++	require.Equal(t, before, c.refreshCalls)
++	require.Equal(t, 1, c.releaseCalls)
++}
++
++func TestTelemetryModelReleaseFailureStillStopsLocalWriters(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	c.releaseErr = errors.New("redis down")
++	lease := NewConcurrencyService(c).BeginTelemetryModel(context.Background(), 1, "m")
++	lease.Release()
++	waitTelemetryModelDone(t, lease)
++	lease.refresh()
++	lease.UpdateUpstream("late")
++	require.Equal(t, 1, c.recordCount(), "Redis TTL must reap this orphan")
++	require.Zero(t, c.refreshCalls)
++	require.Zero(t, c.updateCalls)
++}
++
++func TestTelemetryModelReadScopeFailuresNeverBecomeIdle(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	s := NewConcurrencyService(c)
++	data, err := s.ReadTelemetryActiveModels(context.Background(), []int64{8, 1, 8})
++	require.NoError(t, err)
++	require.Len(t, data, 2)
++	require.Equal(t, []int64{1, 8}, c.readIDs)
++	data, err = s.ReadTelemetryActiveModels(context.Background(), nil)
++	require.NoError(t, err)
++	require.Empty(t, data)
++	for _, ids := range [][]int64{{0}, {-1}, make([]int64, public.MaxPageSize+1)} {
++		data, err = s.ReadTelemetryActiveModels(context.Background(), ids)
++		require.Error(t, err)
++		require.Nil(t, data)
++	}
++	c.readErr = errors.New("redis offline")
++	data, err = s.ReadTelemetryActiveModels(context.Background(), []int64{1})
++	require.Error(t, err)
++	require.Nil(t, data)
++	c.readErr = nil
++	for _, output := range []map[int64][]public.ActiveModel{
++		{}, {2: {}}, {1: {}, 2: {}},
++		{1: {{RequestedModel: "m", Requests: 0}}},
++		{1: {{RequestedModel: "m", Requests: 10001}}},
++		{1: {{RequestedModel: "m", Requests: 10000}, {RequestedModel: "n", Requests: 1}}},
++		{1: {{RequestedModel: "a\nb", Requests: 1}}},
++	} {
++		c.readOverride = output
++		data, err = s.ReadTelemetryActiveModels(context.Background(), []int64{1})
++		require.Error(t, err)
++		require.Nil(t, data)
++	}
++	var absent *ConcurrencyService
++	data, err = absent.ReadTelemetryActiveModels(context.Background(), []int64{1})
++	require.ErrorIs(t, err, ErrTelemetryActiveModelsUnavailable)
++	require.Nil(t, data)
++	data, err = NewConcurrencyService(struct{ ConcurrencyCache }{}).ReadTelemetryActiveModels(context.Background(), []int64{1})
++	require.ErrorIs(t, err, ErrTelemetryActiveModelsUnavailable)
++	require.Nil(t, data)
++}
++
++func TestTelemetryModelLeaseRandomPerRequest(t *testing.T) {
++	c := newTelemetryModelTestCache()
++	s := NewConcurrencyService(c)
++	a := s.BeginTelemetryModel(context.Background(), 1, "m")
++	b := s.BeginTelemetryModel(context.Background(), 1, "m")
++	require.NotNil(t, a)
++	require.NotNil(t, b)
++	defer a.Release()
++	defer b.Release()
++	require.NotEqual(t, a.leaseID, b.leaseID)
++	require.Equal(t, 2, c.recordCount())
++}
+--- a/backend/internal/service/user_telemetry_test.go
++++ b/backend/internal/service/user_telemetry_test.go
+@@ -71,6 +71,7 @@
+ 
+ func expectTelemetryNoUsage(mock sqlmock.Sqlmock) {
+ 	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1}", sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryTokensRows())
++	expectTelemetryDailyNoUsage(mock, "{1}")
+ }
+ 
+ func readTelemetrySnapshot(t *testing.T, svc *UserTelemetryService, query string) (usertelemetry.Snapshot, json.RawMessage) {
+@@ -99,6 +100,7 @@
+ 	start := time.Date(2026, 10, 4, 0, 0, 0, 0, loc)
+ 	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{9007199254740993,9223372036854775807}", start, telemetryTestNow.In(loc)).
+ 		WillReturnRows(telemetryTokensRows().AddRow(first, "184467440737095516160000").AddRow(second, "41"))
++	expectTelemetryDailyNoUsage(mock, "{9007199254740993,9223372036854775807}")
+ 	snapshot, raw := readTelemetrySnapshot(t, svc, query)
+ 	require.Equal(t, 1, snapshot.SchemaVersion)
+ 	require.Nil(t, snapshot.NextCursor)
+@@ -130,7 +132,24 @@
+ 	var users []map[string]json.RawMessage
+ 	require.NoError(t, json.Unmarshal(wire["users"], &users))
+ 	for _, user := range users {
+-		require.Len(t, user, 8)
++		require.Len(t, user, 9)
++		var active map[string]json.RawMessage
++		require.NoError(t, json.Unmarshal(user["active_models"], &active))
++		require.Equal(t, `"unavailable"`, string(active["quality"]))
++		require.Contains(t, active, "models")
++		require.Contains(t, active, "observed_at")
++		var usage map[string]json.RawMessage
++		require.NoError(t, json.Unmarshal(user["token_usage"], &usage))
++		require.Len(t, usage, 3)
++		for _, name := range []string{"today", "yesterday"} {
++			var day map[string]json.RawMessage
++			require.NoError(t, json.Unmarshal(usage[name], &day))
++			require.Len(t, day, 6)
++			for _, field := range []string{"date", "start", "end", "total", "quality", "observed_at"} {
++				require.Contains(t, day, field)
++			}
++		}
++
+ 		var keys []map[string]json.RawMessage
+ 		require.NoError(t, json.Unmarshal(user["api_keys"], &keys))
+ 		for _, key := range keys {
+@@ -153,7 +172,7 @@
+ 	for _, forbidden := range []string{"JOIN", "api_keys", "deleted_at", "cache_creation_5m", "cache_creation_1h", "cost"} {
+ 		require.NotContains(t, userTelemetryTokensSQL, forbidden)
+ 	}
+-	for _, query := range []string{userTelemetryUsersSQL, userTelemetryAPIKeysSQL, userTelemetryTokensSQL} {
++	for _, query := range []string{userTelemetryUsersSQL, userTelemetryAPIKeysSQL, userTelemetryTokensSQL, userTelemetryDailyTokensSQL} {
+ 		require.True(t, strings.HasPrefix(query, "SELECT "))
+ 		for _, forbidden := range []string{"password", "secret", "UPDATE ", "INSERT ", "DELETE "} {
+ 			require.NotContains(t, query, forbidden)
+@@ -219,6 +238,7 @@
+ 		WillReturnRows(telemetryUsersRows().AddRow(1, "a", "", 0, "active").AddRow(2, "b", "b", 5, "active").AddRow(3, "c", "c", 5, "active"))
+ 	mock.ExpectQuery(userTelemetryAPIKeysSQL).WithArgs("{1,2}", 10001).WillReturnRows(telemetryKeysRows())
+ 	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1,2}", sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryTokensRows())
++	expectTelemetryDailyNoUsage(mock, "{1,2}")
+ 	snapshot, _ := readTelemetrySnapshot(t, svc, `{"user_ids":["1","2","3"],"page_size":2}`)
+ 	require.Equal(t, "2", *snapshot.NextCursor)
+ 	require.Len(t, snapshot.Users, 2)
+@@ -226,6 +246,7 @@
+ 		WillReturnRows(telemetryUsersRows().AddRow(3, "c", "renamed", 5, "active"))
+ 	mock.ExpectQuery(userTelemetryAPIKeysSQL).WithArgs("{3}", 10001).WillReturnRows(telemetryKeysRows())
+ 	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{3}", sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryTokensRows())
++	expectTelemetryDailyNoUsage(mock, "{3}")
+ 	snapshot, _ = readTelemetrySnapshot(t, svc, `{"user_ids":["1","2","3"],"cursor":"2","page_size":2}`)
+ 	require.Nil(t, snapshot.NextCursor)
+ 	require.Equal(t, "3", snapshot.Users[0].UserID)
+@@ -350,6 +371,7 @@
+ 			case "duplicate":
+ 				expectation.WillReturnRows(telemetryTokensRows().AddRow(1, "42").AddRow(1, "99"))
+ 			}
++			expectTelemetryDailyNoUsage(mock, "{1}")
+ 			snapshot, raw := readTelemetrySnapshot(t, svc, telemetryTestQuery)
+ 			user := snapshot.Users[0]
+ 			require.Nil(t, user.TokenUsage.Total)
+@@ -424,6 +446,7 @@
+ 	mock.ExpectQuery(userTelemetryUsersSQL).WillReturnRows(telemetryUsersRows().AddRow(1, "a", "a", 5, "active").AddRow(2, "b", "b", 5, "active").AddRow(3, "c", "c", 0, "active"))
+ 	mock.ExpectQuery(userTelemetryAPIKeysSQL).WithArgs("{1,2,3}", 10001).WillReturnRows(telemetryKeysRows())
+ 	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1,2,3}", sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryTokensRows())
++	expectTelemetryDailyNoUsage(mock, "{1,2,3}")
+ 	snapshot, _ := readTelemetrySnapshot(t, svc, `{"user_ids":["1","2","3"]}`)
+ 	require.Equal(t, "fresh", snapshot.Users[0].Quality.Concurrency)
+ 	require.Equal(t, "unavailable", snapshot.Users[1].Quality.Concurrency)
+@@ -467,7 +490,12 @@
+ 	require.Equal(t, telemetryTestNow.Add(time.Second).Format(time.RFC3339Nano), observed.Identity)
+ 	require.Equal(t, telemetryTestNow.Add(2*time.Second).Format(time.RFC3339Nano), *observed.APIKeys)
+ 	require.Equal(t, telemetryTestNow.Add(3*time.Second).Format(time.RFC3339Nano), *observed.TokenUsage)
+-	require.Equal(t, telemetryTestNow.Add(4*time.Second).Format(time.RFC3339Nano), *observed.Concurrency)
++	require.Equal(t, telemetryTestNow.Add(5*time.Second).Format(time.RFC3339Nano), *observed.Concurrency)
++	daily := snapshot.Users[0].TokenUsage
++	require.Equal(t, telemetryTestNow.Add(4*time.Second).Format(time.RFC3339Nano), *daily.Today.ObservedAt)
++	require.Equal(t, daily.Today.ObservedAt, daily.Yesterday.ObservedAt)
++	require.Equal(t, "2026-10-04T16:30:00+08:00", daily.Today.End, "bounds use first now, not observation time")
++
+ }
+ 
+ func TestUserTelemetryFailedTokenBatchInvalidatesWholePage(t *testing.T) {
+@@ -478,6 +506,7 @@
+ 	mock.ExpectQuery(userTelemetryAPIKeysSQL).WithArgs("{1,2}", 10001).WillReturnRows(telemetryKeysRows())
+ 	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1,2}", sqlmock.AnyArg(), sqlmock.AnyArg()).
+ 		WillReturnRows(telemetryTokensRows().AddRow(1, "123").AddRow(2, "456").RowError(1, errors.New("incomplete aggregate")))
++	expectTelemetryDailyNoUsage(mock, "{1,2}")
+ 	snapshot, _ := readTelemetrySnapshot(t, svc, `{"user_ids":["1","2"]}`)
+ 	for _, user := range snapshot.Users {
+ 		require.Nil(t, user.TokenUsage.Total)
+@@ -500,3 +529,192 @@
+ 	require.ErrorIs(t, err, context.Canceled)
+ 	require.Nil(t, raw)
+ }
++
++func telemetryDailyTokensRows() *sqlmock.Rows {
++	return sqlmock.NewRows([]string{"user_id", "today", "yesterday"})
++}
++
++func expectTelemetryDailyNoUsage(mock sqlmock.Sqlmock, ids string) {
++	mock.ExpectQuery(userTelemetryDailyTokensSQL).WithArgs(ids, sqlmock.AnyArg(), sqlmock.AnyArg(), sqlmock.AnyArg()).
++		WillReturnRows(telemetryDailyTokensRows())
++}
++
++func TestUserTelemetryDailySQLSingleScopedNumericScan(t *testing.T) {
++	require.Equal(t, 1, strings.Count(userTelemetryDailyTokensSQL, "FROM usage_logs"))
++	require.Equal(t, 2, strings.Count(userTelemetryDailyTokensSQL, "SUM("))
++	require.Equal(t, 2, strings.Count(userTelemetryDailyTokensSQL, "FILTER (WHERE"))
++	require.Equal(t, 2, strings.Count(userTelemetryDailyTokensSQL, "::text"))
++	require.Contains(t, userTelemetryDailyTokensSQL, "WHERE user_id = ANY($1::bigint[]) AND created_at >= $2 AND created_at < $4")
++	require.Contains(t, userTelemetryDailyTokensSQL, "FILTER (WHERE created_at >= $3 AND created_at < $4)")
++	require.Contains(t, userTelemetryDailyTokensSQL, "FILTER (WHERE created_at >= $2 AND created_at < $3)")
++	for _, component := range []string{"input_tokens", "output_tokens", "cache_creation_tokens", "cache_read_tokens"} {
++		require.Equal(t, 2, strings.Count(userTelemetryDailyTokensSQL, component+"::numeric"))
++	}
++	for _, forbidden := range []string{"JOIN", "api_keys", "deleted_at", "account_id", "cache_creation_5m", "cache_creation_1h", "cost", "model", "AT TIME ZONE", "date_trunc", "password", "secret", ";"} {
++		require.NotContains(t, userTelemetryDailyTokensSQL, forbidden)
++	}
++}
++
++func TestUserTelemetryDailyCalendarBoundariesAndTimezone(t *testing.T) {
++	for _, test := range []struct {
++		name, now, zone, todayStart, yesterdayStart string
++		yesterdayHours                              int
++	}{
++		{"Shanghai before midnight", "2026-10-03T15:59:59.999999999Z", "Asia/Shanghai", "2026-10-03T00:00:00+08:00", "2026-10-02T00:00:00+08:00", 24},
++		{"Shanghai midnight", "2026-10-03T16:00:00Z", "Asia/Shanghai", "2026-10-04T00:00:00+08:00", "2026-10-03T00:00:00+08:00", 24},
++		{"Shanghai after midnight", "2026-10-03T16:00:00.000000001Z", "Asia/Shanghai", "2026-10-04T00:00:00+08:00", "2026-10-03T00:00:00+08:00", 24},
++		{"UTC", "2026-10-04T08:30:00Z", "UTC", "2026-10-04T00:00:00Z", "2026-10-03T00:00:00Z", 24},
++		{"New York spring DST yesterday", "2026-03-09T12:30:00Z", "America/New_York", "2026-03-09T00:00:00-04:00", "2026-03-08T00:00:00-05:00", 23},
++		{"New York fall DST yesterday", "2026-11-02T12:30:00Z", "America/New_York", "2026-11-02T00:00:00-05:00", "2026-11-01T00:00:00-04:00", 25},
++		{"New York spring today", "2026-03-08T12:30:00Z", "America/New_York", "2026-03-08T00:00:00-05:00", "2026-03-07T00:00:00-05:00", 24},
++	} {
++		t.Run(test.name, func(t *testing.T) {
++			svc, mock := newTelemetryTestService(t, nil)
++			now, err := time.Parse(time.RFC3339Nano, test.now)
++			require.NoError(t, err)
++			loc, err := time.LoadLocation(test.zone)
++			require.NoError(t, err)
++			svc.now = func() time.Time { return now }
++			todayStart, err := time.Parse(time.RFC3339Nano, test.todayStart)
++			require.NoError(t, err)
++			yesterdayStart, err := time.Parse(time.RFC3339Nano, test.yesterdayStart)
++			require.NoError(t, err)
++			expectTelemetryOneUser(mock, 5, "active")
++			expectTelemetryEmptyKeys(mock)
++			// An explicit past window also lets daily totals represent empty today
++			// at exactly midnight without changing Normalize's existing semantics.
++			mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1}", sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryTokensRows().AddRow(1, "17"))
++			mock.ExpectQuery(userTelemetryDailyTokensSQL).WithArgs("{1}", yesterdayStart.In(loc), todayStart.In(loc), now.In(loc)).WillReturnRows(telemetryDailyTokensRows())
++			query := fmt.Sprintf(`{"user_ids":["1"],"start":"2020-01-01T00:00:00Z","end":"2020-01-02T00:00:00Z","timezone":%q}`, test.zone)
++			snapshot, _ := readTelemetrySnapshot(t, svc, query)
++			usage := snapshot.Users[0].TokenUsage
++			require.Equal(t, "17", *usage.Total, "selected window total must not change to the daily sum")
++			require.Equal(t, test.todayStart[:10], usage.Today.Date)
++			require.Equal(t, test.yesterdayStart[:10], usage.Yesterday.Date)
++			require.Equal(t, test.todayStart, usage.Today.Start)
++			require.Equal(t, now.In(loc).Format(time.RFC3339Nano), usage.Today.End)
++			require.Equal(t, test.yesterdayStart, usage.Yesterday.Start)
++			require.Equal(t, test.todayStart, usage.Yesterday.End)
++			require.Equal(t, time.Duration(test.yesterdayHours)*time.Hour, todayStart.Sub(yesterdayStart))
++			for _, day := range []*usertelemetry.DailyTokenUsage{usage.Today, usage.Yesterday} {
++				require.Equal(t, "0", *day.Total)
++				require.Equal(t, "fresh", day.Quality)
++				require.NotNil(t, day.ObservedAt)
++			}
++		})
++	}
++}
++
++func TestUserTelemetryDailyBoundsFrozenAcrossMidnight(t *testing.T) {
++	svc, mock := newTelemetryTestService(t, nil)
++	now := time.Date(2026, 10, 3, 15, 59, 59, 0, time.UTC)
++	calls := 0
++	svc.now = func() time.Time {
++		instant := now.Add(time.Duration(calls) * time.Second)
++		calls++
++		return instant
++	}
++	expectTelemetryOneUser(mock, 5, "active")
++	expectTelemetryEmptyKeys(mock)
++	loc, err := time.LoadLocation("Asia/Shanghai")
++	require.NoError(t, err)
++	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1}", sqlmock.AnyArg(), now.In(loc)).WillReturnRows(telemetryTokensRows())
++	mock.ExpectQuery(userTelemetryDailyTokensSQL).WithArgs("{1}", time.Date(2026, 10, 2, 0, 0, 0, 0, loc), time.Date(2026, 10, 3, 0, 0, 0, 0, loc), now.In(loc)).WillReturnRows(telemetryDailyTokensRows().AddRow(1, "3", "5"))
++	snapshot, _ := readTelemetrySnapshot(t, svc, `{"user_ids":["1"]}`)
++	usage := snapshot.Users[0].TokenUsage
++	require.Equal(t, "2026-10-03", usage.Today.Date)
++	require.Equal(t, "2026-10-02", usage.Yesterday.Date)
++	require.Equal(t, "2026-10-03T23:59:59+08:00", snapshot.Window.End)
++	require.Equal(t, snapshot.Window.End, usage.Today.End)
++	require.Equal(t, now.Add(4*time.Second).Format(time.RFC3339Nano), *usage.Today.ObservedAt)
++	require.Equal(t, 5, calls)
++}
++
++func TestUserTelemetryDailyBigIntegersAndMissingUsers(t *testing.T) {
++	svc, mock := newTelemetryTestService(t, nil)
++	mock.ExpectQuery(userTelemetryUsersSQL).WithArgs("{1,2,3}", int64(0), 101).WillReturnRows(telemetryUsersRows().AddRow(1, "a", "", 5, "active").AddRow(2, "b", "", 5, "active").AddRow(3, "c", "", 5, "active"))
++	mock.ExpectQuery(userTelemetryAPIKeysSQL).WithArgs("{1,2,3}", 10001).WillReturnRows(telemetryKeysRows())
++	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1,2,3}", sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryTokensRows().AddRow(1, "11"))
++	mock.ExpectQuery(userTelemetryDailyTokensSQL).WithArgs("{1,2,3}", sqlmock.AnyArg(), sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryDailyTokensRows().AddRow(1, "184467440737095516160000", "9007199254740993").AddRow(2, "0", "999999999999999999999999999999999999"))
++	snapshot, raw := readTelemetrySnapshot(t, svc, `{"user_ids":["1","2","3"]}`)
++	require.Equal(t, "11", *snapshot.Users[0].TokenUsage.Total)
++	require.Equal(t, "184467440737095516160000", *snapshot.Users[0].TokenUsage.Today.Total)
++	require.Equal(t, "9007199254740993", *snapshot.Users[0].TokenUsage.Yesterday.Total)
++	require.Equal(t, "999999999999999999999999999999999999", *snapshot.Users[1].TokenUsage.Yesterday.Total)
++	require.Contains(t, string(raw), `"total":"184467440737095516160000"`)
++	require.Contains(t, string(raw), `"total":"9007199254740993"`)
++	require.Equal(t, "0", *snapshot.Users[2].TokenUsage.Today.Total)
++	require.Equal(t, "0", *snapshot.Users[2].TokenUsage.Yesterday.Total)
++}
++
++func TestUserTelemetryDailyFailureInvalidatesBothDaysWholePage(t *testing.T) {
++	for _, kind := range []string{"query", "iteration", "close", "scan id", "null today", "null yesterday", "negative today", "negative yesterday", "decimal", "exponent", "NaN", "empty", "wrong user", "duplicate"} {
++		t.Run(kind, func(t *testing.T) {
++			svc, mock := newTelemetryTestService(t, nil)
++			mock.ExpectQuery(userTelemetryUsersSQL).WithArgs("{1,2}", int64(0), 101).WillReturnRows(telemetryUsersRows().AddRow(1, "a", "", 5, "active").AddRow(2, "b", "", 5, "active"))
++			mock.ExpectQuery(userTelemetryAPIKeysSQL).WithArgs("{1,2}", 10001).WillReturnRows(telemetryKeysRows())
++			mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1,2}", sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryTokensRows().AddRow(1, "123").AddRow(2, "456"))
++			expectation := mock.ExpectQuery(userTelemetryDailyTokensSQL).WithArgs("{1,2}", sqlmock.AnyArg(), sqlmock.AnyArg(), sqlmock.AnyArg())
++			rows := telemetryDailyTokensRows().AddRow(1, "42", "24")
++			switch kind {
++			case "query":
++				expectation.WillReturnError(errors.New("daily unavailable"))
++			case "iteration":
++				expectation.WillReturnRows(rows.AddRow(2, "99", "11").RowError(1, errors.New("incomplete daily result")))
++			case "close":
++				expectation.WillReturnRows(telemetryDailyTokensRows().CloseError(errors.New("close failed")))
++			case "scan id":
++				expectation.WillReturnRows(rows.AddRow("bad", "1", "2"))
++			case "null today":
++				expectation.WillReturnRows(rows.AddRow(2, nil, "1"))
++			case "null yesterday":
++				expectation.WillReturnRows(rows.AddRow(2, "1", nil))
++			case "negative today":
++				expectation.WillReturnRows(rows.AddRow(2, "-1", "1"))
++			case "negative yesterday":
++				expectation.WillReturnRows(rows.AddRow(2, "1", "-1"))
++			case "decimal":
++				expectation.WillReturnRows(rows.AddRow(2, "1.5", "1"))
++			case "exponent":
++				expectation.WillReturnRows(rows.AddRow(2, "1", "1e9"))
++			case "NaN":
++				expectation.WillReturnRows(rows.AddRow(2, "NaN", "1"))
++			case "empty":
++				expectation.WillReturnRows(rows.AddRow(2, "1", ""))
++			case "wrong user":
++				expectation.WillReturnRows(rows.AddRow(3, "1", "1"))
++			case "duplicate":
++				expectation.WillReturnRows(rows.AddRow(1, "1", "1"))
++			}
++			snapshot, raw := readTelemetrySnapshot(t, svc, `{"user_ids":["1","2"]}`)
++			for _, user := range snapshot.Users {
++				require.NotNil(t, user.TokenUsage.Total)
++				require.Equal(t, "fresh", user.Quality.TokenUsage)
++				for _, day := range []*usertelemetry.DailyTokenUsage{user.TokenUsage.Today, user.TokenUsage.Yesterday} {
++					require.NotNil(t, day)
++					require.Nil(t, day.Total)
++					require.Equal(t, "unavailable", day.Quality)
++					require.Nil(t, day.ObservedAt)
++				}
++			}
++			require.Contains(t, string(raw), `"total":null,"quality":"unavailable","observed_at":null`)
++		})
++	}
++}
++
++func TestUserTelemetryWindowFailureDailySuccessIndependent(t *testing.T) {
++	svc, mock := newTelemetryTestService(t, nil)
++	expectTelemetryOneUser(mock, 5, "active")
++	expectTelemetryEmptyKeys(mock)
++	mock.ExpectQuery(userTelemetryTokensSQL).WithArgs("{1}", sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnError(errors.New("window failed"))
++	mock.ExpectQuery(userTelemetryDailyTokensSQL).WithArgs("{1}", sqlmock.AnyArg(), sqlmock.AnyArg(), sqlmock.AnyArg()).WillReturnRows(telemetryDailyTokensRows().AddRow(1, "17", "23"))
++	snapshot, _ := readTelemetrySnapshot(t, svc, telemetryTestQuery)
++	user := snapshot.Users[0]
++	require.Nil(t, user.TokenUsage.Total)
++	require.Equal(t, "unavailable", user.Quality.TokenUsage)
++	require.Nil(t, user.ObservedAt.TokenUsage)
++	require.Equal(t, "17", *user.TokenUsage.Today.Total)
++	require.Equal(t, "23", *user.TokenUsage.Yesterday.Total)
++	require.Equal(t, "fresh", user.TokenUsage.Today.Quality)
++	require.Equal(t, "fresh", user.TokenUsage.Yesterday.Quality)
++}
+--- /dev/null
++++ b/backend/internal/service/user_telemetry_active_models.go
+@@ -0,0 +1,278 @@
++package service
++
++import (
++	"context"
++	"crypto/rand"
++	"encoding/hex"
++	"errors"
++	"fmt"
++	"sort"
++	"strings"
++	"sync"
++	"time"
++	"unicode"
++	"unicode/utf8"
++
++	public "github.com/Wei-Shaw/sub2api/pkg/usertelemetry"
++)
++
++const (
++	TelemetryModelLeaseTTL          = 45 * time.Second
++	telemetryModelHeartbeatInterval = 12 * time.Second
++	telemetryModelOperationTimeout  = 2 * time.Second
++	telemetryModelWriteTimeout      = 100 * time.Millisecond
++	TelemetryActiveModelMaxRequests = 10000
++)
++
++var ErrTelemetryActiveModelsUnavailable = errors.New("telemetry active model cache unavailable")
++
++// TelemetryActiveModelCache is optional: it does not alter ConcurrencyCache or
++// admission control. Refresh and Update MUST only mutate existing, unexpired
++// leases; neither may resurrect a released lease. Reads must return an entry
++// (including an empty slice) for each requested user, and no other users.
++type TelemetryActiveModelCache interface {
++	RegisterTelemetryModel(context.Context, int64, string, string) error
++	RefreshTelemetryModel(context.Context, int64, string) (bool, error)
++	UpdateTelemetryModel(context.Context, int64, string, string) (bool, error)
++	ReleaseTelemetryModel(context.Context, int64, string) error
++	ReadTelemetryActiveModels(context.Context, []int64) (map[int64][]public.ActiveModel, error)
++}
++
++// ValidTelemetryModelName bounds both Redis payloads and public output. The
++// limit is 200 UTF-8 bytes (not runes); blank, invalid UTF-8, control and invisible
++// format characters are rejected. The original spelling is otherwise retained.
++func ValidTelemetryModelName(model string) bool {
++	if len(model) == 0 || len(model) > 200 || !utf8.ValidString(model) || strings.TrimSpace(model) == "" {
++		return false
++	}
++	for _, r := range model {
++		if unicode.IsControl(r) || unicode.Is(unicode.Cf, r) {
++			return false
++		}
++	}
++	return true
++}
++
++// TelemetryModelLease is metadata only. Its opaque random identity is private
++// and unrelated to gateway request IDs, API keys, accounts or request contents.
++// All writes are serialized under mu, including deletion. A failed model update
++// retires the lease instead of heartbeating a knowingly stale upstream model.
++// Redis outages may leave the last value until its bounded TTL; never block or
++// cancel the business request because telemetry failed.
++type TelemetryModelLease struct {
++	mu      sync.Mutex
++	cache   TelemetryActiveModelCache
++	ctx     context.Context
++	userID  int64
++	leaseID string
++	stopped bool
++	stop    chan struct{}
++	done    chan struct{}
++}
++
++// BeginTelemetryModel must be called AFTER admission and just before forwarding.
++// Missing support, invalid inputs and registration failure return a nil no-op
++// lease. It never cancels ctx and never changes business concurrency slots.
++func (s *ConcurrencyService) BeginTelemetryModel(ctx context.Context, userID int64, requestedModel string) *TelemetryModelLease {
++	if s == nil || s.cache == nil || userID <= 0 || !ValidTelemetryModelName(requestedModel) {
++		return nil
++	}
++	cache, ok := s.cache.(TelemetryActiveModelCache)
++	if !ok {
++		return nil
++	}
++	if ctx == nil {
++		ctx = context.Background()
++	}
++	if ctx.Err() != nil {
++		return nil
++	}
++	var random [16]byte
++	if _, err := rand.Read(random[:]); err != nil {
++		return nil
++	}
++	l := &TelemetryModelLease{cache: cache, ctx: ctx, userID: userID, leaseID: hex.EncodeToString(random[:]), stop: make(chan struct{}), done: make(chan struct{})}
++	opCtx, cancel := context.WithTimeout(ctx, telemetryModelWriteTimeout)
++	err := cache.RegisterTelemetryModel(opCtx, userID, l.leaseID, requestedModel)
++	cancel()
++	// An error can mean the write succeeded but its acknowledgement was lost.
++	// Always attempt detached cleanup; TTL is the final safety net.
++	if err != nil || ctx.Err() != nil {
++		l.Release()
++		return nil
++	}
++	go l.run(telemetryModelHeartbeatInterval)
++	return l
++}
++
++func (l *TelemetryModelLease) run(interval time.Duration) {
++	defer close(l.done)
++	ticker := time.NewTicker(interval)
++	defer ticker.Stop()
++	for {
++		select {
++		case <-l.stop:
++			return
++		case <-l.ctx.Done():
++			l.Release()
++			return
++		case <-ticker.C:
++			l.refresh()
++		}
++	}
++}
++
++func (l *TelemetryModelLease) refresh() {
++	if l == nil {
++		return
++	}
++	l.mu.Lock()
++	defer l.mu.Unlock()
++	if l.stopped {
++		return
++	}
++	if l.cache == nil || l.ctx == nil || l.ctx.Err() != nil {
++		l.releaseLocked()
++		return
++	}
++	ctx, cancel := context.WithTimeout(l.ctx, telemetryModelOperationTimeout)
++	alive, err := l.cache.RefreshTelemetryModel(ctx, l.userID, l.leaseID)
++	cancel()
++	if l.ctx.Err() != nil || (err == nil && !alive) {
++		l.releaseLocked()
++	}
++	// A transient refresh error is allowed to recover, but the cache must reject
++	// an expired lease. Thus recovery cannot resurrect a crashed/expired request.
++}
++
++func (l *TelemetryModelLease) UpdateUpstream(model string) {
++	if l == nil {
++		return
++	}
++	l.mu.Lock()
++	defer l.mu.Unlock()
++	if l.stopped {
++		return
++	}
++	if l.cache == nil || l.ctx == nil || l.ctx.Err() != nil || !ValidTelemetryModelName(model) {
++		l.releaseLocked()
++		return
++	}
++	ctx, cancel := context.WithTimeout(l.ctx, telemetryModelWriteTimeout)
++	alive, err := l.cache.UpdateTelemetryModel(ctx, l.userID, l.leaseID, model)
++	cancel()
++	if err != nil || !alive || l.ctx.Err() != nil {
++		l.releaseLocked()
++	}
++}
++
++// Release is nil-safe and idempotent. On return no local writer can perform a
++// later heartbeat/update. Cleanup is detached from the cancelled request and
++// bounded to 100 milliseconds; if Redis is unreachable the record expires naturally.
++func (l *TelemetryModelLease) Release() {
++	if l == nil {
++		return
++	}
++	l.mu.Lock()
++	defer l.mu.Unlock()
++	if !l.stopped {
++		l.releaseLocked()
++	}
++}
++
++func (l *TelemetryModelLease) releaseLocked() {
++	l.stopped = true
++	if l.stop != nil {
++		close(l.stop)
++	}
++	if l.cache == nil {
++		return
++	}
++	ctx, cancel := context.WithTimeout(context.Background(), telemetryModelWriteTimeout)
++	defer cancel()
++	_ = l.cache.ReleaseTelemetryModel(ctx, l.userID, l.leaseID)
++}
++
++type telemetryModelLeaseContextKey struct{}
++
++func WithTelemetryModelLease(ctx context.Context, lease *TelemetryModelLease) context.Context {
++	if ctx == nil {
++		ctx = context.Background()
++	}
++	return context.WithValue(ctx, telemetryModelLeaseContextKey{}, lease)
++}
++
++// UpdateTelemetryModelFromContext is safe on routes with no telemetry hook.
++func UpdateTelemetryModelFromContext(ctx context.Context, upstream string) {
++	if ctx == nil {
++		return
++	}
++	lease, _ := ctx.Value(telemetryModelLeaseContextKey{}).(*TelemetryModelLease)
++	lease.UpdateUpstream(upstream)
++}
++
++// ReadTelemetryActiveModels never broadens scope or treats Redis failure as
++// idle. The caller must report unavailable on error, not substitute empty data.
++func (s *ConcurrencyService) ReadTelemetryActiveModels(ctx context.Context, userIDs []int64) (map[int64][]public.ActiveModel, error) {
++	ids, err := TelemetryActiveModelUserScope(userIDs)
++	if err != nil {
++		return nil, err
++	}
++	if len(ids) == 0 {
++		return map[int64][]public.ActiveModel{}, nil
++	}
++	if s == nil || s.cache == nil {
++		return nil, ErrTelemetryActiveModelsUnavailable
++	}
++	cache, ok := s.cache.(TelemetryActiveModelCache)
++	if !ok {
++		return nil, ErrTelemetryActiveModelsUnavailable
++	}
++	if ctx == nil {
++		ctx = context.Background()
++	}
++	ctx, cancel := context.WithTimeout(ctx, telemetryModelOperationTimeout)
++	defer cancel()
++	models, err := cache.ReadTelemetryActiveModels(ctx, ids)
++	if err != nil {
++		return nil, err
++	}
++	if len(models) != len(ids) {
++		return nil, fmt.Errorf("telemetry model cache returned incomplete or excess user scope")
++	}
++	for _, id := range ids {
++		entries, exists := models[id]
++		if !exists {
++			return nil, fmt.Errorf("telemetry model cache returned incomplete user scope")
++		}
++		count := 0
++		for _, model := range entries {
++			if !ValidTelemetryModelName(model.RequestedModel) || (model.UpstreamModel != nil && !ValidTelemetryModelName(*model.UpstreamModel)) || model.Requests <= 0 || model.Requests > TelemetryActiveModelMaxRequests-count {
++				return nil, fmt.Errorf("invalid telemetry active model snapshot")
++			}
++			count += model.Requests
++		}
++	}
++	return models, nil
++}
++
++// TelemetryActiveModelUserScope validates and canonicalizes an explicit bounded
++// set. An empty set means no users, NEVER all users. Duplicates are harmless.
++func TelemetryActiveModelUserScope(userIDs []int64) ([]int64, error) {
++	if len(userIDs) > public.MaxPageSize {
++		return nil, fmt.Errorf("telemetry model scope exceeds %d users", public.MaxPageSize)
++	}
++	seen := make(map[int64]bool, len(userIDs))
++	ids := make([]int64, 0, len(userIDs))
++	for _, id := range userIDs {
++		if id <= 0 {
++			return nil, fmt.Errorf("invalid telemetry model user ID")
++		}
++		if !seen[id] {
++			ids = append(ids, id)
++			seen[id] = true
++		}
++	}
++	sort.Slice(ids, func(i, j int) bool { return ids[i] < ids[j] })
++	return ids, nil
++}
+--- a/backend/internal/service/ops_upstream_context.go
++++ b/backend/internal/service/ops_upstream_context.go
+@@ -88,6 +88,9 @@
+ 	}
+ 	if model = strings.TrimSpace(model); model != "" {
+ 		c.Set(OpsUpstreamModelKey, model)
++		if c.Request != nil {
++			UpdateTelemetryModelFromContext(c.Request.Context(), model)
++		}
+ 	}
+ }
+ 
+--- /dev/null
++++ b/backend/internal/service/user_telemetry_models_context.go
+@@ -0,0 +1,13 @@
++package service
++
++import "context"
++
++// TelemetryModelLeaseFromContext carries metadata into a decorated forwarding
++// context without losing its routing/billing values. The lease is never output.
++func TelemetryModelLeaseFromContext(ctx context.Context) *TelemetryModelLease {
++	if ctx == nil {
++		return nil
++	}
++	lease, _ := ctx.Value(telemetryModelLeaseContextKey{}).(*TelemetryModelLease)
++	return lease
++}
+--- a/backend/cmd/user-telemetry-acceptance/main.go
++++ b/backend/cmd/user-telemetry-acceptance/main.go
+@@ -107,6 +107,12 @@
+ 		panic("will only seed database named telemetry_acceptance")
+ 	}
+ 	must(seed(db))
++	loc, err := time.LoadLocation("Asia/Shanghai")
++	must(err)
++	fixtureNow := time.Now().In(loc)
++	todayStart := time.Date(fixtureNow.Year(), fixtureNow.Month(), fixtureNow.Day(), 0, 0, 0, 0, loc)
++	_, err = db.Exec(`INSERT INTO usage_logs(user_id,api_key_id,input_tokens,output_tokens,cache_creation_tokens,cache_read_tokens,created_at) VALUES(42,101,4,5,6,7,$1),(42,103,1,2,3,4,$2)`, fixtureNow, todayStart.AddDate(0, 0, -1))
++	must(err)
+ 	for _, f := range []string{"229_plugins.sql", "230_plugin_artifacts.sql", "242_user_telemetry_credentials.sql"} {
+ 		b, e := os.ReadFile(filepath.Join("migrations", f))
+ 		must(e)
+@@ -267,6 +273,13 @@
+ 	if !second.Acquired {
+ 		panic("no second slot")
+ 	}
++	leaseA := concurrency.BeginTelemetryModel(ctx, 42, "fixture-requested-a")
++	leaseB := concurrency.BeginTelemetryModel(ctx, 42, "fixture-requested-b")
++	verify("native model leases register", leaseA != nil && leaseB != nil, "")
++	defer leaseA.Release()
++	defer leaseB.Release()
++	leaseA.UpdateUpstream("fixture-upstream-a")
++	leaseB.UpdateUpstream("fixture-upstream-b")
+ 	path := export + "?start=2026-10-03T00:00:00%2B08:00&end=2026-10-04T00:00:00%2B08:00&page_size=2"
+ 	read := request("GET", path, "", token)
+ 	verify("five-field snapshot from live PostgreSQL and Redis", read.Code == 200, fmt.Sprintf("HTTP %d %s", read.Code, redactError(read)))
+@@ -276,6 +289,8 @@
+ 	must(json.Unmarshal(read.Body.Bytes(), rep.Snapshot))
+ 	verify("only requested page and stable user IDs", len(snap.Users) == 2 && snap.Users[0].UserID == "42" && snap.NextCursor != nil, "")
+ 	u := snap.Users[0]
++	verify("calendar today/yesterday independent of historical query", u.TokenUsage.Today != nil && u.TokenUsage.Yesterday != nil && u.TokenUsage.Today.Total != nil && *u.TokenUsage.Today.Total == "22" && u.TokenUsage.Yesterday.Total != nil && *u.TokenUsage.Yesterday.Total == "10" && u.TokenUsage.Today.Date == fixtureNow.Format("2006-01-02") && u.TokenUsage.Yesterday.Date == todayStart.AddDate(0, 0, -1).Format("2006-01-02") && u.TokenUsage.Today.Quality == "fresh", "")
++	verify("two current models contain actual upstream mapping", u.ActiveModels != nil && u.ActiveModels.Quality == "partial" && len(u.ActiveModels.Models) == 2 && u.ActiveModels.Models[0].RequestedModel == "fixture-requested-a" && u.ActiveModels.Models[0].UpstreamModel != nil && *u.ActiveModels.Models[0].UpstreamModel == "fixture-upstream-a" && u.ActiveModels.Models[1].RequestedModel == "fixture-requested-b", "")
+ 	verify("real token total includes multiple and deleted historical keys", u.TokenUsage.Total != nil && *u.TokenUsage.Total == "210", "")
+ 	verify("live concurrent user slots = 2", u.Concurrency.Current != nil && *u.Concurrency.Current == 2 && u.Concurrency.Limit == 5, "")
+ 	verify("API metadata is complete without deleted key", len(u.APIKeys) == 2 && u.APIKeys[0].ID == "101", "")
+@@ -287,12 +302,17 @@
+ 	verify("pagination and >2^53 ID preservation", next.Code == 200 && len(page2.Users) == 2 && page2.Users[1].UserID == "9007199254740993", "")
+ 	verify("unlimited concurrency not fabricated as zero", page2.Users[0].Concurrency.Current == nil && page2.Users[0].Quality.Concurrency == "untracked", "")
+ 	second.ReleaseFunc()
++	leaseB.Release()
++	leaseA.UpdateUpstream("fixture-upstream-failover")
+ 	one := request("GET", path, "", token)
+ 	must(json.Unmarshal(one.Body.Bytes(), &snap))
+ 	verify("slot release changes count to one", snap.Users[0].Concurrency.Current != nil && *snap.Users[0].Concurrency.Current == 1, "")
++	verify("ending one request removes only its model", snap.Users[0].ActiveModels != nil && len(snap.Users[0].ActiveModels.Models) == 1 && snap.Users[0].ActiveModels.Models[0].UpstreamModel != nil && *snap.Users[0].ActiveModels.Models[0].UpstreamModel == "fixture-upstream-failover", "")
+ 	acquire.ReleaseFunc()
++	leaseA.Release()
+ 	zero := request("GET", path, "", token)
+ 	must(json.Unmarshal(zero.Body.Bytes(), &snap))
++	verify("ending all requests removes current models immediately", snap.Users[0].ActiveModels != nil && len(snap.Users[0].ActiveModels.Models) == 0 && snap.Users[0].ActiveModels.Quality == "partial", "")
+ 	verify("confirmed no slots returns real zero", snap.Users[0].Concurrency.Current != nil && *snap.Users[0].Concurrency.Current == 0, "")
+ 	denied := request("GET", path+"&user_ids=999", "", token)
+ 	verify("user-scope escape rejected", denied.Code == 403, "")
+@@ -355,16 +375,55 @@
+ 	must(err)
+ 	disabled := request("GET", path+"&user_ids=42", "", token2)
+ 	verify("disable closes output endpoint", disabled.Code == 503, "")
++	// Freeze the actual fixture baseline immediately before uninstall. Daily
++	// fixtures may add rows; preserving business data must not depend on their
++	// hard-coded row counts. This isolated harness has no concurrent writers.
++	beforeUninstall, err := readBusinessTableBaseline(ctx, db)
++	must(err)
+ 	err = manager.Delete(ctx, id)
+ 	must(err)
+-	var credentialCount, userCount, usageCount int
+-	must(db.QueryRow(`SELECT COUNT(*) FROM sub2api_user_telemetry_credentials WHERE plugin_id=$1`, id).Scan(&credentialCount))
+-	must(db.QueryRow(`SELECT COUNT(*) FROM users`).Scan(&userCount))
+-	must(db.QueryRow(`SELECT COUNT(*) FROM usage_logs`).Scan(&usageCount))
+-	verify("uninstall revokes credentials without deleting business data", credentialCount == 0 && userCount == 4 && usageCount == 5, "")
++	afterUninstall, err := readBusinessTableBaseline(ctx, db)
++	must(err)
++	var credentialCount int64
++	must(db.QueryRowContext(ctx, `SELECT COUNT(*) FROM sub2api_user_telemetry_credentials WHERE plugin_id=$1`, id).Scan(&credentialCount))
++	preservationErr := validateUninstallPreservation(beforeUninstall, afterUninstall, credentialCount)
++	preservationDetail := ""
++	if preservationErr != nil {
++		preservationDetail = preservationErr.Error()
++	}
++	verify("uninstall revokes credentials without deleting business data", preservationErr == nil, preservationDetail)
+ 	rep.Passed = true
+ 	fmt.Printf("Acceptance passed: %d checks; no production services touched.\n", len(rep.Checks))
+ }
++
++// These are all business tables seeded by this disposable harness. A single
++// statement captures their counts from one PostgreSQL statement snapshot.
++type businessTableBaseline struct {
++	Users     int64
++	APIKeys   int64
++	UsageLogs int64
++}
++
++const businessTableBaselineSQL = `SELECT (SELECT COUNT(*) FROM users), (SELECT COUNT(*) FROM api_keys), (SELECT COUNT(*) FROM usage_logs)`
++
++func readBusinessTableBaseline(ctx context.Context, db *sql.DB) (businessTableBaseline, error) {
++	var baseline businessTableBaseline
++	if err := db.QueryRowContext(ctx, businessTableBaselineSQL).Scan(&baseline.Users, &baseline.APIKeys, &baseline.UsageLogs); err != nil {
++		return businessTableBaseline{}, fmt.Errorf("read uninstall business table baseline: %w", err)
++	}
++	return baseline, nil
++}
++
++func validateUninstallPreservation(before, after businessTableBaseline, credentialCount int64) error {
++	if before != after {
++		return fmt.Errorf("business table row counts changed during uninstall: before=%+v after=%+v; remaining plugin credentials=%d", before, after, credentialCount)
++	}
++	if credentialCount != 0 {
++		return fmt.Errorf("uninstall left %d plugin credentials; business table row counts unchanged=%+v", credentialCount, after)
++	}
++	return nil
++}
++
+ func seed(db *sql.DB) error {
+ 	_, err := db.Exec(`CREATE TABLE users(id BIGINT PRIMARY KEY,email TEXT NOT NULL,username TEXT NOT NULL DEFAULT '',concurrency INT NOT NULL,status TEXT NOT NULL DEFAULT 'active',deleted_at TIMESTAMPTZ);CREATE TABLE api_keys(id BIGINT PRIMARY KEY,user_id BIGINT NOT NULL REFERENCES users(id),key TEXT NOT NULL,name TEXT NOT NULL,status TEXT NOT NULL,deleted_at TIMESTAMPTZ);CREATE TABLE usage_logs(id BIGSERIAL PRIMARY KEY,user_id BIGINT,api_key_id BIGINT,input_tokens INT NOT NULL DEFAULT 0,output_tokens INT NOT NULL DEFAULT 0,cache_creation_tokens INT NOT NULL DEFAULT 0,cache_read_tokens INT NOT NULL DEFAULT 0,created_at TIMESTAMPTZ NOT NULL);
+  INSERT INTO users VALUES(42,'fixture42@example.com','研发助手',5,'active',NULL),(43,'fixture43@example.com','',5,'active',NULL),(44,'fixture44@example.com','不限并发',0,'active',NULL),(9007199254740993,'fixture-large@example.com','大ID',5,'active',NULL);
+--- a/backend/cmd/user-telemetry-acceptance/main_test.go
++++ b/backend/cmd/user-telemetry-acceptance/main_test.go
+@@ -1,9 +1,14 @@
+ package main
+ 
+ import (
++	"context"
+ 	"encoding/json"
++	"errors"
++	"regexp"
+ 	"strings"
+ 	"testing"
++
++	"github.com/DATA-DOG/go-sqlmock"
+ )
+ 
+ func TestValidateAcceptanceMetadata(t *testing.T) {
+@@ -54,3 +59,89 @@
+ 		t.Fatalf("host_version = %v, want 0.2.14", got["host_version"])
+ 	}
+ }
++
++func TestValidateUninstallPreservation(t *testing.T) {
++	baseline := businessTableBaseline{Users: 4, APIKeys: 4, UsageLogs: 7}
++	tests := []struct {
++		name        string
++		before      businessTableBaseline
++		after       businessTableBaseline
++		credentials int64
++		wantError   string
++	}{
++		{name: "daily fixtures preserved", before: baseline, after: baseline},
++		{name: "fixture growth is not hard-coded", before: businessTableBaseline{8, 21, 123}, after: businessTableBaseline{8, 21, 123}},
++		{name: "users removed", before: baseline, after: businessTableBaseline{3, 4, 7}, wantError: "business table row counts changed"},
++		{name: "API keys removed", before: baseline, after: businessTableBaseline{4, 3, 7}, wantError: "business table row counts changed"},
++		{name: "daily usage rows removed", before: baseline, after: businessTableBaseline{4, 4, 5}, wantError: "business table row counts changed"},
++		{name: "unexpected row insertion", before: baseline, after: businessTableBaseline{4, 4, 8}, wantError: "business table row counts changed"},
++		{name: "credentials remain", before: baseline, after: baseline, credentials: 1, wantError: "uninstall left 1 plugin credentials"},
++	}
++	for _, tt := range tests {
++		t.Run(tt.name, func(t *testing.T) {
++			err := validateUninstallPreservation(tt.before, tt.after, tt.credentials)
++			if tt.wantError == "" {
++				if err != nil {
++					t.Fatal(err)
++				}
++			} else if err == nil || !strings.Contains(err.Error(), tt.wantError) {
++				t.Fatalf("error = %v, want %q", err, tt.wantError)
++			}
++		})
++	}
++}
++
++func TestReadBusinessTableBaseline(t *testing.T) {
++	db, mock, err := sqlmock.New()
++	if err != nil {
++		t.Fatal(err)
++	}
++	defer db.Close()
++	mock.ExpectQuery(regexp.QuoteMeta(businessTableBaselineSQL)).WillReturnRows(sqlmock.NewRows([]string{"users", "api_keys", "usage_logs"}).AddRow(4, 4, 7))
++	got, err := readBusinessTableBaseline(context.Background(), db)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if want := (businessTableBaseline{Users: 4, APIKeys: 4, UsageLogs: 7}); got != want {
++		t.Fatalf("baseline = %+v, want %+v", got, want)
++	}
++	if err := mock.ExpectationsWereMet(); err != nil {
++		t.Fatal(err)
++	}
++}
++
++func TestReadBusinessTableBaselinePropagatesFailure(t *testing.T) {
++	for _, scanFailure := range []bool{false, true} {
++		name := "query failure"
++		if scanFailure {
++			name = "scan failure"
++		}
++		t.Run(name, func(t *testing.T) {
++			db, mock, err := sqlmock.New()
++			if err != nil {
++				t.Fatal(err)
++			}
++			defer db.Close()
++			readFailure := errors.New("fixture database unavailable")
++			expect := mock.ExpectQuery(regexp.QuoteMeta(businessTableBaselineSQL))
++			if scanFailure {
++				expect.WillReturnRows(sqlmock.NewRows([]string{"users", "api_keys", "usage_logs"}).AddRow(4, 4, "not-a-count"))
++			} else {
++				expect.WillReturnError(readFailure)
++			}
++			got, err := readBusinessTableBaseline(context.Background(), db)
++			if err == nil {
++				t.Fatal("baseline read failure must not become a confirmed empty baseline")
++			}
++			if !scanFailure && !errors.Is(err, readFailure) {
++				t.Fatalf("error does not wrap database failure: %v", err)
++			}
++			if got != (businessTableBaseline{}) {
++				t.Fatalf("returned partial baseline on failure: %+v", got)
++			}
++			if err := mock.ExpectationsWereMet(); err != nil {
++				t.Fatal(err)
++			}
++		})
++	}
++}
+--- a/backend/cmd/user-telemetry-plugin/main.go
++++ b/backend/cmd/user-telemetry-plugin/main.go
+@@ -20,7 +20,7 @@
+ )
+ 
+ const pluginID = "com.lvdong.user-telemetry"
+-const pluginVersion = "0.1.1"
++const pluginVersion = "0.2.0"
+ 
+ type telemetryPlugin struct {
+ 	runtime  *business.Runtime
+--- a/backend/cmd/user-telemetry-plugin/main_test.go
++++ b/backend/cmd/user-telemetry-plugin/main_test.go
+@@ -105,7 +105,7 @@
+ 	return &pluginv1.InitHostServicesRequest{HostServiceId: id, HostServiceApiVersion: pluginv1.HostServiceAPIVersion}
+ }
+ func TestReleaseVersionMatchesPackagedUI(t *testing.T) {
+-	if pluginVersion != "0.1.1" {
++	if pluginVersion != "0.2.0" {
+ 		t.Fatalf("unexpected plugin release version: %s", pluginVersion)
+ 	}
+ 	ui, err := os.ReadFile("ui/index.html")
+--- a/backend/cmd/user-telemetry-plugin/ui/bridge-http-compat.test.cjs
++++ b/backend/cmd/user-telemetry-plugin/ui/bridge-http-compat.test.cjs
+@@ -90,7 +90,7 @@
+  }
+ });
+ 
+-test('HTTP cross-origin referrer fails closed and UI release version is 0.1.1',()=>{
++test('HTTP cross-origin referrer fails closed and UI release version is 0.2.0',()=>{
+  const s=setup({referrer:'http://192.0.2.11:8080/admin/plugins'});assert.equal(s.sent.length,0);assert.equal(s.elements.get('save').disabled,true);
+- assert.match(html,/READ-ONLY TELEMETRY \/ 0\.1\.1/);assert.doesNotMatch(script,/Math\.random\s*\(/);assert.doesNotMatch(script,/console\.(log|warn|error)\s*\(/);
++ assert.match(html,/READ-ONLY TELEMETRY \/ 0\.2\.0/);assert.doesNotMatch(script,/Math\.random\s*\(/);assert.doesNotMatch(script,/console\.(log|warn|error)\s*\(/);
+ });
+--- a/backend/cmd/user-telemetry-plugin/ui/index.html
++++ b/backend/cmd/user-telemetry-plugin/ui/index.html
+@@ -12,8 +12,8 @@
+ </head>
+ <body>
+ <main>
+-<header><p class="eyebrow">READ-ONLY TELEMETRY / 0.1.1</p><h1>用户数据输出</h1><p class="muted">仅配置授权范围，不修改模型请求、路由或计费。</p></header>
+-<div class="notice">输出五类数据：<strong>邮箱、用户名、API Key 元数据、Token 用量、用户并发</strong>。<p class="hint">API 仅含 ID、名称和状态；不输出明文密钥、密码、OAuth 凭据或模型正文。消费端访问授权由宿主管理。</p></div>
++<header><p class="eyebrow">READ-ONLY TELEMETRY / 0.2.0</p><h1>用户数据输出</h1><p class="muted">仅配置授权范围，不修改模型请求、路由或计费。</p></header>
++<div class="notice">输出授权账号数据：<strong>邮箱、用户名、API Key 元数据、今日/昨日 Token 用量、实时模型、用户并发</strong>。<p class="hint">API 仅含 ID、名称和状态；不输出明文密钥、密码、OAuth 凭据或模型正文。消费端访问授权由宿主管理。</p></div>
+ <section id="config-form" aria-label="插件配置">
+ <div class="field"><label for="user-ids">授权用户 ID</label><textarea id="user-ids" aria-describedby="ids-hint" placeholder="42&#10;43" autocomplete="off" spellcheck="false" required></textarea><p class="hint" id="ids-hint">每行一个，或用逗号分隔；1–500 个不重复的正整数 ID，不接受邮箱。默认无授权范围，不能启用。</p></div>
+ <div class="row"><div class="field"><label for="timezone">统计时区</label><input id="timezone" value="Asia/Shanghai" aria-describedby="tz-hint" autocomplete="off" spellcheck="false"><p class="hint" id="tz-hint">IANA 时区，例如 Asia/Shanghai 或 UTC。</p></div><div class="field"><label for="page-size">每页用户数（可选）</label><input id="page-size" type="number" min="1" max="500" step="1" inputmode="numeric" placeholder="100" aria-describedby="page-hint"><p class="hint" id="page-hint">1–500；留空使用默认值。</p></div></div>
+--- a/backend/cmd/user-telemetry-plugin/internal/telemetry/runtime.go
++++ b/backend/cmd/user-telemetry-plugin/internal/telemetry/runtime.go
+@@ -187,6 +187,9 @@
+ 			return nil, status.Error(codes.PermissionDenied, "host telemetry returned users outside requested scope")
+ 		}
+ 		seen[user.UserID] = true
++		if !validDailyUsage(user.TokenUsage, q.Timezone) || !validActiveModels(user.ActiveModels) {
++			return nil, status.Error(codes.DataLoss, "invalid host telemetry usage or model metadata")
++		}
+ 		for _, key := range user.APIKeys {
+ 			if _, err := public.ParseID(key.ID); err != nil {
+ 				return nil, status.Error(codes.DataLoss, "invalid host API metadata ID")
+--- /dev/null
++++ b/backend/cmd/user-telemetry-plugin/internal/telemetry/snapshot_extensions_test.go
+@@ -0,0 +1,96 @@
++package telemetry
++
++import (
++	"encoding/json"
++	public "github.com/Wei-Shaw/sub2api/pkg/usertelemetry"
++	"strings"
++	"testing"
++	"time"
++)
++
++func extensionFixture() (public.Query, public.Snapshot) {
++	q := public.Query{UserIDs: []string{"42"}, PageSize: 2, Timezone: "Asia/Shanghai", Start: "2026-10-01T00:00:00+08:00", End: "2026-10-02T00:00:00+08:00"}
++	var s public.Snapshot
++	_ = json.Unmarshal(snapshot(q), &s)
++	total, observed, upstream := "18446744073709551644", "2026-10-09T00:10:00+08:00", "actual-model"
++	s.Users[0].TokenUsage = public.TokenUsage{Total: &total, Today: &public.DailyTokenUsage{Date: "2026-10-09", Start: "2026-10-09T00:00:00+08:00", End: observed, Total: &total, Quality: "fresh", ObservedAt: &observed}, Yesterday: &public.DailyTokenUsage{Date: "2026-10-08", Start: "2026-10-08T00:00:00+08:00", End: "2026-10-09T00:00:00+08:00", Total: &total, Quality: "fresh", ObservedAt: &observed}}
++	s.Users[0].ActiveModels = &public.ActiveModelSnapshot{Models: []public.ActiveModel{{RequestedModel: "public-model", UpstreamModel: &upstream, Requests: 2}, {RequestedModel: "public-model-2", Requests: 1}}, Quality: "partial", ObservedAt: &observed}
++	return q, s
++}
++func TestExtensionRoundtripLargeNumbersAndUnknownFieldStripping(t *testing.T) {
++	q, s := extensionFixture()
++	raw, _ := json.Marshal(s)
++	raw = []byte(strings.Replace(string(raw), `"requested_model":"public-model"`, `"secret":"DO_NOT_OUTPUT","requested_model":"public-model"`, 1))
++	out, err := FilterSnapshot(raw, q)
++	if err != nil {
++		t.Fatal(err)
++	}
++	if strings.Contains(string(out), "DO_NOT_OUTPUT") || !strings.Contains(string(out), "18446744073709551644") || !strings.Contains(string(out), "actual-model") {
++		t.Fatal("allowlist or precision lost")
++	}
++}
++func TestExtensionRejectMalformedHostFields(t *testing.T) {
++	cases := map[string]func(*public.Snapshot){
++		"numeric":           func(s *public.Snapshot) { v := "-1"; s.Users[0].TokenUsage.Today.Total = &v },
++		"unknownIsNotZero":  func(s *public.Snapshot) { s.Users[0].TokenUsage.Today.Quality = "unavailable" },
++		"wrongDay":          func(s *public.Snapshot) { s.Users[0].TokenUsage.Today.Date = "2026-10-08" },
++		"wrongYesterdayEnd": func(s *public.Snapshot) { s.Users[0].TokenUsage.Yesterday.End = "2026-10-09T01:00:00+08:00" },
++		"missingPair":       func(s *public.Snapshot) { s.Users[0].TokenUsage.Yesterday = nil },
++		"controlModel":      func(s *public.Snapshot) { s.Users[0].ActiveModels.Models[0].RequestedModel = "model\nSECRET" },
++		"count":             func(s *public.Snapshot) { s.Users[0].ActiveModels.Models[0].Requests = 10001 },
++		"duplicate": func(s *public.Snapshot) {
++			s.Users[0].ActiveModels.Models = append(s.Users[0].ActiveModels.Models, s.Users[0].ActiveModels.Models[0])
++		},
++		"unknownActiveHasData": func(s *public.Snapshot) { s.Users[0].ActiveModels.Quality = "unavailable" },
++	}
++	for name, mutate := range cases {
++		t.Run(name, func(t *testing.T) {
++			q, s := extensionFixture()
++			mutate(&s)
++			raw, _ := json.Marshal(s)
++			if _, err := FilterSnapshot(raw, q); err == nil {
++				t.Fatal("accepted malformed extension")
++			}
++		})
++	}
++}
++func TestExtensionOldHostAndUnavailableRemainCompatible(t *testing.T) {
++	q, s := extensionFixture()
++	s.Users[0].TokenUsage.Today = nil
++	s.Users[0].TokenUsage.Yesterday = nil
++	s.Users[0].ActiveModels = nil
++	raw, _ := json.Marshal(s)
++	if _, err := FilterSnapshot(raw, q); err != nil {
++		t.Fatal(err)
++	}
++	q, s = extensionFixture()
++	for _, d := range []*public.DailyTokenUsage{s.Users[0].TokenUsage.Today, s.Users[0].TokenUsage.Yesterday} {
++		d.Quality = "unavailable"
++		d.Total = nil
++		d.ObservedAt = nil
++	}
++	s.Users[0].ActiveModels = &public.ActiveModelSnapshot{Quality: "unavailable"}
++	raw, _ = json.Marshal(s)
++	if _, err := FilterSnapshot(raw, q); err != nil {
++		t.Fatal(err)
++	}
++}
++func TestExtensionDSTCalendarUsesAddDate(t *testing.T) {
++	q, s := extensionFixture()
++	q.Timezone = "America/New_York"
++	s.Window.Timezone = q.Timezone
++	loc, _ := time.LoadLocation(q.Timezone)
++	now := time.Date(2026, 3, 9, 2, 0, 0, 0, loc)
++	start := time.Date(2026, 3, 9, 0, 0, 0, 0, loc)
++	today, yesterday := s.Users[0].TokenUsage.Today, s.Users[0].TokenUsage.Yesterday
++	today.Date = start.Format("2006-01-02")
++	today.Start = start.Format(time.RFC3339)
++	today.End = now.Format(time.RFC3339)
++	yesterday.Date = start.AddDate(0, 0, -1).Format("2006-01-02")
++	yesterday.Start = start.AddDate(0, 0, -1).Format(time.RFC3339)
++	yesterday.End = today.Start
++	raw, _ := json.Marshal(s)
++	if _, err := FilterSnapshot(raw, q); err != nil {
++		t.Fatal(err)
++	}
++}
+--- /dev/null
++++ b/backend/cmd/user-telemetry-plugin/internal/telemetry/snapshot_extensions.go
+@@ -0,0 +1,133 @@
++package telemetry
++
++import (
++	"strings"
++	"time"
++	"unicode"
++	"unicode/utf8"
++
++	public "github.com/Wei-Shaw/sub2api/pkg/usertelemetry"
++)
++
++func validTokenTotal(value *string) bool {
++	if value == nil {
++		return true
++	}
++	if len(*value) == 0 || len(*value) > 128 || (len(*value) > 1 && (*value)[0] == '0') {
++		return false
++	}
++	for _, r := range *value {
++		if r < '0' || r > '9' {
++			return false
++		}
++	}
++	return true
++}
++func validModelName(value string) bool {
++	if len(value) == 0 || len(value) > 200 || !utf8.ValidString(value) || strings.TrimSpace(value) == "" {
++		return false
++	}
++	for _, r := range value {
++		if unicode.IsControl(r) || unicode.Is(unicode.Cf, r) {
++			return false
++		}
++	}
++	return true
++}
++func validObservation(value *string) bool {
++	if value == nil {
++		return false
++	}
++	_, err := time.Parse(time.RFC3339Nano, *value)
++	return err == nil
++}
++func validDailyValue(day *public.DailyTokenUsage) bool {
++	if day == nil || !validTokenTotal(day.Total) {
++		return false
++	}
++	switch day.Quality {
++	case "fresh":
++		return day.Total != nil && validObservation(day.ObservedAt)
++	case "partial":
++		return day.Total != nil && validObservation(day.ObservedAt)
++	case "unavailable":
++		return day.Total == nil && day.ObservedAt == nil
++	default:
++		return false
++	}
++}
++
++// Calendar windows are independent of the caller-selected query window, but
++// must be a coherent same-timezone pair, not unlabelled arbitrary aggregates.
++func validDailyUsage(usage public.TokenUsage, timezone string) bool {
++	if !validTokenTotal(usage.Total) {
++		return false
++	}
++	if usage.Today == nil && usage.Yesterday == nil {
++		return true
++	} // old plugin/host
++	if !validDailyValue(usage.Today) || !validDailyValue(usage.Yesterday) {
++		return false
++	}
++	loc, err := time.LoadLocation(timezone)
++	if err != nil {
++		return false
++	}
++	start, err := time.Parse(time.RFC3339Nano, usage.Today.Start)
++	if err != nil {
++		return false
++	}
++	end, err := time.Parse(time.RFC3339Nano, usage.Today.End)
++	if err != nil {
++		return false
++	}
++	start = start.In(loc)
++	midnight := time.Date(start.Year(), start.Month(), start.Day(), 0, 0, 0, 0, loc)
++	if !start.Equal(midnight) || end.Before(start) || !end.Before(midnight.AddDate(0, 0, 1)) {
++		return false
++	}
++	if usage.Today.Date != midnight.Format("2006-01-02") {
++		return false
++	}
++	prevStart, err := time.Parse(time.RFC3339Nano, usage.Yesterday.Start)
++	if err != nil {
++		return false
++	}
++	prevEnd, err := time.Parse(time.RFC3339Nano, usage.Yesterday.End)
++	if err != nil {
++		return false
++	}
++	return prevStart.Equal(midnight.AddDate(0, 0, -1)) && prevEnd.Equal(midnight) && usage.Yesterday.Date == midnight.AddDate(0, 0, -1).Format("2006-01-02")
++}
++func validActiveModels(snapshot *public.ActiveModelSnapshot) bool {
++	if snapshot == nil {
++		return true
++	}
++	switch snapshot.Quality {
++	case "unavailable":
++		return len(snapshot.Models) == 0 && snapshot.ObservedAt == nil
++	case "fresh", "partial":
++		if snapshot.Models == nil || !validObservation(snapshot.ObservedAt) {
++			return false
++		}
++	default:
++		return false
++	}
++	count := 0
++	seen := map[string]bool{}
++	for _, model := range snapshot.Models {
++		if !validModelName(model.RequestedModel) || (model.UpstreamModel != nil && !validModelName(*model.UpstreamModel)) || model.Requests < 1 || model.Requests > 10000-count {
++			return false
++		}
++		key := model.RequestedModel + "\x00"
++		if model.UpstreamModel != nil {
++			key += *model.UpstreamModel
++		}
++		if seen[key] {
++			return false
++		}
++		seen[key] = true
++		count += model.Requests
++	}
++	return true
++}
+--- a/frontend/src/views/admin/PluginsView.vue
++++ b/frontend/src/views/admin/PluginsView.vue
+@@ -88,7 +88,7 @@
+         <article
+           v-for="plugin in plugins"
+           :key="plugin.id"
+-          class="card overflow-hidden border border-gray-200 dark:border-dark-700"
++          class="card min-w-0 overflow-hidden border border-gray-200 dark:border-dark-700"
+         >
+           <div
+             class="flex flex-wrap items-start justify-between gap-3 border-b border-gray-100 p-5 dark:border-dark-700"
+@@ -211,13 +211,124 @@
+               </p>
+             </div>
+ 
+-            <div v-if="isUserTelemetry(plugin)" class="md:col-span-2">
++            <div v-if="isUserTelemetry(plugin)" class="min-w-0 md:col-span-2">
+               <p class="text-xs font-medium text-gray-600 dark:text-gray-300">
+                 {{ t("admin.plugins.userTelemetry") }}
+               </p>
+               <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                 {{ t("admin.plugins.telemetryScope") }}
+               </p>
++              <section
++                v-if="canReadTelemetry(plugin) && telemetryPreviews[plugin.id]"
++                class="mt-4 min-w-0 border-t border-gray-200 pt-4 dark:border-dark-700"
++                :aria-busy="telemetryPreviews[plugin.id].loading"
++                :aria-label="t('admin.plugins.telemetryPreview')"
++                data-testid="telemetry-preview"
++              >
++                <h4 class="text-sm font-semibold text-gray-900 dark:text-white">
++                  {{ t('admin.plugins.telemetryPreview') }}
++                </h4>
++                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
++                  {{ t('admin.plugins.telemetryManualHint') }}
++                </p>
++                <p v-if="telemetryPreviews[plugin.id].loading" role="status" class="mt-3 text-sm text-gray-500">
++                  {{ t('admin.plugins.telemetryLoading') }}
++                </p>
++                <p v-if="telemetryPreviews[plugin.id].error" role="alert" class="mt-3 text-sm text-red-600 dark:text-red-400">
++                  {{ t('admin.plugins.telemetryReadFailed') }}
++                </p>
++                <template v-if="telemetryPreviews[plugin.id].snapshot">
++                  <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
++                    {{ t('admin.plugins.telemetryTimezone') }}:
++                    {{ telemetryPreviews[plugin.id].snapshot?.window?.timezone || t('admin.plugins.telemetryUnknown') }}
++                  </p>
++                  <div
++                    class="mt-3 max-w-full overflow-x-auto"
++                    role="region"
++                    tabindex="0"
++                    :aria-label="t('admin.plugins.telemetryPreview')"
++                    data-testid="telemetry-table-scroll"
++                  >
++                    <table class="w-full min-w-[760px] text-left text-xs">
++                      <caption class="sr-only">{{ t('admin.plugins.telemetryPreview') }}</caption>
++                      <thead class="border-b border-gray-200 bg-gray-50 text-gray-600 dark:border-dark-700 dark:bg-dark-800 dark:text-gray-300">
++                        <tr>
++                          <th scope="col" class="px-3 py-2">{{ t('admin.plugins.telemetryIdentity') }}</th>
++                          <th scope="col" class="px-3 py-2">{{ t('admin.plugins.telemetryToday') }}</th>
++                          <th scope="col" class="px-3 py-2">{{ t('admin.plugins.telemetryYesterday') }}</th>
++                          <th scope="col" class="px-3 py-2">{{ t('admin.plugins.telemetryModels') }}</th>
++                          <th scope="col" class="px-3 py-2">{{ t('admin.plugins.telemetryConcurrency') }}</th>
++                        </tr>
++                      </thead>
++                      <tbody class="divide-y divide-gray-100 text-gray-800 dark:divide-dark-700 dark:text-gray-200">
++                        <tr v-for="user in telemetryPreviews[plugin.id].snapshot?.users" :key="user.user_id">
++                          <th scope="row" class="max-w-52 break-words px-3 py-3 align-top font-normal">
++                            <p class="font-medium">{{ user.username || t('admin.plugins.telemetryUnknown') }}</p>
++                            <p class="mt-1 text-gray-500 dark:text-gray-400">{{ user.email || t('admin.plugins.telemetryUnknown') }}</p>
++                          </th>
++                          <td v-for="day in telemetryDays" :key="day" class="px-3 py-3 align-top" :data-testid="'telemetry-' + day">
++                            <p class="whitespace-nowrap text-gray-500 dark:text-gray-400">
++                              {{ user.token_usage?.[day]?.date || t('admin.plugins.telemetryUnknown') }}
++                            </p>
++                            <p class="mt-1 whitespace-nowrap font-mono tabular-nums" :title="dailyWindow(user.token_usage?.[day])">
++                              {{ dailyTotal(user.token_usage?.[day]) }}
++                            </p>
++                            <p class="mt-1 text-gray-500 dark:text-gray-400">
++                              {{ telemetryQuality(user.token_usage?.[day]?.quality) }}
++                            </p>
++                            <p class="mt-1 text-gray-500 dark:text-gray-400">
++                              {{ t('admin.plugins.telemetryObservedAt') }}: {{ user.token_usage?.[day]?.observed_at || t('admin.plugins.telemetryUnknown') }}
++                            </p>
++                          </td>
++                          <td class="max-w-80 break-words px-3 py-3 align-top" data-testid="telemetry-models">
++                            <p :class="user.active_models?.quality === 'partial' ? 'text-amber-700 dark:text-amber-300' : 'text-gray-500 dark:text-gray-400'">
++                              {{ telemetryQuality(user.active_models?.quality) }}
++                            </p>
++                            <ul v-if="visibleModels(user).length" class="mt-2 space-y-3">
++                              <li v-for="(model, index) in visibleModels(user)" :key="index">
++                                <p>{{ t('admin.plugins.telemetryRequestedModel') }}: <span class="font-mono">{{ model.requested_model }}</span></p>
++                                <p>{{ t('admin.plugins.telemetryUpstreamModel') }}: <span class="font-mono">{{ model.upstream_model || t('admin.plugins.telemetryUnknown') }}</span></p>
++                                <p class="mt-1 text-gray-500 dark:text-gray-400">{{ t('admin.plugins.telemetryRequests') }}: {{ model.requests }}</p>
++                              </li>
++                            </ul>
++                            <p v-else-if="user.active_models?.quality === 'fresh' && Array.isArray(user.active_models.models)" class="mt-2">
++                              {{ t('admin.plugins.telemetryIdle') }}
++                            </p>
++                            <p v-else-if="user.active_models?.quality === 'partial' && Array.isArray(user.active_models.models)" class="mt-2">
++                              {{ t('admin.plugins.telemetryNoObservedModels') }}
++                            </p>
++                            <p v-else class="mt-2">{{ t('admin.plugins.telemetryUnknown') }}</p>
++                            <p class="mt-2 text-gray-500 dark:text-gray-400">
++                              {{ t('admin.plugins.telemetryObservedAt') }}: {{ user.active_models?.observed_at || t('admin.plugins.telemetryUnknown') }}
++                            </p>
++                          </td>
++                          <td class="px-3 py-3 align-top" data-testid="telemetry-concurrency">
++                            <p class="whitespace-nowrap font-mono tabular-nums">
++                              {{ concurrencyCurrent(user) }} / {{ user.concurrency?.limit ?? t('admin.plugins.telemetryUnknown') }}
++                            </p>
++                            <p class="mt-1 text-gray-500 dark:text-gray-400">{{ telemetryQuality(user.quality?.concurrency) }}</p>
++                            <p class="mt-1 text-gray-500 dark:text-gray-400">
++                              {{ t('admin.plugins.telemetryObservedAt') }}: {{ user.observed_at?.concurrency || t('admin.plugins.telemetryUnknown') }}
++                            </p>
++                          </td>
++                        </tr>
++                      </tbody>
++                    </table>
++                  </div>
++                  <p v-if="telemetryPreviews[plugin.id].snapshot?.users.length === 0" class="mt-3 text-sm text-gray-500">
++                    {{ t('admin.plugins.telemetryEmpty') }}
++                  </p>
++                  <button
++                    v-if="telemetryPreviews[plugin.id].snapshot?.next_cursor"
++                    type="button"
++                    class="btn btn-secondary btn-sm mt-3"
++                    :disabled="telemetryPreviews[plugin.id].loading || busyID === plugin.id"
++                    @click="readTelemetry(plugin, true)"
++                  >
++                    {{ t('admin.plugins.telemetryLoadMore') }}
++                  </button>
++                </template>
++              </section>
+             </div>
+             <div v-else class="md:col-span-2">
+               <label
+@@ -246,6 +357,16 @@
+           <div
+             class="flex flex-wrap justify-end gap-2 border-t border-gray-100 px-5 py-4 dark:border-dark-700"
+           >
++            <button
++              v-if="canReadTelemetry(plugin)"
++              data-testid="usage-read-button"
++              type="button"
++              class="btn btn-secondary btn-sm"
++              :disabled="telemetryPreviews[plugin.id]?.loading || busyID === plugin.id"
++              @click="readTelemetry(plugin)"
++            >
++              {{ t('admin.plugins.readTelemetry') }}
++            </button>
+             <button
+               type="button"
+               class="btn btn-secondary btn-sm"
+@@ -352,6 +473,11 @@
+   type PluginInstallation,
+   type PluginUISession,
+ } from "@/api/admin";
++import type {
++  PluginDailyTokenUsage,
++  PluginUserTelemetrySnapshot,
++  PluginUserTelemetryUser,
++} from "@/api/admin/plugins";
+ import { useAppStore } from "@/stores";
+ import AppLayout from "@/components/layout/AppLayout.vue";
+ import BaseDialog from "@/components/common/BaseDialog.vue";
+@@ -393,6 +519,79 @@
+ const pluginFrameLoaded = ref(false);
+ const pendingBridgeRequests = new Map<string, number>();
+ 
++
++interface TelemetryPreview {
++  loading: boolean;
++  error: boolean;
++  snapshot: PluginUserTelemetrySnapshot | null;
++}
++
++const telemetryDays = ["today", "yesterday"] as const;
++const telemetryPreviews = ref<Record<number, TelemetryPreview>>({});
++let telemetryDisposed = false;
++
++function canReadTelemetry(plugin: PluginInstallation): boolean {
++  return isUserTelemetry(plugin) && plugin.state === "enabled" && plugin.runtime_healthy;
++}
++
++function telemetryQuality(quality?: string): string {
++  if (quality === undefined) return t("admin.plugins.telemetryUpgradeRequired");
++  if (quality === "fresh") return t("admin.plugins.telemetryFresh");
++  if (quality === "partial") return t("admin.plugins.telemetryPartial");
++  return t("admin.plugins.telemetryUnavailable");
++}
++
++function dailyTotal(day?: PluginDailyTokenUsage): string {
++  // Do not coerce token totals to Number: a valid count may exceed 2^53.
++  if (!day || !["fresh", "partial"].includes(day.quality) || typeof day.total !== "string" || !/^\d+$/.test(day.total)) {
++    return t("admin.plugins.telemetryUnknown");
++  }
++  return day.total;
++}
++
++function dailyWindow(day?: PluginDailyTokenUsage): string | undefined {
++  return day ? `${day.start} – ${day.end}` : undefined;
++}
++
++function visibleModels(user: PluginUserTelemetryUser) {
++  const snapshot = user.active_models;
++  return snapshot && ["fresh", "partial"].includes(snapshot.quality) && Array.isArray(snapshot.models)
++    ? snapshot.models : [];
++}
++
++function concurrencyCurrent(user: PluginUserTelemetryUser): number | string {
++  return ["fresh", "partial"].includes(user.quality?.concurrency) && user.concurrency?.current != null
++    ? user.concurrency.current : t("admin.plugins.telemetryUnknown");
++}
++
++async function readTelemetry(plugin: PluginInstallation, append = false): Promise<void> {
++  const current = plugins.value.find((item) => item.id === plugin.id);
++  if (!current || !canReadTelemetry(current) || busyID.value === plugin.id || telemetryPreviews.value[plugin.id]?.loading) return;
++  const previous = telemetryPreviews.value[plugin.id]?.snapshot;
++  const cursor = append ? previous?.next_cursor : undefined;
++  if (append && !cursor) return;
++  telemetryPreviews.value[plugin.id] = {
++    loading: true,
++    error: false,
++    snapshot: append ? previous || null : null,
++  };
++  const preview = telemetryPreviews.value[plugin.id];
++  try {
++    const snapshot = await adminAPI.plugins.getUserTelemetry(plugin.id, cursor || undefined);
++    if (telemetryDisposed || telemetryPreviews.value[plugin.id] !== preview) return;
++    if (!snapshot || !Array.isArray(snapshot.users)) throw new Error("Invalid telemetry snapshot");
++    preview.snapshot = append && previous ? {
++      ...snapshot,
++      users: [...new Map([...previous.users, ...snapshot.users].map((user) => [user.user_id, user])).values()],
++    } : snapshot;
++  } catch {
++    // Never render/log response bodies, headers or server error text in this preview.
++    if (!telemetryDisposed && telemetryPreviews.value[plugin.id] === preview) preview.error = true;
++  } finally {
++    if (!telemetryDisposed && telemetryPreviews.value[plugin.id] === preview) preview.loading = false;
++  }
++}
++
+ function errorMessage(error: unknown): string {
+   if (typeof error === "object" && error !== null && "message" in error) {
+     return String(
+@@ -416,6 +615,8 @@
+ }
+ 
+ async function loadPlugins(): Promise<void> {
++  // Discard old snapshots and pending results when lifecycle/configuration is refreshed.
++  telemetryPreviews.value = {};
+   loading.value = true;
+   try {
+     plugins.value = await adminAPI.plugins.list();
+@@ -754,6 +955,7 @@
+ });
+ 
+ onBeforeUnmount(() => {
++  telemetryDisposed = true;
+   window.removeEventListener("message", handleBridgeMessage);
+   clearPendingBridgeRequests();
+ });
+--- a/frontend/src/views/admin/__tests__/PluginsView.spec.ts
++++ b/frontend/src/views/admin/__tests__/PluginsView.spec.ts
+@@ -1,7 +1,7 @@
+ import { flushPromises, mount, type DOMWrapper, type VueWrapper } from '@vue/test-utils'
+ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+ 
+-import type { PluginInstallation } from '@/api/admin/plugins'
++import type { PluginInstallation, PluginUserTelemetrySnapshot } from '@/api/admin/plugins'
+ import en from '@/i18n/locales/en/admin/plugins'
+ import zh from '@/i18n/locales/zh/admin/plugins'
+ import PluginsView from '../PluginsView.vue'
+@@ -16,7 +16,11 @@
+   savePluginConfig,
+   createUISession,
+   stepUpRun,
++  getUserTelemetry,
++  telemetryHttpGet,
+ } = vi.hoisted(() => ({
++  getUserTelemetry: vi.fn(),
++  telemetryHttpGet: vi.fn(),
+   listPlugins: vi.fn(),
+   uploadPlugin: vi.fn(),
+   enablePlugin: vi.fn(),
+@@ -31,6 +35,7 @@
+ vi.mock('@/api/admin', () => ({
+   adminAPI: {
+     plugins: {
++      getUserTelemetry,
+       list: listPlugins,
+       upload: uploadPlugin,
+       enable: enablePlugin,
+@@ -43,6 +48,8 @@
+     },
+   },
+ }))
++
++vi.mock('@/api/client', () => ({ apiClient: { get: telemetryHttpGet } }))
+ 
+ vi.mock('@/stores', () => ({
+   useAppStore: () => ({
+@@ -377,3 +384,262 @@
+     }
+   })
+ })
++
++
++function telemetrySnapshot(): PluginUserTelemetrySnapshot {
++  return {
++    schema_version: 1,
++    window: { start: '2026-10-08T00:00:00+08:00', end: '2026-10-09T00:00:00+08:00', timezone: 'Asia/Shanghai' },
++    next_cursor: null,
++    users: [{
++      user_id: '1', username: 'allowlisted-reader', email: 'reader@example.invalid',
++      token_usage: {
++        total: '987',
++        today: { date: '2026-10-08', start: '2026-10-08T00:00:00+08:00', end: '2026-10-09T00:00:00+08:00', total: '900719925474099312345', quality: 'fresh', observed_at: '2026-10-08T12:00:00+08:00' },
++        yesterday: { date: '2026-10-07', start: '2026-10-07T00:00:00+08:00', end: '2026-10-08T00:00:00+08:00', total: '0', quality: 'fresh', observed_at: '2026-10-08T12:00:00+08:00' },
++      },
++      active_models: { models: [], quality: 'fresh', observed_at: '2026-10-08T12:00:00+08:00' },
++      concurrency: { current: 0, limit: 5 },
++      quality: { concurrency: 'fresh' },
++      observed_at: { concurrency: '2026-10-08T12:00:00+08:00' },
++    }],
++  }
++}
++
++function usageButton(wrapper: VueWrapper) {
++  return wrapper.get('[data-testid="usage-read-button"]')
++}
++
++async function mountTelemetry(snapshot = telemetrySnapshot()) {
++  listPlugins.mockResolvedValue([telemetryPlugin({ state: 'enabled', runtime_healthy: true })])
++  getUserTelemetry.mockResolvedValue(snapshot)
++  const wrapper = mountView()
++  await flushPromises()
++  return wrapper
++}
++
++describe('只读遥测用量预览', () => {
++  beforeEach(() => {
++    vi.resetAllMocks()
++    testLocale.value = 'keys'
++    stepUpRun.mockImplementation((action: () => Promise<unknown>) => action())
++  })
++
++  afterEach(() => {
++    mountedViews.splice(0).forEach((wrapper) => wrapper.unmount())
++    vi.useRealTimers()
++    vi.restoreAllMocks()
++  })
++
++  it('直接 JSON 经正常 apiClient 读取一次，不重复解包或修改配置', async () => {
++    const snapshot = telemetrySnapshot()
++    telemetryHttpGet.mockResolvedValue({ data: snapshot })
++    const api = await import('@/api/admin/plugins')
++    expect(await api.getUserTelemetry(8)).toBe(snapshot)
++    expect(telemetryHttpGet).toHaveBeenCalledWith('/admin/plugins/8/user-telemetry', undefined)
++    await api.getUserTelemetry(8, 'next-page')
++    expect(telemetryHttpGet).toHaveBeenLastCalledWith('/admin/plugins/8/user-telemetry', { params: { cursor: 'next-page' } })
++  })
++
++  it.each(['zh', 'en'] as const)('手动读取成功，%s 文案保留大于 2^53 的 token、接口日期和已观测零值', async (locale) => {
++    const wrapper = await mountTelemetry()
++    testLocale.value = locale
++    expect(getUserTelemetry).not.toHaveBeenCalled()
++    expect(wrapper.find('[data-testid="telemetry-preview"]').exists()).toBe(false)
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    expect(getUserTelemetry).toHaveBeenCalledTimes(1)
++    expect(getUserTelemetry).toHaveBeenCalledWith(8, undefined)
++    const messages = locale === 'zh' ? zh.plugins : en.plugins
++    expect(wrapper.text()).toContain(messages.readTelemetry)
++    expect(wrapper.text()).toContain(messages.telemetryManualHint)
++    expect(wrapper.text()).toContain('allowlisted-reader')
++    expect(wrapper.text()).toContain('reader@example.invalid')
++    expect(wrapper.text()).toContain('Asia/Shanghai')
++    const today = wrapper.get('[data-testid="telemetry-today"]')
++    expect(today.text()).toContain('900719925474099312345')
++    expect(today.text()).toContain('2026-10-08')
++    expect(today.get('[title]').attributes('title')).toBe('2026-10-08T00:00:00+08:00 – 2026-10-09T00:00:00+08:00')
++    expect(wrapper.get('[data-testid="telemetry-yesterday"]').text()).toContain('2026-10-07')
++    expect(wrapper.get('[data-testid="telemetry-yesterday"] .font-mono').text()).toBe('0')
++    expect(wrapper.get('[data-testid="telemetry-models"]').text()).toContain(messages.telemetryIdle)
++    expect(wrapper.get('[data-testid="telemetry-concurrency"]').text()).toContain('0 / 5')
++    expect(wrapper.get('[data-testid="telemetry-table-scroll"]').classes()).toContain('overflow-x-auto')
++    expect(wrapper.get('table').classes()).toContain('min-w-[760px]')
++    expect(wrapper.text()).not.toContain('admin.plugins.')
++    expect(stepUpRun).not.toHaveBeenCalled()
++    expect(savePluginConfig).not.toHaveBeenCalled()
++    expect(createUISession).not.toHaveBeenCalled()
++    expect(enablePlugin).not.toHaveBeenCalled()
++    expect(disablePlugin).not.toHaveBeenCalled()
++    vi.useFakeTimers()
++    await vi.advanceTimersByTimeAsync(120000)
++    expect(getUserTelemetry).toHaveBeenCalledTimes(1)
++  })
++
++  it('不可用 null 不冒充零或空闲，仍显示日期与并发上限', async () => {
++    const snapshot = telemetrySnapshot()
++    const user = snapshot.users[0]
++    user.token_usage.today!.total = null
++    user.token_usage.today!.quality = 'unavailable'
++    user.token_usage.today!.observed_at = null
++    user.token_usage.yesterday!.total = null
++    user.token_usage.yesterday!.quality = 'unavailable'
++    user.active_models = { models: [], quality: 'unavailable', observed_at: null }
++    user.concurrency.current = null
++    user.quality.concurrency = 'untracked'
++    const wrapper = await mountTelemetry(snapshot)
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    for (const day of ['today', 'yesterday']) {
++      const cell = wrapper.get(`[data-testid="telemetry-${day}"]`)
++      expect(cell.get('.font-mono').text()).toBe('admin.plugins.telemetryUnknown')
++      expect(cell.text()).toContain('admin.plugins.telemetryUnavailable')
++    }
++    expect(wrapper.get('[data-testid="telemetry-today"]').text()).toContain('2026-10-08')
++    expect(wrapper.get('[data-testid="telemetry-models"]').text()).not.toContain('admin.plugins.telemetryIdle')
++    expect(wrapper.get('[data-testid="telemetry-concurrency"]').text()).toContain('admin.plugins.telemetryUnknown / 5')
++  })
++
++  it('旧插件缺少日用量与模型字段时显示未知 / 需升级，不使用旧 total 兜底', async () => {
++    const snapshot = telemetrySnapshot()
++    snapshot.users[0].token_usage = { total: '987' }
++    delete snapshot.users[0].active_models
++    const wrapper = await mountTelemetry(snapshot)
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    for (const part of ['today', 'yesterday', 'models']) {
++      const text = wrapper.get(`[data-testid="telemetry-${part}"]`).text()
++      expect(text).toContain('admin.plugins.telemetryUpgradeRequired')
++      expect(text).not.toContain('987')
++      expect(text).not.toContain('admin.plugins.telemetryIdle')
++    }
++  })
++
++  it('加载期间防重复读取，失败仅给通用提示且允许手动重试', async () => {
++    const wrapper = await mountTelemetry()
++    let rejectRead!: (reason: Error) => void
++    getUserTelemetry.mockReturnValueOnce(new Promise((_, reject) => { rejectRead = reject }))
++    await usageButton(wrapper).trigger('click')
++    expect(wrapper.get('[role="status"]').text()).toBe('admin.plugins.telemetryLoading')
++    expect(usageButton(wrapper).attributes('disabled')).toBeDefined()
++    await usageButton(wrapper).trigger('click')
++    expect(getUserTelemetry).toHaveBeenCalledTimes(1)
++    rejectRead(new Error('untrusted response detail'))
++    await flushPromises()
++    expect(wrapper.get('[role="alert"]').text()).toBe('admin.plugins.telemetryReadFailed')
++    expect(wrapper.text()).not.toContain('untrusted response detail')
++    expect(wrapper.find('table').exists()).toBe(false)
++    expect(usageButton(wrapper).attributes('disabled')).toBeUndefined()
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    expect(getUserTelemetry).toHaveBeenCalledTimes(2)
++    expect(wrapper.find('[role="alert"]').exists()).toBe(false)
++    expect(wrapper.find('table').exists()).toBe(true)
++  })
++
++  it.each([
++    { state: 'disabled' as const, runtime_healthy: true },
++    { state: 'enabled' as const, runtime_healthy: false },
++    { state: 'error' as const, runtime_healthy: true },
++    { state: 'starting' as const, runtime_healthy: true },
++  ])('不可读取非 enabled / healthy 遥测（$state / $runtime_healthy），binding 不越权', async (state) => {
++    listPlugins.mockResolvedValue([telemetryPlugin({ ...state, bindings: [{ ...plugin.bindings[0], enabled: true }] })])
++    const wrapper = mountView()
++    await flushPromises()
++    expect(wrapper.find('[data-testid="usage-read-button"]').exists()).toBe(false)
++    expect(wrapper.find('[data-testid="telemetry-preview"]').exists()).toBe(false)
++    expect(getUserTelemetry).not.toHaveBeenCalled()
++  })
++
++  it('健康的传输插件也不显示读取用量', async () => {
++    listPlugins.mockResolvedValue([{ ...plugin, state: 'enabled', runtime_healthy: true }])
++    const wrapper = mountView()
++    await flushPromises()
++    expect(wrapper.find('[data-testid="usage-read-button"]').exists()).toBe(false)
++    expect(getUserTelemetry).not.toHaveBeenCalled()
++  })
++
++  it('一个用户并发多模型逐项区分 requested / upstream，partial 不伪装完整', async () => {
++    const snapshot = telemetrySnapshot()
++    snapshot.users[0].concurrency.current = 3
++    snapshot.users[0].active_models = {
++      models: [
++        { requested_model: 'requested-alpha', upstream_model: 'upstream-alpha', requests: 2 },
++        { requested_model: 'requested-beta', upstream_model: null, requests: 1 },
++      ],
++      quality: 'partial', observed_at: '2026-10-08T12:00:00+08:00',
++    }
++    const wrapper = await mountTelemetry(snapshot)
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    const cell = wrapper.get('[data-testid="telemetry-models"]')
++    expect(cell.text()).toContain('admin.plugins.telemetryPartial')
++    expect(cell.text()).not.toContain('admin.plugins.telemetryFresh')
++    expect(cell.text()).not.toContain('admin.plugins.telemetryIdle')
++    const models = cell.findAll('li')
++    expect(models).toHaveLength(2)
++    expect(models[0].text()).toContain('admin.plugins.telemetryRequestedModel: requested-alpha')
++    expect(models[0].text()).toContain('admin.plugins.telemetryUpstreamModel: upstream-alpha')
++    expect(models[0].text()).toContain('admin.plugins.telemetryRequests: 2')
++    expect(models[1].text()).toContain('requested-beta')
++    expect(models[1].text()).toContain('admin.plugins.telemetryUpstreamModel: admin.plugins.telemetryUnknown')
++    expect(models[1].text()).toContain('admin.plugins.telemetryRequests: 1')
++    expect(wrapper.get('[data-testid="telemetry-concurrency"]').text()).toContain('3 / 5')
++  })
++
++  it('partial 的空模型列表只显示部分观测 / 未知，不显示空闲', async () => {
++    const snapshot = telemetrySnapshot()
++    snapshot.users[0].active_models!.quality = 'partial'
++    const wrapper = await mountTelemetry(snapshot)
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    const cell = wrapper.get('[data-testid="telemetry-models"]')
++    expect(cell.text()).toContain('admin.plugins.telemetryPartial')
++    expect(cell.text()).toContain('admin.plugins.telemetryNoObservedModels')
++    expect(cell.text()).not.toContain('admin.plugins.telemetryIdle')
++  })
++
++  it('失败的新读取清掉旧快照，不能把旧结果伪装为新数据', async () => {
++    const wrapper = await mountTelemetry()
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    getUserTelemetry.mockRejectedValueOnce(new Error('read failed'))
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    expect(wrapper.find('table').exists()).toBe(false)
++    expect(wrapper.get('[role="alert"]').text()).toBe('admin.plugins.telemetryReadFailed')
++  })
++
++  it('生命周期刷新使未完成读取失效，不恢复已停用插件的快照', async () => {
++    const wrapper = await mountTelemetry()
++    let resolveRead!: (snapshot: PluginUserTelemetrySnapshot) => void
++    getUserTelemetry.mockReturnValueOnce(new Promise((resolve) => { resolveRead = resolve }))
++    await usageButton(wrapper).trigger('click')
++    listPlugins.mockResolvedValue([telemetryPlugin({ state: 'disabled', runtime_healthy: false })])
++    await wrapper.get('button[title="common.refresh"]').trigger('click')
++    await flushPromises()
++    resolveRead(telemetrySnapshot())
++    await flushPromises()
++    expect(wrapper.find('[data-testid="usage-read-button"]').exists()).toBe(false)
++    expect(wrapper.find('[data-testid="telemetry-preview"]').exists()).toBe(false)
++  })
++
++  it('有下一页时仅按手动操作继续读取，保留各用户且避免重复行', async () => {
++    const first = telemetrySnapshot()
++    first.next_cursor = 'next-page'
++    const wrapper = await mountTelemetry(first)
++    await usageButton(wrapper).trigger('click')
++    await flushPromises()
++    expect(getUserTelemetry).toHaveBeenCalledTimes(1)
++    const next = telemetrySnapshot()
++    next.users.push({ ...structuredClone(next.users[0]), user_id: '2', username: 'second-reader', email: 'second@example.invalid' })
++    getUserTelemetry.mockResolvedValueOnce(next)
++    await actionButton(wrapper, 'telemetryLoadMore').trigger('click')
++    await flushPromises()
++    expect(getUserTelemetry).toHaveBeenLastCalledWith(8, 'next-page')
++    expect(wrapper.findAll('tbody tr')).toHaveLength(2)
++    expect(wrapper.text()).toContain('second-reader')
++    expect(wrapper.findAll('button').some((button) => button.text() === 'admin.plugins.telemetryLoadMore')).toBe(false)
++  })
++})
+--- a/frontend/src/i18n/locales/en/admin/plugins.ts
++++ b/frontend/src/i18n/locales/en/admin/plugins.ts
+@@ -48,6 +48,30 @@
+     noAccountCoupling: 'Transport scope is platform and account type, with no per-account toggle. Telemetry scope is the administrator-approved user allowlist.',
+     userTelemetry: 'User telemetry (read-only)',
+     telemetryScope: 'Reads usage and concurrency data only for administrator-approved users. It does not forward requests or expose API Key plaintext or other secrets. OAuth traffic percentages do not apply.',
++    readTelemetry: "Read usage",
++    telemetryPreview: "Allowlisted users · Usage snapshot",
++    telemetryManualHint: "Manual reads only: no automatic polling or settings changes. Dates and observation times come from the API; this snapshot does not stay live automatically.",
++    telemetryLoading: "Reading allowlisted user usage…",
++    telemetryReadFailed: "Unable to read usage. Please retry manually.",
++    telemetryIdentity: "Username / Email",
++    telemetryToday: "Today’s tokens (date)",
++    telemetryYesterday: "Yesterday’s tokens (date)",
++    telemetryModels: "Live models (observed snapshot)",
++    telemetryRequestedModel: "Requested model (requested)",
++    telemetryUpstreamModel: "Upstream model (upstream)",
++    telemetryRequests: "Concurrent requests",
++    telemetryConcurrency: "Concurrency / Limit",
++    telemetryUnknown: "Unknown",
++    telemetryUpgradeRequired: "Unknown / Plugin upgrade required",
++    telemetryFresh: "Observed",
++    telemetryPartial: "Partially observed (not a complete view)",
++    telemetryUnavailable: "Unknown / Unavailable",
++    telemetryNoObservedModels: "No active model observed in this snapshot",
++    telemetryIdle: "Idle (no models in this observation)",
++    telemetryObservedAt: "Observed at",
++    telemetryTimezone: "Calendar timezone",
++    telemetryEmpty: "No approved allowlisted users on this page.",
++    telemetryLoadMore: "Read more allowlisted users",
+     confirmDisableTelemetry: 'Disable this user telemetry plugin? New telemetry queries will be unavailable; OpenAI OAuth transport and API Key request flows are unchanged.',
+   }
+ }
+--- a/frontend/src/i18n/locales/zh/admin/plugins.ts
++++ b/frontend/src/i18n/locales/zh/admin/plugins.ts
+@@ -48,6 +48,30 @@
+     noAccountCoupling: '传输插件按平台与账号类型生效，无需逐个账号开启；用户遥测仅限管理员批准的用户白名单。',
+     userTelemetry: '用户遥测（只读）',
+     telemetryScope: '仅查询管理员批准用户的用量与并发数据，不转发请求，不暴露 API Key 明文或其他秘密；不适用 OAuth 流量比例。',
++    readTelemetry: "读取用量",
++    telemetryPreview: "白名单用户 · 用量快照",
++    telemetryManualHint: "仅手动读取，不自动轮询，不修改设置。日期与观测时间以接口返回为准；此快照不会自动保持实时。",
++    telemetryLoading: "正在读取白名单用户用量…",
++    telemetryReadFailed: "读取用量失败，请手动重试。",
++    telemetryIdentity: "用户名 / 邮箱",
++    telemetryToday: "今日 token（日期）",
++    telemetryYesterday: "昨日 token（日期）",
++    telemetryModels: "实时模型列表（观测快照）",
++    telemetryRequestedModel: "请求模型（requested）",
++    telemetryUpstreamModel: "上游模型（upstream）",
++    telemetryRequests: "请求并发数",
++    telemetryConcurrency: "并发 / 上限",
++    telemetryUnknown: "未知",
++    telemetryUpgradeRequired: "未知 / 需升级插件",
++    telemetryFresh: "已观测",
++    telemetryPartial: "部分已观测（不代表完整数据）",
++    telemetryUnavailable: "未知 / 不可用",
++    telemetryNoObservedModels: "此次未观察到活动模型",
++    telemetryIdle: "空闲（本次观测无模型）",
++    telemetryObservedAt: "观测时间",
++    telemetryTimezone: "日期时区",
++    telemetryEmpty: "本页没有获准的白名单用户。",
++    telemetryLoadMore: "继续读取白名单用户",
+     confirmDisableTelemetry: '确定停用此用户遥测插件吗？新的遥测查询将不可用；OpenAI OAuth 出站传输及 API Key 请求流程不受影响。',
+   }
+ }
+--- a/frontend/src/api/admin/plugins.ts
++++ b/frontend/src/api/admin/plugins.ts
+@@ -93,6 +93,56 @@
+   expires_at: string
+ }
+ 
++// Admin telemetry is direct versioned JSON. Only preview metadata is modeled here.
++export interface PluginDailyTokenUsage {
++  date: string
++  start: string
++  end: string
++  total: string | null
++  quality: string
++  observed_at: string | null
++}
++
++export interface PluginActiveModelSnapshot {
++  models: { requested_model: string; upstream_model: string | null; requests: number }[]
++  quality: 'fresh' | 'partial' | 'unavailable'
++  observed_at: string | null
++}
++
++export interface PluginUserTelemetryUser {
++  user_id: string
++  username: string
++  email: string
++  token_usage: {
++    total: string | null
++    today?: PluginDailyTokenUsage
++    yesterday?: PluginDailyTokenUsage
++  }
++  active_models?: PluginActiveModelSnapshot
++  concurrency: { current: number | null; limit: number }
++  quality: { concurrency: string }
++  observed_at: { concurrency: string | null }
++}
++
++export interface PluginUserTelemetrySnapshot {
++  schema_version: number
++  window: { start: string; end: string; timezone: string }
++  users: PluginUserTelemetryUser[]
++  next_cursor: string | null
++}
++
++export async function getUserTelemetry(
++  id: number,
++  cursor?: string
++): Promise<PluginUserTelemetrySnapshot> {
++  // apiClient unwraps management envelopes only; do not unwrap this direct JSON again.
++  const { data } = await apiClient.get<PluginUserTelemetrySnapshot>(
++    `/admin/plugins/${id}/user-telemetry`,
++    cursor ? { params: { cursor } } : undefined
++  )
++  return data
++}
++
+ export async function list(): Promise<PluginInstallation[]> {
+   const { data } = await apiClient.get<PluginInstallation[]>('/admin/plugins')
+   return data
+@@ -167,5 +217,6 @@
+   saveConfig,
+   test,
+   status,
+-  createUISession
+-}
++  createUISession,
++  getUserTelemetry
++}

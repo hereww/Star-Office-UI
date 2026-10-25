@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "source": {
+    "size": [
+      1122,
+      1402
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 897691,
+    "transparentFraction": 0.570671,
+    "nearOpaque245Pixels": 663378,
+    "partialAlphaPixels": 673416,
+    "opaque255Pixels": 1937,
+    "alphaBBox": [
+      105,
+      152,
+      1028,
+      1370
+    ],
+    "solidBBoxAlpha16": [
+      245,
+      188,
+      903,
+      1241
+    ],
+    "cornersAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "borderMaxAlpha": 0
+  },
+  "normalized": {
+    "size": [
+      256,
+      320
+    ],
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixels": 26445,
+    "transparentFraction": 0.322815,
+    "nearOpaque245Pixels": 54482,
+    "partialAlphaPixels": 55285,
+    "opaque255Pixels": 190,
+    "alphaBBox": [
+      32,
+      9,
+      223,
+      312
+    ],
+    "solidBBoxAlpha16": [
+      33,
+      10,
+      222,
+      312
+    ],
+    "cornersAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "borderMaxAlpha": 0
+  },
+  "greenComponents": [
+    {
+      "pixelCount": 32,
+      "rectPx": [
+        75,
+        107,
+        10,
+        4
+      ],
+      "centerPx": [
+        80.0,
+        109.0
+      ]
+    },
+    {
+      "pixelCount": 39,
+      "rectPx": [
+        75,
+        188,
+        10,
+        4
+      ],
+      "centerPx": [
+        80.0,
+        190.0
+      ]
+    },
+    {
+      "pixelCount": 30,
+      "rectPx": [
+        75,
+        267,
+        10,
+        3
+      ],
+      "centerPx": [
+        80.0,
+        268.5
+      ]
+    }
+  ],
+  "mapScaleSize": [
+    65,
+    83
+  ],
+  "mapScaleGreenComponents": [
+    {
+      "pixelCount": 3,
+      "rectPx": [
+        19,
+        28,
+        3,
+        1
+      ],
+      "centerPx": [
+        20.5,
+        28.5
+      ]
+    },
+    {
+      "pixelCount": 3,
+      "rectPx": [
+        19,
+        49,
+        3,
+        1
+      ],
+      "centerPx": [
+        20.5,
+        49.5
+      ]
+    },
+    {
+      "pixelCount": 3,
+      "rectPx": [
+        19,
+        69,
+        3,
+        1
+      ],
+      "centerPx": [
+        20.5,
+        69.5
+      ]
+    }
+  ],
+  "exactThreeGreenComponentsAtMapScale": true,
+  "exactThreeGreenComponents": true,
+  "horizontalGreenStrips": true,
+  "assetAndRuntimeImageIdentical": true,
+  "sourceUntouched": true,
+  "trueAlphaNotCheckerboard": true,
+  "rgbNotDrawnByCode": true,
+  "operationsOnlyTransparentMarginCropUniformResizeAndCanvasPaste": true
+}

@@ -1,0 +1,109 @@
+{
+  "api": [
+    {
+      "http": 200,
+      "readback": "idle",
+      "repeatPreservesEpoch": true,
+      "runtime": "idle",
+      "state": "idle"
+    },
+    {
+      "http": 200,
+      "readback": "writing",
+      "repeatPreservesEpoch": true,
+      "runtime": "writing",
+      "state": "writing"
+    },
+    {
+      "http": 200,
+      "readback": "researching",
+      "repeatPreservesEpoch": true,
+      "runtime": "researching",
+      "state": "researching"
+    },
+    {
+      "http": 200,
+      "readback": "executing",
+      "repeatPreservesEpoch": true,
+      "runtime": "executing",
+      "state": "executing"
+    },
+    {
+      "http": 200,
+      "readback": "syncing",
+      "repeatPreservesEpoch": true,
+      "runtime": "syncing",
+      "state": "syncing"
+    },
+    {
+      "http": 200,
+      "readback": "error",
+      "repeatPreservesEpoch": true,
+      "runtime": "error",
+      "state": "error"
+    }
+  ],
+  "frameProtocol": [
+    12,
+    12
+  ],
+  "frames": [
+    {
+      "frames": 12,
+      "furnitureGeometryUnchanged": true,
+      "outsideFaceChangedPixels": 0,
+      "state": "idle",
+      "uniqueFrames": 12
+    },
+    {
+      "frames": 12,
+      "furnitureGeometryUnchanged": true,
+      "outsideFaceChangedPixels": 0,
+      "state": "writing",
+      "uniqueFrames": 12
+    },
+    {
+      "frames": 12,
+      "furnitureGeometryUnchanged": true,
+      "outsideFaceChangedPixels": 0,
+      "state": "researching",
+      "uniqueFrames": 12
+    },
+    {
+      "frames": 12,
+      "furnitureGeometryUnchanged": true,
+      "outsideFaceChangedPixels": 0,
+      "state": "executing",
+      "uniqueFrames": 12
+    },
+    {
+      "frames": 12,
+      "furnitureGeometryUnchanged": true,
+      "outsideFaceChangedPixels": 0,
+      "state": "syncing",
+      "uniqueFrames": 12
+    },
+    {
+      "frames": 12,
+      "furnitureGeometryUnchanged": true,
+      "outsideFaceChangedPixels": 0,
+      "state": "error",
+      "uniqueFrames": 12
+    }
+  ],
+  "mapSize": [
+    2048,
+    2816
+  ],
+  "openSeats": 33,
+  "privateSeats": 3,
+  "result": "pass",
+  "scene": "company-office-floorplan-v2",
+  "swap": {
+    "furnitureUnchanged": true,
+    "statePreserved": true,
+    "version": 1
+  },
+  "totalOutsideFaceChangedPixels": 0,
+  "walkIntegrated": false
+}

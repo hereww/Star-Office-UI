@@ -1,0 +1,382 @@
+{
+  "url": "http://127.0.0.1:19025/",
+  "surface": "V5 employee page",
+  "data": "isolated synthetic browser fixture",
+  "checks": [
+    {
+      "name": "uses the current V5 employee shell and 16 screen-only seats",
+      "pass": true,
+      "evidence": {
+        "mode": "employee",
+        "scene": "company-office-connected-v5",
+        "seats": 16,
+        "modes": [
+          "expression-plus-screen-effects"
+        ],
+        "entry": [
+          "http://127.0.0.1:19025/static/releases/hover-preview/company-office/connected-v5/runtime.mjs"
+        ]
+      }
+    },
+    {
+      "name": "hover highlights the exact desk, with a pointer cursor, without changing camera or animation clocks",
+      "pass": true,
+      "evidence": {
+        "active": "desk-12",
+        "view": "east",
+        "hover": "desk-09",
+        "camera": [
+          -1424,
+          -503,
+          5.684210526315789
+        ],
+        "epochs": [
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7
+        ],
+        "cursor": "pointer",
+        "hoverCommands": 185
+      }
+    },
+    {
+      "name": "leaving a desk clears the hover",
+      "pass": true,
+      "evidence": {
+        "active": "desk-12",
+        "view": "east",
+        "hover": null,
+        "camera": [
+          -1424,
+          -503,
+          5.684210526315789
+        ],
+        "epochs": [
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7
+        ],
+        "cursor": "pointer",
+        "hoverCommands": 0
+      }
+    },
+    {
+      "name": "small 3 CSS-pixel hand movement at DPR2 is still a click, not a drag",
+      "pass": true,
+      "evidence": {
+        "active": "desk-10",
+        "view": "east",
+        "hover": "desk-10",
+        "camera": [
+          -1424,
+          -503,
+          5.684210526315789
+        ],
+        "epochs": [
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7
+        ],
+        "cursor": "pointer",
+        "hoverCommands": 185
+      }
+    },
+    {
+      "name": "dragging from a zoomed desk pans without selecting, focusing or retaining hover",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "active": "desk-10",
+          "view": "east",
+          "hover": "desk-10",
+          "camera": [
+            -1424,
+            -503,
+            5.684210526315789
+          ],
+          "epochs": [
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7
+          ],
+          "cursor": "pointer",
+          "hoverCommands": 185
+        },
+        "after": {
+          "active": "desk-10",
+          "view": "east",
+          "hover": null,
+          "camera": [
+            -1388.5736448368898,
+            -489.91945677020306,
+            5.684210526315789
+          ],
+          "epochs": [
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7,
+            1057.7
+          ],
+          "cursor": "pointer",
+          "hoverCommands": 0
+        }
+      }
+    },
+    {
+      "name": "stationary click after panning selects but preserves the exact custom camera",
+      "pass": true,
+      "evidence": {
+        "active": "desk-11",
+        "view": "east",
+        "hover": null,
+        "camera": [
+          -1388.5736448368898,
+          -489.91945677020306,
+          5.684210526315789
+        ],
+        "epochs": [
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7
+        ],
+        "cursor": "pointer",
+        "hoverCommands": 0
+      }
+    },
+    {
+      "name": "explicit focus button still focuses the selected desk",
+      "pass": true,
+      "evidence": {
+        "active": "desk-11",
+        "view": "workstation",
+        "hover": null,
+        "camera": [
+          -1367.6704972375692,
+          -552.1458563535912,
+          8
+        ],
+        "epochs": [
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7,
+          1057.7
+        ],
+        "cursor": "",
+        "hoverCommands": 0
+      }
+    },
+    {
+      "name": "map-only fullscreen fills the screen without any operation UI and restores the page on exit",
+      "pass": true,
+      "evidence": {
+        "target": "office-map",
+        "children": [
+          "CANVAS"
+        ],
+        "controls": 0,
+        "rect": [
+          0,
+          0,
+          1920,
+          1080
+        ],
+        "viewport": [
+          1920,
+          1080
+        ],
+        "canvas": [
+          3840,
+          2160
+        ],
+        "css": [
+          1920,
+          1080
+        ],
+        "corners": [
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "name": "red and green V5 regions each have 8 independently hittable desks",
+      "pass": false,
+      "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at open (/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_employee_hover.mjs:56:19)\n    at async file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_employee_hover.mjs:168:15\n    at async check (/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_employee_hover.mjs:85:25)\n    at async file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_employee_hover.mjs:167:3"
+    },
+    {
+      "name": "reduced motion retains a static hover outline",
+      "pass": true,
+      "evidence": {
+        "static": true
+      }
+    },
+    {
+      "name": "current V5 preview also renders the existing read-only LAN snapshot",
+      "pass": true,
+      "evidence": {
+        "scene": "company-office-connected-v5",
+        "fixture": false,
+        "bound": 4,
+        "hover": "desk-09",
+        "notice": "V5 本地验收 · 仅只读获取内网办公室快照 · 尚未部署服务器"
+      }
+    },
+    {
+      "name": "V5 responsive employee shell 1024x768",
+      "pass": true,
+      "evidence": {
+        "documentWidth": 1024,
+        "viewportWidth": 1024,
+        "canvas": [
+          1260,
+          936
+        ],
+        "css": [
+          630,
+          468
+        ]
+      }
+    },
+    {
+      "name": "V5 responsive employee shell 390x844",
+      "pass": true,
+      "evidence": {
+        "documentWidth": 390,
+        "viewportWidth": 390,
+        "canvas": [
+          712,
+          1064
+        ],
+        "css": [
+          356,
+          532
+        ]
+      }
+    },
+    {
+      "name": "V5 responsive employee shell 844x390",
+      "pass": true,
+      "evidence": {
+        "documentWidth": 844,
+        "viewportWidth": 844,
+        "canvas": [
+          1636,
+          696
+        ],
+        "css": [
+          818,
+          348
+        ]
+      }
+    }
+  ],
+  "screenshots": [
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-hover-green.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-hover-green-detail.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-after-drag.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-fullscreen-hover.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-fullscreen-exited.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-live-hover-green.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-1024x768.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-390x844.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/fullscreen-v5-20261012/v5-employee-844x390.png"
+  ],
+  "errors": [],
+  "badResponses": [],
+  "writes": [],
+  "legacyRequests": [],
+  "completedAt": "2026-10-11T20:08:10.100Z",
+  "passed": 13,
+  "failed": 1
+}

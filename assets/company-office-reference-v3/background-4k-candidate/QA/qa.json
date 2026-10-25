@@ -1,0 +1,58 @@
+{
+  "actualDimensions": [
+    1584,
+    993
+  ],
+  "minimumLongEdge": 3840,
+  "resolutionGatePassed": false,
+  "aspectRatioGatePassed": true,
+  "native4KClaim": false,
+  "postGenerationUpscalingApplied": false,
+  "boundarySampleCount": 24,
+  "zeroOffsetSampleCount": 23,
+  "maxSampledAbsOffsetPx": 1,
+  "visibleGrossLayoutDriftObserved": false,
+  "allStrictInvariantsCertified": false,
+  "visualInvariants": [
+    {
+      "invariant": "same full framing and aspect ratio",
+      "result": "pass",
+      "evidence": "1584x993 source and output; complete exterior silhouette visible without crop/padding/stretch."
+    },
+    {
+      "invariant": "room boundaries, doorways and wall coordinates",
+      "result": "no_obvious_visible_layout_shift_but_exact_lock_unverified",
+      "evidence": "24 local boundary patches: 23 best-match offsets (0,0); pantry northwest patch at (361,440) matches (361,439), a 1px edge-profile difference. This may reflect sharpening and does not prove wall movement. No gross room/door shift seen in full-image inspection."
+    },
+    {
+      "invariant": "white chip-test room and existing equipment",
+      "result": "visually_retained",
+      "evidence": "White floor/walls, workbench, test instruments, chair, cabinets, column and doors remain at the same visible locations. Fine outlines/textures were enhanced; exhaustive pixel-perfect prop identity is not certified."
+    },
+    {
+      "invariant": "rock room layout and props",
+      "result": "visually_retained",
+      "evidence": "Drum kit, orange and cream guitars, amplifiers, two foreground wedge monitors, acoustic panels, rug, stands and cables retain the visible arrangement. No visible added furniture."
+    },
+    {
+      "invariant": "pantry/storage/larger meeting/equipment stack",
+      "result": "visually_retained",
+      "evidence": "Four left rooms, partition and doorway arrangement retained; empty equipment room remains empty with the existing wall vent."
+    },
+    {
+      "invariant": "empty open-office floor",
+      "result": "visually_retained",
+      "evidence": "Large beige areas remain empty; no added workstations/characters. Floor checker pattern is more contrasty, so texture/color changes exist."
+    },
+    {
+      "invariant": "no text, characters, new furniture",
+      "result": "no_visible_additions",
+      "evidence": "No new labels, characters, signage or furniture visible. Original tiny decorative details were not replaced with legible textual overlays."
+    }
+  ],
+  "decision": "doNotIntegrate",
+  "reason": "Builtin tool returned only 1584x993, below the requested native >=3840 long-edge threshold. Exact architectural/prop identity is not certified by sampled and visual QA.",
+  "humanApproved": false,
+  "runtimeIntegrated": false,
+  "frontendCandidateCreated": false
+}

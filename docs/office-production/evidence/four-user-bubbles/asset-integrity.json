@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "protected_files": 987,
+  "differences": [],
+  "scope": "Accepted media/manifest/evidence hashes unchanged after all source and packaged browser QA."
+}

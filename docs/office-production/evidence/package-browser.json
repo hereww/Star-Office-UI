@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "release_id": "office-20261004-v1-rc3",
+  "scope": "Exact packaged JS/JSON/PNG/Phaser served on loopback by an isolated static-file harness. HTML alone carries a synthetic badge; snapshot GET forwards to owned Gunicorn. Not Nginx or container acceptance.",
+  "requests": 77,
+  "errors": [],
+  "bad": [],
+  "canvas": {
+    "width": 4678,
+    "height": 2160,
+    "cssWidth": 1510,
+    "cssHeight": 697,
+    "dpr": 2
+  }
+}

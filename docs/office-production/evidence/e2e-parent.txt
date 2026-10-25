@@ -1,0 +1,26 @@
+PASS employee privacy, one user and fifteen empty seats
+PASS repeated snapshots and selection do not move camera/reset animation
+PASS trusted zero is idle
+PASS null and untracked are neutral unknown
+PASS HTTP 401 is neutral unknown, never idle/error
+PASS HTTP 403 is neutral unknown, never idle/error
+PASS HTTP 429 is neutral unknown, never idle/error
+PASS HTTP 503 is neutral unknown, never idle/error
+PASS recovery automatically resumes actual busy
+PASS local snapshot connection failure does not fabricate idle
+PASS HTTPS session, all five private fields and lossless integers
+PASS anonymous TLS API and legacy boundaries reject private reads
+PASS binding conflict rejected by server and UI
+PASS draft → preview → save → complete GET readback
+PASS Gunicorn rolling worker reload retains configuration and session
+PASS optimistic version conflicts do not overwrite another save
+PASS history restore creates a new version and reads it back
+PASS independent 16-role preview: four directions/six business states, no writes
+PASS display settings and diagnostics pages do not expose secret editors
+PASS multiple viewing clients do not multiply upstream polling
+PASS responsive employee tablet
+PASS responsive employee mobile-portrait
+PASS responsive employee mobile-landscape
+PASS mobile administrator has readable tab navigation and no horizontal overflow
+PASS logout clears privileged data and session
+{"passed":true,"checks":25,"report":"/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.local/office-production-20261004/qa/acceptance/browser-acceptance.json"}

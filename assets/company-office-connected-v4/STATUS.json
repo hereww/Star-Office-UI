@@ -1,0 +1,93 @@
+{
+  "version": "connected-v4",
+  "date": "2026-10-03",
+  "status": "local-candidate-integrated-technical-qa-passed-awaiting-user-visual-review",
+  "planningAndImplementationModel": "gpt-6.1-sol",
+  "agents": [
+    "Poincare: vertical desk",
+    "Curie: horizontal desk",
+    "Sagan: preserved actor + runtime + bubble adaptation"
+  ],
+  "generationTool": "built-in image_gen",
+  "runtimeIntegrated": true,
+  "humanApproved": false,
+  "remoteDeployed": false,
+  "gitCommitted": false,
+  "localPreview": "http://127.0.0.1:19000/?scene=connected",
+  "previousVersion": "http://127.0.0.1:19000/?scene=reference",
+  "layout": {
+    "seats": 16,
+    "west": {
+      "orientation": "vertical",
+      "seats": 8,
+      "arrangement": "4+4",
+      "directions": [
+        "right",
+        "left"
+      ]
+    },
+    "east": {
+      "orientation": "horizontal",
+      "seats": 8,
+      "arrangement": "4+4",
+      "directions": [
+        "down",
+        "up"
+      ]
+    }
+  },
+  "characters": {
+    "sameOriginalSources": true,
+    "fourDirections": true,
+    "expressionOnly": true,
+    "walking": false,
+    "handsRendered": false,
+    "fps": 12,
+    "actionClocks": {
+      "working": 60,
+      "idle": 36,
+      "syncing": 60,
+      "error": 12
+    }
+  },
+  "qa": {
+    "baselineTests": 87,
+    "newContractTests": 12,
+    "browserTests": 35,
+    "pixelAndMatrixTests": 6,
+    "pixelSamples": 360,
+    "outsideFaceChanges": 0,
+    "directionStateCombinations": 384,
+    "protectedFiles": 90,
+    "protectedFilesChanged": 0,
+    "backendWrites": 0,
+    "userVisualApproval": false
+  },
+  "resolution": {
+    "canvasAndWebglDesktopRetina": [
+      3840,
+      2287
+    ],
+    "verticalNativeSource": [
+      887,
+      1774
+    ],
+    "horizontalNativeSource": [
+      1774,
+      887
+    ],
+    "backgroundNativeSource": [
+      1584,
+      993
+    ],
+    "allSourcesNative4K": false
+  },
+  "acceptance": "docs/COMPANY_OFFICE_CONNECTED_V4_ACCEPTANCE.md",
+  "boundaries": [
+    "Old reference-v3 remains default, not overwritten.",
+    "Only main station is live-bound by default; others explicitly unbound.",
+    "Screenshots with mixed states are labeled local demo, not actual staff activity.",
+    "Device tests emulate mobile browser; not physical-device approval.",
+    "New table sprites are not native4K; no interpolated upgrade claimed."
+  ]
+}

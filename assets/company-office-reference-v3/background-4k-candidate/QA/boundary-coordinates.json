@@ -1,0 +1,419 @@
+{
+  "method": "Local normalized cross-correlation of 37x37 luminance-gradient patches, +/-8 pixel search. These are approximate visually selected boundary-patch centers, not segmentation or full boundary guarantees. No resizing, affine registration, warping or artwork edits used.",
+  "coordinateSystem": "Native image pixels, upper-left origin, x right, y down. Source and output are both 1584x993.",
+  "anchors": [
+    {
+      "feature": "lab west-bottom wall junction",
+      "sourcePatchCenter": [
+        665,
+        270
+      ],
+      "candidateBestMatchPatchCenter": [
+        665,
+        270
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.91357,
+      "zeroOffsetNCC": 0.91357
+    },
+    {
+      "feature": "lab southwest outer corner",
+      "sourcePatchCenter": [
+        665,
+        288
+      ],
+      "candidateBestMatchPatchCenter": [
+        665,
+        288
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.96182,
+      "zeroOffsetNCC": 0.96182
+    },
+    {
+      "feature": "lab southeast outer corner",
+      "sourcePatchCenter": [
+        877,
+        288
+      ],
+      "candidateBestMatchPatchCenter": [
+        877,
+        288
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.93311,
+      "zeroOffsetNCC": 0.93311
+    },
+    {
+      "feature": "lab left door hinge area",
+      "sourcePatchCenter": [
+        790,
+        266
+      ],
+      "candidateBestMatchPatchCenter": [
+        790,
+        266
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.88429,
+      "zeroOffsetNCC": 0.88429
+    },
+    {
+      "feature": "lab right corridor door hinge area",
+      "sourcePatchCenter": [
+        885,
+        258
+      ],
+      "candidateBestMatchPatchCenter": [
+        885,
+        258
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.90378,
+      "zeroOffsetNCC": 0.90378
+    },
+    {
+      "feature": "east upper office bottom boundary",
+      "sourcePatchCenter": [
+        1001,
+        279
+      ],
+      "candidateBestMatchPatchCenter": [
+        1001,
+        279
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.89013,
+      "zeroOffsetNCC": 0.89013
+    },
+    {
+      "feature": "east lower office northwest corner",
+      "sourcePatchCenter": [
+        952,
+        286
+      ],
+      "candidateBestMatchPatchCenter": [
+        952,
+        286
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.93121,
+      "zeroOffsetNCC": 0.93121
+    },
+    {
+      "feature": "east lower office southwest corner",
+      "sourcePatchCenter": [
+        955,
+        449
+      ],
+      "candidateBestMatchPatchCenter": [
+        955,
+        449
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.95911,
+      "zeroOffsetNCC": 0.95911
+    },
+    {
+      "feature": "east lower office southeast corner",
+      "sourcePatchCenter": [
+        1234,
+        445
+      ],
+      "candidateBestMatchPatchCenter": [
+        1234,
+        445
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.91179,
+      "zeroOffsetNCC": 0.91179
+    },
+    {
+      "feature": "pantry northwest corner",
+      "sourcePatchCenter": [
+        361,
+        440
+      ],
+      "candidateBestMatchPatchCenter": [
+        361,
+        439
+      ],
+      "deltaPixels": [
+        0,
+        -1
+      ],
+      "edgeNCC": 0.88472,
+      "zeroOffsetNCC": 0.87882
+    },
+    {
+      "feature": "pantry northeast corner",
+      "sourcePatchCenter": [
+        583,
+        439
+      ],
+      "candidateBestMatchPatchCenter": [
+        583,
+        439
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.90649,
+      "zeroOffsetNCC": 0.90649
+    },
+    {
+      "feature": "pantry/storage partition west",
+      "sourcePatchCenter": [
+        364,
+        557
+      ],
+      "candidateBestMatchPatchCenter": [
+        364,
+        557
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.95636,
+      "zeroOffsetNCC": 0.95636
+    },
+    {
+      "feature": "pantry/storage partition east",
+      "sourcePatchCenter": [
+        581,
+        557
+      ],
+      "candidateBestMatchPatchCenter": [
+        581,
+        557
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.9422,
+      "zeroOffsetNCC": 0.9422
+    },
+    {
+      "feature": "storage/meeting partition west",
+      "sourcePatchCenter": [
+        361,
+        639
+      ],
+      "candidateBestMatchPatchCenter": [
+        361,
+        639
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.93866,
+      "zeroOffsetNCC": 0.93866
+    },
+    {
+      "feature": "storage/meeting partition east",
+      "sourcePatchCenter": [
+        581,
+        640
+      ],
+      "candidateBestMatchPatchCenter": [
+        581,
+        640
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.94462,
+      "zeroOffsetNCC": 0.94462
+    },
+    {
+      "feature": "meeting/equipment partition west",
+      "sourcePatchCenter": [
+        360,
+        783
+      ],
+      "candidateBestMatchPatchCenter": [
+        360,
+        783
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.87491,
+      "zeroOffsetNCC": 0.87491
+    },
+    {
+      "feature": "meeting/equipment partition east",
+      "sourcePatchCenter": [
+        582,
+        782
+      ],
+      "candidateBestMatchPatchCenter": [
+        582,
+        782
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.93107,
+      "zeroOffsetNCC": 0.93107
+    },
+    {
+      "feature": "equipment southeast corner",
+      "sourcePatchCenter": [
+        585,
+        906
+      ],
+      "candidateBestMatchPatchCenter": [
+        585,
+        906
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.93527,
+      "zeroOffsetNCC": 0.93527
+    },
+    {
+      "feature": "rock room northwest corner",
+      "sourcePatchCenter": [
+        708,
+        704
+      ],
+      "candidateBestMatchPatchCenter": [
+        708,
+        704
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.92865,
+      "zeroOffsetNCC": 0.92865
+    },
+    {
+      "feature": "rock room northeast corner",
+      "sourcePatchCenter": [
+        1177,
+        705
+      ],
+      "candidateBestMatchPatchCenter": [
+        1177,
+        705
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.82825,
+      "zeroOffsetNCC": 0.82825
+    },
+    {
+      "feature": "rock room southwest/door corner",
+      "sourcePatchCenter": [
+        708,
+        906
+      ],
+      "candidateBestMatchPatchCenter": [
+        708,
+        906
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.95263,
+      "zeroOffsetNCC": 0.95263
+    },
+    {
+      "feature": "rock room southeast wall corner",
+      "sourcePatchCenter": [
+        1155,
+        908
+      ],
+      "candidateBestMatchPatchCenter": [
+        1155,
+        908
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.96431,
+      "zeroOffsetNCC": 0.96431
+    },
+    {
+      "feature": "main entrance west jamb",
+      "sourcePatchCenter": [
+        614,
+        918
+      ],
+      "candidateBestMatchPatchCenter": [
+        614,
+        918
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.94447,
+      "zeroOffsetNCC": 0.94447
+    },
+    {
+      "feature": "main entrance east jamb",
+      "sourcePatchCenter": [
+        720,
+        920
+      ],
+      "candidateBestMatchPatchCenter": [
+        720,
+        920
+      ],
+      "deltaPixels": [
+        0,
+        0
+      ],
+      "edgeNCC": 0.9299,
+      "zeroOffsetNCC": 0.9299
+    }
+  ],
+  "maxAbsDisplacement": 1,
+  "meanAbsoluteRgbDifference": 7.12658,
+  "fractionPixelsExactlyUnchanged": 0.007978,
+  "allSampledMatchesAtZeroOffset": false,
+  "scopeWarning": "High patch correlation is limited evidence of preserved local geometry, not proof of unchanged object details/counts or a native-4K result."
+}

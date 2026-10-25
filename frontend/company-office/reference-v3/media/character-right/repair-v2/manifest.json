@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 3,
+  "assetPack": "company-office-reference-v3-character-right-repair-v2",
+  "createdOn": "2026-10-02",
+  "status": "repair_v2_ready_for_human_review",
+  "targetedRepairCompleted": true,
+  "visualApproved": false,
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "humanApprovalRequired": true,
+  "integrationApprovalRequired": true,
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "faceClockFrames": 60,
+  "urlRoot": "frontend/company-office/reference-v3/",
+  "animationMode": "expression-only",
+  "character": {
+    "id": "orange-tabby-right-neutral-repair-v2",
+    "direction": "right",
+    "base": "media/character-right/repair-v2/base-neutral.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      112,
+      174
+    ],
+    "headAnchor": [
+      131,
+      89
+    ],
+    "scale": 0.6,
+    "faceRect": [
+      86,
+      60,
+      90,
+      58
+    ],
+    "faceClipEllipse": [
+      131,
+      89,
+      45,
+      29
+    ],
+    "faceFrameSize": [
+      90,
+      58
+    ],
+    "faceVisible": true,
+    "actions": {
+      "working": {
+        "face": "media/character-right/repair-v2/face-working.png",
+        "label": "工作 · 专注表情",
+        "faceClockFrames": 60
+      },
+      "idle": {
+        "face": "media/character-right/repair-v2/face-idle.png",
+        "label": "待命 · 仰脸闭眼张嘴熟睡",
+        "faceClockFrames": 36
+      },
+      "syncing": {
+        "face": "media/character-right/repair-v2/face-syncing.png",
+        "label": "同步 · 耐心等待",
+        "faceClockFrames": 60
+      },
+      "error": {
+        "face": "media/character-right/repair-v2/face-error.png",
+        "label": "出错 · 迷糊旋涡眼",
+        "faceClockFrames": 12
+      }
+    }
+  },
+  "businessStateToAction": {
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "idle": "idle",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "repair": {
+    "newImageToolCalls": 1,
+    "neutralFaceTool": "built-in image_generation / image_gen",
+    "faceSource": "v1 existing four genuine 12-frame atlases",
+    "alphaTrim": "Eye/lid/brow/nose/mouth source RGB retained only. Shared fixed interior silhouette mask; no per-frame reposition.",
+    "neutralBaseAssembly": "Image-tool painted neutral fur crop. v1 original retained outside face patch and on outer contour. Original alpha preserved.",
+    "sameFaceRectangleForAllActionsAndFrames": true,
+    "perFrameTranslation": false,
+    "mirrored": false,
+    "rotated": false,
+    "duplicatedStillAsAnimation": false,
+    "codeDrawnFeatures": false
+  },
+  "qa": {
+    "uniqueFramesPerAction": {
+      "working": 12,
+      "idle": 12,
+      "syncing": 12,
+      "error": 12
+    },
+    "neutralBaseOutsideFacePatchChangedPixels": 0,
+    "bodyOutsideFaceRectChangedPixelsMax": 0,
+    "headOutlineRgbaChangedPixelsMax": 0,
+    "alphaOccupancyChangedPixelsMax": 0,
+    "fixedNonFeatureFurChangedPixelsMax": 0,
+    "compositeDuplicateNoseOrMouthObserved": false,
+    "errorEqualAngleNotRequired": true,
+    "protectedFilesUnchanged": true,
+    "finalWorkstationNoHandsTested": false
+  },
+  "noHandsInterpretation": "No visible typing hands and no body animation in the final workstation composite. Static bare-sprite feet are allowed; table occlusion must be checked by integration.",
+  "handoff": {
+    "contactSheet": "qa/final-combined-contact-sheet.png",
+    "rowOrder": [
+      "working",
+      "idle",
+      "syncing",
+      "error"
+    ],
+    "columns": "frames 0..11 left to right",
+    "report": "qa/report.json",
+    "preview": "qa/overview.png"
+  },
+  "scopeNotes": [
+    "Only repair-v2 subdirectories of the two authorized character-right roots were written.",
+    "v1 candidates/manifests and frozen templates preserved; no UI/runtime/furniture/other directions modified.",
+    "Ready for main-agent visual review, not an automatic production approval."
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-10-04T10:23:57.593841+00:00",
+  "target": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.11.0",
+    "os_name": "posix",
+    "platform_machine": "x86_64",
+    "platform_release": "",
+    "platform_system": "Linux",
+    "platform_version": "",
+    "python_full_version": "3.11.0",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.11",
+    "sys_platform": "linux",
+    "extra": ""
+  },
+  "platforms": [
+    "manylinux2014_x86_64",
+    "manylinux_2_17_x86_64"
+  ],
+  "architecture_status": "candidate_only_remote_unverified",
+  "glibc_floor": "2.17",
+  "alpine_musl_supported": false,
+  "requirements_sha256": "de8050719a3431fd4958f421ae85ef8bcc916c43129580138c8a0b85d36916f3",
+  "requirements_unchanged": true,
+  "prior_archives_unchanged": true,
+  "pypi_sha256_verified": true,
+  "wheel_tags_verified": true,
+  "dependency_closure_verified": true,
+  "wheels_count": 10,
+  "total_bytes": 5305592,
+  "wheels": [
+    {
+      "name": "blinker",
+      "version": "1.9.0",
+      "file": "blinker-1.9.0-py3-none-any.whl",
+      "bytes": 8458,
+      "sha256": "ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc",
+      "tags": [
+        "py3-none-any"
+      ],
+      "requires_python": ">=3.9",
+      "requires_dist": [],
+      "record_checks": 7,
+      "pypi_metadata_url": "https://pypi.org/pypi/blinker/1.9.0/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/10/cb/f2ad4230dc2eb1a74edf38f1a38b9b52277f75bef262d8908e60d957e13c/blinker-1.9.0-py3-none-any.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "file": "click-8.5.0-py3-none-any.whl",
+      "bytes": 125251,
+      "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360",
+      "tags": [
+        "py3-none-any"
+      ],
+      "requires_python": ">=3.10",
+      "requires_dist": [],
+      "record_checks": 21,
+      "pypi_metadata_url": "https://pypi.org/pypi/click/8.5.0/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "flask",
+      "version": "3.0.2",
+      "file": "flask-3.0.2-py3-none-any.whl",
+      "bytes": 101300,
+      "sha256": "3232e0e9c850d781933cf0207523d1ece087eb8d87b23777ae38456e2fbe7c6e",
+      "tags": [
+        "py3-none-any"
+      ],
+      "requires_python": ">=3.8",
+      "requires_dist": [
+        "Werkzeug>=3.0.0",
+        "Jinja2>=3.1.2",
+        "itsdangerous>=2.1.2",
+        "click>=8.1.3",
+        "blinker>=1.6.2",
+        "importlib-metadata>=3.6.0; python_version < '3.10'",
+        "asgiref>=3.2 ; extra == \"async\"",
+        "python-dotenv ; extra == \"dotenv\""
+      ],
+      "record_checks": 30,
+      "pypi_metadata_url": "https://pypi.org/pypi/flask/3.0.2/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/93/a6/aa98bfe0eb9b8b15d36cdfd03c8ca86a03968a87f27ce224fb4f766acb23/flask-3.0.2-py3-none-any.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "gunicorn",
+      "version": "23.0.0",
+      "file": "gunicorn-23.0.0-py3-none-any.whl",
+      "bytes": 85029,
+      "sha256": "ec400d38950de4dfd418cff8328b2c8faed0edb0d517d3394e457c317908ca4d",
+      "tags": [
+        "py3-none-any"
+      ],
+      "requires_python": ">=3.7",
+      "requires_dist": [
+        "packaging",
+        "importlib-metadata ; python_version < \"3.8\"",
+        "eventlet !=0.36.0,>=0.24.1 ; extra == 'eventlet'",
+        "gevent >=1.4.0 ; extra == 'gevent'",
+        "setproctitle ; extra == 'setproctitle'",
+        "gevent ; extra == 'testing'",
+        "eventlet ; extra == 'testing'",
+        "coverage ; extra == 'testing'",
+        "pytest ; extra == 'testing'",
+        "pytest-cov ; extra == 'testing'",
+        "tornado >=0.2 ; extra == 'tornado'"
+      ],
+      "record_checks": 39,
+      "pypi_metadata_url": "https://pypi.org/pypi/gunicorn/23.0.0/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/cb/7d/6dac2a6e1eba33ee43f318edbed4ff29151a49b5d37f080aad1e6469bca4/gunicorn-23.0.0-py3-none-any.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "itsdangerous",
+      "version": "2.2.0",
+      "file": "itsdangerous-2.2.0-py3-none-any.whl",
+      "bytes": 16234,
+      "sha256": "c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef",
+      "tags": [
+        "py3-none-any"
+      ],
+      "requires_python": ">=3.8",
+      "requires_dist": [],
+      "record_checks": 12,
+      "pypi_metadata_url": "https://pypi.org/pypi/itsdangerous/2.2.0/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/04/96/92447566d16df59b2a776c0fb82dbc4d9e07cd95062562af01e408583fc4/itsdangerous-2.2.0-py3-none-any.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "jinja2",
+      "version": "3.1.6",
+      "file": "jinja2-3.1.6-py3-none-any.whl",
+      "bytes": 134899,
+      "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+      "tags": [
+        "py3-none-any"
+      ],
+      "requires_python": ">=3.7",
+      "requires_dist": [
+        "MarkupSafe>=2.0",
+        "Babel>=2.7 ; extra == \"i18n\""
+      ],
+      "record_checks": 30,
+      "pypi_metadata_url": "https://pypi.org/pypi/jinja2/3.1.6/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "markupsafe",
+      "version": "3.0.4",
+      "file": "markupsafe-3.0.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "bytes": 22961,
+      "sha256": "6da83a088f8ef93b2d483a8232a4dbf4d69d3d8496b568a03c56becac43e1808",
+      "tags": [
+        "cp311-cp311-manylinux2014_x86_64",
+        "cp311-cp311-manylinux_2_17_x86_64",
+        "cp311-cp311-manylinux_2_28_x86_64"
+      ],
+      "requires_python": ">=3.9",
+      "requires_dist": [],
+      "record_checks": 10,
+      "pypi_metadata_url": "https://pypi.org/pypi/markupsafe/3.0.4/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/81/a5/a513b76c139a3915b43404324e55c0b7979ae4f0d39eb6f075b0282e90a8/markupsafe-3.0.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "file": "packaging-26.3-py3-none-any.whl",
+      "bytes": 129956,
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+      "tags": [
+        "py3-none-any"
+      ],
+      "requires_python": ">=3.9",
+      "requires_dist": [],
+      "record_checks": 28,
+      "pypi_metadata_url": "https://pypi.org/pypi/packaging/26.3/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "pillow",
+      "version": "10.4.0",
+      "file": "pillow-10.4.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "bytes": 4452804,
+      "sha256": "5e84b6cc6a4a3d76c153a6b19270b3526a5a8ed6b09501d3af891daa2a9de7d6",
+      "tags": [
+        "cp311-cp311-manylinux2014_x86_64",
+        "cp311-cp311-manylinux_2_17_x86_64"
+      ],
+      "requires_python": ">=3.8",
+      "requires_dist": [
+        "furo ; extra == 'docs'",
+        "olefile ; extra == 'docs'",
+        "sphinx >=7.3 ; extra == 'docs'",
+        "sphinx-copybutton ; extra == 'docs'",
+        "sphinx-inline-tabs ; extra == 'docs'",
+        "sphinxext-opengraph ; extra == 'docs'",
+        "olefile ; extra == 'fpx'",
+        "olefile ; extra == 'mic'",
+        "check-manifest ; extra == 'tests'",
+        "coverage ; extra == 'tests'",
+        "defusedxml ; extra == 'tests'",
+        "markdown2 ; extra == 'tests'",
+        "olefile ; extra == 'tests'",
+        "packaging ; extra == 'tests'",
+        "pyroma ; extra == 'tests'",
+        "pytest ; extra == 'tests'",
+        "pytest-cov ; extra == 'tests'",
+        "pytest-timeout ; extra == 'tests'",
+        "typing-extensions ; (python_version < \"3.10\") and extra == 'typing'",
+        "defusedxml ; extra == 'xmp'"
+      ],
+      "record_checks": 131,
+      "pypi_metadata_url": "https://pypi.org/pypi/pillow/10.4.0/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/ac/10/c67e20445a707f7a610699bba4fe050583b688d8cd2d202572b257f46600/pillow-10.4.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    },
+    {
+      "name": "werkzeug",
+      "version": "3.1.9",
+      "file": "werkzeug-3.1.9-py3-none-any.whl",
+      "bytes": 228700,
+      "sha256": "6392e50c78460ba618e5b21f08a71f59c99ce99cdc6cf6e3dd7e6ccca8754fab",
+      "tags": [
+        "py3-none-any"
+      ],
+      "requires_python": ">=3.9",
+      "requires_dist": [
+        "markupsafe>=2.1.1",
+        "watchdog>=2.3 ; extra == \"watchdog\""
+      ],
+      "record_checks": 62,
+      "pypi_metadata_url": "https://pypi.org/pypi/werkzeug/3.1.9/json",
+      "pypi_artifact_url": "https://files.pythonhosted.org/packages/a1/38/df03f564f43cec2684823f3cccae1a652ee7face1cbaa76fb223096e64d7/werkzeug-3.1.9-py3-none-any.whl",
+      "pypi_sha256_verified": true,
+      "pypi_yanked": false
+    }
+  ],
+  "active_dependencies": [
+    [
+      "flask",
+      "Jinja2>=3.1.2",
+      "jinja2"
+    ],
+    [
+      "flask",
+      "Werkzeug>=3.0.0",
+      "werkzeug"
+    ],
+    [
+      "flask",
+      "blinker>=1.6.2",
+      "blinker"
+    ],
+    [
+      "flask",
+      "click>=8.1.3",
+      "click"
+    ],
+    [
+      "flask",
+      "itsdangerous>=2.1.2",
+      "itsdangerous"
+    ],
+    [
+      "gunicorn",
+      "packaging",
+      "packaging"
+    ],
+    [
+      "jinja2",
+      "MarkupSafe>=2.0",
+      "markupsafe"
+    ],
+    [
+      "werkzeug",
+      "markupsafe>=2.1.1",
+      "markupsafe"
+    ]
+  ],
+  "skipped_target_or_extra_dependencies": [
+    [
+      "flask",
+      "asgiref>=3.2 ; extra == \"async\""
+    ],
+    [
+      "flask",
+      "importlib-metadata>=3.6.0; python_version < '3.10'"
+    ],
+    [
+      "flask",
+      "python-dotenv ; extra == \"dotenv\""
+    ],
+    [
+      "gunicorn",
+      "coverage ; extra == 'testing'"
+    ],
+    [
+      "gunicorn",
+      "eventlet !=0.36.0,>=0.24.1 ; extra == 'eventlet'"
+    ],
+    [
+      "gunicorn",
+      "eventlet ; extra == 'testing'"
+    ],
+    [
+      "gunicorn",
+      "gevent ; extra == 'testing'"
+    ],
+    [
+      "gunicorn",
+      "gevent >=1.4.0 ; extra == 'gevent'"
+    ],
+    [
+      "gunicorn",
+      "importlib-metadata ; python_version < \"3.8\""
+    ],
+    [
+      "gunicorn",
+      "pytest ; extra == 'testing'"
+    ],
+    [
+      "gunicorn",
+      "pytest-cov ; extra == 'testing'"
+    ],
+    [
+      "gunicorn",
+      "setproctitle ; extra == 'setproctitle'"
+    ],
+    [
+      "gunicorn",
+      "tornado >=0.2 ; extra == 'tornado'"
+    ],
+    [
+      "jinja2",
+      "Babel>=2.7 ; extra == \"i18n\""
+    ],
+    [
+      "pillow",
+      "check-manifest ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "coverage ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "defusedxml ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "defusedxml ; extra == 'xmp'"
+    ],
+    [
+      "pillow",
+      "furo ; extra == 'docs'"
+    ],
+    [
+      "pillow",
+      "markdown2 ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "olefile ; extra == 'docs'"
+    ],
+    [
+      "pillow",
+      "olefile ; extra == 'fpx'"
+    ],
+    [
+      "pillow",
+      "olefile ; extra == 'mic'"
+    ],
+    [
+      "pillow",
+      "olefile ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "packaging ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "pyroma ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "pytest ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "pytest-cov ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "pytest-timeout ; extra == 'tests'"
+    ],
+    [
+      "pillow",
+      "sphinx >=7.3 ; extra == 'docs'"
+    ],
+    [
+      "pillow",
+      "sphinx-copybutton ; extra == 'docs'"
+    ],
+    [
+      "pillow",
+      "sphinx-inline-tabs ; extra == 'docs'"
+    ],
+    [
+      "pillow",
+      "sphinxext-opengraph ; extra == 'docs'"
+    ],
+    [
+      "pillow",
+      "typing-extensions ; (python_version < \"3.10\") and extra == 'typing'"
+    ],
+    [
+      "werkzeug",
+      "watchdog>=2.3 ; extra == \"watchdog\""
+    ]
+  ],
+  "packages_installed": false,
+  "docker_build_verified": false,
+  "remote_architecture_verified": false
+}

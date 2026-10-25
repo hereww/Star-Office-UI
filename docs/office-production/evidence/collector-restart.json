@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "Owned synthetic collector restarted under 503; persisted previous success is not made fresh.",
+  "source": {
+    "error_code": "upstream_unavailable",
+    "last_attempt_at": "2026-10-04T11:16:38.142060Z",
+    "last_success_at": "2026-10-04T10:59:33.703228Z",
+    "poll_interval_seconds": 5,
+    "stale_after_seconds": 15,
+    "status": "error"
+  },
+  "summary": {
+    "bound": 1,
+    "busy": 0,
+    "idle": 0,
+    "unknown": 1
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "version": "reference-v3",
+  "date": "2026-10-03",
+  "status": "right-v4-aligned-and-4k-rendering-integrated-technical-qa-passed-awaiting-user-visual-review",
+  "generator": "built-in image_gen",
+  "background": "frontend/company-office/reference-v3/office-background-layered.png",
+  "previousBackground": "frontend/company-office/reference-v3/office-background.png",
+  "latestEdit": "右向四套12帧重新生成并统一对位；真实4K/high-DPI画布；全界面清晰中文；注释避让及DPR拖动修正；16席布局与原正面方案不变。",
+  "layout": {
+    "westSeatsInterpretation": "红区双面4+4，共8席；每侧3位同事+1位AI。不是红区16席。",
+    "leftRoomsTopToBottom": [
+      "茶水间",
+      "杂物室",
+      "会议室",
+      "设备间"
+    ],
+    "topCenter": "白色芯片测试间",
+    "southeast": "摇滚房间",
+    "eastDesks": "绿区两排4+4，共8席；后一排是真背向坐姿。靠会议室墙额外一排仍预留不绘制。",
+    "totalOfficeStations": 16,
+    "humanSlots": 12,
+    "aiSlots": 4,
+    "mainStation": "desk-12"
+  },
+  "pending": [
+    "用户确认新版侧向/背向坐姿和四向工位的视觉外观（不影响原版正面模板已确认状态）"
+  ],
+  "runtimeIntegrated": true,
+  "remoteDeployed": false,
+  "checkedAt": "2026-10-03T06:31:20+08:00",
+  "whiteTestRoomReference": "frontend/company-office/reference-v3/office-background-white-lab.png",
+  "humanApproved": false,
+  "localPreview": "http://127.0.0.1:19000/",
+  "previewDataDir": ".local/office-reference-v3-preview",
+  "modules": {
+    "left": "character-left/repair-v2",
+    "right": "character-right/repair-v4-aligned",
+    "up": "character-up, faceVisible:false",
+    "down": "original approved-office-expressions-v1 byte-identical",
+    "player": "directional-player.mjs",
+    "screen": "screen-effects.mjs",
+    "controls": "controls.mjs + controls.css",
+    "integration": "runtime.mjs + layout.json + assets.json + frontend/index.html",
+    "renderQuality": "render-quality.mjs + runtime.mjs screen-space text + preview cache invalidation"
+  },
+  "qa": {
+    "playerTests": {
+      "passed": 28,
+      "failed": 0
+    },
+    "runtimeTests": {
+      "passed": 51,
+      "failed": 0
+    },
+    "actualBrowser": {
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "report": "integration-qa/browser-qa.json"
+    },
+    "assetAudit": {
+      "passed": 347,
+      "failed": 0,
+      "warnings": 2,
+      "report": "integration-qa/asset-audit.json"
+    },
+    "canvasPixelSamples": 360,
+    "outsideDynamicAreaChanges": 0,
+    "originalTemplateChanged": false,
+    "legacyFallbacks": "floorplan/v1/legacy pass",
+    "visualReview": "main-agent inspected composition screenshots; user approval pending",
+    "renderContractTests": {
+      "passed": 8,
+      "failed": 0
+    },
+    "fourKBrowser": {
+      "passed": 45,
+      "failed": 0,
+      "report": "repair-v4-qa/4k-browser-qa.json"
+    },
+    "rightActualComposite": {
+      "actions": 4,
+      "framesPerAction": 12,
+      "totalFrames": 48,
+      "ellipseClippedFeaturePixels": 0,
+      "bodyOutsideFaceChanges": 0,
+      "report": "repair-v4-qa/right-browser-composite-qa.json"
+    },
+    "protectedFiles": 52
+  },
+  "boundaries": [
+    "Development and loopback-isolated preview only; no remote deployment, commit or production state writes.",
+    "Agent integration QA uses an explicitly identified browser-route fixture, not actually registered people.",
+    "Only the main seat is connected to /status by default. Unbound human/AI seats are explicitly labelled; demo does not POST to backend.",
+    "Character and server replacement APIs are exposed in runtime, not new upload/storage UI.",
+    "Original down working/syncing alpha limitations are disclosed in asset-audit; frozen source is unchanged."
+  ],
+  "renderResolution": {
+    "strategy": "physical game size + screen-space high-DPI system text",
+    "nativeMapSource": [
+      1584,
+      993
+    ],
+    "desktop4kBacking": [
+      3840,
+      2258
+    ],
+    "retina1920Backing": [
+      3840,
+      2287
+    ],
+    "native4kSourceClaimed": false,
+    "background4kCandidateIntegrated": false,
+    "background4kCandidateStatus": "rejected-actual-size-1584x993"
+  },
+  "latestAcceptance": "docs/COMPANY_OFFICE_V3_RIGHT_4K_ACCEPTANCE.md"
+}

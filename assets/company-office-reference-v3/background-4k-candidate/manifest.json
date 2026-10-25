@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "module": "background-4k-candidate",
+  "status": "doNotIntegrate",
+  "doNotIntegrate": true,
+  "humanApproved": false,
+  "eligibleForIntegration": false,
+  "runtimeIntegrated": false,
+  "productionReady": false,
+  "source": {
+    "sourcePath": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/office-background-layered.png",
+    "snapshotPath": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/background-4k-candidate/source/office-background-layered-original.png",
+    "sourceDimensions": [
+      1584,
+      993
+    ],
+    "sourceSha256": "e37be18b7662d7625069598d268a6792c73786ef582946efc25a227b3d2ef45a",
+    "requestedNativeDimensions": [
+      4224,
+      2648
+    ],
+    "requestedAspectRatio": [
+      528,
+      331
+    ],
+    "builtinCallsPlanned": 1,
+    "humanApproved": false,
+    "runtimeIntegrated": false,
+    "timestamp": "2026-10-02T20:07:53.669110+00:00"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "mode": "builtin_edit",
+    "calls": 1,
+    "rawToolOutputPath": "/Users/hepingyu/.codex/generated_images/01a0fe36-6378-7080-8206-81bc4dfd56ca/call_NTzTHIIuliLenYCJvcS8makJ.png",
+    "promptPath": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/background-4k-candidate/prompt/generation-prompt.txt",
+    "requestedDimensions": [
+      4224,
+      2648
+    ],
+    "actualDimensions": [
+      1584,
+      993
+    ],
+    "cliUsed": false,
+    "subagentUsed": false,
+    "postGenerationResize": false
+  },
+  "candidate": {
+    "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/background-4k-candidate/source/builtin-enhanced-candidate.png",
+    "sha256": "aba4f26377886672f424a8d51936bc103a518a16ba4124de921159a22a541c66",
+    "format": "PNG",
+    "mode": "RGB",
+    "dimensions": [
+      1584,
+      993
+    ],
+    "native4K": false
+  },
+  "QA": {
+    "report": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/background-4k-candidate/QA/report.md",
+    "structuredReport": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/background-4k-candidate/QA/qa.json",
+    "boundaryCoordinates": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/background-4k-candidate/QA/boundary-coordinates.json",
+    "runtimeReadback": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/background-4k-candidate/QA/runtime-files-readback.json"
+  },
+  "rejectionReasons": [
+    "native_resolution_below_3840_long_edge",
+    "strict_geometry_and_prop_identity_not_fully_certified"
+  ],
+  "runtimeResourcesModifiedByThisModule": [],
+  "frontendPublishPath": null,
+  "createdAt": "2026-10-02T20:22:44.085271+00:00"
+}

@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "recorded_date": "2026-10-01",
+  "timezone": "Asia/Shanghai",
+  "user_feedback": "工位办公的动画肯定还是有问题的。行走方向可以了 作为模板记录保存",
+  "status": "user_approved_direction_templates",
+  "approval_scope": [
+    "up/down/left/right cardinal orientation",
+    "A/B poses retained as reference only"
+  ],
+  "not_approved_by_this_decision": [
+    "complete twelve-frame walking loops",
+    "loop seams and timing",
+    "workstation office animation",
+    "production integration"
+  ],
+  "source_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/index.html",
+  "frame_count_per_direction": 2,
+  "total_reference_images": 8,
+  "target_new_animation_frame_count": 12,
+  "target_preview_fps": 12,
+  "production_ready": false,
+  "runtime_integrated": false,
+  "canonical_identity_reference": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.agents/skills/star-office-character-animation/assets/orange-cat-reference.png",
+  "directions": {
+    "up": {
+      "label": "上：背面",
+      "orientation_approved": true,
+      "files": [
+        {
+          "phase": "A",
+          "file": "up/A.png",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "sha256": "6371d9b53f138a4ab3b3abbde519b5362d6dc6b1a5cd0d3492f6f1c8b6ef51d2",
+          "copied_from_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-up/01.png",
+          "original_source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/up-tail-clear-v4/candidate-A-v4-96.png",
+          "original_image_unchanged": true
+        },
+        {
+          "phase": "B",
+          "file": "up/B.png",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "sha256": "503e879905bed344644933c61d1ba81ea0ebc66de17d3bdde00d44b0fd51037a",
+          "copied_from_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-up/02.png",
+          "original_source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/up-tail-clear-v4/candidate-B-v4-96.png",
+          "original_image_unchanged": true
+        }
+      ]
+    },
+    "down": {
+      "label": "下：正面",
+      "orientation_approved": true,
+      "files": [
+        {
+          "phase": "A",
+          "file": "down/A.png",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "sha256": "a149feb1e20d47109a5276f2382fc73afe6024eef26112b670af72c68547e083",
+          "copied_from_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down/01.png",
+          "original_source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/normalized/walk_down_contact-A.png",
+          "original_image_unchanged": true
+        },
+        {
+          "phase": "B",
+          "file": "down/B.png",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "sha256": "c8db4bb9a5cb7a431b313dd7372db5442a53dfa5d353c817dee5e5c07f6d4a3e",
+          "copied_from_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-down/02.png",
+          "original_source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/normalized/walk_down_contact-B.png",
+          "original_image_unchanged": true
+        }
+      ]
+    },
+    "left": {
+      "label": "左：严格侧面",
+      "orientation_approved": true,
+      "files": [
+        {
+          "phase": "A",
+          "file": "left/A.png",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "sha256": "1ccdfeceed7628a6faeee96bc23c2483ab80f500c563c503772e000e713e2223",
+          "copied_from_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-left/01.png",
+          "original_source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/normalized/walk_left_contact-A.png",
+          "original_image_unchanged": true
+        },
+        {
+          "phase": "B",
+          "file": "left/B.png",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "sha256": "8d1937872e06153d1a57ab3cfdaa7b260f6b06e3ec63c9087b4621eb09e523b8",
+          "copied_from_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-left/02.png",
+          "original_source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/normalized/walk_left_contact-B.png",
+          "original_image_unchanged": true
+        }
+      ]
+    },
+    "right": {
+      "label": "右：严格侧面",
+      "orientation_approved": true,
+      "files": [
+        {
+          "phase": "A",
+          "file": "right/A.png",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "sha256": "fc5e9fe6baf69f46e3aefb3f6bb40bcaccc7daa31058dedbf9b465d9606345f2",
+          "copied_from_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-right/01.png",
+          "original_source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/right-arm-swap-prototype/source-redraw-v15-arm-swing/right-contact-A-v15-paired-v13-96.png",
+          "original_image_unchanged": true
+        },
+        {
+          "phase": "B",
+          "file": "right/B.png",
+          "size": [
+            96,
+            96
+          ],
+          "mode": "RGBA",
+          "sha256": "2a3c88e239686c7effcdba238472cd76a21b477e3db96fba31cd596d0d8a7f31",
+          "copied_from_preview": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-01-walk-work-preview/media/walk-right/02.png",
+          "original_source": "/Users/hepingyu/Documents/律动虚拟办公室/assets/company-office-source/review-stage22/right-arm-swap-prototype/source-redraw-v15-arm-swing/right-contact-B-v15-imagegen-96.png",
+          "original_image_unchanged": true
+        }
+      ]
+    }
+  },
+  "office_review": {
+    "status": "user_rejected_visual",
+    "template_eligible": false,
+    "version": "working-down-v2",
+    "issue_details": "用户确认办公动画仍有问题，本轮未进一步定位或修绘。"
+  }
+}

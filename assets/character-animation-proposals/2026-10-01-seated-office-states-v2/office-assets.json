@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 2,
+  "status": "approved_visual_template",
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "workstation": {
+    "id": "oak-teal-down-v1",
+    "direction": "down",
+    "size": [
+      192,
+      192
+    ],
+    "seatAnchor": [
+      96,
+      94
+    ],
+    "back": "media/workstation-back.png",
+    "front": "media/workstation-front.png",
+    "equipmentInOneStaticLayer": true
+  },
+  "character": {
+    "id": "orange-cat-frozen-seated",
+    "direction": "down",
+    "base": "media/character-base.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      98,
+      170
+    ],
+    "scale": 0.6,
+    "faceRect": [
+      55,
+      72,
+      90,
+      58
+    ],
+    "faceClipEllipse": [
+      100,
+      101,
+      45,
+      29
+    ],
+    "faceFrameSize": [
+      90,
+      58
+    ],
+    "actions": {
+      "working": {
+        "face": "media/face-working.png",
+        "label": "工作 · 专注表情"
+      },
+      "idle": {
+        "face": "media/face-idle-sleep.png",
+        "label": "待命 · 仰脸张嘴熟睡",
+        "source": "face-idle-sleep-original.png",
+        "faceClockFrames": 36
+      },
+      "syncing": {
+        "face": "media/face-syncing.png",
+        "label": "同步 · 耐心等待"
+      },
+      "error": {
+        "face": "media/face-error-dizzy.png",
+        "label": "出错 · 迷糊旋涡眼",
+        "source": "face-error-dizzy-original.png",
+        "faceClockFrames": 12
+      }
+    }
+  },
+  "grid": [
+    4,
+    3
+  ],
+  "frameCount": 12,
+  "fps": 12,
+  "faceClockFrames": 60,
+  "businessStateToAction": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "freeze": {
+    "wholeBody": true,
+    "headOutline": true,
+    "ears": true,
+    "tail": true,
+    "seat": true,
+    "furniture": true,
+    "keyboard": true
+  },
+  "notes": [
+    "坐姿底图只有一张，仅脸部表情变化；不绘制键盘上的手，静态键盘保留",
+    "当前组合与四种表情已由用户确认；后续改动另建版本，不覆盖已确认模板。视觉确认不等于生产接入。",
+    "本预览在工位展示idle和error，仅是资产效果，不改生产区域/路径逻辑",
+    "待命为仰脸闭眼张嘴熟睡，嘴部轻微变化；出错为连续旋涡眼循环。工作和同步素材不变。"
+  ],
+  "animationMode": "expression-only",
+  "visualApproved": true,
+  "approvedOn": "2026-10-01",
+  "templateId": "approved-office-expressions-v1",
+  "frozenTemplate": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1"
+}

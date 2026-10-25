@@ -1,0 +1,4130 @@
+[
+  {
+    "state": "writing",
+    "frame": 0,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 0,
+      "faceFrame": 0,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 1,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 1,
+      "faceFrame": 1,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 2,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 2,
+      "faceFrame": 2,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 3,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 3,
+      "faceFrame": 3,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 4,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 4,
+      "faceFrame": 4,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 5,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 5,
+      "faceFrame": 5,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 6,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 6,
+      "faceFrame": 6,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 7,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 7,
+      "faceFrame": 7,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 8,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 8,
+      "faceFrame": 8,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 9,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 9,
+      "faceFrame": 9,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 10,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 10,
+      "faceFrame": 10,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "writing",
+    "frame": 11,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "writing",
+      "action": "working",
+      "frame": 11,
+      "faceFrame": 11,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "writing",
+        "style": "document-cursor",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#8ebf88",
+        "ledAlpha": 0.8,
+        "key": "writing:true:false:1:0.8"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 0,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 0,
+      "faceFrame": 0,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 1,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 1,
+      "faceFrame": 1,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 2,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 2,
+      "faceFrame": 2,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 3,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 3,
+      "faceFrame": 3,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 4,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 4,
+      "faceFrame": 4,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 5,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 5,
+      "faceFrame": 5,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 6,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 6,
+      "faceFrame": 6,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 7,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 7,
+      "faceFrame": 7,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 8,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 8,
+      "faceFrame": 8,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 9,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 9,
+      "faceFrame": 9,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 10,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 10,
+      "faceFrame": 10,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "idle",
+    "frame": 11,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "idle",
+      "action": "idle",
+      "frame": 11,
+      "faceFrame": 11,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 36,
+      "faceClockFrames": 36,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "idle",
+        "style": "sleep-dark",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#354b42",
+        "ledAlpha": 0.45,
+        "key": "idle:true:false:0:0.45"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 0,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 0,
+      "faceFrame": 0,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 1,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 1,
+      "faceFrame": 1,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 2,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 2,
+      "faceFrame": 2,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 3,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 3,
+      "faceFrame": 3,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 4,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 4,
+      "faceFrame": 4,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 5,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 5,
+      "faceFrame": 5,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 6,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 6,
+      "faceFrame": 6,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 7,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 7,
+      "faceFrame": 7,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 8,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 8,
+      "faceFrame": 8,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 9,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 9,
+      "faceFrame": 9,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 10,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 10,
+      "faceFrame": 10,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "syncing",
+    "frame": 11,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "syncing",
+      "action": "syncing",
+      "frame": 11,
+      "faceFrame": 11,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 60,
+      "faceClockFrames": 60,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "syncing",
+        "style": "sync-blocks",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#aaa6cf",
+        "ledAlpha": 0.8,
+        "key": "syncing:true:false:0:0.8"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 0,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 0,
+      "faceFrame": 0,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 1,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 1,
+      "faceFrame": 1,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 2,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 2,
+      "faceFrame": 2,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 3,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 3,
+      "faceFrame": 3,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 4,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 4,
+      "faceFrame": 4,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 5,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 5,
+      "faceFrame": 5,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 6,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 6,
+      "faceFrame": 6,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 7,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 7,
+      "faceFrame": 7,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 8,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 8,
+      "faceFrame": 8,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 9,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 9,
+      "faceFrame": 9,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 10,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 10,
+      "faceFrame": 10,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  },
+  {
+    "state": "error",
+    "frame": 11,
+    "snapshot": {
+      "ready": true,
+      "direction": "right",
+      "directionFallback": false,
+      "state": "error",
+      "action": "error",
+      "frame": 11,
+      "faceFrame": 11,
+      "fps": 12,
+      "frameCount": 12,
+      "clock": 12,
+      "faceClockFrames": 12,
+      "clockTick": 0,
+      "tick": 0,
+      "sampleMs": 0,
+      "animationMode": "expression-only",
+      "bodyPlacement": [
+        -5.200000000000003,
+        25.60000000000001,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "bodyFixed": true,
+      "handsRendered": false,
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "faceVisible": true,
+      "reducedMotion": false,
+      "screen": {
+        "state": "error",
+        "style": "soft-double-pulse",
+        "visible": true,
+        "ledOnly": false,
+        "mode": "screen",
+        "polygon": [
+          [
+            142.5,
+            40.5
+          ],
+          [
+            147.5,
+            48
+          ],
+          [
+            147.5,
+            79.5
+          ],
+          [
+            142.5,
+            68.5
+          ]
+        ],
+        "led": [
+          147,
+          83,
+          1,
+          1
+        ],
+        "bounds": [
+          142.5,
+          40.5,
+          5,
+          39
+        ],
+        "reducedMotion": false,
+        "phase": 0,
+        "cursorVisible": true,
+        "scanStep": 0,
+        "lineOffset": 0,
+        "activeBlock": 0,
+        "pulse": 0.1,
+        "ledColor": "#ce977e",
+        "ledAlpha": 0.65,
+        "key": "error:true:false:0.1:0.65"
+      }
+    }
+  }
+]

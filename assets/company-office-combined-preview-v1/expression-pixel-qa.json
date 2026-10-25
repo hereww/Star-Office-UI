@@ -1,0 +1,8 @@
+{
+  "exactBrowserPixelComparisonValid": false,
+  "format": "lossy-jpeg-variable-compression",
+  "interpretation": "Not a rendering-failure result. Screenshot hashes cannot establish body movement.",
+  "exactVerifiedResult": "pixel-qa.json",
+  "method": "lossless native canvas rendering of the same unchanged compositor and assets",
+  "visualBrowserEvidence": "browser-expression-screenshots.json"
+}

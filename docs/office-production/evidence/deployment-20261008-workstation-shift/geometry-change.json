@@ -1,0 +1,63 @@
+{
+  "dx": -48,
+  "changed_values": [
+    [
+      "/stations/8/center/0",
+      802,
+      754
+    ],
+    [
+      "/stations/9/center/0",
+      907,
+      859
+    ],
+    [
+      "/stations/10/center/0",
+      1012,
+      964
+    ],
+    [
+      "/stations/11/center/0",
+      1117,
+      1069
+    ],
+    [
+      "/stations/12/center/0",
+      802,
+      754
+    ],
+    [
+      "/stations/13/center/0",
+      907,
+      859
+    ],
+    [
+      "/stations/14/center/0",
+      1012,
+      964
+    ],
+    [
+      "/stations/15/center/0",
+      1117,
+      1069
+    ],
+    [
+      "/views/east/center/0",
+      963,
+      915
+    ],
+    [
+      "/benches/1/fit/0",
+      760,
+      712
+    ]
+  ],
+  "pillar_validation_bounds": [
+    1158,
+    588,
+    80,
+    110
+  ],
+  "forbidden_unchanged": true,
+  "note": "10 x-coordinates only. Release 05 rejected before deployment (no layout delta); immutable final release uses 06."
+}

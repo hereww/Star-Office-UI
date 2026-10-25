@@ -1,0 +1,988 @@
+{
+  "status": "candidate_not_accepted",
+  "approved": false,
+  "productionReady": false,
+  "schemaDimensionsPassed": true,
+  "genuineAlphaPassed": true,
+  "twelveUniqueFramesPassed": true,
+  "bodyOutsideFixedFaceEllipseUnchanged": true,
+  "configuredFaceRectangleStable": true,
+  "generatedNonFeaturePixelsStable": false,
+  "frozenFilesUnchanged": true,
+  "noHandsPassed": false,
+  "base": {
+    "path": "frontend/company-office/reference-v3/media/character-right/base-right-candidate.png",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "RGBA",
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "zeroAlphaPixels": 21318,
+    "transparentFraction": 0.578288,
+    "sha256": "35b17aee47a5b4e35d44befde832e6f13a8c5719ef377f9501843e7d0a751f9d"
+  },
+  "baseVisual": {
+    "rightProfile": true,
+    "visibleEyes": 1,
+    "furniture": false,
+    "originalIdentityRecognizable": true,
+    "noHands": false,
+    "issue": "A visible static forepaw was generated at the bottom-right; candidate only."
+  },
+  "faceRect": [
+    86,
+    60,
+    90,
+    58
+  ],
+  "faceClipEllipse": [
+    131,
+    89,
+    45,
+    29
+  ],
+  "actions": {
+    "working": {
+      "asset": {
+        "path": "frontend/company-office/reference-v3/media/character-right/face-working-candidate.png",
+        "size": [
+          360,
+          174
+        ],
+        "mode": "RGBA",
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "zeroAlphaPixels": 9422,
+        "transparentFraction": 0.150415,
+        "sha256": "ee1f048696cdb5ecd5328915156c9de6caa84ca55329d3962d66fbdce572f996"
+      },
+      "source": {
+        "path": "assets/company-office-reference-v3/character-right/originals/face-working-original.png",
+        "size": [
+          1802,
+          873
+        ],
+        "mode": "RGBA",
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "zeroAlphaPixels": 235295,
+        "transparentFraction": 0.14957,
+        "sha256": "41f81edf494dde7081f8bf1f149637ea146c8debafa448a44608510f04e80ba8"
+      },
+      "grid": [
+        4,
+        3
+      ],
+      "frameCount": 12,
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameClockFrames": 60,
+      "nonemptyFrames": 12,
+      "uniqueVisibleRgbaFrames": 12,
+      "frameHashes": [
+        "ed4b2bdb2805e0c3dc8bf7ac65ba0b00710f4648077550cee5dce0e7ffd9ac08",
+        "462a0a88fec08805ba06793e918a5ba3f64b0991e03653e059eea6fed68bacbe",
+        "f3492f18ac22cb3f4d41fbb926615c0975470d087fd8abce2d23ddc4101137ee",
+        "31c21679d90c76ef878202273a6cd36007edf9d295e5126b5d1023ec1cce06f1",
+        "1e3cedc0bce9d3717eec0c6dbfc608e72cf35e647e3ff3a68577a1bce7098a2d",
+        "baea5c0f04a3736287e61deec814529f5b5bad1cfb6e8fdb4a3224e2cc1f3d88",
+        "2e399c63692556b782fc2cbfec9724d27e6e4f0ce277a94f4e2e3b283d74542e",
+        "8a3bea5b376626f2f1f3796fbd6182ba039837a4b0e1b28a5d46c30198a49945",
+        "becf95f0f3d0114561b528dea2d641d0dcf31078d739bbc5965d17b3e2c40e21",
+        "81d8b82c017975ab17fb1b3cc5335d2fc2d76d19060f983a09840f789469b44d",
+        "960b881f809bdff1f4126ac16ae30b2e58a8a18d040f2b82057080ff4aa5239a",
+        "e81eb1eedf337531346329612c76e5040a40b652b2776b49a8d5cf71b5b2b0de"
+      ],
+      "frameBoxesOpaque127": [
+        [
+          0,
+          0,
+          81,
+          56
+        ],
+        [
+          0,
+          0,
+          81,
+          56
+        ],
+        [
+          0,
+          0,
+          81,
+          56
+        ],
+        [
+          0,
+          0,
+          81,
+          56
+        ],
+        [
+          0,
+          0,
+          81,
+          57
+        ],
+        [
+          0,
+          0,
+          81,
+          57
+        ],
+        [
+          0,
+          0,
+          81,
+          57
+        ],
+        [
+          0,
+          0,
+          81,
+          57
+        ],
+        [
+          0,
+          1,
+          81,
+          58
+        ],
+        [
+          0,
+          1,
+          81,
+          58
+        ],
+        [
+          0,
+          1,
+          81,
+          58
+        ],
+        [
+          0,
+          1,
+          81,
+          58
+        ]
+      ],
+      "eyeRegionUniqueFrames": 12,
+      "adjacentVisibleChangedPixelsIncludingLoopSeam": [
+        235,
+        153,
+        289,
+        622,
+        378,
+        227,
+        227,
+        785,
+        315,
+        268,
+        93,
+        1139
+      ],
+      "fixedRegionVisibleChangesVsFrame0": [
+        0,
+        81,
+        66,
+        50,
+        383,
+        471,
+        482,
+        476,
+        867,
+        891,
+        893,
+        904
+      ],
+      "fixedRegionPixelStable": false,
+      "noseCentroidByFrameApproximate": [
+        [
+          75.43,
+          33.48
+        ],
+        [
+          75.73,
+          32.91
+        ],
+        [
+          75.5,
+          33.1
+        ],
+        [
+          75.29,
+          33.38
+        ],
+        [
+          76.0,
+          32.87
+        ],
+        [
+          75.88,
+          33.2
+        ],
+        [
+          75.88,
+          33.21
+        ],
+        [
+          75.93,
+          33.22
+        ],
+        [
+          75.64,
+          34.8
+        ],
+        [
+          75.9,
+          34.38
+        ],
+        [
+          75.57,
+          34.76
+        ],
+        [
+          76.0,
+          33.9
+        ]
+      ],
+      "compositeBodyOutsideClipChangedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "candidateOnly": true,
+      "accepted": false,
+      "visualNotes": [
+        "Right-facing focused blink is visible.",
+        "Frame-to-frame cheek/whisker and row crop alignment shift; not a stable accepted face atlas."
+      ]
+    },
+    "idle": {
+      "asset": {
+        "path": "frontend/company-office/reference-v3/media/character-right/face-idle-candidate.png",
+        "size": [
+          360,
+          174
+        ],
+        "mode": "RGBA",
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "zeroAlphaPixels": 17253,
+        "transparentFraction": 0.275431,
+        "sha256": "50423ad23548753ad9e2e12441e3bfe71ec9cd53f54d8820c674b9ed2da6f676"
+      },
+      "source": {
+        "path": "assets/company-office-reference-v3/character-right/originals/face-idle-original.png",
+        "size": [
+          1802,
+          873
+        ],
+        "mode": "RGBA",
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "zeroAlphaPixels": 437910,
+        "transparentFraction": 0.278366,
+        "sha256": "bb2a4bbfeccf327361b4015a6631398d59af58caf55101de51248954e5f940f3"
+      },
+      "grid": [
+        4,
+        3
+      ],
+      "frameCount": 12,
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameClockFrames": 36,
+      "nonemptyFrames": 12,
+      "uniqueVisibleRgbaFrames": 12,
+      "frameHashes": [
+        "a2049f196c6715943c5a36be19c11f4ad020e32e1d4f584cdf98637303f711c0",
+        "5c4f15b74d79abdbed8ed421fda34aa80ee72c93034a564eac2e61c716c2063d",
+        "1a9af9184252f26a4ca4feab0aae43318e8ef5f796a5d535759c1ac640f14598",
+        "53108679a77c0c0abdf01f32e157d8b4eb4c9f9cc419da97ba4e982896b343f4",
+        "0e22de71207786682a397f471718e9b2d60c4419251fd03f6cc50f886cc8b493",
+        "3b0fd65c13c203e5608dd296806447f46db33e6411e848b097bec763fd31d21f",
+        "a457703a3eace8cebe4c54782f9644ed3c57be4fa22106ba575601bcbe157415",
+        "efac7eeeed4cca04fdf4a76b7b7036bf492a0564b4a08b682d73c752614a8b8f",
+        "c5d75ecca967d98f42724515caa485e693ff424dbc757c4d102ca7c310f485bc",
+        "16234703ab98c3f1401664804508ecd1ae849f2cdfdf0eb7421d0f7b0e162107",
+        "b1a73cf2a9a724e075f99d93f066d60abb4a997c805d026116fb38fef8425d91",
+        "e8826b32b07a5f41c8dc8828025d0254610568c867910a36c099c8cab33401c3"
+      ],
+      "frameBoxesOpaque127": [
+        [
+          0,
+          0,
+          70,
+          56
+        ],
+        [
+          0,
+          0,
+          70,
+          56
+        ],
+        [
+          0,
+          0,
+          70,
+          56
+        ],
+        [
+          0,
+          0,
+          70,
+          56
+        ],
+        [
+          0,
+          1,
+          70,
+          57
+        ],
+        [
+          0,
+          1,
+          70,
+          57
+        ],
+        [
+          0,
+          1,
+          70,
+          57
+        ],
+        [
+          0,
+          1,
+          70,
+          57
+        ],
+        [
+          0,
+          2,
+          70,
+          58
+        ],
+        [
+          0,
+          2,
+          70,
+          58
+        ],
+        [
+          0,
+          2,
+          70,
+          58
+        ],
+        [
+          0,
+          2,
+          70,
+          58
+        ]
+      ],
+      "eyeRegionUniqueFrames": 12,
+      "adjacentVisibleChangedPixelsIncludingLoopSeam": [
+        150,
+        147,
+        152,
+        722,
+        164,
+        163,
+        159,
+        733,
+        132,
+        114,
+        160,
+        1194
+      ],
+      "fixedRegionVisibleChangesVsFrame0": [
+        0,
+        45,
+        22,
+        67,
+        409,
+        439,
+        418,
+        428,
+        789,
+        798,
+        795,
+        781
+      ],
+      "fixedRegionPixelStable": false,
+      "noseCentroidByFrameApproximate": [
+        [
+          61.75,
+          12.35
+        ],
+        [
+          61.25,
+          13.7
+        ],
+        [
+          60.83,
+          12.72
+        ],
+        [
+          61.47,
+          12.18
+        ],
+        [
+          61.14,
+          14.76
+        ],
+        [
+          61.65,
+          14.65
+        ],
+        [
+          61.82,
+          13.88
+        ],
+        [
+          61.67,
+          12.94
+        ],
+        [
+          61.88,
+          15.12
+        ],
+        [
+          61.71,
+          14.0
+        ],
+        [
+          61.81,
+          13.31
+        ],
+        [
+          60.71,
+          17.38
+        ]
+      ],
+      "compositeBodyOutsideClipChangedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "candidateOnly": true,
+      "accepted": false,
+      "visualNotes": [
+        "Upturned nose/chin, closed eye and open snoring mouth are visible in the standalone atlas.",
+        "Raised nose is retracted horizontally from the base profile, so transparent overlay can reveal the old base muzzle/nose.",
+        "Mouth changes are generated, but fixed cheek/row crop alignment is not stable."
+      ]
+    },
+    "syncing": {
+      "asset": {
+        "path": "frontend/company-office/reference-v3/media/character-right/face-syncing-candidate.png",
+        "size": [
+          360,
+          174
+        ],
+        "mode": "RGBA",
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "zeroAlphaPixels": 10139,
+        "transparentFraction": 0.161861,
+        "sha256": "3cd57ec1c7a46ba22fb6181dd9001110262587407acaf9bc52542cd3d92d1d6c"
+      },
+      "source": {
+        "path": "assets/company-office-reference-v3/character-right/originals/face-syncing-original.png",
+        "size": [
+          1802,
+          873
+        ],
+        "mode": "RGBA",
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "zeroAlphaPixels": 254541,
+        "transparentFraction": 0.161804,
+        "sha256": "acc062761335b677cfe8f459fe8d8c8eef8e3fa921b35ead6b04e51aedc950f3"
+      },
+      "grid": [
+        4,
+        3
+      ],
+      "frameCount": 12,
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameClockFrames": 60,
+      "nonemptyFrames": 12,
+      "uniqueVisibleRgbaFrames": 12,
+      "frameHashes": [
+        "ee6789eff8908166def2ad06f94a6c276174e2790f0ab92e9233e958a2b850de",
+        "47448355af3e4f94edcee0ba7c87782a7ebe4a2a7b4b02b34038bdea6a5fa860",
+        "ffb1af3c79ce1c32d0d56b45bfb2fdb9175f9c54f3bc30d46495b656309db9f0",
+        "6aff541fce9509b80f558c7e8a362bd003b6d1cab882d2688869ac97f3889fa1",
+        "3b0b945406e04eace87457a8e707c25fbe875263f2eec69420d7cb9bb2310f3c",
+        "ae7ddc6baf75e132a2fac0a2102e6e3c0143781db1e53e0ada7ebf70ba822579",
+        "42c176ac7c0272f4ab56b00021340a1333aad77237f36491abdaa9065346bda0",
+        "19de43affffad45a1963ba0a2a9742b20aabae962957917f8d5c7c2f1928c60c",
+        "fa859b375b5249cf03d613768783c3ad073ba2dc29f4ccb91d1b74eb4e62caf3",
+        "e8cb4b58771b01d7c3a4082b8cffa5b3a8538c280af828a9afa73ec001452630",
+        "cb3962e07108cadfb03a74c936d3f73976390e6a6d4885e39d7a776985c85269",
+        "7f841d9c0fc644767f04a0636475d1520d72c6e9f9d25fc87ae84ac755a3ef2a"
+      ],
+      "frameBoxesOpaque127": [
+        [
+          0,
+          0,
+          80,
+          58
+        ],
+        [
+          0,
+          0,
+          80,
+          58
+        ],
+        [
+          0,
+          0,
+          80,
+          58
+        ],
+        [
+          0,
+          0,
+          80,
+          58
+        ],
+        [
+          0,
+          0,
+          80,
+          58
+        ],
+        [
+          0,
+          0,
+          80,
+          58
+        ],
+        [
+          0,
+          0,
+          80,
+          58
+        ],
+        [
+          0,
+          0,
+          80,
+          58
+        ],
+        [
+          0,
+          0,
+          80,
+          55
+        ],
+        [
+          0,
+          0,
+          80,
+          55
+        ],
+        [
+          0,
+          0,
+          80,
+          55
+        ],
+        [
+          0,
+          0,
+          80,
+          55
+        ]
+      ],
+      "eyeRegionUniqueFrames": 12,
+      "adjacentVisibleChangedPixelsIncludingLoopSeam": [
+        207,
+        194,
+        399,
+        855,
+        213,
+        268,
+        300,
+        931,
+        313,
+        359,
+        378,
+        1274
+      ],
+      "fixedRegionVisibleChangesVsFrame0": [
+        0,
+        83,
+        132,
+        129,
+        632,
+        670,
+        712,
+        691,
+        923,
+        945,
+        974,
+        957
+      ],
+      "fixedRegionPixelStable": false,
+      "noseCentroidByFrameApproximate": [
+        [
+          73.05,
+          31.64
+        ],
+        [
+          74.86,
+          32.68
+        ],
+        [
+          74.28,
+          32.72
+        ],
+        [
+          74.82,
+          32.64
+        ],
+        [
+          74.52,
+          33.05
+        ],
+        [
+          74.2,
+          32.2
+        ],
+        [
+          73.92,
+          33.23
+        ],
+        [
+          74.64,
+          33.18
+        ],
+        [
+          74.71,
+          31.65
+        ],
+        [
+          75.1,
+          31.05
+        ],
+        [
+          72.64,
+          30.36
+        ],
+        [
+          74.95,
+          31.05
+        ]
+      ],
+      "compositeBodyOutsideClipChangedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "candidateOnly": true,
+      "accepted": false,
+      "visualNotes": [
+        "Waiting glance/blink is visible, one side-profile eye.",
+        "Pupil shifts are larger than requested at frame 10; cheek/row crop alignment also drifts."
+      ]
+    },
+    "error": {
+      "asset": {
+        "path": "frontend/company-office/reference-v3/media/character-right/face-error-candidate.png",
+        "size": [
+          360,
+          174
+        ],
+        "mode": "RGBA",
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "zeroAlphaPixels": 13897,
+        "transparentFraction": 0.221855,
+        "sha256": "7ec6392ddb121d67e2db5af98ef86c0151666e1d086c27834f893284eb07feb1"
+      },
+      "source": {
+        "path": "assets/company-office-reference-v3/character-right/originals/face-error-original.png",
+        "size": [
+          1802,
+          873
+        ],
+        "mode": "RGBA",
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "zeroAlphaPixels": 347753,
+        "transparentFraction": 0.221056,
+        "sha256": "1a26351fb529ea21aa8e479c8c45c2d34699a415af30b3736dd0ab3e8400a8a6"
+      },
+      "grid": [
+        4,
+        3
+      ],
+      "frameCount": 12,
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameClockFrames": 12,
+      "nonemptyFrames": 12,
+      "uniqueVisibleRgbaFrames": 12,
+      "frameHashes": [
+        "0a608caacd1d3e653d3b7357feb57b0c30df5be05485b2a9e883a2cd8c5415ea",
+        "7b402a2a869a9ec9808789cd55743ca0b0af663e33aa60ee8bc6788079d995cf",
+        "5701c9b3089340cd1f0b9eb70891f1f0c05c9b206507c23ed6f20fe503e92efc",
+        "878d701a416fa5c6d04206beb7a06f83dbe721c5e3dda1b6b96af47cfbc677ad",
+        "d751ce6456f2f52e9326e79424c7ec1deba5b62c0e999e3f5481f3d93baf24c9",
+        "4d47e5c6f3474f4399c25e150c532aa9bc8ec440c3fdd658b48769916324d6a5",
+        "f2d9b5d39b41800a980f3ed9b577777cfd7bf4ac1b1182b5223cf50289c64441",
+        "da21c6619d6438f93863bf87bae06ad9624989a732e1223eed24c7d97c07aa7b",
+        "e4c9b13cbcd8a5047675cde57bdfd6e652e29dc16c88fc6fadc2315384e1885b",
+        "427efc8e1a9bd5dc84383c50bc456d4ac99b81e7eab0fdd07dc19500b79e2be5",
+        "d42f936465a62e8e95c53b9e0b587602911ca413e42d605c6313c63c4b5739c0",
+        "431f10a44e48294a6aed4d0d7faa91a300d9d0755633bb42d7570cb22414b553"
+      ],
+      "frameBoxesOpaque127": [
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ],
+        [
+          0,
+          0,
+          78,
+          53
+        ]
+      ],
+      "eyeRegionUniqueFrames": 12,
+      "adjacentVisibleChangedPixelsIncludingLoopSeam": [
+        173,
+        160,
+        170,
+        211,
+        165,
+        198,
+        137,
+        310,
+        163,
+        248,
+        163,
+        268
+      ],
+      "fixedRegionVisibleChangesVsFrame0": [
+        0,
+        56,
+        65,
+        60,
+        68,
+        112,
+        120,
+        107,
+        136,
+        173,
+        175,
+        173
+      ],
+      "fixedRegionPixelStable": false,
+      "noseCentroidByFrameApproximate": [
+        [
+          73.32,
+          31.16
+        ],
+        [
+          72.0,
+          30.78
+        ],
+        [
+          71.12,
+          29.97
+        ],
+        [
+          72.5,
+          30.88
+        ],
+        [
+          72.11,
+          30.41
+        ],
+        [
+          70.2,
+          29.57
+        ],
+        [
+          70.54,
+          29.54
+        ],
+        [
+          72.5,
+          30.75
+        ],
+        [
+          73.26,
+          32.13
+        ],
+        [
+          69.66,
+          30.41
+        ],
+        [
+          72.47,
+          31.0
+        ],
+        [
+          71.36,
+          30.71
+        ]
+      ],
+      "compositeBodyOutsideClipChangedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "candidateOnly": true,
+      "accepted": false,
+      "visualNotes": [
+        "Spiral replaces the single visible eye in all twelve frames.",
+        "Different generated internal eye shapes are present.",
+        "Strict equal 30-degree clockwise phase and smooth seam are not certified; surrounding fur drifts as well."
+      ]
+    }
+  },
+  "notes": [
+    "Unique frame hashes are not proof of correct expression motion.",
+    "Compositor preview always uses one static base; face-only overlays cannot change body pixels outside its fixed clip.",
+    "No real runtime or UI integration is performed by this QA script."
+  ],
+  "protectedInputFilesChecked": 22,
+  "protectedInputChangedFiles": [],
+  "baseSource": {
+    "path": "assets/company-office-reference-v3/character-right/originals/base-right-original.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "zeroAlphaPixels": 1017128,
+    "transparentFraction": 0.646816,
+    "sha256": "321656b8dc9eaca685a7bd1acd05f70432728f344c97f547b486484484e19a45"
+  },
+  "blockers": [
+    "Visible front paw on static base violates no-hands.",
+    "Generated non-feature face pixels and silhouette registration vary across frames.",
+    "Idle raised/retracted muzzle does not cleanly replace the fixed base nose within the shared transparent patch.",
+    "Strict uniform clockwise spiral phase has not been accepted."
+  ]
+}

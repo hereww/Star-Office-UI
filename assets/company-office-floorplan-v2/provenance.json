@@ -1,0 +1,38 @@
+{
+  "generator": "native-imagegen",
+  "recordedAt": "2026-10-01T17:42:20.863Z",
+  "source": {
+    "file": "1203平面图.pdf",
+    "sha256": "d0f415ac527c3fb7aadd470dedc860a9edb10f7a5a561c6531ff1e70e5486e01",
+    "officeAreaM2": 313,
+    "openSeatCount": 33,
+    "projection": "layout-adapted-cardinal-not-survey-scale"
+  },
+  "referenceRoles": [
+    "layout-guide:geometry",
+    "v1-map:style-only",
+    "approved-workstation:style-and-scale-only",
+    "source-PDF:spatial-source"
+  ],
+  "originalSize": [
+    1070,
+    1470
+  ],
+  "runtimeSize": [
+    2048,
+    2816
+  ],
+  "normalization": "nearest-neighbor; lossless WebP",
+  "backgroundContainsOfficeDesks": false,
+  "approvedAnimationReusedUnchanged": true,
+  "userVisualApproval": false,
+  "sha256": {
+    "assets/company-office-floorplan-v2/source-floorplan.png": "e0fb210154af029291081fdfc67a633fa924cf0ab2f70e9b979c4603b98006ff",
+    "assets/company-office-floorplan-v2/generated-original.png": "8d8f1082023072f7eba5c634854de50ba4388697a625a94fa4f8acd16e000a42",
+    "assets/company-office-floorplan-v2/map-prompt.txt": "4158ccc5bb75c5b41e33f4313cd419c19f199ea9deaff8903fc0978e95b67d4e",
+    "assets/company-office-floorplan-v2/layout-guide.png": "338c67b4c9e2fb2e73e1d82ff39025489c08eada854a2bc97daf8e5c1dcbc2a7",
+    "frontend/company-office/office-map-floorplan-v2.webp": "6bd94641f1051dab576c714a776bf4aa4d3c783b6c7a327780fd95606d5da8a6",
+    "frontend/company-office/map-layout.json": "2128f4ce877560d21285030323c3340533c266a0e89cb8de7fc4d5d3d2ab98f5"
+  },
+  "generatorScript": "scripts/build_company_floorplan.mjs"
+}

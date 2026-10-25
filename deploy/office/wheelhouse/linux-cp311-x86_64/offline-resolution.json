@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "requirements": "deploy/office/requirements.txt",
+      "require_hashes": false,
+      "exit_code": 0,
+      "wheels": 10,
+      "sha256_identical": true,
+      "no_index": true,
+      "installed": false
+    },
+    {
+      "requirements": "deploy/office/wheelhouse/linux-cp311-x86_64/requirements.lock.txt",
+      "require_hashes": true,
+      "exit_code": 0,
+      "wheels": 10,
+      "sha256_identical": true,
+      "no_index": true,
+      "installed": false
+    }
+  ],
+  "scope": "download-only resolver, not Linux installation or Docker validation"
+}

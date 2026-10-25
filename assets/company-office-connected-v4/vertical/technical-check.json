@@ -1,0 +1,13 @@
+{
+  "rgba": true,
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "transparentPixelRatio": 0.5627090035321677,
+  "byteIdenticalRuntimeCopy": true,
+  "screenPolygons": 8,
+  "seatContacts": 8,
+  "screenPolygonOpaqueAndCyan": true,
+  "noResampling": true
+}

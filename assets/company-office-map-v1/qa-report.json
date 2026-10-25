@@ -1,0 +1,1321 @@
+{
+  "apiState": "writing",
+  "final": {
+    "characterVersion": 1,
+    "directionRule": "cardinal-only",
+    "faceAnchor": {
+      "x": 641.2,
+      "y": 486.6
+    },
+    "mainStation": "desk-05",
+    "mapSize": [
+      1280,
+      720
+    ],
+    "player": {
+      "action": "working",
+      "animationMode": "expression-only",
+      "bodyFixed": true,
+      "bodyPlacement": [
+        37.2,
+        -8,
+        115.2,
+        115.2
+      ],
+      "faceClockFrames": 60,
+      "faceEnabled": true,
+      "faceFrame": 0,
+      "fps": 12,
+      "frame": 0,
+      "frameCount": 12,
+      "handsRendered": false,
+      "seatAnchor": [
+        96,
+        94
+      ],
+      "state": "writing",
+      "view": "character",
+      "visibleCharacter": true
+    },
+    "ready": true,
+    "scene": "company-office-cardinal-v1",
+    "serverLabel": "服务器 · 运行中",
+    "serverWarning": false,
+    "state": "writing",
+    "stateEpoch": 359783.1,
+    "stations": [
+      {
+        "chair": [
+          0,
+          0
+        ],
+        "desk": [
+          0,
+          0
+        ],
+        "direction": "down",
+        "id": "desk-01",
+        "position": [
+          264,
+          214
+        ],
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "chair": [
+          0,
+          0
+        ],
+        "desk": [
+          0,
+          0
+        ],
+        "direction": "down",
+        "id": "desk-02",
+        "position": [
+          544,
+          214
+        ],
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "chair": [
+          0,
+          0
+        ],
+        "desk": [
+          0,
+          0
+        ],
+        "direction": "down",
+        "id": "desk-03",
+        "position": [
+          824,
+          214
+        ],
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "chair": [
+          0,
+          0
+        ],
+        "desk": [
+          0,
+          0
+        ],
+        "direction": "down",
+        "id": "desk-04",
+        "position": [
+          264,
+          434
+        ],
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "chair": [
+          0,
+          0
+        ],
+        "desk": [
+          0,
+          0
+        ],
+        "direction": "down",
+        "id": "desk-05",
+        "position": [
+          544,
+          434
+        ],
+        "scale": [
+          1,
+          1
+        ]
+      },
+      {
+        "chair": [
+          0,
+          0
+        ],
+        "desk": [
+          0,
+          0
+        ],
+        "direction": "down",
+        "id": "desk-06",
+        "position": [
+          824,
+          434
+        ],
+        "scale": [
+          1,
+          1
+        ]
+      }
+    ],
+    "walkIntegrated": false
+  },
+  "maxOutsideFaceMismatch": 0,
+  "pixelFrames": 72,
+  "polling": {
+    "epochAfter": 358449.1,
+    "epochBefore": 358449.1,
+    "faceFrame": 3,
+    "state": "error",
+    "tickAfter": 15,
+    "tickBefore": -1
+  },
+  "renderer": 2,
+  "replacement": {
+    "characterVersion": 1,
+    "geometryUnchanged": true,
+    "statePreserved": true
+  },
+  "states": [
+    {
+      "action": "idle",
+      "body": [
+        37.2,
+        -8,
+        115.2,
+        115.2
+      ],
+      "geometry": [
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-01",
+          "position": [
+            264,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-02",
+          "position": [
+            544,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-03",
+          "position": [
+            824,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-04",
+          "position": [
+            264,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-05",
+          "position": [
+            544,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-06",
+          "position": [
+            824,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        }
+      ],
+      "hashes": [
+        2530162958,
+        2813570267,
+        3236902314,
+        1556087688,
+        3688832394,
+        3017575126,
+        688826940,
+        597555541,
+        4015302871,
+        2874125963,
+        2544192987,
+        861753151
+      ],
+      "observed": "idle",
+      "serverWarning": false,
+      "state": "idle",
+      "uniqueFaceFrames": 12,
+      "visible": true
+    },
+    {
+      "action": "working",
+      "body": [
+        37.2,
+        -8,
+        115.2,
+        115.2
+      ],
+      "geometry": [
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-01",
+          "position": [
+            264,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-02",
+          "position": [
+            544,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-03",
+          "position": [
+            824,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-04",
+          "position": [
+            264,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-05",
+          "position": [
+            544,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-06",
+          "position": [
+            824,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        }
+      ],
+      "hashes": [
+        2847245128,
+        2619755361,
+        2073246363,
+        3333561384,
+        4236436796,
+        1595451444,
+        2304961171,
+        1521104379,
+        3578683280,
+        1393782766,
+        1841536258,
+        2425877576
+      ],
+      "observed": "writing",
+      "serverWarning": false,
+      "state": "writing",
+      "uniqueFaceFrames": 12,
+      "visible": true
+    },
+    {
+      "action": "working",
+      "body": [
+        37.2,
+        -8,
+        115.2,
+        115.2
+      ],
+      "geometry": [
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-01",
+          "position": [
+            264,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-02",
+          "position": [
+            544,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-03",
+          "position": [
+            824,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-04",
+          "position": [
+            264,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-05",
+          "position": [
+            544,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-06",
+          "position": [
+            824,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        }
+      ],
+      "hashes": [
+        2847245128,
+        2619755361,
+        2073246363,
+        3333561384,
+        4236436796,
+        1595451444,
+        2304961171,
+        1521104379,
+        3578683280,
+        1393782766,
+        1841536258,
+        2425877576
+      ],
+      "observed": "researching",
+      "serverWarning": false,
+      "state": "researching",
+      "uniqueFaceFrames": 12,
+      "visible": true
+    },
+    {
+      "action": "working",
+      "body": [
+        37.2,
+        -8,
+        115.2,
+        115.2
+      ],
+      "geometry": [
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-01",
+          "position": [
+            264,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-02",
+          "position": [
+            544,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-03",
+          "position": [
+            824,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-04",
+          "position": [
+            264,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-05",
+          "position": [
+            544,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-06",
+          "position": [
+            824,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        }
+      ],
+      "hashes": [
+        2847245128,
+        2619755361,
+        2073246363,
+        3333561384,
+        4236436796,
+        1595451444,
+        2304961171,
+        1521104379,
+        3578683280,
+        1393782766,
+        1841536258,
+        2425877576
+      ],
+      "observed": "executing",
+      "serverWarning": false,
+      "state": "executing",
+      "uniqueFaceFrames": 12,
+      "visible": true
+    },
+    {
+      "action": "syncing",
+      "body": [
+        37.2,
+        -8,
+        115.2,
+        115.2
+      ],
+      "geometry": [
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-01",
+          "position": [
+            264,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-02",
+          "position": [
+            544,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-03",
+          "position": [
+            824,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-04",
+          "position": [
+            264,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-05",
+          "position": [
+            544,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-06",
+          "position": [
+            824,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        }
+      ],
+      "hashes": [
+        959246726,
+        414908475,
+        2409193843,
+        3580977787,
+        886194672,
+        3293436056,
+        2656326333,
+        1332405973,
+        1770973469,
+        3425031519,
+        2632047579,
+        1109430939
+      ],
+      "observed": "syncing",
+      "serverWarning": false,
+      "state": "syncing",
+      "uniqueFaceFrames": 12,
+      "visible": true
+    },
+    {
+      "action": "error",
+      "body": [
+        37.2,
+        -8,
+        115.2,
+        115.2
+      ],
+      "geometry": [
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-01",
+          "position": [
+            264,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-02",
+          "position": [
+            544,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-03",
+          "position": [
+            824,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-04",
+          "position": [
+            264,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-05",
+          "position": [
+            544,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-06",
+          "position": [
+            824,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        }
+      ],
+      "hashes": [
+        4265551641,
+        4161295463,
+        2660720544,
+        4176060464,
+        785154972,
+        753914936,
+        3719325235,
+        2646837653,
+        2492716439,
+        1715481029,
+        1272543417,
+        699542844
+      ],
+      "observed": "error",
+      "serverWarning": true,
+      "state": "error",
+      "uniqueFaceFrames": 12,
+      "visible": true
+    }
+  ],
+  "visitors": {
+    "fixtureScope": ".local/company-office-preview only",
+    "result": "pass",
+    "count": 3,
+    "slots": {
+      "writing": [
+        345,
+        460
+      ],
+      "breakroom": [
+        214,
+        320
+      ],
+      "error": [
+        1130,
+        325
+      ]
+    },
+    "scale": 2.5,
+    "restored": true
+  },
+  "legacy": {
+    "rendered": true,
+    "errors": 0,
+    "existingWarnings": [
+      "star_idle references frame 48; original legacy definition retained unchanged"
+    ]
+  },
+  "mobile": {
+    "touch": 1,
+    "size": [
+      390,
+      844
+    ],
+    "horizontalOverflow": false,
+    "canvas": [
+      390,
+      219.375
+    ],
+    "camera": {
+      "zoom": 0.3046875,
+      "scrollX": 445,
+      "scrollY": 250.3125,
+      "width": 390,
+      "height": 219.375
+    },
+    "state": "idle",
+    "pass": true
+  },
+  "replacementSeparateBaseUrl": {
+    "differentBaseUrlWithoutFurniturePassed": true,
+    "geometryUnchanged": true,
+    "state": "idle"
+  },
+  "finalStable": {
+    "agents": 200,
+    "health": 200,
+    "since": "2026-10-01T10:29:34.607Z",
+    "snapshot": {
+      "characterVersion": 0,
+      "directionRule": "cardinal-only",
+      "faceAnchor": {
+        "x": 641.2,
+        "y": 486.6
+      },
+      "mainStation": "desk-05",
+      "mapSize": [
+        1280,
+        720
+      ],
+      "player": {
+        "action": "working",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 60,
+        "faceEnabled": true,
+        "faceFrame": 0,
+        "fps": 12,
+        "frame": 10,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "writing",
+        "view": "character",
+        "visibleCharacter": true
+      },
+      "ready": true,
+      "scene": "company-office-cardinal-v1",
+      "serverLabel": "服务器 · 运行中",
+      "serverWarning": false,
+      "state": "writing",
+      "stateEpoch": 93402.2,
+      "stations": [
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-01",
+          "position": [
+            264,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-02",
+          "position": [
+            544,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-03",
+          "position": [
+            824,
+            214
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-04",
+          "position": [
+            264,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-05",
+          "position": [
+            544,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        },
+        {
+          "chair": [
+            0,
+            0
+          ],
+          "desk": [
+            0,
+            0
+          ],
+          "direction": "down",
+          "id": "desk-06",
+          "position": [
+            824,
+            434
+          ],
+          "scale": [
+            1,
+            1
+          ]
+        }
+      ],
+      "walkIntegrated": false
+    },
+    "visitorIds": [],
+    "logsSinceCurrentReload": []
+  },
+  "previewRestarts": {
+    "transientPollingErrors": true,
+    "recovered": true,
+    "productionServiceAffected": false
+  }
+}

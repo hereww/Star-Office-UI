@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "generatedOn": "2026-10-02",
+  "tool": "built-in image_gen.imagegen",
+  "callId": "call_wlpWSiUAOU7ufxSW8E8pxDaV",
+  "sourceOriginal": "/Users/hepingyu/.codex/generated_images/01a0fbcc-7d16-7df0-9968-a2c81f901a72/call_wlpWSiUAOU7ufxSW8E8pxDaV.png",
+  "sourceSaved": "sources/server-rack-source.png",
+  "sourceSha256": "4e5d0dbca4d4950bd700739a04f287ee1929c9b5802314d11c43f23156f4e625",
+  "sourceResolution": [
+    1122,
+    1402
+  ],
+  "reference": "../user-map.jpg",
+  "referenceRole": "style and fixed office camera only",
+  "prompt": "GENERATION_PROMPT.txt",
+  "request": "generation-request.json",
+  "genuineTransparentRequested": true,
+  "candidateInspected": true,
+  "imageCalls": 1,
+  "codeDrawnRack": false
+}

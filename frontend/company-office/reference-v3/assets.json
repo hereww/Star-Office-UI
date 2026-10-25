@@ -1,0 +1,452 @@
+{
+  "schemaVersion": 4,
+  "animationMode": "full-frame",
+  "status": "integrated-reference-v3",
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "faceClockFrames": 60,
+  "businessStateToAction": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "sourceTemplate": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1",
+  "character": {
+    "id": "orange-cat-v1",
+    "direction": "down",
+    "base": "../media/character-breeds/orange-cat-v1/down/base.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      98,
+      170
+    ],
+    "scale": 0.6,
+    "actions": {
+      "working": {
+        "frames": "../media/character-breeds/orange-cat-v1/down/frames-working.png",
+        "frameCount": 12,
+        "fps": 12,
+        "clockFrames": 60
+      },
+      "idle": {
+        "frames": "../media/character-breeds/orange-cat-v1/down/frames-idle.png",
+        "frameCount": 12,
+        "fps": 12,
+        "clockFrames": 36
+      },
+      "syncing": {
+        "frames": "../media/character-breeds/orange-cat-v1/down/frames-syncing.png",
+        "frameCount": 12,
+        "fps": 12,
+        "clockFrames": 60
+      },
+      "error": {
+        "frames": "../media/character-breeds/orange-cat-v1/down/frames-error.png",
+        "frameCount": 12,
+        "fps": 12,
+        "clockFrames": 12
+      }
+    },
+    "faceVisible": true,
+    "headAnchor": [
+      100,
+      30
+    ],
+    "animationMode": "full-frame"
+  },
+  "directions": {
+    "up": {
+      "character": {
+        "id": "orange-cat-v1",
+        "direction": "up",
+        "base": "../media/character-breeds/orange-cat-v1/up/base.png",
+        "frameSize": [
+          192,
+          192
+        ],
+        "poseAnchor": [
+          96,
+          168
+        ],
+        "scale": 0.6,
+        "headAnchor": [
+          96,
+          34
+        ],
+        "faceVisible": false,
+        "actions": {
+          "working": {
+            "frames": "../media/character-breeds/orange-cat-v1/up/frames-working.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 60
+          },
+          "idle": {
+            "frames": "../media/character-breeds/orange-cat-v1/up/frames-idle.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 36
+          },
+          "syncing": {
+            "frames": "../media/character-breeds/orange-cat-v1/up/frames-syncing.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 60
+          },
+          "error": {
+            "frames": "../media/character-breeds/orange-cat-v1/up/frames-error.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 12
+          }
+        },
+        "animationMode": "full-frame"
+      },
+      "furniture": {
+        "size": [
+          192,
+          192
+        ],
+        "seatAnchor": [
+          96,
+          145
+        ],
+        "back": "media/furniture/up-back.png",
+        "front": "media/furniture/up-front.png",
+        "screen": {
+          "visible": true,
+          "polygon": [
+            [
+              66,
+              47
+            ],
+            [
+              125,
+              47
+            ],
+            [
+              125,
+              72
+            ],
+            [
+              66,
+              72
+            ]
+          ],
+          "led": [
+            94,
+            76,
+            3,
+            1
+          ]
+        },
+        "order": [
+          "back",
+          "screen",
+          "actor",
+          "front"
+        ]
+      }
+    },
+    "down": {
+      "character": {
+        "id": "orange-cat-v1",
+        "direction": "down",
+        "base": "../media/character-breeds/orange-cat-v1/down/base.png",
+        "frameSize": [
+          192,
+          192
+        ],
+        "poseAnchor": [
+          98,
+          170
+        ],
+        "scale": 0.6,
+        "actions": {
+          "working": {
+            "frames": "../media/character-breeds/orange-cat-v1/down/frames-working.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 60
+          },
+          "idle": {
+            "frames": "../media/character-breeds/orange-cat-v1/down/frames-idle.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 36
+          },
+          "syncing": {
+            "frames": "../media/character-breeds/orange-cat-v1/down/frames-syncing.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 60
+          },
+          "error": {
+            "frames": "../media/character-breeds/orange-cat-v1/down/frames-error.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 12
+          }
+        },
+        "faceVisible": true,
+        "headAnchor": [
+          100,
+          30
+        ],
+        "animationMode": "full-frame"
+      },
+      "furniture": {
+        "size": [
+          192,
+          192
+        ],
+        "seatAnchor": [
+          97,
+          94
+        ],
+        "back": "media/furniture/down-back.png",
+        "front": "media/furniture/down-front.png",
+        "screen": {
+          "visible": false,
+          "polygon": [
+            [
+              65,
+              99
+            ],
+            [
+              126,
+              99
+            ],
+            [
+              126,
+              120
+            ],
+            [
+              65,
+              120
+            ]
+          ],
+          "led": [
+            122,
+            116,
+            1,
+            2
+          ]
+        },
+        "order": [
+          "back",
+          "actor",
+          "front",
+          "screen"
+        ]
+      }
+    },
+    "left": {
+      "character": {
+        "id": "orange-cat-v1",
+        "direction": "left",
+        "base": "../media/character-breeds/orange-cat-v1/left/base.png",
+        "frameSize": [
+          192,
+          192
+        ],
+        "poseAnchor": [
+          96,
+          174
+        ],
+        "headAnchor": [
+          96,
+          16
+        ],
+        "scale": 0.6,
+        "faceVisible": true,
+        "actions": {
+          "working": {
+            "frames": "../media/character-breeds/orange-cat-v1/left/frames-working.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 60
+          },
+          "idle": {
+            "frames": "../media/character-breeds/orange-cat-v1/left/frames-idle.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 36
+          },
+          "syncing": {
+            "frames": "../media/character-breeds/orange-cat-v1/left/frames-syncing.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 60
+          },
+          "error": {
+            "frames": "../media/character-breeds/orange-cat-v1/left/frames-error.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 12
+          }
+        },
+        "animationMode": "full-frame"
+      },
+      "furniture": {
+        "size": [
+          192,
+          192
+        ],
+        "seatAnchor": [
+          131,
+          128
+        ],
+        "back": "media/furniture/left-back.png",
+        "front": "media/furniture/left-front.png",
+        "screen": {
+          "visible": true,
+          "polygon": [
+            [
+              55.5,
+              59
+            ],
+            [
+              59.5,
+              50
+            ],
+            [
+              59.5,
+              77
+            ],
+            [
+              55.5,
+              85
+            ]
+          ],
+          "led": [
+            55,
+            89,
+            1,
+            1
+          ]
+        },
+        "order": [
+          "back",
+          "screen",
+          "actor",
+          "front"
+        ]
+      }
+    },
+    "right": {
+      "character": {
+        "id": "orange-cat-v1",
+        "direction": "right",
+        "base": "../media/character-breeds/orange-cat-v1/right/base.png",
+        "frameSize": [
+          192,
+          192
+        ],
+        "poseAnchor": [
+          112,
+          174
+        ],
+        "headAnchor": [
+          110,
+          8
+        ],
+        "scale": 0.6,
+        "faceVisible": true,
+        "actions": {
+          "working": {
+            "frames": "../media/character-breeds/orange-cat-v1/right/frames-working.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 60
+          },
+          "idle": {
+            "frames": "../media/character-breeds/orange-cat-v1/right/frames-idle.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 36
+          },
+          "syncing": {
+            "frames": "../media/character-breeds/orange-cat-v1/right/frames-syncing.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 60
+          },
+          "error": {
+            "frames": "../media/character-breeds/orange-cat-v1/right/frames-error.png",
+            "frameCount": 12,
+            "fps": 12,
+            "clockFrames": 12
+          }
+        },
+        "animationMode": "full-frame"
+      },
+      "furniture": {
+        "size": [
+          192,
+          192
+        ],
+        "seatAnchor": [
+          62,
+          130
+        ],
+        "back": "media/furniture/right-back.png",
+        "front": "media/furniture/right-front.png",
+        "screen": {
+          "visible": true,
+          "polygon": [
+            [
+              142.5,
+              40.5
+            ],
+            [
+              147.5,
+              48
+            ],
+            [
+              147.5,
+              79.5
+            ],
+            [
+              142.5,
+              68.5
+            ]
+          ],
+          "led": [
+            147,
+            83,
+            1,
+            1
+          ]
+        },
+        "order": [
+          "back",
+          "screen",
+          "actor",
+          "front"
+        ]
+      }
+    }
+  },
+  "freeze": {
+    "wholeBody": true,
+    "headOutline": true,
+    "ears": true,
+    "tail": true,
+    "seat": true,
+    "furniture": true,
+    "keyboard": true
+  },
+  "walking": false,
+  "manifestContractVersion": 2
+}

@@ -1,0 +1,169 @@
+{
+  "checked_at": "2026-10-07T04:53:40.456652+00:00",
+  "release_id": "office-v5-short-status-04",
+  "image_id": "sha256:c075c5bf786b194423971c72684c9a2e4663a283fcd5885a0f04d7dc92477563",
+  "release_manifest_verified": true,
+  "old_release_manifest_verified": true,
+  "image_provenance": {
+    "star-office-production-office-web-1": {
+      "release_id": "office-v5-short-status-04",
+      "verified_source_files": 97,
+      "source_bytes_match": true
+    },
+    "star-office-production-office-collector-1": {
+      "release_id": "office-v5-short-status-04",
+      "verified_source_files": 97,
+      "source_bytes_match": true
+    }
+  },
+  "config": {
+    "version": 3,
+    "payload_sha256": "22a8c18627022382daf860a9949391d66999ab1469c2743e151f328706433cc4",
+    "versions": 3,
+    "audit": 3,
+    "sqlite_integrity": "ok"
+  },
+  "binding_metadata": {
+    "bindings": [
+      {
+        "seat_id": "desk-09",
+        "user_id": "4"
+      },
+      {
+        "seat_id": "desk-10",
+        "user_id": "7"
+      },
+      {
+        "seat_id": "desk-11",
+        "user_id": "8"
+      },
+      {
+        "seat_id": "desk-14",
+        "user_id": "1"
+      }
+    ],
+    "scope": [
+      "1",
+      "4",
+      "7",
+      "8"
+    ],
+    "credential_expires_at": "2026-11-05T05:33:20.349268Z"
+  },
+  "all_mounts_preserved": true,
+  "unrelated_services_unchanged": [
+    "ai-goofish-monitor-app",
+    "east-asia-power-postgres",
+    "kaneo-kaneo-1",
+    "kaneo-postgres-1",
+    "newapi_yymx-mysql-1",
+    "newapi_yymx-new-api-1",
+    "newapi_yymx-redis-1",
+    "star-office-ui",
+    "sub2api",
+    "sub2api-postgres",
+    "sub2api-redis"
+  ],
+  "secret_configuration_preserved": true,
+  "firewall_preserved_at_cutover": true,
+  "TLS_verified": true,
+  "source_sha256": {
+    "frontend/company-office/connected-v4/telemetry-adapter.mjs": "82e85cfc6fc55db01935d3a2a8c01e87bbd6fa3d265fd112a74570533c5d693f",
+    "frontend/office/bubble-status.mjs": "6ce15ac6eeb2d5405ba77e61ec8f01a3311a825643477df380a00d5f543275e8"
+  },
+  "public_redaction": true,
+  "read_only_security_checks": {
+    "http://192.168.100.221:19000/api/office/admin/users": 404,
+    "http://192.168.100.221:19000/api/office/admin/config": 404,
+    "http://192.168.100.221:19000/status": 404,
+    "http://192.168.100.221:19000/agents": 404,
+    "http://192.168.100.221:19000/asset-edit": 404,
+    "https://192.168.100.221:19443/api/office/admin/users": 401,
+    "https://192.168.100.221:19443/api/office/admin/config": 401
+  },
+  "samples": [
+    {
+      "generated_at": "2026-10-07T04:53:34.368609Z",
+      "source": {
+        "error_code": null,
+        "last_attempt_at": "2026-10-07T04:53:31.601782Z",
+        "last_success_at": "2026-10-07T04:53:31.601785Z",
+        "poll_interval_seconds": 5,
+        "stale_after_seconds": 15,
+        "status": "ok"
+      },
+      "counts": {
+        "bound": 4,
+        "busy": 1,
+        "idle": 3,
+        "unknown": 0
+      },
+      "bound_stations": [
+        {
+          "seat_id": "desk-09",
+          "state": "idle",
+          "concurrency": 0
+        },
+        {
+          "seat_id": "desk-10",
+          "state": "idle",
+          "concurrency": 0
+        },
+        {
+          "seat_id": "desk-11",
+          "state": "idle",
+          "concurrency": 0
+        },
+        {
+          "seat_id": "desk-14",
+          "state": "writing",
+          "concurrency": 2
+        }
+      ]
+    },
+    {
+      "generated_at": "2026-10-07T04:53:40.379529Z",
+      "source": {
+        "error_code": null,
+        "last_attempt_at": "2026-10-07T04:53:36.604144Z",
+        "last_success_at": "2026-10-07T04:53:36.604147Z",
+        "poll_interval_seconds": 5,
+        "stale_after_seconds": 15,
+        "status": "ok"
+      },
+      "counts": {
+        "bound": 4,
+        "busy": 1,
+        "idle": 3,
+        "unknown": 0
+      },
+      "bound_stations": [
+        {
+          "seat_id": "desk-09",
+          "state": "idle",
+          "concurrency": 0
+        },
+        {
+          "seat_id": "desk-10",
+          "state": "idle",
+          "concurrency": 0
+        },
+        {
+          "seat_id": "desk-11",
+          "state": "idle",
+          "concurrency": 0
+        },
+        {
+          "seat_id": "desk-14",
+          "state": "writing",
+          "concurrency": 2
+        }
+      ]
+    }
+  ],
+  "backup_material_sha256_verified": true,
+  "disk_free_bytes": {
+    "/": 2021629952,
+    "/home": 8181792768
+  }
+}

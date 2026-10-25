@@ -1,0 +1,103 @@
+{
+  "captured_at_utc": "2026-10-06T15:03:03Z",
+  "time_zone": "Asia/Shanghai",
+  "release_id": "office-20261006-v5-production-06",
+  "scope": "Actual final TLS/CSRF/config API checks. Negative config PUT requests were rejected; NO accepted config save or version increment. Session login/logout only. No secret/user-detail output.",
+  "checks": [
+    {
+      "name": "unlogged admin config denied",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "unlogged legacy state denied",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "employee HTTP cannot mutate",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "employee legacy route not available",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "local fixture directory not public",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "TLS-verified anonymous session and CSRF",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "secure HTTP-only Lax root-path session cookie",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "independent admin credential login",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "authenticated persisted config v2",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "missing CSRF save rejected",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "cross-origin authenticated save rejected",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "stale config version rejected with409",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "rejected writes leave exact saved config unchanged",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "diagnostics have only approved four-user scope",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "admin HTML MIME and security headers",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "employee snapshot has16 seats and4 bound with config v2",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "explicit logout revokes session",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "logged-out config is denied",
+      "pass": true,
+      "evidence": null
+    }
+  ],
+  "passed": 18,
+  "config_version_before": 2,
+  "config_version_after": 2,
+  "credential_expires_at": "2026-11-05T05:33:20.349268Z",
+  "ssl_trust": "explicit office public CA, certificate/IP verified; system trust unchanged"
+}

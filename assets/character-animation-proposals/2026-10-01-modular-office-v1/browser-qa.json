@@ -1,0 +1,280 @@
+{
+  "previewUrl": "http://127.0.0.1:63467/",
+  "checks": [
+    {
+      "name": "step-frame",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": true,
+          "characterId": "orange-cat",
+          "fps": 12,
+          "frame": 1,
+          "frameCount": 12,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "writing",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "writing → working · 固定工位 oak-teal-down-v1",
+        "viewport": [
+          1280,
+          900
+        ]
+      }
+    },
+    {
+      "name": "researching-shares-working",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": true,
+          "characterId": "orange-cat",
+          "fps": 12,
+          "frame": 0,
+          "frameCount": 12,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "researching",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "researching → working · 固定工位 oak-teal-down-v1",
+        "viewport": [
+          1280,
+          900
+        ]
+      }
+    },
+    {
+      "name": "executing-shares-working",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": true,
+          "characterId": "orange-cat",
+          "fps": 12,
+          "frame": 0,
+          "frameCount": 12,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "executing",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "executing → working · 固定工位 oak-teal-down-v1",
+        "viewport": [
+          1280,
+          900
+        ]
+      }
+    },
+    {
+      "name": "unavailable-idle-not-faked",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "idle",
+          "available": false,
+          "characterId": "orange-cat",
+          "fps": 0,
+          "frame": 0,
+          "frameCount": 0,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "idle",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "idle 暂无角色动作素材，只显示工位；不把办公稿冒充其他状态。",
+        "viewport": [
+          1280,
+          900
+        ]
+      }
+    },
+    {
+      "name": "empty-station",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": false,
+          "characterId": null,
+          "fps": 0,
+          "frame": 0,
+          "frameCount": 0,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "writing",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "角色已移除；桌子和电脑完全不变。",
+        "viewport": [
+          1280,
+          900
+        ]
+      }
+    },
+    {
+      "name": "station-only-view",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": true,
+          "characterId": "orange-cat",
+          "fps": 12,
+          "frame": 0,
+          "frameCount": 12,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "writing",
+          "view": "workstation",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "writing → working · 固定工位 oak-teal-down-v1",
+        "viewport": [
+          1280,
+          900
+        ]
+      }
+    },
+    {
+      "name": "contact-sheet-seek",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": true,
+          "characterId": "orange-cat",
+          "fps": 12,
+          "frame": 6,
+          "frameCount": 12,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "writing",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "writing → working · 固定工位 oak-teal-down-v1",
+        "viewport": [
+          1280,
+          900
+        ]
+      }
+    },
+    {
+      "name": "fixed-anchor-guide",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": true,
+          "characterId": "orange-cat",
+          "fps": 12,
+          "frame": 6,
+          "frameCount": 12,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "writing",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "writing → working · 固定工位 oak-teal-down-v1",
+        "viewport": [
+          1280,
+          900
+        ]
+      }
+    },
+    {
+      "name": "mobile-390-no-overflow",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": true,
+          "characterId": "orange-cat",
+          "fps": 12,
+          "frame": 0,
+          "frameCount": 12,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "writing",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "writing → working · 固定工位 oak-teal-down-v1",
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "name": "play-restored",
+      "result": {
+        "error": "",
+        "overflow": false,
+        "snapshot": {
+          "action": "working",
+          "available": true,
+          "characterId": "orange-cat",
+          "fps": 12,
+          "frame": 1,
+          "frameCount": 12,
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "state": "writing",
+          "view": "combined",
+          "workstationId": "oak-teal-down-v1"
+        },
+        "status": "writing → working · 固定工位 oak-teal-down-v1",
+        "viewport": [
+          738,
+          877
+        ]
+      }
+    }
+  ],
+  "console": [],
+  "passed": true,
+  "visualAccepted": false,
+  "fileImportUiTested": false,
+  "note": "换角色注册/锚点/尺度已由本地接口fixture测试；未上传第二个真实角色。不以结构测试替代办公动作视觉验收。"
+}

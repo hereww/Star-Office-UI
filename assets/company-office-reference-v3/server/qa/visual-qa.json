@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-02",
+  "passed": true,
+  "sourceSha256": "4e5d0dbca4d4950bd700739a04f287ee1929c9b5802314d11c43f23156f4e625",
+  "normalizedSha256": "2ac1f6d9fc599719f5c434a303c5d92b954f068df9f1fbd269bf6ec5873e993e",
+  "inspected": [
+    "sources/server-rack-source.png",
+    "qa/server-rack-3x.png",
+    "qa/server-rack-at-65x83-8x.png"
+  ],
+  "checks": {
+    "sixSeparateTrayUnits": true,
+    "exactlyThreeGreenStrips": true,
+    "ledTrays": [
+      2,
+      4,
+      6
+    ],
+    "frontPlusNarrowRightSide": true,
+    "officeElevatedCamera": true,
+    "graphiteAndBlackMaterial": true,
+    "fineVentilationGrilles": true,
+    "topAndFeetComplete": true,
+    "noTextPeopleSceneOrBigShadow": true,
+    "sameOutlinedOfficeMapStyle": true,
+    "mapScaleSixTraysReadable": true,
+    "threeBrightGreenStripsAt65x83": true,
+    "noCodeDrawnMachine": true
+  },
+  "userVisualApprovalClaimed": false,
+  "runtimeIntegrationClaimed": false
+}

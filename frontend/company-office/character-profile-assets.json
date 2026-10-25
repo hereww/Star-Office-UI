@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "ragdoll-v1": {
+      "manifest": "./media/character-breeds/ragdoll-v1/manifest.json"
+    },
+    "british-shorthair-v1": {
+      "manifest": "./media/character-breeds/british-shorthair-v1/manifest.json"
+    },
+    "american-shorthair-v1": {
+      "manifest": "./media/character-breeds/american-shorthair-v1/manifest.json"
+    },
+    "tabby-v1": {
+      "manifest": "./media/character-breeds/tabby-v1/manifest.json"
+    },
+    "tuxedo-cat-v1": {
+      "manifest": "./media/character-breeds/tuxedo-cat-v1/manifest.json"
+    },
+    "white-lion-cat-v1": {
+      "manifest": "./media/character-breeds/white-lion-cat-v1/manifest.json"
+    },
+    "jianzhou-cat-v1": {
+      "manifest": "./media/character-breeds/jianzhou-cat-v1/manifest.json"
+    }
+  }
+}

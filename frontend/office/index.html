@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN" data-office-mode="employee">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light"><meta name="referrer" content="same-origin">
+  <title>律动 · 实时办公室</title><link rel="icon" href="data:,">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳至办公室</a>
+  <div id="office-app" data-testid="office-app"><p role="status">正在准备办公室…</p></div>
+  <!-- Server replaces this JSON with escaped, non-secret configuration. Never inject credentials. -->
+  <script id="office-bootstrap" type="application/json">{{OFFICE_BOOT_JSON}}</script>
+  <script type="module">
+    let config = {};
+    try { config = JSON.parse(document.getElementById('office-bootstrap').textContent); } catch { /* isolated static preview */ }
+    window.__OFFICE_BOOT__ = config;
+    const base = config.release_prefix ? new URL(config.release_prefix.replace(/\/$/, '') + '/office/', location.href) : new URL('./', location.href);
+    if (base.origin !== location.origin) throw new Error('Office assets must be same-origin');
+    const { boot } = await import(new URL('bootstrap.mjs', base)); await boot();
+  </script>
+</body>
+</html>

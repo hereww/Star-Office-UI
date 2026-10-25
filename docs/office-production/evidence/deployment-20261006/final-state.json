@@ -1,0 +1,86 @@
+{
+  "captured_at": "2026-10-06T23:09:29.795280+08:00",
+  "time_zone": "Asia/Shanghai",
+  "release_id": "office-20261006-v5-production-06",
+  "new_services": [
+    {
+      "name": "star-office-production-office-web-1",
+      "image_id": "sha256:4b26b4d71939fdfd8176814ec5bb05af3d4fbef158b75084c0e1ebd2ba3e196e",
+      "image_tag": "local/star-office-ui:office-20261006-v5-production-06",
+      "health": "healthy",
+      "uid_gid": "10001:10001",
+      "read_only_rootfs": true,
+      "verified_source_files": 96
+    },
+    {
+      "name": "star-office-production-office-collector-1",
+      "image_id": "sha256:4b26b4d71939fdfd8176814ec5bb05af3d4fbef158b75084c0e1ebd2ba3e196e",
+      "image_tag": "local/star-office-ui:office-20261006-v5-production-06",
+      "health": "healthy",
+      "uid_gid": "10001:10001",
+      "read_only_rootfs": true,
+      "verified_source_files": 96
+    }
+  ],
+  "existing_containers_unchanged": [
+    "sub2api",
+    "kaneo-kaneo-1",
+    "kaneo-postgres-1",
+    "star-office-ui",
+    "ai-goofish-monitor-app",
+    "newapi_yymx-new-api-1",
+    "newapi_yymx-redis-1",
+    "sub2api-postgres",
+    "sub2api-redis",
+    "east-asia-power-postgres",
+    "newapi_yymx-mysql-1"
+  ],
+  "old_source_files_unchanged": 160,
+  "persistent_config": {
+    "version": 2,
+    "history_rows": 2,
+    "audit_rows": 2,
+    "integrity": "ok",
+    "consumer_file_exists": false,
+    "consumer_env_present": false
+  },
+  "sampling_readback": [
+    {
+      "last_success_at": "2026-10-06T15:09:27.697387Z",
+      "status": "ok",
+      "config_version": 2,
+      "bound_seats": [
+        "desk-09",
+        "desk-10",
+        "desk-11",
+        "desk-12"
+      ]
+    },
+    {
+      "last_success_at": "2026-10-06T15:09:32.704772Z",
+      "status": "ok",
+      "config_version": 2,
+      "bound_seats": [
+        "desk-09",
+        "desk-10",
+        "desk-11",
+        "desk-12"
+      ]
+    }
+  ],
+  "public_snapshot_private_fields": 0,
+  "employee_http": 200,
+  "admin_https_with_verified_CA": 200,
+  "desktop_OS_trust_changed": false,
+  "credential_expires_at_beijing": "2026-11-05T13:33:20.349268+08:00",
+  "credential_scope": [
+    "1",
+    "4",
+    "7",
+    "8"
+  ],
+  "nginx_service": "star-office-ingress.service",
+  "nginx_active": true,
+  "only_office_services_updated": true,
+  "disk": "Filesystem           Size  Used Avail Use% Mounted on\n/dev/mapper/cl-root   42G   40G  2.0G  96% /\n/dev/mapper/cl-home   21G   13G  7.8G  63% /home"
+}

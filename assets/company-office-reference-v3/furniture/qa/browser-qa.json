@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "states": {
+    "static": {
+      "up": {
+        "changedPixels": 0,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      },
+      "down": {
+        "changedPixels": 0,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": true,
+        "visible": false
+      },
+      "left": {
+        "changedPixels": 0,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      },
+      "right": {
+        "changedPixels": 0,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      }
+    },
+    "writing": {
+      "up": {
+        "changedPixels": 1478,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      },
+      "down": {
+        "changedPixels": 2,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": true,
+        "visible": false
+      },
+      "left": {
+        "changedPixels": 144,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      },
+      "right": {
+        "changedPixels": 194,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      }
+    },
+    "syncing": {
+      "up": {
+        "changedPixels": 1478,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      },
+      "down": {
+        "changedPixels": 2,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": true,
+        "visible": false
+      },
+      "left": {
+        "changedPixels": 144,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      },
+      "right": {
+        "changedPixels": 194,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      }
+    },
+    "error": {
+      "up": {
+        "changedPixels": 1478,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      },
+      "down": {
+        "changedPixels": 2,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": true,
+        "visible": false
+      },
+      "left": {
+        "changedPixels": 144,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      },
+      "right": {
+        "changedPixels": 194,
+        "outsideMaskChangedPixels": 0,
+        "rearLedOnly": false,
+        "visible": true
+      }
+    }
+  },
+  "screenEffectsModule": "current read-only reference-v3/screen-effects.mjs",
+  "outsideMaskChangedPixels": 0
+}

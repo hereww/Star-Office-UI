@@ -1,0 +1,22 @@
+{
+  "base-right-candidate.png": {
+    "sha256": "35b17aee47a5b4e35d44befde832e6f13a8c5719ef377f9501843e7d0a751f9d",
+    "assetsCopySha256": "35b17aee47a5b4e35d44befde832e6f13a8c5719ef377f9501843e7d0a751f9d"
+  },
+  "face-working-candidate.png": {
+    "sha256": "ee1f048696cdb5ecd5328915156c9de6caa84ca55329d3962d66fbdce572f996",
+    "assetsCopySha256": "ee1f048696cdb5ecd5328915156c9de6caa84ca55329d3962d66fbdce572f996"
+  },
+  "face-idle-candidate.png": {
+    "sha256": "50423ad23548753ad9e2e12441e3bfe71ec9cd53f54d8820c674b9ed2da6f676",
+    "assetsCopySha256": "50423ad23548753ad9e2e12441e3bfe71ec9cd53f54d8820c674b9ed2da6f676"
+  },
+  "face-syncing-candidate.png": {
+    "sha256": "3cd57ec1c7a46ba22fb6181dd9001110262587407acaf9bc52542cd3d92d1d6c",
+    "assetsCopySha256": "3cd57ec1c7a46ba22fb6181dd9001110262587407acaf9bc52542cd3d92d1d6c"
+  },
+  "face-error-candidate.png": {
+    "sha256": "7ec6392ddb121d67e2db5af98ef86c0151666e1d086c27834f893284eb07feb1",
+    "assetsCopySha256": "7ec6392ddb121d67e2db5af98ef86c0151666e1d086c27834f893284eb07feb1"
+  }
+}

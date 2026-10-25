@@ -1,0 +1,148 @@
+{
+  "passed": true,
+  "tested": [
+    "true-alpha",
+    "12-distinct-frame-files",
+    "4x3-grid-size",
+    "same-static-furniture-in-72-state-frame-combinations",
+    "character-slot-removal",
+    "replacement-registration-with-different-pose-anchor-scale",
+    "original-six-state-mapping-and-unavailable-action",
+    "deterministic-12fps-sampling",
+    "direction-frame-geometry-input-validation",
+    "invalid-registration-keeps-registry"
+  ],
+  "alpha": [
+    {
+      "file": "source/workstation-layers-original.png",
+      "width": 1774,
+      "height": 887,
+      "transparentPixels": 1142736,
+      "opaquePixels": 2235,
+      "sha256": "3ce6a8ad8a6aa5dab70669762bb0cd32f729f0b876331382fb3ebe4dcb16b7d0"
+    },
+    {
+      "file": "source/orange-cat-working-original.png",
+      "width": 1448,
+      "height": 1086,
+      "transparentPixels": 826114,
+      "opaquePixels": 1966,
+      "sha256": "724888bd821cc09322275b553754e7aa254e979128a34c90448ea60d17bbcf00"
+    },
+    {
+      "file": "media/workstation-back.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 30179,
+      "opaquePixels": 30,
+      "sha256": "4e57d15d38ec57dc0fcbeb984bde74d3eb2ef3bc9ccdbf3ab8ee2434432f1fc2"
+    },
+    {
+      "file": "media/workstation-front.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 23304,
+      "opaquePixels": 51,
+      "sha256": "1aef97ce63b757d88c5a0c3cf6be1d0d6e5fc95b11b0c7982247dd3225a88672"
+    },
+    {
+      "file": "frames/01.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19570,
+      "opaquePixels": 18,
+      "sha256": "0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024"
+    },
+    {
+      "file": "frames/02.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19641,
+      "opaquePixels": 39,
+      "sha256": "f3cf52e7bf4bb505d5637114f70ce00eb31cd93f56e975cf360b6d7b832e52d9"
+    },
+    {
+      "file": "frames/03.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19416,
+      "opaquePixels": 19,
+      "sha256": "27e4c35414abbed1668a268a0adb3c79a3ce041034150dc380b1645c4d80626e"
+    },
+    {
+      "file": "frames/04.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19394,
+      "opaquePixels": 70,
+      "sha256": "e41020a66d7783d9f1296ff1d87924f3b8bc2568a081f129ad6eb43c44ae34a7"
+    },
+    {
+      "file": "frames/05.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19363,
+      "opaquePixels": 83,
+      "sha256": "b641cbec327ccf4cc564da727c3e4776b3f2e7810d67ba0493bb5dfa3a0659c8"
+    },
+    {
+      "file": "frames/06.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19361,
+      "opaquePixels": 91,
+      "sha256": "286a441bfd20bbe986e1b81d76980da2c6c7d8602785a13e0b83a7e75b228b18"
+    },
+    {
+      "file": "frames/07.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 18584,
+      "opaquePixels": 49,
+      "sha256": "81026184a653d8019e4f0661fc098f3f4bd7f266ffad75a1c2e24ad282773358"
+    },
+    {
+      "file": "frames/08.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19230,
+      "opaquePixels": 66,
+      "sha256": "1dcc7b9ce49ac30f966552288a250ee63f005d6a4771adb745c102aafd0345af"
+    },
+    {
+      "file": "frames/09.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19542,
+      "opaquePixels": 68,
+      "sha256": "885eeaf3ca5825600d3e8b5cce998f5aa4832abc92f30697e4aa1a1f2b96e596"
+    },
+    {
+      "file": "frames/10.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19695,
+      "opaquePixels": 26,
+      "sha256": "433dd27a0dbd0d4c1202a986d9d825961496db5342a6038e5e27188f28495935"
+    },
+    {
+      "file": "frames/11.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19635,
+      "opaquePixels": 38,
+      "sha256": "4b9016228c8e00f67fdb744526269767e8373860146b095f1f7f498002751a5e"
+    },
+    {
+      "file": "frames/12.png",
+      "width": 192,
+      "height": 192,
+      "transparentPixels": 19091,
+      "opaquePixels": 20,
+      "sha256": "85ad8b911712f14c5eadbd25a5359fa9956d0b6f5f9ae0d37a9de38d595526e3"
+    }
+  ],
+  "visualAcceptance": false,
+  "productionReady": false,
+  "limitation": "结构测试不证明手部接触键盘或动作视觉合格；替换测试用同一图集的接口fixture，不是第二个真实角色。"
+}

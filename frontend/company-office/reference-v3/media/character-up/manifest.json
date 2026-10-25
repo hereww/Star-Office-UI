@@ -1,0 +1,40 @@
+{
+  "character": {
+    "id": "orange-cat-seated-up-v3",
+    "direction": "up",
+    "base": "media/character-up/base.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      96,
+      168
+    ],
+    "scale": 0.6,
+    "headAnchor": [
+      96,
+      34
+    ],
+    "faceVisible": false,
+    "actions": {
+      "working": {
+        "faceClockFrames": 60
+      },
+      "idle": {
+        "faceClockFrames": 36
+      },
+      "syncing": {
+        "faceClockFrames": 60
+      },
+      "error": {
+        "faceClockFrames": 12
+      }
+    }
+  },
+  "bodyFixed": true,
+  "handsRendered": false,
+  "backFaceVisible": false,
+  "source": "assets/company-office-reference-v3/seated-back-source.png",
+  "status": "candidate-requires-combination-qa"
+}

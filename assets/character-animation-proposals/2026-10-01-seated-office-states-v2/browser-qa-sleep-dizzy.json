@@ -1,0 +1,716 @@
+{
+  "checkedAt": "2026-10-01T07:54:35.848Z",
+  "url": "http://127.0.0.1:54634/",
+  "allowedDynamicRect": [
+    69,
+    34,
+    57,
+    38
+  ],
+  "checks": [
+    {
+      "fullHash": "5a723fac",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 0,
+        "fps": 12,
+        "frame": 0,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "a77ddc9d",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 1,
+        "fps": 12,
+        "frame": 1,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "35e89da4",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 2,
+        "fps": 12,
+        "frame": 2,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "8c7250d9",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 3,
+        "fps": 12,
+        "frame": 3,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "3351ea1f",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 4,
+        "fps": 12,
+        "frame": 4,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "ead309c2",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 5,
+        "fps": 12,
+        "frame": 5,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "a877068a",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 6,
+        "fps": 12,
+        "frame": 6,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "227d9399",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 7,
+        "fps": 12,
+        "frame": 7,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "637c1b12",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 8,
+        "fps": 12,
+        "frame": 8,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "7b2b76f7",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 9,
+        "fps": 12,
+        "frame": 9,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "c9e5bc9a",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 10,
+        "fps": 12,
+        "frame": 10,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "87778989",
+      "snapshot": {
+        "action": "idle",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 36,
+        "faceEnabled": true,
+        "faceFrame": 11,
+        "fps": 12,
+        "frame": 11,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "idle",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "9999de98",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 0,
+        "fps": 12,
+        "frame": 0,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "d5fd44ce",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 1,
+        "fps": 12,
+        "frame": 1,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "848b2648",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 2,
+        "fps": 12,
+        "frame": 2,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "8959a886",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 3,
+        "fps": 12,
+        "frame": 3,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "12e24d5e",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 4,
+        "fps": 12,
+        "frame": 4,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "33371467",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 5,
+        "fps": 12,
+        "frame": 5,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "b0bb5fa4",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 6,
+        "fps": 12,
+        "frame": 6,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "2f56f653",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 7,
+        "fps": 12,
+        "frame": 7,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "b0e9db85",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 8,
+        "fps": 12,
+        "frame": 8,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "54e70b99",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 9,
+        "fps": 12,
+        "frame": 9,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "eca8cec9",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 10,
+        "fps": 12,
+        "frame": 10,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    },
+    {
+      "fullHash": "fb35098c",
+      "snapshot": {
+        "action": "error",
+        "animationMode": "expression-only",
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.2,
+          115.2
+        ],
+        "faceClockFrames": 12,
+        "faceEnabled": true,
+        "faceFrame": 11,
+        "fps": 12,
+        "frame": 11,
+        "frameCount": 12,
+        "handsRendered": false,
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "state": "error",
+        "view": "combined",
+        "visibleCharacter": true
+      },
+      "stableHash": "403a2748"
+    }
+  ],
+  "allStableOutsideFace": true,
+  "noHands": true,
+  "distinctFullCanvasFrames": {
+    "idle": 12,
+    "error": 12
+  },
+  "logs": [],
+  "visualAcceptance": "pending user review"
+}

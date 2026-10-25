@@ -1,0 +1,43 @@
+{
+  "status": "verified_and_repaired",
+  "oldFaceRect": [
+    86,
+    60,
+    90,
+    58
+  ],
+  "oldEllipse": [
+    131,
+    89,
+    45,
+    29
+  ],
+  "oldPoseAnchor": [
+    112,
+    174
+  ],
+  "oldScale": 0.6,
+  "oldSourceMapping": "Each original head patch independently cropped/resized to 90x58, neutral underlay from separate whole sprite bbox normalization",
+  "oldNormalNoseRoi": [
+    67,
+    24,
+    85,
+    42
+  ],
+  "oldIdleNoseRoi": [
+    55,
+    6,
+    70,
+    23
+  ],
+  "provenIssues": [
+    "normal and idle use different anatomical nose registration on fixed muzzle",
+    "idle mouth v3 unions a source ROI only; does not re-register generated head/muzzle",
+    "neutral underlay and features have different generated anatomy and registration",
+    "old headAnchor [131,89] points to face center, not ear top; builder replaced it separately"
+  ],
+  "notCause": "poseAnchor is constant across all face frames, so clock-dependent facial drift cannot be repaired by moving the chair/body",
+  "newSources": "4 complete 12-frame grids generated with built-in image_gen, 1535x1025 actual resolution; not native4K",
+  "integrationAllowed": true,
+  "humanApproved": false
+}

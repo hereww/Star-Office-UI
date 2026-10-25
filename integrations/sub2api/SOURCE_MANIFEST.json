@@ -1,0 +1,19 @@
+{
+  "integration": "sub2api-user-telemetry",
+  "upstream_repository": "https://github.com/Wei-Shaw/sub2api.git",
+  "upstream_commit": "b8dece9000c68815a5b867ca5a1e6f236e173905",
+  "host_source": "host-source/",
+  "plugin_source": "host-source/backend/cmd/user-telemetry-plugin/",
+  "packaging_tools": "plugin-tools/",
+  "patches": "patches/",
+  "excluded": [
+    ".git",
+    "frontend/node_modules",
+    "frontend/dist",
+    "build outputs",
+    "signed .s2plugin packages",
+    "private keys",
+    "local caches and QA output",
+    "upstream OAuth client IDs and secrets are redacted as REDACTED_* placeholders"
+  ]
+}

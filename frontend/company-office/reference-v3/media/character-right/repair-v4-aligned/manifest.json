@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 4,
+  "assetPack": "company-office-reference-v3-character-right-repair-v4-aligned",
+  "createdOn": "2026-10-03",
+  "status": "technical_complete_composite_reviewed_ready_for_integration",
+  "technicalCompleted": true,
+  "integrationAllowed": true,
+  "humanApproved": false,
+  "visualApproved": false,
+  "runtimeIntegrated": false,
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "faceClockFrames": 60,
+  "urlRoot": "frontend/company-office/reference-v3/",
+  "animationMode": "expression-only",
+  "character": {
+    "id": "orange-tabby-right-repair-v4-aligned",
+    "direction": "right",
+    "base": "media/character-right/repair-v4-aligned/base.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      112,
+      174
+    ],
+    "headAnchor": [
+      110,
+      8
+    ],
+    "scale": 0.6,
+    "faceRect": [
+      84,
+      54,
+      90,
+      58
+    ],
+    "faceClipEllipse": [
+      139,
+      82,
+      47,
+      36
+    ],
+    "faceFrameSize": [
+      90,
+      58
+    ],
+    "faceVisible": true,
+    "actions": {
+      "working": {
+        "face": "media/character-right/repair-v4-aligned/face-working.png",
+        "faceClockFrames": 60,
+        "label": "工作 · 专注表情"
+      },
+      "idle": {
+        "face": "media/character-right/repair-v4-aligned/face-idle.png",
+        "faceClockFrames": 36,
+        "label": "待命 · 仰脸闭眼张嘴熟睡"
+      },
+      "syncing": {
+        "face": "media/character-right/repair-v4-aligned/face-syncing.png",
+        "faceClockFrames": 60,
+        "label": "同步 · 耐心等待"
+      },
+      "error": {
+        "face": "media/character-right/repair-v4-aligned/face-error.png",
+        "faceClockFrames": 12,
+        "label": "出错 · 迷糊旋涡眼"
+      }
+    }
+  },
+  "businessStateToAction": {
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "idle": "idle",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "provenance": {
+    "generator": "built-in image_gen.imagegen",
+    "sourceActualSize": [
+      1535,
+      1025
+    ],
+    "native4K": false,
+    "oneActionPerImageCall": true,
+    "normalization": "one shared mapping all 48 generated cells; feature alpha extraction; no mirroring, rotation, copying animation frames or code drawn features",
+    "base": "unchanged copy of right repair-v2/base-neutral.png",
+    "poseAnchorKept": true,
+    "facialRegistration": "all actions share origin [57,18], cell scale to [123,109], no per-frame alignment",
+    "rejectedSources": [
+      "sources/idle-rejected-edge-contact.png",
+      "sources/idle-rejected-small-mouth.png"
+    ],
+    "builtInGenerationCalls": 6,
+    "sourceFiles": {
+      "working.png": {
+        "sha256": "72edf898c4a7a5be77eb69da5db0824eb7f6e8ab7221ca1610455aea8c7c53f1",
+        "actualSize": [
+          1535,
+          1025
+        ]
+      },
+      "idle-rejected-small-mouth.png": {
+        "sha256": "7163f6ae9f14161cc841836cd81b7b052c52cb9da25588b08704e91dd5ed3b2d",
+        "actualSize": [
+          1535,
+          1025
+        ]
+      },
+      "idle.png": {
+        "sha256": "e807e47b9bd7b90cbccccdc24728d78e17229404b5da3c73d7f8521783a5a1fc",
+        "actualSize": [
+          1535,
+          1025
+        ]
+      },
+      "syncing.png": {
+        "sha256": "705ff4d5cf8cf411b7cbc3303995982a00043f4cd5d7ab8363e6b3201462be8f",
+        "actualSize": [
+          1535,
+          1025
+        ]
+      },
+      "error.png": {
+        "sha256": "8463df01b6bfe58b2eaab886a76ef2d470712a51004657bebd06a9f020e98e86",
+        "actualSize": [
+          1535,
+          1025
+        ]
+      },
+      "idle-rejected-edge-contact.png": {
+        "sha256": "17ededfc0110d95bfffc34e73ca3214ef62c47c1e1ae8542729807c959b09662",
+        "actualSize": [
+          1535,
+          1025
+        ]
+      }
+    }
+  },
+  "qa": {
+    "build": "qa/build.json",
+    "rootCause": "qa/root-cause.json",
+    "humanApprovalRequired": true,
+    "technicalReport": "qa/technical-report.json",
+    "actualRendererReport": "qa/browser-render-report.json",
+    "realWorkstationContactSheet": "qa/workstation-four-actions-all-48.png",
+    "inspectedFrameCount": 48,
+    "visualReviewByAgent": true,
+    "visualCriteria": {
+      "sameHeadRegistration": true,
+      "idleOpenMouthAll12": true,
+      "noOldMouthResidue": true,
+      "furnitureNotOccludingFace": true,
+      "ellipseNoFeatureClipping": true
+    },
+    "silhouetteAlphaOccupancyChangedPixels": 0,
+    "faceOutsideChangedPixels": 0,
+    "ellipseClippedFeaturePixels": 0,
+    "idleMouthBlackAreaMinimum": 96
+  },
+  "sha256": {
+    "face-working.png": "2871153ace0b267fef6a571a7e2544a7edd293e65de917113b479be72622155c",
+    "face-idle.png": "803c4d0e1bdde2071328149c0b8a06c44e675db16af19da1adf31dfef213dac1",
+    "face-syncing.png": "b171980f6da3c134faae47781b3d5047c692b3d1bfc6e107909c7669e42db944",
+    "face-error.png": "627773a162c636fdcbfa015c7d5f3250a39bb0161ee2afb2c0dd49a90ee391e3",
+    "base.png": "a76c27a035d9e3dcf71f6e63185d3cc3fd31042b33f1f502a983bec70e4b1b5c"
+  }
+}

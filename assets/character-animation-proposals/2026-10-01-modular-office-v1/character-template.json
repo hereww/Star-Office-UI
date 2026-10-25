@@ -1,0 +1,25 @@
+{
+  "id": "new-character",
+  "label": "替换角色",
+  "direction": "down",
+  "poseAnchor": [
+    98,
+    170
+  ],
+  "scale": 0.6,
+  "actions": {
+    "working": {
+      "sheet": "my-working.png",
+      "grid": [
+        4,
+        3
+      ],
+      "frameSize": [
+        192,
+        192
+      ],
+      "frameCount": 12,
+      "fps": 12
+    }
+  }
+}

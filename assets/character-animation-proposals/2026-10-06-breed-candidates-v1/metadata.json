@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "kind": "breed-candidate-concept-board",
+  "status": "preview-only",
+  "templateId": "approved-office-expressions-v1",
+  "selectionScope": "global",
+  "sourceReference": "assets/character-animation-proposals/2026-10-01-modular-office-v1/media/orange-cat-working.png",
+  "profiles": [
+    {
+      "id": "ragdoll-v1",
+      "label": "布偶猫"
+    },
+    {
+      "id": "british-shorthair-v1",
+      "label": "英短"
+    },
+    {
+      "id": "american-shorthair-v1",
+      "label": "美短"
+    },
+    {
+      "id": "tabby-v1",
+      "label": "狸花猫"
+    },
+    {
+      "id": "tuxedo-cat-v1",
+      "label": "奶牛猫"
+    },
+    {
+      "id": "white-lion-cat-v1",
+      "label": "狮子白猫"
+    },
+    {
+      "id": "jianzhou-cat-v1",
+      "label": "简州猫"
+    }
+  ],
+  "renderContract": {
+    "transparentBackground": true,
+    "dimensions": [
+      2172,
+      724
+    ],
+    "finishedAnimation": false,
+    "productionAssignable": false,
+    "notes": "Concept board only; no runtime sprite replacement. Each breed still needs a full transparent 4x3 expression atlas, four directions where required, anchors, and browser/pixel QA."
+  }
+}

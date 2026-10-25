@@ -1,0 +1,18 @@
+syntax = "proto3";
+package sub2api.plugin.v1;
+option go_package = "github.com/Wei-Shaw/sub2api/pkg/pluginapi/v1;pluginv1";
+import "plugin.proto";
+import "google/protobuf/wrappers.proto";
+// Go bindings are maintained manually in user_telemetry.go (no protoc required).
+service UserTelemetryPlugin {
+ rpc GetInfo(GetInfoRequest) returns (GetInfoResponse);
+ rpc Health(HealthRequest) returns (HealthResponse);
+ rpc ValidateConfig(ValidateConfigRequest) returns (ValidateConfigResponse);
+ rpc ApplyConfig(ApplyConfigRequest) returns (ApplyConfigResponse);
+ rpc TestConfig(TestConfigRequest) returns (TestConfigResponse);
+ rpc InitHostServices(InitHostServicesRequest) returns (InitHostServicesResponse);
+ rpc QuerySnapshot(google.protobuf.BytesValue) returns (google.protobuf.BytesValue);
+}
+service UserTelemetryHostService {
+ rpc ReadUserTelemetry(google.protobuf.BytesValue) returns (google.protobuf.BytesValue);
+}

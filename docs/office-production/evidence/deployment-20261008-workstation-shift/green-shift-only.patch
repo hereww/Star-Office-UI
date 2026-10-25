@@ -1,0 +1,92 @@
+--- a/frontend/company-office/connected-v5/layout.json
++++ b/frontend/company-office/connected-v5/layout.json
+@@ -196,7 +196,7 @@
+       "region": "east",
+       "group": "east-north",
+       "center": [
+-        802,
++        754,
+         512
+       ],
+       "scale": 0.56,
+@@ -217,7 +217,7 @@
+       "region": "east",
+       "group": "east-north",
+       "center": [
+-        907,
++        859,
+         512
+       ],
+       "scale": 0.56,
+@@ -238,7 +238,7 @@
+       "region": "east",
+       "group": "east-north",
+       "center": [
+-        1012,
++        964,
+         512
+       ],
+       "scale": 0.56,
+@@ -259,7 +259,7 @@
+       "region": "east",
+       "group": "east-north",
+       "center": [
+-        1117,
++        1069,
+         512
+       ],
+       "scale": 0.56,
+@@ -280,7 +280,7 @@
+       "region": "east",
+       "group": "east-south",
+       "center": [
+-        802,
++        754,
+         639
+       ],
+       "scale": 0.56,
+@@ -301,7 +301,7 @@
+       "region": "east",
+       "group": "east-south",
+       "center": [
+-        907,
++        859,
+         639
+       ],
+       "scale": 0.56,
+@@ -322,7 +322,7 @@
+       "region": "east",
+       "group": "east-south",
+       "center": [
+-        1012,
++        964,
+         639
+       ],
+       "scale": 0.56,
+@@ -343,7 +343,7 @@
+       "region": "east",
+       "group": "east-south",
+       "center": [
+-        1117,
++        1069,
+         639
+       ],
+       "scale": 0.56,
+@@ -590,7 +590,7 @@
+     },
+     "east": {
+       "center": [
+-        963,
++        915,
+         577
+       ],
+       "span": [
+@@ -789,7 +789,7 @@
+       "orientation": "horizontal",
+       "manifest": "../connected-v4/media/horizontal/manifest.json",
+       "fit": [
+-        760,
++        712,
+         488,
+         420,
+         200

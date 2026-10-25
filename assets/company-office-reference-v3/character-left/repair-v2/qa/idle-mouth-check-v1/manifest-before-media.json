@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 3,
+  "version": "repair-v2",
+  "date": "2026-10-02",
+  "timezone": "Asia/Shanghai",
+  "status": "repair_v2_completed_technical_passed",
+  "technicalPassed": true,
+  "readyForMainVisualReview": true,
+  "passedScope": "Technical asset invariants and no-double-mouth checks; final visual approval is explicitly reserved for the main agent.",
+  "visualApproved": false,
+  "finalVisualReviewPending": true,
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "animationMode": "expression-only",
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "faceClockFrames": 60,
+  "baseUrlSemantics": "All character.base and actions.face URLs resolve from frontend/company-office/reference-v3/, NOT from the manifest directory.",
+  "character": {
+    "id": "orange-tabby-seated-left-v3-repair-v2",
+    "direction": "left",
+    "base": "media/character-left/repair-v2/character-base.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      96,
+      174
+    ],
+    "headAnchor": [
+      78,
+      94
+    ],
+    "scale": 0.6,
+    "faceRect": [
+      38,
+      64,
+      90,
+      58
+    ],
+    "faceClipEllipse": [
+      76,
+      93,
+      32,
+      27
+    ],
+    "faceFrameSize": [
+      90,
+      58
+    ],
+    "faceVisible": true,
+    "actions": {
+      "working": {
+        "face": "media/character-left/repair-v2/face-working.png",
+        "faceClockFrames": 60,
+        "label": "工作 · 专注表情"
+      },
+      "idle": {
+        "face": "media/character-left/repair-v2/face-idle.png",
+        "faceClockFrames": 36,
+        "label": "待命 · 仰脸闭眼张嘴熟睡"
+      },
+      "syncing": {
+        "face": "media/character-left/repair-v2/face-syncing.png",
+        "faceClockFrames": 60,
+        "label": "同步 · 耐心等待"
+      },
+      "error": {
+        "face": "media/character-left/repair-v2/face-error.png",
+        "faceClockFrames": 12,
+        "label": "出错 · 连续旋涡眼"
+      }
+    }
+  },
+  "businessStateToAction": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "freeze": {
+    "wholeBody": true,
+    "headOuterContour": true,
+    "ears": true,
+    "tail": true,
+    "originalBaseAlpha": true,
+    "furOutsideAnimatedFeatures": true,
+    "noPerFrameTransforms": true,
+    "noHeadRotation": true,
+    "noBreathing": true,
+    "handsAnimationAssetsLoaded": 0
+  },
+  "normalization": {
+    "neutralBase": "image_gen edit of existing left base; old eye/brow/nose/mouth replaced by model-generated orange/cream fur.",
+    "neutralBounds": [
+      48,
+      67,
+      104,
+      119
+    ],
+    "originalOutsideNeutralPatchPreserved": true,
+    "mask": "Common ellipse intersected with fixed original silhouette inner mask; contour RGB+alpha are unchanged.",
+    "atlasOperation": "Extract existing generated eyebrow/eye/nose/mouth pixels by alpha mask; discard duplicate fur layer and outside features. Visible RGB is copied unmodified from its original frame.",
+    "commonRectTranslationVsOriginal": [
+      -4,
+      0
+    ],
+    "perFrameTranslationOrScaling": false,
+    "newExpressionPainting": false,
+    "duplicatedFrames": false,
+    "script": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/scripts/build_repair_v2.py",
+    "details": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/normalization.json"
+  },
+  "qa": {
+    "technicalPassed": true,
+    "noDoubleMouth": true,
+    "bodyOutsideFaceMaxChangedPixels": 0,
+    "headOuterContourMaxChangedPixels": 0,
+    "alphaSilhouetteMaxChangedPixels": 0,
+    "neutralBaseOldMarkResidualInnerPixels": {
+      "oldEye": 0,
+      "oldBrow": 0,
+      "oldMouth": 0,
+      "oldNose": 0
+    },
+    "protectedInputCount": 133,
+    "protectedInputsUnchanged": true,
+    "originalFourAtlasesAndCandidateNotOverwritten": true,
+    "actions": {
+      "working": {
+        "uniqueVisibleFrames": 12,
+        "uniqueComposedFrames": 12,
+        "bodyOutsideFaceMaxChangedPixels": 0,
+        "headContourMaxChangedPixels": 0,
+        "noDoubleMouth": true,
+        "visibleRGBChangedVsGeneratedSource": 0
+      },
+      "idle": {
+        "uniqueVisibleFrames": 12,
+        "uniqueComposedFrames": 12,
+        "bodyOutsideFaceMaxChangedPixels": 0,
+        "headContourMaxChangedPixels": 0,
+        "noDoubleMouth": true,
+        "visibleRGBChangedVsGeneratedSource": 0
+      },
+      "syncing": {
+        "uniqueVisibleFrames": 12,
+        "uniqueComposedFrames": 12,
+        "bodyOutsideFaceMaxChangedPixels": 0,
+        "headContourMaxChangedPixels": 0,
+        "noDoubleMouth": true,
+        "visibleRGBChangedVsGeneratedSource": 0
+      },
+      "error": {
+        "uniqueVisibleFrames": 12,
+        "uniqueComposedFrames": 12,
+        "bodyOutsideFaceMaxChangedPixels": 0,
+        "headContourMaxChangedPixels": 0,
+        "noDoubleMouth": true,
+        "visibleRGBChangedVsGeneratedSource": 0
+      }
+    },
+    "measurements": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/validation.json",
+    "report": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/REVIEW.md",
+    "combinedContactSheet": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/combined-contact-sheet.png",
+    "workstationContactSheet": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/workstation-actions-first-frame-contact-2x.png",
+    "spiralFaceLoopAPNG": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/error-face-loop.png"
+  },
+  "handsAcceptance": {
+    "criterion": "No typing hands in final workstation composition; no hand animation is loaded. Static toe/paw-shaped pixels in a bare seated sprite are not an automatic failure.",
+    "typingHandsRendered": false,
+    "handAnimationAssetsLoaded": 0,
+    "leftWorkstationReadOnlyPreviewIncluded": true,
+    "furnitureModified": false,
+    "finalOcclusionApprovalOwner": "main agent"
+  },
+  "spiralAcceptance": {
+    "criterion": "Natural continuous clockwise spinning impression across 12 distinct generated frames.",
+    "equalMathematicalAngleGate": false,
+    "phaseReordering": false,
+    "newSpiralGeneration": false,
+    "finalVisualApprovalOwner": "main agent"
+  },
+  "provenance": {
+    "tool": "built-in image_gen.imagegen",
+    "neutralBaseRepairCalls": 1,
+    "newExpressionCalls": 0,
+    "generationLog": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/generation-log.json",
+    "prompt": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/prompts/neutral-base-repair-v2.txt",
+    "original": "originals/neutral-base-repair-v2-original.png",
+    "previousGenerationCount": 5,
+    "preservedPreviousVersion": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left",
+    "delegatedAgents": 0
+  },
+  "risksAndBoundaries": [
+    "Final sleep attitude, natural spiral continuity and final workstation visual approval belong to the main agent.",
+    "working and syncing retain their existing blink variations; this repair does not redesign the action semantics.",
+    "All clips/placements are shared across frames; original generated micro-variation inside facial features remains.",
+    "Furniture is read-only in QA. No UI/runtime/config outside the two assigned character-left directories was modified."
+  ],
+  "files": [
+    {
+      "url": "media/character-left/repair-v2/character-base.png",
+      "size": [
+        192,
+        192
+      ],
+      "bytes": 22926,
+      "sha256": "5e91d7768973d9d138677d8ba2e1b0b2847b566044b00c13a9518b4767ec2c1b"
+    },
+    {
+      "url": "media/character-left/repair-v2/face-working.png",
+      "size": [
+        360,
+        174
+      ],
+      "bytes": 19544,
+      "sha256": "3b81244c63cd6bee18a939ce1e5d6b7d187ba21f88670ea576a4833eb6d38a20"
+    },
+    {
+      "url": "media/character-left/repair-v2/face-idle.png",
+      "size": [
+        360,
+        174
+      ],
+      "bytes": 17153,
+      "sha256": "33ef05810acd25af268e7ceaf1a8aff4596adde42fc6b94089fea1765cc51698"
+    },
+    {
+      "url": "media/character-left/repair-v2/face-syncing.png",
+      "size": [
+        360,
+        174
+      ],
+      "bytes": 20167,
+      "sha256": "25eaea0328c857c1050ff018b5f7ef06a335a15d1f32c235871dda406cabbcd9"
+    },
+    {
+      "url": "media/character-left/repair-v2/face-error.png",
+      "size": [
+        360,
+        174
+      ],
+      "bytes": 23203,
+      "sha256": "502ee366574ce2aaab189209b05478a35a13600709abfcf9dc1a83aeebdde914"
+    }
+  ]
+}

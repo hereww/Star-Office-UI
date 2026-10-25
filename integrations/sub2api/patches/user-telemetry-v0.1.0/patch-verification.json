@@ -1,0 +1,657 @@
+{
+  "baseline": "b8dece9000c68815a5b867ca5a1e6f236e173905",
+  "clean_apply": true,
+  "actual_apply": true,
+  "post_apply_compile": true,
+  "verification_passed": true,
+  "verification_date": "2026-10-04",
+  "verified_at": "2026-10-04T05:24:29.122424+00:00",
+  "patch": {
+    "filename": "sub2api-user-telemetry-host.patch",
+    "sha256": "36e1d772a6f02c48908ed87beb74b399c0ec7b8f6c2ca6c9fa94cae28332a741",
+    "bytes": 314939,
+    "format": "git binary/full-index diff against confirmed canonical baseline",
+    "modified_tracked_files": 18,
+    "added_files": 29,
+    "file_count": 47,
+    "canonical_directory": "/Users/hepingyu/Documents/ChatGPT/sub2api/host-source",
+    "canonical_head": "b8dece9000c68815a5b867ca5a1e6f236e173905",
+    "file_list_matches_canonical": true,
+    "every_applied_file_sha256_matches_canonical": true,
+    "executable_modes_match_canonical": true,
+    "strict_whitespace_check": true,
+    "frontend_fix_files": [
+      "frontend/src/i18n/locales/en/admin/plugins.ts",
+      "frontend/src/i18n/locales/zh/admin/plugins.ts",
+      "frontend/src/views/admin/PluginsView.vue",
+      "frontend/src/views/admin/__tests__/PluginsView.spec.ts"
+    ],
+    "excluded": [
+      "frontend/backend embed build resources",
+      "node_modules",
+      "credentials and secrets",
+      "test temporary outputs"
+    ],
+    "files": [
+      {
+        "path": "backend/cmd/server/wire_gen.go",
+        "sha256": "006cac47a60a4e2da6534da9df7cdf2e3a8d563f109868104f1e7ee52ed97113",
+        "bytes": 46495,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-acceptance/browser.go",
+        "sha256": "401df2c4255d527365f07e48745c777d979424c42ce3e48dcea0e3500a736f70",
+        "bytes": 3449,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-acceptance/main.go",
+        "sha256": "74aa09fa62e556652a8977e66b2f9ac2ddfec8c42fb7ee5f6bcc4d26f5143594",
+        "bytes": 22152,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-acceptance/native-browser.cjs",
+        "sha256": "2527790a6297f90ec598aaeed5ff02337133293076380337e1ea086aad9e54cd",
+        "bytes": 2860,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/.gitignore",
+        "sha256": "eeeaeda25161b9f3879b03f1ac617e2452642756e85739c813865b806f84d333",
+        "bytes": 15,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/README.md",
+        "sha256": "8e757ecce9936e865bc74a9345f877cc03f4c50d47e34db649525bbe0d96fe3e",
+        "bytes": 6200,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/internal/telemetry/config.go",
+        "sha256": "04b6365a0722628c4b84ba9fd6944f50e6aecf9cd99d046dc67e85161bb7f85c",
+        "bytes": 3180,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/internal/telemetry/runtime.go",
+        "sha256": "c5e008ddccfc2091959edab9e9c0cc5fcaa88cffe292aeda776347e985c379ff",
+        "bytes": 6314,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/internal/telemetry/runtime_test.go",
+        "sha256": "45c3235e9cbaf5419c27cedcd5a974edccd36a7679154408a4d69449d24b2ca2",
+        "bytes": 10615,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/main.go",
+        "sha256": "12ae1d4e347cc8242f30a763b03ad4737f9811cce595af008fd65bc4177d6b7f",
+        "bytes": 8398,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/main_test.go",
+        "sha256": "26beda3189dc36e738045d237070109f0eb8776832563f5a7894eda54ae9e42a",
+        "bytes": 11033,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/ui/bridge.test.cjs",
+        "sha256": "728f0fae40ecf2a481786b06ef27d9ced6188c9a8f195965cbc257a52328f6f2",
+        "bytes": 7288,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/ui/browser-smoke.cjs",
+        "sha256": "33ef72509a24e8c43a948f49ec606542165d8b16922aeaf4f5b254ecd525f6e6",
+        "bytes": 4542,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/cmd/user-telemetry-plugin/ui/index.html",
+        "sha256": "5f1a5b73008d6e682e412cd5d559223184bf5cfb986dfefb92ea8a84289ae82f",
+        "bytes": 10887,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/handler/admin/plugin_handler.go",
+        "sha256": "f6bea3c95e95d450cf60b807c54e012a6cd5ddba5a9c1b572cf892994cd6a49b",
+        "bytes": 7587,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/handler/admin/plugin_user_telemetry.go",
+        "sha256": "7176de1339707f50f41becda1156d98d40bcd4ec816398d890a0cfc3babb296c",
+        "bytes": 8876,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/handler/admin/plugin_user_telemetry_test.go",
+        "sha256": "8d718f2f1002dda5d550b4f4eaecae3419ff2968fc71fcbeeb1c31710654dd2c",
+        "bytes": 6555,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/repository/user_telemetry_cache_test.go",
+        "sha256": "ddff2441694baa12356c1f4d5c620ed46c13ab77c257ad27dc5bc882ed6c8cc3",
+        "bytes": 4377,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/repository/user_telemetry_credentials.go",
+        "sha256": "3bcdb7d1ff838acd8d2c461871a5a58abb22cafea08ea69d9bdee24772a5664a",
+        "bytes": 3104,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/repository/user_telemetry_credentials_test.go",
+        "sha256": "62257d52ada2275886c6249da091a5d29d79c074c76fcaa11a342db303158114",
+        "bytes": 3873,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/repository/user_telemetry_postgres_test.go",
+        "sha256": "2bdf25c51c97da172c4580f1caedf9c9f52e1622584271ae760d6f01a2e919c3",
+        "bytes": 8451,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/repository/wire.go",
+        "sha256": "6a74a779c7e3b9899c9c4520e6793a0c82e7fbdada64a68d65135e6df99cb2fe",
+        "bytes": 7654,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/server/router.go",
+        "sha256": "d6cc069b6be7104301259e2c1809fadb5ce2265d0387648adba06083e87ecd43",
+        "bytes": 5545,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/server/routes/admin.go",
+        "sha256": "b6bfc0d4a61663effcfcb73b55cb41ec2557cfc46bef88dbc099f29dbeb4f6a4",
+        "bytes": 41383,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/service/plugin_compatibility.go",
+        "sha256": "765c48cb879e265a09a7e2542b22b16b8772197647b28ee7d180bac38114f654",
+        "bytes": 2540,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/service/plugin_host_services.go",
+        "sha256": "4b777d839ed67a7ef5b609df0121a940f574bf7c6b766e79be61ba48a40f67d4",
+        "bytes": 21702,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/service/plugin_manager.go",
+        "sha256": "626b6e7f09d6162b11155482edeba872eed544abe5dd47de5879593f32688a01",
+        "bytes": 48249,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/service/plugin_manifest.go",
+        "sha256": "de4576bce82c773f30d37df408986c9895843b77d076d2e78c2fffecaa4872d5",
+        "bytes": 10048,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/service/plugin_runtime.go",
+        "sha256": "65b61d29197f88af3d76461580623d1f6c2e91e69cf8de9cafcb740635a391b9",
+        "bytes": 19039,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/internal/service/plugin_telemetry_test.go",
+        "sha256": "5fa592fd267f448e3015583c1f9a260a4da1a5d2b8f91b30d6198a0afc21848d",
+        "bytes": 26447,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/service/user_telemetry.go",
+        "sha256": "18e0b459a5a9524a05c012e80e1de003e8fbde0cda41d0f0a934b9b214febb87",
+        "bytes": 9566,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/service/user_telemetry_credentials.go",
+        "sha256": "1bb82c1465b576152f0c0e77f752c53abf4096c107f8c49c9597e3080b3a440c",
+        "bytes": 1482,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/service/user_telemetry_credentials_test.go",
+        "sha256": "778829b639b28e490f905853bf62bd2eaa72f88f2c85aaeb1a5b3c769077149f",
+        "bytes": 693,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/service/user_telemetry_test.go",
+        "sha256": "9b3d887bbe1d429323233e0c3c39fff16192438f85e22046e7b7a0bfa62b44ca",
+        "bytes": 24539,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/internal/service/wire.go",
+        "sha256": "350b116aacc512da9630554486d6f4b660543b3a8cc1d02fda35933dfdb86786",
+        "bytes": 41557,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/migrations/242_user_telemetry_credentials.sql",
+        "sha256": "3598ab9950a7cf0c89e98695467740b63636d51f5fbff5c529b4ddc86d65ca68",
+        "bytes": 712,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/pkg/pluginapi/v1/manifest.schema.json",
+        "sha256": "631ab4108faefceaec7afdf8e56745bf551507f2ad49b6dfd7f016e4417cd355",
+        "bytes": 5346,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/pkg/pluginapi/v1/runtime.go",
+        "sha256": "201b788e86400a2cf3a1bf55cc5088a92d4985ed103263fea5709aa0a0fe36a1",
+        "bytes": 3356,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "backend/pkg/pluginapi/v1/user_telemetry.go",
+        "sha256": "80df5a40c680f71dc592b7ddace634e067181efe5035c7f2669fd6a1831f2e63",
+        "bytes": 15789,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/pkg/pluginapi/v1/user_telemetry.proto",
+        "sha256": "a29c97a245770f66fb7fee3d07f008c81615d49942d650f4acc9992a30d39c0c",
+        "bytes": 914,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/pkg/usertelemetry/contract.go",
+        "sha256": "5427b6802d1ccb69a596136b40aa461c2105adfb412b1a607da5676556ec38f9",
+        "bytes": 5102,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "backend/pkg/usertelemetry/contract_test.go",
+        "sha256": "c430c412c8b00a31d1af215cd7550b9868c7593d9475bbce270bbf5304e2f085",
+        "bytes": 948,
+        "executable": false,
+        "change": "added"
+      },
+      {
+        "path": "frontend/src/api/admin/plugins.ts",
+        "sha256": "266f9433523064ecc8992ad28a5c35d167abf79b0e8b4258d16de3ddf06d259f",
+        "bytes": 4204,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "frontend/src/i18n/locales/en/admin/plugins.ts",
+        "sha256": "3fd13f97a0b46207a6c100416f8de93de96433aadd630d57d708202ef930ac60",
+        "bytes": 3159,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "frontend/src/i18n/locales/zh/admin/plugins.ts",
+        "sha256": "f2485fe80b88e7f6af4aa5612baa6b996034dee37e65d8d9b73e161aff7ccd5b",
+        "bytes": 2944,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "frontend/src/views/admin/PluginsView.vue",
+        "sha256": "0a8cb0c2c194560b804b0f6858b54d2362bcdffad0097f7a8c5bc77a5466ae57",
+        "bytes": 26202,
+        "executable": false,
+        "change": "modified"
+      },
+      {
+        "path": "frontend/src/views/admin/__tests__/PluginsView.spec.ts",
+        "sha256": "8dcecb0a57a9071a9c820f1717bae4f04c20626ff965efbbfbce9527af4abcb1",
+        "bytes": 14567,
+        "executable": false,
+        "change": "modified"
+      }
+    ]
+  },
+  "clean_apply_verification": {
+    "initial_clean_baseline_copy": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline",
+    "final_clean_baseline_copy": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/final-clean-apply",
+    "initial_commands": [
+      [
+        "git",
+        "apply",
+        "--check",
+        "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/sub2api-user-telemetry-host.patch"
+      ],
+      [
+        "git",
+        "apply",
+        "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/sub2api-user-telemetry-host.patch"
+      ]
+    ],
+    "final_commands": [
+      {
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/final-clean-apply",
+        "command": [
+          "git",
+          "checkout",
+          "--detach",
+          "--quiet",
+          "b8dece9000c68815a5b867ca5a1e6f236e173905"
+        ],
+        "exit_code": 0
+      },
+      {
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/final-clean-apply",
+        "command": [
+          "git",
+          "status",
+          "--porcelain"
+        ],
+        "exit_code": 0
+      },
+      {
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/final-clean-apply",
+        "command": [
+          "git",
+          "apply",
+          "--check",
+          "--whitespace=error",
+          "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/sub2api-user-telemetry-host.patch"
+        ],
+        "exit_code": 0
+      },
+      {
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/final-clean-apply",
+        "command": [
+          "git",
+          "apply",
+          "--whitespace=error",
+          "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/sub2api-user-telemetry-host.patch"
+        ],
+        "exit_code": 0
+      },
+      {
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/final-clean-apply",
+        "command": [
+          "git",
+          "diff",
+          "--name-only",
+          "b8dece9000c68815a5b867ca5a1e6f236e173905"
+        ],
+        "exit_code": 0
+      },
+      {
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/final-clean-apply",
+        "command": [
+          "git",
+          "ls-files",
+          "--others",
+          "--exclude-standard"
+        ],
+        "exit_code": 0
+      },
+      {
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/final-clean-apply",
+        "command": [
+          "git",
+          "diff",
+          "--check",
+          "b8dece9000c68815a5b867ca5a1e6f236e173905"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "tested_applied_copy_matches_final_applied_copy": true,
+    "baseline_source_not_changed": true
+  },
+  "compilation_and_tests": {
+    "all_required_commands_passed": true,
+    "tool_versions": {
+      "go": "go1.27.0 darwin/arm64",
+      "node": "v26.0.0",
+      "vitest": "2.1.9",
+      "typescript": "5.6.3",
+      "vite": "5.4.21"
+    },
+    "backend_go_build_tags": "default (no embed tag)",
+    "backend_test_pass_events_including_subtests": 158,
+    "backend_failed_test_events": 0,
+    "backend_skipped_test_events": 2,
+    "skipped_real_postgres_tests": [
+      "TestUserTelemetryCredentialPostgresIsolationPaginationAndRevocation",
+      "TestUserTelemetryRealPostgresRecordedUsage"
+    ],
+    "skip_reason": "No isolated PostgreSQL DSN provided; external datastore environment was deliberately not inherited. No Linux acceptance or production access was repeated.",
+    "plugin_ui_bridge_passed": 8,
+    "plugin_ui_bridge_failed": 0,
+    "frontend_plugins_view_tests_passed": 14,
+    "frontend_i18n_completeness_tests_passed": 3,
+    "frontend_failed_tests": 0,
+    "frontend_pending_tests": 0,
+    "frontend_build_output": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/frontend-build",
+    "commands": [
+      {
+        "name": "go-build",
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/backend",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "4",
+          "./..."
+        ],
+        "exit_code": 0,
+        "duration_seconds": 24.348,
+        "log": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/go-build.log"
+      },
+      {
+        "name": "go-telemetry-tests",
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/backend",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "4",
+          "-count=1",
+          "-timeout=120s",
+          "-json",
+          "-run",
+          "UserTelemetry|Telemetry",
+          "./internal/service",
+          "./internal/repository",
+          "./internal/handler/admin",
+          "./pkg/pluginapi/v1",
+          "./pkg/usertelemetry"
+        ],
+        "exit_code": 0,
+        "duration_seconds": 22.522,
+        "log": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/go-telemetry-tests.log",
+        "test_pass_count": 101,
+        "test_fail_count": 0,
+        "test_skip_count": 2,
+        "skipped_tests": [
+          "TestUserTelemetryCredentialPostgresIsolationPaginationAndRevocation",
+          "TestUserTelemetryRealPostgresRecordedUsage"
+        ]
+      },
+      {
+        "name": "go-plugin-tests",
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/backend",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "4",
+          "-count=1",
+          "-timeout=120s",
+          "-json",
+          "./cmd/user-telemetry-plugin/..."
+        ],
+        "exit_code": 0,
+        "duration_seconds": 1.082,
+        "log": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/go-plugin-tests.log",
+        "test_pass_count": 57,
+        "test_fail_count": 0,
+        "test_skip_count": 0,
+        "skipped_tests": []
+      },
+      {
+        "name": "ui-bridge-tests",
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/backend",
+        "command": [
+          "node",
+          "--test",
+          "cmd/user-telemetry-plugin/ui/bridge.test.cjs"
+        ],
+        "exit_code": 0,
+        "duration_seconds": 0.331,
+        "log": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/ui-bridge-tests.log"
+      },
+      {
+        "name": "frontend-focused-tests-direct",
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend",
+        "command": [
+          "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend/node_modules/.bin/vitest",
+          "run",
+          "src/views/admin/__tests__/PluginsView.spec.ts",
+          "src/i18n/__tests__/localeKeyCompleteness.spec.ts",
+          "--reporter=json",
+          "--outputFile=/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/frontend-focused-tests-direct.json"
+        ],
+        "exit_code": 0,
+        "duration_seconds": 5.311,
+        "log": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/frontend-focused-tests-direct.log",
+        "test_pass_count": 17,
+        "test_fail_count": 0,
+        "test_pending_count": 0,
+        "per_file": [
+          {
+            "file": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend/src/i18n/__tests__/localeKeyCompleteness.spec.ts",
+            "status": "passed",
+            "tests": 3
+          },
+          {
+            "file": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend/src/views/admin/__tests__/PluginsView.spec.ts",
+            "status": "passed",
+            "tests": 14
+          }
+        ]
+      },
+      {
+        "name": "frontend-typecheck-direct",
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend",
+        "command": [
+          "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend/node_modules/.bin/vue-tsc",
+          "-b"
+        ],
+        "exit_code": 0,
+        "duration_seconds": 15.063,
+        "log": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/frontend-typecheck-direct.log"
+      },
+      {
+        "name": "frontend-build-direct",
+        "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend",
+        "command": [
+          "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend/node_modules/.bin/vite",
+          "build",
+          "--outDir",
+          "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/frontend-build"
+        ],
+        "exit_code": 0,
+        "duration_seconds": 16.884,
+        "log": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/frontend-build-direct.log"
+      }
+    ],
+    "frontend_build_warnings": [
+      "Some chunks exceed Vite 500 kB size warning; build succeeds."
+    ]
+  },
+  "diagnostic_attempts": {
+    "initial_pnpm_launcher_attempt": {
+      "name": "frontend-focused-tests",
+      "cwd": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/baseline/frontend",
+      "command": [
+        "pnpm",
+        "exec",
+        "vitest",
+        "run",
+        "src/views/admin/__tests__/PluginsView.spec.ts",
+        "src/i18n/__tests__/localeKeyCompleteness.spec.ts",
+        "--reporter=json",
+        "--outputFile=/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/frontend-focused-tests.json"
+      ],
+      "exit_code": 1,
+      "duration_seconds": 0.604,
+      "log": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d/frontend-focused-tests.log"
+    },
+    "error": "ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY",
+    "recovery": "Use existing node_modules/.bin Vitest, vue-tsc and Vite directly, without reinstalling dependencies. These successful commands run against applied baseline source.",
+    "initial_failed_attempt_not_counted_as_success": true
+  },
+  "scope_guards": {
+    "production_access": false,
+    "linux_acceptance_rerun": false,
+    "s2plugin_changed_or_resigned": false,
+    "s2plugin_sha256_observed": "ff8b23febdf121b6f14824e185c612af08f6163050ef92fe258d16b9c2531bb0",
+    "release_README_ACCEPTANCE_manifest_SHA256SUMS_written": false,
+    "production_QA_docs_written": false,
+    "canonical_source_written": false,
+    "persistent_release_files_written": [
+      "sub2api-user-telemetry-host.patch",
+      "patch-verification.json"
+    ]
+  },
+  "local_evidence_directory": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/patch-qa-20261004/run-616277ad5d"
+}

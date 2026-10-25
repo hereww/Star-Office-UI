@@ -1,0 +1,1057 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "status": "qa_failed_keep_candidates",
+  "technicalPassed": false,
+  "humanApproved": false,
+  "visualApproved": false,
+  "newImageGenerationCalls": 0,
+  "expressionPNGModified": false,
+  "alphaMaskModified": false,
+  "newExpressionsPainted": false,
+  "runtimeModified": false,
+  "headAnchorModified": false,
+  "base": {
+    "size": [
+      192,
+      192
+    ],
+    "alphaMinimum": 0,
+    "alphaMaximum": 255,
+    "transparentPixels": 26332,
+    "alphaBytesChangedVsOriginalBase": 0,
+    "changedOutsideNeutralPatch": 0,
+    "oldMouthResidualInnerDarkPixels": 0
+  },
+  "fixedFaceRect": [
+    38,
+    64,
+    90,
+    58
+  ],
+  "fixedFaceClipEllipse": [
+    76,
+    93,
+    32,
+    27
+  ],
+  "perFrameTransforms": false,
+  "checkedActionFrames": 48,
+  "invariantMaxima": {
+    "bodyOutsideFaceRectChangedPixels": 0,
+    "outsideCommonEllipseChangedPixels": 0,
+    "originalOuterContourRGBAChangedPixels": 0,
+    "alphaSilhouetteChangedPixels": 621,
+    "featureAlphaOutsideContourSafeMask": 0,
+    "visibleRGBChangedVsGeneratedSource": 0,
+    "visibleAlphaChangedVsGeneratedSource": 0
+  },
+  "source": {
+    "raw": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/originals/idle-left-original.png",
+    "rawSize": [
+      1802,
+      873
+    ],
+    "rawSha256": "231f9a50b17e2d0375c2000461d6fa3fb048ddd7742a4b6f7b90b94a4f5be619",
+    "normalized": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/face-idle.png",
+    "normalizationMatchesRawSource": true,
+    "detector": "Broader [8,24,48,54] source oral ROI; alpha-boundary exclusion only; nearest oral dark component. Tongue uses separate pink threshold. No build expression mask reuse."
+  },
+  "idleMouth": {
+    "all12CavityDarkRetained": true,
+    "all12TonguePinkRetained": true,
+    "all12ClosedEyelidsRetained": true,
+    "noDoubleMouth": false,
+    "removedRawDarkJawPerimeterIsNotMouth": true,
+    "frames": [
+      {
+        "frame": 0,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 312,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 64,
+        "retainedCavityDarkPixels": 64,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 8,
+        "retainedTonguePinkPixels": 8,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 51,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          18,
+          33,
+          27,
+          44
+        ],
+        "cavitySize": [
+          9,
+          11
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 1,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 330,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 70,
+        "retainedCavityDarkPixels": 70,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 9,
+        "retainedTonguePinkPixels": 9,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 51,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          18,
+          33,
+          28,
+          44
+        ],
+        "cavitySize": [
+          10,
+          11
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 2,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 352,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 87,
+        "retainedCavityDarkPixels": 87,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 15,
+        "retainedTonguePinkPixels": 15,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 51,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          18,
+          32,
+          29,
+          44
+        ],
+        "cavitySize": [
+          11,
+          12
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 3,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 371,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 94,
+        "retainedCavityDarkPixels": 94,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 18,
+        "retainedTonguePinkPixels": 18,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 52,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          18,
+          31,
+          30,
+          44
+        ],
+        "cavitySize": [
+          12,
+          13
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 4,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 479,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 165,
+        "retainedCavityDarkPixels": 165,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 36,
+        "retainedTonguePinkPixels": 36,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 52,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          18,
+          29,
+          34,
+          46
+        ],
+        "cavitySize": [
+          16,
+          17
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 5,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 557,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 220,
+        "retainedCavityDarkPixels": 220,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 57,
+        "retainedTonguePinkPixels": 57,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 52,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          18,
+          29,
+          37,
+          47
+        ],
+        "cavitySize": [
+          19,
+          18
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 6,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 583,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 262,
+        "retainedCavityDarkPixels": 262,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 47,
+        "retainedTonguePinkPixels": 47,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 52,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          18,
+          28,
+          39,
+          47
+        ],
+        "cavitySize": [
+          21,
+          19
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 7,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 525,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 195,
+        "retainedCavityDarkPixels": 195,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 48,
+        "retainedTonguePinkPixels": 48,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 51,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          19,
+          29,
+          37,
+          47
+        ],
+        "cavitySize": [
+          18,
+          18
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 8,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 446,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 149,
+        "retainedCavityDarkPixels": 149,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 35,
+        "retainedTonguePinkPixels": 35,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 52,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          19,
+          31,
+          35,
+          46
+        ],
+        "cavitySize": [
+          16,
+          15
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 9,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 407,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 127,
+        "retainedCavityDarkPixels": 127,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 21,
+        "retainedTonguePinkPixels": 21,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 52,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          19,
+          31,
+          33,
+          45
+        ],
+        "cavitySize": [
+          14,
+          14
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 10,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 347,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 93,
+        "retainedCavityDarkPixels": 93,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 14,
+        "retainedTonguePinkPixels": 14,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 52,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          19,
+          32,
+          30,
+          45
+        ],
+        "cavitySize": [
+          11,
+          13
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      },
+      {
+        "frame": 11,
+        "bodyOutsideFaceRectChangedPixels": 0,
+        "outsideCommonEllipseChangedPixels": 0,
+        "originalOuterContourRGBAChangedPixels": 0,
+        "alphaSilhouetteChangedPixels": 326,
+        "featureAlphaOutsideContourSafeMask": 0,
+        "visibleRGBChangedVsGeneratedSource": 0,
+        "visibleAlphaChangedVsGeneratedSource": 0,
+        "sourceCavityDarkPixels": 77,
+        "retainedCavityDarkPixels": 77,
+        "missingCavityDarkPixels": 0,
+        "sourceTonguePinkPixels": 6,
+        "retainedTonguePinkPixels": 6,
+        "missingTonguePinkPixels": 0,
+        "sourceClosedEyelidPixels": 52,
+        "missingClosedEyelidPixels": 0,
+        "cavityBoundingBoxHalfOpen": [
+          18,
+          33,
+          28,
+          45
+        ],
+        "cavitySize": [
+          10,
+          12
+        ],
+        "mouthDarkComponentCount": 2,
+        "noDoubleMouthTechnical": false
+      }
+    ]
+  },
+  "actions": {
+    "working": {
+      "atlasSize": [
+        360,
+        174
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameCount": 12,
+      "uniqueVisibleFrames": 12,
+      "uniqueComposedFrames": 12,
+      "genuineAlpha": false,
+      "auditAndMediaPNGIdentical": true,
+      "frames": [
+        {
+          "frame": 0,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 591,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 1,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 560,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 2,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 527,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 3,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 483,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 4,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 455,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 5,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 396,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 6,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 293,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 7,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 371,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 8,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 504,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 9,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 525,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 10,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 557,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 11,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 559,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        }
+      ]
+    },
+    "idle": {
+      "atlasSize": [
+        360,
+        174
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameCount": 12,
+      "uniqueVisibleFrames": 12,
+      "uniqueComposedFrames": 12,
+      "genuineAlpha": false,
+      "auditAndMediaPNGIdentical": true,
+      "frames": [
+        {
+          "frame": 0,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 312,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 1,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 330,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 2,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 352,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 3,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 371,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 4,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 479,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 5,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 557,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 6,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 583,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 7,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 525,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 8,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 446,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 9,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 407,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 10,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 347,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 11,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 326,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        }
+      ]
+    },
+    "syncing": {
+      "atlasSize": [
+        360,
+        174
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameCount": 12,
+      "uniqueVisibleFrames": 12,
+      "uniqueComposedFrames": 12,
+      "genuineAlpha": false,
+      "auditAndMediaPNGIdentical": true,
+      "frames": [
+        {
+          "frame": 0,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 604,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 1,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 598,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 2,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 561,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 3,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 540,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 4,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 466,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 5,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 285,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 6,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 220,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 7,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 476,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 8,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 512,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 9,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 588,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 10,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 600,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 11,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 621,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        }
+      ]
+    },
+    "error": {
+      "atlasSize": [
+        360,
+        174
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameCount": 12,
+      "uniqueVisibleFrames": 12,
+      "uniqueComposedFrames": 12,
+      "genuineAlpha": false,
+      "auditAndMediaPNGIdentical": true,
+      "frames": [
+        {
+          "frame": 0,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 558,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 1,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 550,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 2,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 557,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 3,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 560,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 4,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 568,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 5,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 559,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 6,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 567,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 7,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 568,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 8,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 571,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 9,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 577,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 10,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 577,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        },
+        {
+          "frame": 11,
+          "bodyOutsideFaceRectChangedPixels": 0,
+          "outsideCommonEllipseChangedPixels": 0,
+          "originalOuterContourRGBAChangedPixels": 0,
+          "alphaSilhouetteChangedPixels": 567,
+          "featureAlphaOutsideContourSafeMask": 0,
+          "visibleRGBChangedVsGeneratedSource": 0,
+          "visibleAlphaChangedVsGeneratedSource": 0
+        }
+      ]
+    }
+  },
+  "protectedPreviousInputs": {
+    "count": 133,
+    "changed": [],
+    "allUnchanged": true
+  },
+  "readOnlyPreview": {
+    "furnitureModified": false,
+    "placement": [
+      73.4,
+      23.60000000000001,
+      115.19999999999999,
+      115.19999999999999
+    ],
+    "furnitureHashes": {
+      "back": "9382971db49f470adbed881446f6d98719c9fbfe1f558baa7307ab6e61e95da6",
+      "front": "aa2cf4ad019e825fe03aacff0de8bb5eb295dd9614d9292c7e25eca78bd1137a"
+    },
+    "handsAcceptance": "No hand-animation assets in this package. Static paws unchanged; final workstation hides feet. This is not a runtime execution audit."
+  },
+  "smallMouthRisk": {
+    "frame0CavityLogicalSize": [
+      9,
+      11
+    ],
+    "frame0ProjectedSizeAtScale06": [
+      5.3999999999999995,
+      6.6
+    ],
+    "playerFirstFrameHoldVerifiedReadOnly": true,
+    "idleClockFrames": 36,
+    "frame0SamplesPer36Ticks": 25,
+    "explanation": "Source frame 0 has a smaller but open mouth. With the existing player it is used on tick 0 and ticks 12..35, so small overview scale can weaken sleep readability; not removed by alpha."
+  },
+  "headAnchorBoundary": {
+    "assetManifestPreserved": [
+      78,
+      94
+    ],
+    "mainAssetsReadOnly": [
+      96,
+      16
+    ],
+    "owner": "main agent; do not overwrite the main integration headAnchor from this older asset metadata"
+  },
+  "visualObservation": "Source and existing 12-frame contacts inspected: eyelids closed, black oral cavity and pink tongue visible; no generated source mouth was lost. Main agent retains final human visual acceptance.",
+  "artifacts": {
+    "idle-source-alpha-composite-contact.png": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-mouth-check-v1/idle-source-alpha-composite-contact.png",
+    "idle-all-12-mouth-source-mask-composite.png": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-mouth-check-v1/idle-all-12-mouth-source-mask-composite.png",
+    "idle-all-12-workstation-contact-2x.png": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-mouth-check-v1/idle-all-12-workstation-contact-2x.png",
+    "four-action-composite-contact.png": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-mouth-check-v1/four-action-composite-contact.png"
+  },
+  "currentTurnPreservation": {
+    "previousFileCount": 241,
+    "unchangedFileCount": 241,
+    "intentionalMetadataChanges": [],
+    "unexpectedChanges": [],
+    "allCandidatePNGsAndSourcesUnchanged": true,
+    "originalManifestCopies": [
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-mouth-check-v1/manifest-before-audit.json",
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-mouth-check-v1/manifest-before-media.json"
+    ]
+  }
+}

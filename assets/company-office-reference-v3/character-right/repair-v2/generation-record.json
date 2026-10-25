@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_generation / image_gen",
+  "newCalls": 1,
+  "originalToolOutput": "/Users/hepingyu/.codex/generated_images/01a0fbaa-c403-7a11-8e6c-3afe5e0ef6cf/call_j6LhE80KgWRX3UN4jxD7AIzj.png",
+  "savedOriginal": "originals/neutral-base-original.png",
+  "prompt": "prompts/neutral-base.txt",
+  "reference": "references/base-right-4x.png",
+  "sourceFaceAtlases": [
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-right/face-working-candidate.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-right/face-idle-candidate.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-right/face-syncing-candidate.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-right/face-error-candidate.png"
+  ],
+  "neutralOriginalSha256": "ea76f1a7369bb682190b4d3debaf20ae4fedbcc64dcf8aa97fc3d217f9c6b843"
+}

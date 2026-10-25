@@ -1,0 +1,96 @@
+{
+  "sourceHasClearlyOpenMouth": true,
+  "method": "Same coordinate source/trim/neutral-underlay comparison; rows source frames 0,5,11; columns source face, v2 trim, v2 composite.",
+  "frameMouthRegion": [
+    50,
+    14,
+    24,
+    39
+  ],
+  "counts": [
+    {
+      "frame": 0,
+      "sourceMouthRoiDarkPixels": 149,
+      "v2DarkRetained": 99,
+      "sourceMuzzlePalePixels": 474,
+      "v2MuzzlePaleRetained": 2
+    },
+    {
+      "frame": 1,
+      "sourceMouthRoiDarkPixels": 176,
+      "v2DarkRetained": 125,
+      "sourceMuzzlePalePixels": 447,
+      "v2MuzzlePaleRetained": 3
+    },
+    {
+      "frame": 2,
+      "sourceMouthRoiDarkPixels": 208,
+      "v2DarkRetained": 156,
+      "sourceMuzzlePalePixels": 419,
+      "v2MuzzlePaleRetained": 1
+    },
+    {
+      "frame": 3,
+      "sourceMouthRoiDarkPixels": 232,
+      "v2DarkRetained": 181,
+      "sourceMuzzlePalePixels": 395,
+      "v2MuzzlePaleRetained": 0
+    },
+    {
+      "frame": 4,
+      "sourceMouthRoiDarkPixels": 251,
+      "v2DarkRetained": 203,
+      "sourceMuzzlePalePixels": 370,
+      "v2MuzzlePaleRetained": 4
+    },
+    {
+      "frame": 5,
+      "sourceMouthRoiDarkPixels": 285,
+      "v2DarkRetained": 234,
+      "sourceMuzzlePalePixels": 337,
+      "v2MuzzlePaleRetained": 3
+    },
+    {
+      "frame": 6,
+      "sourceMouthRoiDarkPixels": 264,
+      "v2DarkRetained": 215,
+      "sourceMuzzlePalePixels": 364,
+      "v2MuzzlePaleRetained": 4
+    },
+    {
+      "frame": 7,
+      "sourceMouthRoiDarkPixels": 222,
+      "v2DarkRetained": 174,
+      "sourceMuzzlePalePixels": 406,
+      "v2MuzzlePaleRetained": 2
+    },
+    {
+      "frame": 8,
+      "sourceMouthRoiDarkPixels": 216,
+      "v2DarkRetained": 172,
+      "sourceMuzzlePalePixels": 407,
+      "v2MuzzlePaleRetained": 1
+    },
+    {
+      "frame": 9,
+      "sourceMouthRoiDarkPixels": 197,
+      "v2DarkRetained": 150,
+      "sourceMuzzlePalePixels": 425,
+      "v2MuzzlePaleRetained": 1
+    },
+    {
+      "frame": 10,
+      "sourceMouthRoiDarkPixels": 193,
+      "v2DarkRetained": 148,
+      "sourceMuzzlePalePixels": 429,
+      "v2MuzzlePaleRetained": 1
+    },
+    {
+      "frame": 11,
+      "sourceMouthRoiDarkPixels": 162,
+      "v2DarkRetained": 115,
+      "sourceMuzzlePalePixels": 463,
+      "v2MuzzlePaleRetained": 0
+    }
+  ]
+}

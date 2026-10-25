@@ -1,0 +1,1539 @@
+{
+  "date": "2026-10-02",
+  "previewUrl": "http://127.0.0.1:63601/",
+  "checks": [
+    {
+      "name": "initial-load",
+      "result": {
+        "ready": true,
+        "previewOnly": true,
+        "mapArtworkChanged": false,
+        "mapSize": [
+          2048,
+          2816
+        ],
+        "stations": 36,
+        "businessState": "writing",
+        "mode": "seated",
+        "station": "desk-26",
+        "position": [
+          1424,
+          1568
+        ],
+        "direction": "down",
+        "walkPose": 0,
+        "walkFramesPerDirection": 2,
+        "full12FrameWalkAvailable": false,
+        "walkScale": 1.5,
+        "office": {
+          "state": "writing",
+          "action": "working",
+          "frame": 4,
+          "faceFrame": 4,
+          "frameCount": 12,
+          "fps": 12,
+          "animationMode": "expression-only",
+          "faceClockFrames": 60,
+          "handsRendered": false,
+          "bodyFixed": true,
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "faceEnabled": true,
+          "visibleCharacter": true,
+          "view": "character"
+        },
+        "remainingPath": [],
+        "target": null,
+        "collisionViolations": 0,
+        "trace": [],
+        "arrivals": 0,
+        "auto": false,
+        "autoIndex": 0,
+        "paused": false,
+        "view": "follow",
+        "camera": {
+          "x": 1420,
+          "y": 1610,
+          "zoom": 0.7333333333333333,
+          "custom": false
+        },
+        "geometry": {
+          "testedStations": 36,
+          "reachableStations": 36,
+          "roundTrips": 72,
+          "failed": []
+        }
+      }
+    },
+    {
+      "name": "walking-mid-route",
+      "result": {
+        "ready": true,
+        "previewOnly": true,
+        "mapArtworkChanged": false,
+        "mapSize": [
+          2048,
+          2816
+        ],
+        "stations": 36,
+        "businessState": "writing",
+        "mode": "walking",
+        "station": "desk-26",
+        "position": [
+          1280,
+          1552
+        ],
+        "direction": "left",
+        "walkPose": 1,
+        "walkFramesPerDirection": 2,
+        "full12FrameWalkAvailable": false,
+        "walkScale": 1.5,
+        "office": {
+          "state": "writing",
+          "action": "working",
+          "frame": 0,
+          "faceFrame": 0,
+          "frameCount": 12,
+          "fps": 12,
+          "animationMode": "expression-only",
+          "faceClockFrames": 60,
+          "handsRendered": false,
+          "bodyFixed": true,
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "faceEnabled": true,
+          "visibleCharacter": true,
+          "view": "character"
+        },
+        "remainingPath": [
+          [
+            1056,
+            1552
+          ],
+          [
+            1056,
+            1312
+          ],
+          [
+            992,
+            1312
+          ],
+          [
+            992,
+            1280
+          ],
+          [
+            928,
+            1280
+          ],
+          [
+            928,
+            1248
+          ]
+        ],
+        "target": {
+          "station": null,
+          "label": "茶水区",
+          "point": [
+            928,
+            1248
+          ]
+        },
+        "collisionViolations": 0,
+        "trace": [
+          {
+            "from": [
+              1424,
+              1568
+            ],
+            "to": [
+              1424,
+              1552
+            ],
+            "direction": "up"
+          },
+          {
+            "from": [
+              1424,
+              1552
+            ],
+            "to": [
+              1280,
+              1552
+            ],
+            "direction": "left"
+          }
+        ],
+        "arrivals": 6,
+        "auto": false,
+        "autoIndex": 0,
+        "paused": true,
+        "view": "follow",
+        "camera": {
+          "x": 1297.7456065651845,
+          "y": 1479.7197860373967,
+          "zoom": 0.95,
+          "custom": false
+        },
+        "geometry": {
+          "testedStations": 36,
+          "reachableStations": 36,
+          "roundTrips": 72,
+          "failed": []
+        }
+      }
+    },
+    {
+      "name": "desktop-overview",
+      "result": {
+        "ready": true,
+        "previewOnly": true,
+        "mapArtworkChanged": false,
+        "mapSize": [
+          2048,
+          2816
+        ],
+        "stations": 36,
+        "businessState": "writing",
+        "mode": "walking",
+        "station": "desk-26",
+        "position": [
+          1280,
+          1552
+        ],
+        "direction": "left",
+        "walkPose": 1,
+        "walkFramesPerDirection": 2,
+        "full12FrameWalkAvailable": false,
+        "walkScale": 1.5,
+        "office": {
+          "state": "writing",
+          "action": "working",
+          "frame": 0,
+          "faceFrame": 0,
+          "frameCount": 12,
+          "fps": 12,
+          "animationMode": "expression-only",
+          "faceClockFrames": 60,
+          "handsRendered": false,
+          "bodyFixed": true,
+          "bodyPlacement": [
+            37.2,
+            -8,
+            115.19999999999999,
+            115.19999999999999
+          ],
+          "seatAnchor": [
+            96,
+            94
+          ],
+          "faceEnabled": true,
+          "visibleCharacter": true,
+          "view": "character"
+        },
+        "remainingPath": [
+          [
+            1056,
+            1552
+          ],
+          [
+            1056,
+            1312
+          ],
+          [
+            992,
+            1312
+          ],
+          [
+            992,
+            1280
+          ],
+          [
+            928,
+            1280
+          ],
+          [
+            928,
+            1248
+          ]
+        ],
+        "target": {
+          "station": null,
+          "label": "茶水区",
+          "point": [
+            928,
+            1248
+          ]
+        },
+        "collisionViolations": 0,
+        "trace": [
+          {
+            "from": [
+              1424,
+              1568
+            ],
+            "to": [
+              1424,
+              1552
+            ],
+            "direction": "up"
+          },
+          {
+            "from": [
+              1424,
+              1552
+            ],
+            "to": [
+              1280,
+              1552
+            ],
+            "direction": "left"
+          }
+        ],
+        "arrivals": 6,
+        "auto": false,
+        "autoIndex": 0,
+        "paused": true,
+        "view": "overview",
+        "camera": {
+          "x": 1052,
+          "y": 1436,
+          "zoom": 0.2726586102719033,
+          "custom": false
+        },
+        "geometry": {
+          "testedStations": 36,
+          "reachableStations": 36,
+          "roundTrips": 72,
+          "failed": []
+        }
+      }
+    },
+    {
+      "name": "wall-click-rejected",
+      "samePosition": true,
+      "sameTarget": true,
+      "toast": "这里是墙体、家具或地图外侧，请点击通道。"
+    }
+  ],
+  "screenshots": [
+    "preview-working-desktop.jpg",
+    "preview-walking-desktop.jpg",
+    "preview-overview-desktop.jpg",
+    "preview-mobile-map.jpg",
+    "preview-mobile-controls.jpg"
+  ],
+  "expressions": {
+    "checkedFrames": 48,
+    "states": [
+      {
+        "state": "writing",
+        "frames": [
+          {
+            "frame": 0,
+            "file": "qa-frames/writing-00.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 0,
+            "file": "qa-frames/writing-01.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 1,
+            "file": "qa-frames/writing-02.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 2,
+            "file": "qa-frames/writing-03.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 3,
+            "file": "qa-frames/writing-04.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 4,
+            "file": "qa-frames/writing-05.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 5,
+            "file": "qa-frames/writing-06.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 6,
+            "file": "qa-frames/writing-07.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 7,
+            "file": "qa-frames/writing-08.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 8,
+            "file": "qa-frames/writing-09.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 9,
+            "file": "qa-frames/writing-10.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 10,
+            "file": "qa-frames/writing-11.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          }
+        ]
+      },
+      {
+        "state": "idle",
+        "frames": [
+          {
+            "frame": 0,
+            "file": "qa-frames/idle-00.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 1,
+            "file": "qa-frames/idle-01.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 2,
+            "file": "qa-frames/idle-02.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 3,
+            "file": "qa-frames/idle-03.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 4,
+            "file": "qa-frames/idle-04.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 5,
+            "file": "qa-frames/idle-05.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 6,
+            "file": "qa-frames/idle-06.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 7,
+            "file": "qa-frames/idle-07.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 8,
+            "file": "qa-frames/idle-08.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 9,
+            "file": "qa-frames/idle-09.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 10,
+            "file": "qa-frames/idle-10.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 11,
+            "file": "qa-frames/idle-11.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          }
+        ]
+      },
+      {
+        "state": "syncing",
+        "frames": [
+          {
+            "frame": 0,
+            "file": "qa-frames/syncing-00.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 1,
+            "file": "qa-frames/syncing-01.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 2,
+            "file": "qa-frames/syncing-02.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 3,
+            "file": "qa-frames/syncing-03.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 4,
+            "file": "qa-frames/syncing-04.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 5,
+            "file": "qa-frames/syncing-05.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 6,
+            "file": "qa-frames/syncing-06.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 7,
+            "file": "qa-frames/syncing-07.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 8,
+            "file": "qa-frames/syncing-08.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 9,
+            "file": "qa-frames/syncing-09.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 10,
+            "file": "qa-frames/syncing-10.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 11,
+            "file": "qa-frames/syncing-11.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          }
+        ]
+      },
+      {
+        "state": "error",
+        "frames": [
+          {
+            "frame": 0,
+            "file": "qa-frames/error-00.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 1,
+            "file": "qa-frames/error-01.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 2,
+            "file": "qa-frames/error-02.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 3,
+            "file": "qa-frames/error-03.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 4,
+            "file": "qa-frames/error-04.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 5,
+            "file": "qa-frames/error-05.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 6,
+            "file": "qa-frames/error-06.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 7,
+            "file": "qa-frames/error-07.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 8,
+            "file": "qa-frames/error-08.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 9,
+            "file": "qa-frames/error-09.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 10,
+            "file": "qa-frames/error-10.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          },
+          {
+            "frame": 11,
+            "file": "qa-frames/error-11.jpg",
+            "bodyPlacement": [
+              37.2,
+              -8,
+              115.19999999999999,
+              115.19999999999999
+            ],
+            "handsRendered": false,
+            "bodyFixed": true
+          }
+        ]
+      }
+    ],
+    "detailBounds": {
+      "height": 200.1953125,
+      "viewportWidth": 1440,
+      "width": 286,
+      "x": 1121,
+      "y": 193.9375
+    }
+  },
+  "travel": [
+    {
+      "destination": "去茶水区",
+      "start": [
+        1424,
+        1568
+      ],
+      "final": [
+        928,
+        1248
+      ],
+      "mode": "standing",
+      "station": "desk-26",
+      "seenDirections": [
+        "left",
+        "up"
+      ],
+      "steps": 6,
+      "collisionViolations": 0,
+      "arrivals": 1
+    },
+    {
+      "destination": "去门厅",
+      "start": [
+        928,
+        1248
+      ],
+      "final": [
+        928,
+        2288
+      ],
+      "mode": "standing",
+      "station": "desk-26",
+      "seenDirections": [
+        "down"
+      ],
+      "steps": 7,
+      "collisionViolations": 0,
+      "arrivals": 2
+    },
+    {
+      "destination": "去西侧工位",
+      "start": [
+        928,
+        2288
+      ],
+      "final": [
+        784,
+        896
+      ],
+      "mode": "seated",
+      "station": "desk-15",
+      "seenDirections": [
+        "up",
+        "left",
+        "right"
+      ],
+      "steps": 11,
+      "collisionViolations": 0,
+      "arrivals": 3
+    },
+    {
+      "destination": "去小会议室",
+      "start": [
+        784,
+        896
+      ],
+      "final": [
+        768,
+        1840
+      ],
+      "mode": "standing",
+      "station": "desk-15",
+      "seenDirections": [
+        "down",
+        "right",
+        "up"
+      ],
+      "steps": 11,
+      "collisionViolations": 0,
+      "arrivals": 4
+    },
+    {
+      "destination": "去财务室",
+      "start": [
+        768,
+        1840
+      ],
+      "final": [
+        1264,
+        448
+      ],
+      "mode": "seated",
+      "station": "private-finance",
+      "seenDirections": [
+        "down",
+        "right",
+        "up",
+        "left"
+      ],
+      "steps": 16,
+      "collisionViolations": 0,
+      "arrivals": 5
+    },
+    {
+      "destination": "回主工位",
+      "final": [
+        1424,
+        1568
+      ],
+      "mode": "seated",
+      "station": "desk-26",
+      "steps": 12,
+      "collisionViolations": 0
+    }
+  ],
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "layout": {
+      "controls": [
+        {
+          "height": 44,
+          "label": "工作",
+          "width": 82.5
+        },
+        {
+          "height": 44,
+          "label": "休息",
+          "width": 82.5
+        },
+        {
+          "height": 44,
+          "label": "同步",
+          "width": 82.5
+        },
+        {
+          "height": 44,
+          "label": "异常",
+          "width": 82.5
+        },
+        {
+          "height": 44,
+          "label": "去茶水区",
+          "width": 170
+        },
+        {
+          "height": 44,
+          "label": "去门厅",
+          "width": 170
+        },
+        {
+          "height": 44,
+          "label": "去西侧工位",
+          "width": 170
+        },
+        {
+          "height": 44,
+          "label": "去小会议室",
+          "width": 170
+        },
+        {
+          "height": 44,
+          "label": "去财务室",
+          "width": 170
+        },
+        {
+          "height": 44,
+          "label": "回主工位",
+          "width": 170
+        }
+      ],
+      "height": 844,
+      "overflow": false,
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "physicalDeviceTested": false,
+    "drag": {
+      "tested": "browser-native-drag-not-physical-touch",
+      "cameraChanged": true,
+      "customCamera": true
+    },
+    "scaleAfterKey": {
+      "ready": true,
+      "previewOnly": true,
+      "mapArtworkChanged": false,
+      "mapSize": [
+        2048,
+        2816
+      ],
+      "stations": 36,
+      "businessState": "writing",
+      "mode": "walking",
+      "station": "desk-26",
+      "position": [
+        1280,
+        1552
+      ],
+      "direction": "left",
+      "walkPose": 1,
+      "walkFramesPerDirection": 2,
+      "full12FrameWalkAvailable": false,
+      "walkScale": 1.55,
+      "office": {
+        "state": "writing",
+        "action": "working",
+        "frame": 0,
+        "faceFrame": 0,
+        "frameCount": 12,
+        "fps": 12,
+        "animationMode": "expression-only",
+        "faceClockFrames": 60,
+        "handsRendered": false,
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.19999999999999,
+          115.19999999999999
+        ],
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "faceEnabled": true,
+        "visibleCharacter": true,
+        "view": "character"
+      },
+      "remainingPath": [
+        [
+          1056,
+          1552
+        ],
+        [
+          1056,
+          1312
+        ],
+        [
+          992,
+          1312
+        ],
+        [
+          992,
+          1280
+        ],
+        [
+          928,
+          1280
+        ],
+        [
+          928,
+          1248
+        ]
+      ],
+      "target": {
+        "station": null,
+        "label": "茶水区",
+        "point": [
+          928,
+          1248
+        ]
+      },
+      "collisionViolations": 0,
+      "trace": [
+        {
+          "from": [
+            1424,
+            1568
+          ],
+          "to": [
+            1424,
+            1552
+          ],
+          "direction": "up"
+        },
+        {
+          "from": [
+            1424,
+            1552
+          ],
+          "to": [
+            1280,
+            1552
+          ],
+          "direction": "left"
+        }
+      ],
+      "arrivals": 6,
+      "auto": false,
+      "autoIndex": 0,
+      "paused": true,
+      "view": "follow",
+      "camera": {
+        "x": 1164.0449438202247,
+        "y": 1574.0786516853932,
+        "zoom": 0.37083333333333335,
+        "custom": true
+      },
+      "geometry": {
+        "testedStations": 36,
+        "reachableStations": 36,
+        "roundTrips": 72,
+        "failed": []
+      }
+    }
+  },
+  "auto": {
+    "advancedSeconds": 80,
+    "states": [
+      "writing",
+      "syncing",
+      "idle",
+      "error"
+    ],
+    "modes": [
+      "walking",
+      "standing",
+      "seated"
+    ],
+    "directions": [
+      "left",
+      "up",
+      "down",
+      "right"
+    ],
+    "collisionViolations": 0,
+    "arrivals": 14,
+    "passed": true
+  },
+  "directStationClick": {
+    "target": "desk-27",
+    "screen": [
+      773,
+      607.4375
+    ],
+    "steps": 2,
+    "mode": "seated",
+    "station": "desk-27",
+    "passed": true
+  },
+  "console": [],
+  "finalBeforePlayback": {
+    "ready": true,
+    "previewOnly": true,
+    "mapArtworkChanged": false,
+    "mapSize": [
+      2048,
+      2816
+    ],
+    "stations": 36,
+    "businessState": "writing",
+    "mode": "seated",
+    "station": "desk-26",
+    "position": [
+      1424,
+      1568
+    ],
+    "direction": "left",
+    "walkPose": 0,
+    "walkFramesPerDirection": 2,
+    "full12FrameWalkAvailable": false,
+    "walkScale": 1.5,
+    "office": {
+      "state": "writing",
+      "action": "working",
+      "frame": 0,
+      "faceFrame": 0,
+      "frameCount": 12,
+      "fps": 12,
+      "animationMode": "expression-only",
+      "faceClockFrames": 60,
+      "handsRendered": false,
+      "bodyFixed": true,
+      "bodyPlacement": [
+        37.2,
+        -8,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "seatAnchor": [
+        96,
+        94
+      ],
+      "faceEnabled": true,
+      "visibleCharacter": true,
+      "view": "character"
+    },
+    "remainingPath": [],
+    "target": {
+      "station": "desk-26",
+      "label": "工位 26",
+      "point": [
+        1424,
+        1568
+      ]
+    },
+    "collisionViolations": 0,
+    "trace": [
+      {
+        "from": [
+          1632,
+          1568
+        ],
+        "to": [
+          1472,
+          1568
+        ],
+        "direction": "left"
+      },
+      {
+        "from": [
+          1472,
+          1568
+        ],
+        "to": [
+          1424,
+          1568
+        ],
+        "direction": "left"
+      }
+    ],
+    "arrivals": 17,
+    "auto": false,
+    "autoIndex": 3,
+    "paused": true,
+    "view": "follow",
+    "camera": {
+      "x": 1420,
+      "y": 1610,
+      "zoom": 0.95,
+      "custom": false
+    },
+    "geometry": {
+      "testedStations": 36,
+      "reachableStations": 36,
+      "roundTrips": 72,
+      "failed": []
+    }
+  },
+  "limitations": [
+    "四方向目前每方向仅A/B两姿势，不是完整12帧循环。",
+    "手机为390x844浏览器视口及原生鼠标拖动测试，未做物理手机触控测试。",
+    "截图为浏览器返回的有损JPEG，不用截图哈希证明像素固定；精确像素检查见pixel-qa.json。"
+  ],
+  "passed": true,
+  "finalPolish": {
+    "snapshot": {
+      "ready": true,
+      "previewOnly": true,
+      "mapArtworkChanged": false,
+      "mapSize": [
+        2048,
+        2816
+      ],
+      "stations": 36,
+      "businessState": "writing",
+      "mode": "seated",
+      "station": "desk-26",
+      "position": [
+        1424,
+        1568
+      ],
+      "direction": "down",
+      "walkPose": 0,
+      "walkFramesPerDirection": 2,
+      "full12FrameWalkAvailable": false,
+      "walkScale": 1.5,
+      "office": {
+        "state": "writing",
+        "action": "working",
+        "frame": 1,
+        "faceFrame": 1,
+        "frameCount": 12,
+        "fps": 12,
+        "animationMode": "expression-only",
+        "faceClockFrames": 60,
+        "handsRendered": false,
+        "bodyFixed": true,
+        "bodyPlacement": [
+          37.2,
+          -8,
+          115.19999999999999,
+          115.19999999999999
+        ],
+        "seatAnchor": [
+          96,
+          94
+        ],
+        "faceEnabled": true,
+        "visibleCharacter": true,
+        "view": "character"
+      },
+      "remainingPath": [],
+      "target": null,
+      "collisionViolations": 0,
+      "trace": [],
+      "arrivals": 0,
+      "auto": false,
+      "autoIndex": 0,
+      "paused": true,
+      "view": "overview",
+      "camera": {
+        "x": 1052,
+        "y": 1436,
+        "zoom": 0.2726586102719033,
+        "custom": false
+      },
+      "geometry": {
+        "testedStations": 36,
+        "reachableStations": 36,
+        "roundTrips": 72,
+        "failed": []
+      }
+    },
+    "noOverflow": true,
+    "roomLabelsAdaptToZoom": true
+  },
+  "finalLive": {
+    "ready": true,
+    "previewOnly": true,
+    "mapArtworkChanged": false,
+    "mapSize": [
+      2048,
+      2816
+    ],
+    "stations": 36,
+    "businessState": "writing",
+    "mode": "seated",
+    "station": "desk-26",
+    "position": [
+      1424,
+      1568
+    ],
+    "direction": "down",
+    "walkPose": 0,
+    "walkFramesPerDirection": 2,
+    "full12FrameWalkAvailable": false,
+    "walkScale": 1.5,
+    "office": {
+      "state": "writing",
+      "action": "working",
+      "frame": 7,
+      "faceFrame": 7,
+      "frameCount": 12,
+      "fps": 12,
+      "animationMode": "expression-only",
+      "faceClockFrames": 60,
+      "handsRendered": false,
+      "bodyFixed": true,
+      "bodyPlacement": [
+        37.2,
+        -8,
+        115.19999999999999,
+        115.19999999999999
+      ],
+      "seatAnchor": [
+        96,
+        94
+      ],
+      "faceEnabled": true,
+      "visibleCharacter": true,
+      "view": "character"
+    },
+    "remainingPath": [],
+    "target": null,
+    "collisionViolations": 0,
+    "trace": [],
+    "arrivals": 0,
+    "auto": true,
+    "autoIndex": 0,
+    "paused": false,
+    "view": "follow",
+    "camera": {
+      "x": 1420,
+      "y": 1610,
+      "zoom": 0.7333333333333333,
+      "custom": false
+    },
+    "geometry": {
+      "testedStations": 36,
+      "reachableStations": 36,
+      "roundTrips": 72,
+      "failed": []
+    }
+  },
+  "consoleFinal": []
+}

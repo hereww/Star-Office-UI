@@ -1,0 +1,418 @@
+{
+  "capturedAt": "2026-10-02T22:14:27.594Z",
+  "url": "http://127.0.0.1:19000/",
+  "scope": "Local isolated preview; no remote deployment; original API restored; route fixture agents are not real people",
+  "passed": 44,
+  "failed": 0,
+  "skipped": 0,
+  "results": [
+    {
+      "name": "default v3, 16=red8+green8, no walking",
+      "pass": true,
+      "evidence": {
+        "scene": "company-office-reference-v3",
+        "seats": 16
+      }
+    },
+    {
+      "name": "actual mode locks local state buttons, unbound not represented as live",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "all four view controls and all 16 real seat selectors",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "demo is visibly labelled on all persistent bars",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "bars stay above heads and do not overlap in all views",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "down/idle: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 36,
+        "faceVisible": true,
+        "screenStyle": "sleep-dark"
+      }
+    },
+    {
+      "name": "down/writing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "document-cursor"
+      }
+    },
+    {
+      "name": "down/researching: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "search-scan"
+      }
+    },
+    {
+      "name": "down/executing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "terminal-lines"
+      }
+    },
+    {
+      "name": "down/syncing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "sync-blocks"
+      }
+    },
+    {
+      "name": "down/error: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 12,
+        "faceVisible": true,
+        "screenStyle": "soft-double-pulse"
+      }
+    },
+    {
+      "name": "up/idle: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 36,
+        "faceVisible": false,
+        "screenStyle": "sleep-dark"
+      }
+    },
+    {
+      "name": "up/writing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": false,
+        "screenStyle": "document-cursor"
+      }
+    },
+    {
+      "name": "up/researching: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": false,
+        "screenStyle": "search-scan"
+      }
+    },
+    {
+      "name": "up/executing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": false,
+        "screenStyle": "terminal-lines"
+      }
+    },
+    {
+      "name": "up/syncing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": false,
+        "screenStyle": "sync-blocks"
+      }
+    },
+    {
+      "name": "up/error: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 12,
+        "faceVisible": false,
+        "screenStyle": "soft-double-pulse"
+      }
+    },
+    {
+      "name": "left/idle: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 36,
+        "faceVisible": true,
+        "screenStyle": "sleep-dark"
+      }
+    },
+    {
+      "name": "left/writing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "document-cursor"
+      }
+    },
+    {
+      "name": "left/researching: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "search-scan"
+      }
+    },
+    {
+      "name": "left/executing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "terminal-lines"
+      }
+    },
+    {
+      "name": "left/syncing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "sync-blocks"
+      }
+    },
+    {
+      "name": "left/error: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 12,
+        "faceVisible": true,
+        "screenStyle": "soft-double-pulse"
+      }
+    },
+    {
+      "name": "right/idle: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 36,
+        "faceVisible": true,
+        "screenStyle": "sleep-dark"
+      }
+    },
+    {
+      "name": "right/writing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "document-cursor"
+      }
+    },
+    {
+      "name": "right/researching: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "search-scan"
+      }
+    },
+    {
+      "name": "right/executing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "terminal-lines"
+      }
+    },
+    {
+      "name": "right/syncing: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 60,
+        "faceVisible": true,
+        "screenStyle": "sync-blocks"
+      }
+    },
+    {
+      "name": "right/error: original clock, fixed pose, independent state",
+      "pass": true,
+      "evidence": {
+        "clock": 12,
+        "faceVisible": true,
+        "screenStyle": "soft-double-pulse"
+      }
+    },
+    {
+      "name": "six distinct monitor descriptors; rear shows LED only",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "real Canvas2D pixels: only face ellipse/screen/LED can change across all states and clocks",
+      "pass": true,
+      "evidence": [
+        {
+          "direction": "down",
+          "samples": 90,
+          "changedFrames": 89,
+          "outsideChanges": 0,
+          "allowance": "face ellipse + visible screen polygon + LED; 1px antialias boundary"
+        },
+        {
+          "direction": "up",
+          "samples": 90,
+          "changedFrames": 75,
+          "outsideChanges": 0,
+          "allowance": "face ellipse + visible screen polygon + LED; 1px antialias boundary"
+        },
+        {
+          "direction": "left",
+          "samples": 90,
+          "changedFrames": 89,
+          "outsideChanges": 0,
+          "allowance": "face ellipse + visible screen polygon + LED; 1px antialias boundary"
+        },
+        {
+          "direction": "right",
+          "samples": 90,
+          "changedFrames": 89,
+          "outsideChanges": 0,
+          "allowance": "face ellipse + visible screen polygon + LED; 1px antialias boundary"
+        }
+      ]
+    },
+    {
+      "name": "clock advances at 12fps in foreground without body movement",
+      "pass": true,
+      "evidence": {
+        "ticks": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "name": "local demo controls never POST to the backend",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "replaceable character/server success is atomic; invalid images preserve texture",
+      "pass": true,
+      "evidence": {
+        "characterError": true,
+        "characterStable": true,
+        "serverError": true,
+        "serverStable": true,
+        "cv": 1,
+        "sv": 1
+      }
+    },
+    {
+      "name": "return actual restores all latest sources and disables state editing",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "real isolated /set_state→/status→main seat, plus pending actual restore",
+      "pass": true,
+      "evidence": {
+        "mode": "real loopback isolated API",
+        "states": 6
+      }
+    },
+    {
+      "name": "actual client /agents integration fixture binds only 3 auxiliary AI seats",
+      "pass": true,
+      "evidence": {
+        "kind": "browser route fixture (not actual joined agents)",
+        "mapped": 3,
+        "unplaced": 1
+      }
+    },
+    {
+      "name": "v3 produces no uncaught JS or failed HTTP resources",
+      "pass": true,
+      "evidence": {
+        "pageErrors": [],
+        "httpFailures": []
+      }
+    },
+    {
+      "name": "mobile-portrait: actual touch viewport, no horizontal overflow, working controls",
+      "pass": true,
+      "evidence": {
+        "viewport": {
+          "name": "mobile-portrait",
+          "width": 390,
+          "height": 844
+        },
+        "map": {
+          "x": 0,
+          "y": 195,
+          "width": 390,
+          "height": 331.5
+        }
+      }
+    },
+    {
+      "name": "mobile-landscape: actual touch viewport, no horizontal overflow, working controls",
+      "pass": true,
+      "evidence": {
+        "viewport": {
+          "name": "mobile-landscape",
+          "width": 844,
+          "height": 390
+        },
+        "map": {
+          "x": 0,
+          "y": 195,
+          "width": 844,
+          "height": 280.796875
+        }
+      }
+    },
+    {
+      "name": "reduced motion removes screen flashes but keeps original face clock",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "fallback floorplan: usable scene, isolated from new 16-seat map",
+      "pass": true,
+      "evidence": {
+        "scene": "company-office-floorplan-v2",
+        "canvas": true
+      }
+    },
+    {
+      "name": "fallback v1: usable scene, isolated from new 16-seat map",
+      "pass": true,
+      "evidence": {
+        "scene": "company-office-cardinal-v1",
+        "canvas": true
+      }
+    },
+    {
+      "name": "fallback legacy: usable scene, isolated from new 16-seat map",
+      "pass": true,
+      "evidence": {
+        "scene": "legacy",
+        "canvas": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "source": "/agents",
+  "visitors": [
+    {
+      "depth": 1270,
+      "id": "floorplan_qa_work",
+      "position": [
+        896,
+        1270
+      ],
+      "scale": 2.5
+    },
+    {
+      "depth": 1810,
+      "id": "floorplan_qa_rest",
+      "position": [
+        896,
+        1810
+      ],
+      "scale": 2.5
+    },
+    {
+      "depth": 2280,
+      "id": "floorplan_qa_error",
+      "position": [
+        896,
+        2280
+      ],
+      "scale": 2.5
+    }
+  ]
+}

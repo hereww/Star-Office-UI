@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "date": "2026-10-02",
+  "mapSize": [
+    2048,
+    2816
+  ],
+  "stationCount": 36,
+  "stationRoutes": 1296,
+  "checkedSegments": 15872,
+  "walkSamples": 95760,
+  "offGridReroutes": 1260,
+  "destinationRoutes": 3,
+  "footRadius": 18,
+  "gridStep": 16,
+  "unchangedBaselineFiles": 38,
+  "frozenTemplatesVerified": true,
+  "officeFrameCount": 12,
+  "walkingFramesPerDirection": 2,
+  "full12FrameWalkAvailable": false,
+  "productionModified": false
+}

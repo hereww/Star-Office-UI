@@ -1,0 +1,21 @@
+{
+  "sourcePath": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/office-background-layered.png",
+  "snapshotPath": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/background-4k-candidate/source/office-background-layered-original.png",
+  "sourceDimensions": [
+    1584,
+    993
+  ],
+  "sourceSha256": "e37be18b7662d7625069598d268a6792c73786ef582946efc25a227b3d2ef45a",
+  "requestedNativeDimensions": [
+    4224,
+    2648
+  ],
+  "requestedAspectRatio": [
+    528,
+    331
+  ],
+  "builtinCallsPlanned": 1,
+  "humanApproved": false,
+  "runtimeIntegrated": false,
+  "timestamp": "2026-10-02T20:07:53.669110+00:00"
+}

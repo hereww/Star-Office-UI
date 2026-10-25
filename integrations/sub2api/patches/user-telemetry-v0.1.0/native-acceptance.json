@@ -1,0 +1,273 @@
+{
+  "date": "2026-10-04",
+  "host_base": "b8dece9000c68815a5b867ca5a1e6f236e173905",
+  "environment": "isolated PostgreSQL + Redis + signed native plugin; fixture identities only",
+  "checks": [
+    {
+      "name": "signed-package tampering rejected",
+      "passed": true
+    },
+    {
+      "name": "native plugin-management upload",
+      "passed": true,
+      "detail": "HTTP 201"
+    },
+    {
+      "name": "publisher signature verified and initially disabled",
+      "passed": true
+    },
+    {
+      "name": "configuration saved through native manager",
+      "passed": true,
+      "detail": "HTTP 200 "
+    },
+    {
+      "name": "native independent read-only runtime enabled",
+      "passed": true,
+      "detail": "HTTP 200 "
+    },
+    {
+      "name": "native UI resource session issued",
+      "passed": true
+    },
+    {
+      "name": "signed-package UI served with sandbox CSP",
+      "passed": true
+    },
+    {
+      "name": "UI resource token cannot export user data",
+      "passed": true
+    },
+    {
+      "name": "native sandbox browser desktop and mobile",
+      "passed": true,
+      "detail": "real signed UI + resource/CSP/config handlers; disposable parent login bridge"
+    },
+    {
+      "name": "export denies unrelated credential absent",
+      "passed": true
+    },
+    {
+      "name": "export denies unrelated credential admin token",
+      "passed": true
+    },
+    {
+      "name": "export denies unrelated credential model key",
+      "passed": true
+    },
+    {
+      "name": "export denies unrelated credential UI token",
+      "passed": true
+    },
+    {
+      "name": "credential issue refuses ambiguous empty scope",
+      "passed": true
+    },
+    {
+      "name": "scoped export credential issued",
+      "passed": true,
+      "detail": "HTTP 201"
+    },
+    {
+      "name": "expired credential refused",
+      "passed": true
+    },
+    {
+      "name": "credential cannot cross plugin installation",
+      "passed": true
+    },
+    {
+      "name": "URL bearer disclosure refused",
+      "passed": true
+    },
+    {
+      "name": "credential inventory exposes explicit cursor",
+      "passed": true
+    },
+    {
+      "name": "credential inventory can reach oldest active credential",
+      "passed": true
+    },
+    {
+      "name": "five-field snapshot from live PostgreSQL and Redis",
+      "passed": true,
+      "detail": "HTTP 200 "
+    },
+    {
+      "name": "only requested page and stable user IDs",
+      "passed": true
+    },
+    {
+      "name": "real token total includes multiple and deleted historical keys",
+      "passed": true
+    },
+    {
+      "name": "live concurrent user slots = 2",
+      "passed": true
+    },
+    {
+      "name": "API metadata is complete without deleted key",
+      "passed": true
+    },
+    {
+      "name": "email and blank username retained",
+      "passed": true
+    },
+    {
+      "name": "no model or admin secrets in export",
+      "passed": true
+    },
+    {
+      "name": "pagination and \u003e2^53 ID preservation",
+      "passed": true
+    },
+    {
+      "name": "unlimited concurrency not fabricated as zero",
+      "passed": true
+    },
+    {
+      "name": "slot release changes count to one",
+      "passed": true
+    },
+    {
+      "name": "confirmed no slots returns real zero",
+      "passed": true
+    },
+    {
+      "name": "user-scope escape rejected",
+      "passed": true
+    },
+    {
+      "name": "oversized query rejected",
+      "passed": true
+    },
+    {
+      "name": "credential list has no token or hash",
+      "passed": true
+    },
+    {
+      "name": "scope narrowing revokes old credential user permission immediately",
+      "passed": true
+    },
+    {
+      "name": "approved scope restores through native configuration lifecycle",
+      "passed": true
+    },
+    {
+      "name": "HTTP omitted defaults follow saved timezone and page size",
+      "passed": true
+    },
+    {
+      "name": "fixture defaults restored",
+      "passed": true
+    },
+    {
+      "name": "Redis failure produces unknown concurrency",
+      "passed": true
+    },
+    {
+      "name": "persisted installation and scope recover after host restart",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "native management route revokes credential",
+      "passed": true
+    },
+    {
+      "name": "credential revocation takes immediate effect",
+      "passed": true
+    },
+    {
+      "name": "new scoped credential usable after restart",
+      "passed": true
+    },
+    {
+      "name": "disable closes output endpoint",
+      "passed": true
+    },
+    {
+      "name": "uninstall revokes credentials without deleting business data",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "snapshot": {
+    "schema_version": 1,
+    "window": {
+      "start": "2026-10-03T00:00:00+08:00",
+      "end": "2026-10-04T00:00:00+08:00",
+      "timezone": "Asia/Shanghai"
+    },
+    "users": [
+      {
+        "user_id": "42",
+        "email": "fixture42@example.com",
+        "username": "研发助手",
+        "api_keys": [
+          {
+            "id": "101",
+            "name": "工作A",
+            "status": "active"
+          },
+          {
+            "id": "102",
+            "name": "工作B",
+            "status": "disabled"
+          }
+        ],
+        "token_usage": {
+          "total": "210"
+        },
+        "concurrency": {
+          "current": 2,
+          "limit": 5
+        },
+        "quality": {
+          "identity": "fresh",
+          "api_keys": "fresh",
+          "token_usage": "fresh",
+          "concurrency": "fresh"
+        },
+        "observed_at": {
+          "identity": "2026-10-04T02:54:48.789298Z",
+          "api_keys": "2026-10-04T02:54:48.789414Z",
+          "token_usage": "2026-10-04T02:54:48.789557Z",
+          "concurrency": "2026-10-04T02:54:48.789785Z"
+        }
+      },
+      {
+        "user_id": "43",
+        "email": "fixture43@example.com",
+        "username": "",
+        "api_keys": [
+          {
+            "id": "104",
+            "name": "其他用户",
+            "status": "active"
+          }
+        ],
+        "token_usage": {
+          "total": "1000"
+        },
+        "concurrency": {
+          "current": 0,
+          "limit": 5
+        },
+        "quality": {
+          "identity": "fresh",
+          "api_keys": "fresh",
+          "token_usage": "fresh",
+          "concurrency": "fresh"
+        },
+        "observed_at": {
+          "identity": "2026-10-04T02:54:48.789298Z",
+          "api_keys": "2026-10-04T02:54:48.789414Z",
+          "token_usage": "2026-10-04T02:54:48.789557Z",
+          "concurrency": "2026-10-04T02:54:48.789785Z"
+        }
+      }
+    ],
+    "next_cursor": "43"
+  }
+}

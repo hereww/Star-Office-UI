@@ -1,0 +1,96 @@
+[
+  {
+    "asset": "base",
+    "tool": "built-in image_generation / image_gen",
+    "callCount": 1,
+    "transparent_background": true,
+    "referencePaths": [
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/media/character-base.png"
+    ],
+    "defaultToolOutput": "/Users/hepingyu/.codex/generated_images/01a0fbaa-c403-7a11-8e6c-3afe5e0ef6cf/call_FiddVf1RAVVbISDHRwH4I2oz.png",
+    "savedOriginal": "originals/base-right-original.png",
+    "originalSha256": "321656b8dc9eaca685a7bd1acd05f70432728f344c97f547b486484484e19a45",
+    "savedPrompt": "prompts/base-right.txt",
+    "promptSha256": "d115875a92ebedfa9bbffd806a6eb91e1e03c2ebd6d4042b41cfaee95c03eb51",
+    "regenerated": false,
+    "mirrored": false,
+    "rotated": false,
+    "copiedStillAsFrame": false
+  },
+  {
+    "asset": "working",
+    "tool": "built-in image_generation / image_gen",
+    "callCount": 1,
+    "transparent_background": true,
+    "referencePaths": [
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-right/references/face-right-reference-4x.png",
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/media/character-base.png"
+    ],
+    "defaultToolOutput": "/Users/hepingyu/.codex/generated_images/01a0fbaa-c403-7a11-8e6c-3afe5e0ef6cf/call_L4TGU9XgNWgI45hxy7cDCVDn.png",
+    "savedOriginal": "originals/face-working-original.png",
+    "originalSha256": "41f81edf494dde7081f8bf1f149637ea146c8debafa448a44608510f04e80ba8",
+    "savedPrompt": "prompts/face-working.txt",
+    "promptSha256": "1eaa233d18d42a950de265e5314241049fdfd7e5b9fd557a8ba1e6638bdf49fd",
+    "regenerated": false,
+    "mirrored": false,
+    "rotated": false,
+    "copiedStillAsFrame": false
+  },
+  {
+    "asset": "idle",
+    "tool": "built-in image_generation / image_gen",
+    "callCount": 1,
+    "transparent_background": true,
+    "referencePaths": [
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-right/references/face-right-reference-4x.png",
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/media/character-base.png"
+    ],
+    "defaultToolOutput": "/Users/hepingyu/.codex/generated_images/01a0fbaa-c403-7a11-8e6c-3afe5e0ef6cf/call_qNw4N2cdC14dr81ZCQ8UC97z.png",
+    "savedOriginal": "originals/face-idle-original.png",
+    "originalSha256": "bb2a4bbfeccf327361b4015a6631398d59af58caf55101de51248954e5f940f3",
+    "savedPrompt": "prompts/face-idle.txt",
+    "promptSha256": "5fe8473dd96df9af52c92e02033c0f9c02fd60698c930c93daadaa9709f9fe81",
+    "regenerated": false,
+    "mirrored": false,
+    "rotated": false,
+    "copiedStillAsFrame": false
+  },
+  {
+    "asset": "syncing",
+    "tool": "built-in image_generation / image_gen",
+    "callCount": 1,
+    "transparent_background": true,
+    "referencePaths": [
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-right/references/face-right-reference-4x.png",
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/media/character-base.png"
+    ],
+    "defaultToolOutput": "/Users/hepingyu/.codex/generated_images/01a0fbaa-c403-7a11-8e6c-3afe5e0ef6cf/call_z5503D6F1RmTqqOCSXz8qaC7.png",
+    "savedOriginal": "originals/face-syncing-original.png",
+    "originalSha256": "acc062761335b677cfe8f459fe8d8c8eef8e3fa921b35ead6b04e51aedc950f3",
+    "savedPrompt": "prompts/face-syncing.txt",
+    "promptSha256": "029438b94a720012d7adb2d219a56ae469ac423a6a5d2cf385b6b0e5f9bd2f28",
+    "regenerated": false,
+    "mirrored": false,
+    "rotated": false,
+    "copiedStillAsFrame": false
+  },
+  {
+    "asset": "error",
+    "tool": "built-in image_generation / image_gen",
+    "callCount": 1,
+    "transparent_background": true,
+    "referencePaths": [
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-right/references/face-right-reference-4x.png",
+      "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/media/character-base.png"
+    ],
+    "defaultToolOutput": "/Users/hepingyu/.codex/generated_images/01a0fbaa-c403-7a11-8e6c-3afe5e0ef6cf/call_irFZdM50GaS8YVyLk7Ib90Lr.png",
+    "savedOriginal": "originals/face-error-original.png",
+    "originalSha256": "1a26351fb529ea21aa8e479c8c45c2d34699a415af30b3736dd0ab3e8400a8a6",
+    "savedPrompt": "prompts/face-error.txt",
+    "promptSha256": "6bd18fad9216d1965205e742033ebaa81ea26879613f0c3f7492e6c6d10813f3",
+    "regenerated": false,
+    "mirrored": false,
+    "rotated": false,
+    "copiedStillAsFrame": false
+  }
+]

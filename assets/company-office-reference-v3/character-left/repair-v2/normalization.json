@@ -1,0 +1,573 @@
+{
+  "neutralEdit": {
+    "resize": [
+      192,
+      192
+    ],
+    "bounds": [
+      48,
+      67,
+      104,
+      119
+    ],
+    "method": "generated RGB source-in fixed patch; previous original RGB outside patch and alpha everywhere retained",
+    "neutralChangedPixels": 2365
+  },
+  "commonRect": [
+    38,
+    64,
+    90,
+    58
+  ],
+  "commonEllipse": [
+    76,
+    93,
+    32,
+    27
+  ],
+  "outlineProtection": "one-logical-pixel interior erosion of original alpha>=128; original boundary RGBA retained",
+  "featureMaskMode": "generated-feature alpha extraction within shared landmarks; no feature is newly drawn",
+  "perFrameTransforms": false,
+  "newExpressionsPainted": false,
+  "duplicatedFrames": false,
+  "rotations": false,
+  "mirroring": false,
+  "actions": {
+    "working": [
+      {
+        "frame": 0,
+        "visiblePixelCount": 591,
+        "partsPixelCounts": {
+          "brow": 100,
+          "eye": 431,
+          "nose": 52,
+          "mouth": 35
+        },
+        "pixelsRejectedForContourSafety": 7
+      },
+      {
+        "frame": 1,
+        "visiblePixelCount": 560,
+        "partsPixelCounts": {
+          "brow": 73,
+          "eye": 404,
+          "nose": 48,
+          "mouth": 35
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 2,
+        "visiblePixelCount": 527,
+        "partsPixelCounts": {
+          "brow": 75,
+          "eye": 367,
+          "nose": 50,
+          "mouth": 35
+        },
+        "pixelsRejectedForContourSafety": 6
+      },
+      {
+        "frame": 3,
+        "visiblePixelCount": 483,
+        "partsPixelCounts": {
+          "brow": 62,
+          "eye": 336,
+          "nose": 50,
+          "mouth": 35
+        },
+        "pixelsRejectedForContourSafety": 6
+      },
+      {
+        "frame": 4,
+        "visiblePixelCount": 455,
+        "partsPixelCounts": {
+          "brow": 69,
+          "eye": 303,
+          "nose": 48,
+          "mouth": 35
+        },
+        "pixelsRejectedForContourSafety": 2
+      },
+      {
+        "frame": 5,
+        "visiblePixelCount": 396,
+        "partsPixelCounts": {
+          "brow": 66,
+          "eye": 249,
+          "nose": 46,
+          "mouth": 35
+        },
+        "pixelsRejectedForContourSafety": 2
+      },
+      {
+        "frame": 6,
+        "visiblePixelCount": 293,
+        "partsPixelCounts": {
+          "brow": 73,
+          "eye": 138,
+          "nose": 46,
+          "mouth": 36
+        },
+        "pixelsRejectedForContourSafety": 2
+      },
+      {
+        "frame": 7,
+        "visiblePixelCount": 371,
+        "partsPixelCounts": {
+          "brow": 71,
+          "eye": 215,
+          "nose": 50,
+          "mouth": 35
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 8,
+        "visiblePixelCount": 504,
+        "partsPixelCounts": {
+          "brow": 64,
+          "eye": 359,
+          "nose": 48,
+          "mouth": 33
+        },
+        "pixelsRejectedForContourSafety": 5
+      },
+      {
+        "frame": 9,
+        "visiblePixelCount": 525,
+        "partsPixelCounts": {
+          "brow": 64,
+          "eye": 380,
+          "nose": 48,
+          "mouth": 33
+        },
+        "pixelsRejectedForContourSafety": 5
+      },
+      {
+        "frame": 10,
+        "visiblePixelCount": 557,
+        "partsPixelCounts": {
+          "brow": 64,
+          "eye": 412,
+          "nose": 48,
+          "mouth": 33
+        },
+        "pixelsRejectedForContourSafety": 5
+      },
+      {
+        "frame": 11,
+        "visiblePixelCount": 559,
+        "partsPixelCounts": {
+          "brow": 68,
+          "eye": 410,
+          "nose": 48,
+          "mouth": 33
+        },
+        "pixelsRejectedForContourSafety": 5
+      }
+    ],
+    "idle": [
+      {
+        "frame": 0,
+        "visiblePixelCount": 312,
+        "partsPixelCounts": {
+          "brow": 68,
+          "eye": 111,
+          "nose": 15,
+          "mouth": 118
+        },
+        "pixelsRejectedForContourSafety": 33
+      },
+      {
+        "frame": 1,
+        "visiblePixelCount": 330,
+        "partsPixelCounts": {
+          "brow": 70,
+          "eye": 111,
+          "nose": 19,
+          "mouth": 130
+        },
+        "pixelsRejectedForContourSafety": 34
+      },
+      {
+        "frame": 2,
+        "visiblePixelCount": 352,
+        "partsPixelCounts": {
+          "brow": 69,
+          "eye": 111,
+          "nose": 17,
+          "mouth": 155
+        },
+        "pixelsRejectedForContourSafety": 35
+      },
+      {
+        "frame": 3,
+        "visiblePixelCount": 371,
+        "partsPixelCounts": {
+          "brow": 70,
+          "eye": 112,
+          "nose": 15,
+          "mouth": 174
+        },
+        "pixelsRejectedForContourSafety": 34
+      },
+      {
+        "frame": 4,
+        "visiblePixelCount": 479,
+        "partsPixelCounts": {
+          "brow": 70,
+          "eye": 112,
+          "nose": 17,
+          "mouth": 280
+        },
+        "pixelsRejectedForContourSafety": 32
+      },
+      {
+        "frame": 5,
+        "visiblePixelCount": 557,
+        "partsPixelCounts": {
+          "brow": 70,
+          "eye": 112,
+          "nose": 16,
+          "mouth": 359
+        },
+        "pixelsRejectedForContourSafety": 28
+      },
+      {
+        "frame": 6,
+        "visiblePixelCount": 583,
+        "partsPixelCounts": {
+          "brow": 70,
+          "eye": 110,
+          "nose": 20,
+          "mouth": 383
+        },
+        "pixelsRejectedForContourSafety": 32
+      },
+      {
+        "frame": 7,
+        "visiblePixelCount": 525,
+        "partsPixelCounts": {
+          "brow": 70,
+          "eye": 111,
+          "nose": 17,
+          "mouth": 327
+        },
+        "pixelsRejectedForContourSafety": 35
+      },
+      {
+        "frame": 8,
+        "visiblePixelCount": 446,
+        "partsPixelCounts": {
+          "brow": 62,
+          "eye": 110,
+          "nose": 16,
+          "mouth": 258
+        },
+        "pixelsRejectedForContourSafety": 26
+      },
+      {
+        "frame": 9,
+        "visiblePixelCount": 407,
+        "partsPixelCounts": {
+          "brow": 63,
+          "eye": 110,
+          "nose": 16,
+          "mouth": 218
+        },
+        "pixelsRejectedForContourSafety": 26
+      },
+      {
+        "frame": 10,
+        "visiblePixelCount": 347,
+        "partsPixelCounts": {
+          "brow": 62,
+          "eye": 110,
+          "nose": 14,
+          "mouth": 161
+        },
+        "pixelsRejectedForContourSafety": 26
+      },
+      {
+        "frame": 11,
+        "visiblePixelCount": 326,
+        "partsPixelCounts": {
+          "brow": 62,
+          "eye": 110,
+          "nose": 16,
+          "mouth": 138
+        },
+        "pixelsRejectedForContourSafety": 26
+      }
+    ],
+    "syncing": [
+      {
+        "frame": 0,
+        "visiblePixelCount": 604,
+        "partsPixelCounts": {
+          "brow": 64,
+          "eye": 440,
+          "nose": 58,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 1,
+        "visiblePixelCount": 598,
+        "partsPixelCounts": {
+          "brow": 64,
+          "eye": 436,
+          "nose": 56,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 2,
+        "visiblePixelCount": 561,
+        "partsPixelCounts": {
+          "brow": 65,
+          "eye": 399,
+          "nose": 55,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 3,
+        "visiblePixelCount": 540,
+        "partsPixelCounts": {
+          "brow": 70,
+          "eye": 373,
+          "nose": 55,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 4,
+        "visiblePixelCount": 466,
+        "partsPixelCounts": {
+          "brow": 60,
+          "eye": 308,
+          "nose": 56,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 5,
+        "visiblePixelCount": 285,
+        "partsPixelCounts": {
+          "brow": 36,
+          "eye": 151,
+          "nose": 56,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 6,
+        "visiblePixelCount": 220,
+        "partsPixelCounts": {
+          "brow": 0,
+          "eye": 119,
+          "nose": 59,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 7,
+        "visiblePixelCount": 476,
+        "partsPixelCounts": {
+          "brow": 60,
+          "eye": 315,
+          "nose": 59,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 8,
+        "visiblePixelCount": 512,
+        "partsPixelCounts": {
+          "brow": 64,
+          "eye": 347,
+          "nose": 59,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 9,
+        "visiblePixelCount": 588,
+        "partsPixelCounts": {
+          "brow": 73,
+          "eye": 415,
+          "nose": 58,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 10,
+        "visiblePixelCount": 600,
+        "partsPixelCounts": {
+          "brow": 73,
+          "eye": 429,
+          "nose": 56,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      },
+      {
+        "frame": 11,
+        "visiblePixelCount": 621,
+        "partsPixelCounts": {
+          "brow": 73,
+          "eye": 448,
+          "nose": 58,
+          "mouth": 42
+        },
+        "pixelsRejectedForContourSafety": 4
+      }
+    ],
+    "error": [
+      {
+        "frame": 0,
+        "visiblePixelCount": 558,
+        "partsPixelCounts": {
+          "brow": 69,
+          "eye": 396,
+          "nose": 57,
+          "mouth": 36
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 1,
+        "visiblePixelCount": 550,
+        "partsPixelCounts": {
+          "brow": 69,
+          "eye": 380,
+          "nose": 57,
+          "mouth": 44
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 2,
+        "visiblePixelCount": 557,
+        "partsPixelCounts": {
+          "brow": 68,
+          "eye": 397,
+          "nose": 57,
+          "mouth": 35
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 3,
+        "visiblePixelCount": 560,
+        "partsPixelCounts": {
+          "brow": 72,
+          "eye": 387,
+          "nose": 57,
+          "mouth": 44
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 4,
+        "visiblePixelCount": 568,
+        "partsPixelCounts": {
+          "brow": 61,
+          "eye": 408,
+          "nose": 62,
+          "mouth": 37
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 5,
+        "visiblePixelCount": 559,
+        "partsPixelCounts": {
+          "brow": 60,
+          "eye": 392,
+          "nose": 62,
+          "mouth": 45
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 6,
+        "visiblePixelCount": 567,
+        "partsPixelCounts": {
+          "brow": 60,
+          "eye": 404,
+          "nose": 66,
+          "mouth": 37
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 7,
+        "visiblePixelCount": 568,
+        "partsPixelCounts": {
+          "brow": 60,
+          "eye": 398,
+          "nose": 65,
+          "mouth": 45
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 8,
+        "visiblePixelCount": 571,
+        "partsPixelCounts": {
+          "brow": 69,
+          "eye": 405,
+          "nose": 61,
+          "mouth": 36
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 9,
+        "visiblePixelCount": 577,
+        "partsPixelCounts": {
+          "brow": 68,
+          "eye": 401,
+          "nose": 64,
+          "mouth": 44
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 10,
+        "visiblePixelCount": 577,
+        "partsPixelCounts": {
+          "brow": 69,
+          "eye": 410,
+          "nose": 62,
+          "mouth": 36
+        },
+        "pixelsRejectedForContourSafety": 1
+      },
+      {
+        "frame": 11,
+        "visiblePixelCount": 567,
+        "partsPixelCounts": {
+          "brow": 68,
+          "eye": 393,
+          "nose": 62,
+          "mouth": 44
+        },
+        "pixelsRejectedForContourSafety": 1
+      }
+    ]
+  }
+}

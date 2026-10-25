@@ -1,0 +1,13 @@
+{
+  "current_release": "office-20261006-v5-production-06",
+  "target_release": "office-20261006-v5-production-05",
+  "script": "/opt/star-office-ui/rollback-office-v5-06-to-v5-05.sh",
+  "precheck_passed": true,
+  "full_production_cutback_executed": false,
+  "office_containers_unchanged_during_check": true,
+  "preserves_admin_html_type_fix": true,
+  "preserves_config_and_audit_volumes": true,
+  "requires_explicit_cutover_flag": true,
+  "shared_workloads_not_touched": true,
+  "ingress_vhost_sha256": "6bd3c0d3dc04ad730d828e2f177d786dc9a40ec17384c7a7bac00b9bd6e6c490"
+}

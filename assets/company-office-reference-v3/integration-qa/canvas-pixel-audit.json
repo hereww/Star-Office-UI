@@ -1,0 +1,30 @@
+[
+  {
+    "direction": "down",
+    "samples": 90,
+    "changedFrames": 89,
+    "outsideChanges": 0,
+    "allowance": "face ellipse + visible screen polygon + LED; 1px antialias boundary"
+  },
+  {
+    "direction": "up",
+    "samples": 90,
+    "changedFrames": 75,
+    "outsideChanges": 0,
+    "allowance": "face ellipse + visible screen polygon + LED; 1px antialias boundary"
+  },
+  {
+    "direction": "left",
+    "samples": 90,
+    "changedFrames": 89,
+    "outsideChanges": 0,
+    "allowance": "face ellipse + visible screen polygon + LED; 1px antialias boundary"
+  },
+  {
+    "direction": "right",
+    "samples": 90,
+    "changedFrames": 89,
+    "outsideChanges": 0,
+    "allowance": "face ellipse + visible screen polygon + LED; 1px antialias boundary"
+  }
+]

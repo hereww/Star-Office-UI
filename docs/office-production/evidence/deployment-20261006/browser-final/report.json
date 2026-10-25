@@ -1,0 +1,1521 @@
+{
+  "captured_at": "2026-10-06T14:57:00.337Z",
+  "time_zone": "Asia/Shanghai",
+  "base": "http://192.168.100.221:19000/",
+  "scope": "Actual deployed immutable release and live approved four-user metadata. GET/HEAD only. Browser-only instrumentation; emulated devices, not physical-device certification.",
+  "checks": [
+    {
+      "name": "desktop: V5, sixteen seats, four approved live users",
+      "pass": true,
+      "evidence": {
+        "scene": "company-office-connected-v5",
+        "seats": 16,
+        "bound": 4
+      }
+    },
+    {
+      "name": "desktop: screen-only expressions; no walking, hands or keyboard layers",
+      "pass": true,
+      "evidence": {
+        "players": 16
+      }
+    },
+    {
+      "name": "desktop: no horizontal overflow, CJK fonts loaded and labelled inputs",
+      "pass": true,
+      "evidence": {
+        "canvas": [
+          4448,
+          2160
+        ]
+      }
+    },
+    {
+      "name": "desktop: 3840×2160-or-higher physical canvas",
+      "pass": true,
+      "evidence": [
+        4448,
+        2160
+      ]
+    },
+    {
+      "name": "HTTP non-secure origin does not call unavailable SubtleCrypto",
+      "pass": true,
+      "evidence": {
+        "secureContext": false,
+        "provenance": "unavailable-in-insecure-context"
+      }
+    },
+    {
+      "name": "desktop: four username/count bubbles remain visible in green area",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "macbookm5pr…：0",
+          "visible": true,
+          "leader": [
+            [
+              821.7769723756905,
+              474.68746226303875
+            ],
+            [
+              821.7769723756905,
+              477.0194710930608
+            ]
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "4090主机：0",
+          "visible": true,
+          "leader": [
+            [
+              921.2981510128914,
+              474.68746226303875
+            ],
+            [
+              921.2981510128914,
+              477.0194710930608
+            ]
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "Hermes 智能体…：0",
+          "visible": true,
+          "leader": [
+            [
+              1020.5615027624309,
+              474.68746226303875
+            ],
+            [
+              1020.5615027624309,
+              477.0194710930608
+            ]
+          ]
+        },
+        {
+          "id": "desk-12",
+          "text": "其他智能体：2",
+          "visible": true,
+          "leader": [
+            [
+              1121.8874696132598,
+              474.68746226303875
+            ],
+            [
+              1121.8874696132598,
+              477.0194710930608
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tablet: V5, sixteen seats, four approved live users",
+      "pass": true,
+      "evidence": {
+        "scene": "company-office-connected-v5",
+        "seats": 16,
+        "bound": 4
+      }
+    },
+    {
+      "name": "tablet: screen-only expressions; no walking, hands or keyboard layers",
+      "pass": true,
+      "evidence": {
+        "players": 16
+      }
+    },
+    {
+      "name": "tablet: no horizontal overflow, CJK fonts loaded and labelled inputs",
+      "pass": true,
+      "evidence": {
+        "canvas": [
+          1468,
+          1385
+        ]
+      }
+    },
+    {
+      "name": "tablet: four username/count bubbles remain visible in green area",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "macbookm5pr…：0",
+          "visible": true,
+          "leader": [
+            [
+              821.7769723756905,
+              472.8520728017222
+            ],
+            [
+              821.7769723756905,
+              476.28531530853417
+            ]
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "4090主机：0",
+          "visible": true,
+          "leader": [
+            [
+              921.2981510128914,
+              472.8520728017222
+            ],
+            [
+              921.2981510128914,
+              476.28531530853417
+            ]
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "Hermes 智能体…：0",
+          "visible": true,
+          "leader": [
+            [
+              1020.5615027624309,
+              472.8520728017222
+            ],
+            [
+              1020.5615027624309,
+              476.28531530853417
+            ]
+          ]
+        },
+        {
+          "id": "desk-12",
+          "text": "其他智能体：2",
+          "visible": true,
+          "leader": [
+            [
+              1121.8874696132598,
+              472.8520728017222
+            ],
+            [
+              1121.8874696132598,
+              476.28531530853417
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "phone-portrait: V5, sixteen seats, four approved live users",
+      "pass": true,
+      "evidence": {
+        "scene": "company-office-connected-v5",
+        "seats": 16,
+        "bound": 4
+      }
+    },
+    {
+      "name": "phone-portrait: screen-only expressions; no walking, hands or keyboard layers",
+      "pass": true,
+      "evidence": {
+        "players": 16
+      }
+    },
+    {
+      "name": "phone-portrait: no horizontal overflow, CJK fonts loaded and labelled inputs",
+      "pass": true,
+      "evidence": {
+        "canvas": [
+          1068,
+          1596
+        ]
+      }
+    },
+    {
+      "name": "phone-portrait: four username/count bubbles remain visible in green area",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "macbook…：0",
+          "visible": true,
+          "leader": [
+            [
+              821.7769723756905,
+              466.32335712955495
+            ],
+            [
+              821.7769723756905,
+              473.4020088149482
+            ]
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "4090主机：0",
+          "visible": true,
+          "leader": [
+            [
+              921.2981510128914,
+              421.13324376189564
+            ],
+            [
+              921.2981510128914,
+              473.4020088149482
+            ]
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "Hermes …：0",
+          "visible": true,
+          "leader": [
+            [
+              1020.5615027624309,
+              466.32335712955495
+            ],
+            [
+              1020.5615027624309,
+              473.4020088149482
+            ]
+          ]
+        },
+        {
+          "id": "desk-12",
+          "text": "其他智…：2",
+          "visible": true,
+          "leader": [
+            [
+              1121.8874696132598,
+              417.7008854594685
+            ],
+            [
+              1121.8874696132598,
+              473.4020088149482
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "phone-landscape: V5, sixteen seats, four approved live users",
+      "pass": true,
+      "evidence": {
+        "scene": "company-office-connected-v5",
+        "seats": 16,
+        "bound": 4
+      }
+    },
+    {
+      "name": "phone-landscape: screen-only expressions; no walking, hands or keyboard layers",
+      "pass": true,
+      "evidence": {
+        "players": 16
+      }
+    },
+    {
+      "name": "phone-landscape: no horizontal overflow, CJK fonts loaded and labelled inputs",
+      "pass": true,
+      "evidence": {
+        "canvas": [
+          2454,
+          1044
+        ]
+      }
+    },
+    {
+      "name": "phone-landscape: four username/count bubbles remain visible in green area",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "macboo…：0",
+          "visible": true,
+          "leader": [
+            [
+              821.7769723756905,
+              468.6324998107924
+            ],
+            [
+              821.7769723756905,
+              474.48866419435404
+            ]
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "4090主机：0",
+          "visible": true,
+          "leader": [
+            [
+              921.2981510128914,
+              428.4071575436123
+            ],
+            [
+              921.2981510128914,
+              474.48866419435404
+            ]
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "Hermes …：0",
+          "visible": true,
+          "leader": [
+            [
+              1020.5615027624309,
+              468.6324998107924
+            ],
+            [
+              1020.5615027624309,
+              474.48866419435404
+            ]
+          ]
+        },
+        {
+          "id": "desk-12",
+          "text": "其他智能体：2",
+          "visible": true,
+          "leader": [
+            [
+              1121.8874696132598,
+              428.4071575436123
+            ],
+            [
+              1121.8874696132598,
+              474.48866419435404
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "no JavaScript errors, missing runtime assets, external requests or backend writes",
+      "pass": true,
+      "evidence": {
+        "errors": 0,
+        "assetFailures": 0,
+        "writes": 0
+      }
+    }
+  ],
+  "page_errors": [],
+  "failed_responses": [],
+  "external_requests": [],
+  "blocked_writes": [],
+  "screenshots": [
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/deployment-20261006/browser-final/employee-desktop-overview.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/deployment-20261006/browser-final/employee-desktop-green.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/deployment-20261006/browser-final/employee-tablet-overview.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/deployment-20261006/browser-final/employee-tablet-green.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/deployment-20261006/browser-final/employee-phone-portrait-overview.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/deployment-20261006/browser-final/employee-phone-portrait-green.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/deployment-20261006/browser-final/employee-phone-landscape-overview.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/deployment-20261006/browser-final/employee-phone-landscape-green.png"
+  ],
+  "devices": [
+    {
+      "device": "desktop",
+      "ready_ms": 2531,
+      "observation": {
+        "scene": "company-office-connected-v5",
+        "animationMode": "expression-plus-screen-effects",
+        "walkIntegrated": false,
+        "stationCount": 16,
+        "boundCount": 4,
+        "source": {
+          "status": "ok",
+          "last_success_at": "2026-10-06T14:57:02.578Z",
+          "last_attempt_at": "2026-10-06T14:57:02.578Z",
+          "poll_interval_seconds": 5,
+          "stale_after_seconds": 15,
+          "error_code": null
+        },
+        "publicConcurrent": [
+          {
+            "seat_id": "desk-09",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "macbookm5pro电脑：0"
+            ]
+          },
+          {
+            "seat_id": "desk-10",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "4090主机：0"
+            ]
+          },
+          {
+            "seat_id": "desk-11",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "Hermes 智能体工作站：0"
+            ]
+          },
+          {
+            "seat_id": "desk-12",
+            "current": "2",
+            "activity": "busy",
+            "bubble": [
+              "其他智能体：2"
+            ]
+          }
+        ],
+        "players": [
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          }
+        ],
+        "provenance": "unavailable-in-insecure-context",
+        "secureContext": false,
+        "overflow": false,
+        "canvas": [
+          4448,
+          2160
+        ],
+        "fonts": "loaded",
+        "buttons": [
+          {
+            "label": "收起详情",
+            "width": 86,
+            "height": 42
+          },
+          {
+            "label": "⛶ 全屏",
+            "width": 74.953125,
+            "height": 42
+          },
+          {
+            "label": "关闭工位详情",
+            "width": 42,
+            "height": 43.1875
+          },
+          {
+            "label": "⌖ 聚焦这个工位",
+            "width": 272,
+            "height": 44
+          },
+          {
+            "label": "全景",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "红区",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "绿区",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "当前工位",
+            "width": 82,
+            "height": 38
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "macbookm5pro电脑：0",
+            "width": 136.890625,
+            "height": 36
+          },
+          {
+            "label": "4090主机：0",
+            "width": 78.8125,
+            "height": 36
+          },
+          {
+            "label": "Hermes 智能体工作站：0",
+            "width": 144.65625,
+            "height": 36
+          },
+          {
+            "label": "其他智能体：2",
+            "width": 86,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          }
+        ],
+        "unlabelledInputs": [],
+        "bodyText": "跳至办公室\n律\nSTAR OFFICE / LIVE\n律动实时办公室\n● 采样正常\n10/06 22:57:02\n4\n已绑定\n1\n处理中\n3\n待命\n0\n未知\n收起详情\n⛶ 全屏\nV5 · 连排工位\n仅展示采样时刻状态\n详情\n×\n其他智能体：2\n最近采样 · 北京时间\n10/06 22:57:02\n数据质量\n可信\n⌖ 聚焦这个工位\n\n邮箱、Key 元数据及用量仅管理员可见。\n\n全景\n红区\n绿区\n当前工位\n\n拖动平移 · 滚轮缩放 · 点击工位查看详情\n\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\nmacbookm5pro电脑\n4090主机\nHermes 智能体工作站\n其他智能体\n未绑定\n未绑定\n未绑定\n未绑定\n办公室每 2 秒读取本地快照；不推测请求内容。\n数据异常不代表员工空闲。"
+      }
+    },
+    {
+      "device": "tablet",
+      "ready_ms": 1806,
+      "observation": {
+        "scene": "company-office-connected-v5",
+        "animationMode": "expression-plus-screen-effects",
+        "walkIntegrated": false,
+        "stationCount": 16,
+        "boundCount": 4,
+        "source": {
+          "status": "ok",
+          "last_success_at": "2026-10-06T14:57:02.578Z",
+          "last_attempt_at": "2026-10-06T14:57:02.578Z",
+          "poll_interval_seconds": 5,
+          "stale_after_seconds": 15,
+          "error_code": null
+        },
+        "publicConcurrent": [
+          {
+            "seat_id": "desk-09",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "macbookm5pro电脑：0"
+            ]
+          },
+          {
+            "seat_id": "desk-10",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "4090主机：0"
+            ]
+          },
+          {
+            "seat_id": "desk-11",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "Hermes 智能体工作站：0"
+            ]
+          },
+          {
+            "seat_id": "desk-12",
+            "current": "2",
+            "activity": "busy",
+            "bubble": [
+              "其他智能体：2"
+            ]
+          }
+        ],
+        "players": [
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          }
+        ],
+        "provenance": "unavailable-in-insecure-context",
+        "secureContext": false,
+        "overflow": false,
+        "canvas": [
+          1468,
+          1385
+        ],
+        "fonts": "loaded",
+        "buttons": [
+          {
+            "label": "展开详情",
+            "width": 86,
+            "height": 42
+          },
+          {
+            "label": "⛶ 全屏",
+            "width": 74.953125,
+            "height": 42
+          },
+          {
+            "label": "全景",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "红区",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "绿区",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "当前工位",
+            "width": 82,
+            "height": 38
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "macbookm5pro电脑：0",
+            "width": 136.890625,
+            "height": 36
+          },
+          {
+            "label": "4090主机：0",
+            "width": 78.8125,
+            "height": 36
+          },
+          {
+            "label": "Hermes 智能体工作站：0",
+            "width": 144.65625,
+            "height": 36
+          },
+          {
+            "label": "其他智能体：2",
+            "width": 86,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          }
+        ],
+        "unlabelledInputs": [],
+        "bodyText": "跳至办公室\n律\nSTAR OFFICE / LIVE\n律动实时办公室\n● 采样正常\n10/06 22:57:02\n4\n已绑定\n1\n处理中\n3\n待命\n0\n未知\n展开详情\n⛶ 全屏\nV5 · 连排工位\n仅展示采样时刻状态\n全景\n红区\n绿区\n当前工位\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\nmacbookm5pro电脑\n4090主机\nHermes 智能体工作站\n其他智能体\n未绑定\n未绑定\n未绑定\n未绑定\n办公室每 2 秒读取本地快照；不推测请求内容。\n数据异常不代表员工空闲。"
+      }
+    },
+    {
+      "device": "phone-portrait",
+      "ready_ms": 1788,
+      "observation": {
+        "scene": "company-office-connected-v5",
+        "animationMode": "expression-plus-screen-effects",
+        "walkIntegrated": false,
+        "stationCount": 16,
+        "boundCount": 4,
+        "source": {
+          "status": "ok",
+          "last_success_at": "2026-10-06T14:57:07.578Z",
+          "last_attempt_at": "2026-10-06T14:57:07.578Z",
+          "poll_interval_seconds": 5,
+          "stale_after_seconds": 15,
+          "error_code": null
+        },
+        "publicConcurrent": [
+          {
+            "seat_id": "desk-09",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "macbookm5pro电脑：0"
+            ]
+          },
+          {
+            "seat_id": "desk-10",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "4090主机：0"
+            ]
+          },
+          {
+            "seat_id": "desk-11",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "Hermes 智能体工作站：0"
+            ]
+          },
+          {
+            "seat_id": "desk-12",
+            "current": "2",
+            "activity": "busy",
+            "bubble": [
+              "其他智能体：2"
+            ]
+          }
+        ],
+        "players": [
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          }
+        ],
+        "provenance": "unavailable-in-insecure-context",
+        "secureContext": false,
+        "overflow": false,
+        "canvas": [
+          1068,
+          1596
+        ],
+        "fonts": "loaded",
+        "buttons": [
+          {
+            "label": "展开详情",
+            "width": 64,
+            "height": 42
+          },
+          {
+            "label": "⛶ 全屏",
+            "width": 54.65625,
+            "height": 42
+          },
+          {
+            "label": "全景",
+            "width": 46,
+            "height": 36
+          },
+          {
+            "label": "红区",
+            "width": 46,
+            "height": 36
+          },
+          {
+            "label": "绿区",
+            "width": 46,
+            "height": 36
+          },
+          {
+            "label": "当前工位",
+            "width": 70,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "macbookm5pro电脑：0",
+            "width": 136.890625,
+            "height": 36
+          },
+          {
+            "label": "4090主机：0",
+            "width": 78.8125,
+            "height": 36
+          },
+          {
+            "label": "Hermes 智能体工作站：0",
+            "width": 144.65625,
+            "height": 36
+          },
+          {
+            "label": "其他智能体：2",
+            "width": 86,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          }
+        ],
+        "unlabelledInputs": [],
+        "bodyText": "跳至办公室\n律\nSTAR OFFICE / LIVE\n律动实时办公室\n● 采样正常\n10/06 22:57:07\n4\n已绑定\n1\n处理中\n3\n待命\n0\n未知\n展开详情\n⛶ 全屏\nV5 · 连排工位\n仅展示采样时刻状态\n全景\n红区\n绿区\n当前工位\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\nmacbookm5pro电脑\n4090主机\nHermes 智能体工作站\n其他智能体\n未绑定\n未绑定\n未绑定\n未绑定\n办公室每 2 秒读取本地快照；不推测请求内容。\n数据异常不代表员工空闲。"
+      }
+    },
+    {
+      "device": "phone-landscape",
+      "ready_ms": 1777,
+      "observation": {
+        "scene": "company-office-connected-v5",
+        "animationMode": "expression-plus-screen-effects",
+        "walkIntegrated": false,
+        "stationCount": 16,
+        "boundCount": 4,
+        "source": {
+          "status": "ok",
+          "last_success_at": "2026-10-06T14:57:07.578Z",
+          "last_attempt_at": "2026-10-06T14:57:07.578Z",
+          "poll_interval_seconds": 5,
+          "stale_after_seconds": 15,
+          "error_code": null
+        },
+        "publicConcurrent": [
+          {
+            "seat_id": "desk-09",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "macbookm5pro电脑：0"
+            ]
+          },
+          {
+            "seat_id": "desk-10",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "4090主机：0"
+            ]
+          },
+          {
+            "seat_id": "desk-11",
+            "current": "0",
+            "activity": "idle",
+            "bubble": [
+              "Hermes 智能体工作站：0"
+            ]
+          },
+          {
+            "seat_id": "desk-12",
+            "current": "2",
+            "activity": "busy",
+            "bubble": [
+              "其他智能体：2"
+            ]
+          }
+        ],
+        "players": [
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "right",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "left",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "down",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          },
+          {
+            "direction": "up",
+            "hasHands": false,
+            "animationMode": "expression-plus-screen-effects",
+            "keyboardInteraction": false
+          }
+        ],
+        "provenance": "unavailable-in-insecure-context",
+        "secureContext": false,
+        "overflow": false,
+        "canvas": [
+          2454,
+          1044
+        ],
+        "fonts": "loaded",
+        "buttons": [
+          {
+            "label": "展开详情",
+            "width": 86,
+            "height": 42
+          },
+          {
+            "label": "⛶ 全屏",
+            "width": 74.953125,
+            "height": 42
+          },
+          {
+            "label": "全景",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "红区",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "绿区",
+            "width": 56,
+            "height": 38
+          },
+          {
+            "label": "当前工位",
+            "width": 82,
+            "height": 38
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "macbookm5pro电脑：0",
+            "width": 136.890625,
+            "height": 36
+          },
+          {
+            "label": "4090主机：0",
+            "width": 78.8125,
+            "height": 36
+          },
+          {
+            "label": "Hermes 智能体工作站：0",
+            "width": 144.65625,
+            "height": 36
+          },
+          {
+            "label": "其他智能体：2",
+            "width": 86,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          },
+          {
+            "label": "未绑定",
+            "width": 62,
+            "height": 36
+          }
+        ],
+        "unlabelledInputs": [],
+        "bodyText": "跳至办公室\n律\nSTAR OFFICE / LIVE\n律动实时办公室\n● 采样正常\n10/06 22:57:07\n4\n已绑定\n1\n处理中\n3\n待命\n0\n未知\n展开详情\n⛶ 全屏\nV5 · 连排工位\n仅展示采样时刻状态\n全景\n红区\n绿区\n当前工位\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\n未绑定\nmacbookm5pro电脑\n4090主机\nHermes 智能体工作站\n其他智能体\n未绑定\n未绑定\n未绑定\n未绑定\n办公室每 2 秒读取本地快照；不推测请求内容。\n数据异常不代表员工空闲。"
+      }
+    }
+  ],
+  "passed": 19,
+  "failed": 0
+}

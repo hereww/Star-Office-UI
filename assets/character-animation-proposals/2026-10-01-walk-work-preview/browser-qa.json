@@ -1,0 +1,24 @@
+{
+  "verified": true,
+  "url": "http://127.0.0.1:58085/",
+  "canvases": 5,
+  "defaultActualFrameCounts": [
+    2,
+    2,
+    2,
+    2,
+    12
+  ],
+  "observedWorkFrames": 12,
+  "observedDown12Frames": 12,
+  "playbackObservedMilliseconds": 2300,
+  "pauseVerified": true,
+  "firstLastNavigationVerified": true,
+  "sharedBusinessStateVerified": true,
+  "native96pxVerified": true,
+  "mobile390NoOverflow": true,
+  "reducedMotionDefaultPaused": true,
+  "errors": [],
+  "productionModified": false,
+  "newArtworkGenerated": false
+}

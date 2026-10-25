@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-02",
+  "passed": true,
+  "scope": "Four static furniture assets and registration/occlusion; not character-expression acceptance or integrated office-runtime testing",
+  "inspected": [
+    "sources/up-source.png",
+    "sources/down-source.png",
+    "sources/left-source.png",
+    "sources/right-source.png",
+    "qa/furniture-contact-sheet.png",
+    "qa/up-front-4x.png",
+    "qa/up-back-4x.png",
+    "qa/left-front-4x.png",
+    "qa/right-front-4x.png",
+    "qa/registration-contact-sheet.png",
+    "qa/browser-furniture-screen-qa.png",
+    "qa/left-lower-bezel-detail.png",
+    "qa/right-lower-bezel-detail.png"
+  ],
+  "commonChecks": {
+    "warmOak": true,
+    "tealUpholstery": true,
+    "nearBlackMonitor": true,
+    "sameOutlinedPainterlyPixelFamily": true,
+    "squareCanvasNotTrimmed": true,
+    "keyboardOnDesktop": true,
+    "monitorNeckAndFootConnected": true,
+    "furnitureOnlyNoHandsNoAnimals": true,
+    "allFeetInsideCanvas": true,
+    "sideViewsIndependentlyGeneratedNotRotatedOrMirrored": true,
+    "sideIndicatorOnLowerPanelRimNotStand": true
+  },
+  "directions": {
+    "up": {
+      "passed": true,
+      "chairNearSideRearVisible": true,
+      "monitorFrontGlass": true,
+      "foregroundChairHidesLowerBody": true,
+      "desktopBackground": true,
+      "screenBehindActor": true,
+      "seatAnchor": [
+        96,
+        145
+      ]
+    },
+    "down": {
+      "passed": true,
+      "chairAtTopFrontUpholsteryVisible": true,
+      "monitorRearCasingOnly": true,
+      "keyboardBetweenMonitorAndSeat": true,
+      "connectedRearStand": true,
+      "foregroundDeskAndMonitor": true,
+      "seatAnchor": [
+        97,
+        94
+      ]
+    },
+    "left": {
+      "passed": true,
+      "deskOnLeftChairOnRight": true,
+      "glassFacesSeatAtRight": true,
+      "keyboardBetweenScreenAndSeat": true,
+      "nearArmBelowFace": true,
+      "seatAnchor": [
+        131,
+        128
+      ]
+    },
+    "right": {
+      "passed": true,
+      "chairOnLeftDeskOnRight": true,
+      "glassFacesSeatAtLeft": true,
+      "keyboardBetweenScreenAndSeat": true,
+      "nearArmBelowFace": true,
+      "differentSourceMechanicsMouseDepthAndLightingFromLeft": true,
+      "seatAnchor": [
+        62,
+        130
+      ]
+    }
+  },
+  "registrationBoundary": [
+    "RIGHT uses its resource agent candidate only for read-only occlusion geometry; no actor acceptance implied.",
+    "UP back-body source is whole-canvas resized only for registration; furniture task did not output or edit a back actor.",
+    "Final 16-seat integration, per-seat scale and runtime behavior belong to the main agent."
+  ],
+  "browserMaskBoundaryTolerancePx": 1,
+  "noBitmapFurnitureSynthesizedByCode": true
+}

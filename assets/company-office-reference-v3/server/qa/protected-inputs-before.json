@@ -1,0 +1,430 @@
+{
+  "scope": "server-rack.png + assets/company-office-reference-v3/server only",
+  "checkedFiles": 106,
+  "files": [
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/down-back.png",
+      "sha256": "c33558d6fda8eb933c76da22f5d4f52d6e3e81e4f3c912bb48263cf0ade3ea2d"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/down-front.png",
+      "sha256": "5183223b81d5d433aed4b5fd6965fd94d37b0ead53cbb79fd614f7fd332261f2"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/down.png",
+      "sha256": "622806bf6926962f7b8bdd5aacb9c1e4fdee5ba3949f9ad32c68d807db4650e9"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/left-back.png",
+      "sha256": "9382971db49f470adbed881446f6d98719c9fbfe1f558baa7307ab6e61e95da6"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/left-front.png",
+      "sha256": "aa2cf4ad019e825fe03aacff0de8bb5eb295dd9614d9292c7e25eca78bd1137a"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/left.png",
+      "sha256": "854532d65171c413eb4fc3ba7c5d3c578e43cc73713459c69181cb4d16981628"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/manifest.json",
+      "sha256": "de9717cc1cf7385105940d708c7a5cc19df07859c2f81914c70a88b8fb02c707"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/right-back.png",
+      "sha256": "9ed58a0e72d1fbd1d572f29f6a94be0b2f63f2f7a23c3201f8b51a1a28b8cd60"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/right-front.png",
+      "sha256": "a2fa38ebf3258b805857c7447b4ceea5327d175a08b8a44c56c940b182ad44f0"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/right.png",
+      "sha256": "58c66a1fdbca1ca27dc167fcc23d9ae7277be672ea10365f48096c219cef9e8b"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/up-back.png",
+      "sha256": "aa0bc73a1682a834bdda46bd338ffc10afe5b03a1fba20c01d9d2eaac5952836"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/up-front.png",
+      "sha256": "01c7bbf22a6baaa9ff59d6af065465a935d3d587f678a1f09b257cc16426b437"
+    },
+    {
+      "path": "frontend/company-office/reference-v3/media/furniture/up.png",
+      "sha256": "1a96d9c7790324b6ef4ffe1e1a9062faa76cbdf8664890395eee12745fefc57d"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/HANDOFF.md",
+      "sha256": "d825c1827edd438aa9b2e2c0e2c96c8a3b9ad5dce2377bb785aaa3b3d0a56727"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/generation-record.json",
+      "sha256": "4f48533e038afa3bfff1128ff7c5d1049cf0db235cd1a5cf62f9ddec5144322a"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/manifest.json",
+      "sha256": "de9717cc1cf7385105940d708c7a5cc19df07859c2f81914c70a88b8fb02c707"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/down-back.png",
+      "sha256": "c33558d6fda8eb933c76da22f5d4f52d6e3e81e4f3c912bb48263cf0ade3ea2d"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/down-front.png",
+      "sha256": "5183223b81d5d433aed4b5fd6965fd94d37b0ead53cbb79fd614f7fd332261f2"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/down.png",
+      "sha256": "622806bf6926962f7b8bdd5aacb9c1e4fdee5ba3949f9ad32c68d807db4650e9"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/left-back.png",
+      "sha256": "9382971db49f470adbed881446f6d98719c9fbfe1f558baa7307ab6e61e95da6"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/left-front.png",
+      "sha256": "aa2cf4ad019e825fe03aacff0de8bb5eb295dd9614d9292c7e25eca78bd1137a"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/left.png",
+      "sha256": "854532d65171c413eb4fc3ba7c5d3c578e43cc73713459c69181cb4d16981628"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/right-back.png",
+      "sha256": "9ed58a0e72d1fbd1d572f29f6a94be0b2f63f2f7a23c3201f8b51a1a28b8cd60"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/right-front.png",
+      "sha256": "a2fa38ebf3258b805857c7447b4ceea5327d175a08b8a44c56c940b182ad44f0"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/right.png",
+      "sha256": "58c66a1fdbca1ca27dc167fcc23d9ae7277be672ea10365f48096c219cef9e8b"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/up-back.png",
+      "sha256": "aa0bc73a1682a834bdda46bd338ffc10afe5b03a1fba20c01d9d2eaac5952836"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/up-front.png",
+      "sha256": "01c7bbf22a6baaa9ff59d6af065465a935d3d587f678a1f09b257cc16426b437"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/normalized/up.png",
+      "sha256": "1a96d9c7790324b6ef4ffe1e1a9062faa76cbdf8664890395eee12745fefc57d"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/processing-plan.json",
+      "sha256": "66e9e23d5847210e41a1efd8896d60a0cdf8d79f3644e08c4b11b624b472b360"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/prompts/down-request.json",
+      "sha256": "197d90f27cadd3b01d4250ab510a84a4740b6670bb7c3c962f436bfe026e708b"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/prompts/down.txt",
+      "sha256": "4f869cafab16279780b0f3e140217cda3ed546b884a2e06b06c21e217ba4d7f9"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/prompts/left-request.json",
+      "sha256": "a2e32bf154164f0d729a1da9d6c98d9d718ef40f3fd1ca8ac77174fb3bbda1e6"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/prompts/left.txt",
+      "sha256": "25dd3966640915cb2708682c3201115ac65323181f630088376bad1977052d25"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/prompts/right-request.json",
+      "sha256": "63076a6a27f3b988a008c3abbb5668ca4ae87475de6520990b659bf152d37a9d"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/prompts/right.txt",
+      "sha256": "2fcb10889146e19431422088e3ae2b24cbf10ced598fa1feea4462a603434c89"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/prompts/up-request.json",
+      "sha256": "cc1e174523fb0955c5e35625827a00dfb16c1177eb6fc23a061130ce597d57df"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/prompts/up.txt",
+      "sha256": "b3fcbe7725068607417801533417ed428515fff625c2cee8c837541434bc0281"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/alpha-qa.json",
+      "sha256": "2c0da926c2f099512e35f87b26bb56530b2a5638b20bab5bdd0e38699cb5f53c"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/browser-furniture-screen-qa.png",
+      "sha256": "c8835898fe9358a01569d2e26eec94709cc1e71663508994004ba5a1bb1276cc"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/browser-qa-console.json",
+      "sha256": "1439eb9c8702a52a22ec49c917079c60226ed7d4f6aec0e522fa4c858a1060a9"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/browser-qa.json",
+      "sha256": "9a7b8e17a30fe682d3c877fcc30c53c4a12ef4aa940e95789f12661e2cb0200b"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/down-4x.png",
+      "sha256": "c73f1534b8ae4c5e3e162796f56b9117eb6363a805133a05072287ae075cf73c"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/down-back-4x.png",
+      "sha256": "a9786b080f46a56807d88991eac62f6e2118ea163a3e44cd0277b8737930c396"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/down-front-4x.png",
+      "sha256": "6872e20b16ea14dd6737d83313f72fef4cd3c2193ccb733815dc87921f377847"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/down-front-alpha-mask.png",
+      "sha256": "867482963b9a555fab6e9066aa275b73e25270dd02a12b1966401d9d553de070"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/down-full-4x.png",
+      "sha256": "c73f1534b8ae4c5e3e162796f56b9117eb6363a805133a05072287ae075cf73c"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/down-registration-4x.png",
+      "sha256": "e88462d01ab9b66bdeee12537fa87d2b93e0496954cae924a703e90ea2de2a6a"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/down-registration.png",
+      "sha256": "88d9fe088b03c2951a7819ad3c6e24a52d4a64e0b791e3b587d2bd1362d66a07"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/final-qa.json",
+      "sha256": "cfaff3c02773191a49daa337e0564c3d6b46aa2a40f346c7047d9370ab3aeb45"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/furniture-contact-sheet.png",
+      "sha256": "e7782c157dabc1246874486bdfd7b7c60c809b138dda7ad0a17f0bcb093c2d44"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/interface-qa.json",
+      "sha256": "50560695aa2aa28a24563544136fbdabc832cfa7494435e3fd508afe37f90618"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/left-4x.png",
+      "sha256": "2ff382ace58ccdc120a857fbedddb2660fa465f5a352c9514283ba25d12c7eab"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/left-back-4x.png",
+      "sha256": "6fcd45069a09b17d60cc5c862cb24a2fb21cee0a5b6df9e9e08341fba6701c21"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/left-front-4x.png",
+      "sha256": "9a90ba148d110ad167e82b9319bc7ad51a78d4dd70f23cae2d1bfa61ccb892d5"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/left-front-alpha-mask.png",
+      "sha256": "2911be53e83520a681a9ceef7cc5a3056c5af0f3aaba922f111ac7fa8090ae8e"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/left-full-4x.png",
+      "sha256": "2ff382ace58ccdc120a857fbedddb2660fa465f5a352c9514283ba25d12c7eab"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/left-lower-bezel-detail.png",
+      "sha256": "70409591d4149188b4ac9a4d966c45a1fcbe064dde5fe50e0c9c0825e44fa832"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/left-registration-4x.png",
+      "sha256": "9c452df452c3b127d4ed28fdb908f351e34e1f604a1948be2ace4c6aa7d731f4"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/left-registration.png",
+      "sha256": "61492e4d37e3ce4344eb8fc355512dc6a146ee6484c79bf2c52a984e3fb2a587"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/registration-contact-sheet.png",
+      "sha256": "5954804addf6e9a547ea2df63f32f58b1f9187d89d1db6b6b1acaef5caf3a3a5"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/registration-qa.json",
+      "sha256": "1340e2fe8988f42265bf741ae88223f5e293cdb26c685baee2b57b8f9243998f"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/right-4x.png",
+      "sha256": "64a3c4fad3b9043186931b7ed2ac76cedcac31bb023d2abfbfa3b499e52b3b67"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/right-back-4x.png",
+      "sha256": "041efbca41a1704d60bcd01e2f8a0c16b13323dd5243d064b5da4110dc494441"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/right-front-4x.png",
+      "sha256": "f2c4045ef285644a319c83cde260de4dd24901a1cefa2c5a71784ac89b5bfd1a"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/right-front-alpha-mask.png",
+      "sha256": "1e88d77302b2c839ddd4816466c2f3904e3b779b1cc494ed6ac7a0544d543f7f"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/right-full-4x.png",
+      "sha256": "64a3c4fad3b9043186931b7ed2ac76cedcac31bb023d2abfbfa3b499e52b3b67"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/right-lower-bezel-detail.png",
+      "sha256": "006e5317e544808fbd7c032682b7fa4bdee6cdfc9a8bb9d3b2673e67a1a57eca"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/right-registration-4x.png",
+      "sha256": "494c8664dbe3232f531d22cd8ee23c7d98fb03d8f6c33c047bc18b8ecd204f8e"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/right-registration.png",
+      "sha256": "4c2ed3b1feb9976eb2c4e89bf48629f8b96b734277abbb4b5d055316435409e9"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/up-4x.png",
+      "sha256": "9417923623434d36ea65ff9e188f6a23b41a1cc8d87775d769bde93ef30bd18b"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/up-back-4x.png",
+      "sha256": "dd998f9ad3613d78f1b3278f2f52375664bbdc266175ae08fa80d33bfce32667"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/up-front-4x.png",
+      "sha256": "f322ecd989449ff361fecde9ceacd98c2a5c2e7bc898c1a1d88cb3ae564103ea"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/up-front-alpha-mask.png",
+      "sha256": "51c1607177dfda85d12bbdc4197382421e2fc37f43f58ebb098f95671184f020"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/up-full-4x.png",
+      "sha256": "9417923623434d36ea65ff9e188f6a23b41a1cc8d87775d769bde93ef30bd18b"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/up-registration-4x.png",
+      "sha256": "2c89ab9c69c7c090547166ac4ca96f960b9a23866d31b1659e54a88a58f07c22"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/up-registration.png",
+      "sha256": "5d9091bf5bd2c737b699f71f388a9afeda2cf1c9094dd65b68367e76ab3781aa"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/qa/visual-qa.json",
+      "sha256": "06f189bfd223984b882a9d02fccf39f861b6a612fc73c9a57bc80fd954c9801a"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/scripts/browser_qa.mjs",
+      "sha256": "f9f4f4effa80933ec03c48481e8c8196cad6bb0bae5548f2ceafa08222167f2f"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/scripts/build_furniture.py",
+      "sha256": "78a7bfea8e9a714e7a0121ddc158ab54c3b3ad3a1ef19d9ac9b5b088e1c308d5"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/scripts/registration_qa.py",
+      "sha256": "62c272fecdbfb942764fa6d6eeb0d03908b96c3140cc4f8f39f27aa6e17614b3"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/scripts/test_furniture.mjs",
+      "sha256": "d10175bc5c1900fac9407dadbc081fb4abcbae2a883447c65634576cdb77734f"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/sources/down-source.png",
+      "sha256": "c21415a877fd3a8587aa72dfdf6aff2252e0b96dd9ac70caf756d94d5cd95cb8"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/sources/left-source.png",
+      "sha256": "f3f0b3b261986bc3eeeb668dfa849a9cdb50bfbc1b9aaef7ec8163fe6a6eebde"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/sources/right-source.png",
+      "sha256": "3aa25b1811d9f28f96ce2df3b9fa1d31b2807f72139fa245009d5f329115307b"
+    },
+    {
+      "path": "assets/company-office-reference-v3/furniture/sources/up-source.png",
+      "sha256": "e02cf3f6ff8d47c1e48e43572fbc6dabf710aae2fef645d472caee4a8fcc3cc6"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/README.md",
+      "sha256": "49c7fe4890f8872b4953dd7446c589f577e11489f24cac2b0fc9ee4e89b54c3f"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/approval.json",
+      "sha256": "83bcc5abdfd7dd8f61ca24dbfba1f6c8d6e2efa83b0d6ead3de6342d5cef1bf4"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/index.html",
+      "sha256": "2977a55946bed3a4e77e0b22e75b2662cef07d5eb69fc0d08519d03f74d48deb"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/media/character-base.png",
+      "sha256": "0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/media/face-error-dizzy.png",
+      "sha256": "91269efdcfa05b00007f59bf4ad89c8636bf34847b06060775dc5fc623eb5ff3"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/media/face-idle-sleep.png",
+      "sha256": "4c9cdf5553b9bd396353164ada7eed9119f09f272d5d738ca2ff9f869739eb3f"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/media/face-syncing.png",
+      "sha256": "3cb52a82dcd558165a53fe44e96738c93828b4652535a8e4832557dac50e2412"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/media/face-working.png",
+      "sha256": "e81d4eb1f48a2d3ac603b98e222e783373a1867f3add88396d112d3114544e5e"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/media/workstation-back.png",
+      "sha256": "4e57d15d38ec57dc0fcbeb984bde74d3eb2ef3bc9ccdbf3ab8ee2434432f1fc2"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/media/workstation-front.png",
+      "sha256": "1aef97ce63b757d88c5a0c3cf6be1d0d6e5fc95b11b0c7982247dd3225a88672"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/media/workstation-reference.png",
+      "sha256": "9fdd307430256fdd9b8b7a6d6fc1d92f21c8be3ce301b32c0489ab50390f293e"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/office-assets.json",
+      "sha256": "f58f21d6d7205f59c3484a62b42b4514dd20fffbd5d73a70e17669ea4ad9adcd"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/preview.mjs",
+      "sha256": "92bd989db8caacbdfbdca5bb63b5ad80423d7a657c8509b5f467d068da9a7d42"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/seated-compositor.mjs",
+      "sha256": "3ee6f3c8a29b5c2d2017afe965726572ee9f200828f13b4ea32d82d01fb82536"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/source/face-error-dizzy-prompt.txt",
+      "sha256": "6c0c38abbbb522cd778c433ef5a34704885be62aea16455bf4e7664cadbecf2d"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/source/face-idle-sleep-prompt.txt",
+      "sha256": "af732bc7485f80777394edd5e47659c78787eba15ea75c472f7e5d96f59b53ce"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/source/face-reference.png",
+      "sha256": "c50b544f226155a8c52afb993e8b496e97dc34238d96e4c1ee142a1e86ba5167"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/source/face-syncing-prompt.txt",
+      "sha256": "a54cef752b23bcc7cd9dbde87a58a3e4ed67a69c2f50f0af849fd8f151ddeb20"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/source/face-working-prompt.txt",
+      "sha256": "b4e1c9ba4cf06226a6529d2f454932ac7b2b4542ec6827a68cc3826598af6e25"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/source/orange-cat-reference.png",
+      "sha256": "1a5c0719324291e5c9039ee4534e0de38d4aa88d06ed23fb603a3294bdab6411"
+    },
+    {
+      "path": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/template-manifest.json",
+      "sha256": "b633fce0fbc63e5426caed80b0488e4c8aadcf09a5043cadb417f2198a79a6c5"
+    }
+  ]
+}

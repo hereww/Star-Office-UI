@@ -1,0 +1,317 @@
+{
+  "manifest_schema_version": 1,
+  "release": {
+    "plugin_id": "com.lvdong.user-telemetry",
+    "version": "0.1.0",
+    "date": "2026-10-04",
+    "package": "lvdong-user-telemetry-0.1.0.s2plugin",
+    "status": "superseded_historical",
+    "superseded_by": "0.1.1",
+    "documentation_finalized_at_utc": "2026-10-04T06:22:07.302635+00:00"
+  },
+  "host": {
+    "repository": "Wei-Shaw/sub2api",
+    "baseline_commit": "b8dece9000c68815a5b867ca5a1e6f236e173905",
+    "source_version": "0.2.13",
+    "patch_required": true,
+    "patch": "sub2api-user-telemetry-host.patch",
+    "declared_version_range": ">=0.2.13 <0.3.0",
+    "all_declared_versions_tested": false,
+    "required_capabilities": {
+      "plugin_protocol": 1,
+      "user_telemetry_api": 1,
+      "ui_bridge": 1
+    }
+  },
+  "acceptance": {
+    "basis": "existing_local_reports_and_logs_plus_read_only_live_site_preflight_and_three_platform_package_signature_reverification",
+    "environment": "isolated PostgreSQL + Redis + signed native plugin; fixture identities only",
+    "native": {
+      "report": "native-acceptance.json",
+      "passed": true,
+      "checks_total": 45,
+      "checks_passed": 45
+    },
+    "patch": {
+      "report": "patch-verification.json",
+      "clean_apply": true,
+      "post_apply_compile": true
+    },
+    "browser": {
+      "report": "browser-qa/native-browser-qa.json",
+      "passed": true,
+      "parent_authentication": "disposable_login_bridge_not_production_login",
+      "viewports": [
+        {
+          "width": 900,
+          "height": 900
+        },
+        {
+          "width": 390,
+          "height": 844
+        }
+      ]
+    },
+    "platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64",
+        "cross_compiled": null,
+        "native_runtime_acceptance": "passed",
+        "evidence": "README_INSTALL_ZH.md; native-acceptance.json"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64",
+        "cross_compiled": true,
+        "package_signature_verification": "reported_passed",
+        "native_runtime_acceptance": "not_run",
+        "evidence": "README_INSTALL_ZH.md"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64",
+        "cross_compiled": true,
+        "package_signature_verification": "reported_passed",
+        "native_runtime_acceptance": "not_run",
+        "evidence": "README_INSTALL_ZH.md"
+      }
+    ],
+    "production": {
+      "initial_preflight": {
+        "installed": false,
+        "deployed": false,
+        "login_verified": true,
+        "step_up_2fa_verified": false,
+        "live_version_checked": true,
+        "real_user_reconciliation_verified": false,
+        "office_animation_integrated": false,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/docs/production-qa-20261004/preflight.json",
+        "current_version": "0.2.13",
+        "telemetry_route_registered": false,
+        "server_access_authorized": false,
+        "installation_status": "blocked_server_access_required",
+        "preflight_checked_at": "2026-10-04T03:25:36.649Z"
+      },
+      "later_0_1_0_installation": {
+        "installed": true,
+        "api_checks_passed": 35,
+        "linux_native_checks_passed": 44,
+        "http_configuration_ui_issue": true,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/docs/production-qa-20261004/api-acceptance-v0.1.0.json"
+      },
+      "current_installed_version": "0.1.1",
+      "current_installation_id": 1,
+      "current_report": "/Users/hepingyu/Documents/ChatGPT/sub2api/docs/production-qa-20261004/INSTALLATION_STATUS_ZH.md",
+      "office_animation_integrated": false,
+      "initial_preflight_is_not_current_status": true
+    },
+    "tests": [
+      {
+        "name": "signature_packager",
+        "passed": 30,
+        "total": 30,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/packager-tests.log"
+      },
+      {
+        "name": "ui_bridge",
+        "passed": 8,
+        "total": 8,
+        "skipped": 0,
+        "todo": 0,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/ui-bridge-tests.log"
+      },
+      {
+        "name": "admin_plugins_view",
+        "passed": 2,
+        "total": 2,
+        "files": 1,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/frontend-plugin-tests.log"
+      },
+      {
+        "name": "locale_key_completeness",
+        "passed": 3,
+        "total": 3,
+        "files": 1,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/frontend-build.log"
+      },
+      {
+        "name": "patch_verification_go",
+        "packages_ok": 5,
+        "packages_without_test_files": 1,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/patch-verification.log"
+      },
+      {
+        "name": "audit_fix_go",
+        "packages_ok": 3,
+        "case_count": null,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/audit-fix-tests.log"
+      },
+      {
+        "name": "main_integration_go",
+        "packages_ok": 2,
+        "packages_without_test_files": 1,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/main-integration-test.log"
+      },
+      {
+        "name": "astra_targeted_unit_tests",
+        "reported_passed": 9,
+        "independently_enumerated_in_logs": false,
+        "evidence": "ASTRA_SECURITY_RECHECK_ZH.md"
+      },
+      {
+        "name": "go_vet",
+        "status": "unconfirmed_empty_log_without_exit_status",
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/go-vet.log"
+      },
+      {
+        "name": "go_full",
+        "passed_test_subtest_events": 12974,
+        "skipped_test_events": 14,
+        "failed_test_events": 0,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/go-full-tests.jsonl",
+        "aggregation": "Go JSON pass/skip/fail events; skipped tests are not passes"
+      },
+      {
+        "name": "go_service_repository_plugin_race",
+        "passed_test_subtest_events": 352,
+        "skipped_test_events": 1,
+        "failed_test_events": 0,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/go-race-tests.jsonl",
+        "aggregation": "Go JSON pass/skip/fail events; skipped tests are not passes"
+      },
+      {
+        "name": "go_runtime_public_admin_race",
+        "passed_test_subtest_events": 489,
+        "skipped_test_events": 0,
+        "failed_test_events": 0,
+        "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/go-runtime-race-tests.jsonl",
+        "aggregation": "Go JSON pass/skip/fail events; skipped tests are not passes"
+      }
+    ],
+    "frontend_build": {
+      "status": "passed",
+      "warnings_present": true,
+      "evidence": "/Users/hepingyu/Documents/ChatGPT/sub2api/.local/telemetry-acceptance/frontend-build.log"
+    },
+    "security_review": {
+      "report": "ASTRA_SECURITY_RECHECK_ZH.md",
+      "scope": "contract, credential handler/store/migration, management/external routes; not complete runtime certification",
+      "os_sandbox_certified": false
+    },
+    "documentation": "ACCEPTANCE_ZH.md"
+  },
+  "signing": {
+    "publisher_private_key_status": "destroyed_as_recorded_in_install_readme",
+    "evidence": "README_INSTALL_ZH.md",
+    "private_key_read_or_recreated_in_documentation_pass": false,
+    "package_resigned_in_documentation_pass": false,
+    "future_releases_require_own_safely_managed_key_and_publisher_id": true
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "path_base": "release_directory",
+    "files_count": 15,
+    "manifest_excludes": [
+      "RELEASE_MANIFEST.json",
+      "SHA256SUMS"
+    ],
+    "checksum_file": "SHA256SUMS",
+    "checksum_includes_manifest": true,
+    "checksum_excludes": [
+      "SHA256SUMS"
+    ],
+    "checksum_entries": 16,
+    "generation_order": [
+      "payloads_and_documents",
+      "RELEASE_MANIFEST.json",
+      "SHA256SUMS"
+    ],
+    "package_repacked": false,
+    "not_a_digital_signature": true
+  },
+  "files": [
+    {
+      "path": "ACCEPTANCE_ZH.md",
+      "size_bytes": 16234,
+      "sha256": "420c55dfd12a2cbaa044260d56d08b93578e7d8a823543e0a0c7075057fb9b6e"
+    },
+    {
+      "path": "ASTRA_SECURITY_RECHECK_ZH.md",
+      "size_bytes": 2088,
+      "sha256": "8df4ef91c6bdedd6597f781f1551d0ac7e573fb2ae50e2dc7a16bc2568245a4f"
+    },
+    {
+      "path": "README_INSTALL_ZH.md",
+      "size_bytes": 7004,
+      "sha256": "2d9f11667f218448ea32147ed2e96b20c088ce432084aa5d28c366935d21841c"
+    },
+    {
+      "path": "USER_TELEMETRY_API_ZH.md",
+      "size_bytes": 5718,
+      "sha256": "c18b109c4edbaf56690be4239a6e8be69edad2a2900671aec31fb4c16e3ddcf1"
+    },
+    {
+      "path": "browser-qa/native-browser-qa.json",
+      "size_bytes": 837,
+      "sha256": "9cd911693849ea01874f8deb4a368aaa8f4e9a7041943aedbbd7a512ca2d58f3"
+    },
+    {
+      "path": "browser-qa/native-sandbox-390.png",
+      "size_bytes": 76305,
+      "sha256": "91ee8f803fb3cdd63dabe8ebfec4eeb3b2496bcfdd18826c058053e30e148553"
+    },
+    {
+      "path": "browser-qa/native-sandbox-900.png",
+      "size_bytes": 80887,
+      "sha256": "988330725ed94dc014fda158e484770831d53bc05105a99bcaa4e13c59b9def7"
+    },
+    {
+      "path": "host.patch",
+      "size_bytes": 314939,
+      "sha256": "36e1d772a6f02c48908ed87beb74b399c0ec7b8f6c2ca6c9fa94cae28332a741"
+    },
+    {
+      "path": "lvdong-user-telemetry-0.1.0.s2plugin",
+      "size_bytes": 15038748,
+      "sha256": "ff8b23febdf121b6f14824e185c612af08f6163050ef92fe258d16b9c2531bb0"
+    },
+    {
+      "path": "native-acceptance.json",
+      "size_bytes": 6673,
+      "sha256": "4cace72ef5e3679eed5227efa6b343c4b28b11d920f7b6b0bfebc4b161cc0bfe"
+    },
+    {
+      "path": "patch-verification.json",
+      "size_bytes": 24485,
+      "sha256": "2dac8f5c7d7c25b8f8bf87747eb475aac845963a82f5606dddf55fb03dcfecdb"
+    },
+    {
+      "path": "plugins-trust.yaml",
+      "size_bytes": 132,
+      "sha256": "2301323d2d13530413a9f62ff6d0347798c7e8aa6434570020e632c6485275e4"
+    },
+    {
+      "path": "publisher-public-key.txt",
+      "size_bytes": 45,
+      "sha256": "216e0980d8b136d71a5d3bda757c0972608b48d834f0da2a9935ad2dd46f7399"
+    },
+    {
+      "path": "snapshot.schema.json",
+      "size_bytes": 5377,
+      "sha256": "73322ffdcb6b1830e9d75f64749824c37b5a6b13e3673f437a661273d60004ab"
+    },
+    {
+      "path": "sub2api-user-telemetry-host.patch",
+      "size_bytes": 314939,
+      "sha256": "36e1d772a6f02c48908ed87beb74b399c0ec7b8f6c2ca6c9fa94cae28332a741"
+    }
+  ],
+  "legacy_patch_restoration": {
+    "restored_from_recorded_original": true,
+    "patch_sha256": "36e1d772a6f02c48908ed87beb74b399c0ec7b8f6c2ca6c9fa94cae28332a741",
+    "host_patch_alias_identical": true,
+    "package_sha256_unchanged": "ff8b23febdf121b6f14824e185c612af08f6163050ef92fe258d16b9c2531bb0",
+    "new_checksums_regenerated": true
+  }
+}

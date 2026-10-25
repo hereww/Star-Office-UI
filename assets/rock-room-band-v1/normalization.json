@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "tool": "scripts/normalize_rock_room_band_sprites.py",
+  "frameSize": [
+    96,
+    96
+  ],
+  "grid": [
+    4,
+    3
+  ],
+  "frameCount": 12,
+  "fps": 12,
+  "anchor": [
+    48,
+    88
+  ],
+  "records": [
+    {
+      "source": "assets/rock-room-band-v1/source/orange-tabby-drummer-raw.png",
+      "output": "frontend/company-office/connected-v5/media/rock-room/drummer-orange-tabby.png",
+      "preview": "assets/rock-room-band-v1/preview/drummer-orange-tabby.jpg",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "frameSize": [
+        96,
+        96
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "frameCount": 12,
+      "anchor": [
+        48,
+        88
+      ],
+      "sharedContentBox": [
+        0,
+        0,
+        362,
+        354
+      ],
+      "normalizedContentSize": [
+        86,
+        84
+      ],
+      "alphaThreshold": 12
+    },
+    {
+      "source": "assets/rock-room-band-v1/source/cream-vocalist-raw.png",
+      "output": "frontend/company-office/connected-v5/media/rock-room/vocalist-cream.png",
+      "preview": "assets/rock-room-band-v1/preview/vocalist-cream.jpg",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "frameSize": [
+        96,
+        96
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "frameCount": 12,
+      "anchor": [
+        48,
+        88
+      ],
+      "sharedContentBox": [
+        0,
+        4,
+        362,
+        349
+      ],
+      "normalizedContentSize": [
+        88,
+        84
+      ],
+      "alphaThreshold": 12
+    },
+    {
+      "source": "assets/rock-room-band-v1/source/gray-guitarist-raw.png",
+      "output": "frontend/company-office/connected-v5/media/rock-room/guitarist-gray.png",
+      "preview": "assets/rock-room-band-v1/preview/guitarist-gray.jpg",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "frameSize": [
+        96,
+        96
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "frameCount": 12,
+      "anchor": [
+        48,
+        88
+      ],
+      "sharedContentBox": [
+        10,
+        5,
+        344,
+        362
+      ],
+      "normalizedContentSize": [
+        79,
+        84
+      ],
+      "alphaThreshold": 12
+    },
+    {
+      "source": "assets/rock-room-band-v1/source/tuxedo-bassist-raw.png",
+      "output": "frontend/company-office/connected-v5/media/rock-room/bassist-tuxedo.png",
+      "preview": "assets/rock-room-band-v1/preview/bassist-tuxedo.jpg",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "frameSize": [
+        96,
+        96
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "frameCount": 12,
+      "anchor": [
+        48,
+        88
+      ],
+      "sharedContentBox": [
+        14,
+        0,
+        355,
+        362
+      ],
+      "normalizedContentSize": [
+        79,
+        84
+      ],
+      "alphaThreshold": 12
+    }
+  ]
+}

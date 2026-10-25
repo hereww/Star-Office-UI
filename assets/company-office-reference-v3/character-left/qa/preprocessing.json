@@ -1,0 +1,89 @@
+{
+  "baseSourceSize": [
+    1254,
+    1254
+  ],
+  "baseSize": [
+    192,
+    192
+  ],
+  "actualGeneratedAlphaPreserved": true,
+  "paintedPixels": false,
+  "mirroring": false,
+  "rotation": false,
+  "syntheticOrRepeatedFrames": false,
+  "results": [
+    {
+      "action": "working",
+      "sourceSize": [
+        1802,
+        872
+      ],
+      "sourceCrop": null,
+      "outputSize": [
+        360,
+        174
+      ],
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameCount": 12,
+      "method": "whole-sheet nearest-neighbor, row-major slicing"
+    },
+    {
+      "action": "idle",
+      "sourceSize": [
+        1802,
+        873
+      ],
+      "sourceCrop": null,
+      "outputSize": [
+        360,
+        174
+      ],
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameCount": 12,
+      "method": "whole-sheet nearest-neighbor, row-major slicing"
+    },
+    {
+      "action": "syncing",
+      "sourceSize": [
+        1804,
+        872
+      ],
+      "sourceCrop": null,
+      "outputSize": [
+        360,
+        174
+      ],
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameCount": 12,
+      "method": "whole-sheet nearest-neighbor, row-major slicing"
+    },
+    {
+      "action": "error",
+      "sourceSize": [
+        1802,
+        873
+      ],
+      "sourceCrop": null,
+      "outputSize": [
+        360,
+        174
+      ],
+      "frameSize": [
+        90,
+        58
+      ],
+      "frameCount": 12,
+      "method": "whole-sheet nearest-neighbor, row-major slicing"
+    }
+  ]
+}

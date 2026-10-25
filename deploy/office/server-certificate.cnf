@@ -1,0 +1,12 @@
+# Server CSR only. Issue on an existing trusted CA workstation, NEVER on server.
+[req]
+prompt = no
+distinguished_name = subject
+req_extensions = extensions
+[subject]
+CN = 192.168.100.221
+[extensions]
+subjectAltName = IP:192.168.100.221
+keyUsage = critical,digitalSignature,keyEncipherment
+extendedKeyUsage = serverAuth
+basicConstraints = critical,CA:FALSE

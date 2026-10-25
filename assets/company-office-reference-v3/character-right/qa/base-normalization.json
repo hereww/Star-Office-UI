@@ -1,0 +1,35 @@
+{
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceCrop": [
+    159,
+    130,
+    1036,
+    1180
+  ],
+  "cropBoundsAlphaThreshold": 8,
+  "alphaChannelRetained": true,
+  "spritePlacement": [
+    22,
+    8,
+    147,
+    176
+  ],
+  "frameSize": [
+    192,
+    192
+  ],
+  "faceRect": [
+    86,
+    60,
+    90,
+    58
+  ],
+  "candidateOnly": true,
+  "issues": [
+    "Visible static front paw violates no-hands specification."
+  ],
+  "method": "One uniform nearest-neighbor scale. No alpha repair, drawing, rotation or mirroring."
+}

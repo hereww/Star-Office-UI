@@ -1,0 +1,4 @@
+interface:
+  display_name: "Star Office V5 角色与共享工位模板"
+  short_description: "V5 四向固定坐姿和12帧脸部表情，复用连续长桌与独立屏幕特效"
+  default_prompt: "使用 $star-office-character-animation，先读取 connected-v5/character-template.json，以同一身份母版生成四向固定坐姿角色与可见方向的12帧局部表情；复用最新 V5 连续长桌、椅子和独立屏幕特效，不画旧独立工位、行走或键盘手部动画。"

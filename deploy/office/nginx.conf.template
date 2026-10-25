@@ -1,0 +1,107 @@
+# Include in the selected http context: existing active ingress or the office-only wrapper.
+# @RELEASE_ID@ and @APP_PORT@ are rendered by packaging/preflight.
+server {
+    listen 192.168.100.221:19000;
+    server_name 192.168.100.221;
+    allow 192.168.100.0/24;
+    deny all;
+    if ($host != 192.168.100.221) { return 444; }
+    autoindex off;
+    default_type application/octet-stream;
+    types {
+        text/html html; text/css css; application/javascript js mjs;
+        application/json json; image/png png; image/webp webp;
+        image/svg+xml svg; font/woff woff; font/woff2 woff2; font/ttf ttf;
+    }
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-Frame-Options SAMEORIGIN always;
+    # GET implicitly permits HEAD in nginx. Every other method is denied.
+    location = / {
+        limit_except GET { deny all; }
+        root /opt/star-office-ui/releases/@RELEASE_ID@/public;
+        try_files /static/releases/@RELEASE_ID@/office/index.html =404;
+        add_header Cache-Control "no-store" always;
+    }
+    location ^~ /static/releases/@RELEASE_ID@/ {
+        limit_except GET { deny all; }
+        root /opt/star-office-ui/releases/@RELEASE_ID@/public;
+        try_files $uri =404;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        add_header X-Content-Type-Options nosniff always;
+    }
+    location = /api/office/snapshot {
+        limit_except GET { deny all; }
+        proxy_pass http://127.0.0.1:@APP_PORT@;
+        proxy_set_header Host 192.168.100.221:19000;
+        proxy_set_header X-Forwarded-Proto http;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_hide_header Set-Cookie;
+        add_header Cache-Control "no-store" always;
+    }
+    location = /health {
+        limit_except GET { deny all; }
+        proxy_pass http://127.0.0.1:@APP_PORT@;
+        proxy_set_header Host 192.168.100.221:19000;
+        proxy_set_header X-Forwarded-Proto http;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_hide_header Set-Cookie;
+    }
+    location / { return 404; }
+}
+server {
+    listen 192.168.100.221:19443 ssl;
+    server_name 192.168.100.221;
+    allow 192.168.100.0/24;
+    deny all;
+    if ($host != 192.168.100.221) { return 444; }
+    ssl_certificate /opt/star-office-ui/private/office-server-chain.pem;
+    ssl_certificate_key /opt/star-office-ui/private/office-server.key;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    autoindex off;
+    default_type application/octet-stream;
+    types {
+        text/html html; text/css css; application/javascript js mjs;
+        application/json json; image/png png; image/webp webp;
+        image/svg+xml svg; font/woff woff; font/woff2 woff2; font/ttf ttf;
+    }
+    client_max_body_size 1m;
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-Frame-Options SAMEORIGIN always;
+    location = / {
+        limit_except GET { deny all; }
+        root /opt/star-office-ui/releases/@RELEASE_ID@/public;
+        try_files /static/releases/@RELEASE_ID@/office/index.html =404;
+        add_header Cache-Control "no-store" always;
+    }
+    location = /admin {
+        limit_except GET { deny all; }
+        # The extensionless request URI does not inherit the alias .html type.
+        # An explicit type is required to render the login page, not download it.
+        default_type text/html;
+        alias /opt/star-office-ui/releases/@RELEASE_ID@/public/static/releases/@RELEASE_ID@/office/admin.html;
+        add_header Cache-Control "no-store" always;
+        add_header X-Content-Type-Options nosniff always;
+        add_header X-Frame-Options SAMEORIGIN always;
+    }
+    location ^~ /static/releases/@RELEASE_ID@/ {
+        limit_except GET { deny all; }
+        root /opt/star-office-ui/releases/@RELEASE_ID@/public;
+        try_files $uri =404;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        add_header X-Content-Type-Options nosniff always;
+    }
+    location ^~ /local/ { return 404; }
+    # Auth decisions are made by the deployed WSGI guard, not HTTP Basic auth.
+    # It uses authenticated config/session APIs; legacy writes ALSO require
+    # same-origin + current CSRF token. Unintegrated backend fails closed.
+    location / {
+        proxy_pass http://127.0.0.1:@APP_PORT@;
+        proxy_set_header Host 192.168.100.221:19443;
+        proxy_set_header X-Forwarded-Host 192.168.100.221:19443;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Connection "";
+        proxy_http_version 1.1;
+        add_header Cache-Control "no-store" always;
+    }
+}

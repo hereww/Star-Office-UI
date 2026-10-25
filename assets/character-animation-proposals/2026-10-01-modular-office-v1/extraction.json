@@ -1,0 +1,35 @@
+{
+  "station": {
+    "source_width": 1774,
+    "source_height": 887,
+    "source_cell": [
+      887,
+      887
+    ],
+    "target_cell": [
+      192,
+      192
+    ],
+    "grid": [
+      2,
+      1
+    ]
+  },
+  "actor": {
+    "source_width": 1448,
+    "source_height": 1086,
+    "source_cell": [
+      362,
+      362
+    ],
+    "target_cell": [
+      192,
+      192
+    ],
+    "grid": [
+      4,
+      3
+    ]
+  },
+  "method": "equal-grid-nearest-no-individual-registration"
+}

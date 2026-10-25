@@ -1,0 +1,240 @@
+{
+  "createdOn": "2026-10-02",
+  "repair": "idle_mouth_only_shared_alpha_mask_relaxation",
+  "sourceHasClearlyOpenMouth": true,
+  "newImageGenerationCalls": 0,
+  "diagnosis": "v2 retained much of the dark mouth but truncated its right/lower pixels and removed almost all pale muzzle support; the retained mouth was left on neutral orange fur, losing readable upturned open-mouth framing.",
+  "oldMouthDarkRoi": [
+    50,
+    17,
+    17,
+    24
+  ],
+  "sharedNewMouthRoi": [
+    50,
+    12,
+    24,
+    42
+  ],
+  "onlyChange": "Union v2 mask with existing generated dark mouth and pale muzzle pixels in one shared ROI. Retained source RGB/alpha and coordinates unchanged.",
+  "faceRect": [
+    86,
+    60,
+    90,
+    58
+  ],
+  "faceClipEllipse": [
+    131,
+    89,
+    45,
+    29
+  ],
+  "frameSize": [
+    90,
+    58
+  ],
+  "uniqueFrames": 12,
+  "frameHashes": [
+    "046f73e68e655e8001fd5e05228aef31e6162f15da5af46c2bd180c2095603fd",
+    "7d555bba38301f96591fffafd3d49b52e9fed78b0da6c17e9c46208cb5fefe33",
+    "ce2d48134204a88a3db0f4dad3488e4e21430779a628fad69fcfa4e012ccd479",
+    "199e7f95cdc4066bebc1b2351442caeab048b9706fda400c285d2131d9161d91",
+    "5b7289df4cb5e09fab510400fb384bffc0d8db97a4ae3eb5cbb5db36d6a0ffb6",
+    "b3150a9b7f2b428e9d6a77581af7b980faea88692d7e075975fdbe975249f569",
+    "affc1c382377a43cbd65fb6fb5eb3f58db15b01fff27fdfed4097a2e3ace0f3b",
+    "68caa8beef5f369fcefb0949684de81ade1e69d36075c5566b2705411858e046",
+    "3a000e81fb161f5a967748280f38310cf076cac2325aa0ff9240a68d0a94c2e2",
+    "8208e041abb4dbf1fa47f345a4c21cdb3da708dd2f5dc1b807fad5b71e79a2d7",
+    "16f3169ed2db53e125723a629d676f278374febea9632c0fb3236bef10de2607",
+    "e8e1e34213fdd6f19061b3b60ee10210b0d20fa077bc00534b1e6eab06b5746f"
+  ],
+  "fps": 12,
+  "faceClockFrames": 36,
+  "rows": [
+    {
+      "frame": 0,
+      "sourceMouthDarkPixels": 156,
+      "v2DarkRetained": 103,
+      "v3DarkRetained": 156,
+      "sourceMuzzlePalePixels": 487,
+      "v2MuzzlePaleRetained": 2,
+      "v3MuzzlePaleRetained": 487,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 1,
+      "sourceMouthDarkPixels": 183,
+      "v2DarkRetained": 129,
+      "v3DarkRetained": 183,
+      "sourceMuzzlePalePixels": 460,
+      "v2MuzzlePaleRetained": 4,
+      "v3MuzzlePaleRetained": 460,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 2,
+      "sourceMouthDarkPixels": 215,
+      "v2DarkRetained": 160,
+      "v3DarkRetained": 215,
+      "sourceMuzzlePalePixels": 431,
+      "v2MuzzlePaleRetained": 1,
+      "v3MuzzlePaleRetained": 431,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 3,
+      "sourceMouthDarkPixels": 240,
+      "v2DarkRetained": 185,
+      "v3DarkRetained": 240,
+      "sourceMuzzlePalePixels": 408,
+      "v2MuzzlePaleRetained": 0,
+      "v3MuzzlePaleRetained": 408,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 4,
+      "sourceMouthDarkPixels": 257,
+      "v2DarkRetained": 207,
+      "v3DarkRetained": 257,
+      "sourceMuzzlePalePixels": 383,
+      "v2MuzzlePaleRetained": 4,
+      "v3MuzzlePaleRetained": 383,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 5,
+      "sourceMouthDarkPixels": 291,
+      "v2DarkRetained": 238,
+      "v3DarkRetained": 291,
+      "sourceMuzzlePalePixels": 351,
+      "v2MuzzlePaleRetained": 3,
+      "v3MuzzlePaleRetained": 351,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 6,
+      "sourceMouthDarkPixels": 270,
+      "v2DarkRetained": 219,
+      "v3DarkRetained": 270,
+      "sourceMuzzlePalePixels": 377,
+      "v2MuzzlePaleRetained": 4,
+      "v3MuzzlePaleRetained": 377,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 7,
+      "sourceMouthDarkPixels": 228,
+      "v2DarkRetained": 178,
+      "v3DarkRetained": 228,
+      "sourceMuzzlePalePixels": 420,
+      "v2MuzzlePaleRetained": 2,
+      "v3MuzzlePaleRetained": 420,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 8,
+      "sourceMouthDarkPixels": 223,
+      "v2DarkRetained": 176,
+      "v3DarkRetained": 223,
+      "sourceMuzzlePalePixels": 422,
+      "v2MuzzlePaleRetained": 1,
+      "v3MuzzlePaleRetained": 422,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 9,
+      "sourceMouthDarkPixels": 204,
+      "v2DarkRetained": 154,
+      "v3DarkRetained": 204,
+      "sourceMuzzlePalePixels": 442,
+      "v2MuzzlePaleRetained": 2,
+      "v3MuzzlePaleRetained": 442,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 10,
+      "sourceMouthDarkPixels": 200,
+      "v2DarkRetained": 152,
+      "v3DarkRetained": 200,
+      "sourceMuzzlePalePixels": 445,
+      "v2MuzzlePaleRetained": 1,
+      "v3MuzzlePaleRetained": 445,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    },
+    {
+      "frame": 11,
+      "sourceMouthDarkPixels": 169,
+      "v2DarkRetained": 119,
+      "v3DarkRetained": 169,
+      "sourceMuzzlePalePixels": 481,
+      "v2MuzzlePaleRetained": 2,
+      "v3MuzzlePaleRetained": 481,
+      "changedFramePixelsOutsideMouthRoi": 0,
+      "compositeBodyOutsideFaceRectChangedPixels": 0,
+      "compositeOriginalOutlineRgbaChangedPixels": 0,
+      "compositeAlphaOccupancyChangedPixels": 0
+    }
+  ],
+  "protectedPriorAndFrozenFilesChecked": 211,
+  "protectedChangedFiles": [],
+  "unchanged": [
+    "neutral base",
+    "working atlas",
+    "syncing atlas",
+    "error atlas",
+    "all v1/v2 manifests and candidates",
+    "outline",
+    "per-frame coordinates",
+    "runtime/UI"
+  ],
+  "visualApproval": false,
+  "finalHumanReviewRequired": true,
+  "reportLimits": "Numeric dark-pixel counts demonstrate source retention, not automatic proof of sleeping semantics. Enlarged mouth and full composites must be inspected.",
+  "visualInspection": {
+    "sourceMouthOpen": true,
+    "maskNotSourceWasCause": true,
+    "mouthDarkInteriorAndPaleRaisedMuzzleNowVisible": true,
+    "all12CompositeMouthsRemainOpen": true,
+    "eyesAndPinkNoseUnchangedOutsideMouthRoi": true,
+    "priorV2SleepReadableConclusion": "Insufficient; main-agent feedback showed the mouth framing was not legible. This correction is based on enlarged source/mask/composite inspection, not frame hash alone.",
+    "humanApprovalPending": true,
+    "notes": [
+      "The alpha-mask change restores original generated mouth/muzzle pixels at unchanged source coordinates.",
+      "Raised facial plane is an internal expression; head/body outline is not physically tilted.",
+      "No new idle image generation was needed because the original generated mouth is unambiguously open."
+    ]
+  }
+}

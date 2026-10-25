@@ -1,0 +1,24 @@
+# Office-only ingress when the host has no active shared nginx master.
+# Do not start/reload /www/server/nginx/conf/nginx.conf or unrelated vhosts.
+user nobody;
+worker_processes 2;
+pid /run/star-office-ingress/nginx.pid;
+error_log /var/log/star-office-ingress/error.log warn;
+events { worker_connections 1024; }
+http {
+    # The verified host binary includes ngx_lua; this is its installed library path.
+    lua_package_path "/www/server/nginx/lib/lua/?.lua;;";
+    server_tokens off;
+    sendfile on;
+    keepalive_timeout 15;
+    client_header_timeout 10;
+    client_body_timeout 10;
+    log_format office '$remote_addr "$request_method $uri" $status $body_bytes_sent $request_time';
+    access_log /var/log/star-office-ingress/access.log office;
+    client_body_temp_path /var/cache/star-office-ingress/client;
+    proxy_temp_path /var/cache/star-office-ingress/proxy;
+    fastcgi_temp_path /var/cache/star-office-ingress/fastcgi;
+    uwsgi_temp_path /var/cache/star-office-ingress/uwsgi;
+    scgi_temp_path /var/cache/star-office-ingress/scgi;
+    include /opt/star-office-ui/releases/@RELEASE_ID@/deploy/office/nginx.conf;
+}

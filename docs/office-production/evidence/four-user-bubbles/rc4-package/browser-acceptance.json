@@ -1,0 +1,286 @@
+{
+  "date": "2026-10-04",
+  "scope": "Loopback synthetic four-user plugin → single collector → two-worker Gunicorn → packaged/front-end Chrome. Names and counts are synthetic, not live data. No production services, accounts, credentials or assets modified. Device sizes are emulated. Exact local QA certificate SPKI only.",
+  "checks": [
+    {
+      "name": "versioned four-user configuration save and readback",
+      "passed": true,
+      "evidence": {
+        "version": 10,
+        "bindings": [
+          [
+            "desk-09",
+            "4"
+          ],
+          [
+            "desk-10",
+            "7"
+          ],
+          [
+            "desk-11",
+            "8"
+          ],
+          [
+            "desk-12",
+            "1"
+          ]
+        ],
+        "summary": {
+          "bound": 4,
+          "busy": 3,
+          "idle": 1,
+          "unknown": 0
+        },
+        "readback": true
+      }
+    },
+    {
+      "name": "four independently named actors, zero semantics and anonymous privacy",
+      "passed": true,
+      "evidence": {
+        "summary": {
+          "bound": 4,
+          "busy": 3,
+          "idle": 1,
+          "unknown": 0
+        },
+        "actors": [
+          "desk-09",
+          "desk-10",
+          "desk-11",
+          "desk-12"
+        ]
+      }
+    },
+    {
+      "name": "green-zone speech bubble geometry, four names and no overlaps",
+      "passed": true,
+      "evidence": {
+        "view": "east",
+        "bubbles": [
+          {
+            "id": "desk-09",
+            "text": "模拟用户·四号\n正在处理2条工作中",
+            "rect": [
+              783.6255129692643,
+              408.9717745893437,
+              76.30291881285258,
+              26.36047898185642
+            ]
+          },
+          {
+            "id": "desk-10",
+            "text": "模拟用户·七号\n正在处理0条工作中",
+            "rect": [
+              883.1466916064651,
+              408.5749910146578,
+              76.30291881285258,
+              26.36047898185642
+            ]
+          },
+          {
+            "id": "desk-11",
+            "text": "模拟用户·八号\n正在处理1条工作中",
+            "rect": [
+              982.9550642046679,
+              407.8329008994304,
+              75.21287711552611,
+              26.36047898185642
+            ]
+          },
+          {
+            "id": "desk-12",
+            "text": "模拟用户·一号\n正在处理3条工作中",
+            "rect": [
+              1083.7360102068335,
+              407.12371135791506,
+              76.30291881285258,
+              26.36047898185642
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "gentle independent bubble motion and stable actor clocks/camera",
+      "passed": true,
+      "evidence": {
+        "bubblesMove": true,
+        "epochsStable": true,
+        "cameraStable": true
+      }
+    },
+    {
+      "name": "only changed user updates label, preserving other actor clocks",
+      "passed": true,
+      "evidence": {
+        "changed": "desk-12",
+        "unrelatedEpochsStable": true
+      }
+    },
+    {
+      "name": "null/untracked user is unknown, never zero; other users keep working",
+      "passed": true,
+      "evidence": {
+        "summary": {
+          "bound": 4,
+          "busy": 2,
+          "idle": 1,
+          "unknown": 1
+        },
+        "unknownLabel": true
+      }
+    },
+    {
+      "name": "403 invalidates counts and names immediately; recovery is automatic",
+      "passed": true,
+      "evidence": {
+        "failureSource": "error",
+        "recovered": true
+      }
+    },
+    {
+      "name": "upstream 401 never becomes idle or retains a fresh username",
+      "passed": true,
+      "evidence": {
+        "status": 401,
+        "unknown": 4,
+        "recovery": true
+      }
+    },
+    {
+      "name": "upstream 429 never becomes idle or retains a fresh username",
+      "passed": true,
+      "evidence": {
+        "status": 429,
+        "unknown": 4,
+        "recovery": true
+      }
+    },
+    {
+      "name": "upstream 503 never becomes idle or retains a fresh username",
+      "passed": true,
+      "evidence": {
+        "status": 503,
+        "unknown": 4,
+        "recovery": true
+      }
+    },
+    {
+      "name": "local snapshot read failure invalidates public bubble identity",
+      "passed": true,
+      "evidence": {
+        "localFailureUnknown": true,
+        "recovered": true
+      }
+    },
+    {
+      "name": "empty username differs from stale username; concurrent activity remains trusted",
+      "passed": true,
+      "evidence": {
+        "freshEmptyPreserved": true,
+        "staleIdentityRemoved": true,
+        "idleStillTrusted": "idle"
+      }
+    },
+    {
+      "name": "live username change and long Chinese/markup are safe literal text",
+      "passed": true,
+      "evidence": {
+        "literalMarkup": true,
+        "noDOMInjection": true
+      }
+    },
+    {
+      "name": "responsive tablet",
+      "passed": true,
+      "evidence": {
+        "bodyWidth": 1024,
+        "css": [
+          630,
+          683.265625
+        ],
+        "canvas": [
+          1260,
+          1367
+        ],
+        "dpr": 2
+      }
+    },
+    {
+      "name": "responsive mobile-portrait",
+      "passed": true,
+      "evidence": {
+        "bodyWidth": 390,
+        "css": [
+          356,
+          532
+        ],
+        "canvas": [
+          712,
+          1064
+        ],
+        "dpr": 2
+      }
+    },
+    {
+      "name": "responsive mobile-landscape",
+      "passed": true,
+      "evidence": {
+        "bodyWidth": 844,
+        "css": [
+          818,
+          348
+        ],
+        "canvas": [
+          1636,
+          696
+        ],
+        "dpr": 2
+      }
+    },
+    {
+      "name": "system reduced-motion makes speech bubbles static without losing data",
+      "passed": true,
+      "evidence": {
+        "staticMotion": true,
+        "dataVisible": true
+      }
+    },
+    {
+      "name": "multiple browsers do not multiply upstream collection",
+      "passed": true,
+      "evidence": {
+        "extraViewers": 3,
+        "upstreamCalls": 3
+      }
+    },
+    {
+      "name": "no console errors, external requests or legacy state APIs",
+      "passed": true,
+      "evidence": {
+        "errors": 0,
+        "external": 0,
+        "legacy": 0
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "legacy": [],
+  "screenshots": [
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-desktop-dpr2.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-green-zone.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-source-unknown.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-long-names.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-tablet.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-tablet-focused.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-mobile-portrait.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-mobile-portrait-focused.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-mobile-landscape.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-mobile-landscape-focused.png",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/evidence/four-user-bubbles/rc4-package/employee-reduced-motion.png"
+  ],
+  "passed": true,
+  "completedAt": "2026-10-04T14:06:23.658Z"
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "templates": [
+    "index.html",
+    "admin.html"
+  ],
+  "public_files": [
+    "bootstrap.mjs",
+    "app.mjs",
+    "codec.mjs",
+    "admin-codec.mjs",
+    "model.mjs",
+    "transport.mjs",
+    "dom.mjs",
+    "map-loader.mjs",
+    "employee.mjs",
+    "fullscreen-hud.mjs",
+    "today-usage.mjs",
+    "active-models.mjs",
+    "admin.mjs",
+    "office.css"
+  ],
+  "exclude_directories": [
+    ".local"
+  ],
+  "required_existing_directories": [
+    "../company-office",
+    "../vendor"
+  ],
+  "notes": "Publish public_files only; render templates through Flask. Never publish .local tests, fixtures, screenshots or reports."
+}

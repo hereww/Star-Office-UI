@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "Only a private cloned local QA database and safe archive extraction. Active preview/production unchanged.",
+  "source_archive_files_verified": 93,
+  "current_live_preview_version_unchanged": 10,
+  "restored_target_version": 7,
+  "new_clone_restore_version": 11,
+  "restored_bindings_verified": true,
+  "readback_verified": true
+}

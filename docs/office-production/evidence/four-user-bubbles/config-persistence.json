@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "scope": "Only isolated loopback SQLite; existing history retained and actual HTTP admin save/readback used in browser QA. No production database touched.",
+  "current_version": 10,
+  "bindings": [
+    {
+      "seat_id": "desk-09",
+      "user_id": "4",
+      "display_name": "协作工位 09",
+      "enabled": true
+    },
+    {
+      "seat_id": "desk-10",
+      "user_id": "7",
+      "display_name": "协作工位 10",
+      "enabled": true
+    },
+    {
+      "seat_id": "desk-11",
+      "user_id": "8",
+      "display_name": "协作工位 11",
+      "enabled": true
+    },
+    {
+      "seat_id": "desk-12",
+      "user_id": "1",
+      "display_name": "主工位",
+      "enabled": true
+    }
+  ],
+  "historic_pre_update_version": 7,
+  "history_retained": true,
+  "save_readback_verified": true
+}

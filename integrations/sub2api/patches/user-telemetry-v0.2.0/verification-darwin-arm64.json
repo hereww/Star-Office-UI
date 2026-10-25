@@ -1,0 +1,46 @@
+{
+  "platform": "darwin-arm64",
+  "passed": true,
+  "manifest": {
+    "capabilities": [
+      {
+        "account_type": "user",
+        "id": "sub2api.user_telemetry.read.v1",
+        "platform": "sub2api"
+      }
+    ],
+    "files": {
+      "runtimes/darwin-arm64/user-telemetry": "2b37d9c5c1ff315f2ff009b3b6a6ad438ac5da5804604c0fcd625bd3365a7e7b",
+      "runtimes/linux-amd64/user-telemetry": "1bf285d3945ee3f5de700c2115863227aa7e0e9be33ee40099b59ddee81013fa",
+      "runtimes/linux-arm64/user-telemetry": "a0bc7680ad776d5bc8d7f5add5e90b3c016276d63ce512023e8d981b8e6e13d9",
+      "ui/index.html": "9d6b4eb75698118345bd9bbb423f1944ad64eef1eedd18e46eddfd2c175509dd"
+    },
+    "id": "com.lvdong.user-telemetry",
+    "name": "Lvdong User Telemetry",
+    "requires": {
+      "plugin_protocol": 1,
+      "sub2api": ">=0.2.14 <0.3.0",
+      "tested_sub2api_versions": [
+        "0.2.14"
+      ],
+      "ui_bridge": 1,
+      "user_telemetry_api": 1
+    },
+    "runtimes": {
+      "darwin-arm64": {
+        "path": "runtimes/darwin-arm64/user-telemetry"
+      },
+      "linux-amd64": {
+        "path": "runtimes/linux-amd64/user-telemetry"
+      },
+      "linux-arm64": {
+        "path": "runtimes/linux-arm64/user-telemetry"
+      }
+    },
+    "schema_version": 1,
+    "ui": {
+      "entrypoint": "ui/index.html"
+    },
+    "version": "0.2.0"
+  }
+}

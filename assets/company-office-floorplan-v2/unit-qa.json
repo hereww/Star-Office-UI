@@ -1,0 +1,12 @@
+{
+  "result": "pass",
+  "states": 6,
+  "deterministicFrames": 72,
+  "frozenFiles": 21,
+  "runtimeCopies": "unchanged",
+  "cardinalStations": 36,
+  "openSeats": 33,
+  "privateSeats": 3,
+  "fallbackSeats": 6,
+  "sourceRoomCount": 8
+}

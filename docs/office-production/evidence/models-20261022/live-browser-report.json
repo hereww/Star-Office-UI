@@ -1,0 +1,218 @@
+{
+  "live": true,
+  "devices": [
+    {
+      "name": "desktop",
+      "passed": true,
+      "screenshot": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.local/model-status-20261022/live-browser/desktop-fullscreen.png",
+      "ui": {
+        "cards": [
+          {
+            "seat": "desk-09",
+            "model": "暂无活跃模型",
+            "quality": "partial",
+            "modelOverflow": false
+          },
+          {
+            "seat": "desk-10",
+            "model": "暂无活跃模型",
+            "quality": "partial",
+            "modelOverflow": false
+          },
+          {
+            "seat": "desk-11",
+            "model": "暂无活跃模型",
+            "quality": "partial",
+            "modelOverflow": false
+          },
+          {
+            "seat": "desk-14",
+            "model": "gpt-6.1-sol",
+            "quality": "partial",
+            "modelOverflow": false
+          }
+        ],
+        "pageOverflow": false,
+        "children": [
+          "map-viewport",
+          "fullscreen-hud"
+        ],
+        "controls": 0
+      },
+      "render": {
+        "ready": true,
+        "frames": 41,
+        "geometry": {
+          "strategy": "physical-game-size + screen-space-system-text",
+          "canvasBacking": [
+            1628,
+            1080
+          ],
+          "canvasCss": [
+            1628,
+            1080
+          ],
+          "density": 1,
+          "devicePixelRatio": 1,
+          "fourKBacking": false,
+          "mobile": false,
+          "fourKTarget": false,
+          "capped": false,
+          "maxBackingPixels": 33177600,
+          "maxBackingAxis": 8192,
+          "textFont": "\"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", system-ui, sans-serif",
+          "textResolution": 1,
+          "drawingBuffer": [
+            1628,
+            1080
+          ]
+        },
+        "scene": "company-office-connected-v5"
+      },
+      "liveEvidence": {
+        "source": {
+          "error_code": null,
+          "last_attempt_at": "2026-10-22T00:53:36.560203Z",
+          "last_success_at": "2026-10-22T00:53:36.560206Z",
+          "poll_interval_seconds": 5,
+          "stale_after_seconds": 15,
+          "status": "ok"
+        },
+        "configVersion": 8,
+        "models": [
+          {
+            "seat": "desk-09",
+            "model": "暂无活跃模型",
+            "quality": "partial"
+          },
+          {
+            "seat": "desk-10",
+            "model": "暂无活跃模型",
+            "quality": "partial"
+          },
+          {
+            "seat": "desk-11",
+            "model": "暂无活跃模型",
+            "quality": "partial"
+          },
+          {
+            "seat": "desk-14",
+            "model": "gpt-6.1-sol",
+            "quality": "partial"
+          }
+        ],
+        "exactAPIMatch": true
+      },
+      "pollingAndFailureChecks": false,
+      "fullscreenExit": true
+    },
+    {
+      "name": "phone",
+      "passed": true,
+      "screenshot": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.local/model-status-20261022/live-browser/phone-fullscreen.png",
+      "ui": {
+        "cards": [
+          {
+            "seat": "desk-09",
+            "model": "暂无活跃模型",
+            "quality": "partial",
+            "modelOverflow": false
+          },
+          {
+            "seat": "desk-10",
+            "model": "暂无活跃模型",
+            "quality": "partial",
+            "modelOverflow": false
+          },
+          {
+            "seat": "desk-11",
+            "model": "暂无活跃模型",
+            "quality": "partial",
+            "modelOverflow": false
+          },
+          {
+            "seat": "desk-14",
+            "model": "gpt-6.1-sol",
+            "quality": "partial",
+            "modelOverflow": false
+          }
+        ],
+        "pageOverflow": false,
+        "children": [
+          "map-viewport",
+          "fullscreen-hud"
+        ],
+        "controls": 0
+      },
+      "render": {
+        "ready": true,
+        "frames": 44,
+        "geometry": {
+          "strategy": "physical-game-size + screen-space-system-text",
+          "canvasBacking": [
+            780,
+            1200
+          ],
+          "canvasCss": [
+            390,
+            600
+          ],
+          "density": 2,
+          "devicePixelRatio": 2,
+          "fourKBacking": false,
+          "mobile": true,
+          "fourKTarget": false,
+          "capped": false,
+          "maxBackingPixels": 33177600,
+          "maxBackingAxis": 8192,
+          "textFont": "\"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", \"Noto Sans CJK SC\", system-ui, sans-serif",
+          "textResolution": 2,
+          "drawingBuffer": [
+            780,
+            1200
+          ]
+        },
+        "scene": "company-office-connected-v5"
+      },
+      "liveEvidence": {
+        "source": {
+          "error_code": null,
+          "last_attempt_at": "2026-10-22T00:53:41.561259Z",
+          "last_success_at": "2026-10-22T00:53:41.561262Z",
+          "poll_interval_seconds": 5,
+          "stale_after_seconds": 15,
+          "status": "ok"
+        },
+        "configVersion": 8,
+        "models": [
+          {
+            "seat": "desk-09",
+            "model": "暂无活跃模型",
+            "quality": "partial"
+          },
+          {
+            "seat": "desk-10",
+            "model": "暂无活跃模型",
+            "quality": "partial"
+          },
+          {
+            "seat": "desk-11",
+            "model": "暂无活跃模型",
+            "quality": "partial"
+          },
+          {
+            "seat": "desk-14",
+            "model": "gpt-6.1-sol",
+            "quality": "partial"
+          }
+        ],
+        "exactAPIMatch": true
+      },
+      "pollingAndFailureChecks": false,
+      "fullscreenExit": true
+    }
+  ],
+  "errors": [],
+  "unexpectedResponses": [],
+  "writes": []
+}

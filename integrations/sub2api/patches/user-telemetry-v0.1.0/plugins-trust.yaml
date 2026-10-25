@@ -1,0 +1,4 @@
+plugins:
+  allow_unsigned: false
+  trusted_publishers:
+    lvdong-user-telemetry-v1: "CQ6jHMdZq6koeDAwoQDmqflpTSpOj1i26afFbQq+NCc="

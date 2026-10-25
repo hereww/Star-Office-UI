@@ -1,0 +1,353 @@
+{
+  "date": "2026-10-08T10:40:52.662Z",
+  "base": "http://127.0.0.1:19026/",
+  "scope": "Isolated package; synthetic read-only snapshot, no production writes",
+  "checks": [
+    {
+      "name": "desktop-dpr2: green bank moved rigidly; no pillar overlap",
+      "pass": true,
+      "evidence": {
+        "fit": [
+          712,
+          488,
+          420,
+          200
+        ],
+        "alpha": [
+          712,
+          522.2541436464088,
+          420,
+          131.49171270718233
+        ],
+        "worldGap": 26,
+        "canvas": [
+          4448,
+          2160
+        ],
+        "source": "ok"
+      }
+    },
+    {
+      "name": "desktop-dpr2: all real-seat short bubbles visible, including rear-facing desk-14",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "工作中",
+          "rect": [
+            763.4124886867036,
+            464.0012730849155,
+            20.728967377974,
+            8.763170879963774
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "忙碌中",
+          "rect": [
+            862.9336673239044,
+            463.78140661833504,
+            20.728967377974,
+            8.763170879963774
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "玩命干活中",
+          "rect": [
+            957.0147772289504,
+            463.60269187731336,
+            31.093451066961002,
+            8.763170879963774
+          ]
+        },
+        {
+          "id": "desk-14",
+          "text": "狂暴模式",
+          "rect": [
+            859.6705464016576,
+            649.2143972961604,
+            25.9112092224675,
+            8.763170879963774
+          ]
+        }
+      ]
+    },
+    {
+      "name": "desktop-dpr2: snapshots do not move camera/reset actors",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "desktop: actual fullscreen geometry stays clear",
+      "pass": true,
+      "evidence": {
+        "canvas": [
+          4448,
+          2160
+        ],
+        "css": {
+          "x": 37,
+          "y": 174.1875,
+          "width": 1510,
+          "height": 733.21875,
+          "top": 174.1875,
+          "right": 1547,
+          "bottom": 907.40625,
+          "left": 37
+        }
+      }
+    },
+    {
+      "name": "tablet: green bank moved rigidly; no pillar overlap",
+      "pass": true,
+      "evidence": {
+        "fit": [
+          712,
+          488,
+          420,
+          200
+        ],
+        "alpha": [
+          712,
+          522.2541436464088,
+          420,
+          131.49171270718233
+        ],
+        "worldGap": 26,
+        "canvas": [
+          1260,
+          936
+        ],
+        "source": "ok"
+      }
+    },
+    {
+      "name": "tablet: all real-seat short bubbles visible, including rear-facing desk-14",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "工作中",
+          "rect": [
+            755.9991945979127,
+            453.7812186438729,
+            35.55555555555556,
+            15.031110975477429
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "忙碌中",
+          "rect": [
+            855.5203732351135,
+            453.46917544045203,
+            35.55555555555556,
+            15.031110975477429
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "玩命干活中",
+          "rect": [
+            945.8948360957643,
+            453.08974330591246,
+            53.33333333333333,
+            15.031110975477429
+          ]
+        },
+        {
+          "id": "desk-14",
+          "text": "狂暴模式",
+          "rect": [
+            850.4039287906692,
+            653.2180209616645,
+            44.44444444444444,
+            15.031110975477429
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tablet: snapshots do not move camera/reset actors",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "phone-portrait: green bank moved rigidly; no pillar overlap",
+      "pass": true,
+      "evidence": {
+        "fit": [
+          712,
+          488,
+          420,
+          200
+        ],
+        "alpha": [
+          712,
+          522.2541436464088,
+          420,
+          131.49171270718233
+        ],
+        "worldGap": 26,
+        "canvas": [
+          712,
+          1064
+        ],
+        "source": "ok"
+      }
+    },
+    {
+      "name": "phone-portrait: all real-seat short bubbles visible, including rear-facing desk-14",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "工作中",
+          "rect": [
+            742.3162982183871,
+            434.24598984978627,
+            62.921348314606746,
+            26.599999759974104
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "忙碌中",
+          "rect": [
+            841.837476855588,
+            433.72067386887363,
+            62.921348314606746,
+            26.599999759974104
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "玩命干活\n中",
+          "rect": [
+            933.2356600658017,
+            415.8860411584753,
+            78.65168539325843,
+            43.76179727275719
+          ]
+        },
+        {
+          "id": "desk-14",
+          "text": "狂暴模式",
+          "rect": [
+            833.3003083162621,
+            660.8632004737287,
+            78.65168539325843,
+            26.599999759974104
+          ]
+        }
+      ]
+    },
+    {
+      "name": "phone-portrait: snapshots do not move camera/reset actors",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "phone-landscape: green bank moved rigidly; no pillar overlap",
+      "pass": true,
+      "evidence": {
+        "fit": [
+          712,
+          488,
+          420,
+          200
+        ],
+        "alpha": [
+          712,
+          522.2541436464088,
+          420,
+          131.49171270718233
+        ],
+        "worldGap": 26,
+        "canvas": [
+          1636,
+          696
+        ],
+        "source": "ok"
+      }
+    },
+    {
+      "name": "phone-landscape: all real-seat short bubbles visible, including rear-facing desk-14",
+      "pass": true,
+      "evidence": [
+        {
+          "id": "desk-09",
+          "text": "工作中",
+          "rect": [
+            747.7495751154165,
+            442.0949126923536,
+            52.05479452054795,
+            22.006164184988364
+          ]
+        },
+        {
+          "id": "desk-10",
+          "text": "忙碌中",
+          "rect": [
+            847.2707537526173,
+            441.63793397547363,
+            52.05479452054795,
+            22.006164184988364
+          ]
+        },
+        {
+          "id": "desk-11",
+          "text": "玩命干活中",
+          "rect": [
+            933.52040687202,
+            441.08243805220593,
+            78.08219178082192,
+            22.006164184988364
+          ]
+        },
+        {
+          "id": "desk-14",
+          "text": "狂暴模式",
+          "rect": [
+            840.0919044375489,
+            657.8422640263427,
+            65.06849315068494,
+            22.006164184988364
+          ]
+        }
+      ]
+    },
+    {
+      "name": "phone-landscape: snapshots do not move camera/reset actors",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "clean read-only browser execution",
+      "pass": true,
+      "evidence": {
+        "runtimeErrors": 0,
+        "assetErrors": 0,
+        "writes": 0
+      }
+    }
+  ],
+  "errors": [],
+  "assets": [],
+  "writes": [],
+  "external": [],
+  "screenshots": [
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/desktop-dpr2-overview.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/desktop-dpr2-green.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/desktop-fullscreen-green.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/tablet-overview.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/tablet-green.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/phone-portrait-overview.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/phone-portrait-green.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/phone-landscape-overview.jpg",
+    "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/docs/office-production/qa/deploy-20261008/local/phone-landscape-green.jpg"
+  ],
+  "passed": true,
+  "finished_at": "2026-10-08T10:41:12.656Z"
+}

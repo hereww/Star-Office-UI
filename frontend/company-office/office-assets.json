@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 2,
+  "status": "integrated_office_runtime",
+  "productionReady": true,
+  "runtimeIntegrated": true,
+  "workstation": {
+    "id": "oak-teal-down-v1",
+    "direction": "down",
+    "size": [
+      192,
+      192
+    ],
+    "seatAnchor": [
+      96,
+      94
+    ],
+    "back": "media/workstation-back.png",
+    "front": "media/workstation-front.png",
+    "equipmentInOneStaticLayer": true
+  },
+  "character": {
+    "id": "orange-cat-v1",
+    "direction": "down",
+    "base": "media/character-breeds/orange-cat-v1/down/base.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      98,
+      170
+    ],
+    "scale": 0.6,
+    "actions": {
+      "working": {
+        "frames": "media/character-breeds/orange-cat-v1/down/frames-working.png",
+        "frameCount": 12,
+        "fps": 12,
+        "clockFrames": 60
+      },
+      "idle": {
+        "frames": "media/character-breeds/orange-cat-v1/down/frames-idle.png",
+        "frameCount": 12,
+        "fps": 12,
+        "clockFrames": 36
+      },
+      "syncing": {
+        "frames": "media/character-breeds/orange-cat-v1/down/frames-syncing.png",
+        "frameCount": 12,
+        "fps": 12,
+        "clockFrames": 60
+      },
+      "error": {
+        "frames": "media/character-breeds/orange-cat-v1/down/frames-error.png",
+        "frameCount": 12,
+        "fps": 12,
+        "clockFrames": 12
+      }
+    },
+    "animationMode": "full-frame"
+  },
+  "grid": [
+    4,
+    3
+  ],
+  "frameCount": 12,
+  "fps": 12,
+  "faceClockFrames": 60,
+  "businessStateToAction": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "freeze": {
+    "wholeBody": true,
+    "headOutline": true,
+    "ears": true,
+    "tail": true,
+    "seat": true,
+    "furniture": true,
+    "keyboard": true
+  },
+  "notes": [
+    "完整角色帧图集：每个状态直接绘制192x192角色单帧，桌椅与屏幕独立。",
+    "旧表情图集保留在历史资源目录中，不进入当前运行时。"
+  ],
+  "animationMode": "full-frame",
+  "visualApproved": true,
+  "approvedOn": "2026-10-01",
+  "templateId": "approved-office-expressions-v1",
+  "frozenTemplate": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1",
+  "sourceTemplate": ".agents/skills/star-office-character-animation/assets/approved-office-expressions-v1",
+  "runtimeQaPassed": true,
+  "manifestContractVersion": 2
+}

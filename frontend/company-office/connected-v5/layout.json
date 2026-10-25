@@ -1,0 +1,821 @@
+{
+  "schemaVersion": 4,
+  "id": "company-office-connected-v5",
+  "size": [
+    1584,
+    993
+  ],
+  "background": "../reference-v3/office-background-layered.png",
+  "directionRule": "cardinal-only",
+  "animationMode": "full-frame-plus-screen-effects",
+  "walkIntegrated": false,
+  "mainStation": "desk-12",
+  "openSeatGroups": {
+    "west": 8,
+    "east": 8
+  },
+  "source": {
+    "openSeatCount": 16,
+    "map": "assets/company-office-reference-v3/user-map.jpg",
+    "approved": "red8+green8, 2026-10-02"
+  },
+  "stations": [
+    {
+      "id": "desk-01",
+      "name": "同事 1",
+      "role": "colleague",
+      "kind": "open",
+      "region": "west",
+      "group": "west-right",
+      "center": [
+        332,
+        140
+      ],
+      "scale": 0.5,
+      "direction": "right",
+      "benchId": "west-connected",
+      "occupied": [
+        8,
+        30,
+        90,
+        139
+      ]
+    },
+    {
+      "id": "desk-02",
+      "name": "同事 2",
+      "role": "colleague",
+      "kind": "open",
+      "region": "west",
+      "group": "west-left",
+      "center": [
+        332,
+        218
+      ],
+      "scale": 0.5,
+      "direction": "right",
+      "benchId": "west-connected",
+      "occupied": [
+        8,
+        30,
+        90,
+        139
+      ]
+    },
+    {
+      "id": "desk-03",
+      "name": "同事 3",
+      "role": "colleague",
+      "kind": "open",
+      "region": "west",
+      "group": "west-right",
+      "center": [
+        332,
+        296
+      ],
+      "scale": 0.5,
+      "direction": "right",
+      "benchId": "west-connected",
+      "occupied": [
+        8,
+        30,
+        90,
+        139
+      ]
+    },
+    {
+      "id": "desk-04",
+      "name": "同事 4",
+      "role": "colleague",
+      "kind": "open",
+      "region": "west",
+      "group": "west-left",
+      "center": [
+        332,
+        374
+      ],
+      "scale": 0.5,
+      "direction": "right",
+      "benchId": "west-connected",
+      "occupied": [
+        8,
+        30,
+        90,
+        139
+      ]
+    },
+    {
+      "id": "desk-05",
+      "name": "同事 5",
+      "role": "colleague",
+      "kind": "open",
+      "region": "west",
+      "group": "west-right",
+      "center": [
+        598,
+        140
+      ],
+      "scale": 0.5,
+      "direction": "left",
+      "benchId": "west-connected",
+      "occupied": [
+        86,
+        41,
+        83,
+        121
+      ]
+    },
+    {
+      "id": "desk-06",
+      "name": "同事 6",
+      "role": "colleague",
+      "kind": "open",
+      "region": "west",
+      "group": "west-left",
+      "center": [
+        598,
+        218
+      ],
+      "scale": 0.5,
+      "direction": "left",
+      "benchId": "west-connected",
+      "occupied": [
+        86,
+        41,
+        83,
+        121
+      ]
+    },
+    {
+      "id": "desk-07",
+      "name": "AI同事 1",
+      "role": "ai",
+      "kind": "open",
+      "region": "west",
+      "group": "west-right",
+      "center": [
+        598,
+        296
+      ],
+      "scale": 0.5,
+      "direction": "left",
+      "benchId": "west-connected",
+      "occupied": [
+        86,
+        41,
+        83,
+        121
+      ]
+    },
+    {
+      "id": "desk-08",
+      "name": "AI同事 2",
+      "role": "ai",
+      "kind": "open",
+      "region": "west",
+      "group": "west-left",
+      "center": [
+        598,
+        374
+      ],
+      "scale": 0.5,
+      "direction": "left",
+      "benchId": "west-connected",
+      "occupied": [
+        86,
+        41,
+        83,
+        121
+      ]
+    },
+    {
+      "id": "desk-09",
+      "name": "同事 9",
+      "role": "colleague",
+      "kind": "open",
+      "region": "east",
+      "group": "east-north",
+      "center": [
+        754,
+        512
+      ],
+      "scale": 0.56,
+      "direction": "down",
+      "benchId": "east-connected",
+      "occupied": [
+        38,
+        1,
+        115,
+        103
+      ]
+    },
+    {
+      "id": "desk-10",
+      "name": "同事 10",
+      "role": "colleague",
+      "kind": "open",
+      "region": "east",
+      "group": "east-north",
+      "center": [
+        859,
+        512
+      ],
+      "scale": 0.56,
+      "direction": "down",
+      "benchId": "east-connected",
+      "occupied": [
+        38,
+        1,
+        115,
+        103
+      ]
+    },
+    {
+      "id": "desk-11",
+      "name": "同事 11",
+      "role": "colleague",
+      "kind": "open",
+      "region": "east",
+      "group": "east-north",
+      "center": [
+        964,
+        512
+      ],
+      "scale": 0.56,
+      "direction": "down",
+      "benchId": "east-connected",
+      "occupied": [
+        38,
+        1,
+        115,
+        103
+      ]
+    },
+    {
+      "id": "desk-12",
+      "name": "AI同事 3",
+      "role": "ai",
+      "kind": "open",
+      "region": "east",
+      "group": "east-north",
+      "center": [
+        1069,
+        512
+      ],
+      "scale": 0.56,
+      "direction": "down",
+      "benchId": "east-connected",
+      "occupied": [
+        38,
+        1,
+        115,
+        103
+      ]
+    },
+    {
+      "id": "desk-13",
+      "name": "同事 13",
+      "role": "colleague",
+      "kind": "open",
+      "region": "east",
+      "group": "east-south",
+      "center": [
+        754,
+        639
+      ],
+      "scale": 0.56,
+      "direction": "up",
+      "benchId": "east-connected",
+      "occupied": [
+        47,
+        63,
+        88,
+        106
+      ]
+    },
+    {
+      "id": "desk-14",
+      "name": "同事 14",
+      "role": "colleague",
+      "kind": "open",
+      "region": "east",
+      "group": "east-south",
+      "center": [
+        859,
+        639
+      ],
+      "scale": 0.56,
+      "direction": "up",
+      "benchId": "east-connected",
+      "occupied": [
+        47,
+        63,
+        88,
+        106
+      ]
+    },
+    {
+      "id": "desk-15",
+      "name": "同事 15",
+      "role": "colleague",
+      "kind": "open",
+      "region": "east",
+      "group": "east-south",
+      "center": [
+        964,
+        639
+      ],
+      "scale": 0.56,
+      "direction": "up",
+      "benchId": "east-connected",
+      "occupied": [
+        47,
+        63,
+        88,
+        106
+      ]
+    },
+    {
+      "id": "desk-16",
+      "name": "AI同事 4",
+      "role": "ai",
+      "kind": "open",
+      "region": "east",
+      "group": "east-south",
+      "center": [
+        1069,
+        639
+      ],
+      "scale": 0.56,
+      "direction": "up",
+      "benchId": "east-connected",
+      "occupied": [
+        47,
+        63,
+        88,
+        106
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "chip-test",
+      "name": "芯片测试间",
+      "bounds": [
+        662,
+        85,
+        214,
+        208
+      ],
+      "label": [
+        767,
+        255
+      ]
+    },
+    {
+      "id": "manager",
+      "name": "总经理室",
+      "bounds": [
+        885,
+        99,
+        350,
+        192
+      ],
+      "label": [
+        1036,
+        250
+      ]
+    },
+    {
+      "id": "supervisor",
+      "name": "主管办公室",
+      "bounds": [
+        947,
+        298,
+        290,
+        155
+      ],
+      "label": [
+        1034,
+        429
+      ]
+    },
+    {
+      "id": "pantry",
+      "name": "茶水间",
+      "bounds": [
+        350,
+        435,
+        235,
+        121
+      ],
+      "label": [
+        472,
+        541
+      ]
+    },
+    {
+      "id": "storage",
+      "name": "杂物室",
+      "bounds": [
+        350,
+        556,
+        235,
+        87
+      ],
+      "label": [
+        468,
+        624
+      ]
+    },
+    {
+      "id": "meeting",
+      "name": "会议室",
+      "bounds": [
+        350,
+        643,
+        235,
+        140
+      ],
+      "label": [
+        469,
+        761
+      ]
+    },
+    {
+      "id": "equipment",
+      "name": "设备间",
+      "bounds": [
+        350,
+        783,
+        235,
+        123
+      ],
+      "label": [
+        465,
+        888
+      ]
+    },
+    {
+      "id": "rock",
+      "name": "摇滚房间",
+      "bounds": [
+        708,
+        701,
+        480,
+        206
+      ],
+      "label": [
+        948,
+        716
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "west",
+      "name": "红区 · 8 席",
+      "bounds": [
+        285,
+        112,
+        340,
+        321
+      ],
+      "label": [
+        470,
+        54
+      ]
+    },
+    {
+      "id": "east",
+      "name": "绿区 · 8 席",
+      "bounds": [
+        745,
+        464,
+        430,
+        220
+      ],
+      "label": [
+        676,
+        569
+      ]
+    }
+  ],
+  "forbidden": [
+    {
+      "id": "lab",
+      "bounds": [
+        652,
+        75,
+        230,
+        225
+      ]
+    },
+    {
+      "id": "right-offices",
+      "bounds": [
+        930,
+        92,
+        310,
+        360
+      ]
+    },
+    {
+      "id": "left-rooms",
+      "bounds": [
+        343,
+        427,
+        251,
+        485
+      ]
+    },
+    {
+      "id": "rock-room",
+      "bounds": [
+        700,
+        694,
+        491,
+        220
+      ]
+    }
+  ],
+  "server": {
+    "id": "rack-01",
+    "asset": "../reference-v3/media/server-rack.png",
+    "bounds": [
+      433,
+      795,
+      65,
+      83
+    ],
+    "indicator": [
+      465,
+      892
+    ],
+    "leds": [
+      [
+        20.31,
+        28.27
+      ],
+      [
+        20.31,
+        49.28
+      ],
+      [
+        20.31,
+        69.64
+      ]
+    ]
+  },
+  "views": {
+    "overview": {
+      "center": [
+        790,
+        498
+      ],
+      "span": [
+        1584,
+        993
+      ]
+    },
+    "west": {
+      "center": [
+        468,
+        276
+      ],
+      "span": [
+        450,
+        410
+      ]
+    },
+    "east": {
+      "center": [
+        915,
+        577
+      ],
+      "span": [
+        560,
+        380
+      ]
+    },
+    "workstation": {
+      "span": [
+        330,
+        270
+      ]
+    }
+  },
+  "areas": {
+    "door": {
+      "x": 660,
+      "y": 911
+    },
+    "writing": {
+      "x": 960,
+      "y": 564
+    },
+    "researching": {
+      "x": 467,
+      "y": 255
+    },
+    "breakroom": {
+      "x": 464,
+      "y": 513
+    },
+    "error": {
+      "x": 465,
+      "y": 846
+    }
+  },
+  "roomAnimations": {
+    "rock": {
+      "bounds": [
+        708,
+        701,
+        480,
+        206
+      ],
+      "labelAnchor": [
+        948,
+        716
+      ],
+      "performers": [
+        {
+          "id": "drummer-orange-tabby",
+          "role": "drummer",
+          "asset": "./media/rock-room/drummer-orange-tabby.png",
+          "anchor": [
+            948,
+            826
+          ],
+          "scale": 0.72,
+          "depth": 826,
+          "phase": 0
+        },
+        {
+          "id": "guitarist-gray",
+          "role": "guitarist",
+          "asset": "./media/rock-room/guitarist-gray.png",
+          "anchor": [
+            806,
+            852
+          ],
+          "scale": 0.7,
+          "depth": 852,
+          "phase": 3
+        },
+        {
+          "id": "bassist-tuxedo",
+          "role": "bassist",
+          "asset": "./media/rock-room/bassist-tuxedo.png",
+          "anchor": [
+            1090,
+            852
+          ],
+          "scale": 0.7,
+          "depth": 852,
+          "phase": 6
+        },
+        {
+          "id": "vocalist-cream",
+          "role": "vocalist",
+          "asset": "./media/rock-room/vocalist-cream.png",
+          "anchor": [
+            948,
+            888
+          ],
+          "scale": 0.66,
+          "depth": 888,
+          "phase": 9
+        }
+      ],
+      "occlusionLayers": [
+        {
+          "id": "drum-kit-front",
+          "asset": "./media/rock-room/drum-kit-front.png",
+          "depth": 830
+        },
+        {
+          "id": "stage-mics-front",
+          "asset": "./media/rock-room/stage-mics-front.png",
+          "depth": 900
+        }
+      ],
+      "effects": {
+        "enabled": true,
+        "depth": 760,
+        "palette": [
+          16765806,
+          15170404
+        ],
+        "points": [
+          [
+            806,
+            752
+          ],
+          [
+            1088,
+            752
+          ],
+          [
+            790,
+            853
+          ],
+          [
+            1104,
+            853
+          ]
+        ]
+      }
+    }
+  },
+  "guestSlots": {
+    "breakroom": [
+      [
+        650,
+        518
+      ],
+      [
+        650,
+        565
+      ]
+    ],
+    "writing": [
+      [
+        651,
+        372
+      ],
+      [
+        686,
+        444
+      ]
+    ],
+    "error": [
+      [
+        644,
+        792
+      ],
+      [
+        651,
+        851
+      ]
+    ]
+  },
+  "reserved": {
+    "extraRowByMeetingWall": true,
+    "notRendered": true
+  },
+  "binding": {
+    "mainAgent": "main",
+    "availableAiSlots": [
+      "desk-07",
+      "desk-08",
+      "desk-16"
+    ]
+  },
+  "furnitureMode": "connected-benches",
+  "benches": [
+    {
+      "id": "west-connected",
+      "orientation": "vertical",
+      "manifest": "../connected-v4/media/vertical/manifest.json",
+      "fit": [
+        340,
+        105,
+        250,
+        315
+      ],
+      "stationIds": [
+        "desk-01",
+        "desk-02",
+        "desk-03",
+        "desk-04",
+        "desk-05",
+        "desk-06",
+        "desk-07",
+        "desk-08"
+      ]
+    },
+    {
+      "id": "east-connected",
+      "orientation": "horizontal",
+      "manifest": "../connected-v4/media/horizontal/manifest.json",
+      "fit": [
+        712,
+        488,
+        420,
+        200
+      ],
+      "stationIds": [
+        "desk-09",
+        "desk-10",
+        "desk-11",
+        "desk-12",
+        "desk-13",
+        "desk-14",
+        "desk-15",
+        "desk-16"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "scope": "Furniture-only interface/geometry/effect-sampling checks. Character declarations are schema probes, not actor acceptance or integration.",
+  "directions": {
+    "up": {
+      "passed": true,
+      "samplesChecked": 72,
+      "size": [
+        192,
+        192
+      ],
+      "seatAnchor": [
+        96,
+        145
+      ],
+      "order": [
+        "back",
+        "screen",
+        "actor",
+        "front"
+      ],
+      "screenVisible": true,
+      "pathsResolvedFromV3": true
+    },
+    "down": {
+      "passed": true,
+      "samplesChecked": 72,
+      "size": [
+        192,
+        192
+      ],
+      "seatAnchor": [
+        97,
+        94
+      ],
+      "order": [
+        "back",
+        "actor",
+        "front",
+        "screen"
+      ],
+      "screenVisible": false,
+      "pathsResolvedFromV3": true
+    },
+    "left": {
+      "passed": true,
+      "samplesChecked": 72,
+      "size": [
+        192,
+        192
+      ],
+      "seatAnchor": [
+        131,
+        128
+      ],
+      "order": [
+        "back",
+        "screen",
+        "actor",
+        "front"
+      ],
+      "screenVisible": true,
+      "pathsResolvedFromV3": true
+    },
+    "right": {
+      "passed": true,
+      "samplesChecked": 72,
+      "size": [
+        192,
+        192
+      ],
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "order": [
+        "back",
+        "screen",
+        "actor",
+        "front"
+      ],
+      "screenVisible": true,
+      "pathsResolvedFromV3": true
+    }
+  },
+  "currentPlayerSchemaAccepted": true,
+  "totalScreenSamples": 288,
+  "alphaQa": true
+}

@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 2,
+  "kind": "provisional-reference-crops",
+  "status": "superseded",
+  "supersededBy": "../2026-10-14-breed-concepts-v3/metadata.json",
+  "note": "Earlier board crops were provisional; the seven independent generated concepts are in v3."
+}

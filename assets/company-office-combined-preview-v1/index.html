@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>律动办公室 · 地图与动作组合预览</title>
+  <meta name="description" content="已确认地图、固定工位表情与四向行走素材的本地组合预览；不连接真实业务、不修改生产。">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">▦</span><div><span class="eyebrow">LVDONG · OFFICE LAB</span><h1>一张地图，两种日常。</h1></div></div>
+    <div class="edition"><span class="live-dot" aria-hidden="true"></span>组合预览 <span class="edition-no">/ 01</span><small>原地图保留 · 仅本机运行</small></div>
+  </header>
+  <main class="layout">
+    <section class="map-panel" aria-labelledby="map-title">
+      <div class="panel-heading"><div><span class="eyebrow">THE OFFICE</span><h2 id="map-title">律动办公室</h2></div><div class="view-switch" role="group" aria-label="地图视角"><button id="follow" aria-pressed="true">跟随角色</button><button id="overview" aria-pressed="false">完整地图</button></div></div>
+      <div class="map-stage" id="map-stage">
+        <canvas id="world" tabindex="0" role="img" aria-label="办公室互动地图：点击地面行走，点击工位入座，拖动平移；方向键进行四向移动。"></canvas>
+        <div class="map-topline"><span class="map-stamp">已确认底图 · 33 + 3 工位</span><span id="camera-scale">正在加载</span></div>
+        <div class="zoom-tools" role="group" aria-label="缩放地图"><button id="zoom-in" aria-label="放大地图">＋</button><button id="zoom-out" aria-label="缩小地图">−</button><button id="center" aria-label="定位角色">◎</button></div>
+        <div class="map-caption"><span id="activity" aria-live="polite">正在加载已确认素材…</span><small>点击地面行走 · 点击工位入座 · 拖动平移</small></div>
+        <div id="loading" class="loading"><span class="loading-cat">阿橘正在进办公室</span><small>读取底图、工位和透明动作素材</small></div>
+      </div>
+      <div class="playbar"><button id="auto" class="primary" aria-pressed="false">自动演示</button><button id="home">回主工位</button><button id="pause" aria-pressed="false">暂停</button><label class="checkbox"><input id="show-route" type="checkbox" checked>显示路线</label><span class="playbar-tip">行走与办公共用同一场景</span></div>
+    </section>
+    <aside class="inspector" aria-label="角色与动作预览">
+      <section class="actor-panel">
+        <div class="section-head"><div><span class="eyebrow">THE RESIDENT</span><h2>阿橘<span class="cat-mark" aria-hidden="true">✦</span></h2></div><span id="pose-badge" class="badge">固定工位</span></div>
+        <div class="detail-stage"><canvas id="detail" width="320" height="224" role="img" aria-label="当前角色动作特写"></canvas><div class="detail-floor" aria-hidden="true"></div></div>
+        <div class="detail-meta"><strong id="action-label">工作 · 专注表情</strong><span id="frame-label">12 帧 / 12 fps</span></div>
+        <div class="state-buttons" role="group" aria-label="办公状态"><button data-state="writing" aria-pressed="true"><i class="status-dot work"></i>工作</button><button data-state="idle" aria-pressed="false"><i class="status-dot sleep"></i>休息</button><button data-state="syncing" aria-pressed="false"><i class="status-dot sync"></i>同步</button><button data-state="error" aria-pressed="false"><i class="status-dot error"></i>异常</button></div>
+        <p class="microcopy">办公时身体、桌椅和键盘不动，只播放脸部表情。</p>
+      </section>
+      <section class="destinations-panel"><div class="section-head"><span class="eyebrow">TAKE A WALK</span><span class="quiet">只走上下左右</span></div><div id="destinations" class="destination-buttons"></div><label class="scale-control" for="walk-scale"><span>行走角色尺度</span><output id="walk-scale-label">1.50×</output></label><input id="walk-scale" type="range" min="1.1" max="2" step="0.05" value="1.5" aria-label="行走角色尺度"></section>
+      <section class="minimap-panel"><div class="section-head"><span class="eyebrow">YOU ARE HERE</span><span class="quiet" id="seat-label">主工位 26</span></div><canvas id="minimap" width="256" height="352" role="img" aria-label="办公室全图，点击可选择目的地"></canvas></section>
+    </aside>
+  </main>
+  <footer class="footer"><p><span class="footer-rule"></span><strong>素材边界</strong> 工位表情：每套 12 帧。行走：每方向已有 A/B 两姿势，本页是组合效果预览，不冒充完整 12 帧步态。</p><details id="audit"><summary>查看适配信息</summary><div class="audit-inner"><p>单角色本地演示，不连接真实 Agent/API。底图、36 个工位坐标、固定身体、家具和表情图集均保持原样。</p><p>寻路使用 16px 四邻格；脚底碰撞半径 18px。桌椅、墙体、柜子、机柜、会议桌和植物为不可通行区域。</p><div class="audit-buttons"><button id="step">推进 1 秒</button><button id="next-frame">表情逐帧</button><label class="checkbox"><input id="geometry" type="checkbox">显示碰撞区域</label></div><output id="geometry-result">几何检查准备中</output><pre id="runtime-snapshot" aria-label="当前动画适配数据"></pre></div></details></footer>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script type="module" src="/preview.mjs"></script>
+</body>
+</html>

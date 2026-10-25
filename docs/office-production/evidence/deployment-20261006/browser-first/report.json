@@ -1,0 +1,21 @@
+{
+  "captured_at": "2026-10-06T13:56:52.956Z",
+  "time_zone": "Asia/Shanghai",
+  "base": "http://192.168.100.221:19000/",
+  "scope": "Actual deployed immutable release and live approved four-user metadata. GET/HEAD only. Browser-only instrumentation; emulated devices, not physical-device certification.",
+  "checks": [],
+  "page_errors": [],
+  "failed_responses": [
+    {
+      "device": "desktop",
+      "status": 500,
+      "path": "/"
+    }
+  ],
+  "external_requests": [],
+  "blocked_writes": [],
+  "screenshots": [],
+  "devices": [],
+  "passed": 0,
+  "failed": 0
+}

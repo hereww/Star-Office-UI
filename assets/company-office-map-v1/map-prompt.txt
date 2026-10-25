@@ -1,0 +1,8 @@
+Production pixel-art company-office background map, wide 16:9, final 1280x720.
+Style references: approved-office-expressions-v1/media/workstation-reference.png and character-base.png.
+Reference images constrain pixel style and honey-oak/muted-teal colors only. Do not paint any cat, central desk, chair or monitor into the background.
+2D orthographic cardinal RPG map; walls and floor seams horizontal/vertical; all props face only up/down/left/right. No isometric, 45-degree, three-quarter or vanishing-point perspective.
+Back-wall strip y=0..150 with teal windows, analog clock, corkboard without words, low oak cabinets. Floor y=150..700, quiet light ivory square tile seams.
+Leave central x=250..1020,y=170..650 open for six independently overlaid192x192 modular workstations.
+Left perimeter x=35..210: axis-aligned teal sofa, compact coffee bar, plants. Right perimeter x=1080..1235: two compact dark teal server racks with green indicator pixels, low storage cabinet, plants.
+Central doorway at bottom x=570..710. Strong clean brown pixel outlines, compact warm palette, crisp2-3px clusters, no smooth vector or photorealism. No characters, words, letters, UI, watermark or baked-in desk shadows.

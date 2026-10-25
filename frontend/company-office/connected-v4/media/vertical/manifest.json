@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 1,
+  "version": "connected-vertical-v4-candidate-1",
+  "layout": "vertical",
+  "zone": "red",
+  "seatCount": 8,
+  "pairs": 4,
+  "idOrder": "north to south; odd left / even right",
+  "image": "connected-vertical-eight-seats.png",
+  "runtimeImage": "/static/company-office/connected-v4/media/vertical/connected-vertical-eight-seats.png",
+  "actualPixelSize": [
+    887,
+    1774
+  ],
+  "requestedPixelSize": [
+    1536,
+    3072
+  ],
+  "native4K": false,
+  "resized": false,
+  "alphaBounds": [
+    73,
+    69,
+    871,
+    1716
+  ],
+  "alphaBoundsConvention": "[left,top,rightExclusive,bottomExclusive], alpha > 0; includes very faint generated fringe",
+  "visibleAlphaBounds": [
+    229,
+    74,
+    659,
+    1684
+  ],
+  "visibleAlphaThreshold": 16,
+  "tabletopBounds": [
+    234,
+    92,
+    655,
+    1564
+  ],
+  "centralDividerBounds": [
+    426,
+    78,
+    462,
+    1636
+  ],
+  "seatContacts": [
+    {
+      "id": "desk-01",
+      "pair": 1,
+      "side": "left",
+      "deskEdgeContact": [
+        237,
+        300
+      ],
+      "point": [
+        200,
+        300
+      ],
+      "characterDirection": "right",
+      "monitorFacing": "left",
+      "anchorSemantics": "point is suggested chair/torso center, NOT existing sprite poseAnchor; align the existing seated body so torso faces deskEdgeContact. Transform these source-pixel coordinates with furniture placement."
+    },
+    {
+      "id": "desk-02",
+      "pair": 1,
+      "side": "right",
+      "deskEdgeContact": [
+        651,
+        300
+      ],
+      "point": [
+        688,
+        300
+      ],
+      "characterDirection": "left",
+      "monitorFacing": "right",
+      "anchorSemantics": "point is suggested chair/torso center, NOT existing sprite poseAnchor; align the existing seated body so torso faces deskEdgeContact. Transform these source-pixel coordinates with furniture placement."
+    },
+    {
+      "id": "desk-03",
+      "pair": 2,
+      "side": "left",
+      "deskEdgeContact": [
+        237,
+        667
+      ],
+      "point": [
+        200,
+        667
+      ],
+      "characterDirection": "right",
+      "monitorFacing": "left",
+      "anchorSemantics": "point is suggested chair/torso center, NOT existing sprite poseAnchor; align the existing seated body so torso faces deskEdgeContact. Transform these source-pixel coordinates with furniture placement."
+    },
+    {
+      "id": "desk-04",
+      "pair": 2,
+      "side": "right",
+      "deskEdgeContact": [
+        651,
+        667
+      ],
+      "point": [
+        688,
+        667
+      ],
+      "characterDirection": "left",
+      "monitorFacing": "right",
+      "anchorSemantics": "point is suggested chair/torso center, NOT existing sprite poseAnchor; align the existing seated body so torso faces deskEdgeContact. Transform these source-pixel coordinates with furniture placement."
+    },
+    {
+      "id": "desk-05",
+      "pair": 3,
+      "side": "left",
+      "deskEdgeContact": [
+        237,
+        1035
+      ],
+      "point": [
+        200,
+        1035
+      ],
+      "characterDirection": "right",
+      "monitorFacing": "left",
+      "anchorSemantics": "point is suggested chair/torso center, NOT existing sprite poseAnchor; align the existing seated body so torso faces deskEdgeContact. Transform these source-pixel coordinates with furniture placement."
+    },
+    {
+      "id": "desk-06",
+      "pair": 3,
+      "side": "right",
+      "deskEdgeContact": [
+        651,
+        1035
+      ],
+      "point": [
+        688,
+        1035
+      ],
+      "characterDirection": "left",
+      "monitorFacing": "right",
+      "anchorSemantics": "point is suggested chair/torso center, NOT existing sprite poseAnchor; align the existing seated body so torso faces deskEdgeContact. Transform these source-pixel coordinates with furniture placement."
+    },
+    {
+      "id": "desk-07",
+      "pair": 4,
+      "side": "left",
+      "deskEdgeContact": [
+        237,
+        1398
+      ],
+      "point": [
+        200,
+        1398
+      ],
+      "characterDirection": "right",
+      "monitorFacing": "left",
+      "anchorSemantics": "point is suggested chair/torso center, NOT existing sprite poseAnchor; align the existing seated body so torso faces deskEdgeContact. Transform these source-pixel coordinates with furniture placement."
+    },
+    {
+      "id": "desk-08",
+      "pair": 4,
+      "side": "right",
+      "deskEdgeContact": [
+        651,
+        1398
+      ],
+      "point": [
+        688,
+        1398
+      ],
+      "characterDirection": "left",
+      "monitorFacing": "right",
+      "anchorSemantics": "point is suggested chair/torso center, NOT existing sprite poseAnchor; align the existing seated body so torso faces deskEdgeContact. Transform these source-pixel coordinates with furniture placement."
+    }
+  ],
+  "screens": [
+    {
+      "id": "desk-01",
+      "polygon": [
+        [
+          380,
+          180
+        ],
+        [
+          383,
+          180
+        ],
+        [
+          383,
+          310
+        ],
+        [
+          380,
+          310
+        ]
+      ],
+      "led": [
+        377,
+        375
+      ],
+      "polygonSemantics": "Conservative safe subset of the genuinely visible pale-cyan side-view screen plane, not entire monitor bounds. Do not place readable text in this 3-pixel-wide strip.",
+      "ledSemantics": "manually inspected visible cyan bezel status detail; some LEDs are faint, coordinates are overlay anchors not independently validated hardware features",
+      "keyboardBounds": [
+        289,
+        235,
+        351,
+        365
+      ],
+      "mouseCenter": [
+        320,
+        409
+      ]
+    },
+    {
+      "id": "desk-02",
+      "polygon": [
+        [
+          509,
+          180
+        ],
+        [
+          512,
+          180
+        ],
+        [
+          512,
+          310
+        ],
+        [
+          509,
+          310
+        ]
+      ],
+      "led": [
+        512,
+        376
+      ],
+      "polygonSemantics": "Conservative safe subset of the genuinely visible pale-cyan side-view screen plane, not entire monitor bounds. Do not place readable text in this 3-pixel-wide strip.",
+      "ledSemantics": "manually inspected visible cyan bezel status detail; some LEDs are faint, coordinates are overlay anchors not independently validated hardware features",
+      "keyboardBounds": [
+        539,
+        235,
+        600,
+        365
+      ],
+      "mouseCenter": [
+        566,
+        409
+      ]
+    },
+    {
+      "id": "desk-03",
+      "polygon": [
+        [
+          380,
+          546
+        ],
+        [
+          383,
+          546
+        ],
+        [
+          383,
+          676
+        ],
+        [
+          380,
+          676
+        ]
+      ],
+      "led": [
+        377,
+        744
+      ],
+      "polygonSemantics": "Conservative safe subset of the genuinely visible pale-cyan side-view screen plane, not entire monitor bounds. Do not place readable text in this 3-pixel-wide strip.",
+      "ledSemantics": "manually inspected visible cyan bezel status detail; some LEDs are faint, coordinates are overlay anchors not independently validated hardware features",
+      "keyboardBounds": [
+        289,
+        601,
+        351,
+        731
+      ],
+      "mouseCenter": [
+        320,
+        775
+      ]
+    },
+    {
+      "id": "desk-04",
+      "polygon": [
+        [
+          509,
+          546
+        ],
+        [
+          512,
+          546
+        ],
+        [
+          512,
+          676
+        ],
+        [
+          509,
+          676
+        ]
+      ],
+      "led": [
+        512,
+        744
+      ],
+      "polygonSemantics": "Conservative safe subset of the genuinely visible pale-cyan side-view screen plane, not entire monitor bounds. Do not place readable text in this 3-pixel-wide strip.",
+      "ledSemantics": "manually inspected visible cyan bezel status detail; some LEDs are faint, coordinates are overlay anchors not independently validated hardware features",
+      "keyboardBounds": [
+        539,
+        601,
+        600,
+        731
+      ],
+      "mouseCenter": [
+        566,
+        775
+      ]
+    },
+    {
+      "id": "desk-05",
+      "polygon": [
+        [
+          380,
+          914
+        ],
+        [
+          383,
+          914
+        ],
+        [
+          383,
+          1044
+        ],
+        [
+          380,
+          1044
+        ]
+      ],
+      "led": [
+        376,
+        1112
+      ],
+      "polygonSemantics": "Conservative safe subset of the genuinely visible pale-cyan side-view screen plane, not entire monitor bounds. Do not place readable text in this 3-pixel-wide strip.",
+      "ledSemantics": "manually inspected visible cyan bezel status detail; some LEDs are faint, coordinates are overlay anchors not independently validated hardware features",
+      "keyboardBounds": [
+        289,
+        969,
+        351,
+        1099
+      ],
+      "mouseCenter": [
+        320,
+        1143
+      ]
+    },
+    {
+      "id": "desk-06",
+      "polygon": [
+        [
+          509,
+          914
+        ],
+        [
+          512,
+          914
+        ],
+        [
+          512,
+          1044
+        ],
+        [
+          509,
+          1044
+        ]
+      ],
+      "led": [
+        512,
+        1112
+      ],
+      "polygonSemantics": "Conservative safe subset of the genuinely visible pale-cyan side-view screen plane, not entire monitor bounds. Do not place readable text in this 3-pixel-wide strip.",
+      "ledSemantics": "manually inspected visible cyan bezel status detail; some LEDs are faint, coordinates are overlay anchors not independently validated hardware features",
+      "keyboardBounds": [
+        539,
+        969,
+        600,
+        1099
+      ],
+      "mouseCenter": [
+        566,
+        1143
+      ]
+    },
+    {
+      "id": "desk-07",
+      "polygon": [
+        [
+          380,
+          1280
+        ],
+        [
+          383,
+          1280
+        ],
+        [
+          383,
+          1410
+        ],
+        [
+          380,
+          1410
+        ]
+      ],
+      "led": [
+        377,
+        1457
+      ],
+      "polygonSemantics": "Conservative safe subset of the genuinely visible pale-cyan side-view screen plane, not entire monitor bounds. Do not place readable text in this 3-pixel-wide strip.",
+      "ledSemantics": "manually inspected visible cyan bezel status detail; some LEDs are faint, coordinates are overlay anchors not independently validated hardware features",
+      "keyboardBounds": [
+        289,
+        1335,
+        351,
+        1465
+      ],
+      "mouseCenter": [
+        320,
+        1509
+      ]
+    },
+    {
+      "id": "desk-08",
+      "polygon": [
+        [
+          509,
+          1280
+        ],
+        [
+          512,
+          1280
+        ],
+        [
+          512,
+          1410
+        ],
+        [
+          509,
+          1410
+        ]
+      ],
+      "led": [
+        512,
+        1472
+      ],
+      "polygonSemantics": "Conservative safe subset of the genuinely visible pale-cyan side-view screen plane, not entire monitor bounds. Do not place readable text in this 3-pixel-wide strip.",
+      "ledSemantics": "manually inspected visible cyan bezel status detail; some LEDs are faint, coordinates are overlay anchors not independently validated hardware features",
+      "keyboardBounds": [
+        539,
+        1335,
+        600,
+        1465
+      ],
+      "mouseCenter": [
+        566,
+        1509
+      ]
+    }
+  ],
+  "coordinateSpace": "original image pixels, origin top-left; x right, y down; source not cropped or scaled",
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "/Users/hepingyu/.codex/generated_images/01a0ffdb-7ea6-7e02-b1aa-2ebdfc5bf948/call_3SMryEvxcKpccnSTY4OJuTE8.png",
+    "calls": 1,
+    "references": [
+      "/Users/hepingyu/.codex/generated_images/01a0fb4b-34d6-7e20-b89f-8e0e39c1154b/call_ccVlMzNTJTCGIVtAQhXEluVp.png",
+      "/Users/hepingyu/.codex/generated_images/01a0fb4b-34d6-7e20-b89f-8e0e39c1154b/call_9V1lPvRaKGARxGWSmooxTedL.png"
+    ],
+    "promptFile": "prompt.txt",
+    "sha256": "3b348545a435bafab0c824c18fca207698dce37bb14ed7d544464c0bb4850550"
+  },
+  "technicalCompleted": true,
+  "integrationAllowed": true,
+  "humanApproved": false,
+  "visualApproved": false,
+  "runtimeIntegrated": false,
+  "technicalChecks": {
+    "rgba": true,
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentPixelRatio": 0.5627090035321677,
+    "byteIdenticalRuntimeCopy": true,
+    "screenPolygons": 8,
+    "seatContacts": 8,
+    "screenPolygonOpaqueAndCyan": true,
+    "noResampling": true
+  },
+  "visualInspection": {
+    "continuousConnectedDesk": true,
+    "stationPairs": 4,
+    "monitors": 8,
+    "keyboards": 8,
+    "mice": 8,
+    "noCharacters": true,
+    "noChairs": true,
+    "noFloorOrText": true,
+    "equipmentCountMethod": "manual visual inspection, not automated object detection"
+  },
+  "visualRisks": [
+    "Actual native result is 887x1774, below requested 1536x3072; do not claim native4K.",
+    "High-overhead side-view monitors offer very narrow screen planes: overlays should be restrained color/status flicker only, no readable dashboard UI.",
+    "Keyboard space bars are not strongly distinguished and keycaps are stylized; no legible text was generated.",
+    "Furniture-only contact coordinates are suggested source-space anchors; exact existing character/chair alignment and occlusion require runtime compositor verification.",
+    "At alpha >=1 the original has faint stray fringe outside furniture; alpha >=16 occupied bounds are tighter. Source remains unmodified.",
+    "LED accents are faint and fourth pair differs slightly in vertical position; use per-seat anchors, not one replicated offset."
+  ]
+}

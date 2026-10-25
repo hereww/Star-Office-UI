@@ -1,0 +1,112 @@
+{
+  "url": "http://192.168.100.221:19000/",
+  "observations": [
+    {
+      "name": "native-fullscreen-green",
+      "checkedAt": "2026-10-07T04:25:00.312Z",
+      "fullscreen": true,
+      "viewport": {
+        "width": 1920,
+        "height": 797,
+        "dpr": 2
+      },
+      "canvas": [
+        {
+          "width": 3692,
+          "height": 1296,
+          "cssWidth": 1846,
+          "cssHeight": 648
+        }
+      ]
+    },
+    {
+      "name": "desktop-1920x1080",
+      "checkedAt": "2026-10-07T04:27:45.317Z",
+      "fullscreen": true,
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      },
+      "canvas": [
+        {
+          "width": 1846,
+          "height": 733,
+          "cssWidth": 1846,
+          "cssHeight": 733.2109375
+        }
+      ]
+    },
+    {
+      "name": "fullscreen-overview-1920x1080-dpr2",
+      "checkedAt": "2026-10-07T04:42:00.381Z",
+      "fullscreen": true,
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2
+      },
+      "canvas": [
+        {
+          "width": 5438,
+          "height": 2160,
+          "cssWidth": 1846,
+          "cssHeight": 733.2109375
+        }
+      ]
+    },
+    {
+      "name": "fullscreen-green-1920x1080-dpr2",
+      "checkedAt": "2026-10-07T04:42:57.395Z",
+      "fullscreen": true,
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2
+      },
+      "canvas": [
+        {
+          "width": 5438,
+          "height": 2160,
+          "cssWidth": 1846,
+          "cssHeight": 733.2109375
+        }
+      ]
+    },
+    {
+      "name": "tablet-1024x768-green",
+      "checkedAt": "2026-10-07T04:46:13.588Z",
+      "fullscreen": false,
+      "viewport": {
+        "width": 1024,
+        "height": 768,
+        "dpr": 1
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "name": "final-restored-normal-viewport",
+      "checkedAt": "2026-10-07T04:51:54.975Z",
+      "fullscreen": false,
+      "viewport": {
+        "width": 1920,
+        "height": 797,
+        "dpr": 2
+      },
+      "horizontalOverflow": false,
+      "canvas": [
+        {
+          "width": 3692,
+          "height": 1296,
+          "cssWidth": 1846,
+          "cssHeight": 648
+        }
+      ],
+      "releaseScripts": [
+        "http://192.168.100.221:19000/static/releases/office-v5-short-status-04/vendor/phaser-3.80.1.min.js"
+      ]
+    }
+  ],
+  "viewportOverridesCleared": true,
+  "fullscreenExited": true
+}

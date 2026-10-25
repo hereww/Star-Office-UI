@@ -1,0 +1,41 @@
+{
+  "overview": {
+    "camera": {
+      "worldView": [
+        89,
+        112,
+        1925.8181818181815,
+        2648
+      ],
+      "zoom": 0.20251132930513596
+    },
+    "canvas": [
+      390,
+      536
+    ],
+    "horizontalOverflow": false,
+    "ready": true,
+    "touch": 1,
+    "view": "overview",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  "nearView": {
+    "worldView": [
+      930,
+      1092,
+      720,
+      990
+    ],
+    "zoom": 0.5416666666666666
+  },
+  "pan": {
+    "supportedNativeDrag": true,
+    "rawTouchDispatchSupported": false,
+    "cameraMoved": true,
+    "furnitureUnchanged": true,
+    "pageScrollUnchanged": true
+  }
+}

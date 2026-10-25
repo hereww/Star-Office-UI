@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_pending_visual_review",
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "workstation": {
+    "id": "oak-teal-down-v1",
+    "direction": "down",
+    "size": [
+      192,
+      192
+    ],
+    "seatAnchor": [
+      96,
+      94
+    ],
+    "back": "media/workstation-back.png",
+    "front": "media/workstation-front.png",
+    "keyboardContactZones": [
+      [
+        43,
+        89,
+        10,
+        19
+      ],
+      [
+        143,
+        89,
+        13,
+        19
+      ]
+    ],
+    "equipmentInOneStaticLayer": true,
+    "occlusion": "rear-chair -> actor -> front-desk-equipment -> actor-clipped-to-static-keyboard-contact-zones"
+  },
+  "characters": [
+    {
+      "id": "orange-cat",
+      "label": "橘猫办公首稿",
+      "direction": "down",
+      "poseAnchor": [
+        98,
+        170
+      ],
+      "scale": 0.6,
+      "actions": {
+        "working": {
+          "sheet": "media/orange-cat-working.png",
+          "grid": [
+            4,
+            3
+          ],
+          "frameSize": [
+            192,
+            192
+          ],
+          "frameCount": 12,
+          "fps": 12
+        }
+      },
+      "visualLimitations": [
+        "手部没有按提示词伸展到键盘两侧，打字接触不明显",
+        "模型存在少量帧间形状变化；不逐帧修绘",
+        "座位锚点和尺度是此资产的一次性配置，不代表其它角色可无配置直接替换"
+      ]
+    }
+  ],
+  "businessStateToAction": {
+    "idle": "idle",
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "syncing": "syncing",
+    "error": "error"
+  }
+}

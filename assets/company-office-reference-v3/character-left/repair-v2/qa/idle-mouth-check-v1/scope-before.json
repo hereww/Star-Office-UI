@@ -1,0 +1,1210 @@
+{
+  "date": "2026-10-02",
+  "files": [
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/FILES.md",
+      "sha256": "61dfeee88769a3f89756f455b3776c7f44423fc0785aa1bf821d1d6e975f698f",
+      "bytes": 13542
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/README.md",
+      "sha256": "2f97cf584a549a025b95782a35c2bb7ed911c3ec3e3e105963ded57b81706f85",
+      "bytes": 1453
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/character-base.png",
+      "sha256": "06b1c2ac8d682e1a0ae4bd33dd36a113999001c8840afe640d4b563ba01c4a4f",
+      "bytes": 23609
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/face-error.png",
+      "sha256": "f5ee7b55de6bff30342f00e4d77a613c15619ce29affaf6fe9b1cb1e12be2bd6",
+      "bytes": 107128
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/face-idle.png",
+      "sha256": "c1009597b72261d3604e403b551e8f4f7f36d6f8e3ce430fce3c6960b6065eb3",
+      "bytes": 105632
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/face-syncing.png",
+      "sha256": "cf94e1135d84fde575f7999a17b5fd2d1ea19a4e0092d0dee9515849b8cf0c1d",
+      "bytes": 93830
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/face-working.png",
+      "sha256": "f00ba5b6f2308bf07d5a1ed7afc6b2013a3a07d886389a7d685605f460e0e3ae",
+      "bytes": 104127
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/files.json",
+      "sha256": "094efc564f6b13517d0734801509a00fb1cfaee8a4cf62a39c3f09d2cb3ce07b",
+      "bytes": 13858
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/00.png",
+      "sha256": "09f0421b2821c9a3d214abd8689bfd89cc343ed25d632e73a5a8b15f52f51ee1",
+      "bytes": 9040
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/01.png",
+      "sha256": "04c066535633dbb2cc43f9e38fb8d180353b33ab12298ec8bd5c4f4cf836bc4f",
+      "bytes": 9223
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/02.png",
+      "sha256": "1c0bc26f1d9d3f18f19c4694c9414f94f18589458a32f9de0c693aedc375f551",
+      "bytes": 9256
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/03.png",
+      "sha256": "84f4219373477a6aef0440f7f5a17f59a521ac5e2fc135d4bc1c9b5dfbc83596",
+      "bytes": 9164
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/04.png",
+      "sha256": "90e81d078156d78c13d8ec43acba4fa26169d9fc6398fc7281106299ca1efe21",
+      "bytes": 9075
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/05.png",
+      "sha256": "a061db1383e5a0a802285dde1347c245b93376e1f9e1f1ae3cfe427456c791fb",
+      "bytes": 9303
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/06.png",
+      "sha256": "1aa10f128927dde83037fe3c95498fdde6f08fe9109eed790e3eb0cb2a5ecc4d",
+      "bytes": 9160
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/07.png",
+      "sha256": "0c8ec3571ff38220a6e061cc02f8655639d514cad9e734dbfc1e8e869d90cf5a",
+      "bytes": 9180
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/08.png",
+      "sha256": "53f15eb921741e44e6546d2a087feca26084b32e69146abdf8bc6c7f5a6dec52",
+      "bytes": 8957
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/09.png",
+      "sha256": "bbabdcae823f531644aea4e13adb9eacc8c119dc4d5deca0c6c13618acb9d960",
+      "bytes": 9188
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/10.png",
+      "sha256": "de69953d1c9135cae0437af9b24bbc26ba878c0ca5199272a3ded4b66257fdcb",
+      "bytes": 9024
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/error/11.png",
+      "sha256": "2c096161186e6ea7c58b05311844717916ada319d9b6399b51f777fa86f68b50",
+      "bytes": 9141
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/00.png",
+      "sha256": "ee6341d5918da0a510c9bb18327fd3ff74d883c8e872c6423a232bc79bb80da9",
+      "bytes": 8857
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/01.png",
+      "sha256": "7162610719d1a0c01199caf06898f327db9df8fb90260ea1bcd54c8209f628f4",
+      "bytes": 8929
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/02.png",
+      "sha256": "67ea6dd3f4e28767f526ee4c77e88a007eaa09859449e18e0de579e5403a7e7c",
+      "bytes": 8914
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/03.png",
+      "sha256": "5d7d73805d53ff33a109e883461ec449a6b5fd4f8be59d37446d84ed54a7949f",
+      "bytes": 8996
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/04.png",
+      "sha256": "c2de95b5d554e9fcd5633b2dd198868330bf91c91a105c86925612f103e07cec",
+      "bytes": 9050
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/05.png",
+      "sha256": "783c66cf273fd3c7b05b646cd78d852fc86809025adeecd65526336c7eef9026",
+      "bytes": 9237
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/06.png",
+      "sha256": "f2eb734d57f27fe7508923ea71c9b4f88631508290831e7b1d19f2959cac1b96",
+      "bytes": 9204
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/07.png",
+      "sha256": "209a3e84fb00d4f63bf96e8cc5b4b1e097d936ad6713d3087fa4400a31fd74d0",
+      "bytes": 9151
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/08.png",
+      "sha256": "adfc01e38ebc8f849157dbb26b3737e5b73af931caf02aa417396d3a936ffb4f",
+      "bytes": 8966
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/09.png",
+      "sha256": "3eba7dfbd7f0c667be594566039de626333a5afefc775653c857087b9df41e90",
+      "bytes": 9081
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/10.png",
+      "sha256": "a06fff546bd14c926a3a3dd882d1a0806bf992f60e2c06afb8c6428f7a082aab",
+      "bytes": 9005
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/idle/11.png",
+      "sha256": "1af0e14139ef7f42edfbd945dae53676d088e05e35742d500585e46e7d9ca6ed",
+      "bytes": 8958
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/00.png",
+      "sha256": "9fc5243af9587a38b8053963f78313c85c8f6992f2bda7bbe80b8b9b68048f74",
+      "bytes": 7990
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/01.png",
+      "sha256": "1a7e18b157b3553081eb34ee977ffe0ba8e1ece172ff9de23cb28d25a01e206e",
+      "bytes": 8143
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/02.png",
+      "sha256": "d0d5235915113a926408aea53e26eebaa232812b6fb0ec6138633c6adbc35eb3",
+      "bytes": 8183
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/03.png",
+      "sha256": "87bad603a9aad4a355b6d400531c25ba31dfcfdf659222b9a9d57063b49d2ff0",
+      "bytes": 7945
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/04.png",
+      "sha256": "0d424e011d55822250974b70e14ea8fed29233eeb9054881166f69cbe8c18a1b",
+      "bytes": 7961
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/05.png",
+      "sha256": "61621b1872f0f3bb726e3c4349bedd9f6549188bf2ede0f92367ca08e269b0c0",
+      "bytes": 7819
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/06.png",
+      "sha256": "ea487487d8e8aab47e59151e1bfe784df2b66c0d8d66c915f52954493b866e50",
+      "bytes": 7799
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/07.png",
+      "sha256": "d1b7958f6470890b75ef32166591f9356f38b278d2095d1ee591b3bde0e42d36",
+      "bytes": 7927
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/08.png",
+      "sha256": "45d9fa75f83d7c363e5f999c4280926b43c1fcf77e0f34532ee3418262f316ad",
+      "bytes": 8050
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/09.png",
+      "sha256": "4728cfbbf86dc6592b585d18db37b2d2ea003fff8c5e6381f449a9f8728359f3",
+      "bytes": 8237
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/10.png",
+      "sha256": "11285f658128dff3e865d34c636dd7d65c19f83b33d741ee8c2e489530728c02",
+      "bytes": 8218
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/syncing/11.png",
+      "sha256": "2d3cf7fc033b7193d3a357549198c1ccb555e0a412e1f9cb013ad2740e2f2a1f",
+      "bytes": 8146
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/00.png",
+      "sha256": "db1b1fc6a2762117805e9a8908036f7d72e57402ee945919525d69fa574c0990",
+      "bytes": 8861
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/01.png",
+      "sha256": "d342abfcfdc3bc5495c584aadf955dbf607dbcc1dcdf7f451e42c3c38c30f201",
+      "bytes": 8948
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/02.png",
+      "sha256": "83f0666647b0d8f12d8299d5a00fbd52d808d8615b01a55a66305996d346f5d8",
+      "bytes": 8852
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/03.png",
+      "sha256": "28577731c13d6e814e113b522930a38727e18265feeff9b3f7772b21536ea5b2",
+      "bytes": 8790
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/04.png",
+      "sha256": "558eca1306feef9d7ade0eb705ce6681beebec5a0054db4a89ff17938cf02d3d",
+      "bytes": 8855
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/05.png",
+      "sha256": "79663a751030711dca829c6202ecac7034e04c01fa3220ee00f7e472537535c0",
+      "bytes": 8830
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/06.png",
+      "sha256": "bddf12b07c64fc17aaaadbd5bc9bee2fb998244697f2ba2ad2f1855dd82d550a",
+      "bytes": 8667
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/07.png",
+      "sha256": "371e31d5d449d64072958a407dc63b113c80f804b04361aeefcd21f425dd1bd9",
+      "bytes": 8690
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/08.png",
+      "sha256": "a0fc8b5763d102431153baf56af6c6a59fb6ec305d0ad26c80fb173f3538c42e",
+      "bytes": 8922
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/09.png",
+      "sha256": "cc3177782853227ef06c911836e314bc6e1cb54660fcd9fa365e19139b615171",
+      "bytes": 9052
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/10.png",
+      "sha256": "0ed30706b402d715af533e97905e43979579d92cdbd93c53d0daea1dd85017be",
+      "bytes": 9159
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/frames/working/11.png",
+      "sha256": "bcb44d5fd4ed7e220920f333eff96c20c613b106388ec57eb0e1a0372ecdbde0",
+      "bytes": 9046
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/generation-log.json",
+      "sha256": "00239fe7df2da63a1242e927362b0fd601fba85adadb7eee15bb29c588f7dd79",
+      "bytes": 3875
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/generation-plan.json",
+      "sha256": "57cff08037f1a6a928a8b43eb8dfb8f1add19b5872115c586ddfb38f6b667ba0",
+      "bytes": 569
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/manifest.json",
+      "sha256": "2441ab12c4ceac23ed45a8fc8efd0606d27d2ae6b2e6332f44c81105bf5a217c",
+      "bytes": 8984
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/originals/base-left-original.png",
+      "sha256": "570cd3a81f0078d374a01e8df39efb838016f940848f9b5ba19ffc5430cb23c9",
+      "bytes": 510410
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/originals/error-left-original.png",
+      "sha256": "8211e69f77584dcc14cb743a06acaf7a92f1046a2b7bf3819e113e4224ae6b43",
+      "bytes": 1540335
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/originals/idle-left-original.png",
+      "sha256": "231f9a50b17e2d0375c2000461d6fa3fb048ddd7742a4b6f7b90b94a4f5be619",
+      "bytes": 1532997
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/originals/syncing-left-original.png",
+      "sha256": "5f2dde32b89e45402a095e53d752602e1e2c2f63efc8a406a72ae44a414728bd",
+      "bytes": 1359047
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/originals/working-left-original.png",
+      "sha256": "8038b4b625ba60d881a9e45d9a2daee343ec9d532c7ed90fd290f9d09b556915",
+      "bytes": 1486589
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/preprocess-plan.json",
+      "sha256": "facf41b35f854da58666f4779c018407b2e274f93562b88bc8695d5404935450",
+      "bytes": 947
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/prompts/base-left.txt",
+      "sha256": "1f5cda38044904a033c39ca3008d29d30aa81f1edcbe2679e0d8ee25d52cfadc",
+      "bytes": 2248
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/prompts/error-left.txt",
+      "sha256": "a1eee9ddcd0cda93f47fda59383697684f68b70a0847b4ffa8a18441af25bb0d",
+      "bytes": 3104
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/prompts/idle-left.txt",
+      "sha256": "774d53d303c1b5e6b12d55936e3b1d4493b291768ce1fafdc5834d95f3d21662",
+      "bytes": 3327
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/prompts/syncing-left.txt",
+      "sha256": "6cf3e63bdd7599ce7ab7cee02a694feaaebdfdcec427995cae002a74e3bcdad6",
+      "bytes": 2935
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/prompts/working-left.txt",
+      "sha256": "b16dca4ce923141238437dafe8b363c511c1e0a44b405c1206bc4b10979e2955",
+      "bytes": 3062
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/REVIEW.md",
+      "sha256": "8e22cc09b1a4a07182ed2758b8e093149fa887b5af9346ef90b4bd3434344121",
+      "bytes": 3861
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/actions-first-frame-contact-2x.png",
+      "sha256": "34dcb24cf21ec250a6659e107d7ffeb26f130a03e22a62f9e08ea01a06884d4e",
+      "bytes": 53695
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/base-left-4x.png",
+      "sha256": "f0be951fee629fce09d54ac287e33070bbcb9bb65b3335eb50c3cec2702503ee",
+      "bytes": 37135
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/error-atlas-3x.png",
+      "sha256": "a75bfa673d8a5a948a572304572febc642ec07e358019da6e2eb89c68959c083",
+      "bytes": 143320
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/error-composite-contact-2x.png",
+      "sha256": "401398a4bc8a8f90f8a98f92fff20759ce10f20c64cc87e947accf7f10b12306",
+      "bytes": 161000
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/error-composite-contact.png",
+      "sha256": "8a6078fa176174caaf47f4b534db7c3eda8af062c1424c5433ad838379d196e1",
+      "bytes": 119839
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/error-eye-detail.png",
+      "sha256": "e0189e7cf8b48722e12d3ec9732da75094161c368d39ad63e5ae2af736529abd",
+      "bytes": 32907
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/idle-atlas-3x.png",
+      "sha256": "7d4b07561fe3fef286dca9d64c4aa176ab648685e99abded8ab12f9062f50a29",
+      "bytes": 141561
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/idle-atlas-normalized-preview.png",
+      "sha256": "c1009597b72261d3604e403b551e8f4f7f36d6f8e3ce430fce3c6960b6065eb3",
+      "bytes": 105632
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/idle-composite-contact-2x.png",
+      "sha256": "2bfad916fb8a7ccb225639dd205cc4a4be54d466a759262dafcc2881f7eb2009",
+      "bytes": 161102
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/idle-composite-contact.png",
+      "sha256": "5c199a38a47d5c29372f97233005d786037845f44d02c1e57d406a67dbea15d4",
+      "bytes": 119459
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/preprocessing.json",
+      "sha256": "ddce5abf680376f7d68f9b9ee95b0203a572334790ae1313303214f7eba9a3a7",
+      "bytes": 1537
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/protected-inputs-before.json",
+      "sha256": "df70d636a88a9ddb4c2f95729417ff107ab8ab6649beeb95eb0829e1dcb97291",
+      "bytes": 6662
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/syncing-atlas-3x.png",
+      "sha256": "4a746a4fe34c8e88d2165a690f46e25cceb2c94410af142c61992e4380ca1bee",
+      "bytes": 127163
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/syncing-atlas-normalized-preview.png",
+      "sha256": "cf94e1135d84fde575f7999a17b5fd2d1ea19a4e0092d0dee9515849b8cf0c1d",
+      "bytes": 93830
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/syncing-composite-contact-2x.png",
+      "sha256": "abce4a6fa9bb7ce58aeff36dfb7e3f9552bfca78e0d4cc63dfd3220259d0f540",
+      "bytes": 157408
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/syncing-composite-contact.png",
+      "sha256": "8452f3b9ffab7167a14a1ce52f183f0280def6f570c362736b4e07f106b834fc",
+      "bytes": 116761
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/validation-measurements.json",
+      "sha256": "d56c125b4cb4434a82668389129831513fabb4b550455d7b74e1dc755c8322df",
+      "bytes": 19969
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/working-atlas-3x.png",
+      "sha256": "c2704c1354db1a1e36f9cdee15fe1b6c4509ad31f0e82876c3ae79e306088faa",
+      "bytes": 139755
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/working-atlas-normalized-preview.png",
+      "sha256": "f00ba5b6f2308bf07d5a1ed7afc6b2013a3a07d886389a7d685605f460e0e3ae",
+      "bytes": 104127
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/working-composite-contact-2x.png",
+      "sha256": "0111b7909aace5d22905989ac0b7390a1755a670601cd8698dc6d5fade46a836",
+      "bytes": 158839
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/qa/working-composite-contact.png",
+      "sha256": "c2795028f1d9c8d945fb2fe6b7672572be51b1d8cca84a8b894cec0b513bdf39",
+      "bytes": 117981
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/FILES.md",
+      "sha256": "2a2fe0c60a183d98718b6d4255475baadbe7432debe7f52cf4569d75dacf3248",
+      "bytes": 19585
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/README.md",
+      "sha256": "fdc9aff7a2127b2a812707da13eac255bfc847641e1c6f4e60b46821df8ec1ae",
+      "bytes": 1395
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/character-base.png",
+      "sha256": "5e91d7768973d9d138677d8ba2e1b0b2847b566044b00c13a9518b4767ec2c1b",
+      "bytes": 22926
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/face-error.png",
+      "sha256": "502ee366574ce2aaab189209b05478a35a13600709abfcf9dc1a83aeebdde914",
+      "bytes": 23203
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/face-idle.png",
+      "sha256": "33ef05810acd25af268e7ceaf1a8aff4596adde42fc6b94089fea1765cc51698",
+      "bytes": 17153
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/face-syncing.png",
+      "sha256": "25eaea0328c857c1050ff018b5f7ef06a335a15d1f32c235871dda406cabbcd9",
+      "bytes": 20167
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/face-working.png",
+      "sha256": "3b81244c63cd6bee18a939ce1e5d6b7d187ba21f88670ea576a4833eb6d38a20",
+      "bytes": 19544
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/files.json",
+      "sha256": "7d6d792ffec6f8db7e571c626b0d89a6b777dd390c9e60f1bc0183537b5c928c",
+      "bytes": 20021
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/00.png",
+      "sha256": "6f460f7f3fd8bc62b2d2043962d9e5342ce83230f4593756b33ac85219a3649c",
+      "bytes": 2096
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/01.png",
+      "sha256": "0bb85023cead95d82dcddff3647e32267c8621c4e5c878d75a8d978355d4ef22",
+      "bytes": 2067
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/02.png",
+      "sha256": "2eb62b2ddff18b499b990a4b497ce02e123aac2a4637869df8f96d0edb01d9e7",
+      "bytes": 2100
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/03.png",
+      "sha256": "cb21f1d6905e3cf84321437c541806e703b23abecc7d4eeaab0662aa9b7ed900",
+      "bytes": 2088
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/04.png",
+      "sha256": "07bb677e5562110d4fccc0340ed8ed412673e14ad40a81abe2856c0d4c7487f1",
+      "bytes": 2087
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/05.png",
+      "sha256": "95fcc369852a0d9a89a52bd28014d0f1510cbabd3b7d7be84a999759f20643fa",
+      "bytes": 2149
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/06.png",
+      "sha256": "60d8a735d6783de29092c4440a73a89ffc82c385d42a65a0da45ab4cd6845f2e",
+      "bytes": 2123
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/07.png",
+      "sha256": "3102d6a3832cae20fd9125401014bafb3b03fa419bf677e8d2b4db3a7b91a668",
+      "bytes": 2151
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/08.png",
+      "sha256": "cf32bcceb4fbfe7f036677633aabfd26c131b852b3fc18d1343bdc5c0f6b3551",
+      "bytes": 2053
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/09.png",
+      "sha256": "2a88ab8069ecfa0dbf2d857d702bf64406f173bb7b244e45acdeafc52735d394",
+      "bytes": 2161
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/10.png",
+      "sha256": "6586e40e193d6a3d1870d398ff3fe1dc25741e4dd6c42349495b2e52bbcdd2d1",
+      "bytes": 2104
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/error/11.png",
+      "sha256": "fe937ee77f8e2da192ee1045459d78dcc6e79f5d0d3f269e67b9884a1c1626e0",
+      "bytes": 2134
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/00.png",
+      "sha256": "37509abba6a2b91d85db3662d7f88ea00a323a60350546b79e8facfa671147e3",
+      "bytes": 1330
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/01.png",
+      "sha256": "b3ebfd7afe36f58aef5e6c58ccb97838dd9aaaf9f560a21b57db3e26005d477b",
+      "bytes": 1383
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/02.png",
+      "sha256": "b660601c93dbef27f497e96e83fa2563bb1c36fcc8a716d57e8100f4192ac38f",
+      "bytes": 1448
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/03.png",
+      "sha256": "77a87dfe1e2742582bba5f942dd794c0fea89849e127abbfe065b8e01cd559a4",
+      "bytes": 1506
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/04.png",
+      "sha256": "b54a3c3ece5bffb9fc94e586e73dc0c7b8a23d95cf5be05725376a072cf45c41",
+      "bytes": 1779
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/05.png",
+      "sha256": "1e8fee9f380abbb84b3fa8a730fd4410e339bc8c17f51784f0f87f8b59b6da14",
+      "bytes": 1983
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/06.png",
+      "sha256": "b9a6c767bd9007e87dc0422e83ad1816d7f2b44b55bc6b350be52974c5d8c65e",
+      "bytes": 1998
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/07.png",
+      "sha256": "fa31dd089cffad234e268cfbbf27e5338898bad122cabf37f3056214ef086fcc",
+      "bytes": 1884
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/08.png",
+      "sha256": "bd3037f1dab34799cf1bac98a1c75a438e920e939edc3082bc11df829df02b57",
+      "bytes": 1649
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/09.png",
+      "sha256": "afcab83b911f6d3f2c5cd204a81b0c8283eee632e2edc932900af865fa513dfe",
+      "bytes": 1591
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/10.png",
+      "sha256": "c4c57ed8e8ff6001701245c4d5af9a4c22ed2fc016a0e1ac4651ffe9e629ed15",
+      "bytes": 1403
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/idle/11.png",
+      "sha256": "00181c89525530b5533b0d72a648a3241babfe9c1ea29b8c0fc2fa9ad5d4ce1d",
+      "bytes": 1353
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/00.png",
+      "sha256": "3486ee52383ef32512b12b77114de8e804018e85b30b0d84d576ec4da99990b1",
+      "bytes": 2108
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/01.png",
+      "sha256": "a4f66002fd49914dc3f3b592a099582813ce7eefdc7a8efcf176d59e94906cea",
+      "bytes": 2079
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/02.png",
+      "sha256": "def12d687227e1488524f4226371f8f4df93391d85b07318e46bdee849a17b6b",
+      "bytes": 2040
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/03.png",
+      "sha256": "493a7054ed1c8e51132719ebd422c72329f5a405908f99598d86be62788d823d",
+      "bytes": 1955
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/04.png",
+      "sha256": "14ea359083d73855dcf9c5d82b0f09eb3646b2e58854193c2a4b4107f428b97d",
+      "bytes": 1730
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/05.png",
+      "sha256": "ffe624a1832f50e35dd8b2a2bab4fc543b1de648fae6a9f923c5ca5a516a72a1",
+      "bytes": 1200
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/06.png",
+      "sha256": "5faad8ef2251ddd1b092841cdeb06aee9430b44a53430b89a4c759395cea032e",
+      "bytes": 974
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/07.png",
+      "sha256": "f0c302357dd7ef942d5f6c1eebd0cf344f01c64e11692528aed2ea0ac9cc6902",
+      "bytes": 1764
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/08.png",
+      "sha256": "59885cece79d06e67093ac0a9e92ca5589fbfad9a05544faa7a503539bb3eeba",
+      "bytes": 1880
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/09.png",
+      "sha256": "d11a3496377d9272ba475b00622a32f56cd6fa8d63d270cf2e9c3a3d5ce569d9",
+      "bytes": 2118
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/10.png",
+      "sha256": "e786a782f4770831dc0e98578c744043c3f2bcccfdbe9c02dd76f9904c53bf8b",
+      "bytes": 2106
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/syncing/11.png",
+      "sha256": "e8e42ecc8f998e6d56dd34e29acc806335d5067eccdf0666d268d436601532aa",
+      "bytes": 2145
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/00.png",
+      "sha256": "eb4cd642693830125d78f391fcd42b99d1e98822d089a8e7c92282974d1aac17",
+      "bytes": 2067
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/01.png",
+      "sha256": "893342741717b392e1e7bcbb2ae021a8af3fc648c9ebc38782f4e34d54f56479",
+      "bytes": 2010
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/02.png",
+      "sha256": "ed10c27ac89626e8488367b1f0971c93e66733b0ae3da7197490ac57250f1e7e",
+      "bytes": 1927
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/03.png",
+      "sha256": "3fbdb5ca7b6b35eb544e7a849948152c7a6480c2358e7ef38cbd570405271f23",
+      "bytes": 1808
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/04.png",
+      "sha256": "7ef8e5c7a66b2e6290ba3a278086e7352cf0175428b44a2b862e19e4a66ec146",
+      "bytes": 1709
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/05.png",
+      "sha256": "bc79f91e7aac75bb26a1ea761c2b898c818c7f67593c18c111d0c7ea5ef1812a",
+      "bytes": 1568
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/06.png",
+      "sha256": "06bb18af11b2307e8a9189b3397a61a4b8b0b30351e6a34211e39370438f8762",
+      "bytes": 1227
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/07.png",
+      "sha256": "18467ddc4968b3e31fdb69f0aa8f599af472e1b1aa7171cb61a82e935c052c5a",
+      "bytes": 1470
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/08.png",
+      "sha256": "66cdcf0c86363a2c49dfe5f080455fa2b8324db1f2223ae32b31ba5bc5056508",
+      "bytes": 1831
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/09.png",
+      "sha256": "58afa819c3feb99b2884cae8b50eb69d3a9c8d35ecb5bc15f87e4c4512d8cc00",
+      "bytes": 1864
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/10.png",
+      "sha256": "7c287634083349b4c34314ef5901df494fd4e52552f6fd8b730e3a527c312736",
+      "bytes": 1996
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/frames/working/11.png",
+      "sha256": "db93d3f19c834680a17933a1fb5b54487d79dcbb87269c5ae88d70550b04cd72",
+      "bytes": 1985
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/generation-log.json",
+      "sha256": "a33faa2d0c74190c38146b28bfb082f831062f5e29ecdd697e6f6e2ea8e9defb",
+      "bytes": 724
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/manifest.json",
+      "sha256": "fce61d5ade1ee37e0261ce0bd88c90cb8f8523848373083f7d9fa4f632a49baa",
+      "bytes": 8988
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/normalization.json",
+      "sha256": "de5cb47b92b9dc6acb33178b0c475774e9b1448addf10bac39f69f7de585da2f",
+      "bytes": 12614
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/originals/neutral-base-repair-v2-original.png",
+      "sha256": "4ca4264c1d3cd5e38fe3558904999e3a5ae261f88ae2b633d84dcb152c6a2d36",
+      "bytes": 503733
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/prompts/neutral-base-repair-v2.txt",
+      "sha256": "e1d56e8903953e830608d96471eeab52b93be7fe4b3b54d30e334b45bcc9fdd1",
+      "bytes": 2438
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/REVIEW.md",
+      "sha256": "dcf148b41e0051232c102f9aab88e74bd9d17e1f4912e2c53024cb5a8ac01b07",
+      "bytes": 3737
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/actions-first-frame-contact-2x.png",
+      "sha256": "09dd3defbce00ab14ff127f8997a9909345353bbe9e20b7fa8a3f3a619842986",
+      "bytes": 46659
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/combined-contact-sheet.png",
+      "sha256": "c086d6c12818c580a6bd9fc83aa597a74849e2efc45315e2cb85416ff837b6d4",
+      "bytes": 184335
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/error-composite-contact-2x.png",
+      "sha256": "12217c463c52eb110c4165ad022e98c1f8d05a02baba32306be410bc7cc62613",
+      "bytes": 138800
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/error-composite-contact.png",
+      "sha256": "107a6781bdd860a862c5cd0748653003943dd3e81b21740da4ddb0a5b1c6824c",
+      "bytes": 100674
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/error-face-detail-contact-4x.png",
+      "sha256": "30a90789d9b5bef691cd8cd17b400b1821abc5c5413d91274fb15fff3b657719",
+      "bytes": 73887
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/error-face-loop.png",
+      "sha256": "b69d4a1de1e6682d9f463df659e47d4695316a425dab9f9a5f950130315bced3",
+      "bytes": 74670
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/error-feature-atlas-3x.png",
+      "sha256": "9654e13b744831559641b056198228970923524dcf08cf4b62054660085dd366",
+      "bytes": 33813
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/error-workstation-contact-2x.png",
+      "sha256": "67473d83c03b4137df95c0c7894c98cd645e5dd6e1e54aaee905ab53c7235360",
+      "bytes": 131027
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/error-workstation-contact.png",
+      "sha256": "d34478abd04d93553c6951f33a4c73e783e7f832dfa0431c67ea6d2fa47851fe",
+      "bytes": 94699
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/face-contour-safe-mask.png",
+      "sha256": "562801b6ae48a49491c1433829def959739bb1195fb9c94c68773baf86fadd66",
+      "bytes": 358
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-mask-error.png",
+      "sha256": "162ef77aad2e3b41106c097379d4b44436f2ce52bf3d7eb6ae5b9ab4e4a67c85",
+      "bytes": 865
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-mask-idle.png",
+      "sha256": "f373a5323efadd463bd70f041d56cb2be87bc34409c744126a144647d9ba708c",
+      "bytes": 1038
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-mask-syncing.png",
+      "sha256": "bfe4273019092cdc866945065c6e3445fd9cca98f76e3c3fbe890fda674c4b78",
+      "bytes": 1011
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-mask-working.png",
+      "sha256": "3ba79a9cd14d19f01f3816286420ca227b6c1a41b7497d4197478c49f8cdafb6",
+      "bytes": 977
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/error/brow-frame00.png",
+      "sha256": "696eac64a35931a4bef3ad7aa302b256abc98c61675c5e889dd0ea10df009542",
+      "bytes": 121
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/error/eye-frame00.png",
+      "sha256": "fa71045b5de2acf1bf9f8969bfd5b6abc826c5ca233dda6e39f27aa6cab82e96",
+      "bytes": 172
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/error/mouth-frame00.png",
+      "sha256": "c1bb5a4e215818934b87e5579235de81e884ed3159e668ae99bceeee6d23a67f",
+      "bytes": 116
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/error/nose-frame00.png",
+      "sha256": "06cca198a5df663ba9c0d73d2b3a677cca14dd6cda6bf5f22d302ad38d4f6d80",
+      "bytes": 113
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/idle/brow-frame00.png",
+      "sha256": "205a44ad0f0296bf882d7c819a7a5d9e923c7a3ce4f8b4ca871e6a7483b88d7a",
+      "bytes": 124
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/idle/eye-frame00.png",
+      "sha256": "dd8930e76e21ab4f5ad20dc7cecbbc5c8c7fe8d792e88a8ab071045712bcd50f",
+      "bytes": 148
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/idle/mouth-frame00.png",
+      "sha256": "03f4db99676150da8a8926f7e4d7c30dd53675e35998e71272474f591d3954c0",
+      "bytes": 133
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/idle/nose-frame00.png",
+      "sha256": "4aa2bf23c7ecc4a6059a601b8717fd09999239e7ded18a5ec237e89e29635b2e",
+      "bytes": 111
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/syncing/brow-frame00.png",
+      "sha256": "8f8900aa234a33fdfcb1a36712324991f6382bf7aaa56c3b16db4c976b8923f7",
+      "bytes": 117
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/syncing/eye-frame00.png",
+      "sha256": "047fd77e0d41c1e51228ebae0a56194141f7169e3b8e1416bada6da58c5adae3",
+      "bytes": 162
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/syncing/mouth-frame00.png",
+      "sha256": "f6bcbc61e509ef07470cc16022561e62715ecef320e0e66c0510e1340803a12b",
+      "bytes": 124
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/syncing/nose-frame00.png",
+      "sha256": "0ac72350548274c7cd49f6bceb133c9b7a8a6eaf7714c4e124c67457c006b023",
+      "bytes": 119
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/working/brow-frame00.png",
+      "sha256": "226d8797ac9bddcfd8ceb5f3afcb43846c568f1c427c73036b1ab5e4e41ba41d",
+      "bytes": 131
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/working/eye-frame00.png",
+      "sha256": "5c83e2c637d051902f2298660237912608720894016c09d2145b3debb40e77a3",
+      "bytes": 159
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/working/mouth-frame00.png",
+      "sha256": "c3d7a93fbb11177b99f4474c79820cdfdb756b84db7f2193a58d2aa0971507ec",
+      "bytes": 120
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/feature-masks/working/nose-frame00.png",
+      "sha256": "c7dfd4a1c9869208a3294e3a50ca58c45fd92b0428bf5ba873a5414273b6447e",
+      "bytes": 123
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-composite-contact-2x.png",
+      "sha256": "f55553e903e7a9781f88dabeda73b5e43694bad6d318d2a70a7146aeea0538c9",
+      "bytes": 132614
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-composite-contact.png",
+      "sha256": "856099d7acd498481dcf015c0566ed3e4bb7a1353196274c8dacb128389a65c8",
+      "bytes": 95781
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-face-detail-contact-4x.png",
+      "sha256": "554e5de6ea2cbb15bb4bf572735afd11ee5f21bfba912e8751e62f1a206f8db4",
+      "bytes": 68220
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-feature-atlas-3x.png",
+      "sha256": "11b6f7cd259123920d349619adc9c568e2636eaa843c8c9784dde330025e5932",
+      "bytes": 25872
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-workstation-contact-2x.png",
+      "sha256": "56a9ffc470a8058b5e52aee6da0f4df687fb945c171149f91902009e8a6c7f47",
+      "bytes": 129637
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/idle-workstation-contact.png",
+      "sha256": "c5c71e14a87fbd6280e818011fb413a74b6bf54c325388d713d9aab92d09b88c",
+      "bytes": 93347
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/neutral-base-4x.png",
+      "sha256": "c066bfed1a8f5180eba309fd131883ec38bf33b7fe6b3cdae54e8fcf4539c329",
+      "bytes": 36262
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/neutral-edit-normalized-full-4x.png",
+      "sha256": "182f7681ab03e8fd5eedd3cefddf24db1d819759149cc97b551c1492905a67f0",
+      "bytes": 222998
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/neutral-edit-normalized-full.png",
+      "sha256": "c34dfa28175b58cb268876957ed539091afaa0a3045cec7ee2c1233eaa3fb275",
+      "bytes": 23054
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/neutral-muzzle-detail.png",
+      "sha256": "992e975521ca27f64f8cd4c9bda586043d70970912b1cdd910afed5b0b22339e",
+      "bytes": 5766
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/neutral-patch-mask.png",
+      "sha256": "bbc28080ca60957c55ffa5ad8125bb7b9be4b840ba65f06390ac12d6be976d7a",
+      "bytes": 332
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/protected-inputs-before.json",
+      "sha256": "0e85877bbc6e43efc6f86532a8855db357750f9d5880c82ebcae49f7559d6fb8",
+      "bytes": 28304
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/source-feature-landmarks-4x.png",
+      "sha256": "3568e65e1292e2c2793a9638cd02a661256e05ea45c521a67bf464d536e0884c",
+      "bytes": 193455
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/syncing-composite-contact-2x.png",
+      "sha256": "3de6d441707fde85b7c661017dac59a3d999e7a4993ce18c2e07afc00687a6fb",
+      "bytes": 136153
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/syncing-composite-contact.png",
+      "sha256": "ab20018e3a8ccbc1e4e5f00e8ec3d00b8fb69e0547e0bdf307dade50d07a8fad",
+      "bytes": 98703
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/syncing-face-detail-contact-4x.png",
+      "sha256": "b178216fb050721441ae853558561d08b970b7182cf3cee2dc85ef65a5c37537",
+      "bytes": 71340
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/syncing-feature-atlas-3x.png",
+      "sha256": "f71880c02de12a31a5b05a12fe20a3e624202c616f004b62127592d11af69c0a",
+      "bytes": 29646
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/syncing-workstation-contact-2x.png",
+      "sha256": "1ccd343d06de78ce68add51ae76e4067cd3d6329a38820c4f4896305df14c227",
+      "bytes": 130652
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/syncing-workstation-contact.png",
+      "sha256": "57a655c869f108c5d589c9c519b9c3f77c1cede3be294779e11e528c485744a6",
+      "bytes": 94279
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/validation.json",
+      "sha256": "62336ef83b413bf31376e8f6d5bec0e6abda04cfa059a4000c8f24ca4131f87f",
+      "bytes": 15199
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/working-composite-contact-2x.png",
+      "sha256": "3aac6a5582accd0a3a3fc9fd8e5d10117a8422739113f2c56ba7be935b410755",
+      "bytes": 134987
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/working-composite-contact.png",
+      "sha256": "ab153a167890712d862d7e773450e090113f1bd8fcc02f1f4c6bb3455a7d4c33",
+      "bytes": 97865
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/working-face-detail-contact-4x.png",
+      "sha256": "5fad434510e97299d8159bcb5bfce62a6bf5f19e754e014bdaf4dda7e4f353e0",
+      "bytes": 70405
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/working-feature-atlas-3x.png",
+      "sha256": "8e92dae0da7d4bbbefb633a4f25a811740afbe139839586fe83eb0713b3968fc",
+      "bytes": 28635
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/working-workstation-contact-2x.png",
+      "sha256": "db312d7f67410c5ef16da11713966874a6d8ba51480f3725a84a6d8160fd93b7",
+      "bytes": 130011
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/working-workstation-contact.png",
+      "sha256": "e348a5bd323b042cf5eafea6077e50ff81e040788235b8f881c5e501e0881709",
+      "bytes": 93832
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/qa/workstation-actions-first-frame-contact-2x.png",
+      "sha256": "43a74afd0eab7b4a80c10118e56c2db015c52121ead1ad17a23e8985c10a659d",
+      "bytes": 44164
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/scripts/build_repair_v2.py",
+      "sha256": "13d54335478fa4f5638039a6896fa62962678cc11984f807baba2bdd2a861e94",
+      "bytes": 8902
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/scripts/qa_repair_v2.py",
+      "sha256": "953a74df9b86b34315718204d90266f7b134075fe6eda55d18b87bda1855e569",
+      "bytes": 13220
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/base-left-6x.png",
+      "sha256": "b3a553a8a76d1e124d8fc153f374abbbfd1c3a7dec404aa36538068596911975",
+      "bytes": 42318
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/base-left-original.png",
+      "sha256": "570cd3a81f0078d374a01e8df39efb838016f940848f9b5ba19ffc5430cb23c9",
+      "bytes": 510410
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/character-base.png",
+      "sha256": "06b1c2ac8d682e1a0ae4bd33dd36a113999001c8840afe640d4b563ba01c4a4f",
+      "bytes": 23609
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/character-identity-master.png",
+      "sha256": "0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024",
+      "bytes": 47580
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/face-error.png",
+      "sha256": "f5ee7b55de6bff30342f00e4d77a613c15619ce29affaf6fe9b1cb1e12be2bd6",
+      "bytes": 107128
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/face-idle.png",
+      "sha256": "c1009597b72261d3604e403b551e8f4f7f36d6f8e3ce430fce3c6960b6065eb3",
+      "bytes": 105632
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/face-syncing.png",
+      "sha256": "cf94e1135d84fde575f7999a17b5fd2d1ea19a4e0092d0dee9515849b8cf0c1d",
+      "bytes": 93830
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/face-working.png",
+      "sha256": "f00ba5b6f2308bf07d5a1ed7afc6b2013a3a07d886389a7d685605f460e0e3ae",
+      "bytes": 104127
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/repair-v2/sources/previous-manifest.json",
+      "sha256": "2441ab12c4ceac23ed45a8fc8efd0606d27d2ae6b2e6332f44c81105bf5a217c",
+      "bytes": 8984
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/scripts/preprocess_left.py",
+      "sha256": "f37a4b7c1dea9593cd23e084adb845c3dbb966e451ad8b891fa4d09d5d8ae1c3",
+      "bytes": 2941
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/scripts/qa_left.py",
+      "sha256": "74786a9bbd0366739992e8604483c72fece7b54cedd942e13e3bd3d8e0d00c62",
+      "bytes": 10863
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/sources/character-identity-master.png",
+      "sha256": "0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024",
+      "bytes": 47580
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/sources/face-left-reference-8x.png",
+      "sha256": "ab5e2d2180bb0e13ce123043ccd419cc25168a2f74f85bdbb225ff32f5fac34a",
+      "bytes": 16660
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/company-office-reference-v3/character-left/sources/face-left-reference.png",
+      "sha256": "ce58eb88e652b81855045203dce705152814f6c550b921a70948edc16379c72c",
+      "bytes": 9275
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/README.md",
+      "sha256": "0c83251b5b3d877c17cdc66201f8b6121b7b4ae20d6811a2891c2f13649681e7",
+      "bytes": 417
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/character-base.png",
+      "sha256": "06b1c2ac8d682e1a0ae4bd33dd36a113999001c8840afe640d4b563ba01c4a4f",
+      "bytes": 23609
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/face-error.png",
+      "sha256": "f5ee7b55de6bff30342f00e4d77a613c15619ce29affaf6fe9b1cb1e12be2bd6",
+      "bytes": 107128
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/face-idle.png",
+      "sha256": "c1009597b72261d3604e403b551e8f4f7f36d6f8e3ce430fce3c6960b6065eb3",
+      "bytes": 105632
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/face-syncing.png",
+      "sha256": "cf94e1135d84fde575f7999a17b5fd2d1ea19a4e0092d0dee9515849b8cf0c1d",
+      "bytes": 93830
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/face-working.png",
+      "sha256": "f00ba5b6f2308bf07d5a1ed7afc6b2013a3a07d886389a7d685605f460e0e3ae",
+      "bytes": 104127
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/manifest.json",
+      "sha256": "2441ab12c4ceac23ed45a8fc8efd0606d27d2ae6b2e6332f44c81105bf5a217c",
+      "bytes": 8984
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/repair-v2/README.md",
+      "sha256": "128460b79c90d06d32e0551ff04c3ec9f453ae575d414cd99619d8bf70d31582",
+      "bytes": 425
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/repair-v2/character-base.png",
+      "sha256": "5e91d7768973d9d138677d8ba2e1b0b2847b566044b00c13a9518b4767ec2c1b",
+      "bytes": 22926
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/repair-v2/face-error.png",
+      "sha256": "502ee366574ce2aaab189209b05478a35a13600709abfcf9dc1a83aeebdde914",
+      "bytes": 23203
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/repair-v2/face-idle.png",
+      "sha256": "33ef05810acd25af268e7ceaf1a8aff4596adde42fc6b94089fea1765cc51698",
+      "bytes": 17153
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/repair-v2/face-syncing.png",
+      "sha256": "25eaea0328c857c1050ff018b5f7ef06a335a15d1f32c235871dda406cabbcd9",
+      "bytes": 20167
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/repair-v2/face-working.png",
+      "sha256": "3b81244c63cd6bee18a939ce1e5d6b7d187ba21f88670ea576a4833eb6d38a20",
+      "bytes": 19544
+    },
+    {
+      "path": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/frontend/company-office/reference-v3/media/character-left/repair-v2/manifest.json",
+      "sha256": "fce61d5ade1ee37e0261ce0bd88c90cb8f8523848373083f7d9fa4f632a49baa",
+      "bytes": 8988
+    }
+  ]
+}

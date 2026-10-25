@@ -1,0 +1,377 @@
+{
+  "manifest_schema_version": 1,
+  "release": {
+    "plugin_id": "com.lvdong.user-telemetry",
+    "version": "0.1.1",
+    "date": "2026-10-04",
+    "timezone": "Asia/Shanghai",
+    "status": "installed_and_accepted",
+    "package": "lvdong-user-telemetry-0.1.1.s2plugin",
+    "package_sha256": "33af87e484d9cb490c575fcb2ffb710f890d3f63d4a1cd0e231533e65319c980",
+    "documentation_finalized_at_utc": "2026-10-04T06:22:07.302635+00:00"
+  },
+  "scope": {
+    "role_subject": "user_id",
+    "approved_production_user_ids": [
+      "1"
+    ],
+    "outputs": [
+      "email",
+      "username",
+      "api_key_id_name_status",
+      "recorded_token_total",
+      "user_concurrency_current_limit"
+    ],
+    "plaintext_api_keys_exported": false,
+    "animation_state_exported": false,
+    "office_animation_integrated": false,
+    "task_events_exported": false
+  },
+  "host": {
+    "repository": "Wei-Shaw/sub2api",
+    "baseline_commit": "b8dece9000c68815a5b867ca5a1e6f236e173905",
+    "source_version": "0.2.13",
+    "patch_required": true,
+    "patch": "sub2api-user-telemetry-host.patch",
+    "patch_sha256": "d78cfb5bec65c5b965f4577ad6601b513a028aba838d4d69857f0c802dc353fb",
+    "patch_changed_files": 48,
+    "declared_version_range": ">=0.2.13 <0.3.0",
+    "all_declared_versions_tested": false,
+    "required_capabilities": {
+      "plugin_protocol": 1,
+      "sub2api": ">=0.2.13 <0.3.0",
+      "ui_bridge": 1,
+      "user_telemetry_api": 1
+    },
+    "live_upstream_commit": "3040209f205472038c1ba745a1bedd2edd9053b1",
+    "runtime_commit": "3040209f205472038c1ba745a1bedd2edd9053b1+user-telemetry-0.1.0",
+    "production_image": "local/sub2api:user-telemetry-0.1.0-3040209f-20261004",
+    "original_image_label_is_not_actual_runtime_version": true,
+    "package_tested_sub2api_versions_declared": false,
+    "native_untested_version_confirmation_retained": true,
+    "host_capability_revision": "0.1.0"
+  },
+  "acceptance": {
+    "production": {
+      "report": "qa/api-acceptance-v0.1.1.json",
+      "checks_passed": 37,
+      "checks_total": 37,
+      "installation_id": 1,
+      "version": "0.1.1",
+      "state": "enabled",
+      "healthy": true,
+      "signature_status": "trusted",
+      "real_pg_redis_reconciliation": true
+    },
+    "browser": {
+      "report": "qa/browser-acceptance-v0.1.1.json",
+      "checks_passed": 13,
+      "checks_total": 13,
+      "real_authenticated_production": true,
+      "http_sandbox_configuration_load_passed": true,
+      "desktop_and_mobile": true,
+      "gui_configuration_save_tested": false,
+      "configuration_save_through_real_api": true,
+      "native_test_button_tested": true
+    },
+    "linux_native": {
+      "report": "qa/linux-native-acceptance-v0.1.1.json",
+      "checks_passed": 44,
+      "checks_total": 44,
+      "environment": "isolated PG + Redis + signed native plugin; fixture identities only"
+    },
+    "bridge": {
+      "report": "qa/bridge-tests-final-20261004.log",
+      "checks_passed": 14,
+      "checks_total": 14
+    },
+    "packager": {
+      "report": "qa/packager-tests-final-20261004.log",
+      "checks_passed": 31,
+      "checks_total": 31
+    },
+    "patch": {
+      "report": "patch-verification.json",
+      "clean_check": true,
+      "clean_actual_apply": true,
+      "all_48_canonical_files_identical": true,
+      "targeted_go_packages_passed": 7,
+      "go_cache_used": true,
+      "linux_amd64_acceptance_binary_build_passed": true
+    },
+    "frontend": {
+      "report": "qa/source-validation.json",
+      "focused_tests_passed": 17,
+      "typecheck_passed": true,
+      "vite_build_passed": true,
+      "source": "Sol verified clean-copy report; frontend unchanged after that verification"
+    },
+    "platforms": [
+      {
+        "os": "darwin",
+        "arch": "arm64",
+        "package_signature_and_hashes_verified": true,
+        "runtime_sha256": "bee95612d1e8704b13cabe7bcda2d996ebb3c3d3d6292d4acf4d856c9b2c7498",
+        "native_runtime_acceptance": "not_run_for_0.1.1"
+      },
+      {
+        "os": "linux",
+        "arch": "amd64",
+        "package_signature_and_hashes_verified": true,
+        "runtime_sha256": "4f569c097a2eeae7f9b5b43cc6d8374dacce4beead64fffdb6d093adbcf78fc0",
+        "native_runtime_acceptance": "isolated_and_production_passed"
+      },
+      {
+        "os": "linux",
+        "arch": "arm64",
+        "package_signature_and_hashes_verified": true,
+        "runtime_sha256": "bb9b0a4a62777c3e3189b6f85ee032b33bee3c3aa2db20e75d381b81d9f24fca",
+        "native_runtime_acceptance": "not_run_for_0.1.1"
+      }
+    ],
+    "limitations": [
+      "no production stress or fault injection",
+      "no production uninstall or rollback rehearsal",
+      "no enabled step-up/TOTP real-human verification",
+      "no Darwin-arm64 or Linux-arm64 native runtime test for 0.1.1",
+      "no direct usage queue stats; no guarantee of zero lost writes",
+      "HTTP LAN does not provide confidentiality"
+    ]
+  },
+  "signing": {
+    "publisher_id": "lvdong-user-telemetry-v1-011",
+    "algorithm": "Ed25519",
+    "payload_algorithm": "SHA-256",
+    "publisher_public_key_file": "publisher-public-key.txt",
+    "private_key_disposed": true,
+    "package_resigned_during_finalization": false,
+    "unsigned_packages_allowed_on_production": false,
+    "old_publisher_preserved": true,
+    "future_releases_require_own_safely_managed_key_and_publisher_id": true
+  },
+  "credentials": {
+    "temporary_created": 2,
+    "revoked": 2,
+    "active": 0,
+    "stored_hash_bytes": 32,
+    "plaintext_in_delivery": false,
+    "api_repl_reset_after_tests": true,
+    "formal_consumer_credential_provided": false
+  },
+  "operations": {
+    "postflight_report": "qa/final-postflight.json",
+    "last_read_only_health_report": "qa/final-live-health-readback.json",
+    "deployment_report": "qa/deployment.json",
+    "other_containers_preserved": 10,
+    "backup_path": "/root/sub2api-deploy/backups/pre-user-telemetry-20261004T040155Z",
+    "rollback_image": "local/sub2api:pre-user-telemetry-20261004T040155Z",
+    "rollback_actually_rehearsed": false,
+    "database_restored": false,
+    "original_configuration_fields_preserved": true,
+    "temporary_resources_remaining": 0
+  },
+  "audit": {
+    "reports": [
+      "ASTRA_SECURITY_RECHECK_ZH.md",
+      "ASTRA_HTTP_UI_RECHECK_ZH.md"
+    ],
+    "requested_audit_model": "gpt-6-astra",
+    "requested_development_model": "gpt-6.1-sol",
+    "identity_basis": "explicit successful orchestrator model dispatch, not report filename",
+    "scope": "documented bounded read-only code audit; not full runtime or production security certification"
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "path_base": "release_directory",
+    "files_count": 34,
+    "manifest_excludes": [
+      "RELEASE_MANIFEST.json",
+      "SHA256SUMS"
+    ],
+    "checksum_file": "SHA256SUMS",
+    "checksum_includes_manifest": true,
+    "checksum_excludes": [
+      "SHA256SUMS"
+    ],
+    "checksum_entries": 35,
+    "generation_order": [
+      "payloads_and_documents",
+      "RELEASE_MANIFEST.json",
+      "SHA256SUMS"
+    ],
+    "package_repacked": false,
+    "not_a_digital_signature": true
+  },
+  "files": [
+    {
+      "path": "ACCEPTANCE_ZH.md",
+      "size_bytes": 6781,
+      "sha256": "4b49838c88f0a2496369c51e09c87cc50a697bb487da0179c3770f74f385cb80"
+    },
+    {
+      "path": "ASTRA_HTTP_UI_RECHECK_ZH.md",
+      "size_bytes": 12502,
+      "sha256": "f5477697edb86878e03e8301ffee32352125a669c4e42cd58c6bebb2561f117d"
+    },
+    {
+      "path": "ASTRA_SECURITY_RECHECK_ZH.md",
+      "size_bytes": 2088,
+      "sha256": "8df4ef91c6bdedd6597f781f1551d0ac7e573fb2ae50e2dc7a16bc2568245a4f"
+    },
+    {
+      "path": "PRODUCTION_STATUS_ZH.md",
+      "size_bytes": 6949,
+      "sha256": "02dfd391ba26c3281e80844d40620180de985bc2f2aff739e2ece0dfcd4b8377"
+    },
+    {
+      "path": "README_INSTALL_ZH.md",
+      "size_bytes": 7037,
+      "sha256": "0565c8cf4ad6341c40e37dba07160945aed26041d7f367f4f66801bf4c5e95ae"
+    },
+    {
+      "path": "USER_TELEMETRY_API_ZH.md",
+      "size_bytes": 5914,
+      "sha256": "0481a61858ef8fd7fbb30a8d496a0332240e5fbdf0a71c53956c0d2965520443"
+    },
+    {
+      "path": "lvdong-user-telemetry-0.1.1.s2plugin",
+      "size_bytes": 15038405,
+      "sha256": "33af87e484d9cb490c575fcb2ffb710f890d3f63d4a1cd0e231533e65319c980"
+    },
+    {
+      "path": "package-verification.json",
+      "size_bytes": 2369,
+      "sha256": "04248bddd918f3fe255458da82f01cdedd9d4e59daf6b3630f3ed6e510ffc809"
+    },
+    {
+      "path": "patch-verification.json",
+      "size_bytes": 13265,
+      "sha256": "89ba0651008e305486a087b568234546c80a18d04666274880c9fbec5ff782bd"
+    },
+    {
+      "path": "plugins-trust.yaml",
+      "size_bytes": 136,
+      "sha256": "c53ed63065d617a1452aeb1570732a25cb238d24d75c93d9c1f489e60adaefd9"
+    },
+    {
+      "path": "publisher-public-key.txt",
+      "size_bytes": 45,
+      "sha256": "b83d9aa44b896746a26e0bfc489619ea19bd68c362de25d871c5f2cda2d8184c"
+    },
+    {
+      "path": "qa/api-acceptance-v0.1.1.json",
+      "size_bytes": 7453,
+      "sha256": "8a8df20e6adda899022143db398f4815f2b970d971d9cd9a495fa7e1c878215d"
+    },
+    {
+      "path": "qa/bridge-tests-final-20261004.log",
+      "size_bytes": 1435,
+      "sha256": "52d2a60bf152570f24597888edad40b65be0d219b92bef50506cc41f0220af8b"
+    },
+    {
+      "path": "qa/browser-acceptance-v0.1.1.json",
+      "size_bytes": 3223,
+      "sha256": "eb40ef0912c713eb01088d401161d6ffab9ca526adfb5c6c080836ac96ce3313"
+    },
+    {
+      "path": "qa/clean-go-tests-final-20261004.log",
+      "size_bytes": 762,
+      "sha256": "8036786b77efb374bb7f3e2dda849afd583ccf6ad5cfcd05addf2e28efccd7a4"
+    },
+    {
+      "path": "qa/deployment.json",
+      "size_bytes": 2895,
+      "sha256": "a48084545ebb2e20942a19df8c910c56836f573d95246a17a1c5c44cb2f9bfeb"
+    },
+    {
+      "path": "qa/final-live-health-readback.json",
+      "size_bytes": 627,
+      "sha256": "9a970df86c4e874436620d865f998d98d55cb715e66c54cd8d91b61249b0004b"
+    },
+    {
+      "path": "qa/final-postflight.json",
+      "size_bytes": 954,
+      "sha256": "7edbef184c2cd6bb6c139f3744f9a9002175a79d5ac7654798ddbc3966953dac"
+    },
+    {
+      "path": "qa/linux-native-acceptance-v0.1.1.json",
+      "size_bytes": 6507,
+      "sha256": "eb109fb6813c5e65e265e5ab0405c9aacbf6bc52e09629803b809c6b4438aebb"
+    },
+    {
+      "path": "qa/linux-v0.1.1-initial-harness-publisher-mismatch.json",
+      "size_bytes": 416,
+      "sha256": "a18168125b877d463b021cc944f7aa8f27b222f62d4fbdae4c8b7f8846ac01f6"
+    },
+    {
+      "path": "qa/package-verify-final-darwin-arm64.json",
+      "size_bytes": 342,
+      "sha256": "e5ae352f55e0583f0d7aaa0bbdc2cf5805af88a146126a91d563cd144a254a12"
+    },
+    {
+      "path": "qa/package-verify-final-linux-amd64.json",
+      "size_bytes": 342,
+      "sha256": "e5ae352f55e0583f0d7aaa0bbdc2cf5805af88a146126a91d563cd144a254a12"
+    },
+    {
+      "path": "qa/package-verify-final-linux-arm64.json",
+      "size_bytes": 342,
+      "sha256": "e5ae352f55e0583f0d7aaa0bbdc2cf5805af88a146126a91d563cd144a254a12"
+    },
+    {
+      "path": "qa/packager-tests-final-20261004.log",
+      "size_bytes": 130,
+      "sha256": "7494eecc6353263992df22145e05d9b9a5a81d0039f703a005751ad2d5618a9d"
+    },
+    {
+      "path": "qa/plugins-config-desktop-v0.1.1.jpg",
+      "size_bytes": 57954,
+      "sha256": "819bec3dfbdfce4367f506e5acde930401e917a4dce82b96f63d642cfe7369ad"
+    },
+    {
+      "path": "qa/plugins-config-mobile-v0.1.1.jpg",
+      "size_bytes": 36445,
+      "sha256": "8bba4581b72970e33bf398478dc5b96194015ad8f8df58ec1e8a1750633096b5"
+    },
+    {
+      "path": "qa/plugins-enabled-desktop-v0.1.1.jpg",
+      "size_bytes": 74034,
+      "sha256": "82247ad8db38f8ddbce42f5f1188e1e655802a0fc06269e624837eb055e52edb"
+    },
+    {
+      "path": "qa/plugins-enabled-mobile-v0.1.1.jpg",
+      "size_bytes": 59429,
+      "sha256": "3dcb1ec143744be0aa9a016a0411235515e12b2c4e733fddc4bb9217741036f9"
+    },
+    {
+      "path": "qa/source-validation.json",
+      "size_bytes": 6109,
+      "sha256": "93c938cf7db407e8e533e3760737e1297f1551fc92df657c37dbaeaa5545b9fb"
+    },
+    {
+      "path": "snapshot.schema.json",
+      "size_bytes": 5377,
+      "sha256": "73322ffdcb6b1830e9d75f64749824c37b5a6b13e3673f437a661273d60004ab"
+    },
+    {
+      "path": "sub2api-user-telemetry-host.patch",
+      "size_bytes": 325962,
+      "sha256": "d78cfb5bec65c5b965f4577ad6601b513a028aba838d4d69857f0c802dc353fb"
+    },
+    {
+      "path": "tools/README.md",
+      "size_bytes": 12059,
+      "sha256": "d97c0ab388a169de772ef54b7735f5bc09718eecbed10fa36b1e1ece1c60334c"
+    },
+    {
+      "path": "tools/s2plugin.py",
+      "size_bytes": 24054,
+      "sha256": "fe062f3a1e63f099c57273dae7cb8b1b245f69437e6ba4e71d667650475f82bc"
+    },
+    {
+      "path": "tools/tests/test_s2plugin.py",
+      "size_bytes": 21709,
+      "sha256": "8d742d704eb40d98756988235e930cc0acc46b3772a9e66bc3f93c0d2bd81679"
+    }
+  ]
+}

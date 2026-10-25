@@ -1,0 +1,13 @@
+{
+  "sqlite_integrity": "ok",
+  "config_version": 2,
+  "config_versions": 2,
+  "audit_rows": 2,
+  "snapshot_user_count": 4,
+  "byte_restore_verified": true,
+  "backup_method": "online SQLite backup API + atomic snapshot file; no producer stop",
+  "archive_sha256": "69fce0d0f9c3d58346b34ebec4623953174b46069d08e94e8dd8251103ba9fc0",
+  "archive_bytes": 2629,
+  "temporary_volume": "star-office-restore-drill-20261006",
+  "only_temp_volume_removed": true
+}

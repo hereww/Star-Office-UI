@@ -1,0 +1,38 @@
+{
+  "created_date": "2026-10-01",
+  "timezone": "Asia/Shanghai",
+  "tool": "built-in imagegen",
+  "action": "working",
+  "direction": "down",
+  "frame_count": 12,
+  "grid": {
+    "columns": 4,
+    "rows": 3,
+    "order": "row-major"
+  },
+  "preview_fps": 12,
+  "playback_preview_generated": false,
+  "source_size": [
+    1448,
+    1086
+  ],
+  "source_mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "fully_transparent_fraction": 0.401,
+  "identity_reference": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/.agents/skills/star-office-character-animation/assets/orange-cat-reference.png",
+  "actual_workstation_reference_used": false,
+  "workstation_kind": "orthogonal front-facing concept",
+  "status": "concept_candidate",
+  "production_ready": false,
+  "runtime_integrated": false,
+  "review_notes": [
+    "12 compositions and front-facing orientation visually checked.",
+    "Furniture geometry and placement vary slightly between frames; this is not an approved production atlas.",
+    "No loop playback, frame extraction or resizing performed."
+  ],
+  "original_generated_file": "/Users/hepingyu/.codex/generated_images/01a0f3f3-7eeb-7860-82d4-e94d8f21f1e2/call_ZftohhF1BepngJg9tgtBkzlv.png",
+  "sha256": "9043c25730e79730305fcef654ea4d38e873736533d01fb82a023915d5cc2a5e"
+}

@@ -1,0 +1,347 @@
+{
+  "checked_at_utc": "2026-10-08T19:52:39.855267Z",
+  "host": "localhost.localdomain",
+  "disk": "Filesystem           Size  Used Avail Use% Mounted on\n/dev/mapper/cl-root   42G   39G  3.6G  92% /\n/dev/mapper/cl-home   21G   13G  7.6G  63% /home",
+  "containers": {
+    "sub2api": {
+      "id": "de6bbca6b5b9d9877c78b130b8076404af63e84b0d3f102c2473e7f818c454ec",
+      "image_id": "sha256:45945fa0287d2e020cd9fe5f1c8a9421fdf6ed2a4ad080d060e970e07bc22d9c",
+      "image_tag": "local/sub2api:user-telemetry-0.2.14-0363b8cd-20261008",
+      "started_at": "2026-10-08T18:18:58.500839027Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": "healthy"
+    },
+    "star-office-production-office-web-1": {
+      "id": "851db8e1d183276c19071a6b33de8269b0f7557094985819712c94047bed6d7b",
+      "image_id": "sha256:304b8992408130e27bfa64296136b4298d852592344410a80d263bea38cf9b8e",
+      "image_tag": "local/star-office-ui:office-v5-layout-shift-06",
+      "started_at": "2026-10-08T14:02:12.82151727Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": "healthy"
+    },
+    "star-office-production-office-collector-1": {
+      "id": "43e80a9aabb11d444bced47a2406ecec97803034eeac1704d169b8bd82264a30",
+      "image_id": "sha256:c075c5bf786b194423971c72684c9a2e4663a283fcd5885a0f04d7dc92477563",
+      "image_tag": "local/star-office-ui:office-v5-short-status-04",
+      "started_at": "2026-10-07T04:14:05.842894549Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": "healthy"
+    },
+    "kaneo-kaneo-1": {
+      "id": "fd90c191f442e712213fb535294947221fc89904b01eb274527888cea9615f75",
+      "image_id": "sha256:f2e650f6a47f1b8d83e8226732e372caea15cb144f199594a8a129aaab89ee1e",
+      "image_tag": "ghcr.nju.edu.cn/usekaneo/kaneo:latest",
+      "started_at": "2026-10-06T02:54:44.650813172Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": "healthy"
+    },
+    "kaneo-postgres-1": {
+      "id": "e329b5f1964395504fbf724bff88b771be78f95f6f8e699d608efabcd97c1cbc",
+      "image_id": "sha256:81bd698b4594e751a3269e4dcd3e03a4a0ec0daf7b72e7aa1abd43cce9887542",
+      "image_tag": "postgres:16-alpine",
+      "started_at": "2026-10-06T02:54:44.57339686Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": "healthy"
+    },
+    "star-office-ui": {
+      "id": "8189a05469585945c4d3ae1e8a23a397aa70ab077c2a780f51d51af79ce8128a",
+      "image_id": "sha256:28f1bc788fdcc80f30ff36ece47110e0b7a73b56cce84ed49a38927fb346ee53",
+      "image_tag": "local/star-office-ui:deployed",
+      "started_at": "2026-10-06T02:54:44.5854485Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": "healthy"
+    },
+    "ai-goofish-monitor-app": {
+      "id": "14e30ac306539a360e2cce36245079c33a976d37e9510e4bb54068ceb4552fa9",
+      "image_id": "sha256:fb06307b24faf46c99de9988fda3d69f251ba41c1cf40e6ee943450856979874",
+      "image_tag": "ghcr.io/usagi-org/ai-goofish:latest",
+      "started_at": "2026-10-06T02:54:44.679519543Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": null
+    },
+    "newapi_yymx-new-api-1": {
+      "id": "d0b9824591d682a2ba9f24401f8e9d36246fea47353970df0a807d8ed6917eff",
+      "image_id": "sha256:611b4054dced5ead284323c613e2c60f1faf821ec9357b3c79b8d295401c5754",
+      "image_tag": "calciumion/new-api:latest",
+      "started_at": "2026-10-06T02:54:46.769987294Z",
+      "restart_count": 3,
+      "status": "running",
+      "health": "healthy"
+    },
+    "newapi_yymx-redis-1": {
+      "id": "12f1cf4747368f5ed302f925b83749c130fc6f8c84190234aea443ea54baa3fa",
+      "image_id": "sha256:128bbe5f7793f7e955a5eab7d492b1de001e182462c694f03362f4704cfb1a04",
+      "image_tag": "redis:latest",
+      "started_at": "2026-10-06T02:54:44.675928315Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": null
+    },
+    "sub2api-postgres": {
+      "id": "1bdeabd1d361e70351d4db984b9f3e6197b5dedfefb91e113d85501ef3f6c7e0",
+      "image_id": "sha256:c0eb29927f0e8590eac49c9d5bf9c5ebf87f4e6e7273e0a9270218e6b73795ee",
+      "image_tag": "postgres:18-alpine",
+      "started_at": "2026-10-06T02:54:44.624810248Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": "healthy"
+    },
+    "sub2api-redis": {
+      "id": "ba9eb45c2523143a7322811280ea758dc19caebd434035bc8e5a5f673b61ee99",
+      "image_id": "sha256:3a02d38405dc12092032737fdadd513729a81efca8439d1d7eef883e6e67e26e",
+      "image_tag": "redis:8-alpine",
+      "started_at": "2026-10-06T02:54:44.544534769Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": "healthy"
+    },
+    "east-asia-power-postgres": {
+      "id": "5d6b7cc52a54dc15a12dee8f797f2dadfe44076e593f71166f9aee8603296254",
+      "image_id": "sha256:667495ca2ac33180ad3690178da1bf274f481d0c43849d4c1941f0176983bd2e",
+      "image_tag": "postgres:16-alpine",
+      "started_at": "2026-10-06T02:54:44.415495699Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": null
+    },
+    "newapi_yymx-mysql-1": {
+      "id": "1507728d0ec5e596d5b0f9c95600ceddf15ff6c5a5cdd4d50647c1ee8aa56641",
+      "image_id": "sha256:bc861cf238f24a71398f27b6eb77051fe60b834e003f33e4a36e3e19c37df1d1",
+      "image_tag": "mysql:8.2",
+      "started_at": "2026-10-06T02:54:44.666850582Z",
+      "restart_count": 0,
+      "status": "running",
+      "health": null
+    }
+  },
+  "office": {
+    "star-office-production-office-web-1": {
+      "env": {
+        "OFFICE_RELEASE_ID": "office-v5-layout-shift-06",
+        "OFFICE_RELEASE_PREFIX": "/static/releases/office-v5-layout-shift-06",
+        "OFFICE_USER_IDS": "1,4,7,8",
+        "OFFICE_DATA_DIR": "/data/office",
+        "STAR_OFFICE_DATA_DIR": "/data/legacy"
+      },
+      "compose": {
+        "com.docker.compose.project": "star-office-production",
+        "com.docker.compose.project.config_files": "/opt/star-office-ui/releases/office-v5-layout-shift-06/deploy/office/compose.yaml",
+        "com.docker.compose.project.environment_file": "/opt/star-office-ui/private/office.env",
+        "com.docker.compose.project.working_dir": "/opt/star-office-ui/releases/office-v5-layout-shift-06/deploy/office"
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "star-office-production-legacy-data",
+          "Source": "/var/lib/docker/volumes/star-office-production-legacy-data/_data",
+          "Destination": "/data/legacy",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/opt/star-office-ui/private/admin-password.hash",
+          "Destination": "/run/secrets/office_admin_hash",
+          "RW": false
+        },
+        {
+          "Type": "volume",
+          "Name": "star-office-production-office-data",
+          "Source": "/var/lib/docker/volumes/star-office-production-office-data/_data",
+          "Destination": "/data/office",
+          "RW": true
+        }
+      ],
+      "port_bindings": {
+        "19000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "19011"
+          }
+        ]
+      }
+    },
+    "star-office-production-office-collector-1": {
+      "env": {
+        "OFFICE_USER_IDS": "1,4,7,8",
+        "OFFICE_DATA_DIR": "/data/office",
+        "OFFICE_INSTALLATION_ID": "1",
+        "OFFICE_CREDENTIAL_EXPIRES_AT": "2026-11-05T05:33:20.349268Z",
+        "OFFICE_ALLOW_HTTP": "1",
+        "OFFICE_SUB2API_BASE_URL": "http://192.168.100.221:8080"
+      },
+      "compose": {
+        "com.docker.compose.project": "star-office-production",
+        "com.docker.compose.project.config_files": "/opt/star-office-ui/releases/office-v5-short-status-04/deploy/office/compose.yaml",
+        "com.docker.compose.project.environment_file": "/opt/star-office-ui/private/office.env",
+        "com.docker.compose.project.working_dir": "/opt/star-office-ui/releases/office-v5-short-status-04/deploy/office"
+      },
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "star-office-production-office-data",
+          "Source": "/var/lib/docker/volumes/star-office-production-office-data/_data",
+          "Destination": "/data/office",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/opt/star-office-ui/private/upstream-ca-bundle.pem",
+          "Destination": "/run/trust/upstream-ca.pem",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Name": null,
+          "Source": "/opt/star-office-ui/private/office-consumer.token",
+          "Destination": "/run/secrets/office_consumer",
+          "RW": false
+        }
+      ],
+      "port_bindings": {}
+    }
+  },
+  "files": {
+    "/etc/systemd/system/star-office-ingress.service": {
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 838,
+      "sha256": "f9d3e59c090fb1da65886e41525e83ac8d276b28358f479a5ce5d63b93b7a813"
+    },
+    "/opt/star-office-ui/ingress/nginx.conf": {
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 1119,
+      "sha256": "428ea772e42e0d112e7df7e8199c84166abeef745308c97667f69eb62e3d5822"
+    },
+    "/opt/star-office-ui/ingress/office-public-employee.conf": {
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 4800,
+      "sha256": "0d34703903380773d45ead4e09823c6755136f06d052f2392d15ba5ffcda3f63"
+    },
+    "/opt/star-office-ui/private/admin-password.hash": {
+      "mode": "0o400",
+      "uid": 10001,
+      "gid": 10001,
+      "bytes": 163,
+      "sha256": "0600475882036159715fc37fc9c5d20d600dee860ff37c426b577ebbe66d2e5d"
+    },
+    "/opt/star-office-ui/private/office-consumer.token": {
+      "mode": "0o400",
+      "uid": 10001,
+      "gid": 10001,
+      "bytes": 49,
+      "sha256": "9ec27671621172b910863d799048f57a389e83a1865b17e014d234bf52728296"
+    },
+    "/opt/star-office-ui/private/office.env": {
+      "mode": "0o600",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 994,
+      "sha256": "205d2fefe5e0549e251a083618a2d79c6ac903725321a89bbfd16193cf68458c"
+    },
+    "/opt/star-office-ui/private/upstream-ca-bundle.pem": {
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 224449,
+      "sha256": "714d457d580922dbf1d0be8bd35ba236a842b50b0072ae791582a19adef772a5"
+    },
+    "/opt/star-office-ui/releases/office-v5-layout-shift-06/deploy/office/compose.yaml": {
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 3211,
+      "sha256": "382888144642b48bdcfd0ec17624cbddd26db36a80bb74d4d8998450be80aa30"
+    },
+    "/opt/star-office-ui/releases/office-v5-short-status-04/deploy/office/compose.yaml": {
+      "mode": "0o644",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 3211,
+      "sha256": "382888144642b48bdcfd0ec17624cbddd26db36a80bb74d4d8998450be80aa30"
+    }
+  },
+  "nginx_include": "# Include in the selected http context: existing active ingress or the office-only wrapper.\n# office-v5-layout-shift-06 and 19011 are rendered by packaging/preflight.\nserver {\n    listen 192.168.100.221:19000;\n    server_name 192.168.100.221 hereww.i234.me;\n    allow all;\n    if ($host !~* \"^(192\\.168\\.100\\.221|hereww\\.i234\\.me)$\") { return 444; }\n    autoindex off;\n    default_type application/octet-stream;\n    types {\n        text/html html; text/css css; application/javascript js mjs;\n        application/json json; image/png png; image/webp webp;\n        image/svg+xml svg; font/woff woff; font/woff2 woff2; font/ttf ttf;\n    }\n    add_header X-Content-Type-Options nosniff always;\n    add_header X-Frame-Options SAMEORIGIN always;\n    # GET implicitly permits HEAD in nginx. Every other method is denied.\n    location = / {\n        limit_except GET { deny all; }\n        root /opt/star-office-ui/releases/office-v5-layout-shift-06/public;\n        try_files /static/releases/office-v5-layout-shift-06/office/index.html =404;\n        add_header Cache-Control \"no-store\" always;\n    }\n    location ^~ /static/releases/office-v5-layout-shift-06/ {\n        limit_except GET { deny all; }\n        root /opt/star-office-ui/releases/office-v5-layout-shift-06/public;\n        try_files $uri =404;\n        add_header Cache-Control \"public, max-age=31536000, immutable\" always;\n        add_header X-Content-Type-Options nosniff always;\n    }\n    location = /api/office/snapshot {\n        limit_except GET { deny all; }\n        proxy_pass http://127.0.0.1:19011;\n        proxy_set_header Host 192.168.100.221:19000;\n        proxy_set_header X-Forwarded-Proto http;\n        proxy_set_header X-Forwarded-For $remote_addr;\n        proxy_hide_header Set-Cookie;\n        add_header Cache-Control \"no-store\" always;\n    }\n    location = /health {\n        limit_except GET { deny all; }\n        proxy_pass http://127.0.0.1:19011;\n        proxy_set_header Host 192.168.100.221:19000;\n        proxy_set_header X-Forwarded-Proto http;\n        proxy_set_header X-Forwarded-For $remote_addr;\n        proxy_hide_header Set-Cookie;\n    }\n    location / { return 404; }\n}\nserver {\n    listen 192.168.100.221:19443 ssl;\n    server_name 192.168.100.221;\n    allow 192.168.100.0/24;\n    deny all;\n    if ($host != 192.168.100.221) { return 444; }\n    ssl_certificate /opt/star-office-ui/private/office-server-chain.pem;\n    ssl_certificate_key /opt/star-office-ui/private/office-server.key;\n    ssl_protocols TLSv1.2 TLSv1.3;\n    autoindex off;\n    default_type application/octet-stream;\n    types {\n        text/html html; text/css css; application/javascript js mjs;\n        application/json json; image/png png; image/webp webp;\n        image/svg+xml svg; font/woff woff; font/woff2 woff2; font/ttf ttf;\n    }\n    client_max_body_size 1m;\n    add_header X-Content-Type-Options nosniff always;\n    add_header X-Frame-Options SAMEORIGIN always;\n    location = / {\n        limit_except GET { deny all; }\n        root /opt/star-office-ui/releases/office-v5-layout-shift-06/public;\n        try_files /static/releases/office-v5-layout-shift-06/office/index.html =404;\n        add_header Cache-Control \"no-store\" always;\n    }\n    location = /admin {\n        limit_except GET { deny all; }\n        # The extensionless request URI does not inherit the alias .html type.\n        # An explicit type is required to render the login page, not download it.\n        default_type text/html;\n        alias /opt/star-office-ui/releases/office-v5-layout-shift-06/public/static/releases/office-v5-layout-shift-06/office/admin.html;\n        add_header Cache-Control \"no-store\" always;\n        add_header X-Content-Type-Options nosniff always;\n        add_header X-Frame-Options SAMEORIGIN always;\n    }\n    location ^~ /static/releases/office-v5-layout-shift-06/ {\n        limit_except GET { deny all; }\n        root /opt/star-office-ui/releases/office-v5-layout-shift-06/public;\n        try_files $uri =404;\n        add_header Cache-Control \"public, max-age=31536000, immutable\" always;\n        add_header X-Content-Type-Options nosniff always;\n    }\n    location ^~ /local/ { return 404; }\n    # Auth decisions are made by the deployed WSGI guard, not HTTP Basic auth.\n    # It uses authenticated config/session APIs; legacy writes ALSO require\n    # same-origin + current CSRF token. Unintegrated backend fails closed.\n    location / {\n        proxy_pass http://127.0.0.1:19011;\n        proxy_set_header Host 192.168.100.221:19443;\n        proxy_set_header X-Forwarded-Host 192.168.100.221:19443;\n        proxy_set_header X-Forwarded-Proto https;\n        proxy_set_header X-Forwarded-For $remote_addr;\n        proxy_set_header Connection \"\";\n        proxy_http_version 1.1;\n        add_header Cache-Control \"no-store\" always;\n    }\n}\n",
+  "nginx_wrapper": "# Office-only ingress when the host has no active shared nginx master.\n# Do not start/reload /www/server/nginx/conf/nginx.conf or unrelated vhosts.\nuser nobody;\nworker_processes 2;\npid /run/star-office-ingress/nginx.pid;\nerror_log /var/log/star-office-ingress/error.log warn;\nevents { worker_connections 1024; }\nhttp {\n    # The verified host binary includes ngx_lua; this is its installed library path.\n    lua_package_path \"/www/server/nginx/lib/lua/?.lua;;\";\n    server_tokens off;\n    sendfile on;\n    keepalive_timeout 15;\n    client_header_timeout 10;\n    client_body_timeout 10;\n    log_format office '$remote_addr \"$request_method $uri\" $status $body_bytes_sent $request_time';\n    access_log /var/log/star-office-ingress/access.log office;\n    client_body_temp_path /var/cache/star-office-ingress/client;\n    proxy_temp_path /var/cache/star-office-ingress/proxy;\n    fastcgi_temp_path /var/cache/star-office-ingress/fastcgi;\n    uwsgi_temp_path /var/cache/star-office-ingress/uwsgi;\n    scgi_temp_path /var/cache/star-office-ingress/scgi;\n    include /opt/star-office-ui/ingress/office-public-employee.conf;\n}\n",
+  "ingress_active": "active",
+  "sqlite": {
+    "quick_check": "ok",
+    "version": 3,
+    "payload_sha256": "22a8c18627022382daf860a9949391d66999ab1469c2743e151f328706433cc4",
+    "config_created_at": "2026-10-06T18:05:52.964551Z",
+    "history_count": 3,
+    "audit_count": 3,
+    "bindings": [
+      {
+        "seat_id": "desk-09",
+        "user_id": "4",
+        "display_name": "工位 09",
+        "enabled": true
+      },
+      {
+        "seat_id": "desk-10",
+        "user_id": "7",
+        "display_name": "工位 10",
+        "enabled": true
+      },
+      {
+        "seat_id": "desk-11",
+        "user_id": "8",
+        "display_name": "工位 11",
+        "enabled": true
+      },
+      {
+        "seat_id": "desk-14",
+        "user_id": "1",
+        "display_name": "工位 14",
+        "enabled": true
+      }
+    ],
+    "collection": {
+      "poll_interval_seconds": 5
+    },
+    "display": {
+      "default_view": "overview",
+      "details_collapsed": false,
+      "reduced_motion": "system",
+      "show_bubbles": true,
+      "show_labels": true
+    },
+    "stored_appearance": null
+  },
+  "snapshot": {
+    "schema_version": 1,
+    "config_version": 3,
+    "source": {
+      "error_code": null,
+      "last_attempt_at": "2026-10-08T19:52:35.598196Z",
+      "last_success_at": "2026-10-08T19:52:35.598199Z",
+      "poll_interval_seconds": 5,
+      "stale_after_seconds": 15,
+      "status": "ok"
+    },
+    "window": null,
+    "summary": {
+      "bound": 4,
+      "busy": 1,
+      "idle": 3,
+      "unknown": 0
+    },
+    "appearance": null,
+    "station_count": 16,
+    "bound_stations": []
+  }
+}

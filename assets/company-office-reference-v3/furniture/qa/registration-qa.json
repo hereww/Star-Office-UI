@@ -1,0 +1,235 @@
+{
+  "scope": "Furniture geometry/occlusion only, not actor expression acceptance or runtime integration",
+  "directions": {
+    "up": {
+      "actorReadOnlySource": "assets/company-office-reference-v3/seated-back-source.png",
+      "actorStatus": "registration-only full-source resize; main chooses final back body",
+      "actorSourceSha256": "2a694d821207e09989039889b85b960dbc9e9706b2317f0b991a7853ddccdef2",
+      "scale": 0.6,
+      "poseAnchor": [
+        96,
+        170
+      ],
+      "seatAnchor": [
+        96,
+        145
+      ],
+      "bodyPlacementRounded": [
+        38,
+        43,
+        115,
+        115
+      ],
+      "faceCenter": null,
+      "faceSamples": 0,
+      "frontOccludedFacePixels": 0,
+      "faceUnobscured": null,
+      "image": "qa/up-registration-4x.png"
+    },
+    "down": {
+      "actorReadOnlySource": "frontend/company-office/media/character-base.png",
+      "actorStatus": "original approved down body reused read-only",
+      "actorSourceSha256": "0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024",
+      "scale": 0.6,
+      "poseAnchor": [
+        98,
+        170
+      ],
+      "seatAnchor": [
+        97,
+        94
+      ],
+      "bodyPlacementRounded": [
+        38,
+        -8,
+        115,
+        115
+      ],
+      "faceCenter": [
+        98.0,
+        52.599999999999994
+      ],
+      "faceSamples": 1478,
+      "frontOccludedFacePixels": 0,
+      "faceUnobscured": true,
+      "image": "qa/down-registration-4x.png"
+    },
+    "left": {
+      "actorReadOnlySource": "frontend/company-office/reference-v3/media/character-left/character-base.png",
+      "actorStatus": "current independent left base read-only; expressions out of this furniture task",
+      "actorSourceSha256": "06b1c2ac8d682e1a0ae4bd33dd36a113999001c8840afe640d4b563ba01c4a4f",
+      "scale": 0.6,
+      "poseAnchor": [
+        96,
+        174
+      ],
+      "seatAnchor": [
+        131,
+        128
+      ],
+      "bodyPlacementRounded": [
+        73,
+        24,
+        115,
+        115
+      ],
+      "faceCenter": [
+        119.8,
+        80.4
+      ],
+      "faceSamples": 667,
+      "frontOccludedFacePixels": 0,
+      "faceUnobscured": true,
+      "image": "qa/left-registration-4x.png"
+    },
+    "right": {
+      "actorReadOnlySource": "frontend/company-office/reference-v3/media/character-right/base-right-candidate.png",
+      "actorStatus": "registration-only rejected right actor candidate; do NOT treat as actor acceptance",
+      "actorSourceSha256": "35b17aee47a5b4e35d44befde832e6f13a8c5719ef377f9501843e7d0a751f9d",
+      "scale": 0.6,
+      "poseAnchor": [
+        112,
+        174
+      ],
+      "seatAnchor": [
+        62,
+        130
+      ],
+      "bodyPlacementRounded": [
+        -5,
+        26,
+        115,
+        115
+      ],
+      "faceCenter": [
+        73.6,
+        79.4
+      ],
+      "faceSamples": 1478,
+      "frontOccludedFacePixels": 0,
+      "faceUnobscured": true,
+      "image": "qa/right-registration-4x.png"
+    }
+  },
+  "passed": true,
+  "frozenTemplate": {
+    "checkedFiles": 19,
+    "unchanged": true,
+    "checks": [
+      {
+        "path": "office-assets.json",
+        "expectedSha256": "f58f21d6d7205f59c3484a62b42b4514dd20fffbd5d73a70e17669ea4ad9adcd",
+        "actualSha256": "f58f21d6d7205f59c3484a62b42b4514dd20fffbd5d73a70e17669ea4ad9adcd",
+        "unchanged": true
+      },
+      {
+        "path": "approval.json",
+        "expectedSha256": "83bcc5abdfd7dd8f61ca24dbfba1f6c8d6e2efa83b0d6ead3de6342d5cef1bf4",
+        "actualSha256": "83bcc5abdfd7dd8f61ca24dbfba1f6c8d6e2efa83b0d6ead3de6342d5cef1bf4",
+        "unchanged": true
+      },
+      {
+        "path": "seated-compositor.mjs",
+        "expectedSha256": "3ee6f3c8a29b5c2d2017afe965726572ee9f200828f13b4ea32d82d01fb82536",
+        "actualSha256": "3ee6f3c8a29b5c2d2017afe965726572ee9f200828f13b4ea32d82d01fb82536",
+        "unchanged": true
+      },
+      {
+        "path": "preview.mjs",
+        "expectedSha256": "92bd989db8caacbdfbdca5bb63b5ad80423d7a657c8509b5f467d068da9a7d42",
+        "actualSha256": "92bd989db8caacbdfbdca5bb63b5ad80423d7a657c8509b5f467d068da9a7d42",
+        "unchanged": true
+      },
+      {
+        "path": "index.html",
+        "expectedSha256": "2977a55946bed3a4e77e0b22e75b2662cef07d5eb69fc0d08519d03f74d48deb",
+        "actualSha256": "2977a55946bed3a4e77e0b22e75b2662cef07d5eb69fc0d08519d03f74d48deb",
+        "unchanged": true
+      },
+      {
+        "path": "media/workstation-reference.png",
+        "expectedSha256": "9fdd307430256fdd9b8b7a6d6fc1d92f21c8be3ce301b32c0489ab50390f293e",
+        "actualSha256": "9fdd307430256fdd9b8b7a6d6fc1d92f21c8be3ce301b32c0489ab50390f293e",
+        "unchanged": true
+      },
+      {
+        "path": "media/character-base.png",
+        "expectedSha256": "0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024",
+        "actualSha256": "0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024",
+        "unchanged": true
+      },
+      {
+        "path": "media/workstation-back.png",
+        "expectedSha256": "4e57d15d38ec57dc0fcbeb984bde74d3eb2ef3bc9ccdbf3ab8ee2434432f1fc2",
+        "actualSha256": "4e57d15d38ec57dc0fcbeb984bde74d3eb2ef3bc9ccdbf3ab8ee2434432f1fc2",
+        "unchanged": true
+      },
+      {
+        "path": "media/workstation-front.png",
+        "expectedSha256": "1aef97ce63b757d88c5a0c3cf6be1d0d6e5fc95b11b0c7982247dd3225a88672",
+        "actualSha256": "1aef97ce63b757d88c5a0c3cf6be1d0d6e5fc95b11b0c7982247dd3225a88672",
+        "unchanged": true
+      },
+      {
+        "path": "media/face-working.png",
+        "expectedSha256": "e81d4eb1f48a2d3ac603b98e222e783373a1867f3add88396d112d3114544e5e",
+        "actualSha256": "e81d4eb1f48a2d3ac603b98e222e783373a1867f3add88396d112d3114544e5e",
+        "unchanged": true
+      },
+      {
+        "path": "media/face-idle-sleep.png",
+        "expectedSha256": "4c9cdf5553b9bd396353164ada7eed9119f09f272d5d738ca2ff9f869739eb3f",
+        "actualSha256": "4c9cdf5553b9bd396353164ada7eed9119f09f272d5d738ca2ff9f869739eb3f",
+        "unchanged": true
+      },
+      {
+        "path": "media/face-syncing.png",
+        "expectedSha256": "3cb52a82dcd558165a53fe44e96738c93828b4652535a8e4832557dac50e2412",
+        "actualSha256": "3cb52a82dcd558165a53fe44e96738c93828b4652535a8e4832557dac50e2412",
+        "unchanged": true
+      },
+      {
+        "path": "media/face-error-dizzy.png",
+        "expectedSha256": "91269efdcfa05b00007f59bf4ad89c8636bf34847b06060775dc5fc623eb5ff3",
+        "actualSha256": "91269efdcfa05b00007f59bf4ad89c8636bf34847b06060775dc5fc623eb5ff3",
+        "unchanged": true
+      },
+      {
+        "path": "source/face-reference.png",
+        "expectedSha256": "c50b544f226155a8c52afb993e8b496e97dc34238d96e4c1ee142a1e86ba5167",
+        "actualSha256": "c50b544f226155a8c52afb993e8b496e97dc34238d96e4c1ee142a1e86ba5167",
+        "unchanged": true
+      },
+      {
+        "path": "source/face-working-prompt.txt",
+        "expectedSha256": "b4e1c9ba4cf06226a6529d2f454932ac7b2b4542ec6827a68cc3826598af6e25",
+        "actualSha256": "b4e1c9ba4cf06226a6529d2f454932ac7b2b4542ec6827a68cc3826598af6e25",
+        "unchanged": true
+      },
+      {
+        "path": "source/face-idle-sleep-prompt.txt",
+        "expectedSha256": "af732bc7485f80777394edd5e47659c78787eba15ea75c472f7e5d96f59b53ce",
+        "actualSha256": "af732bc7485f80777394edd5e47659c78787eba15ea75c472f7e5d96f59b53ce",
+        "unchanged": true
+      },
+      {
+        "path": "source/face-syncing-prompt.txt",
+        "expectedSha256": "a54cef752b23bcc7cd9dbde87a58a3e4ed67a69c2f50f0af849fd8f151ddeb20",
+        "actualSha256": "a54cef752b23bcc7cd9dbde87a58a3e4ed67a69c2f50f0af849fd8f151ddeb20",
+        "unchanged": true
+      },
+      {
+        "path": "source/face-error-dizzy-prompt.txt",
+        "expectedSha256": "6c0c38abbbb522cd778c433ef5a34704885be62aea16455bf4e7664cadbecf2d",
+        "actualSha256": "6c0c38abbbb522cd778c433ef5a34704885be62aea16455bf4e7664cadbecf2d",
+        "unchanged": true
+      },
+      {
+        "path": "source/orange-cat-reference.png",
+        "expectedSha256": "1a5c0719324291e5c9039ee4534e0de38d4aa88d06ed23fb603a3294bdab6411",
+        "actualSha256": "1a5c0719324291e5c9039ee4534e0de38d4aa88d06ed23fb603a3294bdab6411",
+        "unchanged": true
+      }
+    ]
+  }
+}

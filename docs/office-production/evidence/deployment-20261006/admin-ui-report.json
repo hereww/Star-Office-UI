@@ -1,0 +1,54 @@
+{
+  "captured_at": "2026-10-06T14:57:01.264Z",
+  "release_id": "office-20261006-v5-production-06",
+  "scope": "Real HTTPS admin UI with exact existing server SPKI pin only in this isolated browser. CA chain/IP independently verified with the public CA. Does NOT establish administrator OS trust. No config save; no private user details or credentials recorded.",
+  "checks": [
+    {
+      "name": "extensionless /admin renders HTML rather than downloading",
+      "pass": true
+    },
+    {
+      "name": "login username and password inputs have labels",
+      "pass": true
+    },
+    {
+      "name": "real authenticated admin shell displays persisted config v2",
+      "pass": true
+    },
+    {
+      "name": "password input is removed after login",
+      "pass": true
+    },
+    {
+      "name": "authenticated config GET confirms v2 without saving",
+      "pass": true
+    },
+    {
+      "name": "diagnostics remain limited to four approved users",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript/resource/external-request errors or config writes",
+      "pass": true
+    },
+    {
+      "name": "test administrator session is explicitly revoked",
+      "pass": true
+    },
+    {
+      "name": "logged-out config request is denied",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "failedResponses": [
+    {
+      "path": "/api/office/admin/config",
+      "status": 401
+    }
+  ],
+  "externalRequests": [],
+  "blockedMutations": [],
+  "desktopTrustChanged": false,
+  "passed": 9
+}

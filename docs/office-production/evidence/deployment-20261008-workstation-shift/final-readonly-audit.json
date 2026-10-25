@@ -1,0 +1,123 @@
+{
+  "passed": 18,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "office web healthy on new immutable image",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "existing collector healthy and retained on original release",
+      "passed": true,
+      "evidence": {
+        "container_id": "43e80a9aabb11d444bced47a2406ecec97803034eeac1704d169b8bd82264a30"
+      }
+    },
+    {
+      "name": "isolated ingress active",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "employee root uses new version with no QA hook",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "previously approved public Host retained",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "employee boundary /admin",
+      "passed": true,
+      "evidence": {
+        "status": 404
+      }
+    },
+    {
+      "name": "employee boundary /api/office/admin/users",
+      "passed": true,
+      "evidence": {
+        "status": 404
+      }
+    },
+    {
+      "name": "employee boundary /api/office/admin/config",
+      "passed": true,
+      "evidence": {
+        "status": 404
+      }
+    },
+    {
+      "name": "employee boundary /status",
+      "passed": true,
+      "evidence": {
+        "status": 404
+      }
+    },
+    {
+      "name": "employee boundary /agents",
+      "passed": true,
+      "evidence": {
+        "status": 404
+      }
+    },
+    {
+      "name": "employee boundary /local/test",
+      "passed": true,
+      "evidence": {
+        "status": 404
+      }
+    },
+    {
+      "name": "admin TLS verified, correct HTML MIME",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "admin authentication retained /api/office/admin/users",
+      "passed": true,
+      "evidence": {
+        "status": 401
+      }
+    },
+    {
+      "name": "admin authentication retained /api/office/admin/config",
+      "passed": true,
+      "evidence": {
+        "status": 401
+      }
+    },
+    {
+      "name": "snapshot healthy, config v3 and unchanged four bindings",
+      "passed": true,
+      "evidence": {
+        "error_code": null,
+        "last_attempt_at": "2026-10-08T14:34:02.985192Z",
+        "last_success_at": "2026-10-08T14:34:02.985196Z",
+        "poll_interval_seconds": 5,
+        "stale_after_seconds": 15,
+        "status": "ok"
+      }
+    },
+    {
+      "name": "anonymous rows exclude privileged details",
+      "passed": true,
+      "evidence": null
+    },
+    {
+      "name": "served layout exact SHA and left-shifted green bank",
+      "passed": true,
+      "evidence": {
+        "layout_sha256": "9184af9ea8e55e809871c930e694c54725a39a452e5f8d44bed26b620ae25167"
+      }
+    },
+    {
+      "name": "immutable source provenance verified",
+      "passed": true,
+      "evidence": null
+    }
+  ]
+}

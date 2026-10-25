@@ -1,0 +1,129 @@
+{
+  "observed_at_utc": "2026-10-08T20:38:44Z",
+  "base_employee": "http://192.168.100.221:19000/",
+  "base_admin": "https://192.168.100.221:19443/admin",
+  "checks": {
+    "employee_root": {
+      "status": 200,
+      "content_type": "text/html",
+      "release_id_found": true
+    },
+    "health": {
+      "status": 200,
+      "content_type": "application/json",
+      "service": "star-office-ui",
+      "health_status": "ok"
+    },
+    "snapshot": {
+      "status": 200,
+      "content_type": "application/json",
+      "schema_version": 1,
+      "config_version": 3,
+      "source_status": "ok",
+      "summary": {
+        "bound": 4,
+        "busy": 1,
+        "idle": 3,
+        "unknown": 0
+      },
+      "station_count": 16,
+      "appearance": {
+        "allow_fallback": false,
+        "character_profile_id": "orange-cat-v1"
+      }
+    },
+    "character_profiles": {
+      "status": 200,
+      "content_type": "application/json",
+      "template_id": "connected-v5-character-template-v1",
+      "profile_count": 8,
+      "assignable_ids": [
+        "orange-cat-v1"
+      ],
+      "candidate_profiles": [
+        {
+          "id": "ragdoll-v1",
+          "label": "布偶猫",
+          "status": "prompt-ready",
+          "production_ready": false,
+          "assignable": false,
+          "template_id": "connected-v5-character-template-v1",
+          "directions": [
+            "down"
+          ]
+        },
+        {
+          "id": "british-shorthair-v1",
+          "label": "英短",
+          "status": "prompt-ready",
+          "production_ready": false,
+          "assignable": false,
+          "template_id": "connected-v5-character-template-v1",
+          "directions": [
+            "down"
+          ]
+        },
+        {
+          "id": "american-shorthair-v1",
+          "label": "美短",
+          "status": "prompt-ready",
+          "production_ready": false,
+          "assignable": false,
+          "template_id": "connected-v5-character-template-v1",
+          "directions": [
+            "down"
+          ]
+        },
+        {
+          "id": "tabby-v1",
+          "label": "狸花猫",
+          "status": "prompt-ready",
+          "production_ready": false,
+          "assignable": false,
+          "template_id": "connected-v5-character-template-v1",
+          "directions": [
+            "down"
+          ]
+        },
+        {
+          "id": "tuxedo-cat-v1",
+          "label": "奶牛猫",
+          "status": "prompt-ready",
+          "production_ready": false,
+          "assignable": false,
+          "template_id": "connected-v5-character-template-v1",
+          "directions": [
+            "down"
+          ]
+        },
+        {
+          "id": "white-lion-cat-v1",
+          "label": "狮子白猫",
+          "status": "prompt-ready",
+          "production_ready": false,
+          "assignable": false,
+          "template_id": "connected-v5-character-template-v1",
+          "directions": [
+            "down"
+          ]
+        },
+        {
+          "id": "jianzhou-cat-v1",
+          "label": "简州猫",
+          "status": "prompt-ready",
+          "production_ready": false,
+          "assignable": false,
+          "template_id": "connected-v5-character-template-v1",
+          "directions": [
+            "down"
+          ]
+        }
+      ]
+    },
+    "admin_config_without_login": {
+      "status": 401,
+      "content_type": "application/json"
+    }
+  },
+  "writes_sent": false
+}

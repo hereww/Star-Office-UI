@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "baseSource": "originals/base-left-original.png",
+  "baseResize": [
+    192,
+    192
+  ],
+  "baseCrop": null,
+  "interpolation": "nearest",
+  "faceReferenceCrop": [
+    42,
+    64,
+    132,
+    122
+  ],
+  "faceRect": [
+    42,
+    64,
+    90,
+    58
+  ],
+  "faceClipEllipse": [
+    78,
+    94,
+    28,
+    21
+  ],
+  "poseAnchor": [
+    96,
+    174
+  ],
+  "headAnchor": [
+    78,
+    94
+  ],
+  "frameSize": [
+    192,
+    192
+  ],
+  "faceFrameSize": [
+    90,
+    58
+  ],
+  "grid": [
+    4,
+    3
+  ],
+  "atlases": {
+    "working": {
+      "source": "originals/working-left-original.png",
+      "sourceCrop": null
+    },
+    "idle": {
+      "source": "originals/idle-left-original.png",
+      "sourceCrop": null
+    },
+    "syncing": {
+      "source": "originals/syncing-left-original.png",
+      "sourceCrop": null
+    },
+    "error": {
+      "source": "originals/error-left-original.png",
+      "sourceCrop": null
+    }
+  }
+}

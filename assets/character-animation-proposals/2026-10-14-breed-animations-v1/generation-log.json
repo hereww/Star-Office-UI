@@ -1,0 +1,1091 @@
+{
+  "status": "in-progress",
+  "mode": "builtin-imagegen",
+  "base_outputs": {
+    "ragdoll-v1": {
+      "up": "call_VQTV5lj3qeu1XHEYdp5QZvbm.png",
+      "left": "call_LFTHrcZMl4YrcOwWgbrs7dZJ.png",
+      "right": "call_mhOQSGr5PiaFtPUNIATyuzRa.png"
+    },
+    "british-shorthair-v1": {
+      "up": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_c4OIdwfWQ3j5pg6JxuDyC2v3.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/up-base.png",
+        "sourceAlphaBounds": [
+          253,
+          156,
+          1102,
+          1139
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/up/base.png",
+        "sha256": "cda9e3e31544dd7f060aff318471af902ca13785bdd2dbdd771ccdbf96b9d663"
+      },
+      "down": {
+        "nativeFile": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-14-breed-concepts-v3/generated/british-shorthair-v1.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/down-base.png",
+        "sourceAlphaBounds": [
+          137,
+          127,
+          1041,
+          1173
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/base.png",
+        "sha256": "2c04fd32470df7924f68d590bb22187b4f543c650ef0c24925ba73a381284819"
+      },
+      "left": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_ETMK5fcnooMdMvYGXblGXifi.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/left-base.png",
+        "sourceAlphaBounds": [
+          264,
+          113,
+          1111,
+          1181
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/base.png",
+        "sha256": "74d7833736b17292ecc76df2725b4ab90646acb1f6e9b65053db56fcad529017"
+      },
+      "right": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_rtkUmyj4Bk46gPuMztpgE1iF.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/right-base.png",
+        "sourceAlphaBounds": [
+          207,
+          133,
+          992,
+          1166
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/base.png",
+        "sha256": "3e401f7dec3d790dcddf0c0085019aa0d44885464f7f4fcb8281715fc89fd9d2"
+      }
+    },
+    "american-shorthair-v1": {
+      "up": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_QQ24HVEMIydAWATC8tFLIgRs.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/up-base.png",
+        "sourceAlphaBounds": [
+          275,
+          126,
+          1094,
+          1159
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/up/base.png",
+        "sha256": "d274b334f1239a8864d3b1b22dc1187e8c0f91f6732af9e9a8e0b1bbe3008e12"
+      },
+      "down": {
+        "nativeFile": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-14-breed-concepts-v3/generated/american-shorthair-v1.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/down-base.png",
+        "sourceAlphaBounds": [
+          158,
+          137,
+          1026,
+          1152
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/base.png",
+        "sha256": "152eb8222df8a27e74f98dfd85912c4e68991e6c570bd169109cdcea470dd8a1"
+      },
+      "left": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_mhDAYQzJiC5YH1LAyI0cJtoJ.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/left-base.png",
+        "sourceAlphaBounds": [
+          296,
+          132,
+          1092,
+          1147
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/base.png",
+        "sha256": "e34b8e145736926a51d8a72bf42216bdd62d78c6348ba709cc324b36708c956f"
+      },
+      "right": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_SdYbqgm0p3MpRT4GjhvFcqUd.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/right-base.png",
+        "sourceAlphaBounds": [
+          220,
+          132,
+          1004,
+          1170
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/right/base.png",
+        "sha256": "b7c5bf21375c18e977ef031fba47babed3970d762d8f60cefee389c92a2e9488"
+      }
+    },
+    "tabby-v1": {
+      "up": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_ZICsyWqHroE3erkvFH01ZQBS.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/tabby-v1/up-base.png",
+        "sourceAlphaBounds": [
+          174,
+          141,
+          993,
+          1151
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/tabby-v1/up/base.png",
+        "sha256": "517cdbdb1f8429e70bdc392f463afd33e4ea823b407ed2d7eb0bd97c765c8528"
+      },
+      "down": {
+        "nativeFile": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-14-breed-concepts-v3/generated/tabby-v1.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/tabby-v1/down-base.png",
+        "sourceAlphaBounds": [
+          158,
+          140,
+          1026,
+          1159
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/tabby-v1/down/base.png",
+        "sha256": "2009ff3966f4f7a394cac1a9e46932cedc3b7d3690f0ceb386f79fe2e2b942c6"
+      },
+      "left": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_jD6MyyRBFWOM10iFG815HOyR.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/tabby-v1/left-base.png",
+        "sourceAlphaBounds": [
+          258,
+          128,
+          1084,
+          1157
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/tabby-v1/left/base.png",
+        "sha256": "5b15029d53a54e91b378bb4be7d4029953a1c90b51886419be2154ae1a758036"
+      },
+      "right": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_3a3i3SMouPrlwkT6rz8rcjf7.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/tabby-v1/right-base.png",
+        "sourceAlphaBounds": [
+          180,
+          125,
+          1021,
+          1165
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/tabby-v1/right/base.png",
+        "sha256": "46a45055ab03a6cfe1437435df4a80877367fe8681539db6f8517d436ecdae7f"
+      }
+    },
+    "tuxedo-cat-v1": {
+      "up": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_2dXNjSD3gCeeeIkDv0yuMC6C.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/tuxedo-cat-v1/up-base.png",
+        "sourceAlphaBounds": [
+          184,
+          164,
+          1015,
+          1155
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/up/base.png",
+        "sha256": "8ce72d87f5ee5c18cfb544111f6fc77e6e6217a8ae4f7addea3e2d4da67d94ef"
+      },
+      "down": {
+        "nativeFile": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-14-breed-concepts-v3/generated/tuxedo-cat-v1.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/tuxedo-cat-v1/down-base.png",
+        "sourceAlphaBounds": [
+          170,
+          163,
+          1030,
+          1156
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/down/base.png",
+        "sha256": "c30e7661228189c6c0163599978ecb17b70a0d61dbd6ce60aa487fab433ca357"
+      },
+      "left": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_aW8eEZqxLosM58o22VZkEtMO.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/tuxedo-cat-v1/left-base.png",
+        "sourceAlphaBounds": [
+          291,
+          155,
+          1125,
+          1154
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/left/base.png",
+        "sha256": "4361925e7c7fb17b162516392b345243c1fd2a3690cb7ebbae2b9eb5aaf36a3b"
+      },
+      "right": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_8uROtclVFLo9gAlkDlvFd2Yf.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/tuxedo-cat-v1/right-base.png",
+        "sourceAlphaBounds": [
+          224,
+          158,
+          999,
+          1152
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/right/base.png",
+        "sha256": "ee5f8da34882982ab58d4215b253bd825476b0a555dcf44b5d076f77b09cf1b7"
+      }
+    },
+    "white-lion-cat-v1": {
+      "up": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_cts3lXHfzf3mTFV24HmxqDfn.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/white-lion-cat-v1/up-base.png",
+        "sourceAlphaBounds": [
+          127,
+          132,
+          1102,
+          1206
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/white-lion-cat-v1/up/base.png",
+        "sha256": "41e4714ae6a93384612ae7b08dfe7da295de9bec0ad00e5ccc39186c495b8509"
+      },
+      "down": {
+        "nativeFile": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-14-breed-concepts-v3/generated/white-lion-cat-v1.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/white-lion-cat-v1/down-base.png",
+        "sourceAlphaBounds": [
+          128,
+          139,
+          1098,
+          1170
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/white-lion-cat-v1/down/base.png",
+        "sha256": "d1ad0c036d2acf14162ae8554e5cd6e815fbe75f3eb1febbe6787d432377b753"
+      },
+      "left": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_kwxcITitgvdE0l3KCCqAtYJR.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/white-lion-cat-v1/left-base.png",
+        "sourceAlphaBounds": [
+          243,
+          67,
+          1148,
+          1205
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/white-lion-cat-v1/left/base.png",
+        "sha256": "217aa7587b63d4ce8f5cabda55828ba9ba90b5d4b59954b308e2fb6e4a3a4bf9"
+      },
+      "right": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_hlYu7vOAyRNbrPgf6ndf1UGa.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/white-lion-cat-v1/right-base.png",
+        "sourceAlphaBounds": [
+          124,
+          114,
+          1070,
+          1179
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/white-lion-cat-v1/right/base.png",
+        "sha256": "5441c8f10ca31a9c04a8cc7af05e222712847d516d645810f94c07758a483983"
+      }
+    },
+    "jianzhou-cat-v1": {
+      "up": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_ktKHR8bbMyGB7Qu4Ev1VOYPT.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/jianzhou-cat-v1/up-base.png",
+        "sourceAlphaBounds": [
+          174,
+          135,
+          1007,
+          1155
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/up/base.png",
+        "sha256": "bd6a0e2c8518f313d35ff35e72ba78bb60667bb332d871faf7dafc6c46398453"
+      },
+      "down": {
+        "nativeFile": "/Users/hepingyu/Documents/ChatGPT/Star-Office-UI/assets/character-animation-proposals/2026-10-14-breed-concepts-v3/generated/jianzhou-cat-v1.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/jianzhou-cat-v1/down-base.png",
+        "sourceAlphaBounds": [
+          159,
+          128,
+          1028,
+          1145
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/down/base.png",
+        "sha256": "6f24417d7afafcb6e751328add0fd92c38160e266a22d541db7b09b2c5322b0e"
+      },
+      "left": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_rbrDKCL1ZeDuqhFkbgnzp4G6.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/jianzhou-cat-v1/left-base.png",
+        "sourceAlphaBounds": [
+          290,
+          123,
+          1090,
+          1139
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/left/base.png",
+        "sha256": "583fbffeda34b2493bdc621dcea855ee6ba2e6925700fd6a13539b2f633962e5"
+      },
+      "right": {
+        "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_3TOBX0R5HwtWI9C9wgUxzCgv.png",
+        "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/jianzhou-cat-v1/right-base.png",
+        "sourceAlphaBounds": [
+          262,
+          128,
+          992,
+          1150
+        ],
+        "runtimeSize": [
+          192,
+          192
+        ],
+        "runtime": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/right/base.png",
+        "sha256": "f9d72ad3673a09edd8791fc4a22cd766e9fdffe6f101eba38eadd12fe10c38e0"
+      }
+    }
+  },
+  "expression_outputs": {
+    "ragdoll-v1": {
+      "down": {
+        "working": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_bcB08hd7pxbj8gJlRr5e01WZ.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/down-working-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/down/face-working.png",
+          "nativeSize": [
+            1802,
+            873
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "31f7f960988d4b0d42f1895e05e1e15e9f91857ca30e96e2100afd40c3db26a0"
+        },
+        "idle": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_Xw7kTOe09htebPenTDaC7qh0.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/down-idle-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/down/face-idle.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "e86bf508a5665b6b49c310ee8f60188b6974b88fde0f037184c56d6abe769ffd"
+        },
+        "syncing": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_6AxoKMcxxCfSU9MpsBzx5qqS.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/down-syncing-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/down/face-syncing.png",
+          "nativeSize": [
+            1802,
+            873
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "1722cc1ccab62e18d57598f508f708412384ad055247dd35564b84baad002c54"
+        },
+        "error": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_eTJXOcZccy4xhXuGXDjaqBOL.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/down-error-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/down/face-error.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "559b772ae7ca919dd43e15eb661fe654a9a8874caa33aa8d3fd7f92d39b48080"
+        }
+      },
+      "left": {
+        "working": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_0W0voa0rB3wnoC6p54vS4WDe.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/left-working-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/left/face-working.png",
+          "nativeSize": [
+            1802,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "58ecd423076087dd21a2014a17057c0a38ecb9ef0fddd4b6ac9003690c21fc66"
+        },
+        "idle": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_1fRb1rDdNcwRabnzTusbZmT1.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/left-idle-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/left/face-idle.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "27b940e5d389fee0726c2330bf11c66187d4e49c1d18d4a84a6de83971d8e4cb"
+        },
+        "syncing": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_uK3Q7ladH4skS902N5XKCSpZ.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/left-syncing-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/left/face-syncing.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "6f3ee69a51a6226543e7d88ab5dd5069bce3121353f61557609f2aa5bb9c2fc4"
+        },
+        "error": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_UVZEFksX9Eu8uz4fajW0BINh.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/left-error-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/left/face-error.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "ec24e5a76404a1d5d7ccceb9e532c3db206f67904d3de73736728d192de7fdce"
+        }
+      },
+      "right": {
+        "working": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_8ytFoFuvYJDXq2AScSPlBVpS.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/right-working-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/right/face-working.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "b9e577588d39db10fb3e2167438d2ac0d2f2f59e597eae17c15c6352c4bdd25d"
+        },
+        "idle": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_5aI9IJUgIEma54lkc8L7juBl.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/right-idle-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/right/face-idle.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "7444606630d7c36b30e8b8db3149c7f3637c050f912dc8000ebb98678ddbd81f"
+        },
+        "syncing": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_jchSXnYCswHpk2C5hxbdZl2W.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/right-syncing-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/right/face-syncing.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "812e99c3d960864c17d3bd05955e28fb317c52296e4c96d3e2190fa2cb569437"
+        },
+        "error": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_VoSctnA5NRmEV7qJts1LtV7T.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/ragdoll-v1/right-error-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/ragdoll-v1/right/face-error.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "94950ac6828b8eb695b1204b05b1247ebf8b3dd1ce7fc6458f7dcf68de29877f"
+        }
+      }
+    },
+    "british-shorthair-v1": {
+      "down": {
+        "working": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_XW8xItzPopebDPqpo6SHpij7.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/down-working-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/face-working.png",
+          "nativeSize": [
+            1802,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "d90e788619c5e86a5e0c5043989e82cbacd1f6db80d8422235804309fa828218"
+        },
+        "idle": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_goD0cPQ5c09OS7sUYDehjvhN.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/down-idle-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/face-idle.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "8afb047de08a4a4e9db5bcf14c47eab252ea7d17b5281589a2644cb574a9d075"
+        },
+        "syncing": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_lGJevisFIQuhqy69mLTn5toK.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/down-syncing-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/face-syncing.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "61cef6eb921dd5053cb15da96a7a421a22c6b9cd5ea3f93ae6979d5bd3f62768"
+        },
+        "error": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_mL365STN06bGs5NDadDIUDo0.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/down-error-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/face-error.png",
+          "nativeSize": [
+            1802,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "166ac22385a2e99f0055a688173d69c8d6956d6775cde73a743da029840c0533"
+        }
+      },
+      "left": {
+        "working": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_qtcZyzAF3uC5MXd1iP4A7aeP.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/left-working-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/face-working.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "a5340abd5bc679af8343f31eee23f39ed8092ba0e92a995fd0b1121b809abc13"
+        },
+        "idle": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_l2RZKYDuuJnm3pUJxvSggjh8.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/left-idle-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/face-idle.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "54867eb28bcaacb656786a76f57829cc484a10f53a2d7289438dbb6d3d06cfa8"
+        },
+        "syncing": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_d7rOj5mgNvcUy6rnOlc0Urt3.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/left-syncing-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/face-syncing.png",
+          "nativeSize": [
+            1906,
+            825
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "789593f3a409e6a836bc035845c9ab5ae25b8df68439c29c5351550db0435f70"
+        },
+        "error": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_b1n2hOJTFzTWPcWrtz9NwJbg.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/left-error-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/face-error.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "85f0b3c279bf45a7b3ad31086a59899417f9e7193d00be528c859a4434a04a7e"
+        }
+      },
+      "right": {
+        "working": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_YcMfs6Gv62pX1cSyJTUo7RLv.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/right-working-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/face-working.png",
+          "nativeSize": [
+            1802,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "1114a8548ac9d85303891b6872bf61c2858765ad8fd055488343633ae5a3e0ad"
+        },
+        "idle": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_gMxUlDechM85LBJWkAE7Vn45.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/right-idle-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/face-idle.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "1b80cf6177e5f6c879839b09667e23b651a2262fc3fc7e9caa5556c9886598f3"
+        },
+        "syncing": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_H6iCGu3ZP8RaHN3A9pYOgkJs.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/right-syncing-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/face-syncing.png",
+          "nativeSize": [
+            1802,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "e93c5bee85f462baa11317ff7f3b9a6dbf0a2b7cb43ca846e66354e322e61bbf"
+        },
+        "error": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_hzoJWOgKKVWwuLEgfFXv18c3.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/british-shorthair-v1/right-error-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/face-error.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "46daed601b6c9dfbc8e152fe2221d2eecee316002f91f3210cc336150162c314"
+        }
+      }
+    },
+    "american-shorthair-v1": {
+      "down": {
+        "working": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_qizYaWx8tNaIZtpSwflxqXd1.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/down-working-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/face-working.png",
+          "nativeSize": [
+            1802,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "29c2e563dd34106279ffb511d11d16c5be87ceda282b3c793b22168de28953f1"
+        },
+        "idle": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_k6n5co23NLDybweIGZHBZJgl.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/down-idle-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/face-idle.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "3a214921f03259d1eb53fc562400afca29ffbaf3c67745d5af23b08eeec11efb"
+        },
+        "syncing": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_FQ4Th0j2ga7ZtZcJ0WuhcfKB.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/down-syncing-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/face-syncing.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "6e212fd6704a37f7766e1659023765dc78b2bd38ced9bb47733bf96722581cd6"
+        },
+        "error": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_FDM4lCQq9PJhKiV7rtHnIkj9.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/down-error-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/face-error.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "d9abb45c640028cfbf6035a42115233e07583cf32501d0523d00e255e40ae994"
+        }
+      },
+      "left": {
+        "working": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_ISy1n8j9C6d7yhRMQaInGNT9.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/left-working-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/face-working.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "c90e5fa935a3f317eb294170e11ccd15ff786b7f4be2c2c6cf528109e8ff464a"
+        },
+        "idle": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_uWhXxY9pISzkRz1ikpT5UHMJ.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/left-idle-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/face-idle.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "93984b55c78e2a8e31507f3b7e2dee91345e7aad5b2115e1883a05575c1829d5"
+        },
+        "syncing": {
+          "nativeFile": "/Users/hepingyu/.codex/generated_images/01a135e7-c52b-7a33-91bb-30e90d56e651/call_errIBohwGJzas0F0VisjVL19.png",
+          "original": "assets/character-animation-proposals/2026-10-14-breed-animations-v1/generated/american-shorthair-v1/left-syncing-original.png",
+          "runtime": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/face-syncing.png",
+          "nativeSize": [
+            1804,
+            872
+          ],
+          "sheetSize": [
+            360,
+            174
+          ],
+          "grid": [
+            4,
+            3
+          ],
+          "frameCount": 12,
+          "normalization": "equal grid; one shared transform per sheet; no frame-local recentering",
+          "uniqueFrames": 12,
+          "sha256": "cb324c42f02a3f7148f6d1def585ddf68add4c03e6b690904c91c55cf6d69321"
+        }
+      }
+    }
+  },
+  "normalization_notes": {
+    "base": "one aspect-preserving transform per direction; foot anchor fixed at [96,174]",
+    "atlas": "each entire native atlas was generated once; equal grid slicing and nearest-neighbor resize; no mirrored or duplicated source frames",
+    "directions": "cardinal only; rear has no face overlay",
+    "qa_findings": [
+      "down .6 scale clipped upper ears in actual player; corrected per-direction scale to .5"
+    ]
+  },
+  "atlasPromptPolicy": "prompt-policy.md"
+}

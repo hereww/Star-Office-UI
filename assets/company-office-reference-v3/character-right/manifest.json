@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 3,
+  "assetPack": "company-office-reference-v3-character-right",
+  "createdOn": "2026-10-02",
+  "status": "candidate_not_accepted",
+  "visualApproved": false,
+  "productionReady": false,
+  "runtimeIntegrated": false,
+  "candidateOnly": true,
+  "doNotIntegrate": true,
+  "urlRoot": "frontend/company-office/reference-v3/",
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "faceClockFrames": 60,
+  "animationMode": "expression-only",
+  "generationTool": "built-in image_generation / image_gen",
+  "calls": {
+    "base": 1,
+    "working": 1,
+    "idle": 1,
+    "syncing": 1,
+    "error": 1
+  },
+  "businessStateToAction": {
+    "writing": "working",
+    "researching": "working",
+    "executing": "working",
+    "idle": "idle",
+    "syncing": "syncing",
+    "error": "error"
+  },
+  "character": {
+    "id": "orange-tabby-right-v3-candidate",
+    "direction": "right",
+    "base": "media/character-right/base-right-candidate.png",
+    "frameSize": [
+      192,
+      192
+    ],
+    "poseAnchor": [
+      112,
+      174
+    ],
+    "headAnchor": [
+      131,
+      89
+    ],
+    "scale": 0.6,
+    "faceRect": [
+      86,
+      60,
+      90,
+      58
+    ],
+    "faceClipEllipse": [
+      131,
+      89,
+      45,
+      29
+    ],
+    "faceFrameSize": [
+      90,
+      58
+    ],
+    "faceVisible": true,
+    "actions": {
+      "working": {
+        "face": "media/character-right/face-working-candidate.png",
+        "label": "工作 · 专注表情",
+        "faceClockFrames": 60,
+        "candidateOnly": true
+      },
+      "idle": {
+        "face": "media/character-right/face-idle-candidate.png",
+        "label": "待命 · 仰脸闭眼张嘴熟睡",
+        "faceClockFrames": 36,
+        "candidateOnly": true
+      },
+      "syncing": {
+        "face": "media/character-right/face-syncing-candidate.png",
+        "label": "同步 · 耐心等待",
+        "faceClockFrames": 60,
+        "candidateOnly": true
+      },
+      "error": {
+        "face": "media/character-right/face-error-candidate.png",
+        "label": "出错 · 迷糊旋涡眼",
+        "faceClockFrames": 12,
+        "candidateOnly": true
+      }
+    },
+    "anchorsStatus": "Measured candidate-only anchors; not approved against a directional workstation."
+  },
+  "invariants": {
+    "oneStaticBase": true,
+    "generatedFaceOnly": true,
+    "bodyTransformPerFrame": false,
+    "furniturePresent": false,
+    "mirroredLeft": false,
+    "rotatedFront": false,
+    "syntheticDuplicatedFrames": false,
+    "independentlyDrawnRight": true
+  },
+  "acceptanceBlockers": [
+    "Visible front paw on static base violates no-hands.",
+    "Generated non-feature face pixels and silhouette registration vary across frames.",
+    "Idle raised/retracted muzzle does not cleanly replace the fixed base nose within the shared transparent patch.",
+    "Strict uniform clockwise spiral phase has not been accepted."
+  ],
+  "provenance": {
+    "identityMaster": "references/identity-master.png",
+    "originals": "originals/",
+    "prompts": "prompts/",
+    "normalizationScript": "scripts/normalize_assets.py",
+    "qaReport": "qa/report.json",
+    "frozenTemplateModified": false
+  },
+  "scopeNotes": [
+    "Only the two user-specified character-right directories were written.",
+    "No UI, runtime, furniture, other direction, remote deploy or frozen template edits.",
+    "Manifest is an interface-ready candidate description, NOT an integration/visual acceptance signal."
+  ],
+  "qaSummary": {
+    "schemaDimensionsPassed": true,
+    "genuineAlphaPassed": true,
+    "twelveUniqueFramesPassed": true,
+    "bodyOutsideFixedFaceEllipseUnchanged": true,
+    "configuredFaceRectangleStable": true,
+    "generatedNonFeaturePixelsStable": false,
+    "noHandsPassed": false,
+    "frozenFilesUnchanged": true,
+    "protectedInputFilesChecked": 22,
+    "visualPassed": false,
+    "runtimeTested": false
+  }
+}

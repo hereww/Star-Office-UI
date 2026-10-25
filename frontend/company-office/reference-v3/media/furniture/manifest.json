@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "status": "furniture-ready-for-integration",
+  "logicalCanvas": [
+    192,
+    192
+  ],
+  "baseUrl": "reference-v3/",
+  "runtimeIntegratedByThisTask": false,
+  "generator": "built-in image_gen.imagegen",
+  "independentlyGeneratedDirections": [
+    "up",
+    "down",
+    "left",
+    "right"
+  ],
+  "sourceResolutionPreserved": true,
+  "staticFurnitureOnly": true,
+  "actorIncluded": false,
+  "handsIncluded": false,
+  "qa": {
+    "alpha": "assets/company-office-reference-v3/furniture/qa/alpha-qa.json",
+    "registration": "assets/company-office-reference-v3/furniture/qa/registration-qa.json",
+    "interface": "assets/company-office-reference-v3/furniture/qa/interface-qa.json",
+    "browser": "assets/company-office-reference-v3/furniture/qa/browser-qa.json",
+    "manualVisual": "assets/company-office-reference-v3/furniture/qa/visual-qa.json"
+  },
+  "processing": {
+    "fullCanvasResize": [
+      192,
+      192
+    ],
+    "resampling": "nearest",
+    "alphaDustCutoff": 16,
+    "crop": null,
+    "trim": false,
+    "rotate": false,
+    "mirror": false,
+    "rgbRepaint": false,
+    "layerOperation": "complementary binary alpha masks"
+  },
+  "directions": {
+    "up": {
+      "furniture": {
+        "size": [
+          192,
+          192
+        ],
+        "seatAnchor": [
+          96,
+          145
+        ],
+        "back": "media/furniture/up-back.png",
+        "front": "media/furniture/up-front.png",
+        "screen": {
+          "visible": true,
+          "polygon": [
+            [
+              66,
+              47
+            ],
+            [
+              125,
+              47
+            ],
+            [
+              125,
+              72
+            ],
+            [
+              66,
+              72
+            ]
+          ],
+          "led": [
+            94,
+            76,
+            3,
+            1
+          ]
+        },
+        "order": [
+          "back",
+          "screen",
+          "actor",
+          "front"
+        ]
+      },
+      "source": "sources/up-source.png",
+      "normalized": "media/furniture/up.png",
+      "occlusion": "Desk, keyboard and monitor behind actor. Chair back, near arms and visible chair mechanism in front. Screen effects precede actor so they cannot paint over its back-facing head.",
+      "notes": "True rear-facing seat: visible front screen, chair rear toward viewer. User-provided independently generated UP source.",
+      "sha256": {
+        "source": "e02cf3f6ff8d47c1e48e43572fbc6dabf710aae2fef645d472caee4a8fcc3cc6",
+        "full": "1a96d9c7790324b6ef4ffe1e1a9062faa76cbdf8664890395eee12745fefc57d",
+        "back": "aa0bc73a1682a834bdda46bd338ffc10afe5b03a1fba20c01d9d2eaac5952836",
+        "front": "01c7bbf22a6baaa9ff59d6af065465a935d3d587f678a1f09b257cc16426b437"
+      }
+    },
+    "down": {
+      "furniture": {
+        "size": [
+          192,
+          192
+        ],
+        "seatAnchor": [
+          97,
+          94
+        ],
+        "back": "media/furniture/down-back.png",
+        "front": "media/furniture/down-front.png",
+        "screen": {
+          "visible": false,
+          "polygon": [
+            [
+              65,
+              99
+            ],
+            [
+              126,
+              99
+            ],
+            [
+              126,
+              120
+            ],
+            [
+              65,
+              120
+            ]
+          ],
+          "led": [
+            122,
+            116,
+            1,
+            2
+          ]
+        },
+        "order": [
+          "back",
+          "actor",
+          "front",
+          "screen"
+        ]
+      },
+      "source": "sources/down-source.png",
+      "normalized": "media/furniture/down.png",
+      "occlusion": "Chair/front upholstery behind actor. Complete desk, monitor rear housing, connected support and keyboard on foreground layer. Only rear indicator LED rendered last.",
+      "notes": "Actor faces viewer; chair at top, desk at bottom. Rear casing has NO visible display. polygon records the non-renderable panel projection only, NOT a visible screen mask; visible:false forbids display rendering.",
+      "sha256": {
+        "source": "c21415a877fd3a8587aa72dfdf6aff2252e0b96dd9ac70caf756d94d5cd95cb8",
+        "full": "622806bf6926962f7b8bdd5aacb9c1e4fdee5ba3949f9ad32c68d807db4650e9",
+        "back": "c33558d6fda8eb933c76da22f5d4f52d6e3e81e4f3c912bb48263cf0ade3ea2d",
+        "front": "5183223b81d5d433aed4b5fd6965fd94d37b0ead53cbb79fd614f7fd332261f2"
+      }
+    },
+    "left": {
+      "furniture": {
+        "size": [
+          192,
+          192
+        ],
+        "seatAnchor": [
+          131,
+          128
+        ],
+        "back": "media/furniture/left-back.png",
+        "front": "media/furniture/left-front.png",
+        "screen": {
+          "visible": true,
+          "polygon": [
+            [
+              55.5,
+              59
+            ],
+            [
+              59.5,
+              50
+            ],
+            [
+              59.5,
+              77
+            ],
+            [
+              55.5,
+              85
+            ]
+          ],
+          "led": [
+            55,
+            89,
+            1,
+            1
+          ]
+        },
+        "order": [
+          "back",
+          "screen",
+          "actor",
+          "front"
+        ]
+      },
+      "source": "sources/left-source.png",
+      "normalized": "media/furniture/left.png",
+      "occlusion": "Desk and monitor left, chair right. Chair back, far arm and seat behind actor; low near arm and near desk apron/legs in front. No furniture over upper-right head/face zone.",
+      "notes": "Independent LEFT generation; panel glass faces right toward empty seat. Keyboard between screen and seat. No rotation or reflection.",
+      "sha256": {
+        "source": "f3f0b3b261986bc3eeeb668dfa849a9cdb50bfbc1b9aaef7ec8163fe6a6eebde",
+        "full": "854532d65171c413eb4fc3ba7c5d3c578e43cc73713459c69181cb4d16981628",
+        "back": "9382971db49f470adbed881446f6d98719c9fbfe1f558baa7307ab6e61e95da6",
+        "front": "aa2cf4ad019e825fe03aacff0de8bb5eb295dd9614d9292c7e25eca78bd1137a"
+      }
+    },
+    "right": {
+      "furniture": {
+        "size": [
+          192,
+          192
+        ],
+        "seatAnchor": [
+          62,
+          130
+        ],
+        "back": "media/furniture/right-back.png",
+        "front": "media/furniture/right-front.png",
+        "screen": {
+          "visible": true,
+          "polygon": [
+            [
+              142.5,
+              40.5
+            ],
+            [
+              147.5,
+              48
+            ],
+            [
+              147.5,
+              79.5
+            ],
+            [
+              142.5,
+              68.5
+            ]
+          ],
+          "led": [
+            147,
+            83,
+            1,
+            1
+          ]
+        },
+        "order": [
+          "back",
+          "screen",
+          "actor",
+          "front"
+        ]
+      },
+      "source": "sources/right-source.png",
+      "normalized": "media/furniture/right.png",
+      "occlusion": "Chair left, desk and monitor right. Chair back, far arm and seat behind actor; low near arm and near desk apron/legs in front. No furniture over upper-left head/face zone.",
+      "notes": "Independent RIGHT generation, different stand assembly/shading and mouse depth from LEFT. Glass faces left toward seat. No mirror.",
+      "sha256": {
+        "source": "3aa25b1811d9f28f96ce2df3b9fa1d31b2807f72139fa245009d5f329115307b",
+        "full": "58c66a1fdbca1ca27dc167fcc23d9ae7277be672ea10365f48096c219cef9e8b",
+        "back": "9ed58a0e72d1fbd1d572f29f6a94be0b2f63f2f7a23c3201f8b51a1a28b8cd60",
+        "front": "a2fa38ebf3258b805857c7447b4ceea5327d175a08b8a44c56c940b182ad44f0"
+      }
+    }
+  },
+  "notes": [
+    "Only static furniture; no actor, hands, animation or runtime edits.",
+    "seatAnchor uses the current player lower-body/poseAnchor registration convention, not a face point.",
+    "UP and sides draw display before actor to respect head occlusion; DOWN rear display forbidden (LED only).",
+    "LEFT/RIGHT were independent calls, not mirrored or rotated copies."
+  ]
+}

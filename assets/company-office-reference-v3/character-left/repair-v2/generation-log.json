@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-02",
+  "tool": "built-in image_gen.imagegen",
+  "calls": 1,
+  "newExpressionCalls": 0,
+  "editTarget": "sources/base-left-6x.png",
+  "savedOriginal": "originals/neutral-base-repair-v2-original.png",
+  "toolOutputPath": "/Users/hepingyu/.codex/generated_images/01a0fba7-e885-7d62-92bf-f493ee8ac4b6/call_AXA7XeWJP3oOFPfJC9rc40HX.png",
+  "prompt": "prompts/neutral-base-repair-v2.txt",
+  "originalSha256": "4ca4264c1d3cd5e38fe3558904999e3a5ae261f88ae2b633d84dcb152c6a2d36",
+  "invariantsRestoration": "fixed crop/mask source-in normalization; outside patch supplied by untouched previous base",
+  "reusedExpressionSource": "four previous genuinely generated 12-frame atlases, no new expression painting"
+}

@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "scopeWrites": [
+    "frontend/company-office/reference-v3/media/furniture/",
+    "assets/company-office-reference-v3/furniture/"
+  ],
+  "sources": {
+    "down": {
+      "originalResolution": [
+        1254,
+        1254
+      ],
+      "pristineOriginalCopy": true,
+      "exactWholeSourceNearestResizeAndAlphaMask": true,
+      "assetAndFrontendOutputsIdentical": true,
+      "sha256": "c21415a877fd3a8587aa72dfdf6aff2252e0b96dd9ac70caf756d94d5cd95cb8"
+    },
+    "left": {
+      "originalResolution": [
+        1254,
+        1254
+      ],
+      "pristineOriginalCopy": true,
+      "exactWholeSourceNearestResizeAndAlphaMask": true,
+      "assetAndFrontendOutputsIdentical": true,
+      "sha256": "f3f0b3b261986bc3eeeb668dfa849a9cdb50bfbc1b9aaef7ec8163fe6a6eebde"
+    },
+    "right": {
+      "originalResolution": [
+        1254,
+        1254
+      ],
+      "pristineOriginalCopy": true,
+      "exactWholeSourceNearestResizeAndAlphaMask": true,
+      "assetAndFrontendOutputsIdentical": true,
+      "sha256": "3aa25b1811d9f28f96ce2df3b9fa1d31b2807f72139fa245009d5f329115307b"
+    },
+    "up": {
+      "originalResolution": [
+        1254,
+        1254
+      ],
+      "pristineOriginalCopy": true,
+      "exactWholeSourceNearestResizeAndAlphaMask": true,
+      "assetAndFrontendOutputsIdentical": true,
+      "sha256": "e02cf3f6ff8d47c1e48e43572fbc6dabf710aae2fef645d472caee4a8fcc3cc6"
+    }
+  },
+  "qa": {
+    "alpha-qa": true,
+    "registration-qa": true,
+    "interface-qa": true,
+    "browser-qa": true,
+    "visual-qa": true
+  }
+}
