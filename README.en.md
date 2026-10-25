@@ -1,8 +1,8 @@
-# Star Office UI 1.0.0
+# Star Office UI 6.0.0
 
-![Star Office UI 1.0.0](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
+![Star Office UI 6.0.0](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
 
-Star Office UI is an independently maintained real-time AI collaboration office and status observability platform. Version 1.0.0 is a full-stack rewrite with a 16-seat pixel office, Flask services, optional desktop shells, Sub2API telemetry integration, and reproducible offline release tooling.
+Star Office UI is an independently maintained real-time AI collaboration office and status observability platform. Version 6.0.0 is a full-stack rewrite with a 16-seat pixel office, Flask services, optional desktop shells, Sub2API telemetry integration, and reproducible offline release tooling.
 
 This repository is the complete `hereww/Star-Office-UI` project. Its descriptions, source layout, screenshots, and deployment docs describe the current codebase.
 

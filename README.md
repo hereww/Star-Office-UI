@@ -1,6 +1,6 @@
-# Star Office UI 1.0.0
+# Star Office UI 6.0.0
 
-![Star Office UI 1.0.0](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
+![Star Office UI 6.0.0](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
 
 Star Office UI 是一个独立维护的实时 AI 协作办公室与状态可视化平台。当前版本采用完整的前后端重写，包含 16 席像素办公室、Flask 服务、可选桌面壳、Sub2API 用户遥测集成和可复现的离线发布工具。
 
