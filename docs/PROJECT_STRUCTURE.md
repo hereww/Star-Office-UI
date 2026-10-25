@@ -27,7 +27,7 @@
 | `frontend/office/` | 版本化员工页、管理页、模块、样式和数据投影 | 是 |
 | `frontend/company-office/` | V4/V5 地图、角色、家具、遥测适配器和运行时素材 | 是，按依赖闭包选择 |
 | `frontend/vendor/` | 本地固定第三方运行时（包括 Phaser） | 仅实际依赖进入 |
-| `frontend/index.html` 等根页面 | 旧版完整看板入口，默认开发模式使用 | 旧版归档按需使用 |
+| `frontend/index.html` 等根页面 | 完整看板入口，默认开发模式使用 | 按运行模式选择 |
 | `desktop-pet/` | Tauri 桌面壳 | 独立开发/构建 |
 | `electron-shell/` | Electron 桌面壳，版本 `1.0.0` | 独立开发/构建 |
 | `scripts/` | 测试、素材检查、发布打包和离线验证工具 | 工具源码随仓库保存 |
