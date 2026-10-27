@@ -1,6 +1,43 @@
-# 部署指南
+# Star Office UI 服务部署指南
 
-本文档区分本地开发、普通独立运行和正式办公室发布。正式发布是离线、不可变、可回滚流程；本地测试通过不等于已经完成生产部署。
+本文档聚焦 Star Office UI 自身的本地运行、Quickstart 和正式办公室发布。完整系统的安装顺序、Sub2API 主服务和用户遥测插件已拆成单独说明，请先阅读 [`SYSTEM_DEPLOYMENT.md`](./SYSTEM_DEPLOYMENT.md)。
+
+- [`SUB2API_DEPLOYMENT.md`](./SUB2API_DEPLOYMENT.md)：Sub2API、PostgreSQL、Redis 的联网/离线 Docker 安装。
+- [`SUB2API_PLUGIN_DEPLOYMENT.md`](./SUB2API_PLUGIN_DEPLOYMENT.md)：签名用户遥测插件、专用凭据和回滚。
+
+正式办公室发布是离线、不可变、可回滚流程；本地测试通过不等于已经完成生产部署。
+
+## 0. 生成并安装可复制的一键包
+
+普通互联网或内网部署使用 `deploy/quickstart/`，它与下面的正式办公室发布流程隔离。构建机准备目标架构的 Linux CPython 3.11 wheelhouse 后运行：
+
+```bash
+python scripts/package_deploy_bundle.py \
+  --output deploy/bundles \
+  --bundle-id star-office-ui-6.0.0 \
+  --wheelhouse deploy/office/wheelhouse/linux-cp311-x86_64
+```
+
+把生成的 `tar.gz` 和 `.sha256` 复制到目标主机，校验后解包。联网 Docker 主机执行：
+
+```bash
+./deploy/quickstart/install.sh --online --docker
+```
+
+无互联网的内网主机执行：
+
+```bash
+./deploy/quickstart/install.sh --offline --docker
+```
+
+离线 Docker 安装只使用归档中的 wheelhouse 和目标机已缓存的 `python:3.11-slim`；如果交付了完整镜像，可以把 `docker save` 归档传给 `--image-archive`，这样目标机无需构建。没有 Docker 时可使用 `--online --native` 或 `--offline --native`，后者要求 Python 3.11。安装脚本把 `.env`、数据、日志和原生虚拟环境保存在用户目录，已有文件不会被覆盖。
+
+```bash
+./deploy/quickstart/verify.sh --url http://127.0.0.1:19000
+./deploy/quickstart/uninstall.sh
+```
+
+Quickstart 默认启动完整看板并关闭生产办公室专用 API（`OFFICE_ENABLED=0`）。需要 Sub2API collector、管理员 HTTPS、Nginx、证书和回滚证据时，继续使用下文的 `deploy/office` 正式发布流程。
 
 ## 1. 本地开发
 

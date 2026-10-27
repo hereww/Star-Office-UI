@@ -8,6 +8,12 @@
 - `patches/`：对应历史遥测版本的宿主补丁、manifest、schema 和安装说明；签名 `.s2plugin`、私钥、构建缓存和 `node_modules` 不放入仓库。
 - `SOURCE_MANIFEST.json`：上游仓库、固定提交、目录用途和排除项。
 
+部署入口已从源码说明中拆出：
+
+- [`../../docs/SUB2API_DEPLOYMENT.md`](../../docs/SUB2API_DEPLOYMENT.md)：Sub2API 主服务、PostgreSQL、Redis 的联网/离线安装。
+- [`../../docs/SUB2API_PLUGIN_DEPLOYMENT.md`](../../docs/SUB2API_PLUGIN_DEPLOYMENT.md)：签名用户遥测插件的独立安装、凭据和回滚。
+- [`../../docs/SYSTEM_DEPLOYMENT.md`](../../docs/SYSTEM_DEPLOYMENT.md)：Sub2API、插件、Star Office UI 和 Collector 的完整顺序。
+
 当前宿主来源为：
 
 ```text

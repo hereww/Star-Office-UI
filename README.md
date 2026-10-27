@@ -15,6 +15,26 @@ Star Office UI 是一个独立维护的实时 AI 协作办公室与状态可视�
 - Electron 和 Tauri 桌面壳复用同一个 Python 后端，可独立开发和构建。
 - 离线发布包、Docker Compose、Nginx/TLS、备份和回滚脚本集中在 `deploy/office/`。
 
+## 一键部署包
+
+需要把项目交付到互联网主机或不能联网的内网主机时，使用独立的 Quickstart 包：
+
+```bash
+# 构建带 Linux CPython 3.11 wheelhouse 的可复制归档
+python scripts/package_deploy_bundle.py \
+  --output deploy/bundles \
+  --bundle-id star-office-ui-6.0.0 \
+  --wheelhouse deploy/office/wheelhouse/linux-cp311-x86_64
+
+# 解包后，联网 Docker 主机一条命令启动
+./deploy/quickstart/install.sh --online --docker
+
+# 内网离线 Docker 主机一条命令启动
+./deploy/quickstart/install.sh --offline --docker
+```
+
+Quickstart 同时支持没有 Docker 的原生 Python 安装（`--online --native` / `--offline --native`）。离线 Docker 构建需要目标机预缓存与架构匹配的 `python:3.11-slim`，也可以在交付包中附带 `docker save` 生成的镜像归档；安装脚本不会在离线模式下访问 PyPI、拉取镜像或覆盖已有数据。正式办公室生产入口仍使用 [`deploy/office/README.md`](./deploy/office/README.md) 中的证书、凭据、预检和回滚流程。
+
 ## 快速运行
 
 要求 Python 3.10+：
@@ -67,7 +87,10 @@ node --test cmd/user-telemetry-plugin/ui/bridge.test.cjs cmd/user-telemetry-plug
 ## 文档入口
 
 - [`docs/PROJECT_STRUCTURE.md`](./docs/PROJECT_STRUCTURE.md)：目录职责、组件关系、运行时数据和源码边界。
-- [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md)：本地开发、离线发布、Docker、Nginx/TLS、备份、升级和回滚。
+- [`docs/SYSTEM_DEPLOYMENT.md`](./docs/SYSTEM_DEPLOYMENT.md)：Sub2API、用户遥测插件、Star Office UI 和 Collector 的完整系统部署顺序。
+- [`docs/SUB2API_DEPLOYMENT.md`](./docs/SUB2API_DEPLOYMENT.md)：Sub2API 主服务、PostgreSQL、Redis 的联网/离线安装。
+- [`docs/SUB2API_PLUGIN_DEPLOYMENT.md`](./docs/SUB2API_PLUGIN_DEPLOYMENT.md)：插件验签、宿主兼容性、安装、凭据和回滚。
+- [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md)：Star Office UI 本地开发、Quickstart、正式办公室发布、Nginx/TLS、备份和回滚。
 - [`integrations/sub2api/README.md`](./integrations/sub2api/README.md)：Sub2API 宿主、用户遥测插件和打包验签工具。
 - [`deploy/office/README.md`](./deploy/office/README.md)：办公室发布包的详细运维约束。
 - [`frontend/office/README.md`](./frontend/office/README.md)：新版办公室前端契约和资源加载边界。
