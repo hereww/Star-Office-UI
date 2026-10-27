@@ -1,6 +1,6 @@
 # Star Office UI 全系统部署手册
 
-整理日期：2026-10-27（Asia/Shanghai）。版本、镜像、插件包和实际生产状态仍以目标环境现场核对为准。
+整理日期：2026-10-28（Asia/Shanghai）。版本、镜像、插件包和实际生产状态仍以目标环境现场核对为准。
 
 本文把完整系统拆成四个可以独立安装、升级和回滚的组件：
 
@@ -9,7 +9,7 @@
 3. **Star Office UI**：员工看板、管理界面和静态资源。
 4. **Office Collector**：Star Office UI 的服务端采集器，通过专用只读凭据读取 Sub2API，再把结果写入办公室快照。
 
-Quickstart 只负责第 3 项，默认 OFFICE_ENABLED=0，不会安装 Sub2API、插件或 Collector。需要完整联动时，必须按本文顺序部署 Sub2API、插件，再部署 deploy/office 正式办公室发布包。
+Quickstart 默认 `OFFICE_ENABLED=0`，只启动独立看板；它不会安装 Sub2API 或签名插件。显式使用 `--with-sub2api` 后，Quickstart 会启动一个受限的 Office Collector，通过交互向导写入 Sub2API 地址、插件安装 ID、用户范围、`s2ut_...` 凭据、到期时间和 CA bundle。签名插件仍必须单独安装并启用；需要公网 HTTPS、Nginx、固定发布目录和严格生产门禁时，继续使用 `deploy/office` 正式发布流程。
 
 ## 组件关系
 
@@ -32,6 +32,7 @@ Collector 不把管理员 JWT、模型 Key、原始请求或数据库凭据交�
 | 模式 | 安装入口 | 是否需要 Sub2API/插件 | 适用场景 |
 | --- | --- | --- | --- |
 | 独立看板 | deploy/quickstart/install.sh | 否 | 演示、独立状态看板、没有遥测联动 |
+| Quickstart 完整联动 | deploy/quickstart/install.sh --with-sub2api | 需要已安装插件 | 内网离线验证、单机部署、快速交付 |
 | 完整系统（联网） | Sub2API Docker + 插件 + deploy/office | 是 | 能访问镜像仓库和依赖源的服务器 |
 | 完整系统（内网离线） | 预先准备的镜像、wheelhouse、插件包和补丁 | 是 | 目标机不能访问互联网 |
 
@@ -49,12 +50,15 @@ cd star-office-ui-<bundle-id>
 
 这条路径不会启用生产办公室 API，也不会读取 Sub2API。
 
-当前工作区已生成并校验过的 Star Office UI Quickstart 交付包为：
+如果已经完成 Sub2API 和插件安装，使用 Quickstart 的完整联动模式：
 
-~~~text
-deploy/bundles/star-office-ui-6.0.0-20261026-03.tar.gz
-SHA-256: 7ff945474c2762cd455ee260026f83d07969f3ef986c9cd2837fd30cb50f7a07
+~~~bash
+./deploy/quickstart/install.sh --offline --docker --with-sub2api
 ~~~
+
+向导会隐藏读取 `s2ut_...` 凭据，凭据只写入 `private/office-consumer.token`；管理员密码只写入 PBKDF2 哈希文件。Docker 模式把管理员哈希、消费凭据和 CA 分到三个独立的 named volume：Web 只挂载管理员哈希，Collector 只挂载消费凭据和 CA。native 模式会并行启动 Web 与 `backend/office_collector.py`。
+
+当前交付归档应由 `scripts/package_deploy_bundle.py` 的命令输出确定；归档旁的同名 `.sha256` 文件是校验依据。这样文档可以随不同 release ID 的离线包一起发布，而不会把某次构建的摘要写死在包内。
 
 该归档只包含 Star Office UI Quickstart，不包含 Sub2API 数据、管理员凭据、插件签名私钥或正式消费 token。
 
@@ -106,7 +110,7 @@ SHA-256: 7ff945474c2762cd455ee260026f83d07969f3ef986c9cd2837fd30cb50f7a07
 
 ### 4. 安装 Star Office UI
 
-只看板场景使用 Quickstart。完整系统使用正式发布流程：
+只看板或内网快速联动场景使用 Quickstart。完整生产系统使用正式发布流程：
 
 ~~~bash
 RELEASE=/opt/star-office-ui/releases/office-<release-id>
@@ -175,7 +179,7 @@ Collector 失败时只保留脱敏的错误码和上次成功时间；不能把 
 
 | 现象 | 先检查 |
 | --- | --- |
-| Quickstart 正常但办公室没有用户数据 | Quickstart 的 OFFICE_ENABLED=0 不包含 Collector；改走 deploy/office 正式流程 |
+| Quickstart 正常但办公室没有用户数据 | 确认使用了 `--with-sub2api`，Collector profile 已启动，插件安装 ID/凭据/CA 与 Sub2API 当前状态一致 |
 | 插件上传提示不兼容 | 读取 manifest 的宿主版本范围和协议字段，不能只看文件名或 Docker tag |
 | 签名不可信 | signature.json.key_id、32 字节 Base64 公钥和 trusted_publishers 键必须完全一致 |
 | Collector 为 unauthorized/forbidden | 凭据是否属于同一安装 ID、是否过期/撤销、OFFICE_USER_IDS 是否超出批准范围 |

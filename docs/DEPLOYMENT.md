@@ -39,6 +39,14 @@ python scripts/package_deploy_bundle.py \
 
 Quickstart 默认启动完整看板并关闭生产办公室专用 API（`OFFICE_ENABLED=0`）。需要 Sub2API collector、管理员 HTTPS、Nginx、证书和回滚证据时，继续使用下文的 `deploy/office` 正式发布流程。
 
+如果目标是内网单机或离线快速联动，先按 [`SUB2API_DEPLOYMENT.md`](./SUB2API_DEPLOYMENT.md) 和 [`SUB2API_PLUGIN_DEPLOYMENT.md`](./SUB2API_PLUGIN_DEPLOYMENT.md) 单独完成 Sub2API 与签名遥测插件，再执行：
+
+```bash
+./deploy/quickstart/install.sh --offline --docker --with-sub2api
+```
+
+安装器会隐藏读取 Sub2API 地址、数字插件安装 ID、用户范围、有限期 `s2ut_...` 只读凭据、CA bundle 和办公室管理员密码；token 写入 0600 私有文件，不进入 `.env`。Docker 模式只给 Collector 挂载消费凭据和 CA，Web 只挂载管理员密码哈希。native 模式同时启动 Web 与 `office_collector.py`。Sub2API 连接和 HTTP/gRPC 链路见 [`SYSTEM_DEPLOYMENT.md`](./SYSTEM_DEPLOYMENT.md) 与 [`deploy/quickstart/README.md`](../deploy/quickstart/README.md)。
+
 ## 1. 本地开发
 
 要求 Python 3.10 或更高版本。建议使用虚拟环境：

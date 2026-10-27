@@ -15,6 +15,8 @@ GET /api/v1/plugins/{installation_id}/user-telemetry
 
 认证使用 s2ut_... 专用只读凭据。installation_id 是上传后得到的数字安装 ID，不是 com.lvdong.user-telemetry 这样的 manifest 插件 ID。
 
+仓库当前 `integrations/sub2api/host-source` 中编译常量为插件版本 `0.1.1`；它已经提供身份、API Key 元数据、时间窗口内 Token 总量和并发读数，没有 `active_models` 字段。`integrations/sub2api/patches/user-telemetry-v0.2.1/` 是针对 Sub2API `0.2.15` 的独立历史补丁和签名包说明，额外加入 `active_models` 扩展；该补丁没有自动应用到当前 host-source，不能仅凭目录名宣称线上宿主已具备该能力。
+
 ## 需要准备的交付物
 
 每次插件安装都要同时准备以下材料，并保持版本成组：

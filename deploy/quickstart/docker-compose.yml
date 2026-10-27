@@ -1,0 +1,90 @@
+name: star-office-ui
+
+services:
+  star-office:
+    image: ${STAR_OFFICE_IMAGE:-star-office-ui:bundle}
+    build:
+      context: ../..
+      dockerfile: deploy/quickstart/Dockerfile
+      args:
+        PYTHON_BASE: ${PYTHON_BASE:-python:3.11-slim}
+        OFFLINE_BUILD: ${OFFLINE_BUILD:-0}
+    pull_policy: never
+    restart: unless-stopped
+    init: true
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    ports:
+      - "${STAR_OFFICE_BIND:-0.0.0.0}:${STAR_OFFICE_PORT:-19000}:19000"
+    environment:
+      STAR_OFFICE_ENV: ${STAR_OFFICE_ENV:-production}
+      STAR_OFFICE_DATA_DIR: /data
+      OFFICE_ENABLED: ${OFFICE_ENABLED:-0}
+      OFFICE_DATA_DIR: /data
+      OFFICE_USER_IDS: ${OFFICE_USER_IDS:-1,4,7,8}
+      OFFICE_RELEASE_ID: ${OFFICE_RELEASE_ID:-quickstart}
+      OFFICE_ADMIN_USERNAME: ${OFFICE_ADMIN_USERNAME:-admin}
+      OFFICE_ADMIN_SECRET: ${OFFICE_ADMIN_SECRET:-}
+      OFFICE_ADMIN_PASSWORD_HASH_FILE: /run/secrets/office_admin_hash
+      OFFICE_ADMIN_ALLOW_HTTP: ${OFFICE_ADMIN_ALLOW_HTTP:-0}
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?Set FLASK_SECRET_KEY in the private env file}
+      ASSET_DRAWER_PASS: ${ASSET_DRAWER_PASS:?Set ASSET_DRAWER_PASS in the private env file}
+    volumes:
+      - star-office-data:/data
+      - star-office-assets:/app/assets
+      - star-office-admin-secret:/run/secrets:ro
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:19000/health', timeout=3).read()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+  office-collector:
+    profiles: ["sub2api"]
+    image: ${STAR_OFFICE_IMAGE:-star-office-ui:bundle}
+    pull_policy: never
+    restart: unless-stopped
+    init: true
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777
+    command: ["collector"]
+    environment:
+      STAR_OFFICE_ENV: ${STAR_OFFICE_ENV:-production}
+      OFFICE_DATA_DIR: /data
+      OFFICE_SUB2API_BASE_URL: ${OFFICE_SUB2API_BASE_URL:-}
+      OFFICE_ALLOW_HTTP: ${OFFICE_ALLOW_HTTP:-0}
+      OFFICE_CREDENTIAL_FILE: /run/secrets/office_consumer
+      OFFICE_INSTALLATION_ID: ${OFFICE_INSTALLATION_ID:-}
+      OFFICE_USER_IDS: ${OFFICE_USER_IDS:-}
+      OFFICE_CREDENTIAL_EXPIRES_AT: ${OFFICE_CREDENTIAL_EXPIRES_AT:-}
+      SSL_CERT_FILE: /run/trust/upstream-ca.pem
+    volumes:
+      - star-office-data:/data
+      - star-office-consumer-secret:/run/secrets:ro
+      - star-office-trust:/run/trust:ro
+    healthcheck:
+      test: [CMD, python, /app/backend/office_collector.py, --data-dir, /data, --health]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  star-office-data:
+    name: ${STAR_OFFICE_VOLUME:-star-office-ui-data}
+  star-office-assets:
+    name: ${STAR_OFFICE_ASSETS_VOLUME:-star-office-ui-assets}
+  star-office-admin-secret:
+    name: ${STAR_OFFICE_ADMIN_VOLUME:-star-office-ui-admin-secret}
+  star-office-consumer-secret:
+    name: ${STAR_OFFICE_CONSUMER_VOLUME:-star-office-ui-consumer-secret}
+  star-office-trust:
+    name: ${STAR_OFFICE_TRUST_VOLUME:-star-office-ui-upstream-trust}
