@@ -35,6 +35,8 @@ python scripts/package_deploy_bundle.py \
 
 Quickstart 同时支持没有 Docker 的原生 Python 安装（`--online --native` / `--offline --native`）。离线 Docker 构建需要目标机预缓存与架构匹配的 `python:3.11-slim`，也可以在交付包中附带 `docker save` 生成的镜像归档；安装脚本不会在离线模式下访问 PyPI、拉取镜像或覆盖已有数据。正式办公室生产入口仍使用 [`deploy/office/README.md`](./deploy/office/README.md) 中的证书、凭据、预检和回滚流程。
 
+需要把 Star Office UI、Sub2API、插件和 Linux Shell 管理菜单作为一个完整环境迁移到新服务器时，下载 [Star Office Suite Linux 整合包](./deploy/bundles/README.md)。该包只保留首次安装所需的管理员账号入口，不带生产业务数据或现存密码；下载与安装步骤见[全系统部署手册](./docs/SYSTEM_DEPLOYMENT.md#linux-amd64-整合包)。
+
 ## 快速运行
 
 要求 Python 3.10+：

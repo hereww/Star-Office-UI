@@ -41,6 +41,13 @@ join-keys.json
 # Isolated local map preview and rollback snapshots
 .local/
 
+# Portable suite release output is distributed through GitHub Releases.
+# Keep only the release index and detached checksums in the repository.
+deploy/bundles/*.tar.gz
+deploy/bundles/*/
+!deploy/bundles/README.md
+!deploy/bundles/*.sha256
+
 # Bundled Sub2API integration source: keep dependencies/build output local
 integrations/sub2api/host-source/.git/
 integrations/sub2api/host-source/frontend/node_modules/
