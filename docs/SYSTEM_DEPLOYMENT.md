@@ -36,6 +36,24 @@ Collector 不把管理员 JWT、模型 Key、原始请求或数据库凭据交�
 | 完整系统（联网） | Sub2API Docker + 插件 + deploy/office | 是 | 能访问镜像仓库和依赖源的服务器 |
 | 完整系统（内网离线） | 预先准备的镜像、wheelhouse、插件包和补丁 | 是 | 目标机不能访问互联网 |
 
+## Linux amd64 整合包
+
+当前整合包为 [`star-office-suite-20261028-01`](https://github.com/hereww/Star-Office-UI/releases/tag/star-office-suite-20261028-01)，适用于 Linux `x86_64/amd64`。它包含 Star Office UI、Sub2API 运行文件、已签名插件包、Docker Compose 配置以及 `manage.sh` 纯 POSIX Shell 菜单脚本。菜单提供安装、卸载、Sub2API 管理员账号和密码、Star Office 后台账号和密码、监听地址与端口、插件和诊断入口。
+
+在目标服务器下载 Release 中的归档和校验文件，先验证再安装：
+
+~~~sh
+sha256sum -c star-office-suite-20261028-01.tar.gz.sha256
+tar -xzf star-office-suite-20261028-01.tar.gz
+cd star-office-suite-20261028-01
+./install.sh --online
+./manage.sh
+~~~
+
+目标机已经预载固定镜像时使用 `./install.sh --offline`。安装器会重新生成 JWT、数据库、Redis 和 Star Office 密钥，只创建一个新的管理员账号；`runtime/` 下的 PostgreSQL、Redis、Sub2API、Office 数据及私有配置只在目标服务器生成。整合包和 Git 仓库均不包含生产数据库、普通用户、API Key、OAuth 凭据、遥测 token、管理员密码、密码哈希或 TLS 私钥。
+
+本次归档的 SHA-256 为 `805ba8246e0e1f606251fc8ec93fa988c28c570e55f84ee380c1643929929318`。整合包发布说明和附件清单见 [`deploy/bundles/README.md`](../deploy/bundles/README.md)；Git 中只保留说明和校验文件，约 149 MB 的 `.tar.gz` 通过 GitHub Release 附件分发。
+
 如果只需要先确认 Star Office UI 能运行，直接使用 Quickstart：
 
 ~~~bash
