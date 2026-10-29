@@ -41,6 +41,11 @@ join-keys.json
 # Isolated local map preview and rollback snapshots
 .local/
 
+# Local legacy-resource archive and formal office release build output
+archive/legacy-face-atlases/
+deploy/office/out/
+docs/DEPRECATED_ASSETS_AUDIT_2026-10-30.json
+
 # Portable suite release output is distributed through GitHub Releases.
 # Keep only the release index and detached checksums in the repository.
 deploy/bundles/*.tar.gz

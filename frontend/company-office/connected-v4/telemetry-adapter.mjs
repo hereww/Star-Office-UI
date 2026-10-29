@@ -1,5 +1,5 @@
 import {ConnectedOfficeRuntime, BUSINESS_STATES, STATE_LABELS} from './runtime.mjs';
-import {ReferenceOfficeRuntime} from '../reference-v3/runtime.mjs';
+import {ReferenceOfficeRuntime} from '../reference-v3/runtime.mjs?v=20261026-02';
 import {runtimeCharacterProfileId,isRuntimeReadyCharacterProfile} from '../character-profile-runtime.mjs';
 import {safeRoomCharacters} from '../../office/model.mjs';
 import {OFFICE_TEXT_FONT} from '../reference-v3/render-quality.mjs';

@@ -1,4 +1,4 @@
-import { DirectionalSeatedPlayer, BUSINESS_STATES, validateDirectionalAssets } from './directional-player.mjs';
+import { DirectionalSeatedPlayer, BUSINESS_STATES, validateDirectionalAssets } from './directional-player.mjs?v=20261026-02';
 import { OfficeRenderQuality, OFFICE_TEXT_FONT } from './render-quality.mjs';
 import { ServerCabinetAnimation, SERVER_CABINET_STATES } from './server-cabinet-animation.mjs';
 

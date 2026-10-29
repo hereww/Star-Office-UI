@@ -1,4 +1,4 @@
-import {DirectionalSeatedPlayer} from '../reference-v3/directional-player.mjs';
+import {DirectionalSeatedPlayer} from '../reference-v3/directional-player.mjs?v=20261026-02';
 import {CHAIR_CLIPS} from './furniture-contract.mjs';
 
 /** Same immutable actor composition and clocks; old desk pixels never drawn. */

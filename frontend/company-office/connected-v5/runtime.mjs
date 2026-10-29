@@ -1,4 +1,4 @@
-import {ReferenceOfficeRuntime,validateReferenceLayout,overlaps,occupiedBounds} from '../reference-v3/runtime.mjs';
+import {ReferenceOfficeRuntime,validateReferenceLayout,overlaps,occupiedBounds} from '../reference-v3/runtime.mjs?v=20261026-02';
 import {loadImage} from '../seated-compositor.mjs';
 import {ConnectedSeatedPlayer} from './seated-player.mjs';
 import {BenchScreenOverlay} from './screen-overlay.mjs';
@@ -7,8 +7,8 @@ import {loadCharacterProfileAssets} from '../character-profile-assets.mjs';
 import {DEFAULT_CHARACTER_PROFILE_ID,isRuntimeReadyCharacterProfile} from '../character-profile-runtime.mjs';
 import {validateBenchManifest,normalizeBenchManifest,benchTransform,sourceToWorld,centerForContact,absoluteAssetPaths,SIDE_DIRECTION,ACTOR_BOUNDS} from './furniture-contract.mjs';
 import {screenSafeBubbleLayout} from './bubble-layout.mjs';
-export {STATE_LABELS} from '../reference-v3/runtime.mjs';
-export {BUSINESS_STATES} from '../reference-v3/directional-player.mjs';
+export {STATE_LABELS} from '../reference-v3/runtime.mjs?v=20261026-02';
+export {BUSINESS_STATES} from '../reference-v3/directional-player.mjs?v=20261026-02';
 async function json(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(`connected-v5 resource ${response.status}: ${url}`);return response.json();}
 function contained(a,b){return b[0]>=a[0]&&b[1]>=a[1]&&b[0]+b[2]<=a[0]+a[2]&&b[1]+b[3]<=a[1]+a[3];}
 export function validateConnectedLayout(layout){

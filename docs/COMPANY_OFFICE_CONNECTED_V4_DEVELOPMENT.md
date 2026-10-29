@@ -20,7 +20,7 @@
 | `frontend/company-office/connected-v4/screen-overlay.mjs` | 每席独立小屏幕纹理，polygon裁切、背屏LED、窄侧屏柔和色变 |
 | `frontend/company-office/connected-v4/layout.json` | 新家具fit及初始座位配置，旧房间/背景引用 |
 | `frontend/company-office/connected-v4/assets.json` | 显式指向原 reference-v3/assets.json，不复制生成角色参数 |
-| `frontend/company-office/connected-v4/style.css` | 引用旧高清/CJK控制CSS |
+| `frontend/company-office/connected-v4/style.css` | 已退役；正式入口直接使用 `reference-v3/controls.css` 或 `frontend/office/office.css` |
 
 ## 原角色绝对不变
 
