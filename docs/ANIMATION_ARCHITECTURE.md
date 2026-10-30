@@ -73,7 +73,19 @@ normalizeState() → currentState → applyVisualState()
 
 资产抽帧还可参考 `gif_to_spritesheet.py`、`webp_to_spritesheet.py`；网页素材编辑器在 `frontend/index.html` 的 `commitAssetUpdate()` 调 `/assets/upload`，后台在 `backend/app.py` 转换 GIF/WebP 并备份目标。**上传逻辑不校验新图必须符合 `preload()` 的帧大小/帧数量**，动图默认保留原单帧尺寸，静态图自动切格时还会传 64×64；所以应先离线预检、备份和预览，再提交替换，不能把上传成功当成动画兼容。若调试 HTML/JS，留意 `backend/app.py` 缓存首页 HTML：改源码后需按开发环境的重启/缓存策略刷新，不能只看浏览器刷新。
 
-## 6. 下一次开发可以直接定位的函数
+## 6. 素材源、QA 和归档边界（2026-10-30）
+
+当前运行图片位于 `frontend/`，`assets/` 保存生成源、manifest、归一化输入和 QA 证据。正式 Office 发布使用 `scripts/package_office_release.py` 的依赖闭包，不按 `assets/` 目录整体发布。需要重建时，使用 `assets/rock-room-band-v1/source/`、`assets/company-office-floorplan-v2/` 等源目录和对应脚本；不要把 QA 截图或旧 preview 当作运行时图片。
+
+旧预览、QA、拒绝候选和 V3 历史候选已建立外部快照：
+
+```text
+/Users/hepingyu/Documents/ChatGPT/Star-Office-UI-archive-20261030/assets-deprecated-20261030/
+```
+
+快照是可恢复副本，不是删除记录；源文件仍在工作区。恢复任何文件前，先读取快照根目录的 `archive-manifest.json`，按 SHA-256 校验后再复制回工作区。当前修改中的 V5/V3/rock-room QA 保留在原路径，避免归档动作覆盖未提交工作。
+
+## 7. 下一次开发可以直接定位的函数
 
 - 浏览器：`frontend/index.html` → `STATES` / `normalizeState` / `preload` / `create` / `applyVisualState` / `fetchStatus` / `update` / `moveStar` / `renderGuestAgentsInScene` / `commitAssetUpdate`。
 - 后端：`backend/app.py` → `load_state` / `get_status` / `set_state_endpoint` / `normalize_agent_state` / `assets_upload`。

@@ -1,4 +1,5 @@
 import {ConnectedOfficeRuntime, BUSINESS_STATES, STATE_LABELS} from './runtime.mjs';
+// Keep the V4/V5 adapter graph on the same browser module identity.
 import {ReferenceOfficeRuntime} from '../reference-v3/runtime.mjs?v=20261026-02';
 import {runtimeCharacterProfileId,isRuntimeReadyCharacterProfile} from '../character-profile-runtime.mjs';
 import {safeRoomCharacters} from '../../office/model.mjs';

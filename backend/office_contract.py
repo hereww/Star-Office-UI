@@ -99,7 +99,7 @@ def validate_config(value):
     bindings = value["bindings"]
     if not isinstance(bindings, list) or len(bindings) > len(DESK_IDS):
         raise ContractError("invalid_bindings")
-    desks, users, normalized = set(), set(), []
+    desks, normalized = set(), []
     for binding in bindings:
         required_binding_keys = {"seat_id", "user_id", "display_name", "enabled"}
         if (not isinstance(binding, dict) or not required_binding_keys.issubset(binding)
@@ -109,15 +109,12 @@ def validate_config(value):
         if not isinstance(desk, str) or desk not in DESK_IDS or desk in desks:
             raise ContractError("duplicate_or_invalid_desk")
         user = canonical_id(binding["user_id"])
-        if user in users:
-            raise ContractError("duplicate_user")
         name = _text(binding["display_name"], 1024).strip()
         if not name:
             raise ContractError("empty_display_name")
         if len(name) > 40:
             raise ContractError("invalid_display_name")
         desks.add(desk)
-        users.add(user)
         if type(binding["enabled"]) is not bool:
             raise ContractError("invalid_enabled")
         normalized_binding = {"seat_id": desk, "user_id": user, "display_name": name, "enabled": binding["enabled"]}

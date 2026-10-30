@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "startedAt": "2026-10-17T18:50:38.231Z",
-  "animationMode": "expression-plus-screen-effects",
+  "startedAt": "2026-10-29T16:46:10.521Z",
+  "animationMode": "full-frame-plus-screen-effects",
   "scope": "Screen-only independent real Chromium RGBA acceptance. Local demo mutations only; not human visual approval.",
   "contract": {
     "actor": "V5 byte-identical to V4 for all states; ZERO pixel exemptions",
@@ -17,7 +17,7 @@
     {
       "name": "Historical approved map/character/expression SHA-256 before run",
       "pass": false,
-      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     actual: '31f504ff12dfcb770529d696053b54209e77cda2e0938618144cf831a089bd05',\n+     expected: '83b1195ea94ff00ad3df723233063539a79c4e7fbfab31d79334c82fd7c486d3',\n+     file: 'frontend/company-office/reference-v3/directional-player.mjs'\n+   },\n+   {\n+     actual: '0c8d8e23bcd65f29af58d156760ad0c3b4db1508a9b8e1191e181a431c435910',\n+     expected: '2600ca3b63383d0356f613612f8b083503f2b8c1b3b88d08a0892feec4ab3325',\n+     file: 'frontend/company-office/reference-v3/runtime.mjs'\n+   }\n+ ]\n- []\n\n    at historicalHashes (file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:23:184)\n    at async check (file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:19:50)\n    at async file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:25:3",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     actual: 'c17d523cf15f8f4bf5846521c9e82a2f9dde89c70c0d31e066ec8a4154d8250b',\n+     expected: '0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024',\n+     file: 'frontend/company-office/media/character-base.png'\n+   },\n+   {\n+     actual: '38954adb523a9e0f907a09d4b1085eb73b8c82ee8e12d12ee4997fd1a073a381',\n+     expected: 'f94741f5d9148a9752a5e67cb8e696238de7f81cd7cf1a1416b6c973d315644e',\n+     file: 'frontend/company-office/reference-v3/assets.json'\n+   },\n+   {\n+     actual: 'ca85a35498042e0ce9eea778d3c384aa69f88b2c6256128efbae60c567ae1c92',\n+     expected: '83b1195ea94ff00ad3df723233063539a79c4e7fbfab31d79334c82fd7c486d3',\n+     file: 'frontend/company-office/reference-v3/directional-player.mjs'\n+   },\n+   {\n+     actual: 'f5488f61985a856b2ea3d78a811ac4e789dc371031158e44e2efbffe369d35f4',\n+     expected: 'f5e9f05b0447ff708e76f6a38ec2e997fab504edbb36abbb1e21c46e5fe91aa0',\n+     file: 'frontend/company-office/reference-v3/layout.json'\n+   },\n+   {\n+     actual: 'ed0775f1abceeada48aa40034c5281c3a5d34830f171a4229e1a05d95cc863d1',\n+     expected: '2600ca3b63383d0356f613612f8b083503f2b8c1b3b88d08a0892feec4ab3325',\n+     file: 'frontend/company-office/reference-v3/runtime.mjs'\n+   }\n+ ]\n- []\n\n    at historicalHashes (file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:23:184)\n    at async check (file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:19:50)\n    at async file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:25:3",
       "evidence": null
     },
     {
@@ -25,21 +25,21 @@
       "pass": true,
       "evidence": {
         "files": {
-          "frontend/company-office/connected-v4/assets.json": "d4ffb707738b7a294522b8ae631ee9ee17b1d20a5d87a9a18d5a5f62dca58fa2",
+          "frontend/company-office/connected-v4/assets.json": "2ee18992ef64cc5e261ef191e6cb742da6ee423a461743218a0488b75c7630e6",
           "frontend/company-office/connected-v4/bubble-layout.mjs": "58a6345a8a9e166c75eb8ca222e26071a8cc23a9d157c21656d5822076cd0547",
-          "frontend/company-office/connected-v4/furniture-contract.mjs": "10629482435b092991fbd4f4407055d4d02313217cabdacbbd68983babb7a40d",
-          "frontend/company-office/connected-v4/layout.json": "1dd233f1f0be50e0ef558093499fdeea002f2be61cc031710f2a1c483509f08a",
+          "frontend/company-office/connected-v4/furniture-contract.mjs": "3215cc287c3364b9762139eab36db89354397917c8829ebef83ad1b56f6792b5",
+          "frontend/company-office/connected-v4/layout.json": "107460b3c844c217f01408ec54bb91dea6734702cef73776850103dee4b4b3b9",
           "frontend/company-office/connected-v4/media/horizontal/desk-bank-horizontal.png": "09daa50a44801a5d7046c61d43a494f7761006a0a43f3a0d2e4cae9de2e155cc",
           "frontend/company-office/connected-v4/media/horizontal/manifest.json": "9e9095d1c14d9801a83d5ef794425747274cd04edab0a7f12ed55cc457183d98",
           "frontend/company-office/connected-v4/media/horizontal/prompt.txt": "cd4a69861b9a31fc2c41de5f43dc7763303d024085f7dd82362e83a9cadbf136",
           "frontend/company-office/connected-v4/media/vertical/connected-vertical-eight-seats.png": "3b348545a435bafab0c824c18fca207698dce37bb14ed7d544464c0bb4850550",
           "frontend/company-office/connected-v4/media/vertical/manifest.json": "ea6b21f801ad55b37a495ce49d06c782395c190d75d2f3b05f4efdc0a8e5a9e1",
           "frontend/company-office/connected-v4/media/vertical/prompt.txt": "dd7bc3e6d851ea033ac8be23439a0ed6897e67919139206793de2431cb772246",
-          "frontend/company-office/connected-v4/runtime.mjs": "52215ab3811b0d0bbd960dde5654bc34f5fe797b18cb659b73d23c5193b10050",
+          "frontend/company-office/connected-v4/runtime.mjs": "efdef290cdb512b1be8169b001e7c0c672915b0ea803cd3754dc8e7b09df2a66",
           "frontend/company-office/connected-v4/screen-overlay.mjs": "cb3e5188142de63e9302ef00cdfa68c704d815c9cab4a9b96c75429f6c813f94",
-          "frontend/company-office/connected-v4/seated-player.mjs": "b5b61751657c7ad1c4d2aaba977f1ca67a5f00c0ee23f996f50985aabd924dda",
+          "frontend/company-office/connected-v4/seated-player.mjs": "138f4f15b6e6fea26e612d2fef51d59f41d9b90df7c8a3656b28b6813a2654fb",
           "frontend/company-office/connected-v4/style.css": "04e56ced8471bb5eed7f4b90892e950afac36cd15d8a08e2ba1576404f317dd1",
-          "frontend/company-office/connected-v4/telemetry-adapter.mjs": "a0d1ef8d0fbd464dd6cf5e6de5096f169cb2522d3350444483243ea688538d70"
+          "frontend/company-office/connected-v4/telemetry-adapter.mjs": "b45242616e7821b7dcdff3116b268895bbc54db6abdc991233b113518d4757b8"
         },
         "note": "Run-start baseline, not historical acceptance"
       }
@@ -53,7 +53,7 @@
     {
       "name": "Historical protected assets unchanged after run",
       "pass": false,
-      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     actual: '31f504ff12dfcb770529d696053b54209e77cda2e0938618144cf831a089bd05',\n+     expected: '83b1195ea94ff00ad3df723233063539a79c4e7fbfab31d79334c82fd7c486d3',\n+     file: 'frontend/company-office/reference-v3/directional-player.mjs'\n+   },\n+   {\n+     actual: '0c8d8e23bcd65f29af58d156760ad0c3b4db1508a9b8e1191e181a431c435910',\n+     expected: '2600ca3b63383d0356f613612f8b083503f2b8c1b3b88d08a0892feec4ab3325',\n+     file: 'frontend/company-office/reference-v3/runtime.mjs'\n+   }\n+ ]\n- []\n\n    at historicalHashes (file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:23:184)\n    at async check (file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:19:50)\n    at async file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:112:3",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     actual: 'c17d523cf15f8f4bf5846521c9e82a2f9dde89c70c0d31e066ec8a4154d8250b',\n+     expected: '0833992ee3d72a2b55fc8647808f9183761b130a2438d994f7619205c2fbf024',\n+     file: 'frontend/company-office/media/character-base.png'\n+   },\n+   {\n+     actual: '38954adb523a9e0f907a09d4b1085eb73b8c82ee8e12d12ee4997fd1a073a381',\n+     expected: 'f94741f5d9148a9752a5e67cb8e696238de7f81cd7cf1a1416b6c973d315644e',\n+     file: 'frontend/company-office/reference-v3/assets.json'\n+   },\n+   {\n+     actual: 'ca85a35498042e0ce9eea778d3c384aa69f88b2c6256128efbae60c567ae1c92',\n+     expected: '83b1195ea94ff00ad3df723233063539a79c4e7fbfab31d79334c82fd7c486d3',\n+     file: 'frontend/company-office/reference-v3/directional-player.mjs'\n+   },\n+   {\n+     actual: 'f5488f61985a856b2ea3d78a811ac4e789dc371031158e44e2efbffe369d35f4',\n+     expected: 'f5e9f05b0447ff708e76f6a38ec2e997fab504edbb36abbb1e21c46e5fe91aa0',\n+     file: 'frontend/company-office/reference-v3/layout.json'\n+   },\n+   {\n+     actual: 'ed0775f1abceeada48aa40034c5281c3a5d34830f171a4229e1a05d95cc863d1',\n+     expected: '2600ca3b63383d0356f613612f8b083503f2b8c1b3b88d08a0892feec4ab3325',\n+     file: 'frontend/company-office/reference-v3/runtime.mjs'\n+   }\n+ ]\n- []\n\n    at historicalHashes (file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:23:184)\n    at async check (file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:19:50)\n    at async file:///Users/hepingyu/Documents/ChatGPT/Star-Office-UI/scripts/test_office_connected_v5_pixels.mjs:112:3",
       "evidence": null
     },
     {
@@ -71,6 +71,6 @@
     "replacements",
     "4K capture"
   ],
-  "finishedAt": "2026-10-17T18:50:44.049Z",
+  "finishedAt": "2026-10-29T16:46:12.640Z",
   "status": "failed"
 }

@@ -46,12 +46,9 @@ archive/legacy-face-atlases/
 deploy/office/out/
 docs/DEPRECATED_ASSETS_AUDIT_2026-10-30.json
 
-# Portable suite release output is distributed through GitHub Releases.
-# Keep only the release index and detached checksums in the repository.
-deploy/bundles/*.tar.gz
-deploy/bundles/*/
-!deploy/bundles/README.md
-!deploy/bundles/*.sha256
+# Portable deployment bundle output and local Quickstart state
+deploy/bundles/
+deploy/quickstart/.runtime/
 
 # Bundled Sub2API integration source: keep dependencies/build output local
 integrations/sub2api/host-source/.git/

@@ -1,0 +1,7 @@
+# Runtime state created when --state-dir points inside this directory.
+*.env
+secrets/
+backups/
+huggingface/
+compile-cache/
+vllm-entrypoint.sh

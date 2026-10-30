@@ -101,11 +101,11 @@ export function statistics(snapshot) {
 export function failedSnapshot(previous, now = Date.now()) { return publicSnapshot(previous, { now, failed: true }); }
 export function validateBindings(bindings) {
   if (!Array.isArray(bindings)) return '工位绑定格式无效';
-  const seats = new Set(), users = new Set();
+  const seats = new Set();
   for (const binding of bindings) {
     if (!SEAT_IDS.includes(binding.stationId) || seats.has(binding.stationId)) return '工位不存在或重复'; seats.add(binding.stationId);
     if (binding.userId === null) continue;
-    if (typeof binding.userId !== 'string' || !binding.userId || users.has(binding.userId)) return '同一用户只能绑定一个工位；用户 ID 必须是字符串'; users.add(binding.userId);
+    if (typeof binding.userId !== 'string' || !binding.userId) return '用户 ID 必须是字符串';
     if (typeof binding.displayName !== 'string' || !binding.displayName.trim() || binding.displayName.length > 40) return '请填写 1–40 字的展示名';
   }
   return null;

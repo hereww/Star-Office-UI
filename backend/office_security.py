@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import os
 import re
 import secrets
 from urllib.parse import urlsplit
@@ -24,6 +25,16 @@ COOKIE_NAME = "office_admin_session"
 COOKIE_PATH = "/"
 PREAUTH_TTL = 1800
 ADMIN_TTL = 12 * 3600
+
+
+def admin_http_allowed():
+    """Return whether the explicitly requested insecure admin transport is on.
+
+    The production default remains HTTPS.  Deployments that deliberately expose
+    the admin portal over HTTP must opt in through the separate gate so the
+    cookie, transport and origin checks change together.
+    """
+    return os.environ.get("OFFICE_ADMIN_ALLOW_HTTP", "0") == "1"
 
 
 def strong_password_hash(value):
@@ -85,7 +96,7 @@ class OfficeSecurity:
 
     def set_cookie(self, response, token, authenticated=False):
         response.set_cookie(COOKIE_NAME, self.signer.dumps(token), max_age=ADMIN_TTL if authenticated else PREAUTH_TTL,
-                            secure=True, httponly=True, samesite="Lax", path=COOKIE_PATH)
+                            secure=not admin_http_allowed(), httponly=True, samesite="Lax", path=COOKIE_PATH)
         return response
 
     def csrf_valid(self, token, candidate):

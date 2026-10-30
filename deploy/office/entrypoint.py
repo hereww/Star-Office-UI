@@ -26,6 +26,8 @@ def secret_file(path):
 def prepare_web():
     if os.environ.get('OFFICE_ENABLED') != '1':
         fail('OFFICE_ENABLED=1 is required for production release')
+    if os.environ.get('OFFICE_ADMIN_ALLOW_HTTP', '0') not in ('0', '1'):
+        fail('OFFICE_ADMIN_ALLOW_HTTP must be 0 or 1')
     security = importlib.import_module('security_utils')
     if not security.is_production_mode():
         fail('production mode required')

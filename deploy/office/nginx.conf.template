@@ -2,10 +2,8 @@
 # @RELEASE_ID@ and @APP_PORT@ are rendered by packaging/preflight.
 server {
     listen 192.168.100.221:19000;
-    server_name 192.168.100.221;
-    allow 192.168.100.0/24;
-    deny all;
-    if ($host != 192.168.100.221) { return 444; }
+    server_name _;
+    allow all;
     autoindex off;
     default_type application/octet-stream;
     types {
@@ -49,14 +47,12 @@ server {
     location / { return 404; }
 }
 server {
-    listen 192.168.100.221:19443 ssl;
-    server_name 192.168.100.221;
-    allow 192.168.100.0/24;
-    deny all;
-    if ($host != 192.168.100.221) { return 444; }
-    ssl_certificate /opt/star-office-ui/private/office-server-chain.pem;
-    ssl_certificate_key /opt/star-office-ui/private/office-server.key;
-    ssl_protocols TLSv1.2 TLSv1.3;
+    # Explicitly insecure public admin listener, enabled only for the user
+    # requested HTTP deployment.  The application gate and cookie policy must
+    # be enabled together with this listener.
+    listen 192.168.100.221:19443;
+    server_name _;
+    allow all;
     autoindex off;
     default_type application/octet-stream;
     types {
@@ -75,10 +71,15 @@ server {
     }
     location = /admin {
         limit_except GET { deny all; }
-        # The extensionless request URI does not inherit the alias .html type.
-        # An explicit type is required to render the login page, not download it.
-        default_type text/html;
-        alias /opt/star-office-ui/releases/@RELEASE_ID@/public/static/releases/@RELEASE_ID@/office/admin.html;
+        # Render the boot JSON from the application so the explicit HTTP gate
+        # reaches the browser as well as the API and cookie policy.
+        proxy_pass http://127.0.0.1:@APP_PORT@/admin;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-Forwarded-Proto http;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Connection "";
+        proxy_http_version 1.1;
         add_header Cache-Control "no-store" always;
         add_header X-Content-Type-Options nosniff always;
         add_header X-Frame-Options SAMEORIGIN always;
@@ -96,9 +97,9 @@ server {
     # same-origin + current CSRF token. Unintegrated backend fails closed.
     location / {
         proxy_pass http://127.0.0.1:@APP_PORT@;
-        proxy_set_header Host 192.168.100.221:19443;
-        proxy_set_header X-Forwarded-Host 192.168.100.221:19443;
-        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-Forwarded-Proto http;
         proxy_set_header X-Forwarded-For $remote_addr;
         proxy_set_header Connection "";
         proxy_http_version 1.1;

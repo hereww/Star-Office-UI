@@ -17,7 +17,7 @@ export async function mount(root, config, api) {
   const now = el('time', { class: 'sample-time', 'data-testid': 'last-sample' }, '尚无采样');
   const source = el('span', { class: 'connection', 'data-testid': 'source-status', role: 'status' }, '○ 等待连接');
   const notice = el('div', { class: 'notice', 'data-testid': 'employee-notice', role: 'status', hidden: true });
-  const mapNotice = el('div', { class: 'map-loading', role: 'status' }, '正在载入已确认的 V5 场景…');
+  const mapNotice = el('div', { class: 'map-loading', role: 'status' }, '正在载入已确认的 6.0.0 办公室场景（V5）…');
   const mapHost = el('div', { class: 'map-host', 'data-testid': 'office-map', tabindex: '-1', 'aria-label': '办公室地图：可拖动平移；缩放默认锁定，可通过缩放按钮解锁；使用视角按钮或工位列表操作' });
   const mapViewport = el('div', { class: 'map-viewport', 'data-testid': 'map-viewport' });
   const hud = createFullscreenHud();
@@ -34,7 +34,7 @@ export async function mount(root, config, api) {
     updateZoomLockUI();
   }, { class: 'view-button zoom-lock-button', 'data-testid': 'map-zoom-lock', 'aria-pressed': 'true' });
   const seats = el('div', { class: 'seat-strip', 'aria-label': '工位选择' });
-  const mapShell = el('section', { class: 'map-shell', 'aria-label': '实时办公室' }, mapHost, mapNotice, el('div', { class: 'map-caption' }, el('span', {}, 'V5 · 连排工位'), el('span', {}, '仅展示采样时刻状态')));
+  const mapShell = el('section', { class: 'map-shell', 'aria-label': '实时办公室' }, mapHost, mapNotice, el('div', { class: 'map-caption' }, el('span', {}, '6.0.0 · 连排工位（V5 场景）'), el('span', {}, '仅展示采样时刻状态')));
   const stage = el('main', { id: 'main-content', class: 'office-stage', tabindex: '-1' }, mapShell, detail);
   const fullScreen = button('⛶ 全屏', async () => { try { if (document.fullscreenElement) await document.exitFullscreen(); else await mapHost.requestFullscreen(); } catch { setNotice(notice, '此浏览器暂不支持全屏，可使用视角切换查看地图。'); } }, { class: 'quiet-button', 'data-testid': 'map-fullscreen', 'aria-label': '地图全屏', 'aria-pressed': 'false', title: '全屏地图与只读角色信息；按 Esc 退出全屏', disabled: true });
   const fullscreenChange = () => {
@@ -46,13 +46,15 @@ export async function mount(root, config, api) {
   const fullscreenKeydown = event => {
     // Embedded browsers can forward Esc to the page without exiting native
     // fullscreen. Keep a keyboard exit even though the map has no controls.
-    if (event.key === 'Escape' && document.fullscreenElement === mapHost) {
-      event.preventDefault();
+    if ((event.key === 'Escape' || event.key === 'Esc') && document.fullscreenElement === mapHost) {
       void document.exitFullscreen().catch(() => {});
     }
   };
   document.addEventListener('fullscreenchange', fullscreenChange);
-  document.addEventListener('keydown', fullscreenKeydown);
+  // Capture before Phaser/canvas handlers, but leave the browser's native
+  // Escape action intact as a fallback when the embedded implementation
+  // rejects document.exitFullscreen().
+  document.addEventListener('keydown', fullscreenKeydown, true);
   function updateZoomLockUI() {
     zoomLockButton.textContent = zoomLocked ? '🔒 缩放已锁定' : '🔓 可缩放';
     zoomLockButton.setAttribute('aria-pressed', String(zoomLocked));
@@ -114,8 +116,8 @@ export async function mount(root, config, api) {
   void createOfficeMap(mapViewport, config, { onSelect: id => { if (id === selected) return; selected = id; selectedByUser = true; setExpanded(true); renderDetail(); renderSeats(); hud.update(snapshot, selected); } }).then(handle => {
     if (disposed) { handle.dispose(); return; } map = handle; map.setZoomLocked(zoomLocked); map.applyTelemetrySnapshot(toRuntimeSnapshot(snapshot)); renderDetail();
     mapNotice.hidden = true; fullScreen.disabled = false;
-    if (!handle.adapterReady) { mapNotice.hidden = false; mapNotice.classList.add('map-pending'); mapNotice.textContent = 'V5 地图已载入 · 等待遥测适配器接入（角色已隐藏）'; }
+    if (!handle.adapterReady) { mapNotice.hidden = false; mapNotice.classList.add('map-pending'); mapNotice.textContent = '6.0.0 地图已载入（V5 场景） · 等待遥测适配器接入（角色已隐藏）'; }
     render(); if (!selectedByUser && !snapshot.display) map.setView('overview');
   }).catch(() => { if (!disposed) { mapNotice.textContent = '地图暂时无法加载。请检查同源版本资源；工位列表仍可使用。'; mapNotice.classList.add('map-pending'); } });
-  return () => { disposed = true; document.removeEventListener('fullscreenchange', fullscreenChange); document.removeEventListener('keydown', fullscreenKeydown); stopPolling(); clearInterval(staleTimer); map?.dispose(); };
+  return () => { disposed = true; document.removeEventListener('fullscreenchange', fullscreenChange); document.removeEventListener('keydown', fullscreenKeydown, true); stopPolling(); clearInterval(staleTimer); map?.dispose(); };
 }

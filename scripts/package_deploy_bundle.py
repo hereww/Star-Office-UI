@@ -29,13 +29,16 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 BUNDLE_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}$")
+VERSION_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._+\-]{0,63}$")
+IMAGE_ARCHIVE_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._+\-]{0,127}")
 ROOT_FILES = (
     "VERSION", "LICENSE", "asset-defaults.json", "asset-positions.json",
     "runtime-config.sample.json", "state.sample.json", "join-keys.sample.json",
 )
 QUICKSTART_FILES = (
     "Dockerfile", "docker-compose.yml", "entrypoint.py", "configure_sub2api.py",
-    "env.example", "install.sh", "uninstall.sh", "verify.sh", "requirements.txt", "README.md",
+    "env.example", "install.sh", "update.sh", "uninstall.sh", "verify.sh", "verify_bundle.py",
+    "requirements.txt", "README.md",
 )
 DOC_FILES = (
     "docs/SYSTEM_DEPLOYMENT.md",
@@ -136,6 +139,12 @@ def package(root: Path, output: Path, bundle_id: str, wheelhouse: Path | None = 
     root, output = root.resolve(), output.resolve()
     if not BUNDLE_RE.fullmatch(bundle_id):
         raise BundleError("invalid bundle ID")
+    version_file = root / "VERSION"
+    if not version_file.is_file() or version_file.is_symlink():
+        raise BundleError("project VERSION file is missing")
+    project_version = version_file.read_text(encoding="utf-8").strip()
+    if not VERSION_RE.fullmatch(project_version):
+        raise BundleError("unsafe project version")
     bundle_dir = output / bundle_id
     archive = output / f"{bundle_id}.tar.gz"
     checksum = Path(f"{archive}.sha256")
@@ -174,6 +183,8 @@ def package(root: Path, output: Path, bundle_id: str, wheelhouse: Path | None = 
         image_archive = image_archive.resolve()
         if image_archive.is_symlink() or not image_archive.is_file():
             raise BundleError(f"Docker image archive missing: {image_archive}")
+        if not IMAGE_ARCHIVE_RE.fullmatch(image_archive.name):
+            raise BundleError(f"unsafe Docker image archive name: {image_archive.name}")
 
     output.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix=".star-office-bundle-", dir=output) as temp:
@@ -205,7 +216,7 @@ def package(root: Path, output: Path, bundle_id: str, wheelhouse: Path | None = 
         manifest = {
             "schema_version": 1,
             "bundle_id": bundle_id,
-            "project_version": (root / "VERSION").read_text().strip(),
+            "project_version": project_version,
             "python": "3.11",
             "offline_wheelhouse": bool(wheels),
             "offline_docker_image": image_archive.name if image_archive else None,

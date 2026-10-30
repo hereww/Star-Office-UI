@@ -495,6 +495,21 @@ class APITests(unittest.TestCase):
         self.assertEqual(self.client.get("/api/office/admin/session", base_url="http://office.example.invalid").status_code, 400)
         self.assertEqual(self.client.get("/api/office/snapshot", base_url="http://office.example.invalid").status_code, 200)
 
+    def test_http_admin_opt_in_uses_http_origin_and_non_secure_cookie(self):
+        with patch.dict(os.environ, {"OFFICE_ADMIN_ALLOW_HTTP": "1"}):
+            client = self.app.test_client()
+            base = "http://office.example.invalid"
+            initial = client.get("/api/office/admin/session", base_url=base)
+            self.assertEqual(initial.status_code, 200)
+            csrf = initial.get_json()["csrf_token"]
+            response = client.post("/api/office/admin/session", base_url=base,
+                                   json={"username": "admin", "password": FIXTURE_PASSWORD},
+                                   headers={"Origin": base, "X-CSRF-Token": csrf})
+            self.assertEqual(response.status_code, 200)
+            self.assertNotIn("Secure", response.headers["Set-Cookie"])
+            self.assertIn("HttpOnly", response.headers["Set-Cookie"])
+            self.assertEqual(client.get("/api/office/admin/users", base_url=base).status_code, 200)
+
     def test_login_rate_limit_shared_between_sessions_and_workers(self):
         self.csrf = self.get("/api/office/admin/session").get_json()["csrf_token"]
         for _ in range(5):
@@ -624,6 +639,20 @@ class APITests(unittest.TestCase):
         history = self.get("/api/office/admin/config/history").get_json()
         self.assertEqual(len(history["audit"]), 2)
 
+    def test_room_character_master_switch_is_persisted_and_public(self):
+        self.login()
+        initial = self.get("/api/office/admin/config").get_json()["config"]
+        config = writable(initial)
+        config["appearance"] = copy.deepcopy(initial["appearance"])
+        config["room_characters"] = copy.deepcopy(initial["room_characters"])
+        config["room_characters"]["rock"]["enabled"] = False
+        response = self.write("PUT", "/api/office/admin/config", {"expected_version": initial["version"], "config": config})
+        self.assertEqual(response.status_code, 200, response.get_json())
+        saved = response.get_json()["config"]
+        self.assertFalse(saved["room_characters"]["rock"]["enabled"])
+        self.assertEqual(self.get("/api/office/admin/config").get_json()["config"], saved)
+        self.assertFalse(self.get("/api/office/snapshot").get_json()["room_characters"]["rock"]["enabled"])
+
     def test_character_profile_save_rejects_candidates_and_readback_is_explicit(self):
         self.login()
         config = writable(self.store.read_config())
@@ -667,13 +696,20 @@ class APITests(unittest.TestCase):
         self.assertEqual(self.store.read_config()["version"], 1)
         self.assertNotIn("character_profile_id", self.store.read_config()["bindings"][0])
 
-    def test_config_duplicate_binding_validation(self):
+    def test_config_duplicate_user_allowed_but_duplicate_seat_rejected(self):
         self.login()
         config = writable(self.store.read_config())
         config["bindings"].append({"seat_id": "desk-01", "user_id": "1", "display_name": "fixture", "enabled": True})
         response = self.write("PUT", "/api/office/admin/config", {"expected_version": 1, "config": config})
+        self.assertEqual(response.status_code, 200, response.get_json())
+        saved = response.get_json()["config"]
+        self.assertEqual(saved["version"], 2)
+        self.assertEqual([b["user_id"] for b in saved["bindings"]], ["1", "1"])
+        config = writable(saved)
+        config["bindings"].append({"seat_id": "desk-01", "user_id": "1", "display_name": "重复工位", "enabled": True})
+        response = self.write("PUT", "/api/office/admin/config", {"expected_version": 2, "config": config})
         self.assertEqual(response.status_code, 400)
-        self.assertEqual(self.store.read_config()["version"], 1)
+        self.assertEqual(self.store.read_config()["version"], 2)
 
     def test_config_user_authorization_not_browser_scope(self):
         self.login()

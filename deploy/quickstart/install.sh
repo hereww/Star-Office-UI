@@ -7,18 +7,50 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 SCRIPT_DIR="$ROOT/deploy/quickstart"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 MODE="auto"
 ENGINE="auto"
 INSTALL_DIR="${STAR_OFFICE_INSTALL_DIR:-${HOME:-/tmp}/.star-office-ui}"
 PORT="${STAR_OFFICE_PORT:-19000}"
 BIND="${STAR_OFFICE_BIND:-0.0.0.0}"
-IMAGE="${STAR_OFFICE_IMAGE:-star-office-ui:bundle}"
+IMAGE="${STAR_OFFICE_IMAGE:-}"
 PYTHON_BASE="${PYTHON_BASE:-python:3.11-slim}"
 IMAGE_ARCHIVE="${STAR_OFFICE_IMAGE_ARCHIVE:-}"
 WITH_SUB2API=0
 ALLOW_HTTP_SUB2API=0
 ALLOW_HTTP_ADMIN=0
 CONFIGURE_ARGS=()
+BUNDLE_ID="source"
+PROJECT_VERSION="unknown"
+fail() { echo "star-office-install: $*" >&2; exit 2; }
+
+if [[ -f "$ROOT/VERSION" ]]; then
+  PROJECT_VERSION="$(tr -d '\r\n' < "$ROOT/VERSION")"
+fi
+if [[ -f "$ROOT/bundle-manifest.json" && -x "$SCRIPT_DIR/verify_bundle.py" ]]; then
+  if command -v "$PYTHON_BIN" >/dev/null 2>&1; then
+    "$PYTHON_BIN" "$SCRIPT_DIR/verify_bundle.py" "$ROOT" >/dev/null || fail 'bundle integrity verification failed'
+    BUNDLE_ID="$("$PYTHON_BIN" - "$ROOT/bundle-manifest.json" <<'PY'
+import json
+import sys
+print(json.load(open(sys.argv[1], encoding="utf-8"))["bundle_id"])
+PY
+    )"
+    PROJECT_VERSION="$("$PYTHON_BIN" - "$ROOT/bundle-manifest.json" <<'PY'
+import json
+import sys
+print(json.load(open(sys.argv[1], encoding="utf-8"))["project_version"])
+PY
+    )"
+  elif command -v sha256sum >/dev/null 2>&1; then
+    (cd "$ROOT" && sha256sum -c SHA256SUMS >/dev/null) || fail 'bundle checksum verification failed'
+  else
+    fail 'bundle verification requires Python or sha256sum'
+  fi
+fi
+if [[ -z "$IMAGE" ]]; then
+  if [[ "$BUNDLE_ID" != source ]]; then IMAGE="star-office-ui:$BUNDLE_ID"; else IMAGE="star-office-ui:bundle"; fi
+fi
 
 usage() {
   cat <<'EOF'
@@ -65,8 +97,6 @@ Examples:
   ./deploy/quickstart/install.sh --offline --native --install-dir /opt/star-office-ui
 EOF
 }
-
-fail() { echo "star-office-install: $*" >&2; exit 2; }
 
 generate_secret() {
   if command -v openssl >/dev/null 2>&1; then
@@ -118,6 +148,54 @@ seed_docker_file() {
     --mount "type=volume,src=$volume,dst=/target" \
     --mount "type=bind,src=$source_file,dst=/source,readonly" \
     "$IMAGE" -c "rm -f /target/$target_file && cp /source /target/$target_file && chown 10001:10001 /target/$target_file && chmod $mode /target/$target_file"
+}
+
+write_install_state() {
+  if ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
+    [[ "$BUNDLE_ID" =~ ^[A-Za-z0-9._-]+$ && "$PROJECT_VERSION" =~ ^[A-Za-z0-9._+-]+$ \
+      && "$ENGINE" =~ ^(docker|native)$ && "$IMAGE" =~ ^[A-Za-z0-9._:/-]+$ ]] || return 0
+    local temporary="$INSTALL_DIR/.install-state.$$"
+    umask 077
+    printf '{\n  "schema_version": 1,\n  "bundle_id": "%s",\n  "project_version": "%s",\n  "engine": "%s",\n  "source_root": "%s",\n  "image": "%s"\n}\n' \
+      "$BUNDLE_ID" "$PROJECT_VERSION" "$ENGINE" "$ROOT" "$IMAGE" > "$temporary"
+    chmod 600 "$temporary"
+    mv -f -- "$temporary" "$INSTALL_DIR/install-state.json"
+    return 0
+  fi
+  "$PYTHON_BIN" - "$INSTALL_DIR/install-state.json" "$BUNDLE_ID" "$PROJECT_VERSION" "$ENGINE" "$ROOT" "$IMAGE" <<'PY'
+import json
+import os
+import sys
+import tempfile
+from datetime import datetime, timezone
+from pathlib import Path
+
+path = Path(sys.argv[1])
+value = {
+    "schema_version": 1,
+    "bundle_id": sys.argv[2],
+    "project_version": sys.argv[3],
+    "engine": sys.argv[4],
+    "source_root": sys.argv[5],
+    "image": sys.argv[6],
+    "installed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+}
+fd, temporary = tempfile.mkstemp(prefix=".install-state.", dir=str(path.parent), text=True)
+try:
+    os.fchmod(fd, 0o600)
+    with os.fdopen(fd, "w", encoding="utf-8", newline="") as handle:
+        json.dump(value, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(temporary, path)
+    path.chmod(0o600)
+finally:
+    try:
+        os.unlink(temporary)
+    except FileNotFoundError:
+        pass
+PY
 }
 
 while (($#)); do
@@ -215,6 +293,7 @@ STAR_OFFICE_ADMIN_VOLUME=star-office-ui-admin-secret
 STAR_OFFICE_CONSUMER_VOLUME=star-office-ui-consumer-secret
 STAR_OFFICE_TRUST_VOLUME=star-office-ui-upstream-trust
 STAR_OFFICE_ENV=production
+STAR_OFFICE_ENGINE=$ENGINE
 OFFICE_ENABLED=0
 OFFICE_RELEASE_ID=quickstart
 OFFICE_USER_IDS=1,4,7,8
@@ -310,6 +389,7 @@ if [[ "$ENGINE" == docker ]]; then
   if [[ "$INTEGRATED" == "1" ]]; then
     echo "Sub2API collector is enabled; office snapshot is collected server-side."
   fi
+  write_install_state
   echo "Private deployment state: $INSTALL_DIR"
   exit 0
 fi
@@ -346,6 +426,7 @@ if [[ "$INTEGRATED" == "1" ]]; then
 fi
 
 nohup env STAR_OFFICE_DATA_DIR="$INSTALL_DIR/data" \
+  PYTHONDONTWRITEBYTECODE=1 \
   STAR_OFFICE_ENV="${STAR_OFFICE_ENV:-production}" \
   OFFICE_ENABLED="${OFFICE_ENABLED:-0}" \
   OFFICE_DATA_DIR="$INSTALL_DIR/data" \
@@ -367,6 +448,7 @@ pid="$(cat "$PID_FILE")"
 kill -0 "$pid" 2>/dev/null || { tail -n 40 "$LOG_FILE" >&2; fail 'native service exited during startup'; }
 if [[ "$INTEGRATED" == "1" ]]; then
   nohup env STAR_OFFICE_ENV="${STAR_OFFICE_ENV:-production}" \
+    PYTHONDONTWRITEBYTECODE=1 \
     OFFICE_DATA_DIR="$INSTALL_DIR/data" \
     OFFICE_SUB2API_BASE_URL="$OFFICE_SUB2API_BASE_URL" \
     OFFICE_ALLOW_HTTP="${OFFICE_ALLOW_HTTP:-0}" \
@@ -383,6 +465,7 @@ if [[ "$INTEGRATED" == "1" ]]; then
   collector_pid="$(cat "$COLLECTOR_PID_FILE")"
   kill -0 "$collector_pid" 2>/dev/null || { tail -n 40 "$COLLECTOR_LOG_FILE" >&2; fail 'native collector exited during startup'; }
 fi
+write_install_state
 echo "Star Office UI is running at http://$BIND:$PORT/"
 if [[ "$INTEGRATED" == "1" ]]; then
   echo "Sub2API collector is enabled; office snapshot is collected server-side."

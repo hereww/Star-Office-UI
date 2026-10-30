@@ -91,6 +91,8 @@ git diff --check
 - `assets/company-office-connected-v5/qa/browser-qa.json`
 - `assets/company-office-connected-v5/qa/pixel-qa.json`
 
+本目录的 QA 资料已在 2026-10-30 做外部归档快照，源文件保留在原路径；快照位置和逐文件校验见 `docs/ASSETS_ARCHIVE_2026-10-30.md`。QA 截图不是 V5 运行时依赖，当前运行素材仍来自 `frontend/company-office/connected-v5/` 及其 `reference-v3` 依赖。旧 `typing-prototype` 继续作为已归档设计证据保留，不重新接回 `handsCanvas` 或键盘交互。
+
 ## 7. 本地预览
 
 ```sh

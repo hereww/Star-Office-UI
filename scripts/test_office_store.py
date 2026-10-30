@@ -62,8 +62,10 @@ class StoreTests(unittest.TestCase):
         config = self.store.read_config()
         self.assertEqual(config["room_characters"], DEFAULT_ROOM_CHARACTERS_CONFIG)
         candidate = {key: copy.deepcopy(config[key]) for key in ("bindings", "display", "collection", "appearance", "room_characters")}
+        candidate["room_characters"]["rock"]["enabled"] = False
         candidate["room_characters"]["rock"]["performers"]["guitarist-gray"] = False
         saved = self.store.save_config(1, candidate)
+        self.assertFalse(saved["room_characters"]["rock"]["enabled"])
         self.assertFalse(saved["room_characters"]["rock"]["performers"]["guitarist-gray"])
         self.assertEqual(self.store.read_config()["version"], 2)
         invalid = copy.deepcopy(saved)
@@ -246,13 +248,16 @@ class StoreTests(unittest.TestCase):
         value["bindings"][0]["user_id"] = "9223372036854775807"
         self.assertEqual(self.store.save_config(1, value)["bindings"][0]["user_id"], "9223372036854775807")
 
-    def test_duplicate_users_and_seats_rejected(self):
+    def test_duplicate_users_allowed_but_duplicate_seats_rejected(self):
         base = writable(self.store.read_config())
         second = {"seat_id": "desk-01", "user_id": "1", "display_name": "测试", "enabled": True}
-        for binding in (second, {**second, "seat_id": "desk-12", "user_id": "2"}):
-            with self.subTest(binding=binding):
-                with self.assertRaises(ContractError):
-                    self.store.save_config(1, {**base, "bindings": base["bindings"] + [binding]})
+        saved = self.store.save_config(1, {**base, "bindings": base["bindings"] + [second]})
+        self.assertEqual(saved["version"], 2)
+        self.assertEqual({b["seat_id"] for b in saved["bindings"]}, {"desk-01", "desk-12"})
+        self.assertEqual([b["user_id"] for b in saved["bindings"]], ["1", "1"])
+        duplicate_seat = {**second, "user_id": "1", "display_name": "另一个名称"}
+        with self.assertRaises(ContractError):
+            self.store.save_config(2, {**writable(saved), "bindings": saved["bindings"] + [duplicate_seat]})
 
     def test_alias_and_enabled_validation(self):
         for alias in ("", "  ", "x" * 41, "a\nb", None, 12):

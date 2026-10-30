@@ -1,6 +1,6 @@
 # 项目结构与新旧边界
 
-本文档说明当前 hereww/Star-Office-UI 的目录来源、运行入口和开发边界。当前项目参考 ringhyacinth/Star-Office-UI 的 master，保留原项目的旧版像素办公室入口，同时新增新版 Office、独立通用 API、Sub2API 集成和发布运维工具。
+本文档说明当前 `Star-Office-UI` 的目录来源、运行入口和开发边界。当前项目参考上游项目主分支，保留原项目的旧版像素办公室入口，同时新增新版 Office、独立通用 API、Sub2API 集成和发布运维工具。项目发布号只在根目录元数据中维护；本文档不把发布号写进目录规则。
 
 ## 标记规则
 
@@ -36,6 +36,24 @@
 
 原项目中的 docs/screenshots/readme-cover-*.jpg 和历史发行说明属于参考项目的历史资料。当前新版的截图、QA 和发布证据应放在对应的 assets/、frontend/office/、.local/ 或 docs/office-production/ 目录中，不要把历史截图当作新版验收证据。
 
+当前新版开发入口是 `docs/development/README.md` 和 `docs/development/code-map.md`；`frontend/company-office/README.md` 负责解释地图运行时目录。带日期或历史运行时标识的文档只作证据，不作为新的代码组织规则。
+
+## 素材与清理边界
+
+`assets/` 是素材源、重建输入和 QA 证据区，不是正式静态资源根目录。正式 Office 发布由 `frontend/` 的依赖闭包组成，不能把整个 `assets/` 目录复制到发布包。素材是否保留要看运行时导入、manifest、重建脚本和旧版兼容入口，不能只按目录名称或文件日期判断。
+
+| 路径或类别 | 当前状态 | 修改规则 |
+| --- | --- | --- |
+| `assets/room-reference.png`、`assets/room-reference.webp` | 旧版后台和 Quickstart fallback 仍使用 | 必须保留；变更前检查 `backend/app.py` 和 `deploy/quickstart/Dockerfile` |
+| `assets/company-office-floorplan-v2/` | 当前地图的源图、布局、manifest 和生成依据 | 保留可重建输入；运行时副本进入 `frontend/company-office/` |
+| `assets/rock-room-band-v1/source/`、`normalization.json` | 当前 V5 摇滚房间的重建输入 | 保留；预览图与运行时副本分开管理 |
+| `assets/company-office-connected-v4/`、`assets/company-office-reference-v3/` 的源图和 manifest | V4/V3 兼容边界、家具和服务器资源来源 | 先跑 adapter、V3 回归和发布闭包检查，再决定归档 |
+| `assets/**/qa/`、`integration-qa/`、组合预览和候选方案 | QA 截图、报告、旧预览和未接入候选 | 仅作为证据；不得直接作为运行时依赖 |
+| `archive/legacy-face-atlases/` | 已清理脸部图集的本地回滚副本 | 被 `.gitignore` 排除；不提交、不发布、不从源码导入 |
+| `deploy/office/out/`、`deploy/bundles/`、`.local/` | 候选发布物、交付输出和本地证据 | 只保留必要清单和校验材料；不要把生成物当源码修改 |
+
+本次清理已经移除未被当前发布闭包导入的脸部图集、像素脸动画模块、无用 CSS shim 和未接入候选板；当前 V4/V5/reference-v3 运行时、旧根页面、Electron 兼容路径和可重建核心素材继续保留。完整清理清单见 [DEPRECATED_ASSETS_CLEANUP_2026-10-30.md](./DEPRECATED_ASSETS_CLEANUP_2026-10-30.md)，引用审计见 [DEPRECATED_ASSETS_AUDIT_2026-10-30.md](./DEPRECATED_ASSETS_AUDIT_2026-10-30.md)，快照恢复规则见 [ASSETS_ARCHIVE_2026-10-30.md](./ASSETS_ARCHIVE_2026-10-30.md)。
+
 ## 当前目录树
 
 ~~~text
@@ -68,7 +86,7 @@ Star-Office-UI/
 │   └── plugin-tools/            插件打包、验签和测试工具
 ├── scripts/                     [共享/演进] 构建、预览、QA、安全检查和测试
 ├── .local/                      [本地证据/历史] 本地预览、截图、审计和回滚材料
-├── VERSION                      [新版补充] 当前版本号
+├── VERSION                      [新版补充] 发布元数据单一来源
 └── pyproject.toml               [共享/演进] Python 项目元数据
 ~~~
 
@@ -105,9 +123,9 @@ Sub2API（可选）
 
 1. 后端契约和存储：backend/office_contract.py、backend/office_api.py、backend/office_collector.py。
 2. 前端数据投影和运行时：frontend/office/、frontend/company-office/。
-3. 资源清单和发布配置：frontend/office/release-manifest.json、scripts/package_office_release.py、deploy/office/。
-4. 对应测试：scripts/test_office_*.py、scripts/test_office_*.mjs 和 frontend/office/ 下的专项测试。
-5. 使用新 release ID 打包，保留校验值，完成目标环境读回后再切流量。
+3. 资源清单和发布配置：frontend/office/release-manifest.json、scripts/package_office_release.py、deploy/office/；如果涉及素材，先确认源图、manifest 和运行时副本的关系。
+4. 对应测试：scripts/test_office_*.py、scripts/test_office_*.mjs 和 frontend/office/ 下的专项测试；素材清理还要跑发布闭包和 V3/V4/V5 相关回归。
+5. 使用新 release ID 打包，保留校验值，完成目标环境读回后再切流量；不要用本地 QA 截图替代部署验收。
 
 ## 运行时数据和安全边界
 

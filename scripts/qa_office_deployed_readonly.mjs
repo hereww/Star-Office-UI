@@ -35,7 +35,15 @@ for(const spec of [{name:'desktop',width:1920,height:1080,dpr:2},{name:'tablet',
  check(`${spec.name}: screen-only expressions; no walking, hands or keyboard layers`,()=>{assert.equal(observation.animationMode,'expression-plus-screen-effects');assert.equal(observation.walkIntegrated,false);for(const p of observation.players){assert.equal(p.hasHands,false);assert.equal(p.animationMode,'expression-plus-screen-effects');assert.equal(p.keyboardInteraction,false);}return {players:16};});
  check(`${spec.name}: no horizontal overflow, CJK fonts loaded and labelled inputs`,()=>{assert.equal(observation.overflow,false);assert.equal(observation.fonts,'loaded');assert.deepEqual(observation.unlabelledInputs,[]);return {canvas:observation.canvas};});
  if(spec.name==='desktop'){
-  check('desktop: current V5 template, four rock-room cats and two occlusion layers',()=>{assert.equal(observation.characterTemplateId,'connected-v5-character-template-v1');const rock=observation.rockRoomAnimation;assert.equal(rock.enabled,true);assert.equal(rock.performerCount,4);assert.equal(rock.occlusionLayerCount,2);assert.equal(rock.frameCount,12);assert.equal(rock.fps,12);assert.equal(rock.audio,false);assert.equal(rock.walking,false);return rock;});
+  check('desktop: current V5 template, four rock-room cats and two occlusion layers',()=>{assert.equal(observation.characterTemplateId,'connected-v5-character-template-v1');const rock=observation.rockRoomAnimation;assert.equal(rock.enabled,true);assert.equal(rock.loaded,true);assert.equal(rock.roomVisible,true);assert.equal(rock.playing,true);assert.equal(rock.performerCount,4);assert.equal(rock.visiblePerformerCount,4);assert.equal(rock.occlusionLayerCount,2);assert.equal(rock.frameCount,12);assert.equal(rock.fps,8);assert.equal(rock.audio,false);assert.equal(rock.walking,false);return rock;});
+  const animationStart=await page.evaluate(()=>{const r=window.__officeQA.runtime,rock=r.rockRoomAnimation;return {frame:rock.frame,positions:rock.performers.map(p=>[p.sprite.x,p.sprite.y])};});
+  let animationAdvanced=false;
+  try {
+   await page.waitForFunction((start)=>{const rock=window.__officeQA?.runtime?.rockRoomAnimation;return !!rock&&rock.frame!==start.frame;},animationStart,{timeout:3000});
+   animationAdvanced=true;
+  } catch {}
+  const animationEnd=await page.evaluate(()=>{const rock=window.__officeQA.runtime.rockRoomAnimation;return {frame:rock.frame,positions:rock.performers.map(p=>[p.sprite.x,p.sprite.y])};});
+  check('desktop: rock-room frame advances while fixed world anchors remain stable',()=>{assert.equal(animationAdvanced,true);assert.notEqual(animationStart.frame,animationEnd.frame);assert.deepEqual(animationStart.positions,animationEnd.positions);return {start:animationStart,end:animationEnd};});
   check('desktop: 3840×2160-or-higher physical canvas',()=>{assert.ok(observation.canvas[0]>=3840);assert.ok(observation.canvas[1]>=1900);return observation.canvas;});
   check('HTTP non-secure origin does not call unavailable SubtleCrypto',()=>{if(origin==='http://192.168.100.221:19000'){assert.equal(observation.secureContext,false);assert.equal(observation.provenance,'unavailable-in-insecure-context');}return {secureContext:observation.secureContext,provenance:observation.provenance};});
  }

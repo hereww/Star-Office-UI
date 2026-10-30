@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Normalize generated rock-room band sprite sheets to fixed 96x96 frames.
 
-The generated source sheets are expected to contain a 4x3 transparent grid.  We
-keep one shared scale and bottom-center anchor per sheet so frame-to-frame motion
-reads as animation rather than camera drift.
+The generated source sheets contain a 4x3 transparent grid. We find the
+true empty gutters between columns and rows so character limbs are never severed,
+anchor each frame to a stable column center and floor baseline, and render
+fixed 96x96 transparent cells without frame-to-frame jumping or distortion.
 """
 from __future__ import annotations
 
+import json
 from pathlib import Path
-from typing import Iterable
 
 from PIL import Image
 
@@ -18,80 +19,114 @@ OUTPUT_DIR = ROOT / "frontend" / "company-office" / "connected-v5" / "media" / "
 PREVIEW_DIR = ROOT / "assets" / "rock-room-band-v1" / "preview"
 FRAME_SIZE = (96, 96)
 GRID = (4, 3)
-ANCHOR = (48, 88)  # bottom-center, leaving a small transparent floor margin
-ALPHA_THRESHOLD = 12
-MAX_CONTENT_HEIGHT = 84
-MAX_CONTENT_WIDTH = 88
+PLAYBACK_FPS = 8
+ANCHOR = (48, 88)
+ALPHA_THRESHOLD = 16
+MAX_CONTENT_HEIGHT = 82
+MAX_CONTENT_WIDTH = 82
 
 SOURCES = {
-    "drummer-orange-tabby": "orange-tabby-drummer-raw.png",
-    "vocalist-cream": "cream-vocalist-raw.png",
-    "guitarist-gray": "gray-guitarist-raw.png",
-    "bassist-tuxedo": "tuxedo-bassist-raw.png",
+    "drummer-orange-tabby": ("orange-tabby-drummer-raw.png", 350, 360),
+    "vocalist-cream": ("cream-vocalist-raw.png", 320, 360),
+    "guitarist-gray": ("gray-guitarist-raw.png", 320, 360),
+    "bassist-tuxedo": ("tuxedo-bassist-raw.png", 320, 360),
 }
 
 
-def alpha_bbox(image: Image.Image) -> tuple[int, int, int, int] | None:
-    alpha = image.getchannel("A").point(lambda value: 255 if value >= ALPHA_THRESHOLD else 0)
-    return alpha.getbbox()
+def find_gutters(image: Image.Image) -> tuple[list[int], list[int]]:
+    """Locate true transparent gutters between rows and columns."""
+    col_counts = [sum(1 for y in range(image.height) if image.getpixel((x, y))[3] >= ALPHA_THRESHOLD) for x in range(image.width)]
+    row_counts = [sum(1 for x in range(image.width) if image.getpixel((x, y))[3] >= ALPHA_THRESHOLD) for y in range(image.height)]
+
+    y_splits = [
+        0,
+        min(range(340, 370), key=lambda y: row_counts[y]),
+        min(range(700, 730), key=lambda y: row_counts[y]),
+        image.height,
+    ]
+    x_splits = [
+        0,
+        min(range(350, 420), key=lambda x: col_counts[x]),
+        min(range(690, 760), key=lambda x: col_counts[x]),
+        min(range(1030, 1100), key=lambda x: col_counts[x]),
+        image.width,
+    ]
+    return x_splits, y_splits
 
 
-def union_boxes(boxes: Iterable[tuple[int, int, int, int]]) -> tuple[int, int, int, int]:
-    boxes = list(boxes)
-    if not boxes:
-        raise ValueError("sprite sheet contains no visible pixels")
-    left = min(box[0] for box in boxes)
-    top = min(box[1] for box in boxes)
-    right = max(box[2] for box in boxes)
-    bottom = max(box[3] for box in boxes)
-    return left, top, right, bottom
+def make_sheet(role: str, filename: str, crop_w: int, crop_h: int) -> dict:
+    source = SOURCE_DIR / filename
+    output = OUTPUT_DIR / f"{role}.png"
+    preview = PREVIEW_DIR / f"{role}.jpg"
 
-
-def make_sheet(source: Path, output: Path, preview: Path) -> dict:
     source_image = Image.open(source).convert("RGBA")
-    if source_image.width % GRID[0] or source_image.height % GRID[1]:
-        raise ValueError(f"{source}: source dimensions must divide evenly into a 4x3 grid")
-    cell_w = source_image.width // GRID[0]
-    cell_h = source_image.height // GRID[1]
-    if cell_w != cell_h:
-        raise ValueError(f"{source}: source cells must be square, got {cell_w}x{cell_h}")
+    # Clean noise fringe below alpha threshold
+    alpha = source_image.getchannel("A").point(lambda v: 0 if v < ALPHA_THRESHOLD else v)
+    source_image.putalpha(alpha)
 
-    cells: list[Image.Image] = []
-    boxes: list[tuple[int, int, int, int]] = []
-    for frame in range(GRID[0] * GRID[1]):
-        x = frame % GRID[0] * cell_w
-        y = frame // GRID[0] * cell_h
-        cell = source_image.crop((x, y, x + cell_w, y + cell_h))
-        cells.append(cell)
-        box = alpha_bbox(cell)
-        if box is None:
-            raise ValueError(f"{source}: frame {frame} is empty")
-        boxes.append(box)
+    x_splits, y_splits = find_gutters(source_image)
 
-    shared_box = union_boxes(boxes)
-    shared_w = shared_box[2] - shared_box[0]
-    shared_h = shared_box[3] - shared_box[1]
-    scale = min(MAX_CONTENT_HEIGHT / shared_h, MAX_CONTENT_WIDTH / shared_w)
-    scaled_w = max(1, round(shared_w * scale))
-    scaled_h = max(1, round(shared_h * scale))
+    col_counts = [sum(1 for y in range(source_image.height) if source_image.getpixel((x, y))[3] >= ALPHA_THRESHOLD) for x in range(source_image.width)]
+    row_counts = [sum(1 for x in range(source_image.width) if source_image.getpixel((x, y))[3] >= ALPHA_THRESHOLD) for y in range(source_image.height)]
+
+    # Compute stable floor baseline for each row
+    row_baselines = []
+    for r in range(3):
+        ys = [y for y in range(y_splits[r], y_splits[r + 1]) if row_counts[y] > 0]
+        if not ys:
+            raise ValueError(f"{source}: row {r} has no visible pixels")
+        row_baselines.append(max(ys))
+
+    scale = min(MAX_CONTENT_WIDTH / crop_w, MAX_CONTENT_HEIGHT / crop_h)
+    scaled_w = int(round(crop_w * scale))
+    scaled_h = int(round(crop_h * scale))
 
     sheet = Image.new("RGBA", (FRAME_SIZE[0] * GRID[0], FRAME_SIZE[1] * GRID[1]), (0, 0, 0, 0))
     preview_sheet = Image.new("RGBA", sheet.size, (239, 231, 206, 255))
-    for frame, (cell, box) in enumerate(zip(cells, boxes)):
-        # Use the shared frame crop, not each frame's own crop, to hold scale and
-        # bottom-center placement stable across the loop.
-        shared_crop = cell.crop(shared_box).resize((scaled_w, scaled_h), Image.Resampling.LANCZOS)
-        # Low-alpha generated fringe is visually indistinguishable from a halo at
-        # game scale; remove it while keeping normal anti-aliased edge pixels.
-        alpha = shared_crop.getchannel("A")
-        alpha = alpha.point(lambda value: 0 if value < ALPHA_THRESHOLD else value)
-        shared_crop.putalpha(alpha)
-        cell_x = frame % GRID[0] * FRAME_SIZE[0]
-        cell_y = frame // GRID[0] * FRAME_SIZE[1]
-        dest_x = cell_x + ANCHOR[0] - scaled_w // 2
-        dest_y = cell_y + ANCHOR[1] - scaled_h
-        sheet.alpha_composite(shared_crop, (dest_x, dest_y))
-        preview_sheet.alpha_composite(shared_crop, (dest_x, dest_y))
+    frame_metrics = []
+
+    for frame in range(GRID[0] * GRID[1]):
+        r = frame // GRID[0]
+        c = frame % GRID[0]
+        
+        # Find bounds for this specific cell to avoid AI grid alignment drift across rows
+        cell_xs = [
+            x for x in range(x_splits[c], x_splits[c + 1])
+            for y in range(y_splits[r], y_splits[r + 1])
+            if source_image.getpixel((x, y))[3] >= ALPHA_THRESHOLD
+        ]
+        if not cell_xs:
+            raise ValueError(f"{source}: cell ({r}, {c}) has no visible pixels")
+        cx = (min(cell_xs) + max(cell_xs)) / 2
+        base_y = row_baselines[r]
+
+        x0 = int(round(cx - crop_w / 2))
+        x1 = x0 + crop_w
+        y0 = int(round(base_y - crop_h + 1))
+        y1 = y0 + crop_h
+
+        cropped = source_image.crop((x0, y0, x1, y1)).resize((scaled_w, scaled_h), Image.Resampling.LANCZOS)
+        # Ensure clean alpha after Lanczos resampling
+        cropped_alpha = cropped.getchannel("A").point(lambda v: 0 if v < ALPHA_THRESHOLD else v)
+        cropped.putalpha(cropped_alpha)
+
+        cell = Image.new("RGBA", FRAME_SIZE, (0, 0, 0, 0))
+        dest_x = ANCHOR[0] - scaled_w // 2
+        dest_y = ANCHOR[1] - scaled_h + 1
+        cell.alpha_composite(cropped, (dest_x, dest_y))
+
+        cell_x = c * FRAME_SIZE[0]
+        cell_y = r * FRAME_SIZE[1]
+        sheet.alpha_composite(cell, (cell_x, cell_y))
+        preview_sheet.alpha_composite(cell, (cell_x, cell_y))
+
+        cell_bbox = cell.getchannel("A").point(lambda v: 255 if v >= ALPHA_THRESHOLD else 0).getbbox()
+        frame_metrics.append({
+            "frame": frame,
+            "bounds": list(cell_bbox) if cell_bbox else [0, 0, 0, 0],
+            "frameCenter": (cell_bbox[0] + cell_bbox[2]) / 2 if cell_bbox else ANCHOR[0],
+            "bottomY": cell_bbox[3] - 1 if cell_bbox else ANCHOR[1],
+        })
 
     output.parent.mkdir(parents=True, exist_ok=True)
     preview.parent.mkdir(parents=True, exist_ok=True)
@@ -105,25 +140,20 @@ def make_sheet(source: Path, output: Path, preview: Path) -> dict:
         "sourceSize": list(source_image.size),
         "frameSize": list(FRAME_SIZE),
         "grid": list(GRID),
-        "frameCount": len(cells),
+        "frameCount": len(frame_metrics),
         "anchor": list(ANCHOR),
-        "sharedContentBox": list(shared_box),
+        "cropBox": [crop_w, crop_h],
         "normalizedContentSize": [scaled_w, scaled_h],
         "alphaThreshold": ALPHA_THRESHOLD,
+        "alignment": "stable-body-anchor",
+        "frameMetrics": frame_metrics,
     }
 
 
 def main() -> None:
     records = []
-    for role, filename in SOURCES.items():
-        records.append(
-            make_sheet(
-                SOURCE_DIR / filename,
-                OUTPUT_DIR / f"{role}.png",
-                PREVIEW_DIR / f"{role}.jpg",
-            )
-        )
-    import json
+    for role, (filename, crop_w, crop_h) in SOURCES.items():
+        records.append(make_sheet(role, filename, crop_w, crop_h))
 
     manifest = {
         "schemaVersion": 1,
@@ -131,14 +161,15 @@ def main() -> None:
         "frameSize": list(FRAME_SIZE),
         "grid": list(GRID),
         "frameCount": 12,
-        "fps": 12,
-        "anchor": list(ANCHOR),
+        "fps": PLAYBACK_FPS,
+        "anchorMode": "fixed-world-anchor",
         "records": records,
     }
     (ROOT / "assets" / "rock-room-band-v1" / "normalization.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+    print("Rock room band normalization complete.")
 
 
 if __name__ == "__main__":
