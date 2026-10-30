@@ -211,7 +211,7 @@ def public_active_models(user, now, stale_seconds, *, bound=False, source_status
             "quality": normalized["quality"], "observed_at": normalized["observed_at"]}
 
 
-def validate_telemetry_page(page, allowed_user_ids):
+def validate_telemetry_page(page, allowed_user_ids, *, standalone=False):
     """Normalize an upstream response by whitelist; reject partial identity/key lists.
 
     Do not stringify numeric IDs/totals: precision may already have been lost upstream.
@@ -236,8 +236,10 @@ def validate_telemetry_page(page, allowed_user_ids):
             raise ContractError("invalid_quality")
         if any(quality.get(f) not in QUALITY_VALUES for f in fields):
             raise ContractError("invalid_quality")
-        if quality["identity"] != "fresh" or quality["api_keys"] != "fresh":
+        if not standalone and (quality["identity"] != "fresh" or quality["api_keys"] != "fresh"):
             raise ContractError("incomplete_identity")
+        if standalone and (quality["api_keys"] != "untracked" or raw.get("api_keys") != [] or raw.get("email") != ""):
+            raise ContractError("invalid_standalone_identity")
         for field in fields:
             if quality[field] == "fresh":
                 if timestamp(observed.get(field)) is None:
@@ -280,6 +282,8 @@ def validate_telemetry_page(page, allowed_user_ids):
                       "active_models": normalize_active_models(raw.get("active_models")),
                       "quality": {f: quality[f] for f in fields},
                       "observed_at": {f: observed.get(f) for f in fields}})
+        if standalone and raw.get("usage_window") is not None:
+            users[-1]["usage_window"] = validate_window(raw["usage_window"])
     cursor = page.get("next_cursor")
     if cursor is not None:
         canonical_id(cursor)
@@ -299,6 +303,8 @@ def source_projection(config, snapshot, now):
     # The previous producer's interval is an additional cap after config changes.
     observed_interval = snapshot.get("source", {}).get("interval_seconds", interval)
     stale_seconds = min(stale_seconds, observed_interval * 3)
+    if snapshot.get("source", {}).get("provider") == "standalone":
+        stale_seconds = min(stale_seconds, snapshot["source"].get("max_age_seconds", 15))
     fresh = snapshot_is_fresh(snapshot, now, stale_seconds)
     raw_status = snapshot.get("connection", {}).get("status")
     code = snapshot.get("connection", {}).get("error_code")
@@ -317,6 +323,8 @@ def source_projection(config, snapshot, now):
             if type(raw_plugin.get(key)) is bool:
                 plugin[key] = raw_plugin[key]
     rack_state = snapshot.get("source", {}).get("rack_state")
+    if snapshot.get("source", {}).get("provider") == "standalone" and status == "stale":
+        rack_state = "unknown"
     if rack_state not in RACK_STATES:
         if status == "stale":
             rack_state = "unknown"
@@ -334,7 +342,8 @@ def source_projection(config, snapshot, now):
             rack_state = "working" if busy else "idle"
     return {"status": status, "last_success_at": snapshot.get("last_success_at"),
             "last_attempt_at": snapshot.get("attempted_at"), "poll_interval_seconds": interval,
-            "stale_after_seconds": interval * 3, "error_code": None if status == "connecting" else code,
+            "stale_after_seconds": stale_seconds if snapshot.get("source", {}).get("provider") == "standalone" else interval * 3,
+            "error_code": None if status == "connecting" else code,
             "rack_state": rack_state, "plugin_status": plugin}, fresh
 
 
@@ -436,7 +445,7 @@ def public_snapshot(config, snapshot, now):
                          "character_profile_id": station_profile["id"],
                          "character_label": station_profile["label"],
                          "character_status": station_profile["status"],
-                         "today_usage": public_today_usage(user, snapshot.get("window"), now, stale_seconds, bound=bool(binding)),
+                         "today_usage": public_today_usage(user, user.get("usage_window", snapshot.get("window")) if user else snapshot.get("window"), now, stale_seconds, bound=bool(binding)),
                          "active_models": public_active_models(user, now, stale_seconds, bound=bool(binding), source_status=source["status"])})
     return {"schema_version": 1, "config_version": config["version"], "generated_at": utc_iso(now),
             "source": source, "display": copy.deepcopy(config["display"]),

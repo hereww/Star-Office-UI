@@ -217,7 +217,7 @@ def register_office_api(app, *, store=None, snapshot_path=None, clock=time.time)
     @bp.get("/admin/users")
     def users():
         config, snap, source, fresh = telemetry()
-        private_source = {**source, "installation_id": int(snap["source"]["installation_id"]),
+        private_source = {**source, "installation_id": int(snap["source"]["installation_id"]) if snap["source"]["installation_id"] else None,
                           "allowed_user_ids": snap["source"]["authorized_user_ids"],
                           "credential_expires_at": snap["source"]["credential_expires_at"]}
         # Expired/failed/restarted snapshots never expose old identity/key/token data.
@@ -249,7 +249,7 @@ def register_office_api(app, *, store=None, snapshot_path=None, clock=time.time)
     @bp.get("/admin/diagnostics")
     def diagnostics():
         _, snap, source, _ = telemetry()
-        return jsonify({"source": {**source, "installation_id": int(snap["source"]["installation_id"]),
+        return jsonify({"source": {**source, "installation_id": int(snap["source"]["installation_id"]) if snap["source"]["installation_id"] else None,
                                     "allowed_user_ids": snap["source"]["authorized_user_ids"],
                                     "credential_expires_at": snap["source"]["credential_expires_at"]}})
 

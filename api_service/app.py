@@ -7,9 +7,12 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import math
+import json
 import os
 import re
 import secrets
+import stat
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -17,6 +20,7 @@ from typing import Any
 from flask import Flask, g, jsonify, request
 
 from .store import EventConflict, StateStore, utc_now
+from .telemetry import load_project_keys, register_telemetry
 
 API_VERSION = "1"
 SCHEMA_VERSION = 1
@@ -38,7 +42,7 @@ def _parse_timestamp(value: Any) -> str:
         raise ValueError("invalid timestamp") from exc
     if parsed.tzinfo is None:
         raise ValueError("timestamp must include timezone")
-    return parsed.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+    return parsed.astimezone(timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
 
 
 def _text(value: Any, *, field: str, maximum: int, required: bool = True) -> str:
@@ -62,6 +66,8 @@ def _metadata(value: Any) -> dict[str, Any]:
             raise ValueError("sensitive metadata key")
         if not isinstance(item, (str, int, float, bool)) and item is not None:
             raise ValueError("metadata values must be scalar")
+        if isinstance(item, float) and not math.isfinite(item):
+            raise ValueError("metadata must be finite")
         if isinstance(item, str):
             item = _text(item, field="metadata value", maximum=256, required=False)
         result[key] = item
@@ -108,7 +114,17 @@ def _load_api_key() -> str:
     path = os.environ.get("API_KEY_FILE", "").strip()
     if configured and path:
         raise RuntimeError("configure API_SERVICE_KEY or API_KEY_FILE, not both")
-    secret = Path(path).read_text(encoding="utf-8").strip() if path else configured
+    if path:
+        fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        with os.fdopen(fd, "r", encoding="utf-8") as stream:
+            info = os.fstat(stream.fileno())
+            if not stat.S_ISREG(info.st_mode) or stat.S_IMODE(info.st_mode) not in (0o400, 0o600):
+                raise RuntimeError("API key file must be regular and mode 0400/0600")
+            secret = stream.read(257).strip()
+        if len(secret) > 256:
+            raise RuntimeError("API key file too large")
+    else:
+        secret = configured
     if secret and len(secret) < 24:
         raise RuntimeError("API service key must be at least 24 characters")
     return secret
@@ -130,7 +146,7 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
     app = Flask(__name__)
     app.config["MAX_CONTENT_LENGTH"] = MAX_BODY_BYTES
     app.config.update(
-        API_AUTH_MODE=os.environ.get("API_AUTH_MODE", "none").strip().lower(),
+        API_AUTH_MODE=os.environ.get("API_AUTH_MODE", "key").strip().lower(),
         API_ALLOWED_ORIGINS=os.environ.get("API_ALLOWED_ORIGINS", "").strip(),
         API_SNAPSHOT_STALE_SECONDS=int(os.environ.get("API_SNAPSHOT_STALE_SECONDS", "30")),
     )
@@ -138,10 +154,11 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
         raise RuntimeError("API_AUTH_MODE must be none or key")
     if app.config["API_SNAPSHOT_STALE_SECONDS"] < 1:
         raise RuntimeError("API_SNAPSHOT_STALE_SECONDS must be positive")
+    project_keys = load_project_keys()
     if app.config["API_AUTH_MODE"] == "key":
         app.config["API_SERVICE_KEY"] = _load_api_key()
-        if not app.config["API_SERVICE_KEY"]:
-            raise RuntimeError("API_AUTH_MODE=key requires API_SERVICE_KEY or API_KEY_FILE")
+        if not app.config["API_SERVICE_KEY"] and not project_keys:
+            raise RuntimeError("key mode requires project credentials or a legacy service key")
     else:
         app.config["API_SERVICE_KEY"] = ""
     if testing:
@@ -164,7 +181,7 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
         allowed = [value.strip() for value in app.config["API_ALLOWED_ORIGINS"].split(",") if value.strip()]
         if origin and origin in allowed:
             response.headers["Access-Control-Allow-Origin"] = origin
-            response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, X-API-Key, X-Request-ID"
+            response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, X-API-Key, X-Request-ID, Idempotency-Key"
             response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, OPTIONS"
             response.headers["Vary"] = "Origin"
         return response
@@ -195,6 +212,10 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
         return jsonify({"status": "ok", "service": "star-office-api", "api_version": API_VERSION,
                         "schema_version": SCHEMA_VERSION, "generated_at": utc_now()})
 
+    @app.get("/api/v1/openapi.json")
+    def openapi():
+        return jsonify(json.loads(Path(__file__).with_name("openapi.json").read_text(encoding="utf-8")))
+
     @app.get("/api/v1/readiness")
     def readiness():
         try:
@@ -202,7 +223,7 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
             storage = "ok"
         except Exception:
             storage = "error"
-        auth = "ok" if app.config["API_AUTH_MODE"] == "none" or app.config["API_SERVICE_KEY"] else "error"
+        auth = "ok" if app.config["API_AUTH_MODE"] == "none" or app.config["API_SERVICE_KEY"] or project_keys else "error"
         ready = storage == "ok" and auth == "ok"
         return jsonify({"ready": ready, "checks": {"storage": storage, "authentication": auth},
                         "generated_at": utc_now()}), (200 if ready else 503)
@@ -213,7 +234,7 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
         return jsonify({"api_version": API_VERSION, "schema_version": SCHEMA_VERSION,
                         "auth_mode": app.config["API_AUTH_MODE"], "provider": "standalone",
                         "snapshot_stale_seconds": app.config["API_SNAPSHOT_STALE_SECONDS"],
-                        "capabilities": ["agents.read", "events.write", "events.read", "snapshot.read"]})
+                        "capabilities": ["agents.read", "events.write", "events.read", "snapshot.read", "projects.telemetry.write", "projects.snapshot.read"]})
 
     @app.get("/api/v1/agents")
     def agents():
@@ -227,7 +248,9 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
             raise APIError("INVALID_REQUEST", "limit 参数无效。", 400) from exc
         if not 1 <= limit <= 200:
             raise APIError("INVALID_REQUEST", "limit 必须在 1 到 200 之间。", 400)
-        return jsonify({"schema_version": SCHEMA_VERSION, "agents": service_store.list_agents(state=state, limit=limit)})
+        rows = service_store.list_agents(state=state, limit=limit+1, after_id=request.args.get("after_id", ""))
+        return jsonify({"schema_version": SCHEMA_VERSION, "agents": rows[:limit],
+                        "next_cursor": rows[limit-1]["id"] if len(rows)>limit else None})
 
     @app.get("/api/v1/agents/<agent_id>")
     def agent(agent_id):
@@ -254,7 +277,14 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
             raise APIError("INVALID_REQUEST", "limit 参数无效。", 400) from exc
         if not 1 <= limit <= 200:
             raise APIError("INVALID_REQUEST", "limit 必须在 1 到 200 之间。", 400)
-        return jsonify({"schema_version": SCHEMA_VERSION, "events": service_store.list_events(since=since, limit=limit)})
+        try:
+            after = int(request.args.get("after_sequence", "0"))
+            if after < 0: raise ValueError()
+        except ValueError:
+            raise APIError("INVALID_REQUEST", "after_sequence 参数无效。", 400)
+        rows = service_store.list_events(since=since, limit=limit+1, after_sequence=after)
+        return jsonify({"schema_version": SCHEMA_VERSION, "events": rows[:limit],
+                        "next_cursor": rows[limit-1]["sequence"] if len(rows)>limit else None})
 
     @app.post("/api/v1/events")
     def create_event():
@@ -274,8 +304,14 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
     def replace_agent(agent_id):
         require_auth()
         body = json_body()
+        if (set(body) - {"id", "name", "state", "detail", "area", "metadata", "event_id", "occurred_at", "source", "event_metadata"}
+                or "occurred_at" not in body):
+            raise APIError("INVALID_REQUEST", "需明确 occurred_at，且不能包含未知字段。", 400)
         if body.get("id", agent_id) != agent_id:
             raise APIError("INVALID_REQUEST", "路径 agent_id 与 body.id 不一致。", 400)
+        body["id"] = agent_id
+        if body.get("event_id") and request.headers.get("Idempotency-Key") not in (None, body["event_id"]):
+            raise APIError("INVALID_REQUEST", "幂等键与 event_id 不一致。", 400)
         event_body = {"event_id": body.get("event_id") or request.headers.get("Idempotency-Key"),
                       "type": "agent.state_changed", "occurred_at": body.get("occurred_at", utc_now()),
                       "source": body.get("source", "api-client"), "agent": {key: body[key] for key in
@@ -298,17 +334,23 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
     def snapshot():
         require_auth()
         latest = service_store.latest_event_at()
-        agents_data = service_store.list_agents(limit=200)
+        rows = service_store.list_agents(limit=201, after_id=request.args.get("after_id", ""))
+        agents_data = rows[:200]
+        for row in agents_data:
+            age = (datetime.now(timezone.utc) - datetime.fromisoformat(row["updated_at"].replace("Z", "+00:00"))).total_seconds()
+            row["freshness"] = "fresh" if 0 <= age <= app.config["API_SNAPSHOT_STALE_SECONDS"] else "stale"
         freshness = "empty"
         if latest:
             try:
                 age = (datetime.now(timezone.utc) - datetime.fromisoformat(latest.replace("Z", "+00:00"))).total_seconds()
-                freshness = "fresh" if age <= app.config["API_SNAPSHOT_STALE_SECONDS"] else "stale"
+                freshness = "fresh" if 0 <= age <= app.config["API_SNAPSHOT_STALE_SECONDS"] else "stale"
             except ValueError:
                 freshness = "unknown"
         return jsonify({"schema_version": SCHEMA_VERSION, "generated_at": utc_now(),
                         "source": {"provider": "standalone", "status": "ok", "freshness": freshness,
-                                   "last_event_at": latest}, "agents": agents_data})
+                                   "last_event_at": latest}, "agents": agents_data,
+                        "complete": len(rows) <= 200,
+                        "next_cursor": agents_data[-1]["id"] if len(rows)>200 else None})
 
     @app.errorhandler(APIError)
     def api_error(error):
@@ -332,16 +374,14 @@ def create_app(*, store: StateStore | None = None, testing: bool = False) -> Fla
 
     @app.errorhandler(Exception)
     def unexpected(error):
-        app.logger.exception("api_service_internal_error: %s", type(error).__name__)
+        app.logger.error("api_service_internal_error type=%s request_id=%s", type(error).__name__, g.get("request_id", ""))
         return jsonify({"error": {"code": "INTERNAL_ERROR", "message": "服务内部错误。",
                                    "request_id": g.get("request_id")}}), 500
 
+    register_telemetry(app, service_store, project_keys, APIError)
     return app
 
 
-app = create_app()
-
-
 if __name__ == "__main__":
-    app.run(host=os.environ.get("API_BIND", "127.0.0.1"),
+    create_app().run(host=os.environ.get("API_BIND", "127.0.0.1"),
             port=int(os.environ.get("API_PORT", "19100")), debug=False)

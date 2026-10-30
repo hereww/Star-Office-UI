@@ -9,6 +9,8 @@
 3. [新版代码地图](./development/code-map.md)
 4. [动画与素材接入](./ANIMATION_ARCHITECTURE.md)
 5. [服务部署与回滚](./DEPLOYMENT.md)
+6. [公司项目调用 API](./API_DEVELOPMENT.md)：交给接入公司项目的开发者。
+7. [通用 API 部署与交接](./TEAM_API_OPERATIONS.md)：维护者配置凭据、主体映射与独立服务。
 
 素材清理和归档请同时阅读：[素材审计](./DEPRECATED_ASSETS_AUDIT_2026-10-30.md)、[素材清理记录](./DEPRECATED_ASSETS_CLEANUP_2026-10-30.md) 和 [素材归档记录](./ASSETS_ARCHIVE_2026-10-30.md)。这些日期化文件记录证据，不替代无日期的开发规则。
 

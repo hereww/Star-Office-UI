@@ -65,7 +65,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
-def http_get(url, headers, timeout):
+def http_get(url, headers, timeout, max_bytes=MAX_RESPONSE_BYTES):
     # Ignore environment proxies and disallow redirects so the secret stays at one origin.
     tls_context = ssl.create_default_context()
     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect(),
@@ -73,7 +73,7 @@ def http_get(url, headers, timeout):
     req = urllib.request.Request(url, headers=headers, method="GET")
     try:
         with opener.open(req, timeout=timeout) as response:
-            return response.status, response.read(MAX_RESPONSE_BYTES + 1)
+            return response.status, response.read(max_bytes + 1)
     except urllib.error.HTTPError as exc:
         code = exc.code
         exc.close()  # No sensitive error body is ever read or logged.
@@ -195,7 +195,8 @@ def read_snapshot(path):
         source = raw["source"]
         if not isinstance(source, dict):
             raise ValueError()
-        installation_id = canonical_id(source["installation_id"])
+        standalone = source.get("provider") == "standalone"
+        installation_id = None if standalone else canonical_id(source["installation_id"])
         allowed = source["authorized_user_ids"]
         if not isinstance(allowed, list) or not 1 <= len(allowed) <= 500 or len(set(allowed)) != len(allowed):
             raise ValueError()
@@ -210,6 +211,10 @@ def read_snapshot(path):
                        "credential_expires_at": expiry,
                        "plugin_status": normalize_plugin_status(source.get("plugin_status")),
                        "rack_state": source.get("rack_state") if source.get("rack_state") in RACK_STATES else None}
+        if standalone:
+            age = source.get("max_age_seconds",15)
+            if type(age) is not int or not 5<=age<=300: raise ValueError()
+            safe_source.update(provider="standalone", max_age_seconds=age)
         connection = raw["connection"]
         if not isinstance(connection, dict):
             raise ValueError()
@@ -223,13 +228,14 @@ def read_snapshot(path):
             result = empty_snapshot(code, source=safe_source, http_status=http_status)
         else:
             page = validate_telemetry_page({"schema_version": 1, "window": raw["window"], "users": raw["users"],
-                                            "next_cursor": None}, set(allowed))
+                                            "next_cursor": None}, set(allowed), standalone=standalone)
             if timestamp(raw.get("sampled_at")) is None:
                 raise ValueError()
             result = {"schema_version": 1, "sampled_at": raw["sampled_at"], "window": page["window"],
                       "users": page["users"], "connection": {"status": "ok", "error_code": None, "http_status": None},
                       "source": safe_source}
-        result["source"]["rack_state"] = rack_state_for(result["connection"]["status"],
+        if not standalone or result["connection"]["status"] != "ok":
+            result["source"]["rack_state"] = rack_state_for(result["connection"]["status"],
                                                           result["connection"].get("error_code"),
                                                           result["source"].get("plugin_status"), result.get("users", []))
         for key in ("attempted_at", "last_success_at"):
@@ -497,6 +503,7 @@ def collector_health(data_dir, now=None):
         return False
     expiry = timestamp(snapshot.get("source", {}).get("credential_expires_at"))
     threshold = min(interval * 3, snapshot.get("source", {}).get("stale_after_seconds", STALE_SECONDS))
+    threshold = min(threshold, snapshot.get("source", {}).get("max_age_seconds", threshold))
     return ((expiry is None or now < expiry) and snapshot_is_fresh(snapshot, now, threshold))
 
 
@@ -509,12 +516,26 @@ def main():
     if args.health:
         return 0 if collector_health(args.data_dir) else 1
     try:
-        collector = OfficeCollector(args.data_dir, os.environ.get("OFFICE_SUB2API_BASE_URL", ""),
+        provider = os.environ.get("OFFICE_TELEMETRY_PROVIDER", "sub2api")
+        if provider == "standalone":
+            try:
+                from .office_team_collector import TeamCollector
+                from .team_telemetry import load_subject_mappings
+            except ImportError:
+                from office_team_collector import TeamCollector
+                from team_telemetry import load_subject_mappings
+            collector = TeamCollector(args.data_dir, os.environ.get("OFFICE_API_BASE_URL", ""),
+                                      os.environ.get("OFFICE_API_KEYS_FILE", ""), load_subject_mappings(),
+                                      allow_http=os.environ.get("OFFICE_ALLOW_HTTP")=="1")
+        elif provider == "sub2api":
+            collector = OfficeCollector(args.data_dir, os.environ.get("OFFICE_SUB2API_BASE_URL", ""),
                                     os.environ.get("OFFICE_CREDENTIAL_FILE", ""),
                                     installation_id=os.environ.get("OFFICE_INSTALLATION_ID", "1"),
                                     user_ids=office_user_ids(),
                                     credential_expires_at=os.environ.get("OFFICE_CREDENTIAL_EXPIRES_AT") or None,
                                     allow_http=os.environ.get("OFFICE_ALLOW_HTTP") == "1")
+        else:
+            raise ValueError("invalid telemetry provider")
         if args.once:
             return 0 if collector.collect_once()["connection"]["status"] == "ok" else 1
         collector.run()

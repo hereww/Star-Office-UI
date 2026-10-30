@@ -42,7 +42,7 @@ function context(){
   for(const method of ['clearRect','drawImage','save','restore','beginPath','ellipse','rect','clip'])ctx[method]=(...args)=>calls.push([method,...args]);
   return {getContext:()=>ctx,ctx};
 }
-const loader=async url=>({url,width:url.includes('face')?360:192,height:url.includes('face')?174:192});
+const loader=async url=>({url,width:url.includes('frames-')?768:url.includes('face')?360:192,height:url.includes('frames-')?576:url.includes('face')?174:192});
 async function fixture(options={}){
   const r=new ConnectedOfficeRuntime(attached,assets,new URL('frontend/company-office/connected-v4/',root).href);r.benches=records;
   for(const s of r.stations){

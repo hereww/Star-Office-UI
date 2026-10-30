@@ -26,7 +26,7 @@ Star Office UI 是一个实时 AI 协作办公室与状态可视化平台。当�
 
 - Flask 主服务：负责旧版页面、新版办公室页面、办公室 API、状态快照和运行时资源。
 - 新版办公室前端：frontend/office 提供员工入口和管理员入口，配套 16 席像素办公室、四向角色、状态气泡、屏幕特效和移动端布局。
-- 独立通用 API：api_service/ 提供 provider-neutral 的 Agent 事件和快照接口，默认不依赖 Sub2API。
+- 独立通用 API：api_service/ 提供项目遥测与快照接口，通过 standalone 采集器接入新版办公室，不依赖 Sub2API。
 - 可选 Sub2API collector：只有在需要接入 Sub2API 用户遥测时才启用，不能当作默认开发依赖。
 - 桌面壳：desktop-pet/ 是 Tauri 工程，electron-shell/ 是 Electron 工程；两者复用 Python 后端，但窗口和进程生命周期分别验证。
 - 发布工具：deploy/quickstart/ 用于可复制安装和更新，deploy/office/ 用于正式办公室的不可变发布、预检、备份和回滚。
@@ -58,7 +58,8 @@ Star Office UI 是一个实时 AI 协作办公室与状态可视化平台。当�
 
 团队工具 / Agent
   └─ api_service :19100
-       └─ SQLite：事件记录和最新 Agent 状态投影
+       └─ SQLite：最新主体观测与幂等记录
+            └─ office_team_collector（standalone）→ 新版 Office 快照和工位
 
 Sub2API（可选）
   └─ backend/office_collector.py
@@ -134,27 +135,19 @@ Office 模式下，员工入口和管理员入口分别是：
 
 ## 独立通用 API
 
-api_service/ 是不依赖 Sub2API 的 provider-neutral 接入层。团队工具向 /api/v1/events 写入规范化事件，办公室适配层或其他消费者从 /api/v1/snapshot 读取最新投影。默认监听 127.0.0.1:19100。
+公司项目可以直接向 `POST /api/v1/projects/{project_id}/telemetry` 上报并发、今日 Token、当前模型和独立观测时间，不需要 Sub2API。Office standalone 采集器负责主体到工位的映射，保留现有角色、配置及一个主体的多个工位。默认监听 127.0.0.1:19100。
 
 启动：
 
 ~~~bash
-API_DATA_FILE="$PWD/.local/api-service/state.sqlite3" \
-  python3 -m api_service.app
+python3 api-service/bootstrap.py --output .local/team-api
+API_PROJECT_KEYS_FILE="$PWD/.local/team-api/api-project-keys.json" \
+API_DATA_FILE="$PWD/.local/team-api/telemetry.sqlite3" python3 -m api_service.app
 ~~~
 
-需要鉴权时：
+默认强制鉴权，项目读写凭据分开。秘密文件保持 0400/0600，不进入仓库或前端。旧 /events、/agents 接口仅保留兼容用途。
 
-~~~bash
-API_AUTH_MODE=key \
-API_KEY_FILE=/path/to/api-key \
-API_DATA_FILE="$PWD/.local/api-service/state.sqlite3" \
-  python3 -m api_service.app
-~~~
-
-API key 至少 24 个字符，只通过受控环境或权限为 0400/0600 的文件注入。不要写进仓库、请求 body、日志或浏览器 bundle。
-
-完整的 v1 端点、事件格式、幂等规则、快照 freshness、错误码和接入约定见 [API_DEVELOPMENT.md](./docs/API_DEVELOPMENT.md)。
+交给调用方：[API 开发文档](./docs/API_DEVELOPMENT.md)、[Python 客户端](./examples/team_api_client.py)、[OpenAPI](./api_service/openapi.json)。服务维护者使用 [部署与交接说明](./docs/TEAM_API_OPERATIONS.md)；启用 `OFFICE_TELEMETRY_PROVIDER=standalone` 后无需配置 Sub2API。
 
 ## 新版办公室
 
@@ -223,7 +216,7 @@ Star-Office-UI/
 | `frontend/office/` | 原项目没有 | `[新版重构]` 正式员工端、管理员端、数据模型、地图加载和发布清单 |
 | `frontend/company-office/` | 原项目没有 | `[新版重构]` reference-v3、connected-v4、connected-v5 运行时和素材 |
 | `backend/office_*.py` | 原项目没有 | `[新版重构]` Office 契约、API、collector、存储、安全和角色配置 |
-| `api_service/`、`api-service/` | 原项目没有 | `[新版重构]` 不依赖 Sub2API 的通用 Agent 事件 API |
+| `api_service/`、`api-service/` | 原项目没有 | `[新版重构]` 不依赖 Sub2API 的项目遥测 API、部署入口与旧 Agent 事件接口 |
 | `integrations/sub2api/` | 原项目没有 | `[集成新增]` Sub2API 宿主副本、补丁、插件工具和部署文档 |
 | `deploy/` | 原项目没有 | `[发布运维新增]` Quickstart、正式发布、备份、回滚和交付包 |
 | `scripts/` | 少量状态/素材/安全脚本 | `[共享/演进]` 保留旧工具，并增加新版 Office、浏览器、像素和发布测试 |
@@ -279,7 +272,7 @@ Star-Office-UI/
 | 改动范围 | 推荐检查 |
 | --- | --- |
 | Python 后端、Office API、存储 | python3 -m compileall -q backend api_service scripts；python3 -m unittest scripts.test_office_api scripts.test_office_store -v |
-| 独立通用 API | python3 -m unittest scripts.test_api_service -v；python3 -m compileall -q api_service scripts/test_api_service.py |
+| 独立通用 API | python3 -m unittest scripts.test_api_service scripts.test_team_telemetry scripts.test_team_api_http -v；文档契约另运行 scripts.test_team_api_contract |
 | Quickstart、正式发布工具 | python3 scripts/test_quickstart_update.py；python3 scripts/test_quickstart_config.py；python3 scripts/test_office_release.py |
 | 地图、V4/V5、浏览器运行时 | node scripts/test_company_office.mjs；按改动运行 scripts/test_office_*.mjs 或 frontend/office/ 中的专项脚本 |
 | Sub2API 插件工具 | PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s integrations/sub2api/plugin-tools/tests -v |

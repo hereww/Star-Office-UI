@@ -26,7 +26,7 @@
 | frontend/office/ | 原项目没有 | 员工端、管理员端、数据模型和资源清单 | [新版重构] |
 | frontend/company-office/ | 原项目没有 | reference-v3、connected-v4、connected-v5 运行时和素材 | [新版重构] |
 | backend/office_*.py | 原项目没有 | Office 契约、API、collector、存储、安全和角色配置 | [新版重构] |
-| api_service/、api-service/ | 原项目没有 | 不依赖 Sub2API 的通用 Agent 事件 API | [新版重构] |
+| api_service/、api-service/ | 原项目没有 | 不依赖 Sub2API 的项目遥测 API、部署入口和旧状态接口 | [新版重构] |
 | integrations/sub2api/ | 原项目没有 | 宿主源码副本、补丁、插件工具和集成文档 | [集成新增] |
 | deploy/ | 原项目没有 | Quickstart、正式发布、离线构建、备份和回滚 | [发布运维新增] |
 | scripts/ | 少量素材、安全和 smoke test 脚本 | 增加 Office、浏览器、像素、API 和发布测试 | [共享/演进] |
@@ -59,8 +59,8 @@
 ~~~text
 Star-Office-UI/
 ├── .agents/                     [新版重构] 仓库技能和角色动画工作流
-├── api_service/                 [新版重构] 独立通用 API：app、store、wsgi
-├── api-service/                 [新版重构] API 启动包装和环境变量模板
+├── api_service/                 [新版重构] 独立通用 API、项目鉴权、OpenAPI 和存储
+├── api-service/                 [新版重构] API 依赖、凭据生成、容器和环境模板
 ├── assets/                      [共享/演进] 原始素材、新版地图、角色、家具和 QA
 ├── backend/                     [共享/演进] Flask 主服务、旧 API 和新版 Office 后端
 │   ├── app.py                   [共享/演进] 原版主入口，按配置装配 Office 模式
@@ -102,7 +102,8 @@ Star-Office-UI/
 
 团队工具 / Agent
   └─ api_service :19100
-       └─ SQLite：事件记录和最新 Agent 状态投影，接口为 /api/v1/*
+       └─ /api/v1/projects/{project_id}/telemetry → SQLite 最新主体观测
+            └─ office_team_collector（standalone）→ 现有 Office 快照和工位
 
 Sub2API（可选）
   └─ backend/office_collector.py
@@ -117,7 +118,7 @@ Sub2API（可选）
 - 新版 Office：设置 OFFICE_ENABLED=1、OFFICE_RELEASE_ID、独立数据目录和开发密钥后启动同一入口。
 - 独立通用 API：python3 -m api_service.app，默认监听 19100。
 - 桌面壳：desktop-pet/ 和 electron-shell/ 只是容器，状态仍由 Python 后端管理。
-- Sub2API：只有需要外部遥测时才启用 backend/office_collector.py 和 integrations/sub2api/ 相关流程。
+- 遥测采集：backend/office_collector.py 为统一入口；OFFICE_TELEMETRY_PROVIDER=standalone 调用通用 API，其余使用可选 Sub2API 链路。公司接入按 API_DEVELOPMENT.md 与 TEAM_API_OPERATIONS.md 配置。
 
 涉及新版 Office 时，按以下顺序修改：
 

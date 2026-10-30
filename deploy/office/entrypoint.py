@@ -72,10 +72,11 @@ def main(argv=None):
                    '--worker-tmp-dir', '/tmp', '--access-logfile', '/dev/null',
                    '--error-logfile', '-', 'deploy.office.wsgi:application']
     elif role == 'office-collector':
-        secret_file(os.environ['OFFICE_CREDENTIAL_FILE'])
-        source = urlsplit(os.environ.get('OFFICE_SUB2API_BASE_URL', ''))
-        local_http = (os.environ.get('OFFICE_ALLOW_HTTP') == '1'
-                      and source.scheme == 'http' and source.hostname == '192.168.100.221')
+        standalone = os.environ.get('OFFICE_TELEMETRY_PROVIDER') == 'standalone'
+        secret_file(os.environ['OFFICE_API_KEYS_FILE'] if standalone else os.environ['OFFICE_CREDENTIAL_FILE'])
+        source = urlsplit(os.environ.get('OFFICE_API_BASE_URL' if standalone else 'OFFICE_SUB2API_BASE_URL', ''))
+        local_http = (os.environ.get('OFFICE_ALLOW_HTTP') == '1' and source.scheme == 'http'
+                      and source.hostname in ({'127.0.0.1','localhost','telemetry-api'} if standalone else {'192.168.100.221'}))
         if source.scheme != 'https' and not local_http:
             fail('HTTPS or explicitly approved same-host HTTP required')
         command = [sys.executable, '/app/backend/office_collector.py', '--data-dir',

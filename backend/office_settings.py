@@ -27,6 +27,17 @@ def office_user_ids(app=None):
     or numeric IDs fail closed; this profile cannot grant Sub2API permission.
     Only configured initial mappings are seeded; all other IDs stay unbound.
     """
+    provider = app.config.get("OFFICE_TELEMETRY_PROVIDER") if app is not None else None
+    provider = provider or os.environ.get("OFFICE_TELEMETRY_PROVIDER", "sub2api")
+    if provider not in {"sub2api", "standalone"}:
+        raise ValueError("invalid telemetry provider")
+    if provider == "standalone":
+        try:
+            from .team_telemetry import load_subject_mappings
+        except ImportError:
+            from team_telemetry import load_subject_mappings
+        path = app.config.get("OFFICE_SUBJECTS_FILE") if app is not None else None
+        return tuple(row["office_user_id"] for row in load_subject_mappings(path))
     try:
         from .office_contract import DEFAULT_USER_IDS, ContractError, canonical_id
     except ImportError:

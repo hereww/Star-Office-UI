@@ -1,0 +1,105 @@
+name: star-office-team
+x-office: &office
+  image: ${OFFICE_IMAGE:?Build an Office image from this implementation first}
+  pull_policy: never
+  user: "10001:10001"
+  restart: unless-stopped
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777"]
+services:
+  telemetry-api:
+    build:
+      context: ..
+      dockerfile: api-service/Dockerfile
+    image: ${TEAM_API_IMAGE:-local/star-office-team-api:1}
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=32m,mode=1777"]
+    environment:
+      API_AUTH_MODE: key
+      API_PROJECT_KEYS_FILE: /run/secrets/projects.json
+      API_DATA_FILE: /data/telemetry.sqlite3
+    ports: ["127.0.0.1:${API_PORT:-19100}:19100"]
+    volumes:
+      - api-data:/data
+      - type: bind
+        source: ${TEAM_CONFIG_DIR:?Set absolute provisioned configuration directory}/api-project-keys.json
+        target: /run/secrets/projects.json
+        read_only: true
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:19100/api/v1/readiness',timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  office-web:
+    <<: *office
+    command: [office-web]
+    environment:
+      STAR_OFFICE_ENV: production
+      STAR_OFFICE_DATA_DIR: /data/legacy
+      OFFICE_DATA_DIR: /data/office
+      OFFICE_ENABLED: "1"
+      OFFICE_TELEMETRY_PROVIDER: standalone
+      OFFICE_SUBJECTS_FILE: /run/config/subjects.json
+      OFFICE_RELEASE_ID: ${OFFICE_RELEASE_ID:?Set packaged release ID}
+      OFFICE_ADMIN_SECRET: ${OFFICE_ADMIN_SECRET:?Set independent admin signing secret}
+      OFFICE_ADMIN_USERNAME: ${OFFICE_ADMIN_USERNAME:-admin}
+      OFFICE_ADMIN_PASSWORD_HASH_FILE: /run/secrets/admin.hash
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?Set Flask signing secret}
+      ASSET_DRAWER_PASS: ${ASSET_DRAWER_PASS:?Set legacy drawer password}
+      OFFICE_ADMIN_ALLOW_HTTP: ${OFFICE_ADMIN_ALLOW_HTTP:-0}
+      OFFICE_ADMIN_URL: ${OFFICE_ADMIN_URL:?Set administrator origin}
+      OFFICE_EMPLOYEE_URL: ${OFFICE_EMPLOYEE_URL:?Set employee origin}
+      OFFICE_COMPAT_ORIGIN: ${OFFICE_ADMIN_URL}
+    ports: ["127.0.0.1:${OFFICE_APP_PORT:-19011}:19000"]
+    volumes:
+      - office-data:/data/office
+      - legacy-data:/data/legacy
+      - type: bind
+        source: ${TEAM_CONFIG_DIR}/office-subjects.json
+        target: /run/config/subjects.json
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${OFFICE_ADMIN_HASH_FILE:?Set admin password hash file}
+        target: /run/secrets/admin.hash
+        read_only: true
+        bind: {create_host_path: false}
+  office-collector:
+    <<: *office
+    command: [office-collector]
+    depends_on:
+      telemetry-api: {condition: service_healthy}
+    environment:
+      OFFICE_DATA_DIR: /data/office
+      OFFICE_TELEMETRY_PROVIDER: standalone
+      OFFICE_API_BASE_URL: http://telemetry-api:19100
+      OFFICE_ALLOW_HTTP: "1"
+      OFFICE_API_KEYS_FILE: /run/secrets/reader.json
+      OFFICE_SUBJECTS_FILE: /run/config/subjects.json
+    volumes:
+      - office-data:/data/office
+      - type: bind
+        source: ${TEAM_CONFIG_DIR}/office-subjects.json
+        target: /run/config/subjects.json
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${TEAM_CONFIG_DIR}/office-reader-keys.json
+        target: /run/secrets/reader.json
+        read_only: true
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, python, /app/backend/office_collector.py, --data-dir, /data/office, --health]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+volumes:
+  api-data:
+  office-data:
+  legacy-data:

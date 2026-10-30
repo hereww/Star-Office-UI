@@ -1,0 +1,1341 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Star Office Team Telemetry API",
+    "version": "1.0.0",
+    "description": "公司项目直接上报遥测，无 Sub2API 依赖。读写凭据绑定项目；请求上限 16 KiB，项目最多 500 个稳定主体；每 5 秒重新观测，默认 15 秒过期。重复投递复用完整事件，幂等记录保留 7 天。"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:19100",
+      "description": "本机开发，生产替换为已部署 HTTPS 地址"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ProjectBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "由服务维护者提供的项目写入或读取凭据。"
+      }
+    },
+    "schemas": {
+      "Observation": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": 1
+          },
+          "event_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "maxLength": 128
+          },
+          "subject_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "maxLength": 128
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+          },
+          "service_state": {
+            "enum": [
+              "ready",
+              "degraded",
+              "offline",
+              "unknown"
+            ]
+          },
+          "identity": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "fresh"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 120
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "unavailable",
+                      "untracked"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "null"
+                  },
+                  "name": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "name"
+                ]
+              }
+            ]
+          },
+          "concurrency": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "fresh"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  },
+                  "current": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "current",
+                  "limit"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "unavailable",
+                      "untracked"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "null"
+                  },
+                  "current": {
+                    "type": "null"
+                  },
+                  "limit": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "current",
+                  "limit"
+                ]
+              }
+            ]
+          },
+          "today_usage": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "fresh"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  },
+                  "total": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 80
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "timezone": {
+                    "const": "Asia/Shanghai"
+                  },
+                  "window_end": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "total",
+                  "date",
+                  "timezone",
+                  "window_end"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "unavailable",
+                      "untracked"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "null"
+                  },
+                  "total": {
+                    "type": "null"
+                  },
+                  "date": {
+                    "type": "null"
+                  },
+                  "timezone": {
+                    "type": "null"
+                  },
+                  "window_end": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "total",
+                  "date",
+                  "timezone",
+                  "window_end"
+                ]
+              }
+            ]
+          },
+          "active_models": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "fresh",
+                      "partial"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  },
+                  "models": {
+                    "type": "array",
+                    "maxItems": 32,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "requested_model": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "upstream_model": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "requests": {
+                          "type": "string",
+                          "pattern": "^[1-9][0-9]{0,18}$",
+                          "description": "正整数字符串，不超过 int64。"
+                        }
+                      },
+                      "required": [
+                        "requested_model",
+                        "upstream_model",
+                        "requests"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "models"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "unavailable",
+                      "untracked"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "null"
+                  },
+                  "models": {
+                    "type": "array",
+                    "maxItems": 0
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "models"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "schema_version",
+          "event_id",
+          "subject_id",
+          "observed_at",
+          "service_state",
+          "identity",
+          "concurrency",
+          "today_usage",
+          "active_models"
+        ]
+      },
+      "Subject": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": 1
+          },
+          "event_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "maxLength": 128
+          },
+          "subject_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "maxLength": 128
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+          },
+          "service_state": {
+            "enum": [
+              "ready",
+              "degraded",
+              "offline",
+              "unknown"
+            ]
+          },
+          "identity": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "fresh"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 120
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "unavailable",
+                      "untracked"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "null"
+                  },
+                  "name": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "name"
+                ]
+              }
+            ]
+          },
+          "concurrency": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "fresh"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  },
+                  "current": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "current",
+                  "limit"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "unavailable",
+                      "untracked"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "null"
+                  },
+                  "current": {
+                    "type": "null"
+                  },
+                  "limit": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "current",
+                  "limit"
+                ]
+              }
+            ]
+          },
+          "today_usage": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "fresh"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  },
+                  "total": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 80
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "timezone": {
+                    "const": "Asia/Shanghai"
+                  },
+                  "window_end": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "total",
+                  "date",
+                  "timezone",
+                  "window_end"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "unavailable",
+                      "untracked"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "null"
+                  },
+                  "total": {
+                    "type": "null"
+                  },
+                  "date": {
+                    "type": "null"
+                  },
+                  "timezone": {
+                    "type": "null"
+                  },
+                  "window_end": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "total",
+                  "date",
+                  "timezone",
+                  "window_end"
+                ]
+              }
+            ]
+          },
+          "active_models": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "fresh",
+                      "partial"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                  },
+                  "models": {
+                    "type": "array",
+                    "maxItems": 32,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "requested_model": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "upstream_model": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "requests": {
+                          "type": "string",
+                          "pattern": "^[1-9][0-9]{0,18}$",
+                          "description": "正整数字符串，不超过 int64。"
+                        }
+                      },
+                      "required": [
+                        "requested_model",
+                        "upstream_model",
+                        "requests"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "models"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "quality": {
+                    "enum": [
+                      "unavailable",
+                      "untracked"
+                    ]
+                  },
+                  "observed_at": {
+                    "type": "null"
+                  },
+                  "models": {
+                    "type": "array",
+                    "maxItems": 0
+                  }
+                },
+                "required": [
+                  "quality",
+                  "observed_at",
+                  "models"
+                ]
+              }
+            ]
+          },
+          "freshness": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "heartbeat": {
+                "enum": [
+                  "fresh",
+                  "partial",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              },
+              "identity": {
+                "enum": [
+                  "fresh",
+                  "partial",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              },
+              "concurrency": {
+                "enum": [
+                  "fresh",
+                  "partial",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              },
+              "today_usage": {
+                "enum": [
+                  "fresh",
+                  "partial",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              },
+              "active_models": {
+                "enum": [
+                  "fresh",
+                  "partial",
+                  "unavailable",
+                  "untracked",
+                  "stale"
+                ]
+              }
+            },
+            "required": [
+              "heartbeat",
+              "identity",
+              "concurrency",
+              "today_usage",
+              "active_models"
+            ]
+          }
+        },
+        "required": [
+          "schema_version",
+          "event_id",
+          "subject_id",
+          "observed_at",
+          "service_state",
+          "identity",
+          "concurrency",
+          "today_usage",
+          "active_models",
+          "freshness"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "request_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "request_id"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    }
+  },
+  "paths": {
+    "/api/v1/projects/{project_id}/telemetry": {
+      "post": {
+        "operationId": "publishTelemetry",
+        "summary": "完整替换一个主体的遥测观测",
+        "description": "需 telemetry:write。指标 observed_at 不得晚于主体 observed_at；未知指标必须填 null（models=[]）。同主体同时间不同数据或同 event_id 不同内容返回 409。迟到观测记入幂等表但 applied=false。",
+        "security": [
+          {
+            "ProjectBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "maxLength": 128
+            },
+            "description": "若提供必须与 body.event_id 一致。"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Observation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "内容相同的幂等重试，created=false。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "accepted": {
+                      "const": true
+                    },
+                    "created": {
+                      "type": "boolean"
+                    },
+                    "applied": {
+                      "type": "boolean"
+                    },
+                    "project_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                      "maxLength": 128
+                    },
+                    "subject_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                      "maxLength": 128
+                    },
+                    "event_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                      "maxLength": 128
+                    },
+                    "observed_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                    }
+                  },
+                  "required": [
+                    "accepted",
+                    "created",
+                    "applied",
+                    "project_id",
+                    "subject_id",
+                    "event_id",
+                    "observed_at"
+                  ]
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "新事件，检查 applied 判断是否更新当前观测。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "accepted": {
+                      "const": true
+                    },
+                    "created": {
+                      "type": "boolean"
+                    },
+                    "applied": {
+                      "type": "boolean"
+                    },
+                    "project_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                      "maxLength": 128
+                    },
+                    "subject_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                      "maxLength": 128
+                    },
+                    "event_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                      "maxLength": 128
+                    },
+                    "observed_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                    }
+                  },
+                  "required": [
+                    "accepted",
+                    "created",
+                    "applied",
+                    "project_id",
+                    "subject_id",
+                    "event_id",
+                    "observed_at"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/projects/{project_id}/snapshot": {
+      "get": {
+        "operationId": "getProjectSnapshot",
+        "summary": "读取完整项目快照",
+        "description": "需 telemetry:read；返回全部主体，不分页、不静默截断。过期值作为历史观测保留，消费时必须使用 freshness；Office 适配器会清空公开的过期指标。",
+        "security": [
+          {
+            "ProjectBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "完整快照。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "schema_version": {
+                      "const": 1
+                    },
+                    "project_id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                      "maxLength": 128
+                    },
+                    "generated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "带时区的 ISO 8601 时间；服务端统一为 UTC，最多微秒精度。"
+                    },
+                    "stale_after_seconds": {
+                      "type": "integer",
+                      "minimum": 5,
+                      "maximum": 300
+                    },
+                    "complete": {
+                      "const": true
+                    },
+                    "subjects": {
+                      "type": "array",
+                      "maxItems": 500,
+                      "items": {
+                        "$ref": "#/components/schemas/Subject"
+                      }
+                    }
+                  },
+                  "required": [
+                    "schema_version",
+                    "project_id",
+                    "generated_at",
+                    "stale_after_seconds",
+                    "complete",
+                    "subjects"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "错误响应；客户端只记录 code 与 request_id，不记录凭据。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "request_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "request_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
