@@ -1,7 +1,7 @@
 {
   "name": "star-desktop-pet",
   "private": true,
-  "version": "6.0.0",
+  "version": "6.0.1",
   "scripts": {
     "dev": "STAR_PROJECT_ROOT=.. tauri dev",
     "build": "STAR_PROJECT_ROOT=.. tauri build",

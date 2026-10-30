@@ -1,6 +1,8 @@
 const DEFAULT_FRAME_SIZE = Object.freeze([96, 96]);
 const DEFAULT_GRID = Object.freeze([4, 3]);
-const DEFAULT_FPS = 12;
+// Rock-room pacing is intentionally relaxed. Office actors and screen overlays
+// keep their existing 12fps clocks; this is the room-only contract.
+const DEFAULT_FPS = 8;
 const DEFAULT_FRAME_COUNT = 12;
 const ROCK_ROOM_ID = 'rock';
 
@@ -116,7 +118,7 @@ export function validateRockRoomAnimation(layout, assets) {
   if (contract.schemaVersion !== 1) throw new Error('摇滚房间动画契约版本不支持');
   if (!equalPair(contract.frameSize, DEFAULT_FRAME_SIZE)) throw new Error('摇滚房间动画必须使用96x96帧');
   if (!equalPair(contract.grid, DEFAULT_GRID)) throw new Error('摇滚房间动画必须使用4x3网格');
-  if (contract.frameCount !== DEFAULT_FRAME_COUNT || contract.fps !== DEFAULT_FPS) throw new Error('摇滚房间动画必须为12帧12fps');
+  if (contract.frameCount !== DEFAULT_FRAME_COUNT || contract.fps !== DEFAULT_FPS) throw new Error('摇滚房间动画必须为12帧8fps');
   if (contract.transparent !== true || contract.loop !== true || contract.audio !== false) throw new Error('摇滚房间动画契约不满足透明循环视觉-only要求');
   if (!Array.isArray(spec.performers) || spec.performers.length !== 4) throw new Error('摇滚房间必须配置4只猫');
 
@@ -262,11 +264,18 @@ export class RockRoomAnimation {
     }
     this.effectLayer?.setVisible(enabled);
     this.lastTick = -1;
+    if (!enabled) {
+      // A hidden room is an empty stage: clear the pulse layer and stop
+      // advancing the band clock until the server turns it back on.
+      this.effectLayer?.clear();
+      return;
+    }
     if (this.ready) this.sample(this.scene?.time.now ?? 0);
   }
 
   sample(time) {
     if (!this.ready) return;
+    if (!this.visibility.enabled) return;
     const tick = this.reducedMotion ? 0 : Math.floor(Math.max(0, time) * this.contract.fps / 1000);
     const frame = tick % this.contract.frameCount;
     if (tick === this.lastTick && !this.reducedMotion) return;
@@ -274,6 +283,9 @@ export class RockRoomAnimation {
     this.frame = frame;
     for (const performer of this.performers) {
       const localFrame = (frame + performer.phase) % this.contract.frameCount;
+      // Every atlas cell is pre-aligned to the same foot line. Keep this
+      // world anchor fixed; the hands, ears, tail and face move inside the
+      // cell so the performer never slides through an instrument.
       if (Number(performer.sprite.frame?.name) !== localFrame) performer.sprite.setFrame(localFrame);
     }
     this.drawEffects(frame);
@@ -301,17 +313,23 @@ export class RockRoomAnimation {
   }
 
   snapshot() {
+    const roomVisible = this.ready && this.visibility.enabled;
+    const visiblePerformers = this.performers.filter((performer) => performer.visible === true);
     return {
-      enabled: this.ready,
+      enabled: roomVisible,
+      loaded: this.ready,
+      roomVisible,
+      playing: roomVisible && !this.reducedMotion,
       room: ROCK_ROOM_ID,
+      anchorMode: 'fixed-world-anchor',
       frame: this.frame,
       frameCount: this.contract.frameCount,
       fps: this.contract.fps,
       performerCount: this.performers.length,
-      visiblePerformerCount: this.performers.filter((performer) => performer.visible !== false).length,
+      visiblePerformerCount: visiblePerformers.length,
       performerIds: this.performers.map((performer) => performer.id),
-      visiblePerformerIds: this.performers.filter((performer) => performer.visible !== false).map((performer) => performer.id),
-      performers: this.performers.map((performer) => ({ id: performer.id, role: performer.role, visible: performer.visible !== false })),
+      visiblePerformerIds: visiblePerformers.map((performer) => performer.id),
+      performers: this.performers.map((performer) => ({ id: performer.id, role: performer.role, visible: performer.visible === true })),
       occlusionLayerCount: this.occlusionLayers.length,
       occlusionLayerIds: this.occlusionLayers.map((layer) => layer.id),
       reducedMotion: this.reducedMotion,

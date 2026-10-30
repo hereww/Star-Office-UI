@@ -1,8 +1,8 @@
-# Star Office UI 6.0.0
+# Star Office UI 6.0.1
 
-![Star Office UI 6.0.0](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
+![Star Office UI 6.0.1](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
 
-Star Office UI は、AI 協働環境をリアルタイムに可視化する独立運用のオフィス基盤です。6.0.0 はフロントエンド、バックエンド、デスクトップシェル、Sub2API テレメトリ連携、オフライン公開ツールを含む全面書き換え版です。
+Star Office UI は、AI 協働環境をリアルタイムに可視化する独立運用のオフィス基盤です。6.0.1 では、6.0.0 の全面書き換え版に検証付きオフライン更新機能を追加しています。
 
 このリポジトリは `hereww/Star-Office-UI` の現在の完全なソースです。説明、画像、構成、デプロイドキュメントは現行コードに合わせています。
 
@@ -13,7 +13,7 @@ Star Office UI は、AI 協働環境をリアルタイムに可視化する独�
 - Sub2API のユーザーテレメトリをオフィス用スナップショットへ投影する読み取り専用 collector。
 - `integrations/sub2api/` のホストソース、ユーザーテレメトリプラグイン、UI、マイグレーション、パッチ、`.s2plugin` ツール。
 - 同じ Python バックエンドを使う Electron/Tauri デスクトップシェル。
-- `deploy/office/` のオフライン公開、Docker Compose、Nginx/TLS、バックアップ、ロールバックツール。
+- Quickstart の Docker/native オフラインバンドルと検証付き更新、および `deploy/office/` の正式公開、Docker Compose、Nginx/TLS、バックアップ、ロールバックツール。
 
 ## クイックスタート
 
@@ -30,6 +30,8 @@ python backend/app.py
 ```
 
 `http://127.0.0.1:19000/` を開いてください。書き換え版のオフィスモードを確認する場合は [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md) の環境変数を明示的に設定します。
+
+オフラインで配布・更新する場合は `scripts/package_deploy_bundle.py` で Quickstart バンドルを作成し、展開したディレクトリから `deploy/quickstart/install.sh --offline --docker` または `deploy/quickstart/update.sh --offline --docker --install-dir ~/.star-office-ui` を実行します。
 
 ## ドキュメント
 

@@ -56,7 +56,7 @@ function maskPendingRuntime(runtime) {
   runtime.serverCabinetAnimation?.overlay?.setVisible(false);
   for (const led of runtime.serverLights ?? []) led.setVisible(false);
 }
-export async function createOfficeMap(host, config, { mode = 'employee', onSelect = () => {}, onReady = () => {} } = {}) {
+export async function createOfficeMap(host, config, { mode = 'employee', onSelect = () => {}, onUserSelect = () => {}, onReady = () => {} } = {}) {
   const base = config.releasePrefix;
   const paths = { runtime: sameOriginAsset(config.runtimeModule || config.v4RuntimeModule || '../company-office/connected-v5/runtime.mjs', base), assets: sameOriginAsset(config.assetBase || config.v4AssetBase || '../company-office/connected-v5/', base), quality: sameOriginAsset(config.renderQualityModule || '../company-office/reference-v3/render-quality.mjs', base), phaser: sameOriginAsset(config.phaserScript || '../vendor/phaser-3.80.1.min.js', base) };
   const [Phaser, runtimeModule, qualityModule] = await Promise.all([loadPhaser(paths.phaser), import(paths.runtime), import(paths.quality)]);
@@ -112,7 +112,7 @@ export async function createOfficeMap(host, config, { mode = 'employee', onSelec
           if (!drag || drag.pointerId!==pointer.id) return;
           const completed=drag;drag=null;runtime.pointerDragging=false;
           const moved=completed.moved||exceededDragThreshold(completed.css,pointerCssPosition(pointer,this.sys.game.canvas));
-          if(completed.stationId&&!moved)runtime.selectStation(completed.stationId,{focus:false});
+          if(completed.stationId&&!moved){runtime.selectStation(completed.stationId,{focus:false});onUserSelect(completed.stationId);}
         });
         const cancelDrag=()=>{drag=null;runtime.pointerDragging=false;runtime.setHoverStation?.(null);};
         this.input.on('gameout', cancelDrag);

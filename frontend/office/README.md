@@ -43,7 +43,7 @@ window.__OFFICE_BOOT__ = {
 - 浏览器仅 HTTPS 管理入口可登录，本地隔离开发同样要求 TLS；服务器仍负责强哈希、安全 Cookie、限速和权限校验。
 - 用户/Key IDs、Token total 仅接受字符串；保留空用户名；未知值保持 null。管理员明细和 codec 动态分离于员工模块，不提供示例身份。
 - Config GET 解包 `{config,history}`，PUT 发 `{expected_version,config:{bindings,display,collection}}`。保存/恢复后 GET，必须版本和完整 config 内容一致才显示成功；409 不自动重试，保留草稿。
-- 草稿修改后需先预览才能保存；同一用户/工位冲突、40 字别名、授权范围与配置值会本地校验，后端仍是唯一权威。
+- 草稿修改后可直接保存；预览是可选的本页检查。同一用户/工位冲突、40 字别名、授权范围与配置值会本地校验，后端仍是唯一权威。
 - 源失败/过期/并发 unavailable/untracked/null 一律未知，不假空闲。每席 observed_at 单独校验 freshness；统计由脱敏状态计算。
 - V5 全屏由地图与只读 `fullscreen-hud` 组成：桌面 HUD 固定在右侧深色留白轨道，手机竖屏改为底部横向角色卡。每个已绑定角色仅显示现有头像、真实用户名、状态短语、当前模型、采样时刻对话并发与 `today_usage`（北京时间当日已入库 Token 总量）；Token 总量保持十进制字符串并按独立时间窗校验，缺失/过期显示“未知”，不会伪造为 0。HUD 无按钮，不会抢地图拖动或聚焦操作。
 - 401/403 管理读取失败清除显示与内存中的身份详情。密码/CSRF 不写日志或 storage；所有外来文本均 textContent/text node。

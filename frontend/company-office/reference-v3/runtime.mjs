@@ -1,3 +1,4 @@
+// Keep connected-v4/v5 on one browser module identity; query-versioned and unversioned constructors fail instanceof guards.
 import { DirectionalSeatedPlayer, BUSINESS_STATES, validateDirectionalAssets } from './directional-player.mjs?v=20261026-02';
 import { OfficeRenderQuality, OFFICE_TEXT_FONT } from './render-quality.mjs';
 import { ServerCabinetAnimation, SERVER_CABINET_STATES } from './server-cabinet-animation.mjs';

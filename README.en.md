@@ -1,8 +1,8 @@
-# Star Office UI 6.0.0
+# Star Office UI 6.0.1
 
-![Star Office UI 6.0.0](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
+![Star Office UI 6.0.1](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
 
-Star Office UI is an independently maintained real-time AI collaboration office and status observability platform. Version 6.0.0 is a full-stack rewrite with a 16-seat pixel office, Flask services, optional desktop shells, Sub2API telemetry integration, and reproducible offline release tooling.
+Star Office UI is an independently maintained real-time AI collaboration office and status observability platform. Version 6.0.1 adds a verified offline bundle update path to the 6.0.0 full-stack rewrite.
 
 This repository is the complete `hereww/Star-Office-UI` project. Its descriptions, source layout, screenshots, and deployment docs describe the current codebase.
 
@@ -13,7 +13,7 @@ This repository is the complete `hereww/Star-Office-UI` project. Its description
 - A read-only collector that projects Sub2API user telemetry into office snapshots.
 - `integrations/sub2api/` with the host source, user telemetry plugin, plugin UI, migrations, patches, and `.s2plugin` packaging/signing tools.
 - Optional Electron and Tauri shells that reuse the same Python backend.
-- Offline release packaging, Docker Compose, Nginx/TLS, backup, and rollback tools under `deploy/office/`.
+- Quickstart Docker/native offline bundles with verified updates, plus the production Docker Compose, Nginx/TLS, backup, and rollback tools under `deploy/office/`.
 
 ## Quick start
 
@@ -31,10 +31,14 @@ python backend/app.py
 
 Open `http://127.0.0.1:19000/`. For the rewritten office mode, enable it explicitly with the variables documented in [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md).
 
+For an offline deployment or update, build a Quickstart bundle with `scripts/package_deploy_bundle.py`, then run `deploy/quickstart/install.sh --offline --docker` or `deploy/quickstart/update.sh --offline --docker --install-dir ~/.star-office-ui` from the extracted bundle directory.
+
 ## Verification
 
 ```bash
 python -m compileall -q backend scripts
+python scripts/test_quickstart_update.py
+python scripts/test_quickstart_config.py
 python scripts/test_office_release.py
 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s integrations/sub2api/plugin-tools/tests -v
 cd integrations/sub2api/host-source/backend

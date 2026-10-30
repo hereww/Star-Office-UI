@@ -22,14 +22,14 @@ try:
     from .office_characters import CHARACTER_TEMPLATE_ID, CHARACTER_ANIMATION_MODE, CHARACTER_MANIFEST_CONTRACT_VERSION, public_character_profiles, public_room_character_catalog
     from .office_collector import read_snapshot
     from .office_contract import ContractError, public_snapshot, source_projection
-    from .office_security import ADMIN_TTL, COOKIE_NAME, OfficeSecurity
+    from .office_security import ADMIN_TTL, COOKIE_NAME, OfficeSecurity, admin_http_allowed
     from .office_settings import office_data_dir, office_enabled, office_user_ids
     from .office_store import MissingVersion, OfficeStore, SessionConflict, VersionConflict
 except ImportError:
     from office_characters import CHARACTER_TEMPLATE_ID, CHARACTER_ANIMATION_MODE, CHARACTER_MANIFEST_CONTRACT_VERSION, public_character_profiles, public_room_character_catalog
     from office_collector import read_snapshot
     from office_contract import ContractError, public_snapshot, source_projection
-    from office_security import ADMIN_TTL, COOKIE_NAME, OfficeSecurity
+    from office_security import ADMIN_TTL, COOKIE_NAME, OfficeSecurity, admin_http_allowed
     from office_settings import office_data_dir, office_enabled, office_user_ids
     from office_store import MissingVersion, OfficeStore, SessionConflict, VersionConflict
 
@@ -68,7 +68,7 @@ def legacy_request_guard():
     ext = current_app.extensions.get("office_api")
     if not ext or not ext["security"].enabled:
         return _safe_error("ADMIN_NOT_CONFIGURED", 503)
-    if not request.is_secure:
+    if not request.is_secure and not admin_http_allowed():
         return _safe_error("HTTPS_REQUIRED", 400)
     security = ext["security"]
     try:
@@ -131,7 +131,7 @@ def register_office_api(app, *, store=None, snapshot_path=None, clock=time.time)
         if request.content_length is not None and request.content_length > 65536:
             return error("REQUEST_TOO_LARGE", 413)
         if request.path.startswith("/api/office/admin"):
-            if not request.is_secure:
+            if not request.is_secure and not admin_http_allowed():
                 return error("HTTPS_REQUIRED", 400)
             if not security.enabled:
                 return error("ADMIN_NOT_CONFIGURED", 503)

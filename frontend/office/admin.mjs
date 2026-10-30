@@ -37,7 +37,7 @@ export async function mount(root, config, api) {
   let disposed = false, session = null, page = 'overview', saved = null, draft = null, history = [], telemetry = null, snapshot = initialSnapshot(), characterProfiles = [];
   const fallbackCharacterProfiles = [{ id: DEFAULT_CHARACTER_PROFILE_ID, label: '橘猫', status: 'ready', productionReady: true, assignable: true, directions: ['up', 'down', 'left', 'right'], actions: ['working', 'idle', 'syncing', 'error'], description: 'V5 固定坐姿表情模板，共享长桌与屏幕效果。' }];
   let map = null, stopPolling = null, usersTimer = null, sessionTimer = null, loadingUsers = false, operation = false, dirty = false, previewed = false, selected = 'desk-12', mapGeneration = 0;
-  let shell, content, mapHost, mapNotice, notice, saveBar, privateDetails, overviewList, diagnostics, versionLabel, previewTag;
+  let shell, content, mapHost, mapNotice, notice, saveBar, privateDetails, overviewList, diagnostics, versionLabel, previewTag, activeSeatDialog = null;
   const dialog = makeDialog('确认配置操作');
   const beforeUnload = event => { if (dirty) { event.preventDefault(); event.returnValue = ''; } };
   window.addEventListener('beforeunload', beforeUnload);
@@ -45,7 +45,8 @@ export async function mount(root, config, api) {
   function lock(message = '') { stop(); session = null; saved = null; draft = null; telemetry = null; history = []; dirty = false; loginScreen(message); }
   function show(message, kind = 'info') { if (notice) setNotice(notice, message, kind); }
   function loginScreen(message = '') {
-    const secure = location.protocol === 'https:';
+    const insecureHttpAllowed = config.admin_http_allowed === true || config.adminHttpAllowed === true;
+    const secure = location.protocol === 'https:' || (location.protocol === 'http:' && insecureHttpAllowed);
     const info = el('div', { class: 'notice', role: 'status', hidden: !message }, message);
     const username = el('input', { name: 'username', 'data-testid': 'admin-username', autocomplete: 'username', value: 'admin', required: true, maxlength: 80 });
     const password = el('input', { type: 'password', name: 'password', 'data-testid': 'admin-password', autocomplete: 'current-password', required: true, maxlength: 512 });
@@ -61,7 +62,7 @@ export async function mount(root, config, api) {
     root.replaceChildren(el('main', { class: 'login-shell', id: 'main-content', tabindex: '-1' },
       el('section', { class: 'login-story' }, el('span', { class: 'eyebrow' }, 'STAR OFFICE / ADMIN'), el('div', { class: 'login-emblem', 'aria-hidden': 'true' }, '律'), el('h1', {}, '让办公室，\n清晰而有序。'), el('p', {}, '已确认的场景，不变的角色。\n只把真正可信的状态，放回工位。'), el('div', { class: 'login-story-footer' }, 'V5 连排工位', el('span', {}, '内网 · 独立管理入口'))),
       el('section', { class: 'login-card' }, el('span', { class: 'eyebrow' }, 'WELCOME BACK'), el('h2', {}, '办公室控制台'), el('p', { class: 'muted' }, '登录后管理绑定、查看遥测与预览动画。'), info,
-        secure ? form : el('div', { class: 'notice', 'data-kind': 'error' }, '管理入口必须使用同源 HTTPS。本地隔离验收同样需要 TLS；请使用已信任的 HTTPS 管理地址。'),
+        secure ? form : el('div', { class: 'notice', 'data-kind': 'error' }, insecureHttpAllowed ? '当前页面协议不受支持，请使用 HTTP 管理地址。' : '管理入口必须使用同源 HTTPS。本地隔离验收同样需要 TLS；请使用已信任的 HTTPS 管理地址。'),
         el('p', { class: 'privacy-note' }, '管理员遥测仅在登录会话中读取。员工页与管理端权限分离。'))));
     if (config.preview_fixture === true) root.prepend(fixtureBanner());
   }
@@ -142,7 +143,7 @@ export async function mount(root, config, api) {
     for (const item of shell.querySelectorAll('[data-page]')) item.setAttribute('aria-current', item.dataset.page === page ? 'page' : 'false');
     overviewList = privateDetails = diagnostics = null;
     const title = PAGES.find(([id]) => id === page)[1];
-    const descriptions = { overview: '关注当前工位，而不是猜测员工在做什么。', bindings: '一个用户，一张工位。展示名只用于员工视图。', demo: '八种猫四向、六种状态均已接入；所有变化都留在这个演示场景。', display: '让不同屏幕上的办公室都清晰、安静。', diagnostics: '查看采样与授权边界；这里不提供凭据编辑。' };
+    const descriptions = { overview: '关注当前工位，而不是猜测员工在做什么。', bindings: '同一授权用户可以同时绑定多个工位；每个工位独立保存。', demo: '八种猫四向、六种状态均已接入；所有变化都留在这个演示场景。', display: '让不同屏幕上的办公室都清晰、安静。', diagnostics: '查看采样与授权边界；这里不提供凭据编辑。' };
     content.replaceChildren(el('header', { class: 'admin-page-header' }, el('div', {}, el('span', { class: 'eyebrow' }, `CONTROL ROOM / ${page.toUpperCase()}`), el('h1', {}, title), el('p', { class: 'muted' }, descriptions[page])), el('span', { class: 'portal-badge' }, '● 管理员会话')), notice);
     if (page === 'overview') overviewPage(); else if (page === 'bindings') bindingsPage(); else if (page === 'demo') demoPage(); else if (page === 'display') displayPage(); else diagnosticsPage();
   }
@@ -177,7 +178,7 @@ export async function mount(root, config, api) {
     // Start only after the host participates in layout, so DPR measurements are real.
     requestAnimationFrame(() => {
       if (generation !== mapGeneration || disposed) return;
-      void createOfficeMap(mapHost, config, { mode, onSelect: id => { selected = id; if (page === 'overview') { renderOverviewList(); renderPrivate(); } } }).then(handle => {
+      void createOfficeMap(mapHost, config, { mode, onSelect: id => { selected = id; if (page === 'overview') { renderOverviewList(); renderPrivate(); } }, onUserSelect: id => { if (page === 'bindings') openSeatDialog(id); } }).then(handle => {
         if (disposed || generation !== mapGeneration) { handle.dispose(); return; }
         map = handle; map.setZoomLocked(zoomLocked); mapNotice.hidden = true;
         if (mode !== 'demo') { map.applyTelemetrySnapshot(toRuntimeSnapshot(snapshot)); map.applyDisplaySettings(saved.display); }
@@ -301,22 +302,40 @@ export async function mount(root, config, api) {
       select.addEventListener('change', choose);
       alias.addEventListener('input', () => { const current = draft.bindings.find(b => b.seat_id === seatId); if (current) current.display_name = alias.value; edit(); });
       enabled.addEventListener('change', () => { const current = draft.bindings.find(b => b.seat_id === seatId); if (current) current.enabled = enabled.checked; edit(); });
-      rows.append(el('section', { class: `binding-card ${row ? 'is-bound' : ''}` }, el('div', { class: 'binding-card-head' }, el('strong', {}, `工位 ${seatId.slice(-2)}`), el('span', { class: 'muted small' }, Number(seatId.slice(-2)) <= 8 ? '红区' : '绿区')), field('授权用户', select), field('展示名', alias), field('角色动画', roleSelect), roleStatus, field('显示此绑定', enabled)));
+      const seatSave = button('保存此工位', () => saveConfig(seatId), { class: 'primary-button seat-save-button', 'data-testid': `config-save-${seatId}` });
+      rows.append(el('section', { class: `binding-card ${row ? 'is-bound' : ''}` }, el('div', { class: 'binding-card-head' }, el('strong', {}, `工位 ${seatId.slice(-2)}`), el('span', { class: 'muted small' }, Number(seatId.slice(-2)) <= 8 ? '红区' : '绿区')), field('授权用户', select), field('展示名', alias), field('角色动画', roleSelect), roleStatus, field('显示此绑定', enabled), seatSave));
     }
     updateDefaultDescription();
-    content.append(appearancePanel, el('p', { class: 'notice' }, '选择角色动画后，先预览草稿，再保存并读回确认。八种猫的四向与状态动画均已可用，可在动画预览页查看。工作、休息等状态继续跟随实时数据。'), makeMap(), rows, makeSaveBar(), historyPanel());
+    content.append(appearancePanel, el('p', { class: 'notice' }, '每个工位独立保存绑定、展示名、启用状态和角色动画；同一授权用户可以同时绑定多个工位。保存后会自动读回服务端版本。八种猫的四向与状态动画均已可用，可在动画预览页查看。'), makeMap(), rows, historyPanel());
+  }
+  function openSeatDialog(seatId) {
+    const card = content?.querySelector(`[data-testid="config-save-${seatId}"]`)?.closest('.binding-card');
+    if (!card || card.closest('dialog')) return;
+    const placeholder = el('span', { hidden: true });
+    card.replaceWith(placeholder);
+    const seatDialog = el('dialog', { class: 'confirm-dialog seat-settings-dialog', 'data-testid': `seat-dialog-${seatId}` });
+    activeSeatDialog = seatDialog;
+    const close = () => { if (seatDialog.open) seatDialog.close(); };
+    // Native modal dialogs do not close when their backdrop is clicked by
+    // default. The seat settings panel is a transient role-selection surface,
+    // so clicking its backdrop should return to the bindings page while clicks
+    // inside the panel continue editing the selected seat.
+    seatDialog.addEventListener('click', event => { if (event.target === seatDialog) close(); });
+    seatDialog.addEventListener('close', () => { placeholder.replaceWith(card); seatDialog.remove(); if (activeSeatDialog === seatDialog) activeSeatDialog = null; }, { once: true });
+    seatDialog.replaceChildren(el('span', { class: 'demo-tag inline' }, '工位设置'), el('h2', {}, `工位 ${seatId.slice(-2)} 设置`), el('p', { class: 'muted' }, '在地图中选中的工位可直接编辑绑定；保存后自动读回服务端配置。'), card, el('div', { class: 'dialog-actions' }, button('关闭', close, { class: 'secondary-button', 'data-testid': 'seat-dialog-close' })));
+    root.append(seatDialog); seatDialog.showModal();
   }
   function makeSaveBar() {
-    saveBar = el('div', { class: 'save-bar' }, el('span', { class: 'save-state', 'data-testid': 'config-save-state', role: 'status' }), button('读取服务端版本', reloadConfig, { class: 'quiet-button', 'data-testid': 'config-read', 'data-read': 'true' }), button('预览草稿', previewDraft, { class: 'secondary-button', 'data-testid': 'config-preview', 'data-preview': 'true' }), button('保存并读回确认', saveConfig, { class: 'primary-button', 'data-testid': 'config-save', 'data-save': 'true' })); renderSaveState(); return saveBar;
+    saveBar = el('div', { class: 'save-bar' }, el('span', { class: 'save-state', 'data-testid': 'config-save-state', role: 'status' }), button('读取服务端版本', reloadConfig, { class: 'quiet-button', 'data-testid': 'config-read', 'data-read': 'true' }), button('预览草稿（可选）', previewDraft, { class: 'secondary-button', 'data-testid': 'config-preview', 'data-preview': 'true' }), button('保存并读回确认', () => saveConfig(), { class: 'primary-button', 'data-testid': 'config-save', 'data-save': 'true' })); renderSaveState(); return saveBar;
   }
   function renderSaveState() {
-    if (content) for (const control of [...content.querySelectorAll('.binding-card input, .binding-card select, .appearance-panel select, .display-grid input, .display-grid select, .diagnostics-panel select, .history-row button'), ...shell.querySelectorAll('.nav-item, .logout-button')]) {
+    if (content) for (const control of [...content.querySelectorAll('.binding-card input, .binding-card select, .binding-card .seat-save-button, .appearance-panel select, .display-grid input, .display-grid select, .diagnostics-panel select, .history-row button'), ...shell.querySelectorAll('.nav-item, .logout-button')]) {
       if (operation) { if (!Object.hasOwn(control.dataset, 'wasDisabled')) control.dataset.wasDisabled = String(control.disabled); control.disabled = true; }
       else if (Object.hasOwn(control.dataset, 'wasDisabled')) { control.disabled = control.dataset.wasDisabled === 'true'; delete control.dataset.wasDisabled; }
     }
     if (!saveBar) return; const error = draft ? validation() : '等待服务端配置';
-    saveBar.querySelector('.save-state').textContent = error || (dirty ? `未保存草稿 · 基于 v${saved.version}${previewed ? ' · 已预览' : ' · 请先预览'}` : `已读回服务端 v${saved.version}`);
-    saveBar.querySelector('[data-save]').disabled = operation || !dirty || !previewed || Boolean(error);
+    saveBar.querySelector('.save-state').textContent = error || (dirty ? `未保存草稿 · 基于 v${saved.version}${previewed ? ' · 已预览' : ' · 可直接保存'}` : `已读回服务端 v${saved.version}`);
+    saveBar.querySelector('[data-save]').disabled = operation || !dirty || Boolean(error);
     saveBar.querySelector('[data-preview]').disabled = operation || Boolean(error);
     saveBar.querySelector('[data-read]').disabled = operation;
   }
@@ -328,11 +347,24 @@ export async function mount(root, config, api) {
     catch (error) { if (error?.status === 401) lock(errorMessage(error)); else show(errorMessage(error), 'error'); }
     finally { operation = false; renderSaveState(); }
   }
-  async function saveConfig() {
-    if (operation || validation() || !dirty || !previewed) return;
-    if (!await confirm('保存这份配置草稿？', `将基于 v${saved.version} 保存新版本，再重新 GET 比对版本及完整内容。`)) return;
+  async function saveConfig(seatId = null) {
+    if (operation || validation() || !dirty) return;
+    const scopeLabel = seatId ? `工位 ${seatId.slice(-2)} 的设置` : '这份配置草稿';
+    if (seatId && activeSeatDialog?.open) activeSeatDialog.close();
+    if (!await confirm(`保存${scopeLabel}？`, `将基于 v${saved.version} 保存${seatId ? '该工位设置' : '整份配置'}，再重新 GET 比对版本及内容。`)) return;
     operation = true; renderSaveState();
-    try { const submitted = clone(draft); submitted.bindings = submitted.bindings.map(b => ({ ...b, display_name: b.display_name.trim() })); const result = await api.save(submitted, saved.version, session); if (!session?.authenticated || disposed) return; saved = result.config; draft = clone(saved); draft.room_characters = safeRoomCharacters(draft.room_characters); history = result.history; dirty = false; versionLabel.textContent = `配置 v${saved.version}`; renderPage(); show(`保存成功 · 服务端 v${saved.version} 的版本及内容已读回确认。`, 'success'); }
+    try {
+      const submitted = clone(seatId ? saved : draft);
+      if (seatId) {
+        const edited = draft.bindings.find(b => b.seat_id === seatId);
+        submitted.bindings = submitted.bindings.filter(b => b.seat_id !== seatId);
+        if (edited) submitted.bindings.push(clone(edited));
+      }
+      submitted.bindings = submitted.bindings.map(b => ({ ...b, display_name: b.display_name.trim() }));
+      const result = await api.save(submitted, saved.version, session);
+      if (!session?.authenticated || disposed) return;
+      saved = result.config; draft = clone(saved); draft.room_characters = safeRoomCharacters(draft.room_characters); history = result.history; dirty = false; previewed = false; versionLabel.textContent = `配置 v${saved.version}`; renderPage(); show(`保存成功 · ${seatId ? `工位 ${seatId.slice(-2)} ` : ''}服务端 v${saved.version} 的版本及内容已读回确认。`, 'success');
+    }
     catch (error) { if (error?.status === 401) lock(errorMessage(error)); else show(errorMessage(error), 'error'); }
     finally { operation = false; renderSaveState(); }
   }
@@ -386,7 +418,7 @@ export async function mount(root, config, api) {
     const syncPerformerDisabled = () => performerFields.forEach(control => { const input = control.querySelector('input'); if (input) input.disabled = !roomEnabled.checked; });
     roomEnabled.addEventListener('change', () => { draft.room_characters.rock.enabled = roomEnabled.checked; syncPerformerDisabled(); edit(); });
     syncPerformerDisabled();
-    const roomPanel = el('section', { class: 'panel scene-character-panel', 'data-testid': 'scene-character-settings' }, el('h2', {}, '场景角色显示'), el('p', { class: 'muted small' }, '控制已制作的 V5 摇滚房间四角色显示；不修改工位锚点、素材或动画时钟。'), field('显示摇滚房间角色', roomEnabled), el('div', { class: 'scene-character-grid' }, performerFields));
+    const roomPanel = el('section', { class: 'panel scene-character-panel', 'data-testid': 'scene-character-settings' }, el('h2', {}, '场景角色显示'), el('p', { class: 'muted small' }, '总开关关闭后摇滚房间为空场景：四只猫和舞台灯光都会隐藏并停止播放；不影响 16 个办公工位。'), field('显示并播放摇滚房间乐队', roomEnabled), el('div', { class: 'scene-character-grid' }, performerFields));
     content.append(el('div', { class: 'display-grid' }, el('section', { class: 'panel' }, el('h2', {}, '显示偏好'), field('默认地图视角', view), field('动态效果', motion), toggles), roomPanel, el('section', { class: 'display-note' }, el('span', { class: 'eyebrow' }, 'CALM BY DESIGN'), el('h2', {}, '清晰，不抢注意力。'), el('p', {}, '地图与角色比例保持已确认版本。\n桌面详情可折叠，手机详情从底部展开。'), el('p', { class: 'muted small' }, '这些偏好不会改变工位锚点、素材、表情时钟或数据权限。'))), makeSaveBar());
   }
   let demoState = 'writing', demoDirection = 'down', demoCharacterProfileId = DEFAULT_CHARACTER_PROFILE_ID, previewHost = null, previewPlayer = null, previewFrame = null, playerGeneration = 0, conceptImagePromises = new Map();

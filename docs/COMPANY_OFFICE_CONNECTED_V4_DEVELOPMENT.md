@@ -20,7 +20,7 @@
 | `frontend/company-office/connected-v4/screen-overlay.mjs` | 每席独立小屏幕纹理，polygon裁切、背屏LED、窄侧屏柔和色变 |
 | `frontend/company-office/connected-v4/layout.json` | 新家具fit及初始座位配置，旧房间/背景引用 |
 | `frontend/company-office/connected-v4/assets.json` | 显式指向原 reference-v3/assets.json，不复制生成角色参数 |
-| `frontend/company-office/connected-v4/style.css` | 已退役；正式入口直接使用 `reference-v3/controls.css` 或 `frontend/office/office.css` |
+| V4 legacy CSS shim（已移除） | 正式入口直接使用 `reference-v3/controls.css` 或 `frontend/office/office.css` |
 
 ## 原角色绝对不变
 
@@ -139,3 +139,7 @@ bubble-layout实现至此收尾；正式播放器没有willReadFrequently改动�
 ## 主线程最终验收补充
 
 2026-10-03：新增屏幕碰撞、pan、reduce-motion断言后，真实浏览器最终35/35通过；新契约12/12通过；像素及384组测试6/6通过。最终依据见 `COMPANY_OFFICE_CONNECTED_V4_ACCEPTANCE.md` 与 `assets/company-office-connected-v4/qa/browser-qa.json`。此前31/31为中间轮次，不是最终计数。
+
+## 2026-10-30 素材归档边界
+
+V4 QA 截图、报告和历史预览已在仓库外建立可校验快照，但源文件仍保留在 `assets/company-office-connected-v4/qa/` 原路径，没有删除或移动。归档根目录、逐文件 SHA-256、恢复步骤和当前工作区状态见 `docs/ASSETS_ARCHIVE_2026-10-30.md`。V4/V5 运行时继续从 `frontend/` 依赖闭包加载；QA 快照只用于回滚和验收证据，不作为发布依赖。

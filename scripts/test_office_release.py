@@ -297,7 +297,7 @@ class PolicyTests(unittest.TestCase):
         self.assertIn('office-data:/data/office', web)
         self.assertIn('office-data:/data/office', collector)
 
-    def test_nginx_public_exact_whitelist_static_mime_and_lan(self):
+    def test_nginx_public_routes_static_mime_and_http_admin(self):
         text = (ROOT / 'deploy/office/nginx.conf.template').read_text()
         http, tls = text.split('server {', 2)[1:]
         self.assertIn('listen 192.168.100.221:19000;', http)
@@ -308,11 +308,13 @@ class PolicyTests(unittest.TestCase):
         self.assertNotIn('location = /set_state', http)
         self.assertIn('location ^~ /static/releases/@RELEASE_ID@/', http)
         self.assertIn('application/javascript js mjs;', text)
-        self.assertEqual(text.count('allow 192.168.100.0/24;'), 2)
-        self.assertEqual(text.count('deny all;\n    if'), 2)
-        self.assertIn('listen 192.168.100.221:19443 ssl;', tls)
-        self.assertIn('proxy_set_header X-Forwarded-Proto https;', tls)
-        self.assertIn('ssl_protocols TLSv1.2 TLSv1.3;', tls)
+        self.assertEqual(text.count('allow all;'), 2)
+        self.assertEqual(text.count('server_name _;'), 2)
+        self.assertNotIn('if ($host !~*', text)
+        self.assertIn('listen 192.168.100.221:19443;', tls)
+        self.assertIn('proxy_set_header X-Forwarded-Proto http;', tls)
+        self.assertIn('proxy_set_header X-Forwarded-Host $http_host;', tls)
+        self.assertNotIn('ssl_protocols TLSv1.2 TLSv1.3;', tls)
 
     def test_offline_build_no_unpinned_latest_or_network_install(self):
         docker = (ROOT / 'deploy/office/Dockerfile').read_text()
@@ -714,14 +716,13 @@ class ImageProvenanceTest(unittest.TestCase):
         self.assertEqual(rule.count('try_files /static/releases/@RELEASE_ID@/office/index.html =404;'),2)
         self.assertNotIn('alias /opt/star-office-ui/releases/@RELEASE_ID@/public/static/releases/@RELEASE_ID@/office/index.html;',rule)
 
-    def test_extensionless_admin_alias_renders_html_not_download(self):
+    def test_extensionless_admin_proxy_renders_dynamic_boot(self):
         rule = (ROOT / 'deploy/office/nginx.conf.template').read_text()
         admin = rule.split('    location = /admin {', 1)[1].split('    }', 1)[0]
-        self.assertIn('default_type text/html;', admin)
-        self.assertIn('/office/admin.html;', admin)
+        self.assertIn('proxy_pass http://127.0.0.1:@APP_PORT@/admin;', admin)
+        self.assertIn('proxy_set_header X-Forwarded-Proto http;', admin)
         self.assertIn('limit_except GET { deny all; }', admin)
         self.assertIn('add_header X-Content-Type-Options nosniff always;', admin)
-        self.assertIn('add_header X-Frame-Options SAMEORIGIN always;', admin)
 
     def test_offline_build_streams_actual_release_context_and_verifies_image(self):
         code=(ROOT/'deploy/office/build_offline.sh').read_text()

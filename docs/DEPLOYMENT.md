@@ -14,7 +14,7 @@
 ```bash
 python scripts/package_deploy_bundle.py \
   --output deploy/bundles \
-  --bundle-id star-office-ui-6.0.0 \
+  --bundle-id star-office-ui-6.0.1 \
   --wheelhouse deploy/office/wheelhouse/linux-cp311-x86_64
 ```
 
@@ -33,11 +33,35 @@ python scripts/package_deploy_bundle.py \
 离线 Docker 安装只使用归档中的 wheelhouse 和目标机已缓存的 `python:3.11-slim`；如果交付了完整镜像，可以把 `docker save` 归档传给 `--image-archive`，这样目标机无需构建。没有 Docker 时可使用 `--online --native` 或 `--offline --native`，后者要求 Python 3.11。安装脚本把 `.env`、数据、日志和原生虚拟环境保存在用户目录，已有文件不会被覆盖。
 
 ```bash
-./deploy/quickstart/verify.sh --url http://127.0.0.1:19000
+./deploy/quickstart/verify.sh --health-only --url http://127.0.0.1:19000
 ./deploy/quickstart/uninstall.sh
 ```
 
+### Quickstart 离线版本更新
+
+每个新版本都应解压到新的目录，先校验包，再从新目录运行升级器。升级器不联网，升级前
+备份安装目录中的私有 `.env` 和安装状态，保留 Docker named volumes/native 数据目录、资产
+卷和 Sub2API 凭据，并在启动后读取 `/health` 返回体中的 `version` 字段做版本确认。升级器本身
+需要目标主机上的 Python 3 来执行清单、环境和状态校验；Docker 服务运行时仍使用包内镜像：
+
+```bash
+./deploy/quickstart/update.sh --offline --docker \
+  --install-dir ~/.star-office-ui
+
+# 原生 Python 安装
+./deploy/quickstart/update.sh --offline --native \
+  --install-dir ~/.star-office-ui
+```
+
+目标包必须通过 `bundle-manifest.json` 与 `SHA256SUMS` 完整性检查。Docker 更新会派生
+`star-office-ui:<bundle-id>` 镜像标签；带 `images/*.tar` 的交付包可以直接离线加载镜像，
+否则使用包内目标架构 wheelhouse 和已缓存的 Python 3.11 基础镜像。版本降级默认拒绝，必须
+显式使用 `--allow-downgrade`。升级备份保存在 `<install-dir>/update-backups/`，健康检查或
+版本读回失败时恢复旧环境文件；旧包目录仍保留时，升级器会尝试从旧包重启服务。
+
 Quickstart 默认启动完整看板并关闭生产办公室专用 API（`OFFICE_ENABLED=0`）。需要 Sub2API collector、管理员 HTTPS、Nginx、证书和回滚证据时，继续使用下文的 `deploy/office` 正式发布流程。
+
+`deploy/quickstart/update.sh` 只针对 Quickstart 安装目录；正式办公室发布保持不可变 release 目录，离线切换继续使用下文的 `build_offline.sh`、`backup.sh` 和 `rollback.sh`，不要把 Quickstart 的卷或环境文件交给正式发布 Compose。
 
 如果目标是内网单机或离线快速联动，先按 [`SUB2API_DEPLOYMENT.md`](./SUB2API_DEPLOYMENT.md) 和 [`SUB2API_PLUGIN_DEPLOYMENT.md`](./SUB2API_PLUGIN_DEPLOYMENT.md) 单独完成 Sub2API 与签名遥测插件，再执行：
 
@@ -89,6 +113,7 @@ python backend/app.py
 
 ```bash
 python -m compileall -q backend scripts
+python scripts/test_quickstart_update.py
 python scripts/test_office_release.py
 ```
 

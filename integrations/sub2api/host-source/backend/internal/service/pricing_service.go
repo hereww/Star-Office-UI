@@ -369,12 +369,20 @@ func (s *PricingService) checkAndUpdatePricing() error {
 
 	// 检查本地文件是否存在
 	if _, err := os.Stat(pricingFile); os.IsNotExist(err) {
+		if strings.TrimSpace(s.cfg.Pricing.RemoteURL) == "" {
+			logger.LegacyPrintf("service.pricing", "%s", "[Pricing] Remote sync disabled and local pricing cache is missing, using bundled fallback")
+			return s.useFallbackPricing()
+		}
 		logger.LegacyPrintf("service.pricing", "%s", "[Pricing] Local pricing file not found, downloading...")
 		return s.downloadPricingData()
 	}
 
 	// 先加载本地文件（确保服务可用），再检查是否需要更新
 	if err := s.loadPricingData(pricingFile); err != nil {
+		if strings.TrimSpace(s.cfg.Pricing.RemoteURL) == "" {
+			logger.LegacyPrintf("service.pricing", "[Pricing] Local pricing cache is invalid and remote sync is disabled, using bundled fallback: %v", err)
+			return s.useFallbackPricing()
+		}
 		logger.LegacyPrintf("service.pricing", "[Pricing] Failed to load local file, downloading: %v", err)
 		return s.downloadPricingData()
 	}

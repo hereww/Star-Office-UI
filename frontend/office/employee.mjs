@@ -46,13 +46,15 @@ export async function mount(root, config, api) {
   const fullscreenKeydown = event => {
     // Embedded browsers can forward Esc to the page without exiting native
     // fullscreen. Keep a keyboard exit even though the map has no controls.
-    if (event.key === 'Escape' && document.fullscreenElement === mapHost) {
-      event.preventDefault();
+    if ((event.key === 'Escape' || event.key === 'Esc') && document.fullscreenElement === mapHost) {
       void document.exitFullscreen().catch(() => {});
     }
   };
   document.addEventListener('fullscreenchange', fullscreenChange);
-  document.addEventListener('keydown', fullscreenKeydown);
+  // Capture before Phaser/canvas handlers, but leave the browser's native
+  // Escape action intact as a fallback when the embedded implementation
+  // rejects document.exitFullscreen().
+  document.addEventListener('keydown', fullscreenKeydown, true);
   function updateZoomLockUI() {
     zoomLockButton.textContent = zoomLocked ? '🔒 缩放已锁定' : '🔓 可缩放';
     zoomLockButton.setAttribute('aria-pressed', String(zoomLocked));
@@ -117,5 +119,5 @@ export async function mount(root, config, api) {
     if (!handle.adapterReady) { mapNotice.hidden = false; mapNotice.classList.add('map-pending'); mapNotice.textContent = 'V5 地图已载入 · 等待遥测适配器接入（角色已隐藏）'; }
     render(); if (!selectedByUser && !snapshot.display) map.setView('overview');
   }).catch(() => { if (!disposed) { mapNotice.textContent = '地图暂时无法加载。请检查同源版本资源；工位列表仍可使用。'; mapNotice.classList.add('map-pending'); } });
-  return () => { disposed = true; document.removeEventListener('fullscreenchange', fullscreenChange); document.removeEventListener('keydown', fullscreenKeydown); stopPolling(); clearInterval(staleTimer); map?.dispose(); };
+  return () => { disposed = true; document.removeEventListener('fullscreenchange', fullscreenChange); document.removeEventListener('keydown', fullscreenKeydown, true); stopPolling(); clearInterval(staleTimer); map?.dispose(); };
 }

@@ -71,7 +71,8 @@ class CompatibilityGuard:
             return self.app(environ, start_response)
         # Nginx serves employee/admin HTML and immutable static paths itself.
         # All other backend paths, INCLUDING /static and /assets, are legacy.
-        if environ.get('wsgi.url_scheme') != 'https':
+        if (environ.get('wsgi.url_scheme') != 'https'
+                and os.environ.get('OFFICE_ADMIN_ALLOW_HTTP', '0') != '1'):
             return self._deny(start_response, '403 Forbidden', 'HTTPS_REQUIRED')
         try:
             status, _ = self._probe(environ, '/api/office/admin/config')

@@ -83,14 +83,40 @@ HTTP 管理入口只适合隔离的内网验证；生产环境应使用 HTTPS �
 
 native 模式会同时启动 Web 和 `backend/office_collector.py` 两个进程，分别写入 `star-office.log` 和 `office-collector.log`。升级或重新运行安装器会先停止这两个 Quickstart 进程，不会删除数据和凭据文件。
 
-## 验证、更新和停止
+## 验证、离线更新和停止
 
 ```bash
-./deploy/quickstart/verify.sh --url http://127.0.0.1:19000
+./deploy/quickstart/verify.sh --health-only --url http://127.0.0.1:19000
 ./deploy/quickstart/uninstall.sh --install-dir ~/.star-office-ui
 ```
 
+将新版本 Quickstart 离线包解压到一个新目录后，在新包目录执行升级。升级器会先校验
+`bundle-manifest.json` 与 `SHA256SUMS`，备份私有 `.env`/安装状态，保留数据卷、资产卷和
+Sub2API 凭据，然后按原来的 Docker/native 模式重启并从 `/health` 返回体的 `version` 字段读回目标版本：
+升级器本身需要目标主机上的 Python 3 来做清单、环境和状态校验；Docker 服务运行时仍使用包内镜像。
+
+```bash
+./deploy/quickstart/update.sh --offline --docker \
+  --install-dir ~/.star-office-ui
+
+# 没有 Docker 的离线主机
+./deploy/quickstart/update.sh --offline --native \
+  --install-dir ~/.star-office-ui
+```
+
+Docker 更新默认使用 `star-office-ui:<bundle-id>` 的新镜像标签，旧标签不会被覆盖；如果交付
+包带有 `images/*.tar`，升级器会在构建前从本地归档加载。每次升级的私有备份位于
+`<install-dir>/update-backups/<UTC时间>-<bundle-id>.<随机后缀>/`。目标包版本低于当前 `X.Y.Z` 时会停止，
+确需回退可显式加 `--allow-downgrade`。升级器不访问网络、不删除数据和凭据；健康检查或版本
+读回失败时会恢复旧 `.env`，若旧包目录仍存在则尝试从旧包重启服务。完整清单校验发生在安装前，安装后只读 `/health`；这样 native 的 Python 缓存和用户自定义素材不会被误当成包篡改。
+
+如果旧安装使用的是自定义 Docker 镜像仓库标签，升级时必须显式传入对应的新镜像标签：
+`update.sh --offline --docker --image registry.intra/star-office-ui:6.0.1 ...`。
+
 `uninstall.sh --purge` 才会删除 Docker named volume 或 native 数据目录；私有凭据和 `.env` 会保留，方便重新部署和凭据轮换。轮换凭据时重新运行 `install.sh --with-sub2api`，输入新 token 和新的到期时间，再在 Sub2API 侧撤销旧 token。
+
+原生模式升级还会把已生成的背景历史、首页收藏和带 `.bak`/`.default` 标记的自定义素材
+复制到新包；Docker 模式则依靠独立 assets volume 保留这些内容。
 
 ## 生成离线归档
 
@@ -118,3 +144,4 @@ Authorization: Bearer s2ut_...
 Sub2API 会校验安装 ID、凭据 hash 和当前插件批准范围，然后由插件宿主通过 HashiCorp go-plugin/gRPC 调用只读 `ReadUserTelemetry`；宿主从 PostgreSQL 读取用户、API Key 元数据和 usage_logs，从 Redis 读取当前并发。Collector 校验用户范围、固定的 Asia/Shanghai 时间窗口和分页结果后，把脱敏快照写入共享数据卷，Web 再读取快照。token 永远不会发给浏览器，也不会用于模型请求。
 
 当前仓库 `integrations/sub2api/host-source` 的插件版本是 `0.1.1`，已经覆盖 Star Office 的身份、API Key 元数据、当日 Token 总量和并发指标。`integrations/sub2api/patches/user-telemetry-v0.2.1/` 是针对特定 Sub2API 0.2.15 的历史补丁，额外加入 `active_models` 扩展；补丁没有自动应用到当前 host-source，部署前必须按插件 manifest 和目标宿主版本重新验收。
+

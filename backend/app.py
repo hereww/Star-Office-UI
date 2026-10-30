@@ -39,6 +39,13 @@ MEMORY_DIR = os.path.join(os.path.dirname(ROOT_DIR), "memory")
 FRONTEND_DIR = os.path.join(ROOT_DIR, "frontend")
 FRONTEND_INDEX_FILE = os.path.join(FRONTEND_DIR, "index.html")
 FRONTEND_ELECTRON_STANDALONE_FILE = os.path.join(FRONTEND_DIR, "electron-standalone.html")
+VERSION_FILE = os.path.join(ROOT_DIR, "VERSION")
+try:
+    PROJECT_VERSION = Path(VERSION_FILE).read_text(encoding="utf-8").strip() or "unknown"
+except (OSError, UnicodeError):
+    PROJECT_VERSION = "unknown"
+if PROJECT_VERSION == "unknown":
+    PROJECT_VERSION = os.getenv("STAR_OFFICE_VERSION") or os.getenv("OFFICE_RELEASE_ID", "unknown")
 DATA_DIR = os.path.abspath(os.environ.get("STAR_OFFICE_DATA_DIR", ROOT_DIR))
 # The production office is opt-in; preserve the complete legacy application by default.
 OFFICE_ENABLED = os.getenv("OFFICE_ENABLED", "0").strip() == "1"
@@ -295,6 +302,7 @@ def _office_frontend_page(mode):
         "release_prefix": "/static/releases/" + OFFICE_RELEASE_ID,
         "admin_url": os.getenv("OFFICE_ADMIN_URL", "https://192.168.100.221:19443/admin"),
         "employee_url": os.getenv("OFFICE_EMPLOYEE_URL", "http://192.168.100.221:19000/"),
+        "admin_http_allowed": os.getenv("OFFICE_ADMIN_ALLOW_HTTP", "0") == "1",
         "poll_interval_ms": 2000,
         "preview_fixture": os.getenv("OFFICE_PREVIEW_FIXTURE") == "1" and not is_production_mode(),
     }
@@ -311,7 +319,8 @@ def _office_frontend_page(mode):
 
 @app.route("/admin", methods=["GET"])
 def office_admin_page():
-    if OFFICE_ENABLED and is_production_mode() and not request.is_secure:
+    if (OFFICE_ENABLED and is_production_mode() and not request.is_secure
+            and os.getenv("OFFICE_ADMIN_ALLOW_HTTP", "0") != "1"):
         return jsonify({"error": {"code": "HTTPS_REQUIRED", "message": "Use the HTTPS management portal"}}), 403
     return _office_frontend_page("admin")
 
@@ -1310,6 +1319,8 @@ def health():
     return jsonify({
         "status": "ok",
         "service": "star-office-ui",
+        "version": PROJECT_VERSION,
+        "release_id": OFFICE_RELEASE_ID,
         "timestamp": datetime.now().isoformat(),
     })
 

@@ -1,116 +1,96 @@
-# 项目结构与新旧边界
+# 项目结构与运行说明
 
-本文档说明当前 hereww/Star-Office-UI 的目录来源、运行入口和开发边界。当前项目参考 ringhyacinth/Star-Office-UI 的 master，保留原项目的旧版像素办公室入口，同时新增新版 Office、独立通用 API、Sub2API 集成和发布运维工具。
+本文档描述 `Star-Office-UI` 6.0.1 的代码边界、运行入口、数据文件和发布目录。项目同时保留旧版完整看板与新版隔离办公室入口；两者的资源、接口和部署方式不能混用。
 
-## 标记规则
+## 组件关系
 
-| 标记 | 含义 | 开发要求 |
+```text
+浏览器 / Electron / Tauri
+          │
+          ▼
+      backend/app.py  ─────── legacy UI 与旧 API
+          │
+          ├── OFFICE_ENABLED=1
+          │       ├── frontend/office/              新版员工/管理入口
+          │       ├── backend/office_api.py         新版管理 API 与兼容边界
+          │       ├── backend/office_collector.py   上游 Sub2API 采集器
+          │       └── frontend/company-office/       V4/V5 办公室运行时与素材
+          │
+          └── STAR_OFFICE_DATA_DIR                  运行时状态与配置目录
+```
+
+## 目录说明
+
+| 路径 | 用途 | 是否进入正式发布包 |
 | --- | --- | --- |
-| [原项目旧版] | 原参考项目已有的入口或资源 | 保持兼容性；不要把它当作新版 Office 的入口 |
-| [新版重构] | 当前项目新增的 Office、API、运行时或测试 | 新功能优先放这里，并同步契约、测试和发布清单 |
-| [共享/演进] | 原路径继续使用，但实现已经扩展 | 修改前检查旧版和新版是否共用同一文件 |
-| [集成新增] | 当前项目为外部系统加入的代码和工具 | 与主项目保持边界，不提交外部凭据、数据库或缓存 |
-| [发布运维新增] | 当前项目新增的安装、打包、预检、备份和回滚工具 | 使用新的 release ID，保留校验和回滚材料 |
-| [本地证据/历史] | 截图、QA、候选包、旧发行物和本地归档 | 只能作为证据或参考，不作为运行时源码 |
+| `backend/` | Flask 主进程、办公室 API、采集器、SQLite/JSON 存储和安全边界 | 是，按发布清单选择 |
+| `frontend/office/` | 版本化员工页、管理页、模块、样式和数据投影 | 是 |
+| `frontend/company-office/` | V4/V5 地图、角色、家具、遥测适配器和运行时素材 | 是，按依赖闭包选择 |
+| `frontend/vendor/` | 本地固定第三方运行时（包括 Phaser） | 仅实际依赖进入 |
+| `frontend/index.html` 等根页面 | 完整看板入口，默认开发模式使用 | 按运行模式选择 |
+| `desktop-pet/` | Tauri 桌面壳 | 独立开发/构建 |
+| `electron-shell/` | Electron 桌面壳，版本 `6.0.1` | 独立开发/构建 |
+| `scripts/` | 测试、素材检查、发布打包和离线验证工具 | 工具源码随仓库保存 |
+| `deploy/quickstart/` | 可复制的 Docker/native 安装、完整性校验和离线版本更新 | 随 Quickstart 包交付 |
+| `deploy/office/` | Docker Compose、离线构建、预检、备份、回滚和发布校验 | 发布包带入必要文件 |
+| `integrations/sub2api/` | Sub2API 宿主固定源码、用户遥测插件、`.s2plugin` 打包工具和版本补丁 | 源码进入仓库；依赖缓存、签名包和私钥排除 |
+| `assets/` | 设计稿、可重建源素材、候选素材、QA 资料和历史参考 | 不按目录整体发布；正式 Office 闭包只取 `frontend/` 依赖 |
+| `archive/` | 仓库内的小型旧资源归档索引，例如旧脸部图集 | 不进入运行时；大型素材归档放在仓库外 |
+| `docs/` | 架构、契约、验收、部署和历史记录 | 文档目录不作为运行时依赖 |
+| `state.sample.json`、`join-keys.sample.json` | 开发状态和邀请 key 模板 | 模板可发布，实际值不能发布 |
+| `runtime-config.sample.json`、`.env.example` | 运行配置和生产环境变量模板 | 只含占位符 |
+| `.local/`、`frontend/office/.local/` | 本地测试、截图、预览、回滚和审计中间文件 | 禁止发布 |
+| `deploy/office/out/` | 本地生成的候选归档和解包目录 | 每个候选包单独审核后再交付 |
 
-## 与参考项目的结构对照
+### 素材源、运行时副本和外部归档
 
-原项目的顶层结构只有 assets/、backend/、desktop-pet/、dist/、docs/、electron-shell/、frontend/ 和 scripts/。当前项目保留这些目录，并新增 .agents/、api_service/、api-service/、deploy/ 和 integrations/sub2api/。
+`assets/` 是素材研发与验收区，不是正式静态资源根目录。当前生产办公室从 `frontend/company-office/` 和 `frontend/office/` 的依赖闭包加载图片；`scripts/package_office_release.py` 不会因为目录邻近而把 `assets/` 整体打入发布包。Quickstart 的旧版资产抽屉例外使用 `assets/room-reference.webp` / `assets/room-reference.png`，这两个文件必须继续保留。
 
-| 路径 | 原参考项目 | 当前项目 | 当前定位 |
-| --- | --- | --- | --- |
-| frontend/index.html、frontend/game.js、frontend/layout.js | 旧版像素办公室主入口和页面运行时 | 继续保留 | [原项目旧版] 兼容入口 |
-| backend/app.py | Flask 主服务、旧版页面和状态 API | 继续保留并增加 Office 装配 | [共享/演进] |
-| desktop-pet/、electron-shell/ | 桌面封装 | 继续复用 Python 后端 | [原项目旧版/共享] |
-| assets/room-reference.png/.webp | 原始办公室参考素材 | 继续用于旧版/Quickstart 兼容路径 | [共享/演进] |
-| frontend/office/ | 原项目没有 | 员工端、管理员端、数据模型和资源清单 | [新版重构] |
-| frontend/company-office/ | 原项目没有 | reference-v3、connected-v4、connected-v5 运行时和素材 | [新版重构] |
-| backend/office_*.py | 原项目没有 | Office 契约、API、collector、存储、安全和角色配置 | [新版重构] |
-| api_service/、api-service/ | 原项目没有 | 不依赖 Sub2API 的通用 Agent 事件 API | [新版重构] |
-| integrations/sub2api/ | 原项目没有 | 宿主源码副本、补丁、插件工具和集成文档 | [集成新增] |
-| deploy/ | 原项目没有 | Quickstart、正式发布、离线构建、备份和回滚 | [发布运维新增] |
-| scripts/ | 少量素材、安全和 smoke test 脚本 | 增加 Office、浏览器、像素、API 和发布测试 | [共享/演进] |
-| docs/ | 项目介绍、部署、维护和历史报告 | 增加新版架构、API、Office 开发、发布和验收文档 | [共享/演进] |
-| .agents/ | 原项目没有 | 角色动画和仓库协作技能 | [新版重构] |
-| .local/、deploy/office/out/、dist/ | 不作为当前开发入口 | 本地证据、候选包和历史发行物 | [本地证据/历史] |
+2026-10-30 已建立一个**外部归档快照**，源文件没有删除或移动：
 
-原项目中的 docs/screenshots/readme-cover-*.jpg 和历史发行说明属于参考项目的历史资料。当前新版的截图、QA 和发布证据应放在对应的 assets/、frontend/office/、.local/ 或 docs/office-production/ 目录中，不要把历史截图当作新版验收证据。
+```text
+/Users/hepingyu/Documents/ChatGPT/Star-Office-UI-archive-20261030/assets-deprecated-20261030/
+```
 
-## 当前目录树
+快照包含旧预览、QA、明确拒绝的候选和 V3 历史候选，共 841 个文件、约 160.96 MiB。逐文件 SHA-256、字节数和归档时 Git 状态记录在该目录的 `archive-manifest.json`。当前正在修改或未跟踪的 QA 文件也只做了快照，工作副本仍留在原路径。
 
-~~~text
-Star-Office-UI/
-├── .agents/                     [新版重构] 仓库技能和角色动画工作流
-├── api_service/                 [新版重构] 独立通用 API：app、store、wsgi
-├── api-service/                 [新版重构] API 启动包装和环境变量模板
-├── assets/                      [共享/演进] 原始素材、新版地图、角色、家具和 QA
-├── backend/                     [共享/演进] Flask 主服务、旧 API 和新版 Office 后端
-│   ├── app.py                   [共享/演进] 原版主入口，按配置装配 Office 模式
-│   └── office_*.py              [新版重构] Office API、契约、collector、存储和安全
-├── deploy/                      [发布运维新增]
-│   ├── quickstart/              可复制安装、校验、升级和卸载
-│   ├── office/                  正式发布、Compose、预检、备份和回滚
-│   └── bundles/                 交付归档和校验文件
-├── desktop-pet/                 [原项目旧版/共享] Tauri 桌面壳
-├── dist/                        [本地证据/历史] 历史发行物
-├── docs/                        [共享/演进] 架构、契约、开发、部署和验收文档
-├── electron-shell/              [原项目旧版/共享] Electron 桌面壳
-├── frontend/
-│   ├── index.html               [原项目旧版] 旧版看板入口
-│   ├── game.js、layout.js       [原项目旧版] 旧版页面运行时
-│   ├── office/                  [新版重构] 员工端、管理员端、数据投影和专项测试
-│   ├── company-office/          [新版重构] V3/V4/V5 地图、角色、家具和运行时
-│   ├── fonts/                   [新版补充] 本地字体和许可证
-│   └── vendor/                  [共享/演进] 固定版本本地第三方运行时
-├── integrations/sub2api/        [集成新增]
-│   ├── host-source/             宿主源码副本
-│   ├── patches/                 按宿主版本保存的补丁
-│   └── plugin-tools/            插件打包、验签和测试工具
-├── scripts/                     [共享/演进] 构建、预览、QA、安全检查和测试
-├── .local/                      [本地证据/历史] 本地预览、截图、审计和回滚材料
-├── VERSION                      [新版补充] 当前版本号
-└── pyproject.toml               [共享/演进] Python 项目元数据
-~~~
+开发时按以下边界处理：
 
-工作区可能还会出现 archive/、wheelhouse/、deploy/office/out/ 等本地目录。它们分别用于历史归档、离线构建输入或候选发布物，不能直接作为当前运行时依赖，也不应在没有审核的情况下提交或复制到生产环境。
+- 运行时要改 `frontend/`，不要直接从外部归档或 `assets/` 读取图片。
+- 需要重新生成地图、家具或摇滚房间动画时，先使用 `assets/` 中的源图、manifest 和归一化脚本。
+- QA 截图、旧预览和拒绝候选可以从外部快照恢复，但不能当作当前发布证据。
+- 归档快照不是部署包，也不应复制回发布闭包；恢复前先校验 `archive-manifest.json`。
 
-## 运行时边界
+归档范围、清单位置、必须保留的源素材和恢复步骤集中记录在 `docs/ASSETS_ARCHIVE_2026-10-30.md`。
 
-~~~text
-浏览器
-  └─ backend/app.py :19000
-       ├─ 默认模式：根目录旧版页面和旧状态接口
-       └─ OFFICE_ENABLED=1：frontend/office 员工端、管理员端和 /api/office/*
+## 运行时数据
 
-团队工具 / Agent
-  └─ api_service :19100
-       └─ SQLite：事件记录和最新 Agent 状态投影，接口为 /api/v1/*
+开发模式默认把状态文件写在项目根目录，可通过 `STAR_OFFICE_DATA_DIR` 改到独立目录。常见文件包括：
 
-Sub2API（可选）
-  └─ backend/office_collector.py
-       └─ Office 快照 / frontend/office 展示
-~~~
+- `state.json`：主 Agent 当前状态。
+- `agents-state.json`：访客 Agent 状态。
+- `join-keys.json`：运行时邀请 key，由模板生成后再按需修改。
+- `runtime-config.json`、`asset-positions.json`、`asset-defaults.json`：资产和运行配置。
+- 生产办公室还会使用 `office-config.sqlite3` 和原子写入的 `office-snapshot.json`，它们属于数据卷，不能提交到 Git 或放入静态发布包。
 
-/api/office/* 和 /api/v1/* 是两套接口边界。独立通用 API 默认不依赖 Sub2API，也不保存 API key、Bearer token、密码、Cookie、邮箱或上游原始响应。
+所有真实密钥、消费凭据、管理员密码哈希、CA 私钥和生产数据库都应位于发布目录之外的受限路径。
 
-## 入口和修改顺序
+## 入口和边界
 
-- 旧版快速查看：python3 backend/app.py，默认监听 19000，使用根目录 frontend/。
-- 新版 Office：设置 OFFICE_ENABLED=1、OFFICE_RELEASE_ID、独立数据目录和开发密钥后启动同一入口。
-- 独立通用 API：python3 -m api_service.app，默认监听 19100。
-- 桌面壳：desktop-pet/ 和 electron-shell/ 只是容器，状态仍由 Python 后端管理。
-- Sub2API：只有需要外部遥测时才启用 backend/office_collector.py 和 integrations/sub2api/ 相关流程。
+- 开发入口：`python3 backend/app.py`，默认监听 `0.0.0.0:19000`，可用 `STAR_BACKEND_PORT` 覆盖。
+- 新版办公室只有显式设置 `OFFICE_ENABLED=1` 才启用；生产环境应使用反向代理和隔离端口，不直接暴露 Flask 开发服务器。
+- `OFFICE_RELEASE_ID` 决定 `/static/releases/<release-id>/` 的版本化资源前缀，发布后不可复用旧 release ID。
+- `set_state.py` 只写本地状态文件；`office-agent-push.py` 用于访客 Agent 的 HTTP 加入和状态推送。
+- Electron/Tauri 只是桌面容器，仍复用同一个 Python 后端，不拥有独立的状态数据库。
+- Sub2API 集成源码、插件宿主改动和打包工具位于 `integrations/sub2api/`；Star Office UI 不复制 Sub2API 的运行时数据库、管理员凭据或模型 Key。
 
-涉及新版 Office 时，按以下顺序修改：
+## 修改顺序
 
-1. 后端契约和存储：backend/office_contract.py、backend/office_api.py、backend/office_collector.py。
-2. 前端数据投影和运行时：frontend/office/、frontend/company-office/。
-3. 资源清单和发布配置：frontend/office/release-manifest.json、scripts/package_office_release.py、deploy/office/。
-4. 对应测试：scripts/test_office_*.py、scripts/test_office_*.mjs 和 frontend/office/ 下的专项测试。
-5. 使用新 release ID 打包，保留校验值，完成目标环境读回后再切流量。
+涉及新版办公室时，通常按以下顺序修改并验证：
 
-## 运行时数据和安全边界
+1. 后端契约和存储：`backend/office_contract.py`、`backend/office_api.py`、`backend/office_collector.py`。
+2. 前端数据投影和运行时：`frontend/office/`、`frontend/company-office/`。
+3. 发布闭包和部署配置：`scripts/package_office_release.py`、`deploy/office/`。
+4. 对应测试：`scripts/test_office_*.py`、`scripts/test_office_*.mjs`。
+5. 用新 release ID 打包，保留旧归档和校验值，完成目标环境验收后再切流量。
 
-开发状态可通过 STAR_OFFICE_DATA_DIR 指向独立目录。state.json、agents-state.json、join-keys.json、runtime-config.json、SQLite、快照、日志、.env、API key、消费凭据、管理员密码哈希、CA 私钥和真实用户数据不能提交到 Git。
-
-.local/、deploy/office/out/ 和 dist/ 的内容只表示本地证据、候选发布或历史参考。它们不证明当前代码已经部署，也不替代生产浏览器、网络、数据新鲜度和回滚验收。

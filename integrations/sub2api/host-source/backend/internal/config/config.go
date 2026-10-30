@@ -1860,6 +1860,15 @@ func load(allowMissingJWTSecret bool) (*Config, error) {
 	if err := viper.Unmarshal(&cfg); err != nil {
 		return nil, fmt.Errorf("unmarshal config error: %w", err)
 	}
+	// Viper intentionally ignores empty environment values by default. Pricing
+	// remote URLs are an exception: the offline installer uses an explicitly
+	// empty value to disable all remote pricing traffic, including the defaults.
+	if raw, ok := os.LookupEnv("PRICING_REMOTE_URL"); ok {
+		cfg.Pricing.RemoteURL = strings.TrimSpace(raw)
+	}
+	if raw, ok := os.LookupEnv("PRICING_HASH_URL"); ok {
+		cfg.Pricing.HashURL = strings.TrimSpace(raw)
+	}
 	if trustedProxiesEnvConfigured {
 		cfg.Server.TrustedProxies = normalizeStringSlice(strings.Split(trustedProxiesEnv, ","))
 	}

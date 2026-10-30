@@ -60,6 +60,12 @@ const EXPECTED_ASSETS = {
   'bassist-tuxedo': 'bassist-tuxedo.png',
   'vocalist-cream': 'vocalist-cream.png',
 };
+const EXPECTED_FRAME_ANCHORS = {
+  'drummer-orange-tabby': 48,
+  'guitarist-gray': 48,
+  'bassist-tuxedo': 48,
+  'vocalist-cream': 48,
+};
 const EXPECTED_OCCLUSION_LAYERS = [
   {id: 'drum-kit-front', asset: './media/rock-room/drum-kit-front.png', depth: 830},
   {id: 'stage-mics-front', asset: './media/rock-room/stage-mics-front.png', depth: 900},
@@ -170,15 +176,39 @@ function frameAlphaStats(decoded, frameWidth, frameHeight, columns, rows) {
       let transparent = 0;
       let visible = 0;
       let opaque = 0;
+      let minX = frameWidth;
+      let minY = frameHeight;
+      let maxX = -1;
+      let maxY = -1;
       for (let y = row * frameHeight; y < (row + 1) * frameHeight; y += 1) {
         for (let x = column * frameWidth; x < (column + 1) * frameWidth; x += 1) {
           const alpha = decoded.pixels[(y * decoded.width + x) * 4 + 3];
           if (alpha === 0) transparent += 1;
           if (alpha > 0) visible += 1;
           if (alpha === 255) opaque += 1;
+          if (alpha >= 12) {
+            minX = Math.min(minX, x - column * frameWidth);
+            minY = Math.min(minY, y - row * frameHeight);
+            maxX = Math.max(maxX, x - column * frameWidth);
+            maxY = Math.max(maxY, y - row * frameHeight);
+          }
         }
       }
-      frames.push({frame: row * columns + column, transparent, visible, opaque});
+      const bottomXs = [];
+      for (let x = 0; x < frameWidth; x += 1) {
+        const alpha = decoded.pixels[((row * frameHeight + maxY) * decoded.width + column * frameWidth + x) * 4 + 3];
+        if (alpha >= 12) bottomXs.push(x);
+      }
+      frames.push({
+        frame: row * columns + column,
+        transparent,
+        visible,
+        opaque,
+        bounds: [minX, minY, maxX, maxY],
+        frameCenter: (minX + maxX) / 2,
+        bottomCenter: (Math.min(...bottomXs) + Math.max(...bottomXs)) / 2,
+        bottomY: maxY,
+      });
     }
   }
   return frames;
@@ -203,8 +233,20 @@ const layout = JSON.parse(await readFile(resolve(CONNECTED_V5, 'layout.json'), '
 const assets = JSON.parse(await readFile(resolve(CONNECTED_V5, 'assets.json'), 'utf8'));
 const spec = layout.roomAnimations?.rock;
 const contract = assets.roomAnimationContract;
+const rockRuntimeSource = await readFile(resolve(CONNECTED_V5, 'rock-room-animation.mjs'), 'utf8');
+const connectedRuntimeSource = await readFile(resolve(CONNECTED_V5, 'runtime.mjs'), 'utf8');
+const connectedPlayerSource = await readFile(resolve(CONNECTED_V5, 'seated-player.mjs'), 'utf8');
+const referenceRuntimeSource = await readFile(resolve(ROOT, 'frontend/company-office/reference-v3/runtime.mjs'), 'utf8');
 
 assert.doesNotThrow(() => validateRockRoomAnimation(layout, assets));
+assert.equal(rockRuntimeSource.includes('setPosition(nextX'), false, 'Rock-room performers must keep fixed world anchors');
+assert.match(connectedRuntimeSource, /rockRoomAnimation\?\.update\(time\)/, 'connected-v5 runtime must advance the rock-room clock');
+assert.match(connectedRuntimeSource, /reference-v3\/runtime\.mjs\?v=20261026-02/, 'connected-v5 must version its reference runtime dependency');
+assert.match(connectedRuntimeSource, /reference-v3\/directional-player\.mjs\?v=20261026-02/, 'connected-v5 must version its directional-player dependency');
+assert.match(connectedPlayerSource, /reference-v3\/directional-player\.mjs\?v=20261026-02/, 'connected-v5 seated player must version its directional-player dependency');
+assert.match(referenceRuntimeSource, /directional-player\.mjs\?v=20261026-02/, 'reference runtime must version its directional-player dependency');
+assert.match(rockRuntimeSource, /if \(!this\.visibility\.enabled\) return;/, 'disabled rock room must stop advancing its clock');
+assert.match(rockRuntimeSource, /roomVisible/, 'rock-room snapshot must expose server-controlled visibility');
 assert.deepEqual(layout.id, 'company-office-connected-v5');
 assert.deepEqual(layout.size, MAP_BOUNDS.slice(2));
 assert.deepEqual(spec.bounds, ROOM_BOUNDS);
@@ -222,7 +264,7 @@ assert.deepEqual(contract, {
   frameSize: [96, 96],
   grid: [4, 3],
   frameCount: 12,
-  fps: 12,
+  fps: 8,
   transparent: true,
   loop: true,
   audio: false,
@@ -252,6 +294,15 @@ for (const performer of spec.performers) {
   assert.ok(frames.every((frame) => frame.transparent > 0), `${performer.id} has no transparent background pixels in every frame`);
   assert.ok(frames.every((frame) => frame.visible > 0), `${performer.id} has an empty frame`);
   assert.ok(frames.every((frame) => frame.opaque > 0), `${performer.id} has no opaque character pixels in every frame`);
+  const expectedFrameAnchor = EXPECTED_FRAME_ANCHORS[performer.id];
+  assert.ok(Number.isFinite(expectedFrameAnchor), `${performer.id} has no expected frame anchor`);
+  assert.ok(frames.every((frame) => Math.abs(frame.frameCenter - expectedFrameAnchor) <= 4), `${performer.id} frame center is not anchored near ${expectedFrameAnchor}`);
+  assert.ok(frames.every((frame) => frame.bottomY === 88), `${performer.id} foot baseline is not fixed at 88`);
+  for (let index = 0; index < frames.length; index += 1) {
+    const next = frames[(index + 1) % frames.length];
+    assert.ok(Math.abs(next.frameCenter - frames[index].frameCenter) <= 4, `${performer.id} frame ${index} jumps horizontally`);
+    assert.equal(next.bottomY, frames[index].bottomY, `${performer.id} frame ${index} jumps vertically`);
+  }
   console.log('PASS', `${performer.id}: 384x288 RGBA sheet, 4x3/12 frames, transparent background`);
 }
 

@@ -1,6 +1,6 @@
 {
   "productName": "Star Desktop Pet",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "identifier": "com.star.desktop-pet",
   "build": { "frontendDist": "../src" },
   "app": {

@@ -30,7 +30,10 @@ services:
       OFFICE_ADMIN_PASSWORD_HASH_FILE: /run/secrets/office_admin_hash
       FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?Set a strong signing secret}
       ASSET_DRAWER_PASS: ${ASSET_DRAWER_PASS:?Set a strong legacy drawer password}
-      OFFICE_COMPAT_ORIGIN: https://192.168.100.221:19443
+      OFFICE_COMPAT_ORIGIN: ${OFFICE_COMPAT_ORIGIN:-https://192.168.100.221:19443}
+      OFFICE_ADMIN_ALLOW_HTTP: ${OFFICE_ADMIN_ALLOW_HTTP:-0}
+      OFFICE_ADMIN_URL: ${OFFICE_ADMIN_URL:-https://192.168.100.221:19443/admin}
+      OFFICE_EMPLOYEE_URL: ${OFFICE_EMPLOYEE_URL:-http://192.168.100.221:19000/}
     ports: ["127.0.0.1:${OFFICE_APP_PORT:-19011}:19000"]
     volumes:
       - office-data:/data/office

@@ -1,5 +1,5 @@
 import {DirectionalSeatedPlayer} from '../reference-v3/directional-player.mjs?v=20261026-02';
-import {CHAIR_CLIPS} from './furniture-contract.mjs';
+import {CHAIR_CLIPS, BENCH_OCCLUSION_INSETS} from './furniture-contract.mjs';
 
 /**
  * Draw one immutable full character frame per tick. Screen animation remains
@@ -46,15 +46,20 @@ export class ConnectedSeatedPlayer extends DirectionalSeatedPlayer {
       }else this._drawActor();
     }
     this._drawChair('front');
-    // Cut only lower-body pixels behind the actual new desktop alpha. The face,
-    // head template and bodyPlacement are unchanged. No synthetic desk foreground.
+    // Cut only lower-body pixels behind the actual shared bench desktop alpha.
+    // The face, head template and bodyPlacement are unchanged; no synthetic desk
+    // foreground is drawn here.  Clip geometry is derived from BENCH_OCCLUSION_INSETS
+    // in furniture-contract.mjs — re-measure there when seatAnchor or the bench
+    // sprite changes, not here.
     const b=this.benchContext;
     if(b&&this.direction!=='up'){
       const [sx,sy]=this.spec.furniture.seatAnchor,[cx,cy]=b.center,s=b.stationScale,t=b.transform;
+      const insets=BENCH_OCCLUSION_INSETS[this.direction];
+      const {topInset,sideInset}=insets;
       ctx.save();ctx.beginPath();
-      if(this.direction==='right')ctx.rect(sx+9,sy-18,192-sx-9,192-sy+18);
-      else if(this.direction==='left')ctx.rect(0,sy-18,sx-9,192-sy+18);
-      else ctx.rect(0,sy-8,192,192-sy+8);
+      if(this.direction==='right')ctx.rect(sx+sideInset,sy-topInset,192-sx-sideInset,192-sy+topInset);
+      else if(this.direction==='left')ctx.rect(0,sy-topInset,sx-sideInset,192-sy+topInset);
+      else ctx.rect(0,sy-topInset,192,192-sy+topInset);
       ctx.clip();ctx.globalCompositeOperation='destination-out';
       ctx.drawImage(b.image,(t.x-cx)/s+96,(t.y-cy)/s+96,t.width/s,t.height/s);ctx.restore();
     }
