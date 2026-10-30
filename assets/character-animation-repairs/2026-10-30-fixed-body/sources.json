@@ -1,0 +1,191 @@
+{
+  "sourceCommit": "18d63442fbb8c67fff9123c7c4ff0ee2171e0531",
+  "note": "Historical expression renderer and its actual generated idle atlases. Offline build inputs only; never loaded by runtime.",
+  "files": [
+    {
+      "sourcePath": "frontend/company-office/pixel-face-animation.mjs",
+      "path": "source/legacy-pixel-face-animation.mjs",
+      "sha256": "58921886369cf9fe8f34f6ec9f2930c217c91fefbc30934f403244f78611c62d"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/ragdoll-v1/manifest.json",
+      "path": "source/ragdoll-v1/manifest.json",
+      "sha256": "65e348193defd46321ec98202ca106875cad38ff842b91df8642295f4d7c61bc"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/ragdoll-v1/down/base.png",
+      "path": "source/ragdoll-v1/down/base.png",
+      "sha256": "9d25174d9e89a7e6ca766108db30f448af4fcbf4fd731339c2f4b0bfff35d62d"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/ragdoll-v1/down/face-idle.png",
+      "path": "source/ragdoll-v1/down/face-idle.png",
+      "sha256": "e86bf508a5665b6b49c310ee8f60188b6974b88fde0f037184c56d6abe769ffd"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/ragdoll-v1/left/base.png",
+      "path": "source/ragdoll-v1/left/base.png",
+      "sha256": "a16a52a5975e3063985693d6b4b0550474a262e08d5bfd8f721444fa0a1fbf82"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/ragdoll-v1/left/face-idle.png",
+      "path": "source/ragdoll-v1/left/face-idle.png",
+      "sha256": "27b940e5d389fee0726c2330bf11c66187d4e49c1d18d4a84a6de83971d8e4cb"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/ragdoll-v1/right/base.png",
+      "path": "source/ragdoll-v1/right/base.png",
+      "sha256": "4bafb00f22688562888580fe287ad151985d05e0e6541ce6cb36650ce983a438"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/ragdoll-v1/right/face-idle.png",
+      "path": "source/ragdoll-v1/right/face-idle.png",
+      "sha256": "7444606630d7c36b30e8b8db3149c7f3637c050f912dc8000ebb98678ddbd81f"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/british-shorthair-v1/manifest.json",
+      "path": "source/british-shorthair-v1/manifest.json",
+      "sha256": "fabe7fac288f613a4f78ecc4c67c262b795e83c2fe9b1b8aed8c6537852bc042"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/base.png",
+      "path": "source/british-shorthair-v1/down/base.png",
+      "sha256": "2c04fd32470df7924f68d590bb22187b4f543c650ef0c24925ba73a381284819"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/face-idle.png",
+      "path": "source/british-shorthair-v1/down/face-idle.png",
+      "sha256": "8afb047de08a4a4e9db5bcf14c47eab252ea7d17b5281589a2644cb574a9d075"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/base.png",
+      "path": "source/british-shorthair-v1/left/base.png",
+      "sha256": "74d7833736b17292ecc76df2725b4ab90646acb1f6e9b65053db56fcad529017"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/face-idle.png",
+      "path": "source/british-shorthair-v1/left/face-idle.png",
+      "sha256": "54867eb28bcaacb656786a76f57829cc484a10f53a2d7289438dbb6d3d06cfa8"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/base.png",
+      "path": "source/british-shorthair-v1/right/base.png",
+      "sha256": "3e401f7dec3d790dcddf0c0085019aa0d44885464f7f4fcb8281715fc89fd9d2"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/face-idle.png",
+      "path": "source/british-shorthair-v1/right/face-idle.png",
+      "sha256": "1b80cf6177e5f6c879839b09667e23b651a2262fc3fc7e9caa5556c9886598f3"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/american-shorthair-v1/manifest.json",
+      "path": "source/american-shorthair-v1/manifest.json",
+      "sha256": "cd57087ee062fd6ee0d5b416ffebbee39990f77596293fe09fd6c4844d02826e"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/base.png",
+      "path": "source/american-shorthair-v1/down/base.png",
+      "sha256": "152eb8222df8a27e74f98dfd85912c4e68991e6c570bd169109cdcea470dd8a1"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/face-idle.png",
+      "path": "source/american-shorthair-v1/down/face-idle.png",
+      "sha256": "027eb073f97ffb763f71e5742a41da506946ed3727138fbd1014625dc1187b2d"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/base.png",
+      "path": "source/american-shorthair-v1/left/base.png",
+      "sha256": "e34b8e145736926a51d8a72bf42216bdd62d78c6348ba709cc324b36708c956f"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/face-idle.png",
+      "path": "source/american-shorthair-v1/left/face-idle.png",
+      "sha256": "93984b55c78e2a8e31507f3b7e2dee91345e7aad5b2115e1883a05575c1829d5"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/american-shorthair-v1/right/base.png",
+      "path": "source/american-shorthair-v1/right/base.png",
+      "sha256": "b7c5bf21375c18e977ef031fba47babed3970d762d8f60cefee389c92a2e9488"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tabby-v1/manifest.json",
+      "path": "source/tabby-v1/manifest.json",
+      "sha256": "01486dadbaf2f50290f67190a8ad7c207451dac759cbe3d497c36fbac3bf4278"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tabby-v1/down/base.png",
+      "path": "source/tabby-v1/down/base.png",
+      "sha256": "2009ff3966f4f7a394cac1a9e46932cedc3b7d3690f0ceb386f79fe2e2b942c6"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tabby-v1/left/base.png",
+      "path": "source/tabby-v1/left/base.png",
+      "sha256": "5b15029d53a54e91b378bb4be7d4029953a1c90b51886419be2154ae1a758036"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tabby-v1/right/base.png",
+      "path": "source/tabby-v1/right/base.png",
+      "sha256": "46a45055ab03a6cfe1437435df4a80877367fe8681539db6f8517d436ecdae7f"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/manifest.json",
+      "path": "source/tuxedo-cat-v1/manifest.json",
+      "sha256": "ec97b1bc14c2f299b6829d999655d2acd2c35d671aaaae7c4ef9873395b84e45"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/down/base.png",
+      "path": "source/tuxedo-cat-v1/down/base.png",
+      "sha256": "c30e7661228189c6c0163599978ecb17b70a0d61dbd6ce60aa487fab433ca357"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/left/base.png",
+      "path": "source/tuxedo-cat-v1/left/base.png",
+      "sha256": "4361925e7c7fb17b162516392b345243c1fd2a3690cb7ebbae2b9eb5aaf36a3b"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/right/base.png",
+      "path": "source/tuxedo-cat-v1/right/base.png",
+      "sha256": "ee5f8da34882982ab58d4215b253bd825476b0a555dcf44b5d076f77b09cf1b7"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/white-lion-cat-v1/manifest.json",
+      "path": "source/white-lion-cat-v1/manifest.json",
+      "sha256": "a10f2a0d395e9343b2a550c6d2803895ef272823254f56e8f79cbaeacbf338ec"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/white-lion-cat-v1/down/base.png",
+      "path": "source/white-lion-cat-v1/down/base.png",
+      "sha256": "d1ad0c036d2acf14162ae8554e5cd6e815fbe75f3eb1febbe6787d432377b753"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/white-lion-cat-v1/left/base.png",
+      "path": "source/white-lion-cat-v1/left/base.png",
+      "sha256": "217aa7587b63d4ce8f5cabda55828ba9ba90b5d4b59954b308e2fb6e4a3a4bf9"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/white-lion-cat-v1/right/base.png",
+      "path": "source/white-lion-cat-v1/right/base.png",
+      "sha256": "5441c8f10ca31a9c04a8cc7af05e222712847d516d645810f94c07758a483983"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/manifest.json",
+      "path": "source/jianzhou-cat-v1/manifest.json",
+      "sha256": "385a7c56abf700d760bd19f905a26914d21423d673b69041643166be51306d9b"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/down/base.png",
+      "path": "source/jianzhou-cat-v1/down/base.png",
+      "sha256": "6f24417d7afafcb6e751328add0fd92c38160e266a22d541db7b09b2c5322b0e"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/left/base.png",
+      "path": "source/jianzhou-cat-v1/left/base.png",
+      "sha256": "583fbffeda34b2493bdc621dcea855ee6ba2e6925700fd6a13539b2f633962e5"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/right/base.png",
+      "path": "source/jianzhou-cat-v1/right/base.png",
+      "sha256": "f9d72ad3673a09edd8791fc4a22cd766e9fdffe6f101eba38eadd12fe10c38e0"
+    }
+  ]
+}

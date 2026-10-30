@@ -223,6 +223,39 @@ function frameBounds(contract, performer) {
   ];
 }
 
+/** Reject feet from the preceding source row floating above the actual head.
+ * Eight-neighbour components preserve diagonal limbs and tiny edge pixels.
+ * These character-only sheets do not contain detached overhead effects.
+ */
+function floatingOverheadComponents(decoded, frame, width = 96, height = 96) {
+  const x0 = (frame % 4) * width, y0 = Math.floor(frame / 4) * height;
+  const ink = new Uint8Array(width * height), components = [];
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    ink[y * width + x] = decoded.pixels[((y0 + y) * decoded.width + x0 + x) * 4 + 3] >= 16 ? 1 : 0;
+  }
+  for (let index = 0; index < ink.length; index++) {
+    if (!ink[index]) continue;
+    ink[index] = 0;
+    const pending = [index], component = {size: 0, minY: height, maxY: -1};
+    while (pending.length) {
+      const current = pending.pop(), x = current % width, y = Math.floor(current / width);
+      component.size++;
+      component.minY = Math.min(component.minY, y);
+      component.maxY = Math.max(component.maxY, y);
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        const nx = x + dx, ny = y + dy;
+        if (nx < 0 || nx >= width || ny < 0 || ny >= height || !ink[ny * width + nx]) continue;
+        ink[ny * width + nx] = 0;
+        pending.push(ny * width + nx);
+      }
+    }
+    components.push(component);
+  }
+  components.sort((a, b) => b.size - a.size);
+  const body = components[0];
+  return body ? components.slice(1).filter(c => c.size >= 4 && c.maxY + 1 < body.minY) : [];
+}
+
 function contains(outer, inner) {
   return inner[0] >= outer[0] && inner[1] >= outer[1] &&
     inner[0] + inner[2] <= outer[0] + outer[2] &&
@@ -299,6 +332,7 @@ for (const performer of spec.performers) {
   assert.ok(frames.every((frame) => Math.abs(frame.frameCenter - expectedFrameAnchor) <= 4), `${performer.id} frame center is not anchored near ${expectedFrameAnchor}`);
   assert.ok(frames.every((frame) => frame.bottomY === 88), `${performer.id} foot baseline is not fixed at 88`);
   for (let index = 0; index < frames.length; index += 1) {
+    assert.deepEqual(floatingOverheadComponents(decoded, index), [], `${performer.id} frame ${index} contains detached pixels above the head from another source cell`);
     const next = frames[(index + 1) % frames.length];
     assert.ok(Math.abs(next.frameCenter - frames[index].frameCenter) <= 4, `${performer.id} frame ${index} jumps horizontally`);
     assert.equal(next.bottomY, frames[index].bottomY, `${performer.id} frame ${index} jumps vertically`);

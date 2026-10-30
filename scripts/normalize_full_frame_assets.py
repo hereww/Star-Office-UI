@@ -56,10 +56,12 @@ def normalize_cells(cells: list[Image.Image], target_bbox: tuple[int, int, int, 
             raise ValueError(f"source cell {index} has no visible pixels")
         sprite = source.crop(bbox).resize(target_size, Image.Resampling.NEAREST)
         cell = Image.new("RGBA", (CELL, CELL), (0, 0, 0, 0))
-        cell.paste(sprite, (left, top), sprite)
+        # Copy RGBA directly. Using the sprite as its own mask multiplies its
+        # alpha (and RGB) a second time, making translucent edges dark/faint.
+        cell.paste(sprite, (left, top))
         x = (index % COLS) * CELL
         y = (index // COLS) * CELL
-        atlas.paste(cell, (x, y), cell)
+        atlas.paste(cell, (x, y))
     return atlas
 
 
@@ -90,7 +92,7 @@ def repeat_base(base: Path, output: Path) -> None:
     for index in range(12):
         x = (index % COLS) * CELL
         y = (index // COLS) * CELL
-        atlas.paste(image, (x, y), image)
+        atlas.paste(image, (x, y))
     output.parent.mkdir(parents=True, exist_ok=True)
     atlas.save(output)
 

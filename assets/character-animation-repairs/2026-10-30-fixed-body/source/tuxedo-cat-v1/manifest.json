@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "profileId": "tuxedo-cat-v1",
+  "fps": 12,
+  "frameCount": 12,
+  "grid": [
+    4,
+    3
+  ],
+  "directions": {
+    "up": {
+      "id": "tuxedo-cat-v1",
+      "direction": "up",
+      "base": "./up/base.png",
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        96,
+        174
+      ],
+      "headAnchor": [
+        96,
+        15
+      ],
+      "scale": 0.6,
+      "faceVisible": false,
+      "actions": {
+        "working": {
+          "faceClockFrames": 60
+        },
+        "idle": {
+          "faceClockFrames": 36
+        },
+        "syncing": {
+          "faceClockFrames": 60
+        },
+        "error": {
+          "faceClockFrames": 12
+        }
+      }
+    },
+    "down": {
+      "id": "tuxedo-cat-v1",
+      "direction": "down",
+      "base": "./down/base.png",
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        96,
+        174
+      ],
+      "headAnchor": [
+        106,
+        15
+      ],
+      "scale": 0.5,
+      "faceVisible": true,
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "actions": {
+        "working": {
+          "faceClockFrames": 60
+        },
+        "idle": {
+          "faceClockFrames": 36
+        },
+        "syncing": {
+          "faceClockFrames": 60
+        },
+        "error": {
+          "faceClockFrames": 12
+        }
+      },
+      "faceFrameSize": [
+        90,
+        58
+      ],
+      "pixelFaceAnimation": {
+        "version": 1,
+        "iris": "#d6a543",
+        "lid": "#302923",
+        "muzzle": "#eee9e1",
+        "eyes": [
+          [
+            39,
+            23,
+            9,
+            10
+          ],
+          [
+            81,
+            23,
+            9,
+            10
+          ]
+        ],
+        "mouth": [
+          60,
+          40
+        ],
+        "proceduralActions": [
+          "working",
+          "idle",
+          "syncing",
+          "error"
+        ]
+      }
+    },
+    "left": {
+      "id": "tuxedo-cat-v1",
+      "direction": "left",
+      "base": "./left/base.png",
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        96,
+        174
+      ],
+      "headAnchor": [
+        76,
+        15
+      ],
+      "scale": 0.6,
+      "faceVisible": true,
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "actions": {
+        "working": {
+          "faceClockFrames": 60
+        },
+        "idle": {
+          "faceClockFrames": 36
+        },
+        "syncing": {
+          "faceClockFrames": 60
+        },
+        "error": {
+          "faceClockFrames": 12
+        }
+      },
+      "faceFrameSize": [
+        90,
+        58
+      ],
+      "pixelFaceAnimation": {
+        "version": 1,
+        "iris": "#d6a543",
+        "lid": "#302923",
+        "muzzle": "#eee9e1",
+        "eyes": [
+          [
+            31,
+            22,
+            9,
+            9
+          ]
+        ],
+        "mouth": [
+          16,
+          31
+        ],
+        "proceduralActions": [
+          "working",
+          "idle",
+          "syncing",
+          "error"
+        ]
+      }
+    },
+    "right": {
+      "id": "tuxedo-cat-v1",
+      "direction": "right",
+      "base": "./right/base.png",
+      "frameSize": [
+        192,
+        192
+      ],
+      "poseAnchor": [
+        96,
+        174
+      ],
+      "headAnchor": [
+        116,
+        15
+      ],
+      "scale": 0.6,
+      "faceVisible": true,
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "actions": {
+        "working": {
+          "faceClockFrames": 60
+        },
+        "idle": {
+          "faceClockFrames": 36
+        },
+        "syncing": {
+          "faceClockFrames": 60
+        },
+        "error": {
+          "faceClockFrames": 12
+        }
+      },
+      "faceFrameSize": [
+        90,
+        58
+      ],
+      "pixelFaceAnimation": {
+        "version": 1,
+        "iris": "#d6a543",
+        "lid": "#302923",
+        "muzzle": "#eee9e1",
+        "eyes": [
+          [
+            56,
+            23,
+            9,
+            9
+          ]
+        ],
+        "mouth": [
+          73,
+          31
+        ],
+        "proceduralActions": [
+          "working",
+          "idle",
+          "syncing",
+          "error"
+        ]
+      }
+    }
+  }
+}

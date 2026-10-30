@@ -1,0 +1,3037 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "18d63442fbb8c67fff9123c7c4ff0ee2171e0531",
+  "buildRendererSha256": "9525d87e1c70adc65598a8ca3cc159561e6f08a895e377effebdb546966377aa",
+  "buildAdjustments": [
+    "Native-canvas frame snapshots preserve immutable frames",
+    "Sleep eye sockets reuse existing breed blink lid colours",
+    "Existing sleep mouth/tongue and side eyelids have a visible one-pixel breathing cycle"
+  ],
+  "contract": "Offline restoration only. Runtime continues to read complete 192x192 RGBA frames; base alpha, silhouette, ears, body and tail are fixed.",
+  "records": [
+    {
+      "profile": "ragdoll-v1",
+      "direction": "down",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/down/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "9d25174d9e89a7e6ca766108db30f448af4fcbf4fd731339c2f4b0bfff35d62d",
+      "sha256": "4fcfa6addbe0a5d5fa03dfaa419f35ed68192b7ad955a9598787d3c7e1204f72",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1328,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "down",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/down/frames-idle.png",
+      "source": "historical-generated-idle",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "9d25174d9e89a7e6ca766108db30f448af4fcbf4fd731339c2f4b0bfff35d62d",
+      "sha256": "4e4685744b1e1b551f9e24e1694fa33bdc05321e65296d1fe524cfbc34d60626",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        4408,
+        4460,
+        4475,
+        4462,
+        4439,
+        4490,
+        4500,
+        4500,
+        4302,
+        4361,
+        4381,
+        4374
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "down",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/down/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "9d25174d9e89a7e6ca766108db30f448af4fcbf4fd731339c2f4b0bfff35d62d",
+      "sha256": "90d80b77956b7fd584d846a041c0e64156ed64fe6d07c7ad8af53a4448f9ff02",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1328,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "down",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/down/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "9d25174d9e89a7e6ca766108db30f448af4fcbf4fd731339c2f4b0bfff35d62d",
+      "sha256": "eb9b237f9981627ff3175766ab063bcc37310e0730cef0e3c518f2f74e959e9c",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327,
+        1327
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "left",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/left/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        86,
+        58
+      ],
+      "faceClipEllipse": [
+        66,
+        83,
+        43,
+        29
+      ],
+      "baseSha256": "a16a52a5975e3063985693d6b4b0550474a262e08d5bfd8f721444fa0a1fbf82",
+      "sha256": "55204ff256adeed54d6a3ae75e82e7ea5b7211d3d73559c169440609154f1824",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "left",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/left/frames-idle.png",
+      "source": "historical-generated-idle",
+      "faceRect": [
+        25,
+        54,
+        86,
+        58
+      ],
+      "faceClipEllipse": [
+        66,
+        83,
+        43,
+        29
+      ],
+      "baseSha256": "a16a52a5975e3063985693d6b4b0550474a262e08d5bfd8f721444fa0a1fbf82",
+      "sha256": "f23daa113c038dd005efa4cb57aa8743f74c55814dac69b6849622e4904218ea",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        2817,
+        2829,
+        2825,
+        2816,
+        2811,
+        2819,
+        2816,
+        2823,
+        2795,
+        2802,
+        2785,
+        2797
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "left",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/left/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        86,
+        58
+      ],
+      "faceClipEllipse": [
+        66,
+        83,
+        43,
+        29
+      ],
+      "baseSha256": "a16a52a5975e3063985693d6b4b0550474a262e08d5bfd8f721444fa0a1fbf82",
+      "sha256": "8f0ce22f1c677204bb18b666d7e80c38c77aa82ec3b99f40dc84d8f01c754355",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548,
+        548
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "left",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/left/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        86,
+        58
+      ],
+      "faceClipEllipse": [
+        66,
+        83,
+        43,
+        29
+      ],
+      "baseSha256": "a16a52a5975e3063985693d6b4b0550474a262e08d5bfd8f721444fa0a1fbf82",
+      "sha256": "85ed064ba24717f5c77e90ef10fe0c18febf0b982b878c836c92dfcd5d2e213c",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        548,
+        549,
+        548,
+        548,
+        549,
+        548,
+        548,
+        549,
+        548,
+        548,
+        549,
+        548
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "right",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/right/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        81,
+        54,
+        86,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        43,
+        29
+      ],
+      "baseSha256": "4bafb00f22688562888580fe287ad151985d05e0e6541ce6cb36650ce983a438",
+      "sha256": "3f834722d68c5bef1deff6085e1bd8e36ac138fa60781e4f342a621bfd0fb29c",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "right",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/right/frames-idle.png",
+      "source": "historical-generated-idle",
+      "faceRect": [
+        81,
+        54,
+        86,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        43,
+        29
+      ],
+      "baseSha256": "4bafb00f22688562888580fe287ad151985d05e0e6541ce6cb36650ce983a438",
+      "sha256": "b9f49d3d52ce08446b05f0823dc8341ac8a98de410d6a21394b7f14feb0a5c4f",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        3267,
+        3208,
+        3186,
+        3114,
+        3289,
+        3248,
+        3209,
+        3144,
+        3196,
+        3158,
+        3133,
+        3078
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "right",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/right/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        81,
+        54,
+        86,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        43,
+        29
+      ],
+      "baseSha256": "4bafb00f22688562888580fe287ad151985d05e0e6541ce6cb36650ce983a438",
+      "sha256": "dcc06401bca0e54989ec34a626920f09623d0346060ecc68e82fdd74cc6951f1",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527
+      ]
+    },
+    {
+      "profile": "ragdoll-v1",
+      "direction": "right",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/ragdoll-v1/right/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        81,
+        54,
+        86,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        43,
+        29
+      ],
+      "baseSha256": "4bafb00f22688562888580fe287ad151985d05e0e6541ce6cb36650ce983a438",
+      "sha256": "e8ca2a2b56691b9f4540b8f5d96d951c9c31ace3d77bd8e3da8d184ca6ffdf75",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527,
+        527
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "down",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "2c04fd32470df7924f68d590bb22187b4f543c650ef0c24925ba73a381284819",
+      "sha256": "0c5007a3ae61455747f5f457ab7e721a6f5364865d4fd21d5ddd06051b2868cc",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1240,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "down",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/frames-idle.png",
+      "source": "historical-generated-idle",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "2c04fd32470df7924f68d590bb22187b4f543c650ef0c24925ba73a381284819",
+      "sha256": "c96a179732a735dc492e25350917f0c1403e5ac772537478a3b73bd79087e7bd",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        3807,
+        3847,
+        3793,
+        3663,
+        3896,
+        3945,
+        3907,
+        3751,
+        3738,
+        3755,
+        3751,
+        3638
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "down",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "2c04fd32470df7924f68d590bb22187b4f543c650ef0c24925ba73a381284819",
+      "sha256": "0f398c52e69e78545f799842173310dbe333852fd99cc4190c448e7a3b9f8b80",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1240,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "down",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/down/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "2c04fd32470df7924f68d590bb22187b4f543c650ef0c24925ba73a381284819",
+      "sha256": "52d11a8940f65dd72ef9be4682bcb133fb8c694b5040fefd697621f6e27b2491",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239,
+        1239
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "left",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "74d7833736b17292ecc76df2725b4ab90646acb1f6e9b65053db56fcad529017",
+      "sha256": "6731d1e60025445fe99b08899f6f3a5b4807bc5f366e26ce025f742fb0fce94b",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "left",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/frames-idle.png",
+      "source": "historical-generated-idle",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "74d7833736b17292ecc76df2725b4ab90646acb1f6e9b65053db56fcad529017",
+      "sha256": "fa46dad51a721170f0918797ce4a057ac535b995009a38c9dac036c9ef24c33c",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        3247,
+        3250,
+        3247,
+        3236,
+        3326,
+        3329,
+        3348,
+        3301,
+        3332,
+        3350,
+        3358,
+        3346
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "left",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "74d7833736b17292ecc76df2725b4ab90646acb1f6e9b65053db56fcad529017",
+      "sha256": "8e6b59422d17d2a9f9ec4a99246b7163f8cfd6397d3ec735f8acf740309ab7e2",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "left",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/left/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "74d7833736b17292ecc76df2725b4ab90646acb1f6e9b65053db56fcad529017",
+      "sha256": "3851b1d6ec79acdfab3ab23a84d587813738b63f832f8b145bcac8755f615456",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450,
+        450
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "right",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "3e401f7dec3d790dcddf0c0085019aa0d44885464f7f4fcb8281715fc89fd9d2",
+      "sha256": "df89326196c3bc4e59f65a81e1433356b0daed8e20b7fb2159823788641603c5",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "right",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/frames-idle.png",
+      "source": "historical-generated-idle",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "3e401f7dec3d790dcddf0c0085019aa0d44885464f7f4fcb8281715fc89fd9d2",
+      "sha256": "65add929ab74db303c9f3b57a8d7c42838e9fa368c9a6795299fbd5e667e24f8",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        3087,
+        3102,
+        3114,
+        3120,
+        3178,
+        3195,
+        3171,
+        3202,
+        3158,
+        3154,
+        3148,
+        3168
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "right",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "3e401f7dec3d790dcddf0c0085019aa0d44885464f7f4fcb8281715fc89fd9d2",
+      "sha256": "c26e5d5f0c33a1e9b8c8232c509d9c7c5290aa1fb299555b5c5c4d6d90fae9e7",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431
+      ]
+    },
+    {
+      "profile": "british-shorthair-v1",
+      "direction": "right",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/british-shorthair-v1/right/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "3e401f7dec3d790dcddf0c0085019aa0d44885464f7f4fcb8281715fc89fd9d2",
+      "sha256": "d32f6788941598ba2f06e0da6b2291938163a5e49a6e10fcc9e9a9761f240db5",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431,
+        431
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "down",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "152eb8222df8a27e74f98dfd85912c4e68991e6c570bd169109cdcea470dd8a1",
+      "sha256": "955dccffca7e4fcda723afe19aafa6f0db166f9331f8bf771d953e92bcd136c6",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1576,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "down",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/frames-idle.png",
+      "source": "historical-generated-idle",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "152eb8222df8a27e74f98dfd85912c4e68991e6c570bd169109cdcea470dd8a1",
+      "sha256": "307ef63b50a13a6f508becfc4cba39ce342b53d0290ed43ffd440eeee9d8ff00",
+      "distinctFrames": 7,
+      "changedFacePixels": [
+        4107,
+        4211,
+        4218,
+        4197,
+        4117,
+        4093,
+        4122,
+        4093,
+        4117,
+        4197,
+        4218,
+        4211
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "down",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "152eb8222df8a27e74f98dfd85912c4e68991e6c570bd169109cdcea470dd8a1",
+      "sha256": "883fabb299474a92c6464da571c414a1598f2a6617f1a03801bcb542250168b6",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1576,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "down",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/down/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "152eb8222df8a27e74f98dfd85912c4e68991e6c570bd169109cdcea470dd8a1",
+      "sha256": "0fa58532cb860ceae4cd559455f15103441df82025d05eabe6e27d9006546183",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575,
+        1575
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "left",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "e34b8e145736926a51d8a72bf42216bdd62d78c6348ba709cc324b36708c956f",
+      "sha256": "0d86ebc9b61c1d0aa61b9a7038288767cbbbfa9c385ff66e39d41450ef0fc4bc",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "left",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/frames-idle.png",
+      "source": "historical-generated-idle",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "e34b8e145736926a51d8a72bf42216bdd62d78c6348ba709cc324b36708c956f",
+      "sha256": "bb2a75f376845f428184c8530305a131345034e46cc946e9d01aae07a19cdd6d",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        3481,
+        3490,
+        3479,
+        3481,
+        3553,
+        3559,
+        3534,
+        3555,
+        3510,
+        3513,
+        3511,
+        3515
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "left",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "e34b8e145736926a51d8a72bf42216bdd62d78c6348ba709cc324b36708c956f",
+      "sha256": "8e171012beb562f7e1498758baf9ab0787d639defc76677a44e24b0e05533040",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "left",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/left/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "e34b8e145736926a51d8a72bf42216bdd62d78c6348ba709cc324b36708c956f",
+      "sha256": "fd27437a31f0e690b900608e69d583e96ba935c476c7dc1da3cf9e6df60eccd5",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663,
+        663
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "right",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/right/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "b7c5bf21375c18e977ef031fba47babed3970d762d8f60cefee389c92a2e9488",
+      "sha256": "df3adda0826ed1bd4f22d577813632e55e299bf129e2a4f5d3d815a73097e4ff",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "right",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/right/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "b7c5bf21375c18e977ef031fba47babed3970d762d8f60cefee389c92a2e9488",
+      "sha256": "0f940ea6f4eda99cca02d35b4644750385aadaf0481511e30f15841d506f81bb",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        1069,
+        1069,
+        1069,
+        1069,
+        1069,
+        1069,
+        1069,
+        1069,
+        1069,
+        1069,
+        1069,
+        1069
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "right",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/right/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "b7c5bf21375c18e977ef031fba47babed3970d762d8f60cefee389c92a2e9488",
+      "sha256": "1c781f1eb18b9dce0b08d98318c66e67cd1815842713ba7ccd259836954b97e6",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879
+      ]
+    },
+    {
+      "profile": "american-shorthair-v1",
+      "direction": "right",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/american-shorthair-v1/right/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "b7c5bf21375c18e977ef031fba47babed3970d762d8f60cefee389c92a2e9488",
+      "sha256": "41762655d39c01ab2031a35fb47a733feca4dadd87e5e883675ccd7c8e6642a0",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879,
+        879
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "down",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/down/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "2009ff3966f4f7a394cac1a9e46932cedc3b7d3690f0ceb386f79fe2e2b942c6",
+      "sha256": "fd7e259ad100767938f3ceaab8a116b1db661cf9ea6cb59fedd3f91a60d367dc",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1343,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "down",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/down/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "2009ff3966f4f7a394cac1a9e46932cedc3b7d3690f0ceb386f79fe2e2b942c6",
+      "sha256": "fa68d265729708ca02ec704b4f9c604ff5347560c18274f972c262db2c538200",
+      "distinctFrames": 2,
+      "changedFacePixels": [
+        1855,
+        1855,
+        1855,
+        1855,
+        1855,
+        1855,
+        1855,
+        1853,
+        1853,
+        1853,
+        1853,
+        1853
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "down",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/down/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "2009ff3966f4f7a394cac1a9e46932cedc3b7d3690f0ceb386f79fe2e2b942c6",
+      "sha256": "083a0bc1bb7b958bfbc216c51ea7fe54a77e2d0786d44ee87bd10894dcbf2e53",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1343,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "down",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/down/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "2009ff3966f4f7a394cac1a9e46932cedc3b7d3690f0ceb386f79fe2e2b942c6",
+      "sha256": "a6bfadcd6286aa4c7a504a0e8a444c6237556de8c5abd9dce753223f7676b489",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342,
+        1342
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "left",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/left/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "5b15029d53a54e91b378bb4be7d4029953a1c90b51886419be2154ae1a758036",
+      "sha256": "eae04a036d2398656bee0ac9f48accf8bea27da1cec612a1c062b9cbde380b9c",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "left",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/left/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "5b15029d53a54e91b378bb4be7d4029953a1c90b51886419be2154ae1a758036",
+      "sha256": "84f39b73c8978e4cdd8f19837ae8e37cde24c9faf1d4d00e16a0b83ffe03b798",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        843,
+        843,
+        846,
+        846,
+        846,
+        843,
+        843,
+        843,
+        840,
+        840,
+        840,
+        840
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "left",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/left/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "5b15029d53a54e91b378bb4be7d4029953a1c90b51886419be2154ae1a758036",
+      "sha256": "9bb618324b8ad8a23370412273f16d77c79a18b928aa73806b668f24f4ba4d00",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "left",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/left/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "5b15029d53a54e91b378bb4be7d4029953a1c90b51886419be2154ae1a758036",
+      "sha256": "82412fc62cbc00dfb4536313a6aa30fd497c9900898f6d0ab10240b5b97820a8",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565,
+        565
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "right",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/right/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "46a45055ab03a6cfe1437435df4a80877367fe8681539db6f8517d436ecdae7f",
+      "sha256": "636c2a9113aa444c49a5f273a7b9a4c9a3dbd55091eb5fd28f32c530c73563e2",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "right",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/right/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "46a45055ab03a6cfe1437435df4a80877367fe8681539db6f8517d436ecdae7f",
+      "sha256": "a2a46eacfeb6bc7a7527c67d7cf3a766882f1d38ee02116cf9f4f7fcc1b504b4",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        836,
+        836,
+        839,
+        839,
+        839,
+        836,
+        836,
+        836,
+        833,
+        833,
+        833,
+        833
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "right",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/right/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "46a45055ab03a6cfe1437435df4a80877367fe8681539db6f8517d436ecdae7f",
+      "sha256": "15ce136b1417ae6457d1c68ab1944b327d75104796d1a65ed61408ebb09d6bb5",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598
+      ]
+    },
+    {
+      "profile": "tabby-v1",
+      "direction": "right",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/tabby-v1/right/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "46a45055ab03a6cfe1437435df4a80877367fe8681539db6f8517d436ecdae7f",
+      "sha256": "c96570d704dd6816294c1b0eb05166fd3a75ee4d19d0bdfc3f2e6c7aee6e0087",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598,
+        598
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "down",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/down/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "c30e7661228189c6c0163599978ecb17b70a0d61dbd6ce60aa487fab433ca357",
+      "sha256": "39fcdec32475adf9c65126ab440404611b55db38059e781cc64e6a146d66605c",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1249,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "down",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/down/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "c30e7661228189c6c0163599978ecb17b70a0d61dbd6ce60aa487fab433ca357",
+      "sha256": "c62e2ded0c39acf4800b8a6dc677c740506c0a1fb597bd3d607012874ba79e20",
+      "distinctFrames": 2,
+      "changedFacePixels": [
+        1765,
+        1765,
+        1765,
+        1765,
+        1765,
+        1765,
+        1765,
+        1763,
+        1763,
+        1763,
+        1763,
+        1763
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "down",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/down/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "c30e7661228189c6c0163599978ecb17b70a0d61dbd6ce60aa487fab433ca357",
+      "sha256": "067f0beed001e874fc1bf87dd24a5275374bd152d4f8f46a582442e14bd90848",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1249,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "down",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/down/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "c30e7661228189c6c0163599978ecb17b70a0d61dbd6ce60aa487fab433ca357",
+      "sha256": "94c2ee9c6378027505bef4b5829f850a1d56ce731e7703c5a56b9c983b02c400",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248,
+        1248
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "left",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/left/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "4361925e7c7fb17b162516392b345243c1fd2a3690cb7ebbae2b9eb5aaf36a3b",
+      "sha256": "b98f0919c4d856c30c5e61f2bbbfcf8ad16ec32fa5238d1166ffc17ee07a5e0b",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "left",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/left/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "4361925e7c7fb17b162516392b345243c1fd2a3690cb7ebbae2b9eb5aaf36a3b",
+      "sha256": "0a1e75a30d9d0e6d2ec69babeca4905dc87cb04bdf9faafcc1f081c7d02deb47",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        669,
+        669,
+        672,
+        672,
+        672,
+        669,
+        669,
+        669,
+        666,
+        666,
+        666,
+        666
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "left",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/left/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "4361925e7c7fb17b162516392b345243c1fd2a3690cb7ebbae2b9eb5aaf36a3b",
+      "sha256": "509d510862533d8e5ae2b4a87e004ddf60dafa61d5c3e0593a87f2f7759b2213",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "left",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/left/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "4361925e7c7fb17b162516392b345243c1fd2a3690cb7ebbae2b9eb5aaf36a3b",
+      "sha256": "139a31b68cedaa1a3eed470a6c47c506cd31b308580db3f9be39204a6732ad3e",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413,
+        413
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "right",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/right/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "ee5f8da34882982ab58d4215b253bd825476b0a555dcf44b5d076f77b09cf1b7",
+      "sha256": "78b27fe137304191964111e623febcd5ec947a9b2e65f710625bd7ad99524fe9",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "right",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/right/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "ee5f8da34882982ab58d4215b253bd825476b0a555dcf44b5d076f77b09cf1b7",
+      "sha256": "2a8f4260c1f7d81b86fd62592b528e8d1bae56764045982f325b79c957a3791e",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        589,
+        589,
+        590,
+        590,
+        590,
+        589,
+        589,
+        589,
+        588,
+        588,
+        588,
+        588
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "right",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/right/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "ee5f8da34882982ab58d4215b253bd825476b0a555dcf44b5d076f77b09cf1b7",
+      "sha256": "72b2aa8ec9519fc991b2df01dd1578494ac2081845e4e0b031f9f511e84298c1",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408
+      ]
+    },
+    {
+      "profile": "tuxedo-cat-v1",
+      "direction": "right",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/right/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "ee5f8da34882982ab58d4215b253bd825476b0a555dcf44b5d076f77b09cf1b7",
+      "sha256": "bd67a91e09d65f0529bed3a73a41d75e1bff20209c9b1bb4d23518c2c1bcc0cf",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408,
+        408
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "down",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/down/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "d1ad0c036d2acf14162ae8554e5cd6e815fbe75f3eb1febbe6787d432377b753",
+      "sha256": "68f24e8fb62f06f34675ea3a2fc68b7322803dbecd4176aaeed5214315e863c8",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1242,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "down",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/down/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "d1ad0c036d2acf14162ae8554e5cd6e815fbe75f3eb1febbe6787d432377b753",
+      "sha256": "53f262c451a4ed06d00f41dd293f9f4e61fcf1ea523fceb753d25c95fd975936",
+      "distinctFrames": 2,
+      "changedFacePixels": [
+        1761,
+        1761,
+        1761,
+        1761,
+        1761,
+        1761,
+        1761,
+        1759,
+        1759,
+        1759,
+        1759,
+        1759
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "down",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/down/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "d1ad0c036d2acf14162ae8554e5cd6e815fbe75f3eb1febbe6787d432377b753",
+      "sha256": "9249e96fbd9b9af492a640d6a8b252da7b8908f3f26b3f4a8522825b103d4034",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1242,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "down",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/down/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "d1ad0c036d2acf14162ae8554e5cd6e815fbe75f3eb1febbe6787d432377b753",
+      "sha256": "0ad79c3bbc17b220ff6950ddd2dac7b3edf5656e7b54fb265d833573a4ccc251",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241,
+        1241
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "left",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/left/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "217aa7587b63d4ce8f5cabda55828ba9ba90b5d4b59954b308e2fb6e4a3a4bf9",
+      "sha256": "bf0ca75b6da81c541fc28d41b4e5257277875efb3e5a0d3c1787795dcb0f9444",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "left",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/left/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "217aa7587b63d4ce8f5cabda55828ba9ba90b5d4b59954b308e2fb6e4a3a4bf9",
+      "sha256": "e50450e94c5a26badf8f29f7c853441f003512ae5784dc65c1633d0a3978a5a4",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        669,
+        669,
+        672,
+        672,
+        672,
+        669,
+        669,
+        669,
+        666,
+        666,
+        666,
+        666
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "left",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/left/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "217aa7587b63d4ce8f5cabda55828ba9ba90b5d4b59954b308e2fb6e4a3a4bf9",
+      "sha256": "ebcc5231ae211583da69be9bfc3c2e16f4ceba5cb09331efd0d54550398a5637",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "left",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/left/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "217aa7587b63d4ce8f5cabda55828ba9ba90b5d4b59954b308e2fb6e4a3a4bf9",
+      "sha256": "9785bd1300e535ca7b043bae7658ac20fea49100dfd671c5d5d3eb3aa6eb7cfb",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437,
+        437
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "right",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/right/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "5441c8f10ca31a9c04a8cc7af05e222712847d516d645810f94c07758a483983",
+      "sha256": "8ae4753354fd7133062f543e9fe442bb402decb1b1231cd4ec551c10b2c112c5",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "right",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/right/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "5441c8f10ca31a9c04a8cc7af05e222712847d516d645810f94c07758a483983",
+      "sha256": "ccb438d0702a6215599b98cc497afe5866e1962213a151dd3112629c4e2bd84e",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        694,
+        694,
+        697,
+        697,
+        697,
+        694,
+        694,
+        694,
+        691,
+        691,
+        691,
+        691
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "right",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/right/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "5441c8f10ca31a9c04a8cc7af05e222712847d516d645810f94c07758a483983",
+      "sha256": "0381e9fcacdf72e8d8303efbe74db20641494518ad396577c772542c57106785",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435
+      ]
+    },
+    {
+      "profile": "white-lion-cat-v1",
+      "direction": "right",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/white-lion-cat-v1/right/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "5441c8f10ca31a9c04a8cc7af05e222712847d516d645810f94c07758a483983",
+      "sha256": "df6626bc084572eca1d8f9b7bdf6bb26e16dc6a7084e05ce6b7738754895e6ae",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435,
+        435
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "down",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/down/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "6f24417d7afafcb6e751328add0fd92c38160e266a22d541db7b09b2c5322b0e",
+      "sha256": "a07349634734f5a6daa5b518bc45fa812a92c57e2add20243f286dcf1a900b0f",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1332,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "down",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/down/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "6f24417d7afafcb6e751328add0fd92c38160e266a22d541db7b09b2c5322b0e",
+      "sha256": "e6351a523c7493d83c14e9b448889804e61c8b80a7697bc844fe4632bb4e1a3a",
+      "distinctFrames": 2,
+      "changedFacePixels": [
+        1845,
+        1845,
+        1845,
+        1845,
+        1845,
+        1845,
+        1845,
+        1843,
+        1843,
+        1843,
+        1843,
+        1843
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "down",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/down/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "6f24417d7afafcb6e751328add0fd92c38160e266a22d541db7b09b2c5322b0e",
+      "sha256": "df76049192de88990219700dd0db0715ac866cceb13b41df69fc784df723fd3d",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1332,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "down",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/down/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        45,
+        54,
+        102,
+        58
+      ],
+      "faceClipEllipse": [
+        96,
+        83,
+        51,
+        29
+      ],
+      "baseSha256": "6f24417d7afafcb6e751328add0fd92c38160e266a22d541db7b09b2c5322b0e",
+      "sha256": "5cd2984d4ce45fecc2c38b2311133773d161a1761861b3435c794bd84ee2771c",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331,
+        1331
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "left",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/left/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "583fbffeda34b2493bdc621dcea855ee6ba2e6925700fd6a13539b2f633962e5",
+      "sha256": "f28ea9cf9988e40820234e1a34b6990cae8a94bb5c3896c44bc3c91131a216a6",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "left",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/left/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "583fbffeda34b2493bdc621dcea855ee6ba2e6925700fd6a13539b2f633962e5",
+      "sha256": "ebd77fa285e8a1cc4d0cea68219756b3cebc45da691769d123dd633c59379b6f",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        841,
+        841,
+        844,
+        844,
+        844,
+        841,
+        841,
+        841,
+        838,
+        838,
+        838,
+        838
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "left",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/left/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "583fbffeda34b2493bdc621dcea855ee6ba2e6925700fd6a13539b2f633962e5",
+      "sha256": "33739094740443c34ba13d8bdce67106fbc55dc9675b19eb9857b0b8654d41e3",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "left",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/left/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        25,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        70,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "583fbffeda34b2493bdc621dcea855ee6ba2e6925700fd6a13539b2f633962e5",
+      "sha256": "23a91f18a6680e8e0abe0498b5842fb8c1c7e9c21b4576dc38c807d299e47f7c",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577,
+        577
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "right",
+      "action": "working",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/right/frames-working.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "f9d72ad3673a09edd8791fc4a22cd766e9fdffe6f101eba38eadd12fe10c38e0",
+      "sha256": "26138eab1c59e6df68b2dfdf6e215d35343e4ba16a917dde7e3c6d5bab1edc71",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "right",
+      "action": "idle",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/right/frames-idle.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "f9d72ad3673a09edd8791fc4a22cd766e9fdffe6f101eba38eadd12fe10c38e0",
+      "sha256": "3a32d5344b9bb4beeffaf86bee482924ea990d76f73f7dfdc2ede2ef9458fc63",
+      "distinctFrames": 3,
+      "changedFacePixels": [
+        752,
+        752,
+        752,
+        752,
+        752,
+        752,
+        752,
+        752,
+        752,
+        752,
+        752,
+        752
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "right",
+      "action": "syncing",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/right/frames-syncing.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "f9d72ad3673a09edd8791fc4a22cd766e9fdffe6f101eba38eadd12fe10c38e0",
+      "sha256": "6bb41e230b5eea005dbd8285fa3dd500d1e1e082a59e836cac7b00a5d6bdc043",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563
+      ]
+    },
+    {
+      "profile": "jianzhou-cat-v1",
+      "direction": "right",
+      "action": "error",
+      "output": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/right/frames-error.png",
+      "source": "historical-code-expression",
+      "faceRect": [
+        79,
+        54,
+        90,
+        58
+      ],
+      "faceClipEllipse": [
+        124,
+        83,
+        45,
+        29
+      ],
+      "baseSha256": "f9d72ad3673a09edd8791fc4a22cd766e9fdffe6f101eba38eadd12fe10c38e0",
+      "sha256": "09e5797460bc168c360b40cfa5fbae679892434c05bc748808005a7bc4bc3a4e",
+      "distinctFrames": 12,
+      "changedFacePixels": [
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563,
+        563
+      ]
+    }
+  ]
+}
