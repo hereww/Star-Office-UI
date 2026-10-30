@@ -63,6 +63,21 @@ function faceMask(spec) {
   });
 }
 
+function repairedFeatureMask(spec) {
+  const contains = ([l,t,r,b], x, y) => x >= l && x < r && y >= t && y < b;
+  const regions = [...spec.eyeBounds, spec.mouthBounds];
+  for (const region of [...regions, spec.noseBounds]) {
+    assert.equal(region.length, 4);
+    assert.ok(region.every(Number.isInteger));
+    const [l,t,r,b] = region;
+    assert.ok(l >= 0 && t >= 0 && r <= 192 && b <= 192 && l < r && t < b, 'facial repair bounds must fit the source cell');
+  }
+  return Uint8Array.from({length: 192 * 192}, (_, p) => {
+    const x = p % 192, y = Math.floor(p / 192);
+    return regions.some(region => contains(region, x, y)) && !contains(spec.noseBounds, x, y) ? 1 : 0;
+  });
+}
+
 function assertFixedFrame(base, frame, mask, label) {
   for (let p = 0; p < mask.length; p++) {
     const i = p * 4;
@@ -110,14 +125,18 @@ test('all profiles expose immutable full-frame atlases', () => {
 });
 
 test('all 84 non-orange visible atlases animate only the face and retain base alpha', () => {
+  const repairs = JSON.parse(fs.readFileSync(path.join(root,
+    'assets/character-animation-repairs/2026-10-30-fixed-body/source/facial-repair-overrides.json')));
   for (const profile of profiles.filter((p) => p !== 'orange-cat-v1')) {
     const dir = path.join(breedRoot, profile);
     const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'manifest.json')));
-    // This geometry is an offline quality boundary, never a runtime face layer.
-    const source = JSON.parse(fs.readFileSync(path.join(root, 'assets/character-animation-repairs/2026-10-30-fixed-body/source', profile, 'manifest.json')));
+    // Measured eye/mouth areas replace the broad historical face ellipse.
+    // Nose, forehead stripes, cheeks and every outside pixel stay immutable.
     for (const direction of directions.filter((d) => manifest.directions[d].faceVisible !== false)) {
       const c = manifest.directions[direction];
-      const mask = faceMask(source.directions[direction]);
+      const features = repairs.profiles[profile][direction];
+      assert.equal(features.eyeBounds.length, direction === 'down' ? 2 : 1);
+      const mask = repairedFeatureMask(features);
       const base = decodeRgba(path.join(dir, c.base.slice(2)));
       assert.deepEqual([base.width, base.height], [192, 192]);
       const firstHashes = {};
@@ -131,6 +150,23 @@ test('all 84 non-orange visible atlases animate only the face and retain base al
         firstHashes[action] = crypto.createHash('sha256').update(frames[0]).digest('hex');
       }
       assert.equal(new Set(['idle', 'syncing', 'error'].map(action => firstHashes[action])).size, 3, `${profile}/${direction}: idle/syncing/error frame 0 must differ`);
+    }
+  }
+});
+
+test('all non-orange rear states preserve the same complete base pixels', () => {
+  for (const profile of profiles.filter(p => p !== 'orange-cat-v1')) {
+    const dir = path.join(breedRoot, profile);
+    const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'manifest.json')));
+    const rear = manifest.directions.up;
+    assert.equal(rear.faceVisible, false, `${profile}: rear must not animate a face`);
+    const base = decodeRgba(path.join(dir, rear.base.slice(2)));
+    for (const action of actions) {
+      const atlas = decodeRgba(path.join(dir, rear.actions[action].frames.slice(2)));
+      for (let i = 0; i < 12; i++) {
+        assert.ok(cellData(atlas, i).bytes.equals(base.data),
+          `${profile}/up/${action}/frame${i}: static rear must preserve base RGBA, including translucent edges`);
+      }
     }
   }
 });

@@ -186,6 +186,139 @@
       "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/right/base.png",
       "path": "source/jianzhou-cat-v1/right/base.png",
       "sha256": "f9d72ad3673a09edd8791fc4a22cd766e9fdffe6f101eba38eadd12fe10c38e0"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/ragdoll-v1/up/base.png",
+      "path": "source/ragdoll-v1/up/base.png",
+      "sha256": "4591942ffc1237ecb622cccbdf6fb99543fe7704c9b150734c98a2fea22b4c5c"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/british-shorthair-v1/up/base.png",
+      "path": "source/british-shorthair-v1/up/base.png",
+      "sha256": "cda9e3e31544dd7f060aff318471af902ca13785bdd2dbdd771ccdbf96b9d663"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/american-shorthair-v1/up/base.png",
+      "path": "source/american-shorthair-v1/up/base.png",
+      "sha256": "d274b334f1239a8864d3b1b22dc1187e8c0f91f6732af9e9a8e0b1bbe3008e12"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tabby-v1/up/base.png",
+      "path": "source/tabby-v1/up/base.png",
+      "sha256": "517cdbdb1f8429e70bdc392f463afd33e4ea823b407ed2d7eb0bd97c765c8528"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/tuxedo-cat-v1/up/base.png",
+      "path": "source/tuxedo-cat-v1/up/base.png",
+      "sha256": "8ce72d87f5ee5c18cfb544111f6fc77e6e6217a8ae4f7addea3e2d4da67d94ef"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/white-lion-cat-v1/up/base.png",
+      "path": "source/white-lion-cat-v1/up/base.png",
+      "sha256": "41e4714ae6a93384612ae7b08dfe7da295de9bec0ad00e5ccc39186c495b8509"
+    },
+    {
+      "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/up/base.png",
+      "path": "source/jianzhou-cat-v1/up/base.png",
+      "sha256": "bd6a0e2c8518f313d35ff35e72ba78bb60667bb332d871faf7dafc6c46398453"
+    },
+    {
+      "sourceCommit": "2f7cb0db1bc7f7780dddba13c6d17987f07a926c",
+      "sourcePath": "frontend/company-office/media/character-breeds/american-shorthair-v1/right/frames-idle.png",
+      "sourceSha256": "b476574ef83566659a474da77c0313c0e5c178d61c5c97153ab3517fdf9f7561",
+      "sourceFrame": 0,
+      "sourceCrop": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "path": "source/complete-idle-2f7cb0d/american-shorthair-v1/right/frame-00.png",
+      "sha256": "049317668a4075fca151c2c7a081ad1c877ba1f57485c8b46c465001440e7af3"
+    },
+    {
+      "sourceCommit": "2f7cb0db1bc7f7780dddba13c6d17987f07a926c",
+      "sourcePath": "frontend/company-office/media/character-breeds/tabby-v1/down/frames-idle.png",
+      "sourceSha256": "ff1f26a21170b19604c0638df94aa588daeb9d589ae13aa9884225f870a4a954",
+      "sourceFrame": 0,
+      "sourceCrop": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "path": "source/complete-idle-2f7cb0d/tabby-v1/down/frame-00.png",
+      "sha256": "d20b32ea62f18b5b07e7b43eebf1a4c4b5afb2b0663075411a5b7a91b2a9cd72"
+    },
+    {
+      "sourceCommit": "2f7cb0db1bc7f7780dddba13c6d17987f07a926c",
+      "sourcePath": "frontend/company-office/media/character-breeds/tabby-v1/left/frames-idle.png",
+      "sourceSha256": "6cde98e861ee14cab102b48f7383c577107edb1f95fb500f0755defc0916ee41",
+      "sourceFrame": 0,
+      "sourceCrop": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "path": "source/complete-idle-2f7cb0d/tabby-v1/left/frame-00.png",
+      "sha256": "2212994f01e6fffa66355e7dd148d93eaae306b94dd8bc4ca7868780f3026037"
+    },
+    {
+      "sourceCommit": "2f7cb0db1bc7f7780dddba13c6d17987f07a926c",
+      "sourcePath": "frontend/company-office/media/character-breeds/tabby-v1/right/frames-idle.png",
+      "sourceSha256": "be518eb3a9a827c9840853cebeb49ee0b5f41889839112b2be17324c7299ab1e",
+      "sourceFrame": 0,
+      "sourceCrop": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "path": "source/complete-idle-2f7cb0d/tabby-v1/right/frame-00.png",
+      "sha256": "faf536f167b28b7707c2f5df70ad4b89d95378c1cb593163521736ca3210a9e4"
+    },
+    {
+      "sourceCommit": "2f7cb0db1bc7f7780dddba13c6d17987f07a926c",
+      "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/down/frames-idle.png",
+      "sourceSha256": "14094bcb513025e1b4c5f948c0dbaa18238bed2ae788b42ff102f535e6ec1203",
+      "sourceFrame": 0,
+      "sourceCrop": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "path": "source/complete-idle-2f7cb0d/jianzhou-cat-v1/down/frame-00.png",
+      "sha256": "24af8028dc166eeec296a19e84d20ff82a22cecfb2615227b57675ad4a9eb870"
+    },
+    {
+      "sourceCommit": "2f7cb0db1bc7f7780dddba13c6d17987f07a926c",
+      "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/left/frames-idle.png",
+      "sourceSha256": "c5ef0b233d6c257ba3332f46496d782590c2ed965b330c2836113206f6a14914",
+      "sourceFrame": 6,
+      "sourceCrop": [
+        384,
+        192,
+        576,
+        384
+      ],
+      "path": "source/complete-idle-2f7cb0d/jianzhou-cat-v1/left/frame-06.png",
+      "sha256": "6dbed41e9a2682e81784422a1daa901335d0c3a8b44e170031ecd5f12790a27d"
+    },
+    {
+      "sourceCommit": "2f7cb0db1bc7f7780dddba13c6d17987f07a926c",
+      "sourcePath": "frontend/company-office/media/character-breeds/jianzhou-cat-v1/right/frames-idle.png",
+      "sourceSha256": "6a28dded516c6e3ebd872612eab9fcec493a2185f8b9871965b49b2819f6816c",
+      "sourceFrame": 0,
+      "sourceCrop": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "path": "source/complete-idle-2f7cb0d/jianzhou-cat-v1/right/frame-00.png",
+      "sha256": "5fa1b9fba9c5ba3bbd4da47ada954e4ebba76bb64bb4287e1a0e4fec7322827c"
     }
   ]
 }
