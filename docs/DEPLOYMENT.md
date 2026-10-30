@@ -14,9 +14,11 @@
 ```bash
 python scripts/package_deploy_bundle.py \
   --output deploy/bundles \
-  --bundle-id star-office-ui-6.0.1 \
+  --bundle-id star-office-ui-<bundle-id> \
   --wheelhouse deploy/office/wheelhouse/linux-cp311-x86_64
 ```
+
+项目发行/打包基线从根目录 `VERSION` 读取。`connected-v4`、`connected-v5` 和 `reference-v3` 是运行时/场景标识；正式办公室当前使用 V5 场景与 V4 遥测适配器，不能把它们写成独立的项目版本号。正式办公室的不可变 `OFFICE_RELEASE_ID` 仍需每次发布使用新的 release ID，不回写历史部署路径。
 
 把生成的 `tar.gz` 和 `.sha256` 复制到目标主机，校验后解包。联网 Docker 主机执行：
 

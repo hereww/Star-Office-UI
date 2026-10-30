@@ -1,8 +1,8 @@
-# Star Office UI 6.0.1
+# Star Office UI
 
-![Star Office UI 6.0.1](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
+![Star Office UI](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
 
-Star Office UI は、AI 協働環境をリアルタイムに可視化する独立運用のオフィス基盤です。6.0.1 では、6.0.0 の全面書き換え版に検証付きオフライン更新機能を追加しています。
+Star Office UI は、AI 協働環境をリアルタイムに可視化する独立運用のオフィス基盤です。デプロイ基準はルートのリリースメタデータで管理します。`connected-v4`、`connected-v5`、`reference-v3` は内部ランタイム/シーン識別子であり、独立したリリースバージョンではありません。ディレクトリと開発ドキュメントにリリース番号を重複して記載しません。
 
 このリポジトリは `hereww/Star-Office-UI` の現在の完全なソースです。説明、画像、構成、デプロイドキュメントは現行コードに合わせています。
 

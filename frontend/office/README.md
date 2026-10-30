@@ -1,6 +1,6 @@
-# 正式办公室前端（API contract v1）
+# 正式办公室前端（API 契约）
 
-本目录只新增前端；不修改旧页面、V4 runtime、后端、共享脚本或动画素材。正式脚本采用原生 ES Modules + 项目自带 Phaser 3.80.1。无 React/Vite、CDN、旧状态轮询、浏览器凭据存储。
+本目录属于当前正式办公室页面；不把 `connected-v4`、`connected-v5` 或 `reference-v3` 当作独立发行版本。它们是内部运行时/场景标识：当前页面使用 V5 场景、V4 遥测适配器和 reference-v3 兼容资源。项目发布号从根目录元数据读取，不在本目录文档重复。此目录只新增前端；不修改旧页面、V4 runtime、后端、共享脚本或动画素材。正式脚本采用原生 ES Modules + 项目自带 Phaser 3.80.1。无 React/Vite、CDN、旧状态轮询、浏览器凭据存储。
 
 ## Flask 模板与 Boot
 

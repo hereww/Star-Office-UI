@@ -1,6 +1,20 @@
 import { decodeSnapshot, toRuntimeSnapshot } from './codec.mjs';
 
 export const DRAG_THRESHOLD_PX = 8;
+/**
+ * The only default map assembly contract for the current office page.
+ * `runtimeModule`, `assetBase`, and `runtimeAdapterModule` remain overridable
+ * for isolated previews; the legacy `v4*` aliases are accepted for old boot
+ * payloads but are not separate page implementations.
+ */
+export const OFFICE_RUNTIME_DEFAULTS = Object.freeze({
+  runtime: '../company-office/connected-v5/runtime.mjs',
+  assets: '../company-office/connected-v5/',
+  adapter: '../company-office/connected-v5/telemetry-adapter.mjs',
+  quality: '../company-office/reference-v3/render-quality.mjs',
+  phaser: '../vendor/phaser-3.80.1.min.js',
+});
+
 export function stationIdFromObjects(objects){
   for(const object of objects??[]){
     const id=object?.getData?.('companyOfficeStationId');
@@ -44,6 +58,16 @@ export async function loadPhaser(url) {
   });
   if (!globalThis.Phaser) throw new Error('Phaser 不可用'); return globalThis.Phaser;
 }
+export function resolveOfficeRuntimePaths(config = {}, base) {
+  const selected = {
+    runtime: config.runtimeModule || config.v4RuntimeModule || OFFICE_RUNTIME_DEFAULTS.runtime,
+    assets: config.assetBase || config.v4AssetBase || OFFICE_RUNTIME_DEFAULTS.assets,
+    adapter: config.runtimeAdapterModule || OFFICE_RUNTIME_DEFAULTS.adapter,
+    quality: config.renderQualityModule || OFFICE_RUNTIME_DEFAULTS.quality,
+    phaser: config.phaserScript || OFFICE_RUNTIME_DEFAULTS.phaser,
+  };
+  return Object.fromEntries(Object.entries(selected).map(([key, path]) => [key, sameOriginAsset(path, base)]));
+}
 function maskPendingRuntime(runtime) {
   // The old runtime defaults all sixteen actors to idle. Never show that as live data.
   for (const station of runtime.stations) {
@@ -58,11 +82,10 @@ function maskPendingRuntime(runtime) {
 }
 export async function createOfficeMap(host, config, { mode = 'employee', onSelect = () => {}, onUserSelect = () => {}, onReady = () => {} } = {}) {
   const base = config.releasePrefix;
-  const paths = { runtime: sameOriginAsset(config.runtimeModule || config.v4RuntimeModule || '../company-office/connected-v5/runtime.mjs', base), assets: sameOriginAsset(config.assetBase || config.v4AssetBase || '../company-office/connected-v5/', base), quality: sameOriginAsset(config.renderQualityModule || '../company-office/reference-v3/render-quality.mjs', base), phaser: sameOriginAsset(config.phaserScript || '../vendor/phaser-3.80.1.min.js', base) };
+  const paths = resolveOfficeRuntimePaths(config, base);
   const [Phaser, runtimeModule, qualityModule] = await Promise.all([loadPhaser(paths.phaser), import(paths.runtime), import(paths.quality)]);
   const runtime = await runtimeModule.ConnectedOfficeRuntime.load(paths.assets);
-  let adapterModule = null;
-  adapterModule = await import(sameOriginAsset(config.runtimeAdapterModule || '../company-office/connected-v5/telemetry-adapter.mjs', base));
+  const adapterModule = await import(paths.adapter);
   let game, adapter, scene, disposed = false, latest = null, display = null;
   // Every V5 map starts locked so a wheel gesture cannot accidentally zoom
   // the office while the user is panning or inspecting it. The employee and

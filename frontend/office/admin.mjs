@@ -60,7 +60,7 @@ export async function mount(root, config, api) {
       finally { submit.disabled = !secure; }
     } }, field('管理员账号', username), field('密码', password, '密码仅发送至当前办公室服务，不保存在浏览器。'), submit);
     root.replaceChildren(el('main', { class: 'login-shell', id: 'main-content', tabindex: '-1' },
-      el('section', { class: 'login-story' }, el('span', { class: 'eyebrow' }, 'STAR OFFICE / ADMIN'), el('div', { class: 'login-emblem', 'aria-hidden': 'true' }, '律'), el('h1', {}, '让办公室，\n清晰而有序。'), el('p', {}, '已确认的场景，不变的角色。\n只把真正可信的状态，放回工位。'), el('div', { class: 'login-story-footer' }, 'V5 连排工位', el('span', {}, '内网 · 独立管理入口'))),
+      el('section', { class: 'login-story' }, el('span', { class: 'eyebrow' }, 'STAR OFFICE / ADMIN'), el('div', { class: 'login-emblem', 'aria-hidden': 'true' }, '律'), el('h1', {}, '让办公室，\n清晰而有序。'), el('p', {}, '已确认的场景，不变的角色。\n只把真正可信的状态，放回工位。'), el('div', { class: 'login-story-footer' }, '6.0.0 · V5 连排工位', el('span', {}, '内网 · 独立管理入口'))),
       el('section', { class: 'login-card' }, el('span', { class: 'eyebrow' }, 'WELCOME BACK'), el('h2', {}, '办公室控制台'), el('p', { class: 'muted' }, '登录后管理绑定、查看遥测与预览动画。'), info,
         secure ? form : el('div', { class: 'notice', 'data-kind': 'error' }, insecureHttpAllowed ? '当前页面协议不受支持，请使用 HTTP 管理地址。' : '管理入口必须使用同源 HTTPS。本地隔离验收同样需要 TLS；请使用已信任的 HTTPS 管理地址。'),
         el('p', { class: 'privacy-note' }, '管理员遥测仅在登录会话中读取。员工页与管理端权限分离。'))));
@@ -149,7 +149,7 @@ export async function mount(root, config, api) {
   }
   function makeMap(mode = 'employee') {
     mapHost = el('div', { class: 'map-host', 'data-testid': 'office-map', 'aria-label': mode === 'demo' ? '仅本地演示办公室地图' : '办公室地图' });
-    mapNotice = el('div', { class: 'map-loading', role: 'status' }, '正在加载 V5 场景…');
+    mapNotice = el('div', { class: 'map-loading', role: 'status' }, '正在加载 6.0.0 办公室场景（V5）…');
     previewTag = el('span', { class: 'demo-tag', 'data-testid': 'local-demo-marker', hidden: mode !== 'demo' }, '本地演示 · 不写真实状态');
     const mapShell = el('section', { class: `map-shell admin-map ${mode === 'demo' ? 'demo-map' : ''}` }, mapHost, mapNotice, previewTag);
     let zoomLocked = true;

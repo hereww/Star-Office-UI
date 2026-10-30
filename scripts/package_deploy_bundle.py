@@ -8,7 +8,7 @@ architecture; without it the bundle remains valid for online installs.
 
 Example:
   python scripts/package_deploy_bundle.py \
-    --output deploy/bundles --bundle-id star-office-ui-6.0.1 \
+    --output deploy/bundles --bundle-id star-office-ui-6.0.0 \
     --wheelhouse deploy/office/wheelhouse/linux-cp311-x86_64
 """
 from __future__ import annotations

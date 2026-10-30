@@ -111,7 +111,7 @@ Docker 更新默认使用 `star-office-ui:<bundle-id>` 的新镜像标签，旧�
 读回失败时会恢复旧 `.env`，若旧包目录仍存在则尝试从旧包重启服务。完整清单校验发生在安装前，安装后只读 `/health`；这样 native 的 Python 缓存和用户自定义素材不会被误当成包篡改。
 
 如果旧安装使用的是自定义 Docker 镜像仓库标签，升级时必须显式传入对应的新镜像标签：
-`update.sh --offline --docker --image registry.intra/star-office-ui:6.0.1 ...`。
+`update.sh --offline --docker --image registry.intra/star-office-ui:6.0.0 ...`。
 
 `uninstall.sh --purge` 才会删除 Docker named volume 或 native 数据目录；私有凭据和 `.env` 会保留，方便重新部署和凭据轮换。轮换凭据时重新运行 `install.sh --with-sub2api`，输入新 token 和新的到期时间，再在 Sub2API 侧撤销旧 token。
 

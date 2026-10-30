@@ -1,8 +1,8 @@
-# Star Office UI 6.0.1
+# Star Office UI
 
-![Star Office UI 6.0.1](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
+![Star Office UI](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
 
-Star Office UI is an independently maintained real-time AI collaboration office and status observability platform. Version 6.0.1 adds a verified offline bundle update path to the 6.0.0 full-stack rewrite.
+Star Office UI is an independently maintained real-time AI collaboration office and status observability platform. The deployed baseline is defined by the root release metadata. `connected-v4`, `connected-v5`, and `reference-v3` are internal runtime/scene identifiers, not separate release versions; the current office page uses the V5 scene with the V4 telemetry adapter. Directory and development docs do not repeat the release number.
 
 This repository is the complete `hereww/Star-Office-UI` project. Its descriptions, source layout, screenshots, and deployment docs describe the current codebase.
 

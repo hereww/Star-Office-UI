@@ -12,6 +12,10 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# These fixtures model a future 6.0.1 update. The current deployed/package
+# baseline in the repository is 6.0.0; this test intentionally exercises the
+# upgrade and rollback path without changing that baseline.
+
 
 def load_module(name, path):
     spec = importlib.util.spec_from_file_location(name, path)
