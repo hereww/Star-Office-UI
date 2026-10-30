@@ -1,333 +1,168 @@
-// BUILD-TIME ONLY. Derived from the adjacent archived source; never imported by frontend.
-/**
- * Deterministic 12-frame facial animation rendered from each breed's own pose.
- *
- * The V5 idle face intentionally follows the approved orange-cat sleep gesture:
- * closed eyelids, a raised nose, a large open mouth and a visible tongue. The
- * expression is shared, but every pixel used to cover the source eyes/mouth is
- * drawn in the selected breed's own muzzle/lid palette. The body, head outline,
- * furniture and screen effects remain immutable.
- */
-const ACTIONS = Object.freeze(['working', 'idle', 'syncing', 'error']);
-const cache = new WeakMap();
-const HEX = /^#[0-9a-f]{6}$/i;
-const SLEEP_LINE = '#362522';
-const SLEEP_MOUTH = '#2b1718';
-const SLEEP_NOSE = '#de6874';
-const SLEEP_TONGUE = '#ef7b82';
+// BUILD-TIME ONLY. Complete-frame restoration from archived base pixels.
+// The adjacent legacy module preserves the historical expressions/provenance.
+// This derived renderer retains that blink/spiral/sleep timing, while using
+// measured original features instead of drawing a second, misregistered face.
+const ACTIONS = ['working', 'idle', 'syncing', 'error'];
+const BLINK = [1, 1, .93, .78, .5, .22, 0, .22, .5, .78, .93, 1];
+const SIZE = 192;
+const clamp = n => Math.max(0, Math.min(255, Math.round(n)));
+const rgb = hex => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+const inBox = (x, y, [l,t,r,b]) => x >= l && x < r && y >= t && y < b;
 
-function defaultCanvas() {
-  if (typeof document !== 'undefined') return document.createElement('canvas');
-  if (typeof OffscreenCanvas !== 'undefined') return new OffscreenCanvas(1, 1);
-  return null;
+function colourAt(data, x, y) {
+  const i = (Math.round(y) * SIZE + Math.round(x)) * 4;
+  return [data[i], data[i+1], data[i+2]];
 }
-
-function proceduralActions(animation) {
-  const actions = animation.proceduralActions ?? ACTIONS;
-  if (!Array.isArray(actions) || actions.length === 0 ||
-      new Set(actions).size !== actions.length || actions.some(action => !ACTIONS.includes(action))) {
-    throw new Error('Invalid procedural facial actions');
-  }
-  return actions;
+function put(data, x, y, colour, repair) {
+  x=Math.round(x); y=Math.round(y);
+  if (x < 0 || y < 0 || x >= SIZE || y >= SIZE || inBox(x,y,repair.noseBounds)) return;
+  const i=(y*SIZE+x)*4;
+  data[i]=clamp(colour[0]);data[i+1]=clamp(colour[1]);data[i+2]=clamp(colour[2]);
 }
-
-/**
- * The crop in a breed manifest is sometimes wider than the logical 90x58
- * atlas cell. The old coordinates were authored in that crop's space. Convert
- * them once at the runtime boundary so validation, drawing and the player all
- * use the same logical face cell. Y remains unchanged for the current V5
- * profiles, but scaling it too keeps the contract correct for future crops.
- */
-function logicalFaceAnimation(character, animation) {
-  const [,, sourceWidth, sourceHeight] = character.faceRect;
-  const [cellWidth, cellHeight] = character.faceFrameSize ?? [sourceWidth, sourceHeight];
-  const sx = cellWidth / sourceWidth;
-  const sy = cellHeight / sourceHeight;
-  return {
-    ...animation,
-    eyes: animation.eyes.map(([x, y, rx, ry]) => [x * sx, y * sy, rx * sx, ry * sy]),
-    mouth: [animation.mouth[0] * sx, animation.mouth[1] * sy],
-  };
+function field(data, points, x, y) {
+  // Inverse-distance blend of measured, eye-free fur samples. No source pupil
+  // is copied into a closed socket, and no uniform oval replaces face texture.
+  const weights=points.map(([sx,sy])=>1/(4+(sx-x)**2+(sy-y)**2));
+  const total=weights.reduce((a,b)=>a+b,0);
+  return [0,1,2].map(c=>points.reduce((sum,[sx,sy],i)=>sum+colourAt(data,sx,sy)[c]*weights[i],0)/total);
 }
-
-export function validatePixelFaceAnimation(character) {
-  const animation = character.pixelFaceAnimation;
-  if (!['down', 'left', 'right'].includes(character.direction) || character.faceVisible === false) {
-    throw new Error('Rear faces cannot animate');
-  }
-  if (!animation || Array.isArray(animation) || animation.version !== 1 ||
-      ![animation.iris, animation.lid, animation.muzzle].every(value => typeof value === 'string' && HEX.test(value))) {
-    throw new Error('Invalid pixel facial palette');
-  }
-  proceduralActions(animation);
-  const rect = character.faceRect;
-  if (!Array.isArray(rect) || rect.length !== 4 || !rect.every(Number.isFinite) || rect[2] <= 0 || rect[3] <= 0) {
-    throw new Error('Invalid facial rectangle');
-  }
-  const [frameWidth, frameHeight] = character.faceFrameSize ?? [rect[2], rect[3]];
-  const logical = logicalFaceAnimation(character, animation);
-  const width = frameWidth;
-  const height = frameHeight;
-  if (!Array.isArray(logical.eyes) || logical.eyes.length !== (character.direction === 'down' ? 2 : 1)) {
-    throw new Error('Invalid directional eye count');
-  }
-  for (const eye of logical.eyes) {
-    if (!Array.isArray(eye) || eye.length !== 4 || !eye.every(Number.isFinite) ||
-        eye[2] < 2 || eye[3] < 2 || eye[0] - eye[2] - 2 < 0 || eye[1] - eye[3] - 2 < 0 ||
-        eye[0] + eye[2] + 2 >= width || eye[1] + eye[3] + 2 >= height) {
-      throw new Error('Invalid facial eye bounds');
+function eyeMask(base, bounds, samples, coreBounds=bounds,template,templateCenter,repair,templateShift=0,sourceBounds) {
+  const [l,t,r,b]=bounds,cx=(l+r-1)/2,cy=(t+b-1)/2,rx=(r-l)/2,ry=(b-t)/2;
+  const pixels=[];
+  for(let y=t;y<b;y++)for(let x=l;x<r;x++) {
+    const original=colourAt(base,x,y);
+    // Extend the original fur directly above this column into the socket.
+    // Median of three source rows avoids copying a lone brow/outline pixel;
+    // it retains actual pixel colours instead of a smooth four-point gradient.
+    const topColours=[coreBounds[1]-4,coreBounds[1]-3,coreBounds[1]-2].map(sy=>colourAt(base,x,sy))
+      .sort((a,b)=>a.reduce((s,v)=>s+v,0)-b.reduce((s,v)=>s+v,0));
+    let fur=topColours[1];
+    // A source column can touch a light blaze. The explicitly measured
+    // same-fur samples bound its luminance; don't spread a white nose bridge.
+    const safe=samples.map(([sx,sy])=>colourAt(base,sx,sy));
+    const sorted=safe.map(c=>c.reduce((s,v)=>s+v,0)).sort((a,b)=>a-b);
+    if(fur.reduce((s,v)=>s+v,0)>sorted[2]*1.4)fur=safe[0];
+    // Continue the nearest matching fur on this scanline toward the lower
+    // lid. Choosing by colour avoids crossing a white blaze, while following
+    // actual side pixels avoids the vertical bands of a stretched top row.
+    const sides=[[l-2,y],[r+1,y]].filter(([sx,sy])=>!inBox(sx,sy,repair.noseBounds)).map(([sx,sy])=>colourAt(base,sx,sy));
+    if(!sides.length)sides.push(fur);
+    sides.sort((a,b)=>a.reduce((s,v,i)=>s+(v-fur[i])**2,0)-b.reduce((s,v,i)=>s+(v-fur[i])**2,0));
+    const blend=.8*(y-t)/Math.max(1,b-t-1);
+    fur=fur.map((v,i)=>v*(1-blend)+sides[0][i]*blend);
+    if(template){
+      const tcx=(coreBounds[0]+coreBounds[2]-1)/2,tcy=(coreBounds[1]+coreBounds[3]-1)/2;
+      // The archived generated face may place its nose/mouth below this eye.
+      // Only use its eye/eyelid texture; extend the last clean cheek scanline
+      // instead of importing a second facial feature into the lower socket.
+      let sourceY=y+templateCenter[1]-tcy-(Math.abs(y-tcy)<=4?templateShift:0);
+      let sourceX=x+templateCenter[0]-tcx;
+      if(sourceBounds){sourceX=Math.max(sourceBounds[0],Math.min(sourceBounds[2]-1,sourceX));sourceY=Math.max(sourceBounds[1],Math.min(sourceBounds[3]-1,sourceY));}
+      const eyeTexture=colourAt(template,sourceX,sourceY);
+      const lowerMix=Math.max(0,Math.min(1,(tcy+7-y)/4));
+      const cheek=field(base,samples,x,y);
+      const restored=eyeTexture.map((v,i)=>v*lowerMix+cheek[i]*(1-lowerMix));
+      const mix=inBox(x,y,coreBounds)?1:Math.min(1,Math.min(x-l,r-1-x,y-t,b-1-y)/2);
+      fur=restored.map((v,i)=>v*mix+original[i]*(1-mix));
     }
+    const norm=Math.abs((x-cx)/rx)**2.3+Math.abs((y-cy)/ry)**2.3;
+    const dark=Math.max(...original)<72;
+    const white=original.every(v=>v>240);
+    // Rounded feature mask plus measured dark/white/iris edge pixels. All of
+    // it is confined to the independently reviewed eye bounds, below brows.
+    if(norm<=1 || dark || white) pixels.push([x,y,fur]);
   }
-  const mouth = logical.mouth;
-  if (!Array.isArray(mouth) || mouth.length !== 2 || !mouth.every(Number.isFinite) ||
-      mouth[0] < 5 || mouth[1] < 5 || mouth[0] + 5 >= width || mouth[1] + 5 >= height) {
-    throw new Error('Invalid facial mouth bounds');
-  }
-  return animation;
+  const [cl,ct,cr,cb]=coreBounds;
+  return {pixels,cx:(cl+cr-1)/2,cy:(ct+cb-1)/2,rx:(cr-cl)/2,ry:(cb-ct)/2,bounds:coreBounds,template:Boolean(template)};
 }
-
-function ellipse(ctx, cx, cy, rx, ry, color) {
-  if (rx <= 0 || ry <= 0) return;
-  ctx.fillStyle = color;
-  for (let y = Math.floor(cy - ry); y <= Math.ceil(cy + ry); y++) {
-    for (let x = Math.floor(cx - rx); x <= Math.ceil(cx + rx); x++) {
-      if (((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1) ctx.fillRect(x, y, 1, 1);
+function closedLid(out, eye, repair, frame, sleep) {
+  const breath=sleep ? Math.round(Math.sin(frame*Math.PI/6)) : 0;
+  const half=Math.max(5,Math.floor(eye.rx*.76));
+  for(let dx=-half;dx<=half;dx++) {
+    const lift=sleep?2.5:1.2;
+    const y=eye.cy+1+breath-lift*(1-(dx/half)**2);
+    // Some pale-fur profiles are displayed at 0.5 scale: an explicit two-row
+    // stroke survives nearest-neighbour downsampling without dotted lids.
+    for(let row=0;row<(repair.eyelidStroke??1);row++)put(out,eye.cx+dx,y+row,rgb(repair.sleepLine),repair);
+  }
+}
+function drawEye(out, base, eye, repair, action, frame, iris) {
+  if(action==='error') {
+    // Keep the original eye outline and whites; only its actual iris becomes
+    // the historical spinning spiral, at the measured source-eye centre.
+    const radius=Math.min(eye.rx*.62,eye.ry*.66),phase=frame*Math.PI/6;
+    for(let dy=-Math.ceil(radius);dy<=Math.ceil(radius);dy++)for(let dx=-Math.ceil(radius);dx<=Math.ceil(radius);dx++) {
+      const dist=Math.hypot(dx,dy); if(dist>radius)continue;
+      const angle=Math.atan2(dy,dx)+phase;
+      put(out,eye.cx+dx,eye.cy+dy,Math.sin(dist*1.1-angle*2)>.1?rgb('#1d1a23'):rgb(iris),repair);
     }
+    return;
+  }
+  const open=action==='idle'?0:BLINK[frame];
+  const gaze=action==='syncing'?Math.round(Math.sin(frame*Math.PI/6)):0;
+  if(open===1 && gaze===0)return; // Preserve the exact authentic open eye.
+  for(const [x,y,fur] of eye.pixels)put(out,x,y,fur,repair);
+  if(open===0){if(!eye.template)closedLid(out,eye,repair,frame,action==='idle');return;}
+  const [l,t,r,b]=eye.bounds;
+  for(const [x,y] of eye.pixels) {
+    const top=eye.cy-(eye.cy-t)*open;
+    const bottom=eye.cy+(b-1-eye.cy)*open;
+    if(y<top || y>bottom)continue;
+    const sx=x-gaze;
+    if(sx>=l&&sx<r)put(out,x,y,colourAt(base,sx,y),repair);
   }
 }
-
-function dot(ctx, x, y, color) {
-  ctx.fillStyle = color;
-  ctx.fillRect(Math.round(x), Math.round(y), 1, 1);
-}
-
-function pixelArc(ctx, cx, cy, rx, lift, color) {
-  const half = Math.max(4, Math.round(rx));
-  for (let x = -half; x <= half; x++) {
-    const t = x / half;
-    const y = cy - lift * (1 - t * t);
-    dot(ctx, cx + x, y, color);
-    if (lift >= 3 && Math.abs(x) < half - 1) dot(ctx, cx + x, y + 1, color);
-  }
-}
-
-function rowShape(ctx, cx, top, rows, color) {
-  for (const [dy, half] of rows) {
-    for (let x = -half; x <= half; x++) dot(ctx, cx + x, top + dy, color);
-  }
-}
-
-function inpaintMask(ctx, cell, shouldReplace) {
-  const image = ctx.getImageData(0, 0, cell.width, cell.height);
-  const source = new Uint8ClampedArray(image.data);
-  const width = cell.width;
-  const height = cell.height;
-  const mask = new Uint8Array(width * height);
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) mask[y * width + x] = shouldReplace(x, y) ? 1 : 0;
-  }
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      if (!mask[y * width + x]) continue;
-      let found = false;
-      // Prefer the same scanline to preserve breed stripes and the black/white
-      // split of tuxedo faces. Fall back to vertical samples at the mask edge.
-      for (let distance = 1; distance <= Math.max(width, height) && !found; distance++) {
-        const candidates = [
-          [x - distance, y], [x + distance, y],
-          [x, y - distance], [x, y + distance],
-        ];
-        for (const [sx, sy] of candidates) {
-          if (sx < 0 || sy < 0 || sx >= width || sy >= height || mask[sy * width + sx]) continue;
-          const si = (sy * width + sx) * 4;
-          const di = (y * width + x) * 4;
-          source.copyWithin(di, si, si + 4);
-          found = true;
-          break;
-        }
+function sleepingMouth(out, base, repair, direction, frame, muzzle) {
+  const [l,t,r,b]=repair.mouthBounds,cx=(l+r-1)/2;
+  // The old smile's entire measured span is cleared; source nose stays put.
+  // Use nearby muzzle samples when provided, otherwise the archived palette.
+  const mouthColour=repair.mouthSamples?field(base,repair.mouthSamples,cx,t+2):rgb(muzzle);
+  for(let y=t;y<b;y++)for(let x=l;x<r;x++) {
+    const original=colourAt(base,x,y);
+    // Clear the measured old dark smile only. Preserve untouched muzzle fur
+    // rather than painting the whole mouth bounding region as a flat oval.
+    if(original.reduce((a,v)=>a+v,0)<mouthColour.reduce((a,v)=>a+v,0)*.55) {
+      let replacement=mouthColour;
+      search:for(let distance=1;distance<=8;distance++)for(const [sx,sy] of [[x,y+distance],[x-distance,y],[x+distance,y],[x,y-distance]]) {
+        if(sx<0||sy<0||sx>=SIZE||sy>=SIZE||inBox(sx,sy,repair.noseBounds))continue;
+        const candidate=colourAt(base,sx,sy);
+        if(candidate.reduce((a,v)=>a+v,0)>mouthColour.reduce((a,v)=>a+v,0)*.75){replacement=candidate;break search;}
       }
+      put(out,x,y,replacement,repair);
     }
   }
-  image.data.set(source);
-  ctx.putImageData(image, 0, 0);
-}
-
-function fillSleepEyeSocket(ctx, cell, [cx, cy, rx, ry]) {
-  const expandX = Math.max(3, Math.round(rx * 0.35));
-  const expandY = Math.max(3, Math.round(ry * 0.25));
-  inpaintMask(ctx, cell, (x, y) => {
-    const dx = (x - cx) / (rx + expandX);
-    const dy = (y - cy) / (ry + expandY);
-    return dx * dx + dy * dy <= 1;
-  });
-}
-function fillSleepSnout(ctx, c, a, mx, my) {
-  const side = c.direction !== 'down';
-  if (side) {
-    // Profile noses sit ahead of the mouth. Clear both original features so
-    // neither the old nose nor its tiny smile survives the sleep frame.
-    const noseX = mx + (c.direction === 'right' ? 9 : -9);
-    ellipse(ctx, mx, my, 7, 6, a.muzzle);
-    ellipse(ctx, noseX, my - 4, 6, 6, a.muzzle);
-    return;
+  const side=direction!=='down';
+  const mx=Math.round(cx+(direction==='left'?1:direction==='right'?-1:0));
+  const top=t+2,breath=Math.round((1+Math.sin(frame*Math.PI/6))/2);
+  const rows=side?[1,2,3,3,3,2,1]:[1,2,3,4,4,4,3,2,1];
+  for(let dy=0;dy<rows.length;dy++)for(let dx=-rows[dy];dx<=rows[dy];dx++) {
+    if(inBox(mx+dx,top+dy,repair.mouthBounds))put(out,mx+dx,top+dy,rgb('#2b1718'),repair);
   }
-  // The frontal source nose and smile are one small cluster. Keep this cover
-  // narrow and centered; the surrounding tabby/white face must remain visible.
-  ellipse(ctx, mx, my + 1, 7, 6, a.muzzle);
-}
-
-function sleepNose(ctx, c, mx, my) {
-  const side = c.direction !== 'down';
-  const nx = side ? mx + (c.direction === 'right' ? 9 : -9) : mx;
-  const ny = side ? my - 5 : my - 26;
-  if (side) {
-    rowShape(ctx, nx, ny, [[0, 2], [1, 3], [2, 2], [3, 1]], SLEEP_NOSE);
-    return;
-  }
-  // Rounded pink nose, matching the orange reference's raised nose rather than
-  // the small triangular nose from the open-eye source frame.
-  rowShape(ctx, nx, ny, [[0, 3], [1, 5], [2, 5], [3, 4], [4, 2]], SLEEP_NOSE);
-}
-
-function sleepMouth(ctx, c, mx, my, frame) {
-  const side = c.direction !== 'down';
-  if (side) {
-    // Offline restoration: the historical side idle branch ignored frame.
-    // Let the mouth opening and tongue follow the same subtle sleep cycle.
-    const breath = Math.round(Math.sin(frame * Math.PI / 6));
-    const mouthY = my + 1;
-    rowShape(ctx, mx, mouthY, [[0, 1], [1, 2], [2, 3], [3, 4], [4, 4], [5, 3], [6, 2], ...Array.from({length: breath + 1}, (_, n) => [7 + n, 1])], SLEEP_MOUTH);
-    rowShape(ctx, mx, mouthY + 3 + breath, [[0, 2], [1, 3], [2, 2]], SLEEP_TONGUE);
-    return;
-  }
-  // The orange reference is a narrow-top droplet, not a vertical rectangle.
-  // Keep the mouth black and animate only the lower opening/tongue subtly.
-  const mouthTop = my - 12;
-  const breathing = Math.round((1 + Math.sin(frame * Math.PI / 6)) / 2);
-  rowShape(ctx, mx, mouthTop, [
-    [0, 1], [1, 2], [2, 4], [3, 7], [4, 9], [5, 10],
-    [6, 10 + breathing], [7, 9], [8, 7], [9, 5], [10, 4],
-  ], SLEEP_MOUTH);
-  // Carry the existing mouth breathing into the tongue by one pixel; the
-  // historical two-pixel opening change alone disappears at office scale.
-  rowShape(ctx, mx, mouthTop + 6 + breathing, [[0, 3], [1, 4], [2, 4], [3, 3]], SLEEP_TONGUE);
-  // The frontal orange reference has a short nose-to-mouth crease.
-  for (let y = my - 21; y < mouthTop; y++) dot(ctx, mx, y, SLEEP_LINE);
-}
-
-function sleepFace(ctx, cell, c, rawAnimation, frame) {
-  const a = logicalFaceAnimation(c, rawAnimation);
-  const [mx, my] = a.mouth;
-  // The historical nearest-neighbour socket inpaint can copy the dark eye
-  // outline back into the closed socket. Reuse this breed's existing working
-  // blink lid fill so sleep closes the eye without a residual dark pupil.
-  for (const [cx, cy, rx, ry] of a.eyes) {
-    ellipse(ctx, cx, cy, rx + Math.max(3, Math.round(rx * .35)),
-      ry + Math.max(3, Math.round(ry * .25)), a.lid);
-  }
-  fillSleepSnout(ctx, c, a, mx, my);
-
-  // The approved orange sleep lids are shallow inverted-U arcs. The old
-  // implementation anchored them five pixels too high, leaving the original
-  // eye geometry visible underneath; cy-1 aligns the arc with the socket.
-  for (const [cx, cy, rx] of a.eyes) {
-    // Side mouths can sit on the protected silhouette. Keep a visible,
-    // one-pixel sleep cycle in the interior eyelid as well.
-    const breath = c.direction === 'down' ? 0 : Math.round(Math.sin(frame * Math.PI / 6));
-    pixelArc(ctx, cx, cy - 1 + breath, Math.max(7, rx + 1), 4.2, SLEEP_LINE);
-  }
-  sleepNose(ctx, c, mx, my);
-  sleepMouth(ctx, c, mx, my, frame);
-}
-
-function eye(ctx, [cx, cy, rx, ry], a, action, f) {
-  const phase = f * Math.PI / 6;
-  const blink = [1, 1, .93, .78, .5, .22, .06, .22, .5, .78, .93, 1][f];
-  const open = action === 'error' ? 1 : blink;
-  ellipse(ctx, cx, cy, rx + 1, ry + 1, a.lid);
-  if (open < .1) {
-    for (let x = -rx; x <= rx; x++) dot(ctx, cx + x, cy + ry * .35 - 1.5 * Math.cos(x / rx * Math.PI / 2), SLEEP_LINE);
-    return;
-  }
-  ellipse(ctx, cx, cy, rx, ry * open, '#261f20');
-  const gaze = action === 'syncing' ? Math.sin(phase) * 1.6 : Math.sin(phase) * .65;
-  const r = Math.min(rx * .78, ry * .88), clipY = ry * open;
-  for (let y = -Math.ceil(ry); y <= Math.ceil(ry); y++) for (let x = -Math.ceil(rx); x <= Math.ceil(rx); x++) {
-    if ((x / rx) ** 2 + (y / clipY) ** 2 > 1 || ((x - gaze) / r) ** 2 + (y / r) ** 2 > 1) continue;
-    const dist = Math.hypot(x - gaze, y);
-    let color = a.iris;
-    if (action === 'error') {
-      const angle = Math.atan2(y, x - gaze) + phase, spiral = Math.sin(dist * 1.1 - angle * 2);
-      color = spiral > .1 ? '#1d1a23' : a.iris;
-    } else if (dist < r * .52) color = '#17191e';
-    dot(ctx, cx + x, cy + y, color);
-  }
-  if (open > .65) {
-    const t = 224 + f, highlight = `rgb(${t},${Math.min(255, t + 10)},255)`;
-    dot(ctx, cx - r * .3 + Math.cos(phase) * .4, cy - r * .4, highlight);
-    dot(ctx, cx - r * .3 + 1, cy - r * .4, highlight);
+  const tongueTop=top+(side?3:5)+breath;
+  for(let dy=0;dy<2;dy++)for(let dx=-2;dx<=2;dx++) {
+    if(inBox(mx+dx,tongueTop+dy,repair.mouthBounds))put(out,mx+dx,tongueTop+dy,rgb('#ef7b82'),repair);
   }
 }
 
-function mouth(ctx, [mx, my], a, action, f) {
-  ellipse(ctx, mx, my + 1, 5, 4, a.muzzle);
-  if (action === 'error') {
-    for (let x = -3; x <= 3; x++) dot(ctx, mx + x, my + Math.abs(x) * .45, '#372629');
-    dot(ctx, mx + (f % 3) - 1, my + 2, `rgb(${178 + f * 3},100,110)`);
-  } else {
-    for (let x = -4; x <= 4; x++) {
-      const y = Math.abs(Math.abs(x) - 2) * .45;
-      dot(ctx, mx + x, my + y, '#38292a');
+export function createPixelFaceAtlases(base,c,{createCanvas}={}) {
+  if(!createCanvas||!c.repair)throw new Error('Offline restoration requires measured feature geometry');
+  const cell=createCanvas();cell.width=SIZE;cell.height=SIZE;
+  const ctx=cell.getContext('2d');ctx.drawImage(base,0,0);
+  const source=ctx.getImageData(0,0,SIZE,SIZE),raw=new Uint8ClampedArray(source.data);
+  const eyes=c.repair.eyeBounds.map((bounds,i)=>eyeMask(raw,bounds,c.repair.furSamples[i],c.repair.eyeFeatureBounds?.[i],c.closedEyeSource,c.repair.closedEyeSource?.centers[i],c.repair,0,c.repair.closedEyeSource?.sampleBounds?.[i]));
+  const sleepEyes=c.closedEyeSource?[-1,0,1].map(shift=>c.repair.eyeBounds.map((bounds,i)=>eyeMask(raw,bounds,c.repair.furSamples[i],c.repair.eyeFeatureBounds?.[i],c.closedEyeSource,c.repair.closedEyeSource.centers[i],c.repair,shift,c.repair.closedEyeSource.sampleBounds?.[i]))):null;
+  const result={};
+  for(const action of ACTIONS) {
+    const sheet=createCanvas();sheet.width=SIZE*4;sheet.height=SIZE*3;const out=sheet.getContext('2d');
+    for(let frame=0;frame<12;frame++) {
+      const image=ctx.createImageData(SIZE,SIZE);image.data.set(raw);
+      const activeEyes=action==='idle'&&sleepEyes?sleepEyes[1+Math.round(Math.sin(frame*Math.PI/6))]:eyes;
+      for(const eye of activeEyes)drawEye(image.data,raw,eye,c.repair,action,frame,c.pixelFaceAnimation.iris);
+      if(action==='idle')sleepingMouth(image.data,raw,c.repair,c.direction,frame,c.pixelFaceAnimation.muzzle);
+      // Explicit snapshots prevent native Canvas retaining a mutable frame.
+      out.putImageData(image,(frame%4)*SIZE,Math.floor(frame/4)*SIZE);
     }
-    dot(ctx, mx + 4, my + 1, `rgb(${190 + f},${165 + f},${150 + f})`);
+    result[action]=sheet;
   }
-}
-
-export function createPixelFaceAtlases(base, c, { createCanvas = defaultCanvas } = {}) {
-  const rawAnimation = validatePixelFaceAnimation(c);
-  let entries = cache.get(base);
-  if (!entries) { entries = new Map(); cache.set(base, entries); }
-  const actions = proceduralActions(rawAnimation);
-  const [fx, fy, fw, fh] = c.faceRect;
-  const [cellW, cellH] = c.faceFrameSize ?? [90, 58];
-  const key = JSON.stringify([c.faceRect, c.faceFrameSize, c.direction, rawAnimation]);
-  if (entries.has(key)) return entries.get(key);
-  const cell = createCanvas();
-  if (!cell || typeof cell.getContext !== 'function') {
-    const result = Object.fromEntries(actions.map(action => [action, { width: cellW * 4, height: cellH * 3 }]));
-    entries.set(key, Object.freeze(result));
-    return result;
-  }
-  // Facial coordinates are authored in the manifest crop space. The breed
-  // source crop can be 102px wide, but the player consumes a logical 90x58
-  // atlas cell; sleepFace/other procedural actions use the converted geometry.
-  cell.width = cellW;
-  cell.height = cellH;
-  const ctx = cell.getContext('2d', { willReadFrequently: true });
-  if (!ctx) throw new Error('Facial animation requires Canvas 2D');
-  const result = {};
-  for (const action of actions) {
-    const sheet = createCanvas();
-    sheet.width = cellW * 4;
-    sheet.height = cellH * 3;
-    const out = sheet.getContext('2d');
-    out.imageSmoothingEnabled = false;
-    for (let frame = 0; frame < 12; frame++) {
-      ctx.clearRect(0, 0, cellW, cellH);
-      ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(base, fx, fy, fw, fh, 0, 0, cellW, cellH);
-      if (action === 'idle') sleepFace(ctx, cell, c, rawAnimation, frame);
-      else {
-        const a = logicalFaceAnimation(c, rawAnimation);
-        for (const e of a.eyes) eye(ctx, e, a, action, frame);
-        mouth(ctx, a.mouth, a, action, frame);
-      }
-      // Snapshot each frame: native canvas may defer drawImage(canvas) and
-      // retain the mutable cell, unlike the browser's immediate copy.
-      out.putImageData(ctx.getImageData(0, 0, cellW, cellH), (frame % 4) * cellW, Math.floor(frame / 4) * cellH);
-    }
-    result[action] = sheet;
-  }
-  entries.set(key, Object.freeze(result));
   return result;
 }

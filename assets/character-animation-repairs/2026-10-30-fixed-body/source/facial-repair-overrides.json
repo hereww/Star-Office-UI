@@ -1,0 +1,1490 @@
+{
+  "schemaVersion": 1,
+  "coordinates": "Global 192x192 base pixels. All bounds are [left, top, rightExclusive, bottomExclusive].",
+  "description": "Measured source features, not runtime configuration. Only the union of eyeBounds and mouthBounds may change RGB; noseBounds and source alpha are immutable. furSamples are [top,right,bottom,left] source pixel positions.",
+  "profiles": {
+    "ragdoll-v1": {
+      "down": {
+        "eyeBounds": [
+          [
+            65,
+            60,
+            97,
+            92
+          ],
+          [
+            111,
+            60,
+            144,
+            92
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              80,
+              59
+            ],
+            [
+              97,
+              76
+            ],
+            [
+              80,
+              92
+            ],
+            [
+              64,
+              76
+            ]
+          ],
+          [
+            [
+              127,
+              59
+            ],
+            [
+              144,
+              76
+            ],
+            [
+              127,
+              92
+            ],
+            [
+              110,
+              76
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          92,
+          90,
+          119,
+          106
+        ],
+        "noseBounds": [
+          98,
+          82,
+          109,
+          91
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            67,
+            62,
+            95,
+            90
+          ],
+          [
+            113,
+            62,
+            142,
+            90
+          ]
+        ],
+        "closedEyeSource": {
+          "path": "ragdoll-v1/down/face-idle.png",
+          "frame": 0,
+          "centers": [
+            [
+              76.5,
+              81
+            ],
+            [
+              123.5,
+              81
+            ]
+          ]
+        }
+      },
+      "left": {
+        "eyeBounds": [
+          [
+            44,
+            60,
+            71,
+            91
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              57,
+              59
+            ],
+            [
+              71,
+              75
+            ],
+            [
+              57,
+              91
+            ],
+            [
+              43,
+              75
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          34,
+          90,
+          51,
+          105
+        ],
+        "noseBounds": [
+          29,
+          80,
+          38,
+          89
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            46,
+            62,
+            69,
+            89
+          ]
+        ],
+        "closedEyeSource": {
+          "path": "ragdoll-v1/left/face-idle.png",
+          "frame": 0,
+          "centers": [
+            [
+              65,
+              79
+            ]
+          ]
+        }
+      },
+      "right": {
+        "eyeBounds": [
+          [
+            125,
+            61,
+            155,
+            96
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              140,
+              60
+            ],
+            [
+              155,
+              78
+            ],
+            [
+              140,
+              96
+            ],
+            [
+              124,
+              78
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          148,
+          92,
+          162,
+          106
+        ],
+        "noseBounds": [
+          158,
+          81,
+          168,
+          91
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            127,
+            63,
+            153,
+            94
+          ]
+        ],
+        "closedEyeSource": {
+          "path": "ragdoll-v1/right/face-idle.png",
+          "frame": 0,
+          "centers": [
+            [
+              137,
+              81
+            ]
+          ]
+        }
+      }
+    },
+    "british-shorthair-v1": {
+      "down": {
+        "eyeBounds": [
+          [
+            67,
+            59,
+            100,
+            91
+          ],
+          [
+            113,
+            59,
+            146,
+            91
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              83,
+              58
+            ],
+            [
+              100,
+              74
+            ],
+            [
+              83,
+              91
+            ],
+            [
+              66,
+              74
+            ]
+          ],
+          [
+            [
+              129,
+              58
+            ],
+            [
+              146,
+              74
+            ],
+            [
+              129,
+              91
+            ],
+            [
+              112,
+              74
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          93,
+          89,
+          120,
+          105
+        ],
+        "noseBounds": [
+          99,
+          80,
+          111,
+          91
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            69,
+            61,
+            98,
+            89
+          ],
+          [
+            115,
+            61,
+            144,
+            89
+          ]
+        ],
+        "closedEyeSource": {
+          "path": "british-shorthair-v1/down/face-idle.png",
+          "frame": 0,
+          "centers": [
+            [
+              79,
+              84
+            ],
+            [
+              120,
+              84
+            ]
+          ]
+        }
+      },
+      "left": {
+        "eyeBounds": [
+          [
+            46,
+            61,
+            76,
+            93
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              60,
+              60
+            ],
+            [
+              76,
+              76
+            ],
+            [
+              60,
+              93
+            ],
+            [
+              45,
+              76
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          34,
+          90,
+          49,
+          104
+        ],
+        "noseBounds": [
+          32,
+          81,
+          41,
+          89
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            48,
+            63,
+            74,
+            91
+          ]
+        ],
+        "closedEyeSource": {
+          "path": "british-shorthair-v1/left/face-idle.png",
+          "frame": 0,
+          "centers": [
+            [
+              66,
+              77.5
+            ]
+          ]
+        }
+      },
+      "right": {
+        "eyeBounds": [
+          [
+            118,
+            59,
+            148,
+            91
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              132,
+              58
+            ],
+            [
+              148,
+              74
+            ],
+            [
+              132,
+              91
+            ],
+            [
+              117,
+              74
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          151,
+          90,
+          163,
+          104
+        ],
+        "noseBounds": [
+          157,
+          77,
+          168,
+          87
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            120,
+            61,
+            146,
+            89
+          ]
+        ],
+        "closedEyeSource": {
+          "path": "british-shorthair-v1/right/face-idle.png",
+          "frame": 0,
+          "centers": [
+            [
+              137,
+              81
+            ]
+          ]
+        }
+      }
+    },
+    "american-shorthair-v1": {
+      "down": {
+        "eyeBounds": [
+          [
+            66,
+            58,
+            99,
+            91
+          ],
+          [
+            113,
+            58,
+            146,
+            91
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              82,
+              58
+            ],
+            [
+              98,
+              74
+            ],
+            [
+              82,
+              91
+            ],
+            [
+              66,
+              65
+            ]
+          ],
+          [
+            [
+              129,
+              58
+            ],
+            [
+              146,
+              65
+            ],
+            [
+              129,
+              91
+            ],
+            [
+              112,
+              74
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          93,
+          88,
+          118,
+          105
+        ],
+        "noseBounds": [
+          99,
+          81,
+          112,
+          88
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            68,
+            60,
+            97,
+            89
+          ],
+          [
+            115,
+            60,
+            144,
+            89
+          ]
+        ],
+        "closedEyeSource": {
+          "path": "american-shorthair-v1/down/face-idle.png",
+          "frame": 0,
+          "centers": [
+            [
+              74,
+              85
+            ],
+            [
+              115,
+              85
+            ]
+          ]
+        }
+      },
+      "left": {
+        "eyeBounds": [
+          [
+            47,
+            62,
+            76,
+            93
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              61,
+              61
+            ],
+            [
+              76,
+              67
+            ],
+            [
+              60,
+              92
+            ],
+            [
+              47,
+              77
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          34,
+          90,
+          49,
+          104
+        ],
+        "noseBounds": [
+          30,
+          82,
+          39,
+          90
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            49,
+            64,
+            74,
+            91
+          ]
+        ],
+        "closedEyeSource": {
+          "path": "american-shorthair-v1/left/face-idle.png",
+          "frame": 0,
+          "centers": [
+            [
+              61,
+              79
+            ]
+          ]
+        }
+      },
+      "right": {
+        "eyeBounds": [
+          [
+            117,
+            58,
+            147,
+            90
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              132,
+              58
+            ],
+            [
+              147,
+              72
+            ],
+            [
+              132,
+              90
+            ],
+            [
+              117,
+              64
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          144,
+          88,
+          158,
+          103
+        ],
+        "noseBounds": [
+          149,
+          77,
+          159,
+          88
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            119,
+            60,
+            145,
+            88
+          ]
+        ],
+        "closedEyeSource": {
+          "kind": "complete-frame-crop",
+          "path": "complete-idle-2f7cb0d/american-shorthair-v1/right/frame-00.png",
+          "frame": 0,
+          "centers": [
+            [
+              130,
+              79
+            ]
+          ],
+          "sampleBounds": [
+            [
+              118,
+              65,
+              143,
+              86
+            ]
+          ]
+        }
+      }
+    },
+    "tabby-v1": {
+      "down": {
+        "eyeBounds": [
+          [
+            66,
+            59,
+            99,
+            92
+          ],
+          [
+            113,
+            59,
+            146,
+            92
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              82,
+              58
+            ],
+            [
+              98,
+              74
+            ],
+            [
+              82,
+              91
+            ],
+            [
+              66,
+              65
+            ]
+          ],
+          [
+            [
+              129,
+              58
+            ],
+            [
+              146,
+              65
+            ],
+            [
+              129,
+              91
+            ],
+            [
+              112,
+              74
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          93,
+          89,
+          118,
+          106
+        ],
+        "noseBounds": [
+          99,
+          81,
+          112,
+          89
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            68,
+            61,
+            97,
+            90
+          ],
+          [
+            115,
+            61,
+            144,
+            90
+          ]
+        ],
+        "closedEyeSource": {
+          "kind": "complete-frame-crop",
+          "path": "complete-idle-2f7cb0d/tabby-v1/down/frame-00.png",
+          "frame": 0,
+          "centers": [
+            [
+              80,
+              77
+            ],
+            [
+              129,
+              77
+            ]
+          ],
+          "sampleBounds": [
+            [
+              68,
+              65,
+              94,
+              86
+            ],
+            [
+              115,
+              65,
+              143,
+              86
+            ]
+          ]
+        }
+      },
+      "left": {
+        "eyeBounds": [
+          [
+            47,
+            59,
+            78,
+            92
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              61,
+              61
+            ],
+            [
+              76,
+              67
+            ],
+            [
+              60,
+              92
+            ],
+            [
+              47,
+              77
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          33,
+          90,
+          48,
+          104
+        ],
+        "noseBounds": [
+          29,
+          81,
+          39,
+          90
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            49,
+            61,
+            76,
+            90
+          ]
+        ],
+        "closedEyeSource": {
+          "kind": "complete-frame-crop",
+          "path": "complete-idle-2f7cb0d/tabby-v1/left/frame-00.png",
+          "frame": 0,
+          "centers": [
+            [
+              58,
+              70
+            ]
+          ],
+          "sampleBounds": [
+            [
+              46,
+              59,
+              70,
+              79
+            ]
+          ]
+        }
+      },
+      "right": {
+        "eyeBounds": [
+          [
+            121,
+            60,
+            151,
+            91
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              132,
+              58
+            ],
+            [
+              147,
+              72
+            ],
+            [
+              132,
+              90
+            ],
+            [
+              117,
+              64
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          148,
+          90,
+          162,
+          104
+        ],
+        "noseBounds": [
+          153,
+          80,
+          164,
+          90
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            123,
+            62,
+            149,
+            89
+          ]
+        ],
+        "closedEyeSource": {
+          "kind": "complete-frame-crop",
+          "path": "complete-idle-2f7cb0d/tabby-v1/right/frame-00.png",
+          "frame": 0,
+          "centers": [
+            [
+              134,
+              81
+            ]
+          ],
+          "sampleBounds": [
+            [
+              122,
+              68,
+              147,
+              86
+            ]
+          ]
+        }
+      }
+    },
+    "tuxedo-cat-v1": {
+      "down": {
+        "eyeBounds": [
+          [
+            67,
+            62,
+            96,
+            90
+          ],
+          [
+            114,
+            62,
+            143,
+            90
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              81,
+              59
+            ],
+            [
+              93,
+              60
+            ],
+            [
+              67,
+              86
+            ],
+            [
+              64,
+              76
+            ]
+          ],
+          [
+            [
+              128,
+              59
+            ],
+            [
+              145,
+              76
+            ],
+            [
+              140,
+              86
+            ],
+            [
+              116,
+              60
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          92,
+          90,
+          118,
+          106
+        ],
+        "noseBounds": [
+          99,
+          84,
+          111,
+          91
+        ],
+        "sleepLine": "#8f7e6b"
+      },
+      "left": {
+        "eyeBounds": [
+          [
+            46,
+            58,
+            71,
+            85
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              58,
+              55
+            ],
+            [
+              73,
+              71
+            ],
+            [
+              70,
+              81
+            ],
+            [
+              72,
+              64
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          30,
+          82,
+          42,
+          96
+        ],
+        "noseBounds": [
+          27,
+          75,
+          35,
+          82
+        ],
+        "sleepLine": "#8f7e6b"
+      },
+      "right": {
+        "eyeBounds": [
+          [
+            119,
+            60,
+            143,
+            86
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              130,
+              57
+            ],
+            [
+              138,
+              57
+            ],
+            [
+              122,
+              86
+            ],
+            [
+              116,
+              72
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          143,
+          86,
+          156,
+          98
+        ],
+        "noseBounds": [
+          150,
+          79,
+          157,
+          86
+        ],
+        "sleepLine": "#8f7e6b"
+      }
+    },
+    "white-lion-cat-v1": {
+      "down": {
+        "eyeBounds": [
+          [
+            69,
+            60,
+            96,
+            86
+          ],
+          [
+            114,
+            60,
+            141,
+            86
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              82,
+              57
+            ],
+            [
+              98,
+              72
+            ],
+            [
+              82,
+              88
+            ],
+            [
+              66,
+              72
+            ]
+          ],
+          [
+            [
+              127,
+              57
+            ],
+            [
+              143,
+              72
+            ],
+            [
+              127,
+              88
+            ],
+            [
+              111,
+              72
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          93,
+          86,
+          116,
+          102
+        ],
+        "noseBounds": [
+          99,
+          80,
+          111,
+          86
+        ],
+        "sleepLine": "#362522",
+        "eyelidStroke": 2
+      },
+      "left": {
+        "eyeBounds": [
+          [
+            47,
+            61,
+            69,
+            84
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              58,
+              58
+            ],
+            [
+              71,
+              72
+            ],
+            [
+              58,
+              86
+            ],
+            [
+              44,
+              72
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          34,
+          83,
+          45,
+          96
+        ],
+        "noseBounds": [
+          33,
+          78,
+          40,
+          83
+        ],
+        "sleepLine": "#362522",
+        "eyelidStroke": 2
+      },
+      "right": {
+        "eyeBounds": [
+          [
+            129,
+            59,
+            152,
+            84
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              140,
+              56
+            ],
+            [
+              154,
+              71
+            ],
+            [
+              140,
+              86
+            ],
+            [
+              126,
+              71
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          155,
+          83,
+          165,
+          97
+        ],
+        "noseBounds": [
+          161,
+          78,
+          168,
+          84
+        ],
+        "sleepLine": "#362522",
+        "eyelidStroke": 2
+      }
+    },
+    "jianzhou-cat-v1": {
+      "down": {
+        "eyeBounds": [
+          [
+            66,
+            60,
+            98,
+            91
+          ],
+          [
+            113,
+            60,
+            144,
+            91
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              82,
+              59
+            ],
+            [
+              98,
+              75
+            ],
+            [
+              82,
+              91
+            ],
+            [
+              65,
+              75
+            ]
+          ],
+          [
+            [
+              128,
+              59
+            ],
+            [
+              144,
+              75
+            ],
+            [
+              128,
+              91
+            ],
+            [
+              112,
+              75
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          93,
+          90,
+          118,
+          105
+        ],
+        "noseBounds": [
+          100,
+          84,
+          111,
+          90
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            68,
+            62,
+            96,
+            89
+          ],
+          [
+            115,
+            62,
+            142,
+            89
+          ]
+        ],
+        "closedEyeSource": {
+          "kind": "complete-frame-crop",
+          "path": "complete-idle-2f7cb0d/jianzhou-cat-v1/down/frame-00.png",
+          "frame": 0,
+          "centers": [
+            [
+              81,
+              77.5
+            ],
+            [
+              128.5,
+              77.5
+            ]
+          ],
+          "sampleBounds": [
+            [
+              67,
+              63,
+              96,
+              92
+            ],
+            [
+              114,
+              63,
+              143,
+              92
+            ]
+          ]
+        }
+      },
+      "left": {
+        "eyeBounds": [
+          [
+            48,
+            61,
+            79,
+            92
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              63,
+              60
+            ],
+            [
+              79,
+              76
+            ],
+            [
+              63,
+              92
+            ],
+            [
+              47,
+              76
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          35,
+          89,
+          47,
+          102
+        ],
+        "noseBounds": [
+          33,
+          83,
+          40,
+          89
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            50,
+            63,
+            77,
+            90
+          ]
+        ],
+        "closedEyeSource": {
+          "kind": "complete-frame-crop",
+          "path": "complete-idle-2f7cb0d/jianzhou-cat-v1/left/frame-06.png",
+          "frame": 6,
+          "centers": [
+            [
+              62.5,
+              74.5
+            ]
+          ],
+          "sampleBounds": [
+            [
+              49,
+              61,
+              77,
+              89
+            ]
+          ]
+        }
+      },
+      "right": {
+        "eyeBounds": [
+          [
+            111,
+            59,
+            139,
+            90
+          ]
+        ],
+        "furSamples": [
+          [
+            [
+              124,
+              58
+            ],
+            [
+              139,
+              74
+            ],
+            [
+              124,
+              90
+            ],
+            [
+              110,
+              74
+            ]
+          ]
+        ],
+        "mouthBounds": [
+          138,
+          88,
+          149,
+          102
+        ],
+        "noseBounds": [
+          145,
+          82,
+          152,
+          89
+        ],
+        "sleepLine": "#362522",
+        "eyeFeatureBounds": [
+          [
+            113,
+            61,
+            137,
+            88
+          ]
+        ],
+        "closedEyeSource": {
+          "kind": "complete-frame-crop",
+          "path": "complete-idle-2f7cb0d/jianzhou-cat-v1/right/frame-00.png",
+          "frame": 0,
+          "centers": [
+            [
+              127,
+              78.5
+            ]
+          ],
+          "sampleBounds": [
+            [
+              114,
+              64,
+              140,
+              92
+            ]
+          ]
+        }
+      }
+    }
+  }
+}
