@@ -1,12 +1,12 @@
-# Star Office UI 6.0.1
+# Star Office UI 6.0.0
 
-![Star Office UI 6.0.1](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
+![Star Office UI 6.0.0](assets/company-office-connected-v5/qa/desktop-4k-overview.png)
 
 > 面向团队开发者的项目入口、开发说明和文件结构索引。
 
 Star Office UI 是一个实时 AI 协作办公室与状态可视化平台。当前仓库同时维护旧版看板、新版办公室、独立通用 API、可选 Sub2API 集成，以及 Electron/Tauri 桌面壳。不同入口有不同数据边界，开发前先确认自己要改的是哪一套运行时。
 
-项目版本以 VERSION 为准；当前为 6.0.1。
+项目发行版本以 VERSION 为准；当前统一为已部署并验收的 **6.0.0**。`connected-v4`、`connected-v5` 和 `reference-v3` 是办公室内部运行时/场景标识，不是独立的项目发行版本；当前正式办公室页面使用 V5 场景和 V4 遥测适配器，统一归属于 6.0.0。
 
 ## 先从这里开始
 
@@ -30,6 +30,21 @@ Star Office UI 是一个实时 AI 协作办公室与状态可视化平台。当�
 - 可选 Sub2API collector：只有在需要接入 Sub2API 用户遥测时才启用，不能当作默认开发依赖。
 - 桌面壳：desktop-pet/ 是 Tauri 工程，electron-shell/ 是 Electron 工程；两者复用 Python 后端，但窗口和进程生命周期分别验证。
 - 发布工具：deploy/quickstart/ 用于可复制安装和更新，deploy/office/ 用于正式办公室的不可变发布、预检、备份和回滚。
+
+## 与原项目的关系
+
+本项目参考 [ringhyacinth/Star-Office-UI](https://github.com/ringhyacinth/Star-Office-UI) 的原始项目结构和基础能力，在同一仓库基础上继续重构。下面的标签用于区分来源和开发边界：
+
+| 标签 | 含义 | 修改规则 |
+| --- | --- | --- |
+| `[原项目旧版]` | 原项目已有的入口或资源，当前作为兼容能力保留 | 修复旧版问题时保持原 API 和页面行为；不要把它当作新版办公室入口 |
+| `[新版重构]` | 当前项目新增的 Office、API、运行时或对应测试 | 新功能优先放在这些目录，并同步契约、测试和发布清单 |
+| `[共享/演进]` | 沿用原项目路径，但后端或配置已扩展 | 修改前检查旧版和新版是否共用同一个文件 |
+| `[集成新增]` | 当前项目为外部系统加入的集成副本和适配工具 | 与主项目 API 保持边界，不把外部系统的凭据或数据库带入仓库 |
+| `[发布运维新增]` | 当前项目新增的安装、离线发布、备份和回滚工具 | 使用新的 release ID，先预检、备份和校验再切换 |
+| `[本地证据/历史]` | 截图、QA、候选归档和历史发行物 | 只能作为证据或参考，不能直接作为当前运行时源码 |
+
+对照关系：原项目主要是“根目录 frontend + backend/app.py + 状态推送脚本”的像素办公室；当前项目保留这条旧入口，同时把新版办公室拆到 `frontend/office/`、`frontend/company-office/` 和 `backend/office_*.py`，并新增独立通用 API、Sub2API 集成和发布运维目录。
 
 ## 运行时边界
 
@@ -158,39 +173,61 @@ API key 至少 24 个字符，只通过受控环境或权限为 0400/0600 的文
 - reference-v3：参考运行时和参考素材。
 - media：共享角色、方向帧、状态帧和通用媒体。
 
-根目录 frontend/index.html、frontend/game.js、frontend/layout.js 和旧版图片属于另一套旧版入口。修改新版办公室时不要顺手改旧版逻辑；修改地图或角色时先确认当前发布入口是 V4、V5 还是 reference-v3。
+根目录 frontend/index.html、frontend/game.js、frontend/layout.js 和旧版图片属于另一套旧版入口。修改新版办公室时不要顺手改旧版逻辑；修改地图或角色时先确认当前发布入口是 V5 场景、V4 遥测适配器还是 reference-v3 兼容层。它们都从属于项目发行版本 6.0.0。
 
 ## 目录结构
 
 ~~~text
 Star-Office-UI/
-├── api_service/                 独立通用 API：app、store、wsgi
-├── api-service/                 API 启动包装和环境变量模板
-├── assets/                      地图、角色、家具、参考图和 QA 素材
-├── backend/                     Flask 主服务、办公室 API、collector、存储和安全
+├── api_service/                 [新版重构] 独立通用 API：app、store、wsgi
+├── api-service/                 [新版重构] API 启动包装和环境变量模板
+├── assets/                      [共享/演进] 原始参考素材 + 新版地图、角色和 QA 素材
+├── backend/                     [共享/演进] Flask 主服务、旧 API 和新版办公室后端
+│   ├── app.py                   [共享/演进] 原版主入口，兼容旧版并装配 Office 模式
+│   └── office_*.py              [新版重构] Office API、契约、collector、存储和安全
 ├── deploy/
-│   ├── quickstart/              可复制安装、校验、升级和卸载
-│   ├── office/                  正式发布、Compose、预检、备份和回滚
-│   └── bundles/                 生成的交付归档和校验文件
-├── desktop-pet/                 Tauri 桌面壳
-├── dist/                        历史发行物
-├── docs/                        架构、开发、部署、契约和验收文档
-├── electron-shell/              Electron 桌面壳
+│   ├── quickstart/              [发布运维新增] 可复制安装、校验、升级和卸载
+│   ├── office/                  [发布运维新增] 正式发布、Compose、预检、备份和回滚
+│   └── bundles/                 [发布运维新增] 生成的交付归档和校验文件
+├── desktop-pet/                 [原项目旧版/共享] Tauri 桌面壳
+├── dist/                        [本地证据/历史] 历史发行物
+├── docs/                        [共享/演进] 原项目文档 + 新版开发、契约和部署文档
+├── electron-shell/              [原项目旧版/共享] Electron 桌面壳
 ├── frontend/
-│   ├── company-office/          V3/V4/V5 地图、角色、家具和运行时
-│   ├── office/                  新版员工端、管理员端和测试
-│   ├── fonts/                   本地字体和许可证
-│   └── vendor/                  固定版本本地第三方库
+│   ├── index.html               [原项目旧版] 旧版看板入口
+│   ├── game.js、layout.js       [原项目旧版] 旧版页面运行时
+│   ├── office/                  [新版重构] 员工端、管理员端和数据投影
+│   ├── company-office/          [新版重构] V3/V4/V5 地图、角色、家具和运行时
+│   ├── fonts/                   [新版补充] 本地字体和许可证
+│   └── vendor/                  [共享/演进] 固定版本本地第三方库
 ├── integrations/sub2api/
-│   ├── host-source/             Sub2API 宿主源码副本
-│   ├── patches/                 按宿主版本保存的集成补丁
-│   └── plugin-tools/            插件打包、验签和测试工具
-├── scripts/                     构建、预览、QA、安全检查和测试脚本
-├── wheelhouse/                  根目录离线依赖占位
-├── .local/                      本地预览、截图、审计、回滚和测试证据
-├── VERSION                      当前版本号
-└── pyproject.toml               Python 项目元数据
+│   ├── host-source/             [集成新增] Sub2API 宿主源码副本
+│   ├── patches/                 [集成新增] 按宿主版本保存的集成补丁
+│   └── plugin-tools/            [集成新增] 插件打包、验签和测试工具
+├── scripts/                     [共享/演进] 原版工具 + 新版测试、QA 和发布脚本
+├── .agents/                     [新版补充] 仓库技能和角色动画工作流
+├── .local/                      [本地证据/历史] 预览、截图、审计、回滚和测试证据
+├── VERSION                      [新版补充] 当前版本号
+└── pyproject.toml               [共享/演进] Python 项目元数据
 ~~~
+
+### 原项目与当前项目的目录对照
+
+| 目录或文件 | 原项目中的定位 | 当前项目中的定位 |
+| --- | --- | --- |
+| `frontend/index.html`、`frontend/game.js`、`frontend/layout.js` | 像素办公室主入口、状态展示和页面运行时 | `[原项目旧版]` 兼容入口；默认模式仍使用 |
+| `backend/app.py` | Flask 主服务和旧版 API | `[共享/演进]` 保留旧版路由，并按 `OFFICE_ENABLED` 装配新版入口 |
+| `desktop-pet/`、`electron-shell/` | 桌面封装 | `[原项目旧版/共享]` 继续复用后端；分别维护 Tauri/Electron 生命周期 |
+| `frontend/office/` | 原项目没有 | `[新版重构]` 正式员工端、管理员端、数据模型、地图加载和发布清单 |
+| `frontend/company-office/` | 原项目没有 | `[新版重构]` reference-v3、connected-v4、connected-v5 运行时和素材 |
+| `backend/office_*.py` | 原项目没有 | `[新版重构]` Office 契约、API、collector、存储、安全和角色配置 |
+| `api_service/`、`api-service/` | 原项目没有 | `[新版重构]` 不依赖 Sub2API 的通用 Agent 事件 API |
+| `integrations/sub2api/` | 原项目没有 | `[集成新增]` Sub2API 宿主副本、补丁、插件工具和部署文档 |
+| `deploy/` | 原项目没有 | `[发布运维新增]` Quickstart、正式发布、备份、回滚和交付包 |
+| `scripts/` | 少量状态/素材/安全脚本 | `[共享/演进]` 保留旧工具，并增加新版 Office、浏览器、像素和发布测试 |
+| `assets/` | 主要是 `room-reference.png/.webp` 等基础素材 | `[共享/演进]` 保留基础素材，并增加新版地图、角色、家具、摇滚房间和 QA 资料 |
+| `docs/` | 项目介绍、部署、维护和历史报告 | `[共享/演进]` 增加新版架构、API 契约、Office 开发、生产发布和验收文档 |
+| `.agents/`、`.local/`、`dist/`、`archive/` | 原项目没有或不作为主开发入口 | `[本地证据/历史]` 技能、测试证据、历史发行物和归档，不能当作运行时源码 |
 
 ### 根目录常用文件
 
