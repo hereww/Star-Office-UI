@@ -122,14 +122,38 @@ def validate_env(path, manifest=None, gates=False):
                 'FLASK_SECRET_KEY', 'ASSET_DRAWER_PASS', 'OFFICE_ADMIN_HASH_FILE',
                 'OFFICE_CONSUMER_FILE', 'OFFICE_SUB2API_BASE_URL', 'OFFICE_CREDENTIAL_EXPIRES_AT',
                 'OFFICE_UPSTREAM_CA_FILE', 'OFFICE_SERVER_CA_FILE', 'OFFICE_USER_IDS'}
+    standalone = env.get('OFFICE_TELEMETRY_PROVIDER', 'sub2api') == 'standalone'
+    check(env.get('OFFICE_TELEMETRY_PROVIDER', 'sub2api') in ('sub2api','standalone'), 'invalid telemetry provider')
+    if standalone:
+        required -= {'OFFICE_CONSUMER_FILE','OFFICE_SUB2API_BASE_URL','OFFICE_CREDENTIAL_EXPIRES_AT','OFFICE_UPSTREAM_CA_FILE','OFFICE_USER_IDS'}
+        required |= {'OFFICE_API_BASE_URL','OFFICE_API_KEYS_FILE','OFFICE_SUBJECTS_FILE'}
     check(required.issubset(env), 'required environment variables missing')
     check(all(v and 'SET_' not in v and 'CHANGE_' not in v for k, v in env.items() if k in required), 'placeholder environment values remain')
     check(env.get('OFFICE_APP_PORT', '19011') == '19011', '19011 required; 19001 already occupied')
     if manifest:
         check(env['OFFICE_RELEASE_ID'] == manifest['release_id'], 'dotenv release ID mismatch')
     check(bool(RELEASE_RE.fullmatch(env['OFFICE_RELEASE_ID'])), 'unsafe release ID')
-    validate_user_scope(env['OFFICE_USER_IDS'])
-    check(env.get('OFFICE_INSTALLATION_ID', '1') == '1', 'installation 1 only')
+    if standalone:
+        try:
+            raw = Path(env['OFFICE_SUBJECTS_FILE']).read_bytes()
+            check(len(raw)<=256*1024,'mapping too large')
+            mappings=json.loads(raw)
+            check(isinstance(mappings,list) and 1<=len(mappings)<=500,'invalid mappings')
+            ids, pairs=set(),set()
+            for row in mappings:
+                check(isinstance(row,dict) and set(row)=={'office_user_id','project_id','subject_id'},'invalid mapping')
+                uid = row['office_user_id']
+                check(isinstance(uid, str) and bool(re.fullmatch(r'[1-9][0-9]{0,18}', uid))
+                      and int(uid) <= 9223372036854775807, 'invalid standalone Office user ID')
+                pair=(row['project_id'],row['subject_id'])
+                check(all(isinstance(v,str) and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._:-]{0,127}',v) for v in pair),'invalid mapped identity')
+                check(row['office_user_id'] not in ids and pair not in pairs,'duplicate mapping')
+                ids.add(row['office_user_id']); pairs.add(pair)
+        except (OSError, ValueError, TypeError):
+            check(False,'invalid standalone subject mappings')
+    else:
+        validate_user_scope(env['OFFICE_USER_IDS'])
+        check(env.get('OFFICE_INSTALLATION_ID', '1') == '1', 'installation 1 only')
     check(env.get('OFFICE_ALLOW_HTTP', '0') in ('0', '1'), 'HTTP opt-in must be explicit 0/1')
     for key in ('FLASK_SECRET_KEY', 'OFFICE_ADMIN_SECRET'):
         val = env[key]
@@ -140,15 +164,15 @@ def validate_env(path, manifest=None, gates=False):
     check(len(env['ASSET_DRAWER_PASS']) >= 8 and env['ASSET_DRAWER_PASS'] != '1234' and '$' not in env['ASSET_DRAWER_PASS'], 'weak/interpolated drawer password')
     check(all(':' in env[k] and not env[k].endswith(':latest') for k in ('OFFICE_IMAGE', 'PYTHON_BASE')),
           'explicit cached image references required; latest forbidden')
-    source = urlsplit(env['OFFICE_SUB2API_BASE_URL'])
+    source = urlsplit(env['OFFICE_API_BASE_URL'] if standalone else env['OFFICE_SUB2API_BASE_URL'])
     local_http = (env.get('OFFICE_ALLOW_HTTP') == '1' and source.scheme == 'http'
-                  and source.hostname == '192.168.100.221')
+                  and source.hostname in ({'127.0.0.1','localhost','telemetry-api'} if standalone else {'192.168.100.221'}))
     check((source.scheme == 'https' or local_http) and source.netloc and source.path in ('', '/') and not source.query
           and not source.fragment and not source.username and not source.password,
           'upstream requires HTTPS or explicitly approved same-host IP HTTP, without credentials')
-    for key in ('OFFICE_ADMIN_HASH_FILE', 'OFFICE_CONSUMER_FILE'):
+    for key in ('OFFICE_ADMIN_HASH_FILE', 'OFFICE_API_KEYS_FILE' if standalone else 'OFFICE_CONSUMER_FILE'):
         restricted(env[key], owner=10001)
-    for key in ('OFFICE_UPSTREAM_CA_FILE', 'OFFICE_SERVER_CA_FILE'):
+    for key in (('OFFICE_SERVER_CA_FILE',) if standalone else ('OFFICE_UPSTREAM_CA_FILE', 'OFFICE_SERVER_CA_FILE')):
         path = Path(env[key])
         check(path.is_absolute() and path.is_file() and not path.is_symlink(), 'trusted CA bundle missing')
         text = path.read_text()

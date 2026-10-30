@@ -443,6 +443,25 @@ class EnvironmentTests(unittest.TestCase):
             with self.subTest(origin=origin), self.assertRaises(ValueError):
                 self.validate()
 
+    def test_standalone_accepts_company_subjects_without_sub2api_configuration(self):
+        for key in ('OFFICE_CONSUMER_FILE', 'OFFICE_SUB2API_BASE_URL', 'OFFICE_CREDENTIAL_EXPIRES_AT',
+                    'OFFICE_UPSTREAM_CA_FILE', 'OFFICE_USER_IDS', 'OFFICE_INSTALLATION_ID'):
+            self.env.pop(key)
+        mapping = self.root / 'subjects.json'
+        rows = [{'office_user_id': '42', 'project_id': 'company', 'subject_id': 'developer-1'}]
+        mapping.write_text(json.dumps(rows))
+        self.env.update(OFFICE_TELEMETRY_PROVIDER='standalone', OFFICE_SUBJECTS_FILE=str(mapping),
+                        OFFICE_API_BASE_URL='https://api.company.example',
+                        OFFICE_API_KEYS_FILE=str(self.root / 'reader.json'))
+        self.assertNotIn('OFFICE_USER_IDS', self.validate())
+        self.env.update(OFFICE_API_BASE_URL='http://telemetry-api:19100', OFFICE_ALLOW_HTTP='1')
+        self.validate()
+        for bad in ('0', '01', '9223372036854775808', '1,4', 42):
+            rows[0]['office_user_id'] = bad
+            mapping.write_text(json.dumps(rows))
+            with self.subTest(user=bad), self.assertRaises(ValueError):
+                self.validate()
+
     def test_signing_secrets_must_be_independent_and_production_strong(self):
         self.env['OFFICE_ADMIN_SECRET'] = self.env['FLASK_SECRET_KEY']
         with self.assertRaises(ValueError):

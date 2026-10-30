@@ -40,11 +40,20 @@ QUICKSTART_FILES = (
     "env.example", "install.sh", "update.sh", "uninstall.sh", "verify.sh", "verify_bundle.py",
     "requirements.txt", "README.md",
 )
+OFFICE_BUILD_FILES = (
+    "Dockerfile", "requirements.txt", "compose.yaml", "env.example",
+    "nginx.conf.template", "server-certificate.cnf", "entrypoint.py", "wsgi.py",
+    "healthcheck.py", "volume_archive.py", "validate_release.py", "preflight.sh", "build_offline.sh",
+    "backup.sh", "rollback.sh", "README.md", "nginx-isolated.conf.template", "star-office-ingress.service", "verify_image.py",
+)
 DOC_FILES = (
     "docs/SYSTEM_DEPLOYMENT.md",
     "docs/SUB2API_DEPLOYMENT.md",
     "docs/SUB2API_PLUGIN_DEPLOYMENT.md",
     "docs/DEPLOYMENT.md",
+    "docs/API_DEVELOPMENT.md",
+    "docs/TEAM_API_OPERATIONS.md",
+    "docs/TEAM_API_ACCEPTANCE.md",
 )
 EXCLUDED_PARTS = {"__pycache__", ".git", ".local", "node_modules", "qa", "tests", "test"}
 
@@ -155,9 +164,15 @@ def package(root: Path, output: Path, bundle_id: str, wheelhouse: Path | None = 
     for name in ROOT_FILES:
         sources.append(ensure_file(root / name, root))
     sources.extend(iter_tree(root, "backend"))
+    sources.extend(iter_tree(root, "api_service"))
+    sources.extend(iter_tree(root, "api-service"))
+    sources.extend(iter_tree(root, "examples"))
     sources.extend(iter_tree(root, "frontend"))
     for name in QUICKSTART_FILES:
         sources.append(ensure_file(root / "deploy/quickstart" / name, root))
+    for name in OFFICE_BUILD_FILES:
+        sources.append(ensure_file(root / "deploy/office" / name, root))
+    sources.append(ensure_file(root / "scripts/package_office_release.py", root))
     for name in DOC_FILES:
         sources.append(ensure_file(root / name, root))
     for name in ("room-reference.webp", "room-reference.png"):

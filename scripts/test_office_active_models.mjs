@@ -3,7 +3,7 @@ import test from 'node:test';
 import { safeActiveModels, activeModelsLabel, activeModelsDescription } from '../frontend/office/active-models.mjs';
 import { decodeSnapshot, toRuntimeSnapshot } from '../frontend/office/codec.mjs';
 import { publicSnapshot, failedSnapshot } from '../frontend/office/model.mjs';
-import { wireSnapshot } from '../frontend/office/.local/tests/fixtures.mjs';
+import { wireSnapshot } from './fixtures/office_wire.mjs';
 
 const now = Date.parse('2026-10-22T00:00:00Z');
 const stamp = new Date(now).toISOString();

@@ -160,7 +160,8 @@ class APITests(unittest.TestCase):
         atomic_snapshot(path, empty_snapshot("upstream_unavailable", now=self.now))
         failed = self.get("/api/office/snapshot", client).get_json()
         self.assertEqual(failed["source"]["status"], "error")
-        self.assertEqual(failed["source"]["rack_state"], "fault")
+        # Existing cabinet contract maps upstream_unavailable to offline.
+        self.assertEqual(failed["source"]["rack_state"], "offline")
         self.assertTrue(all(s["today_usage"]["total"] is None for s in failed["stations"]))
 
     def test_today_usage_previous_beijing_day_expires_before_next_sample(self):
