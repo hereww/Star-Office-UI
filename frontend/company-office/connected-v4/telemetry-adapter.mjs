@@ -257,6 +257,9 @@ class TelemetryOfficeRuntime extends RuntimeClass {
       const station=this.getStation(overlay.screen.seatId),staticSeat=station.presentation?.neutral || !station.presentation?.actorVisible;
       overlay.sample(station.state,staticSeat?0:Math.max(0,time-station.epoch),staticSeat || this.reducedMotion);
     }
+    // The seat-specific screen branch replaces Connected.update, so advance
+    // independent room animations here exactly once as well.
+    this.rockRoomAnimation?.update(time);
     const main=this.getStation(this.layout.mainStation);
     // A live rack state is independent from the main seat. Only use the
     // neutral fallback before the first validated rack status arrives.
@@ -309,6 +312,7 @@ class OfficeRuntimeAdapter {
     for(const led of r.serverLights??[])led.setVisible(true);
     r.serverCabinetAnimation?.overlay?.setVisible(true);
     this.shutdownHandler=()=>this.destroy();scene.events.once('shutdown',this.shutdownHandler);
+    this._applyMotion();
     r.layoutClearBubbles();r.refreshMain();r.update(scene.time.now);
   }
   _assertLive(){if(this.destroyed)throw new Error('Office adapter is destroyed');}
@@ -407,6 +411,7 @@ class OfficeRuntimeAdapter {
     const r=this.runtime;r.reducedMotion=this.settings.reduced_motion==='on'||this.settings.reduced_motion==='system'&&!!this.systemMotionQuery?.matches;
     for(const station of r.stations){station.player.reducedMotion=r.reducedMotion;station.texture?.refresh();}
     r.serverCabinetAnimation?.setReducedMotion(r.reducedMotion);
+    r.rockRoomAnimation?.setReducedMotion(r.reducedMotion);
     this._drawSpeechBubbles(r.scene?.time.now??0,true);
   }
   _syncBubbleClock(id,data,mode){

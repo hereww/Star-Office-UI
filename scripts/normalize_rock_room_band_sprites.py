@@ -54,6 +54,23 @@ def find_gutters(image: Image.Image) -> tuple[list[int], list[int]]:
     return x_splits, y_splits
 
 
+def crop_isolated_cell(
+    image: Image.Image,
+    cell_bounds: tuple[int, int, int, int],
+    crop_bounds: tuple[int, int, int, int],
+) -> Image.Image:
+    """Keep the shared crop geometry, padding outside this cell transparently.
+
+    A floor-aligned crop can extend into the previous row or an adjacent
+    column. Isolate the cell before cropping so those neighbours can never
+    contribute pixels, even through the subsequent Lanczos filter.
+    """
+    left, top, _, _ = cell_bounds
+    x0, y0, x1, y1 = crop_bounds
+    isolated = image.crop(cell_bounds)
+    return isolated.crop((x0 - left, y0 - top, x1 - left, y1 - top))
+
+
 def make_sheet(role: str, filename: str, crop_w: int, crop_h: int) -> dict:
     source = SOURCE_DIR / filename
     output = OUTPUT_DIR / f"{role}.png"
@@ -105,7 +122,9 @@ def make_sheet(role: str, filename: str, crop_w: int, crop_h: int) -> dict:
         y0 = int(round(base_y - crop_h + 1))
         y1 = y0 + crop_h
 
-        cropped = source_image.crop((x0, y0, x1, y1)).resize((scaled_w, scaled_h), Image.Resampling.LANCZOS)
+        cell_bounds = (x_splits[c], y_splits[r], x_splits[c + 1], y_splits[r + 1])
+        cropped = crop_isolated_cell(source_image, cell_bounds, (x0, y0, x1, y1))
+        cropped = cropped.resize((scaled_w, scaled_h), Image.Resampling.LANCZOS)
         # Ensure clean alpha after Lanczos resampling
         cropped_alpha = cropped.getchannel("A").point(lambda v: 0 if v < ALPHA_THRESHOLD else v)
         cropped.putalpha(cropped_alpha)
@@ -146,6 +165,7 @@ def make_sheet(role: str, filename: str, crop_w: int, crop_h: int) -> dict:
         "normalizedContentSize": [scaled_w, scaled_h],
         "alphaThreshold": ALPHA_THRESHOLD,
         "alignment": "stable-body-anchor",
+        "cropIsolation": "source-cell-before-resampling-with-transparent-padding",
         "frameMetrics": frame_metrics,
     }
 

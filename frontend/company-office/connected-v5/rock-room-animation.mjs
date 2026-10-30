@@ -171,6 +171,7 @@ export class RockRoomAnimation {
     this.lastTick = -1;
     this.ready = false;
     this.reducedMotion = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    this.motionManaged = false;
     this.performers = [];
     this.occlusionLayers = [];
     this.visibility = { enabled: true, performers: {} };
@@ -239,6 +240,7 @@ export class RockRoomAnimation {
 
     this.motionQuery = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');
     this.motionHandler = (event) => {
+      if (this.motionManaged) return;
       this.reducedMotion = event.matches;
       this.lastTick = -1;
       this.sample(this.scene?.time.now ?? 0);
@@ -247,6 +249,16 @@ export class RockRoomAnimation {
     scene.events.once('shutdown', () => this.destroy());
     this.sample(scene.time.now);
     return this;
+  }
+
+  /** The office adapter resolves on/off/system; standalone previews follow the OS. */
+  setReducedMotion(value) {
+    if (typeof value !== 'boolean') throw new Error('摇滚房间 reducedMotion 必须为 boolean');
+    this.motionManaged = true;
+    if (this.reducedMotion === value) return;
+    this.reducedMotion = value;
+    this.lastTick = -1;
+    this.sample(this.scene?.time.now ?? 0);
   }
 
   /** Apply server-owned visibility without changing the fixed performer geometry. */
