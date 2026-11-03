@@ -31,6 +31,7 @@ node --test \
   scripts/test_office_full_frame_assets.mjs \
   scripts/test_office_screen_overlay.mjs \
   scripts/test_office_telemetry_adapter.mjs \
+  scripts/test_office_v3_player.mjs \
   scripts/test_office_v3_render_quality.mjs \
   scripts/test_office_v3_runtime.mjs \
   scripts/test_office_v5_character_template.mjs \
@@ -53,11 +54,20 @@ node --test scripts/test_office_connected_v5_layout.mjs scripts/test_office_conn
 
 `qa_office_active_models.mjs` 使用已跟踪的 `scripts/fixtures/office_wire.mjs`，优先加载项目中的 Playwright，也接受上述依赖路径。它需要单独启动的 Office 预览服务；运行前核对脚本的 `OFFICE_MODEL_QA_*` 配置。其他 `qa_*` 和浏览器/像素脚本也需要各自的服务、证书或显式环境配置，不属于默认契约命令。
 
-## 历史测试与已知失败
+## V3 测试迁移与历史副本
 
 `frontend/office/.local/tests/` 是未提交的早期本地验收副本，干净克隆不包含它；不要从已跟踪脚本导入，也不要把旧报告当作当前通过结果。
 
-`node --test scripts/test_office_v3_player.mjs` 仍可手工运行。2026-11-03 审查发现 23 项失败：其 fixture 仍提供脸部贴片、缺少背向整帧路径，并比较早期脸部几何，而当前播放器要求整帧合同。该测试保留以便后续迁移；没有删除失败断言、标记 TODO 或放宽生产播放器校验。当前整帧资源、V3 runtime、V4/V5 角色与屏幕使用上面的专项测试。
+`scripts/test_office_v3_player.mjs` 已纳入上面的默认契约命令。2026-11-03 初次审查的 23 项失败来自过期脸部贴片 fixture 和绘制断言；现已迁移到 192×192 单帧、768×576 图集的现行整帧合同，28 项全部通过。覆盖初始化、异步切向、加载失败重试、缓存隔离、六状态时钟、屏幕遮罩与减少动态；没有跳过测试、修改播放器或替换素材。冻结模板仍逐文件核验原始 SHA-256，当前角色资源另按整帧契约验证。
+
+## 安全预检
+
+```sh
+python3 scripts/security_check.py
+.venv/bin/python -m unittest scripts.test_security_check
+```
+
+两个已审查的上游 `httptest` 示例常量只按**原文件路径 + 完整值的 SHA-256** 豁免。规则在 `scripts/security_check.py`；没有忽略整个补丁或集成目录。回归检查相同值换文件、修改后缀、同文件加入新可疑值、其他类型 key 和输出脱敏。生产模式仍要求真实部署环境提供强 secret 和密码；本地扫描通过不替代生产配置验收。
 
 ## 输出与发布
 

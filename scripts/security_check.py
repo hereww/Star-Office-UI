@@ -9,6 +9,7 @@ Checks:
 
 from __future__ import annotations
 
+import hashlib
 import os
 import re
 import subprocess
@@ -16,6 +17,29 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# Two synthetic Authorization constants in the frozen upstream httptest patch.
+# Scope exceptions to the exact file AND complete token hash, never a directory
+# or a token prefix. The rest of this file is still scanned normally.
+REVIEWED_TEST_TOKEN_SHA256 = {
+    "integrations/sub2api/host-source/openspec/changes/add-openai-compatible-prompt-audit/"
+    "source-freeze/aicodex-prompt-audit-tracked.patch": frozenset({
+        "0de15226e0f7b16f62971322708393eff3fc05b8f46b30254d4301edffc5057b",
+        "75381720a24ad1bc9a9566669faf6a86931639b69bfc4efdec8420962b75e866",
+    }),
+}
+
+
+def reviewed_test_token(path: Path, text: str, start: int) -> bool:
+    try:
+        relative = path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return False
+    approved = REVIEWED_TEST_TOKEN_SHA256.get(relative, ())
+    # The scanner's legacy sk-* regex can stop before '-' or '_'. Hash the
+    # complete lexical value so a longer secret with an approved prefix fails.
+    token = re.match(r"[A-Za-z0-9_-]+", text[start:]).group()
+    return hashlib.sha256(token.encode("utf-8")).hexdigest() in approved
 
 
 def run(cmd: list[str]) -> tuple[int, str, str]:
@@ -65,8 +89,11 @@ def file_has_secret_pattern(path: Path) -> list[str]:
         (r"AKIA[0-9A-Z]{16}", "AWS access key-like token"),
     ]
     for pat, label in patterns:
-        if re.search(pat, text):
+        for match in re.finditer(pat, text):
+            if label == "Generic sk-* token" and reviewed_test_token(path, text, match.start()):
+                continue
             hits.append(label)
+            break
     return hits
 
 

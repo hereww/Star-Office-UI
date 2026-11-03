@@ -13,6 +13,7 @@ const legacyBaseUrl = new URL('../frontend/company-office/', import.meta.url).hr
 const frozenRoot = new URL('../.agents/skills/star-office-character-animation/assets/approved-office-expressions-v1/', import.meta.url);
 const legacy = JSON.parse(readFileSync(new URL('frontend/company-office/office-assets.json', root), 'utf8'));
 const manifest = JSON.parse(readFileSync(new URL('template-manifest.json', frozenRoot), 'utf8'));
+const frozenAssets = JSON.parse(readFileSync(new URL('office-assets.json', frozenRoot), 'utf8'));
 const clocks = { working: 60, idle: 36, syncing: 60, error: 12 };
 const states = Object.keys(BUSINESS_STATES);
 const directions = ['down', 'up', 'left', 'right'];
@@ -55,27 +56,17 @@ function fixture() {
     character.base = direction === 'down' ? '../media/character-base.png' : `media/character-${direction}/character-base.png`;
     if (direction === 'left') {
       character.poseAnchor = [92, 168];
-      character.faceRect = [35, 72, 90, 58];
-      character.faceClipEllipse = [80, 101, 45, 29];
       character.headAnchor = [80, 101];
     }
     if (direction === 'right') {
       character.poseAnchor = [104, 172];
-      character.faceRect = [63, 72, 90, 58];
-      character.faceClipEllipse = [108, 101, 45, 29];
       character.headAnchor = [108, 101];
     }
     for (const [action, clock] of Object.entries(clocks)) {
-      const original = character.actions[action];
-      character.actions[action] = direction === 'up' ? { faceClockFrames: clock } : {
-        ...original, faceClockFrames: clock,
-        face: direction === 'down' ? `../${original.face}` : `media/character-${direction}/face-${action}.png`,
+      character.actions[action] = {
+        frames: `media/character-${direction}/frames-${action}.png`,
+        frameCount: 12, fps: 12, clockFrames: clock,
       };
-    }
-    if (direction === 'up') {
-      delete character.faceRect;
-      delete character.faceClipEllipse;
-      delete character.faceFrameSize;
     }
     const furniture = {
       id: `fixture-desk-${direction}`, direction, size: [192, 192], seatAnchor: [96, 94],
@@ -103,9 +94,7 @@ function catalogFor(assets, base = baseUrl) {
       ['back', spec.furniture.back, 192, 192], ['front', spec.furniture.front, 192, 192],
       ['base', spec.character.base, 192, 192],
     ];
-    if (spec.character.faceVisible !== false) {
-      for (const [action, value] of Object.entries(spec.character.actions)) entries.push([action, value.face, 360, 174]);
-    }
+    for (const [action, value] of Object.entries(spec.character.actions)) entries.push([action, value.frames, 768, 576]);
     for (const [key, path, width, height] of entries) {
       catalog.set(new URL(path, base).href, Object.freeze({ id: `${direction}:${key}`, width, height, naturalWidth: width, naturalHeight: height }));
     }
@@ -245,21 +234,34 @@ function screenPixels(recorder) {
   return pixels;
 }
 
-test('fixed six-state mapping and frozen source/copies retain their original SHA-256', () => {
+test('six-state mapping and frozen source retain their original SHA-256; runtime uses complete frames', () => {
   assert.deepEqual(BUSINESS_STATES, { idle: 'idle', writing: 'working', researching: 'working', executing: 'working', syncing: 'syncing', error: 'error' });
   assert.ok(Object.isFrozen(BUSINESS_STATES));
   assert.equal(manifest.files.length, 19);
   assert.deepEqual([manifest.fps, manifest.frameCount, manifest.grid], [12, 12, [4, 3]]);
   assert.deepEqual([manifest.poseAnchor, manifest.scale, manifest.faceRect, manifest.faceClipEllipse],
-    [legacy.character.poseAnchor, legacy.character.scale, legacy.character.faceRect, legacy.character.faceClipEllipse]);
+    [frozenAssets.character.poseAnchor, frozenAssets.character.scale, frozenAssets.character.faceRect, frozenAssets.character.faceClipEllipse]);
+  assert.deepEqual([legacy.character.poseAnchor, legacy.character.scale], [manifest.poseAnchor, manifest.scale]);
   for (const entry of manifest.files) {
     const content = readFileSync(new URL(entry.path, frozenRoot));
     assert.equal(content.length, entry.bytes, entry.path);
     assert.equal(hash(content), entry.sha256, `Frozen source changed: ${entry.path}`);
   }
-  const paths = [legacy.character.base, legacy.workstation.back, legacy.workstation.front, ...Object.values(legacy.character.actions).map(a => a.face)];
+  // Static furniture is still copied from the frozen template. Current actor
+  // atlases have their own full-frame provenance, not the old face-only hashes.
+  const paths = [legacy.workstation.back, legacy.workstation.front];
   for (const path of paths) {
     assert.deepEqual(readFileSync(new URL(`frontend/company-office/${path}`, root)), readFileSync(new URL(path, frozenRoot)), `Original down asset differs: ${path}`);
+  }
+  assert.equal(legacy.character.animationMode, 'full-frame');
+  for (const field of ['faceRect', 'faceClipEllipse', 'faceFrameSize', 'pixelFaceAnimation']) {
+    assert.equal(Object.hasOwn(legacy.character, field), false);
+  }
+  for (const [action, clock] of Object.entries(clocks)) {
+    const config = legacy.character.actions[action];
+    assert.deepEqual([config.frameCount, config.fps, config.clockFrames], [12, 12, clock]);
+    const bytes = readFileSync(new URL(`frontend/company-office/${config.frames}`, root));
+    assert.deepEqual([bytes.readUInt32BE(16), bytes.readUInt32BE(20)], [768, 576]);
   }
 });
 
@@ -291,19 +293,22 @@ test('validator rejects malformed geometry, state maps, clocks, layers, directio
     a => { a.directions.left.character.scale = Infinity; },
     a => { a.directions.left.character.headAnchor = [1, Infinity]; },
     a => { a.directions.left.character.faceRect = [150, 150, 90, 58]; },
-    a => { a.directions.left.character.faceRect[2] = 0; },
-    a => { a.directions.left.character.faceClipEllipse[2] = 0; },
+    a => { a.directions.left.character.animationMode = 'expression-only'; },
+    a => { a.directions.left.character.pixelFaceAnimation = {}; },
     a => { a.directions.left.character.faceClipEllipse = [0, 0, 45, 29]; },
     a => { a.directions.left.character.faceFrameSize = [96, 96]; },
     a => { a.directions.left.character.faceVisible = false; },
     a => { a.directions.up.character.faceVisible = true; },
     a => { a.directions.left.character.base = ''; },
-    a => { a.directions.left.character.actions.working.face = ''; },
+    a => { a.directions.left.character.actions.working.frames = ''; },
     a => { delete a.directions.left.character.actions.error; },
     a => { a.directions.left.character.actions.hands = { face: 'hands.png' }; },
     a => { a.directions.left.character.actions.idle.faceClockFrames = 60; },
     a => { a.directions.left.character.actions.error.faceClockFrames = 36; },
-    a => { delete a.directions.up.character.actions.working.faceClockFrames; },
+    a => { delete a.directions.up.character.actions.working.frames; },
+    a => { a.directions.left.character.actions.working.frameCount = 1; },
+    a => { a.directions.left.character.actions.error.fps = 24; },
+    a => { a.directions.left.character.actions.idle.clockFrames = 60; },
     a => { a.directions.up.character.actions.syncing.faceClockFrames = 12; },
     a => { a.directions.left.furniture.front = null; },
     a => { delete a.directions.left.furniture.order; },
@@ -319,6 +324,7 @@ test('validator rejects malformed geometry, state maps, clocks, layers, directio
     a => { a.directions.left.furniture.screen.led = [191, 190, 3, 2]; },
     a => { a.directions.left.furniture.screen.led = [1, 1, 0, 1]; },
   ];
+  assert.equal(validateDirectionalAssets(fixture()).fps, 12, 'Negative probes must start with a valid fixture');
   for (const [i, mutate] of mutations.entries()) {
     const bad = fixture();
     mutate(bad);
@@ -353,14 +359,15 @@ test('initialize is idempotent, preserves pre-ready samples and outputs exactly 
   recorder.balanced();
 });
 
-test('legacy down preserves the frozen body, ellipse, atlas crop and face draw rule for all 72 state/frame samples', async () => {
+test('down fallback matches the full-frame compositor for all 72 state/frame samples', async () => {
   const recorder = recordingCanvas();
   const calls = [];
   const loader = async url => {
     calls.push(url);
     const bytes = readFileSync(new URL(url));
     assert.equal(bytes.subarray(1, 4).toString(), 'PNG');
-    return { id: `down:${url.includes('face-') ? Object.entries(legacy.character.actions).find(([, a]) => url.endsWith(a.face))[0] : url.endsWith(legacy.character.base) ? 'base' : url.endsWith(legacy.workstation.back) ? 'back' : 'front'}`,
+    const action = Object.entries(legacy.character.actions).find(([, a]) => url.endsWith(a.frames))?.[0];
+    return { id: `down:${action ?? (url.endsWith(legacy.character.base) ? 'base' : url.endsWith(legacy.workstation.back) ? 'back' : 'front')}`,
       width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
   };
   const player = new DirectionalSeatedPlayer(recorder.canvas, legacy, { baseUrl: legacyBaseUrl, imageLoader: loader });
@@ -395,7 +402,7 @@ test('all six states use their immutable 12fps/12-cell and 60/36/12 expression c
       assert.equal(snap.state, state);
       assert.equal(snap.action, BUSINESS_STATES[state]);
       assert.equal(snap.tick, tick);
-      assert.equal(snap.frame, tick % 12);
+      assert.equal(snap.frame, faceTick < 12 ? faceTick : 0);
       assert.equal(snap.faceFrame, faceTick < 12 ? faceTick : 0);
       assert.equal(snap.clock, clock);
       assert.equal(snap.faceClockFrames, clock);
@@ -430,7 +437,7 @@ test('same state is a no-op, while an actual business-state change (even same ac
   }
 });
 
-test('sample returns a boolean for actual redraws, including face holds, dynamic screens and hidden faces', async () => {
+test('sample reports full-frame redraws, held frames and independent front/rear screen effects', async () => {
   const { player, recorder } = await initialized();
   recorder.reset();
   assert.equal(player.sample(0), false);
@@ -456,8 +463,11 @@ test('sample returns a boolean for actual redraws, including face holds, dynamic
   await player.setDirection('up');
   player.setState('writing');
   recorder.reset();
-  assert.equal(player.sample(msAt(61)), false, 'No back-face repaint just for a logical tick');
-  assert.equal(player.snapshot().faceFrame, 1, 'Invisible back face retains the same state clock');
+  assert.equal(player.sample(msAt(61)), true, 'Rear actors also render their declared complete atlas cells');
+  assert.equal(player.snapshot().faceFrame, 1, 'Rear actors retain the same state clock');
+  assert.equal(imageCalls(recorder).find(c => c.id === 'up:working').args[0], 192);
+  recorder.reset();
+  assert.equal(player.sample(msAt(61)), false, 'The same rear atlas cell does not redraw');
   assert.equal(recorder.calls.length, 0);
   player.setState('error');
   assert.equal(player.sample(msAt(4)), true, 'Back LED can show the soft error pulse');
@@ -511,31 +521,26 @@ test('real directional fixtures are selected without rotate/mirror/body transfor
     player.setState(player.state === 'idle' ? 'writing' : 'idle');
     const layerSequence = [];
     for (const call of recorder.calls) {
-      if (call.op === 'drawImage' && call.id.endsWith(':base')) layerSequence.push('actor');
+      if (call.op === 'drawImage' && call.id === `${direction}:${player.action()}`) layerSequence.push('actor');
       else if (call.op === 'drawImage' && call.id.endsWith(':back')) layerSequence.push('back');
       else if (call.op === 'drawImage' && call.id.endsWith(':front')) layerSequence.push('front');
       else if (call.op === 'fillRect' && !layerSequence.includes('screen')) layerSequence.push('screen');
     }
     assert.deepEqual(layerSequence, spec.furniture.order);
     for (const state of states) {
-      if (direction === 'up') {
-        if (player.state === state) player.setState(state === 'idle' ? 'writing' : 'idle');
-        recorder.reset();
-      }
       player.setState(state);
       for (let frame = 0; frame < 12; frame++) {
-        if (direction !== 'up') renderFrame(player, recorder, frame);
-        else player.setFrame(frame); // Logical QA frame advances; the back-view body remains identical.
+        renderFrame(player, recorder, frame);
         assert.equal(player.state, state);
         assert.equal(player.faceFrame, frame);
         const draws = imageCalls(recorder);
-        const body = draws.find(c => c.id === `${direction}:base`);
-        assert.ok(body, `Must use ${direction}'s real body image`);
-        assert.deepEqual(body.args, placement);
+        const body = draws.find(c => c.id === `${direction}:${BUSINESS_STATES[state]}`);
+        assert.ok(body, `Must use ${direction}'s declared full-frame atlas`);
+        assert.deepEqual(body.args, [frame % 4 * 192, Math.floor(frame / 4) * 192, 192, 192, ...placement]);
         assert.deepEqual(body.clips, []);
         for (const name of ['back', 'front']) assert.deepEqual(draws.find(c => c.id === `${direction}:${name}`).args, [0, 0]);
-        assert.equal(draws.filter(c => c.args.length === 8).length, direction === 'up' ? 0 : 1);
-        assert.equal(recorder.calls.filter(c => c.op === 'ellipse').length, direction === 'up' ? 0 : 1);
+        assert.equal(draws.filter(c => c.args.length === 8).length, 1);
+        assert.equal(recorder.calls.filter(c => c.op === 'ellipse').length, 0);
         assert.equal(player.snapshot().handsRendered, false);
         recorder.balanced();
       }
@@ -544,11 +549,12 @@ test('real directional fixtures are selected without rotate/mirror/body transfor
   assert.equal(calls.filter(url => url.includes('character-up') && url.includes('face')).length, 0);
 });
 
-test('up needs no face files/geometry but maintains each state clock and LED-only drawing', async () => {
+test('up loads complete frames without face overlays and keeps state clocks with LED-only screens', async () => {
   const assets = fixture();
   for (const action of Object.values(assets.directions.up.character.actions)) action.face = 'FORBIDDEN-back-face.png';
   const { player, recorder, calls } = await initialized(assets, { direction: 'up' });
-  assert.equal(calls.length, 3);
+  assert.equal(calls.length, 7);
+  assert.equal(calls.filter(url => url.includes('frames-')).length, 4);
   for (const state of states) {
     player.setState(state);
     player.sample(msAt(61));
@@ -573,7 +579,7 @@ test('up needs no face files/geometry but maintains each state clock and LED-onl
   assert.equal(calls.some(url => url.includes('FORBIDDEN')), false);
   await player.setDirection('down');
   assert.equal(player.snapshot().faceFrame, 1);
-  assert.equal(imageCalls(recorder).find(c => c.id === 'down:error').args[0], 90);
+  assert.equal(imageCalls(recorder).find(c => c.id === 'down:error').args[0], 192);
 });
 
 test('awaited direction changes preserve state, clock, elapsed sample and QA frame', async () => {
@@ -693,7 +699,7 @@ test('failed/incorrect-size direction images never half-switch and can be retrie
   const attempts = [];
   const loader = async url => {
     attempts.push(url);
-    if (url.endsWith('character-right/face-error.png')) {
+    if (url.endsWith('character-right/frames-error.png')) {
       if (failKind === 'reject') throw new Error('fixture offline');
       if (failKind === 'size') return { id: 'invalid', width: 360, height: 174, naturalWidth: 384, naturalHeight: 288 };
     }
@@ -706,7 +712,7 @@ test('failed/incorrect-size direction images never half-switch and can be retrie
   for (const kind of ['reject', 'size']) {
     failKind = kind;
     recorder.reset();
-    await assert.rejects(player.setDirection('right'), kind === 'reject' ? /fixture offline/ : /360x174/);
+    await assert.rejects(player.setDirection('right'), kind === 'reject' ? /fixture offline/ : /768x576/);
     assert.deepEqual(player.snapshot(), before);
     assert.equal(player.images, images);
     assert.equal(recorder.calls.length, 0);
@@ -715,7 +721,7 @@ test('failed/incorrect-size direction images never half-switch and can be retrie
   await player.setDirection('right');
   assert.equal(player.direction, 'right');
   assert.equal(player.faceFrame, before.faceFrame);
-  assert.equal(attempts.filter(u => u.endsWith('character-right/face-error.png')).length, 3);
+  assert.equal(attempts.filter(u => u.endsWith('character-right/frames-error.png')).length, 3);
   assert.equal(attempts.filter(u => u.endsWith('character-right/character-base.png')).length, 1);
 });
 
@@ -764,7 +770,7 @@ test('failed shared initialization is evicted and retriable, including a synchro
   broken = false;
   await Promise.all(players.map(p => p.initialize()));
   assert.equal(attempts.filter(u => u.endsWith('character-base.png')).length, 2);
-  assert.equal(attempts.filter(u => u.endsWith('face-working.png')).length, 1);
+  assert.equal(attempts.filter(u => u.endsWith('frames-working.png')).length, 1);
   assert.ok(players.every(p => p.ready));
   const other = loaderFor(assets), independent = await initialized(assets, { imageLoader: other.loader });
   assert.equal(other.calls.length, 7, 'Different loader identities do not share foreign fixtures');
@@ -793,7 +799,7 @@ test('default browser Image/decode path caches successes and retries a rejected 
     failBase = false;
     await Promise.all(players.map(p => p.initialize()));
     assert.equal(attempts.filter(u => u.endsWith('character-base.png')).length, 2);
-    assert.equal(attempts.filter(u => u.endsWith('face-working.png')).length, 1);
+    assert.equal(attempts.filter(u => u.endsWith('frames-working.png')).length, 1);
     assert.equal(players[0].images.base, players[1].images.base);
   } finally {
     if (originalImage === undefined) delete globalThis.Image;
@@ -856,10 +862,10 @@ test('screen polygon masks contain every effect pixel for skewed/concave/reverse
   for (const state of states) {
     player.setState(state);
     renderFrame(player, recorder, 9);
-    for (const draw of imageCalls(recorder)) {
-      if (draw.args.length === 8) assert.equal(draw.clips[0][0].op, 'ellipse');
-      else assert.deepEqual(draw.clips, [], 'Furniture/body not inside an effect mask');
-    }
+    const draws = imageCalls(recorder);
+    assert.equal(draws.length, 3, 'Two static furniture layers and one complete actor frame');
+    assert.equal(draws.filter(c => c.args.length === 8).length, 1);
+    for (const draw of draws) assert.deepEqual(draw.clips, [], 'Furniture/actor not inside a screen effect mask');
     assert.ok(recorder.calls.find(c => c.op === 'clearRect' && c.args.join() === '0,0,192,192'));
   }
 });
@@ -944,14 +950,14 @@ test('reducedMotion changes only screen motion, never facial frame/state/clock/b
   }
 });
 
-test('context save/restore is balanced even if a face or screen draw throws', async () => {
+test('context save/restore is balanced even if an actor or screen draw throws', async () => {
   const { player, recorder } = await initialized();
   const originalDraw = recorder.ctx.drawImage;
   recorder.ctx.drawImage = (image, ...args) => {
-    if (args.length === 8) throw new Error('fixture face draw failure');
+    if (args.length === 8) throw new Error('fixture actor draw failure');
     originalDraw(image, ...args);
   };
-  assert.throws(() => player.setFrame(9), /face draw failure/);
+  assert.throws(() => player.setFrame(9), /actor draw failure/);
   recorder.balanced();
   recorder.ctx.drawImage = originalDraw;
   assert.equal(player.setFrame(9), true, 'Failed draw must not mark a frame as already rendered');

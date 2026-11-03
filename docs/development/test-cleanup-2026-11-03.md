@@ -44,7 +44,29 @@ git show 3b34deb3c7324c4d5720f5719d5d558128596c74:assets/company-office-combined
 
 环境和验证产物位于本机根目录 `.local/review-20261103/`，不提交。此次未运行 Docker 构建、离线安装、完整地图浏览器验收或生产部署。
 
-## 保留的审查项
+## 初次审查项（同日后续修复见下文）
 
 1. **历史 V3 播放器测试有 23 项失败。** `scripts/test_office_v3_player.mjs` 的早期脸部贴片 fixture 与当前整帧合同不一致，缺少 `up.working.frames`，且仍比较旧脸部几何；本次扩展测试实际复现。测试及其生产依赖未修改，失败没有被跳过或删除。需后续迁移 fixture、绘制断言和资源基线后再恢复这组测试。
 2. **全仓通用安全预检未通过。** `scripts/security_check.py` 命中 Sub2API 冻结补丁 `integrations/sub2api/host-source/openspec/changes/add-openai-compatible-prompt-audit/source-freeze/aicodex-prompt-audit-tracked.patch` 第 461、505 行的两个 `httptest` Authorization 示例常量，分别用于 transport guard/observe 测试，非本次新增。未修改冻结补丁或扩大扫描排除范围，也未对这些常量做外部凭据有效性验证，因此不宣称全仓安全扫描通过。扫描只报告路径与类型，没有输出令牌值。
+
+## 同日修复结果
+
+23 项测试失败均位于 `scripts/test_office_v3_player.mjs`，具体分组如下：
+
+| 原失败项 | 数量 | 处理 |
+| --- | --- | --- |
+| 冻结模板/运行时资源对应关系、校验器接受有效方向集合与 down fallback | 2 | 冻结模板与当前运行时分开验证；保留原模板哈希与家具复制约束，当前角色检查整帧元数据和尺寸 |
+| 初始化幂等、图片加载失败/尺寸错误重试、跨实例缓存隔离、共享初始化失败恢复、浏览器 Image/decode 重试、无效构造参数 | 6 | 合成 loader 为四方向提供 4 套 768×576 图集；故障注入改为实际加载的 `frames-*` 路径 |
+| 六状态时钟、同状态 no-op/切换复位、实际重绘返回值、QA setFrame 与无效输入原子性 | 4 | 断言现行“12帧后保持第0帧，按60/36/12帧周期恢复”的完整角色帧行为 |
+| 四方向图层与裁剪、背向图集/LED、await 切向保留状态、缺失方向、原子提交、乱序切向、初始化被新切向抢占、初始化尊重已在途切向 | 8 | 背向同样加载完整图集；各方向均验证一次整帧裁剪，无脸部椭圆遮罩、镜像或旋转 |
+| 屏幕多边形裁剪不外溢 | 1 | 保留逐像素中心遮罩检查；角色/家具不进入屏幕遮罩 |
+| reducedMotion 不改变角色时钟与帧 | 1 | 保留四方向六状态角色断言和静态屏幕检查 |
+| 绘制异常后的 context 平衡与重试 | 1 | 整帧绘制和屏幕绘制失败后仍检查上下文、可重试性 |
+
+迁移后该文件 **28/28 通过**，原 23 项失败全部消除。还修复了负例矩阵使用无效 fixture 导致“因其他原因拒绝也算通过”的问题：先验证基础 fixture 合法，再逐项注入错误，并补充整帧路径/帧数/fps/时钟负例。没有删除用例、添加 skip/TODO，或修改生产播放器、素材和冻结模板。
+
+安全预检为两个明确的 `httptest` 示例增加**文件路径 + 完整值 SHA-256** 精确豁免。不是整文件豁免；扫描仍遍历补丁内所有匹配。同文件新增可疑值、相同值换文件、修改示例后缀、其他 key 类型均会报错，且不打印值。新增 `scripts/test_security_check.py` 的 6 项回归全部通过。冻结补丁字节未改，其 SHA-256 仍为 `f751a13cce3f3a73cd60cae3aececcef6e1e76dcec8c551a7a4747f032234d2b`。
+
+最终复跑：Python **279 项通过**；Node **274 项通过、1 项可选遥测浏览器检查跳过**（包含迁移后的 V3 和真实 Chrome Canvas 测试）；本地模式 `security_check.py` 返回 `Result: OK`。没有启动生产服务、使用真实凭据或部署。
+
+复跑时另观察到一次波动：Python 和 Chrome 同时运行的首轮中，Gunicorn 并发 HTTP 用例出现一次 `HTTP 0` 连接失败；随后该用例单独运行、完整 Python 串行回归和连续 8 次同用例复跑均通过。尚未定位该次波动的原因，没有通过增加重试或超时掩盖它。连续复跑的 Gunicorn 日志保存在本机 `.local/review-20261103/gunicorn-diagnostics/`，不作为生产稳定性结论。
