@@ -1,11 +1,16 @@
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
+import { homedir } from 'node:os';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { decodeSnapshot } from '../frontend/office/codec.mjs';
 import { activeModelsLabel } from '../frontend/office/active-models.mjs';
-import { wireSnapshot } from '../frontend/office/.local/tests/fixtures.mjs';
-const require = createRequire('/Users/hepingyu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/package.json');
+import { wireSnapshot } from './fixtures/office_wire.mjs';
+let require = createRequire(import.meta.url);
+try { require.resolve('playwright'); } catch {
+  require = createRequire(process.env.OFFICE_QA_NODE_PACKAGE || resolve(homedir(),
+    '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/package.json'));
+}
 const { chromium } = require('playwright');
 const origin = process.env.OFFICE_MODEL_QA_ORIGIN || 'http://127.0.0.1:19026';
 const live = process.env.OFFICE_MODEL_QA_LIVE === '1';

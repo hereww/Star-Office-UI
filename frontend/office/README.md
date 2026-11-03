@@ -66,6 +66,8 @@ window.__OFFICE_BOOT__ = {
 
 ## 目录内测试与发布隔离
 
+以下 `.local/tests/` 命令记录早期本地验收过程；该目录被 Git 忽略，干净克隆不包含这些文件，其中部分断言已落后于当前角色和绑定契约。当前可复跑入口以[仓库测试说明](../../docs/development/testing.md)中的 `scripts/` 测试为准。共享合成 payload 位于 `scripts/fixtures/office_wire.mjs`，QA 脚本不得导入 `.local/tests/`。
+
 ```sh
 node frontend/office/.local/tests/unit.test.mjs # 也可 node --test <同一路径>
 node frontend/office/.local/tests/browser.mjs

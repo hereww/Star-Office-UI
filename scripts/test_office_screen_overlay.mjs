@@ -1,7 +1,7 @@
 /** Focused regression checks for the editor patch; no runtime/player imports. */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { drawScreenEffects, sampleScreenEffects } from './screen-overlay.mjs';
+import { drawScreenEffects, sampleScreenEffects } from '../frontend/company-office/connected-v5/screen-overlay.mjs';
 
 const front = { kind: 'front', polygon: [[20, 16], [172, 26], [158, 176], [24, 165]] };
 const tickTime = frame => Math.ceil(frame * 1000 / 12);

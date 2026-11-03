@@ -41,6 +41,23 @@ join-keys.json
 # Isolated local map preview and rollback snapshots
 .local/
 
+# Reproducible test/browser output (keep test sources and tracked baselines)
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+test-results/
+playwright-report/
+blob-report/
+assets/**/qa/**/*.png
+assets/**/qa/**/*.jpg
+assets/**/qa/**/*.jpeg
+assets/**/qa/**/*.gif
+assets/**/qa/**/*.webp
+assets/**/qa-frames/
+assets/**/test-detail*.png
+assets/**/qa-quick-*.png
+
 # Local legacy-resource archive and formal office release build output
 archive/legacy-face-atlases/
 deploy/office/out/

@@ -94,6 +94,29 @@ class QuickstartUpdateTests(unittest.TestCase):
         self.assertIn("update.sh", PACKAGER.QUICKSTART_FILES)
         self.assertIn("verify_bundle.py", PACKAGER.QUICKSTART_FILES)
 
+    def test_runtime_tree_excludes_tests_fixtures_and_qa_but_keeps_runtime(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            excluded = (
+                "frontend/company-office/connected-v5/screen-overlay.test.mjs",
+                "frontend/office/codec.spec.js", "backend/test_api.py", "backend/conftest.py",
+                "frontend/office/tests/fixture.mjs", "frontend/office/__tests__/codec.mjs",
+                "frontend/office/fixtures/private.json", "frontend/office/QA/report.json",
+                "frontend/office/screenshots/desktop.png", "frontend/office/.local/report.json",
+            )
+            runtime = ("frontend/office/app.mjs", "frontend/office/codec.mjs",
+                       "frontend/company-office/connected-v5/screen-overlay.mjs", "backend/app.py")
+            for relative in (*excluded, *runtime):
+                path = root / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("fixture\n", encoding="utf-8")
+            selected = {p.relative_to(root).as_posix()
+                        for area in ("frontend", "backend") for p in PACKAGER.iter_tree(root, area)}
+            self.assertEqual(selected, set(runtime))
+            for relative in excluded:
+                with self.subTest(relative=relative), self.assertRaises(PACKAGER.BundleError):
+                    PACKAGER.ensure_file(root / relative, root)
+
     def test_update_script_is_explicitly_offline_and_backs_up_state(self):
         script = (ROOT / "deploy/quickstart/update.sh").read_text(encoding="utf-8")
         self.assertIn("--offline", script)

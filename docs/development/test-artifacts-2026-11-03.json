@@ -1,0 +1,541 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-03",
+  "source_commit": "3b34deb3c7324c4d5720f5719d5d558128596c74",
+  "archive_directory": "../Star-Office-UI-archive-20261103/test-artifacts",
+  "file_count": 106,
+  "total_bytes": 89853200,
+  "files": [
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-00.jpg",
+      "bytes": 236491,
+      "sha256": "393e58bd7254b17b612ec984afd5ee1d3c8e02544862e2500d1e1d3e07eba715"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-01.jpg",
+      "bytes": 236554,
+      "sha256": "f7b9e75892462aff0b53ccac613cb20da26a88677809eed32ad7a5f6730d8318"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-02.jpg",
+      "bytes": 236600,
+      "sha256": "6d80057a92e1d79a50f2ecdfaaf9b938c443ffb1a41005bdfa2b13eb707eaee8"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-03.jpg",
+      "bytes": 236574,
+      "sha256": "a05a0ea6b4c53fcd81273593f7cc83f566903d0f526bf93730add954b4bd53e8"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-04.jpg",
+      "bytes": 236573,
+      "sha256": "7aba93c06b3e0ca294fc8cfa7a3547334080e5f5ff7ddae43559514677ad9b47"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-05.jpg",
+      "bytes": 236559,
+      "sha256": "73fe669c8840ddf86d278ee5c6931c8e7e3f256304e41028e1fb767b05eb50b0"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-06.jpg",
+      "bytes": 236637,
+      "sha256": "8428d775cfaea05d396e5c3c8bb9c3359f0922238ad0dc58c7b7c11589ef8ddd"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-07.jpg",
+      "bytes": 236543,
+      "sha256": "582c05da0b5ba197b3f4db1464c14fe25d1624eaef5e441ecb5c50c3f7eb30ca"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-08.jpg",
+      "bytes": 236592,
+      "sha256": "8cb05a27d38d634aabe627b0bdec01d5f67e84106974a46b87efb36ccebdd3c8"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-09.jpg",
+      "bytes": 236505,
+      "sha256": "8ba8ede91994b3fb5bfb92f2bba0c51435ee6b420b5e612d8303cd17f205874c"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-10.jpg",
+      "bytes": 236547,
+      "sha256": "bfa632d1bab1d42a24f14752bb45d86512a7e3c7e9a69ed9f2a35c7570fc4101"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/error-11.jpg",
+      "bytes": 236529,
+      "sha256": "249749d9cb9a6c462ddb49c5c433dd44c717fb9502f4549f3622683dcfc888f8"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-00.jpg",
+      "bytes": 236312,
+      "sha256": "d4987fd46bc23003bec4f56a605d589dc7d4a50fa1a020ab56347c20d0a4827e"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-01.jpg",
+      "bytes": 236436,
+      "sha256": "8f9eb0add368c126386ae4fe3c04094e54856938b5b3eefe3d5a1be9ac7ca976"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-02.jpg",
+      "bytes": 236443,
+      "sha256": "093003ff6755a235b6bcdfd0739ca014107523d0236aca6f7d99b84c9dd4865c"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-03.jpg",
+      "bytes": 236487,
+      "sha256": "fbbcd07a43b6e5772be788df4dbf6a2334a9e57b951f45f46b8b457a3757816b"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-04.jpg",
+      "bytes": 236449,
+      "sha256": "49e5682a87aa033f31c13c1698c530ef5c71b373396888a434afa687fcc8d130"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-05.jpg",
+      "bytes": 236481,
+      "sha256": "d205ea8dcf8cac813ce0ef058a350688d5d3592b5dbd1aa84137f735924a5bbf"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-06.jpg",
+      "bytes": 236452,
+      "sha256": "d74110637542a215bb129d45cc3e5d1eab63a5594c29ac95ce30d842498544b1"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-07.jpg",
+      "bytes": 236456,
+      "sha256": "47cd0c823c62252d3d6f1d10a6e396f88f2b225956bc463dece1d81e5e74291a"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-08.jpg",
+      "bytes": 236435,
+      "sha256": "4cd21f9611c0b3b1596429dc6710b06cca88f738b591c0b55bb01fe216958973"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-09.jpg",
+      "bytes": 236383,
+      "sha256": "b93d5abe0c9412b563eeb5135e1efd00cf10f2af7505b078b13bbebfc1bf2053"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-10.jpg",
+      "bytes": 236421,
+      "sha256": "cb9ba204f2f772899b515f78829ee56f23d0e28dab79f32d579a605d2663caa4"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/idle-11.jpg",
+      "bytes": 236424,
+      "sha256": "cae232560232d1dc00e45a91fe59298345be98bcb49ae15e38b11da3287c10d5"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-00.jpg",
+      "bytes": 236621,
+      "sha256": "016406ae9bfe0623e21d96da605d4aebc81d0503b2cfe83653ac91ce2da828da"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-01.jpg",
+      "bytes": 236689,
+      "sha256": "e4df56f029efe9c8fd199b90c5d7bd169e13b7a3ee27afbb0d2c9a2fc712ba8b"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-02.jpg",
+      "bytes": 236731,
+      "sha256": "986fad11d491eb3b9e93fbe487d0ba60d3db066b8520f6f6bc35721bb0bedbd4"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-03.jpg",
+      "bytes": 236720,
+      "sha256": "046fd9d92bec28dbd7543958d7163392559884f8935a1c3be1efbc4810dd4060"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-04.jpg",
+      "bytes": 236736,
+      "sha256": "41844e20922c2d5bfa6fdeed7d20229c21156c2ec911b32ca31d1d26120d372c"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-05.jpg",
+      "bytes": 236701,
+      "sha256": "e5fdb6e526ecdbef7ac2d7b3e4698a01fb44a51566b30cca3662813ea42f3856"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-06.jpg",
+      "bytes": 236497,
+      "sha256": "73d5a18a539d6c684cfe21629737f4bd20f1108c045bbabd5673850c146d8ebd"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-07.jpg",
+      "bytes": 236522,
+      "sha256": "ec556162d3aad8b209615e87df66fcc6e2c72854ca6efa7292887cbad02f3d6f"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-08.jpg",
+      "bytes": 236732,
+      "sha256": "af3a2e1475b519d5c8a279bbded51bdad0aaee6b81c4ad87e94dc9317bd80cfc"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-09.jpg",
+      "bytes": 236602,
+      "sha256": "fd6b92ad25bbc768d0147e94a6eccc63d2909be0990dc0b8b7d6d1ca1e559b57"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-10.jpg",
+      "bytes": 236726,
+      "sha256": "f5456e7002c1a7a825d67e47f0454ca9598c57a70603a65eeda77aa951e28605"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/syncing-11.jpg",
+      "bytes": 236689,
+      "sha256": "d735fde6909b7f958559b65ab21595a826aa188520ea461c276ba6ba3119dc71"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-00.jpg",
+      "bytes": 218953,
+      "sha256": "4456dc54782df378afdb3b040ff01b2f899272ce7e33ce7477872f2e230607c3"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-01.jpg",
+      "bytes": 236528,
+      "sha256": "1ba84c3fbdb1e8caf3546ba9e557d7ff19f1a272b02ff4d164279909f5e6626a"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-02.jpg",
+      "bytes": 236618,
+      "sha256": "3cc2240aba9038ddd7b3e8bdf690c4b355084a539400852255e880ebea32e4ef"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-03.jpg",
+      "bytes": 236607,
+      "sha256": "1839ad0885e43f2851b10bca8f8d48a8f3c571b930ae0b81a70abb9f41561d28"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-04.jpg",
+      "bytes": 236597,
+      "sha256": "0c03c1657fc01752f0d346891a19de8b28bc798a1ccb1d641330cffb5f81330f"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-05.jpg",
+      "bytes": 236581,
+      "sha256": "7468877011012a3267e5fb4bb02f77f149db0ea48d5e22ff93e51ef4b8586ec5"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-06.jpg",
+      "bytes": 236527,
+      "sha256": "d1ede295294da2a0f81cb76f6a30539b81513d2bc565de8f5a2b9bb8f0bc1308"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-07.jpg",
+      "bytes": 236624,
+      "sha256": "a856d6ca28dc1ab457fb2421dbb649c3fba49843f162e8022245b13220be5609"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-08.jpg",
+      "bytes": 236570,
+      "sha256": "b9286cb7f398b521656cd0ed5c1b42d8ae92f2ab71a39ca25f81c16e20928c33"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-09.jpg",
+      "bytes": 236621,
+      "sha256": "ee611c9f505707421408914519bffb58a68463e31623e88343176496f8315211"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-10.jpg",
+      "bytes": 236591,
+      "sha256": "54800f43de87d21bbc4060535d8c9e975396123f59d4631bdf554d722f2545b4"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/qa-frames/writing-11.jpg",
+      "bytes": 236588,
+      "sha256": "f8a9136b6dfb8699693ce65dd978cbded7bcbb5dd2abb133e47ef73b4788a29e"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/test-detail-0.png",
+      "bytes": 41064,
+      "sha256": "8e5c87ffb1f4d12a83f5ab60c5c55d2301a23727177482bd29b65ddeb31fca04"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/test-detail-1.png",
+      "bytes": 40146,
+      "sha256": "d292ad0710002d1dd31cbac99e3efb8bf85ee85a6087ffd2a5202a7d3e23dd23"
+    },
+    {
+      "path": "assets/company-office-combined-preview-v1/test-detail.png",
+      "bytes": 41064,
+      "sha256": "8e5c87ffb1f4d12a83f5ab60c5c55d2301a23727177482bd29b65ddeb31fca04"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/desktop-4k-east-states.png",
+      "bytes": 1672890,
+      "sha256": "d03e07bb05b52b7b9a2c820ab7c45387c7902997115854d6474f6161fe285d78"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/desktop-4k-east.png",
+      "bytes": 1660258,
+      "sha256": "8ee75137a44de3c24189372138e73de167b0f084aad60dcebf0f185fca3a0b0c"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/desktop-4k-overview.png",
+      "bytes": 3642769,
+      "sha256": "7c865f246abced2c73006adc32bfaba19f3a972f6c2dc0e0d0ad08e7f78a368f"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/desktop-4k-west-states.png",
+      "bytes": 1709528,
+      "sha256": "95ea3479955295f04479f116ac7f531e759a8d498d3eeb1d97a8c0ac6259c476"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/desktop-4k-west.png",
+      "bytes": 1727432,
+      "sha256": "3216f8ce5c09725eddb9e0878efc2fb3a661845eb6070c619cb44d509465bf56"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/phone-landscape-east-states.png",
+      "bytes": 1073803,
+      "sha256": "9a0fbf4720c5a78652cbaca93312a89e557d5da40d5c497ef42384cb20fe887c"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/phone-landscape-east.png",
+      "bytes": 1076509,
+      "sha256": "ad8ade89e353e3667bf723074971cfdae860d6a42aff4e60b4b5cceff94a52b8"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/phone-landscape-overview.png",
+      "bytes": 1041987,
+      "sha256": "7f8304314d11c12ff07f953a628e8653581dbf553df95581968d69a86496962d"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/phone-landscape-west.png",
+      "bytes": 1156300,
+      "sha256": "b0ea60e4ba33bfac3ab8a25b6fdf340fa6d111fdd1e115a18c4a73bf2f2d1d88"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/phone-portrait-east-states.png",
+      "bytes": 875677,
+      "sha256": "5bc102235841745533f6ee8fed8e25d8b3a18695ea9176e5b545916916445c0a"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/phone-portrait-east.png",
+      "bytes": 863519,
+      "sha256": "008fc72f1e1ab74cc10e4fce8284efef3a927a8bddf6b005e13bd73349d6a692"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/phone-portrait-overview.png",
+      "bytes": 1256728,
+      "sha256": "64857d47793311060ab256a5458fdf1f86f4766036350b321ef808ce1860c58c"
+    },
+    {
+      "path": "assets/company-office-connected-v4/qa/phone-portrait-west.png",
+      "bytes": 919330,
+      "sha256": "51d6fee9c06f263c9062194439a666b1b4ba1385698ba7ab33798fd80f2b68f6"
+    },
+    {
+      "path": "assets/company-office-connected-v5/archive/typing-prototype/qa/player-down-hands.png",
+      "bytes": 1795,
+      "sha256": "19ce44ffc851bb7ac3f93d8119af2fc0b24aafe49b412d4a174eb5bc904d7e1c"
+    },
+    {
+      "path": "assets/company-office-connected-v5/archive/typing-prototype/qa/player-left-hands.png",
+      "bytes": 1798,
+      "sha256": "25db44f41aef86142efb95844242f175d3311fe4a741c93deb0b742f5136b4be"
+    },
+    {
+      "path": "assets/company-office-connected-v5/archive/typing-prototype/qa/player-right-hands.png",
+      "bytes": 1850,
+      "sha256": "890f2d566a37cf19ba87aa9711b61db98e7f9c257ddadb43434859d0488cc8f6"
+    },
+    {
+      "path": "assets/company-office-connected-v5/archive/typing-prototype/qa/player-up-hands.png",
+      "bytes": 1694,
+      "sha256": "a5066882ffdd531417136a2f15c30a4dde24c1c6f19f1869dfaaa3b6b19daf48"
+    },
+    {
+      "path": "assets/company-office-connected-v5/archive/typing-prototype/qa/typing-detail-down.png",
+      "bytes": 1309183,
+      "sha256": "142848b85dc29666f41eca88fccfe964ad2261f826891194e6436c41a51e281c"
+    },
+    {
+      "path": "assets/company-office-connected-v5/archive/typing-prototype/qa/typing-detail-left.png",
+      "bytes": 1214502,
+      "sha256": "37afa6c0fc85c580259e3ddeff8e0d261639d4d712ee27600064f38c0c408b69"
+    },
+    {
+      "path": "assets/company-office-connected-v5/archive/typing-prototype/qa/typing-detail-right.png",
+      "bytes": 1212995,
+      "sha256": "9859633b5de7fa13eabd011e5599502643cbcaba7f3f98ee8d8d2d1da48cc98f"
+    },
+    {
+      "path": "assets/company-office-connected-v5/archive/typing-prototype/qa/typing-detail-up.png",
+      "bytes": 1301813,
+      "sha256": "87f4b1d968675a65f44c369fa95700104552a6d57ca07312ed75db96388a3c2e"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa-quick-working-west.png",
+      "bytes": 1720850,
+      "sha256": "1ab8547dc552007d84b21c46d6cc9bc5c4c34314bc868b566ac534bb2508fffb"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/admin-display-direct-save.png",
+      "bytes": 131283,
+      "sha256": "7999f3812cdfc069da42bfdf765dbcfe051563f08643ebcee5ff9ff96299c2cb"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/desktop-4k-all-coding.png",
+      "bytes": 3634724,
+      "sha256": "46985afd704d417ab3cfb9b94950983243a642be76d27327d1bb531bd8ab691e"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/desktop-4k-overview.png",
+      "bytes": 3653975,
+      "sha256": "4d847b14ec260de3d6a9ccac1606d241990193f6ec826278657f3760aaa8bdef"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/desktop-4k-working-states.png",
+      "bytes": 3653268,
+      "sha256": "5e89f4c814b56143b077b3426abf9c0ec9fd28b4133e88f077cf92e0576946e7"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/employee-map-hover-desk-09.png",
+      "bytes": 2938869,
+      "sha256": "374f096899c0a2c042b284e66e5329553ceb8438e22e3426ee85bc9c9b8de510"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/map-hover-desk-09.png",
+      "bytes": 3680759,
+      "sha256": "74c9cfcea2f8298616e9bad06798c0237d66856c60bf56e8265a7971e8b2ba17"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/phone-landscape-working-states.png",
+      "bytes": 1095512,
+      "sha256": "a708b219119945adf8c5db3f0a7f2da52d178e52797bc40036aa35e009802125"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/phone-portrait-working-states.png",
+      "bytes": 877615,
+      "sha256": "972d9edf04b906bdba5ddac817547a875c9fa83882db2c9fd3dc7e418c7f31a6"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/player-down-actor.png",
+      "bytes": 18515,
+      "sha256": "83c0af8f3d56c1d7d06b63ac7dd0fcf6736a936e7964be06f2f52c0608d59667"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/player-left-actor.png",
+      "bytes": 16495,
+      "sha256": "77ed82aab3e9abd6ac1af08a41daafd35bf273a645c2444f4d698ba27efc5996"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/player-right-actor.png",
+      "bytes": 21003,
+      "sha256": "561c074c2a15819b273facd58b76aa37605542dda97c92d7207d59e677e943d8"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/player-up-actor.png",
+      "bytes": 16671,
+      "sha256": "c0f6e4f908ce8454de2331dc5a7f5d8708f344462f9d1f44fc67101933131d72"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-closeup-fixed.png",
+      "bytes": 27857,
+      "sha256": "9b730fa2bdf79046e742e46188e9d852f4b6a94c07b506c0c1e43b4ca29a02d8"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-continuity-before-after.png",
+      "bytes": 264023,
+      "sha256": "5d5d289fac127630666e576d74a83590de2c1c50b437d2679541596950e09052"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-continuity-diff.png",
+      "bytes": 13358,
+      "sha256": "d2b4535388b56590bf6f79233650691c8bac6be6ee82d2ad643a9883fe0a4bae"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-east-view.png",
+      "bytes": 1710536,
+      "sha256": "4eda79d5e27334768417199da9038c3208c27c646356e7894f2e6b01620a935d"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-final-overview.png",
+      "bytes": 1991894,
+      "sha256": "4ae0815558f61953ceb69806cafa1e7b5beb3dc008221e705d07dfe9a88fad9b"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-mobile-portrait.png",
+      "bytes": 870058,
+      "sha256": "7075f9301893659439b20525942d63e9bd29b15cc7c1b82c63b87f59f2b1f8a0"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-motion-fixed.png",
+      "bytes": 165071,
+      "sha256": "50d7c9bbb45b353d2bf99673f5aa228c13e404a123a6eb4dffd59984d9263a74"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-overview-fixed.png",
+      "bytes": 215774,
+      "sha256": "6a0ae50c4714c063e96e4c9961ff1b5d9d1638c5f89cafbf9bf89460693ec21c"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-overview.png",
+      "bytes": 3677420,
+      "sha256": "f4ff48ce46a376ac7de96a8ff9ea9bdaa8f600121a3eb76789aa340d61ee64f4"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-reduced-motion.png",
+      "bytes": 3682082,
+      "sha256": "a670289b19d72d4fb74ccd1c0cad7724f43174baf29f49e4b55b8331879e6c97"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-slow-toggle-empty.png",
+      "bytes": 1239701,
+      "sha256": "958871e19c35cd6d194b07640409cbf6663a0492faa0418d017bf8131db4decb"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/rock-room-slow-toggle-normal.png",
+      "bytes": 1241529,
+      "sha256": "c7a9cc971bb75efd8a2ba7c0e9a414f2c271c1045818aeb735ddb4e34a5ba411"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-desktop-4k-overview.png",
+      "bytes": 3674088,
+      "sha256": "7bc587dd08017cfca9631ff78254ade5f56b11c245717e7a3434812591ae9453"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-desktop-4k-states.png",
+      "bytes": 3674088,
+      "sha256": "7bc587dd08017cfca9631ff78254ade5f56b11c245717e7a3434812591ae9453"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-down-workstation.png",
+      "bytes": 1335246,
+      "sha256": "450f86cac68bb8cfaffed52e56826059d63e20c89ca81a15dac3da78f995f741"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-left-workstation.png",
+      "bytes": 1230753,
+      "sha256": "59a66ad07370d742df57f6019f1e1c7d41deaceab924ea59b5b3a682ccad6123"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-phone-landscape-states.png",
+      "bytes": 1094933,
+      "sha256": "b77663dba795d213cf298ce6dc32f75df319469567701b53644c168f218df23f"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-phone-portrait-states.png",
+      "bytes": 853095,
+      "sha256": "6be8ea8759d45eb248394d43a268b89a57b94bc4e46b75020c92e6ae0ec08f40"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-pixel-4k.png",
+      "bytes": 3690034,
+      "sha256": "fe762e3ae6caf542c254b9ecc23be47f8e421a9c2e9018b1f39db373bbd3db8d"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-right-workstation.png",
+      "bytes": 1228242,
+      "sha256": "40e3d1c912a924a170f2d76ad474717495382451ab517381e8fef50ea3e4eeee"
+    },
+    {
+      "path": "assets/company-office-connected-v5/qa/screen-only-up-workstation.png",
+      "bytes": 1331991,
+      "sha256": "9570355e178f200f870ddc06685a6bda1cf1e107d7a6041bb8a5231ec5f3c286"
+    }
+  ],
+  "scope": "Generated preview/QA images only; test sources, JSON baselines, runtime files and V3 rebuild inputs retained."
+}

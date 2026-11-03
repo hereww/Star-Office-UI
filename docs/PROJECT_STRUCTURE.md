@@ -54,6 +54,8 @@
 
 本次清理已经移除未被当前发布闭包导入的脸部图集、像素脸动画模块、无用 CSS shim 和未接入候选板；当前 V4/V5/reference-v3 运行时、旧根页面、Electron 兼容路径和可重建核心素材继续保留。完整清理清单见 [DEPRECATED_ASSETS_CLEANUP_2026-10-30.md](./DEPRECATED_ASSETS_CLEANUP_2026-10-30.md)，引用审计见 [DEPRECATED_ASSETS_AUDIT_2026-10-30.md](./DEPRECATED_ASSETS_AUDIT_2026-10-30.md)，快照恢复规则见 [ASSETS_ARCHIVE_2026-10-30.md](./ASSETS_ARCHIVE_2026-10-30.md)。
 
+2026-11-03 进一步归档并移出 Git 的是 106 个旧预览/V4/V5 测试图片，约 85.69 MiB。测试脚本、JSON 报告、保护基线和 V3 重建输入继续保留；历史报告中的图片路径可能需要从归档或原 Git 提交恢复。范围、恢复方式与已知测试失败见[测试产物清理记录](./development/test-cleanup-2026-11-03.md)，当前测试命令见[测试入口](./development/testing.md)。
+
 ## 当前目录树
 
 ~~~text

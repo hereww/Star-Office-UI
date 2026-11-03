@@ -55,11 +55,19 @@ DOC_FILES = (
     "docs/TEAM_API_OPERATIONS.md",
     "docs/TEAM_API_ACCEPTANCE.md",
 )
-EXCLUDED_PARTS = {"__pycache__", ".git", ".local", "node_modules", "qa", "tests", "test"}
+EXCLUDED_PARTS = {"__pycache__", ".git", ".local", "node_modules", "qa", "tests", "test",
+                  "__tests__", "fixtures", "fixture", "screenshots"}
 
 
 class BundleError(ValueError):
     pass
+
+
+def excluded_runtime_file(relative: Path) -> bool:
+    name = relative.name.lower()
+    return (any(part.lower() in EXCLUDED_PARTS or part.startswith(".") for part in relative.parts)
+            or name.startswith("test_") or ".test." in name or ".spec." in name
+            or name == "conftest.py")
 
 
 def sha256(path: Path) -> str:
@@ -74,7 +82,7 @@ def ensure_file(path: Path, root: Path) -> Path:
     if path.is_symlink() or not path.is_file():
         raise BundleError(f"required regular file missing: {path.relative_to(root)}")
     relative = path.relative_to(root)
-    if any(part in EXCLUDED_PARTS or part.startswith(".") for part in relative.parts):
+    if excluded_runtime_file(relative):
         raise BundleError(f"excluded runtime file: {relative}")
     return path
 
@@ -87,7 +95,7 @@ def iter_tree(root: Path, relative_root: str):
         if path.is_dir():
             continue
         rel = path.relative_to(root)
-        if path.is_symlink() or any(part in EXCLUDED_PARTS or part.startswith(".") for part in rel.parts):
+        if path.is_symlink() or excluded_runtime_file(rel):
             continue
         yield ensure_file(path, root)
 

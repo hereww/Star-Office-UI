@@ -2,6 +2,8 @@
 
 新版办公室由页面层、数据层、场景运行时和发布工具四个边界组成。先看[代码地图](./code-map.md)，再按要修改的边界进入代码；不要从截图、QA 目录或历史部署记录反推当前实现。素材相关改动先读[项目结构与边界](../PROJECT_STRUCTURE.md)中的“素材与清理边界”。
 
+可复跑测试、依赖和浏览器测试边界见[测试入口](./testing.md)；2026-11-03 的测试产物清理范围与审查结果见[清理记录](./test-cleanup-2026-11-03.md)。
+
 ## 修改顺序
 
 1. 数据契约或权限：`backend/office_contract.py`、`backend/office_api.py`、`backend/office_security.py`。
